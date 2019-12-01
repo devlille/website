@@ -1,0 +1,19 @@
+:root {
+  --body-text: #000;
+  --body-bg: #EDECCC;
+  --text-inv: #FFF;
+
+  --main-color: #006D6D;
+  --main-color-h: #71CC71;
+  --main-color-d: #39773E;
+  --main-color-light: #C1E0C1;
+  --hot-color: #B21414;
+  --hot-light: #FFC152;
+  --n-dark: #012625;
+  --n-light: #EDECCC;
+
+  --stack: aleoregular, Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
+  --stack-b: aleobold, Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
+  --stack-i: aleolight, Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
+  --stack-t: aleolight, Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
+}

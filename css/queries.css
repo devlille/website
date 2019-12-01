@@ -1,0 +1,108 @@
+/* --------------------------------------------------------------------
+               	DEVFEST LILLE 2019
+               		Media Queries
+          				Ge Ricci, 2018
+-------------------------------------------------------------------- */
+
+@media screen and (min-width: 750px) {
+  p, li, dt, dd {font-size: 1.3em; line-height: 1.45;}
+  div.stats li {
+    font-size: 2em;
+    line-height: 1.58;
+    margin-left: 35%;
+  }
+  p.register {top: 4rem;}
+}
+
+@media screen and (min-width: 950px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5vh 5% 0 0;
+  }
+  h1 {flex-basis: 55%;}
+    h1 > span {
+      position: relative;
+      top: -5vmax;
+      left: 4rem;
+    }
+  div.presentation {
+    box-sizing: border-box;
+    flex-basis: 40%;
+    background: transparent;
+    padding: 0 0 0 5%;
+    margin: 0;
+    border: none;
+  }
+  div.presentation::before {content: none;}
+  div.presentation p:first-of-type {
+    font-size: 2em;
+    color: var(--text-inv);
+  }
+  p.register {font-size: 2em;}
+  nav {
+    position: relative;
+    width: 90%;
+    background-color: var(--main-color-h);
+    margin: -1rem 5% 2rem 5%;
+  }
+  nav li {
+    font-size: 1.5em;
+    font-family: var(--stack-b);
+    text-transform: none;
+  }
+  nav a, nav a:visited {
+    color: var(--body-text);
+    background-color: var(--main-color-h);
+    padding: 0.5em 1em;
+    border-bottom: 5px dotted var(--main-color-h);
+  }
+  nav a:hover, nav a:focus, nav a[aria-current] {
+    border-color: var(--hot-color);
+  }
+
+  #home main {display: flex; align-items: center;}
+
+  div.stats {
+    flex-basis: 45%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding-left: 50px;
+    margin-top: 4rem;
+    background-position: 0 center;
+  }
+  div.decor {
+    flex-basis: 55%;
+    padding: 5vmax;
+    margin: 2rem 0 0;
+  }
+  div.stats ul {
+    list-style-type: none;
+    margin: 2rem 5% 2rem 20%;
+  }
+  div.stats li {margin-left: 0;}
+
+  article.faq {margin: 0 0 2rem 5vmax;}
+}
+
+
+@media screen and (min-width: 1200px) {
+  #home #wrapper {margin: 0 5%;}
+  #inner #wrapper {margin-top: -4vmax;}
+
+  header {padding-right: 0;}
+  p.cfp {
+    transform: scale(2) rotate(45deg);
+    top: 30px;
+    right: -24px;
+  }
+
+  footer .content {
+    display: flex;
+    justify-content: space-between;
+  }
+  footer dl {flex-basis: 60%;}
+  ul.links-list li {font-size: 0.95em;}
+}

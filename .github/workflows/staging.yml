@@ -1,0 +1,20 @@
+name: CI for staging
+
+on: 
+  push:
+    branches: 
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Firebase tools
+      run: sudo npm install -g firebase-tools
+    - name: Use the production environment
+      run: sudo firebase use staging
+    - name: Deploy to Firebase
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      run: sudo firebase deploy --token "$FIREBASE_TOKEN"

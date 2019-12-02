@@ -1,4 +1,4 @@
-name: CI
+name: CI for production
 
 on: 
   push:
@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Firebase tools
-      run: npm install -g firebase-tools
+      run: sudo npm install -g firebase-tools
     - name: Use the production environment
       run: firebase use default
     - name: Deploy to Firebase

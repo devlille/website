@@ -7,67 +7,11 @@
 
 /* ------------------------------ RESET ---------------------------- */
 
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-figure,
-figcaption,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+  pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, figure, figcaption,
+  img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b,
+  u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+  tbody, tfoot, thead, tr, th, td {
   margin: 0;
   padding: 0;
   border: 0;
@@ -77,15 +21,7 @@ html {
   overflow-y: scroll;
 }
 
-header,
-footer,
-main,
-nav,
-aside,
-article,
-section,
-figure,
-figcaption {
+header, footer, main, nav, aside, article, section, figure, figcaption {
   display: block;
 }
 
@@ -124,55 +60,56 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   font-weight: normal;
 }
 
 h1 {
   position: relative;
-  font: normal calc(1em + 0.9vmax) / 1.2 var(--stack-b);
+  font: calc(0.8em + 0.7vmax)/1.2 var(--stack-b);
 }
 h1 img {
   position: relative;
   margin: -15px 0 0 -15px;
   z-index: 2;
 }
+#inner h1 img {margin: 5vw;}
+
 h1 > span {
   display: block;
   position: absolute;
   width: 100%;
-  bottom: -2vh;
-  left: 14vmax;
+  bottom: 0;
+  left: 16vw;
   z-index: 1;
 }
+
+#inner h1 > span {
+  position: static;
+  font-size: 70%;
+  color: var(--text-inv);
+  margin: -1rem 5vw 5vw;
+}
+
 h1 time {
   display: block;
   text-transform: uppercase;
 }
 
 h2 {
-  font: calc(1.5em + 0.9vmax) / 1.2 var(--stack-b);
+  font: calc(1em + 0.9vmax)/1.2 var(--stack-b);
   margin-bottom: 0.8em;
 }
 h3 {
-  font-size: calc(1em + 0.9vmax);
+  font: calc(0.75em + 0.9vmax)/1.2 var(--stack-b);;
   margin-bottom: 0.8em;
 }
 
-p,
-li,
-dt,
-dd {
+p, li, dt, dd {
   font-size: 1.1em;
 }
 
-li p,
-li li,
-li dt,
-li dd {
+li p, li li, li dt, li dd {
   font-size: 100%;
 }
 
@@ -213,6 +150,7 @@ hr {
 /* -------------------------- STRUCTURE ---------------------------- */
 
 #container {
+  overflow: hidden;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -256,12 +194,27 @@ p.cfp a {
 /* ---------------- ASIDE -------------- */
 
 aside {
+  position: relative;
   background-color: var(--n-light);
-  padding: 10vmax;
+  padding: 9vw;
   margin-top: 2rem;
 }
+aside h2 {margin-right: 20vw;}
 aside .content.filled {
   display: none;
+}
+
+aside::before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 200px;
+  height: 150px;
+  top: -67px;
+  right: 0;
+  background-image: url(../img/partners.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 /*aside .read-more a {
@@ -274,8 +227,8 @@ aside .content.filled {
 
 footer {
   color: var(--text-inv);
-  background-color: var(--n-dark);
-  padding: 10vmax 10vmax 5vmax;
+  background-color: var(--main-color);
+  padding: 9vw;
 }
 
 footer dl {
@@ -297,7 +250,7 @@ footer dd:last-of-type {
 footer a,
 footer a:visited {
   color: var(--text-inv);
-  background-color: var(--n-dark);
+  background-color: var(--main-color);
 }
 
 ul.links-list li {
@@ -308,11 +261,13 @@ ul.links-list li {
 }
 
 p.copyright {
+  min-height: 50px;
   font-size: 0.7em;
   text-align: center;
-  padding: 1rem 0;
-  margin: 2rem 0;
-  border-top: 2px dotted var(--text-inv);
+  background: url(../img/dotted.svg) 0 0 no-repeat;
+  background-size: cover;
+  padding: 2rem 0 1rem;
+  margin: 1rem 0 3rem;
 }
 
 /* --- Social media ---  */
@@ -364,11 +319,10 @@ nav ul {
 nav li {
   font-size: 0.75em;
   text-transform: uppercase;
-  padding: 0.5em;
+  padding: 1em;
 }
 
-nav a,
-nav a:visited {
+nav a, nav a:visited {
   display: block;
   text-decoration: none;
   color: var(--text-inv);
@@ -376,9 +330,7 @@ nav a:visited {
   padding: 0.5em 1em;
   border-bottom: 2px dotted var(--n-dark);
 }
-nav a:hover,
-nav a:focus,
-nav a[aria-current] {
+nav a:hover, nav a:focus, nav a[aria-current] {
   border-color: var(--text-inv);
 }
 
@@ -414,8 +366,8 @@ article p {
 div.presentation {
   line-height: 1.45;
   background: var(--main-color-light);
-  padding: 11em 5vmax 5vmax;
-  margin: -8em 9vmax 5vmax 9vmax;
+  padding: 11em 5vw 5vh;
+  margin: -8em 9vw 5vh 9vw;
   border: 3px solid var(--main-color-h);
 }
 
@@ -430,16 +382,16 @@ div.presentation::before {
 div.presentation p:first-of-type {
   position: relative;
   top: 1rem;
-  font-size: calc(0.9em + 0.9vmax);
+  text-align: center;
+  font-size: calc(0.9em + 0.7vmax);
 }
 
 p.register {
   position: relative;
-  top: 3rem;
+  top: 5rem;
   left: -1rem;
   min-width: 15em;
   font-family: var(--stack-b);
-  background: url(../img/bt-register.svg) right no-repeat;
   background-size: cover;
 }
 p.register a {
@@ -447,26 +399,27 @@ p.register a {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--text-inv);
-  background-color: transparent;
-  padding: 1rem 1.5em;
+  background: transparent url(../img/bt-register.svg) left no-repeat;
+  background-size: contain;
+  padding: 1rem 1.5em 1.5em 1em;
+  transform: rotate(-1deg);
 }
 
 div.stats {
   background: url(../img/cloud.svg) no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
-  padding: 5rem 0 2rem;
-  margin-top: -3rem;
+  padding: 7vmax 5vmax 2vmax;
 }
 div.stats h2 {
   margin: 0 20%;
 }
 div.stats ul {
   list-style-type: none;
-  margin: 2rem 5% 2rem 30%;
+  margin: 1rem 5% 2rem 30%;
 }
 div.stats li {
-  font-size: 1.5em;
+  font-size: 1.2em;
   line-height: 1.58;
 }
 
@@ -476,8 +429,8 @@ div.stats strong {
 
 div.decor {
   background-color: var(--main-color-light);
-  padding: 5vmax;
-  margin: 5vmax;
+  padding: 9vw;
+  margin: 5vh 9vw;
 }
 
 div.decor .illustration {

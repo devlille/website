@@ -15,4 +15,4 @@ jobs:
     - name: Deploy to Firebase
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      run: sudo firebase deploy --token "$FIREBASE_TOKEN"
+      run: sudo firebase deploy -P default --token "$FIREBASE_TOKEN"

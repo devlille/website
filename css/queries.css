@@ -144,6 +144,13 @@
   footer {padding: 9vw calc(9vw + 5%);}
 
   p.copyright {min-height: 90px;}
+
+  div.faq {
+    display: flex;
+    justify-content: space-between;
+  }
+    div.faq h3 {flex-basis: 30%; margin-right: 5%;}
+    div.faq .content {flex-basis: 50%;}
 }
 
 

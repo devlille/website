@@ -338,9 +338,7 @@ nav a:hover, nav a:focus, nav a[aria-current] {
 /* -------------------------------------------------------------------- */
 /* -------------------------- GENERAL ------------------------------- */
 
-article {
-  max-width: 45em;
-}
+article .e-content {max-width: 45em;}
 article p {
   line-height: 1.58;
   margin-bottom: 0.8em;
@@ -359,6 +357,18 @@ article p {
   background-repeat: no-repeat;
   background-size: contain;
   padding-left: 2.5rem;
+}
+
+article h2 {
+  font-size: calc(1.5em + 0.9vmax);
+  color: var(--main-color);
+  margin-bottom: 2em;
+}
+
+div.faq:not(:last-of-type) {
+  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+  border-bottom: 5px dashed var(--main-color-h);
 }
 
 /* -------------------------------------------------------------------- */

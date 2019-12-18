@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "devfest-2020",
+    "staging": "devfest-2020-staging"
+  }
+}

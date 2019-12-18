@@ -54,8 +54,7 @@ body {
   font: 100%/1.3 var(--stack);
   color: #000;
   background-color: var(--main-color);
-  background-image: url(../img/body-bg.png),
-    linear-gradient(90deg, #004745, #006d6d);
+  background-image: url(../img/body-bg.png);
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
 }
@@ -66,11 +65,11 @@ h1, h2, h3, h4 {
 
 h1 {
   position: relative;
+  max-width: 500px;
   font: calc(0.8em + 0.7vmax)/1.2 var(--stack-b);
 }
 h1 img {
   position: relative;
-  margin: -15px 0 0 -15px;
   z-index: 2;
 }
 #inner h1 img {margin: 5vw;}
@@ -82,6 +81,7 @@ h1 > span {
   bottom: 0;
   left: 16vw;
   z-index: 1;
+  transition: all 0.2s;
 }
 
 #inner h1 > span {
@@ -151,13 +151,12 @@ hr {
 
 #container {
   overflow: hidden;
-  max-width: 1400px;
   margin: 0 auto;
 }
 
 #inner main {
   background-color: var(--n-light);
-  padding: 5vmax;
+  padding: 9vw;
 }
 
 /* ----------------- HEADER --------------- */
@@ -198,6 +197,7 @@ aside {
   background-color: var(--n-light);
   padding: 9vw;
   margin-top: 2rem;
+  z-index: 2;
 }
 aside h2 {margin-right: 20vw;}
 aside .content.filled {
@@ -228,6 +228,7 @@ aside::before {
 footer {
   color: var(--text-inv);
   background-color: var(--main-color);
+  background-image: url(../img/body-bg.png);
   padding: 9vw;
 }
 
@@ -247,10 +248,9 @@ footer dd:last-of-type {
   margin-top: 1rem;
 }
 
-footer a,
-footer a:visited {
+footer a, footer a:visited {
   color: var(--text-inv);
-  background-color: var(--main-color);
+  background-color: transparent;
 }
 
 ul.links-list li {
@@ -264,8 +264,8 @@ p.copyright {
   min-height: 50px;
   font-size: 0.7em;
   text-align: center;
-  background: url(../img/dotted.svg) 0 0 no-repeat;
-  background-size: cover;
+  background: url(../img/dotted.svg) center no-repeat;
+  background-size: contain;
   padding: 2rem 0 1rem;
   margin: 1rem 0 3rem;
 }
@@ -308,6 +308,7 @@ nav {
   color: var(--text-inv);
   background: var(--n-dark);
   box-shadow: -3px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 nav ul {
@@ -337,9 +338,7 @@ nav a:hover, nav a:focus, nav a[aria-current] {
 /* -------------------------------------------------------------------- */
 /* -------------------------- GENERAL ------------------------------- */
 
-article {
-  max-width: 45em;
-}
+article .e-content {max-width: 45em;}
 article p {
   line-height: 1.58;
   margin-bottom: 0.8em;
@@ -360,10 +359,23 @@ article p {
   padding-left: 2.5rem;
 }
 
+article h2 {
+  font-size: calc(1.5em + 0.9vmax);
+  color: var(--main-color);
+  margin-bottom: 2em;
+}
+
+div.faq:not(:last-of-type) {
+  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+  border-bottom: 5px dashed var(--main-color-h);
+}
+
 /* -------------------------------------------------------------------- */
 /* -------------------------- HOME ------------------------------- */
 
 div.presentation {
+  position: relative;
   line-height: 1.45;
   background: var(--main-color-light);
   padding: 11em 5vw 5vh;
@@ -406,9 +418,7 @@ p.register a {
 }
 
 div.stats {
-  background: url(../img/cloud.svg) no-repeat;
-  background-size: contain;
-  background-position: center;
+  background-color: var(--n-light);
   padding: 7vmax 5vmax 2vmax;
 }
 div.stats h2 {

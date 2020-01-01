@@ -108,7 +108,7 @@
   }
   div.stats h2 {margin: 0;}
   div.stats ul {min-width: 23em; margin: 1em 0 0;}
-  div.stats li {font-size: calc(1em + 0.9vmax); margin-left: 10%;}
+  div.stats li {font-size: 1.7em; margin-left: 10%;}
   div.stats h2 {font-size: calc(1em + 1vmax);}
 
   div.decor {

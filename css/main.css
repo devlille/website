@@ -67,9 +67,12 @@ h1 {
   position: relative;
   max-width: 500px;
   font: calc(0.8em + 0.7vmax)/1.2 var(--stack-b);
+  margin-right: 9vw;
+  transition: all 0.5s;
 }
 h1 img {
   position: relative;
+  transition: all 0.5s;
   z-index: 2;
 }
 #inner h1 img {margin: 5vw;}
@@ -419,14 +422,12 @@ p.register a {
 
 div.stats {
   background-color: var(--n-light);
-  padding: 7vmax 5vmax 2vmax;
+  padding: 9vw;
 }
-div.stats h2 {
-  margin: 0 20%;
-}
+div.stats h2 {}
 div.stats ul {
   list-style-type: none;
-  margin: 1rem 5% 2rem 30%;
+  margin: 1rem 0 0;
 }
 div.stats li {
   font-size: 1.2em;
@@ -434,6 +435,9 @@ div.stats li {
 }
 
 div.stats strong {
+  display: inline-block;
+  width: 3em;
+  text-align: right;
   color: var(--hot-color);
 }
 

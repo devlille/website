@@ -1,19 +1,17 @@
-const cacheName = 'devfestlille-19';
+const cacheName = 'devfestlille-20';
 
 const filesToCache = [
   '/',
-  '/js/load.js',
   '/css/vars.css',
-  '/css/barlowsemicondensed-bold-webfont.woff',
-  '/css/barlowsemicondensed-italic-webfont.woff',
-  '/css/barlowsemicondensed-regular-webfont.woff',
-  '/css/boogaloo-regular-webfont.woff',
-  '/css/boogaloo-regular-webfont.woff2',
-  '/img/logo.svg',
-  '/img/logo-big.svg',
-  '/img/vase.svg',
-  '/img/hifi.svg',
-  '/img/tablet.svg'
+  '/css/aleo-bold-webfont.woff',
+  '/css/aleo-light-webfont.woff',
+  '/css/aleo-regular-webfont.woff',  
+  '/css/aleo-bold-webfont.woff2',
+  '/css/aleo-light-webfont.woff2',
+  '/css/aleo-regular-webfont.woff2',
+  '/img/logo-full.svg',
+  '/img/logo-sml.svg',
+  '/img/header.svg'
 ];
 
 const excludedUrlsOfCache = [

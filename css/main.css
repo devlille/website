@@ -273,6 +273,18 @@ p.copyright {
   margin: 1rem 0 3rem;
 }
 
+li.language a, li.language a:visited {
+  display: block;
+  text-decoration: none;
+  color: var(--main-color-d);
+  background-color: var(--text-inv);
+  padding: 0.3em 0.5em;
+}
+li.language a:hover, li.language a:focus {
+  color: var(--text-inv);
+  background-color: var(--hot-color);
+}
+
 /* --- Social media ---  */
 .sm-list {
   display: flex;
@@ -327,7 +339,7 @@ nav li {
 }
 
 nav a, nav a:visited {
-  display: block;
+  display: inline-block;
   text-decoration: none;
   color: var(--text-inv);
   background: var(--n-dark);
@@ -337,6 +349,7 @@ nav a, nav a:visited {
 nav a:hover, nav a:focus, nav a[aria-current] {
   border-color: var(--text-inv);
 }
+
 
 /* -------------------------------------------------------------------- */
 /* -------------------------- GENERAL ------------------------------- */
@@ -373,6 +386,8 @@ div.faq:not(:last-of-type) {
   margin-bottom: 4rem;
   border-bottom: 5px dashed var(--main-color-h);
 }
+
+article ul {margin: 2vw;}
 
 /* -------------------------------------------------------------------- */
 /* -------------------------- HOME ------------------------------- */

@@ -545,7 +545,7 @@ div.sponsors + div.sponsors {
   border-top: 5px dotted var(--main-color);
 }
 div.sponsors h4 {
-  height: 6em;
+  height: 10em;
   color: var(--main-color);
   transform: rotate(-90deg);
 }

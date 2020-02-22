@@ -474,20 +474,20 @@ div.speaker-sheet {
   display: flex;
   flex-flow: column;
   flex: 1;
+  max-width: 254px;
   background-color: var(--main-color-light);
   padding: 1rem 1.5rem 1rem 2rem;
   margin: 1rem;
-  border: 5px solid var(--main-color-h);
-  border-right: 10px dotted var(--main-color-h);
+  border-right: 10px dotted var(--n-light);
 }
 
-div.speaker-sheet header {padding-left: 90px; margin-bottom: 1rem;}
-div.speaker-sheet h3 {margin-bottom: 0;}
+div.speaker-sheet header {padding-left: 90px;}
+div.speaker-sheet h3 {line-height: 1.1; margin-bottom: 0;}
 div.speaker-sheet .s-photo {
   position: absolute;
   overflow: hidden;
-  top: -30px;
-  left: -20px;
+  top: -16px;
+  left: -16px;
   width: 95px;
   border-image: url(../img/diamond.svg) 34 / 11px round;
   padding: 11px;
@@ -533,6 +533,7 @@ div.speaker-sheet ul.social {
 
 div.speaker-sheet ul.social li {font-size: 0.9em;}
 div.speaker-sheet ul.social img {vertical-align: bottom;}
+div.speaker-sheet ul.social a {color: var(--body-text);}
 
 div.content.filled {margin-top: 4rem;}
 div.content.filled h3 {margin-bottom: 2rem;}

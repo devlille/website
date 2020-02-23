@@ -17,8 +17,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-	<link href="css/main.css" rel="stylesheet" media="all" />
-	<link href="css/queries.css" rel="stylesheet" media="all" />
+	<link href="../css/main.css" rel="stylesheet" media="all" />
+	<link href="../css/queries.css" rel="stylesheet" media="all" />
 	</script>
 </head>
 
@@ -29,7 +29,7 @@
 		<!-- PAGE HEADER -->
 		<header>
 			<h1>
-				<a href="index.html"><img src="img/logo-sml.svg" alt="Devfest Lille 2020" /></a>
+				<a href="index.html"><img src="../img/logo-sml.svg" alt="Devfest Lille 2020" /></a>
 				<span><time datetime="12-06-2020">12 Juin <span>2020</span></time>
 					Kinepolis Lomme</span>
 			</h1>
@@ -38,12 +38,13 @@
 					<abbr lang="en" title="Call for Paper">CFP</abbr>!</a></p>
 		</header>
 
+		
 		<nav class="main-nav">
-			<h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
+			<h2 class="k-skip"><a href="#wrapper">Navigation (Skip)</a></h2>
 			<ul>
-				<li><a href="index.html">Accueil</a></li>
-				<li><a href="speakers.html" aria-current="page">Speakers</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+			  <li><a href="/en/index.html">Home</a></li>
+			  <li><a href="/en/speakers.html" aria-current="page">Speakers</a></li>
+			  <li><a href="/en/faq.html" aria-current="page">FAQ</a></li>
 			</ul>
 		</nav>
 
@@ -51,7 +52,7 @@
 		<div id="wrapper">
 			<main>
 				<article>
-					<h2>Vos Guides</h2>
+					<h2>Your Guides</h2>
 
 					<div class="loader" v-if="isLoading"></div>
 
@@ -68,13 +69,13 @@
 							<div class="content">{{ speaker.bio }}</div>
 							<ul class="social">
 								<li class="twitter">
-									<img src="img/twitter2.svg" alt="Twitter">
+									<img src="../img/twitter2.svg" alt="Twitter">
 									<a :href="`https://twitter.com/${speaker.twitter}`">{{
 										speaker.twitter
 									  }}</a>
 								</li>
 								<li class="github">
-									<img src="img/github-face.svg" alt="Github">
+									<img src="../img/github-face.svg" alt="Github">
 									<a :href="`https://github.com/${speaker.github}`">{{
 										speaker.github
 									  }}</a>
@@ -92,26 +93,34 @@
 			<div class="content">
 				<dl class="h-event">
 					<dt class="p-name">Devfest Lille 2020</dt>
-					<dd class="p-summary">Une journée de
-						conférences, de quickies et d'échanges sur les sujets du web, du mobile, du cloud et
-						des technologies Google.</dd>
-					<dd><time class="dt-start" datetime="2020-06-12">12 juin 2020</time> - <a href="#" class="p-location">Kinépolis Lomme</a></dd>
+					<dd class="p-summary">
+						A whole journey of talks, quickies and exchanges around the Web, mobile, cloud and Google technologies.</dd>
+					<dd>
+						<time class="dt-start" datetime="2020-06-12">June 12th, 2020</time> -
+						<a href="#" class="p-location">Kinépolis Lomme</a>
+					</dd>
 				</dl>
 				<ul class="links-list">
-					<li class="language"><a href="en/speakers.html" lang="en">English Version</a></li>
-					<li><a href="speakers.html" lang="fr">Guides</a></li>
+					<li class="language"><a href="../index.html" lang="fr">Version Française</a></li>
+					<li><a href="speakers.html" lang="en">Guides</a></li>
 					<!--li><a href="agenda.html">Agenda</a></li-->
 					<li><a href="faq.html">FAQ</a></li>
-					<li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
-					<li><a href="code-conduite.html">Code de conduite</a></li>
-					<li><a href="https://devfest-2019.gdglille.org/">Voyage 3/ 2019</a></li>
-					<li><a href="https://devfest-2018.gdglille.org/">Voyage 2/ 2018</a></li>
-					<li><a href="https://devfest-2017.gdglille.org/">Voyage 1/ 2017</a></li>
+					<li><a href="mailto:contact@gdglille.org">Contact us</a></li>
+					<li><a href="code-conduite.html">Code of conduct</a></li>
+					<li>
+						<a href="https://devfest-2019.gdglille.org/">Journey 3/ 2019</a>
+					</li>
+					<li>
+						<a href="https://devfest-2018.gdglille.org/">Journey 2/ 2018</a>
+					</li>
+					<li>
+						<a href="https://devfest-2017.gdglille.org/">Journey 1/ 2017</a>
+					</li>
 				</ul>
 			</div>
 			<ul class="sm-list">
-				<li class="show-icons"><a href="https://twitter.com/devfestLille/"><img src="img/twitter.svg" alt="Twitter" /></a></li>
-				<li class="show-icons"><a href="https://www.linkedin.com/company/gdg-lille/"><img src="img/linkedin.svg" alt="LinkedIn" /></a></li>
+				<li class="show-icons"><a href="https://twitter.com/devfestLille/"><img src="../img/twitter.svg" alt="Twitter" /></a></li>
+				<li class="show-icons"><a href="https://www.linkedin.com/company/gdg-lille/"><img src="../img/linkedin.svg" alt="LinkedIn" /></a></li>
 			</ul>
 	    <p class="copyright">GDG Lille, 2020</p>
     </footer>
@@ -154,4 +163,3 @@
 	  </script>
 </body>
 </html>
-

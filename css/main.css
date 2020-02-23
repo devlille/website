@@ -481,7 +481,7 @@ div.speaker-sheet {
   border-right: 10px dotted var(--n-light);
 }
 
-div.speaker-sheet header {padding-left: 90px;}
+div.speaker-sheet header {min-height: 6.5rem; padding-left: 90px;}
 div.speaker-sheet h3 {line-height: 1.1; margin-bottom: 0;}
 div.speaker-sheet .s-photo {
   position: absolute;
@@ -507,6 +507,8 @@ div.speaker-sheet::before {
   z-index: 3;
 }
   div.speaker-sheet .s-photo img {
+    width: 95px;
+    height: 95px;
     object-fit: cover;
     vertical-align: bottom;
   }
@@ -538,17 +540,17 @@ div.speaker-sheet ul.social a {color: var(--body-text);}
 div.content.filled {margin-top: 4rem;}
 div.content.filled h3 {margin-bottom: 2rem;}
 
-div.sponsors {display: flex;}
-
-div.sponsors + div.sponsors {
-  padding-top: 1rem;
+div.sponsors {
+  padding-top: 0.5rem;
   margin-top: 1rem;
   border-top: 5px dotted var(--main-color);
 }
 div.sponsors h4 {
-  height: 10em;
+  font-family: var(--stack-b);
+  text-transform: uppercase;
   color: var(--main-color);
-  transform: rotate(-90deg);
+  background-color: var(--n-light);
+  margin-bottom: 1rem;
 }
 
 div.sponsors ul {
@@ -563,3 +565,5 @@ div.sponsors li {
   min-width: 80px;
   margin: 0 2rem 2rem 0;
 }
+
+div.sponsors:first-of-type li {flex-basis: 40%;}

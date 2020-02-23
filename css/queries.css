@@ -25,6 +25,8 @@
 
   div.stats {display: flex;}
     div.stats ul {margin: 0 0 0 9vw;}
+
+  div.sponsors ul {margin-left: 8rem;}
 }
 
 @media screen and (min-width: 750px) {

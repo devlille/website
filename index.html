@@ -99,7 +99,7 @@
 						  <li v-for="(partner, idx) in partners.gold"
 							  :key="`partner_gold_${idx}`">
 							  <a :href="`https://${partner.url}`">
-								  <img width="100":src="partner.logoUrl"
+								  <img :src="partner.logoUrl"
 									   :alt="partner.name" />
 							  </a>
 						  </li>

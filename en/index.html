@@ -13,7 +13,7 @@
 	<meta property="og:description" content="A whole journey of talks, quickies and exchanges around the Web, mobile, cloud and Google technologies" />
 	<meta property="og:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
 	<link href="../img/favicon.png" type="image/png" rel="icon" />
-	<title>DEVFEST LILLE 2020</title>
+	<title>DEVFEST LILLE 2021</title>
 
 	<link href="../css/main.css" rel="stylesheet" media="all" />
 	<link href="../css/queries.css" rel="stylesheet" media="all" />
@@ -30,29 +30,27 @@
 		<!-- PAGE HEADER -->
 		<header>
 			<h1>
-				<img src="../img/logo-full.svg" alt="Devfest Lille 2020" />
-				<span><time datetime="12-06-2020">June 12th, <span>2020</span></time> Kinepolis Lomme</span>
+				<img src="../img/logo2021.svg" alt="Devfest Lille 2021" />
+				<span><time datetime="12-06-2020">June 11th, <span>2021</span></time> Kinepolis Lomme</span>
 			</h1>
-			<p class="cfp"><a href="https://conference-hall.io/public/event/4o1awYXIRayhu3vmOmiQ"><abbr title="Call for Paper">CFP</abbr>!</a></p>
 		</header>
 
 		<nav class="main-nav">
 			<h2 class="k-skip"><a href="#wrapper">Navigation (Skip)</a></h2>
 			<ul>
 				<li><a href="/en/index.html" aria-current="page">Home</a></li>
-				<li><a href="/en/speakers.html">Speakers</a></li>
 				<li><a href="/en/faq.html">FAQ</a></li>
 			</ul>
 		</nav>
 
 		<div id="wrapper">
+			<img src="../img/report-en.svg" alt="2020 edition is canceled and rescheduled to June 11th 2021" class="report" />
 			<main>
 				<div class="group">
 					<div class="presentation">
 						<p>Embark for an amazing day of
 							<strong>talks</strong> and rich <strong>exchanges</strong>
 							about the Web, Mobile, Cloud, and get to know what is going on around Lille.</p>
-						<p class="register"><a href="https://www.billetweb.fr/devfest-lille-2020">Register</a></p>
 					</div>
 					<div class="stats">
 						<h2>Don't miss this trip!</h2>
@@ -78,20 +76,12 @@
 			</main>
 
 			<aside>
-				<div class="content">
-					<h2>Become a partner</h2>
-					<p>Get on board the Devfest Lille 2020 to gain on visibility and to exchange with the community of developers from Haut de France.</p>
-					<p class="read-more"><a target="_blank" href="https://drive.google.com/file/d/1lZyTEQniTaBLU4KKZVFImjOmIjWLNsdG/view?usp=drivesdk">Partnership Agreement</a>
-						[PDF, 5Mo]</p>
-
-				</div>
-
 				<div class="loader" v-if="isLoading"></div>
 
 				<div class="content filled" v-else>
-					<h3>Big Thanks to Our Partners!</h3>
+					<h3>Big Thanks to Our Partners that support us already for 2021 edition!</h3>
 					<div class="sponsors" v-if="partners.gold.length > 0">
-						<h4>Gold</h3>
+						<h4>Gold</h4>
 						<ul>
 						  <li v-for="(partner, idx) in partners.gold"
 							  :key="`partner_gold_${idx}`">
@@ -103,7 +93,7 @@
 						</ul>
 					</div>
 					<div class="sponsors" v-if="partners.silver.length > 0">
-						<h4>Silver</h3>
+						<h4>Silver</h4>
 						<ul>
 						  <li v-for="(partner, idx) in partners.silver"
 							  :key="`partner_silver_${idx}`">
@@ -115,7 +105,7 @@
 						</ul>
 					</div>
 					<div class="sponsors" v-if="partners.bronze.length > 0">
-						<h4>Bronze</h3>
+						<h4>Bronze</h4>
 						<ul>
 						  <li v-for="(partner, idx) in partners.bronze"
 							  :key="`partner_bronze_${idx}`">
@@ -127,7 +117,7 @@
 						</ul>
 					</div>
 					<div class="sponsors" v-if="partners.contributors.length > 0">
-						<h4>Support</h3>
+						<h4>Support</h4>
 						<ul>
 						  <li v-for="(partner, idx) in partners.contributors"
 							  :key="`partner_contributor_${idx}`">
@@ -147,18 +137,16 @@
 		<footer>
 			<div class="content">
 				<dl class="h-event">
-					<dt class="p-name">Devfest Lille 2020</dt>
+					<dt class="p-name">Devfest Lille 2021</dt>
 					<dd class="p-summary">
 						A whole journey of talks, quickies and exchanges around the Web, mobile, cloud and Google technologies.</dd>
 					<dd>
-						<time class="dt-start" datetime="2020-06-12">June 12th, 2020</time> -
+						<time class="dt-start" datetime="2020-06-12">June 11th, 2021</time> -
 						<a href="#" class="p-location">Kinépolis Lomme</a>
 					</dd>
 				</dl>
 				<ul class="links-list">
 					<li class="language"><a href="../index.html" lang="fr">Version Française</a></li>
-					<li><a href="speakers.html" lang="en">Guides</a></li>
-					<!--li><a href="agenda.html">Agenda</a></li-->
 					<li><a href="faq.html">FAQ</a></li>
 					<li><a href="mailto:contact@gdglille.org">Contact us</a></li>
 					<li><a href="code-conduite.html">Code of conduct</a></li>

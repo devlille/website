@@ -75,7 +75,6 @@ h1 img {
   transition: all 0.5s;
   z-index: 2;
 }
-#inner h1 img {margin: 5vw;}
 
 h1 > span {
   display: block;
@@ -85,13 +84,6 @@ h1 > span {
   left: 16vw;
   z-index: 1;
   transition: all 0.2s;
-}
-
-#inner h1 > span {
-  position: static;
-  font-size: 70%;
-  color: var(--text-inv);
-  margin: -1rem 5vw 5vw;
 }
 
 h1 time {
@@ -389,13 +381,12 @@ article ul {margin: 2vw;}
 
 /* -------------------------------------------------------------------- */
 /* -------------------------- HOME ------------------------------- */
-
 div.presentation {
   position: relative;
   line-height: 1.45;
   background: var(--main-color-light);
-  padding: 11em 5vw 5vh;
-  margin: -8em 9vw 5vh 9vw;
+  padding: 5vh 5vw;
+  margin: 0 9vw 5vh 9vw;
   border: 3px solid var(--main-color-h);
 }
 

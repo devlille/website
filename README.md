@@ -1,2 +1,2 @@
-# devfest-2020
-Official website of the DevFest 2020
+# devfest-2021
+Official website of the DevFest 2021

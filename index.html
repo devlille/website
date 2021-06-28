@@ -1,236 +1,245 @@
-﻿	<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="keywords" content="Devfest, Lille, GDG, Conférence, Web, Mobile, Cloud, Quickies" />
-	<meta name="theme-color" content="#006D6D">
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:creator" content="@gericci" />
-	<meta property="og:url" content="https://devfest.gdglille.org/" />
-	<meta property="og:title" content="Devfest Lille 2021" />
-	<meta property="og:description" content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux" />
-	<meta property="og:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
-	<link href="img/favicon.png" type="image/png" rel="icon" />
-	<title>DEVFEST LILLE 2021</title>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Devfest, Lille, GDG, Conférence, Web, Mobile, Cloud, Quickies" />
+    <meta name="theme-color" content="#006D6D" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@gericci" />
+    <meta property="og:url" content="https://devfest.gdglille.org/" />
+    <meta property="og:title" content="Devfest Lille 2021" />
+    <meta
+      property="og:description"
+      content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux"
+    />
+    <meta property="og:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
+    <link href="img/favicon.png" type="image/png" rel="icon" />
+    <title>DEVFEST LILLE 2021</title>
 
-	<link href="css/main.css" rel="stylesheet" media="all" />
-	<link href="css/queries.css" rel="stylesheet" media="all" />
+    <link href="css/main.css" rel="stylesheet" media="all" />
+    <link href="css/queries.css" rel="stylesheet" media="all" />
 
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-	<!-- GOOGLE ANALYTICS -->
+    <!-- GOOGLE ANALYTICS -->
 
-	<link rel="manifest" href="manifest.json" />
-</head>
+    <link rel="manifest" href="manifest.json" />
+  </head>
 
-<body id="home">
+  <body id="home">
+    <div id="container">
+      <!-- PAGE HEADER -->
+      <header>
+        <h1>
+          <img src="img/logo2021.svg" alt="Devfest Lille 2021" />
+          <span
+            ><time datetime="19-11-2021">19 Novembre <span>2021</span></time> Kinepolis Lomme</span
+          >
+        </h1>
+        <p class="cfp">
+          <a href="https://conference-hall.io/public/event/AFtTtSMq1NY4tnK2gMg1">
+            <abbr lang="en" title="Call for Paper">CFP</abbr>!</a
+          >
+        </p>
+      </header>
 
-	<div id="container">
+      <nav class="main-nav">
+        <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
+        <ul>
+          <li><a href="index.html" aria-current="page">Accueil</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </nav>
 
-		<!-- PAGE HEADER -->
-		<header>
-			<h1>
-				<img src="img/logo2021.svg" alt="Devfest Lille 2021" />
-				<span><time datetime="19-11-2021">19 Novembre <span>2021</span></time> Kinepolis Lomme</span>
-			</h1>
-			<p class="cfp">
-			  <a href="https://conference-hall.io/public/event/AFtTtSMq1NY4tnK2gMg1">
-			    <abbr lang="en" title="Call for Paper">CFP</abbr>!</a></p>
-		</header>
-
-		<nav class="main-nav">
-			<h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
-			<ul>
-				<li><a href="index.html" aria-current="page">Accueil</a></li>
-				<li><a href="faq.html">FAQ</a></li>
-			</ul>
-		</nav>
-
-		<div id="wrapper">
-			<main>
-				<div class="group">
-					<div class="presentation">
-						<p>Rejoignez nous pour une journée de
-							<strong>conférences</strong> et d'<strong>échanges</strong>
-							sur les sujets autour du Web, Mobile, Cloud,
-							et de leur utilisation par les acteurs locaux.</p>
-						<p class="register"><a href="https://www.billetweb.fr/devfest-lille-2021">Inscrivez-vous!</a></p>
-					</div>
-					<div class="stats">
-						<h2>Ne ratez pas ce voyage!</h2>
-						<ul>
-							<li><strong>+500</strong> voyageurs</li>
-							<li><strong>30</strong> guides</li>
-							<li><strong>20</strong> recits de voyage</li>
-							<li><strong>2</strong> <span lang="en">compagnies</span></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="decor">
-					<h2>Le départ : <strong>Kinépolis Lomme</strong></h2>
-					<div class="content">
-						<p class="illustration"><img src="img/kinepolis.jpg" alt="Une salle du Kinepolis Lomme" /></p>
-						<p>Le Kinepolis Lomme est le troisième plus grand cinéma du monde avec 7 286 places et le plus grand cinéma d'Europe.</p>
-						<p class="read-more"><a rel="noreferrer noopener" target="_blank" href="https://www.google.fr/maps/place/Kinepolis/@50.6517681,2.9808181,15z/data=!4m2!3m1!1s0x0:0xf268b6955bfcfd0b?ved=2ahUKEwi9u_WU54HfAhVMzoUKHSpRAm8Q_BIwDnoECAQQCA">Comment y aller</a></p>
-					</div>
-				</div>
-			</main>
-
-			<aside>
-				<div class="loader" v-if="isLoading"></div>
-				<div class="content filled" v-else>
-					<h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition 2021!</h3>
-					<div class="sponsors" v-if="partners.gold.length > 0">
-						<h4>Gold</h4>
-						<ul>
-						  <li v-for="(partner, idx) in partners.gold"
-							  :key="`partner_gold_${idx}`">
-							  <a :href="`https://${partner.url}`">
-								  <img :src="partner.logoUrl"
-									   :alt="partner.name" />
-							  </a>
-						  </li>
-						</ul>
-					</div>
-					<div class="sponsors" v-if="partners.silver.length > 0">
-						<h4>Silver</h4>
-						<ul>
-						  <li v-for="(partner, idx) in partners.silver"
-							  :key="`partner_silver_${idx}`">
-							  <a :href="`https://${partner.url}`">
-								<img :src="partner.logoUrl"
-									 :alt="partner.name" />
-							  </a>
-						  </li>
-						</ul>
-					</div>
-					<div class="sponsors" v-if="partners.bronze.length > 0">
-						<h4>Bronze</h4>
-						<ul>
-						  <li v-for="(partner, idx) in partners.bronze"
-							  :key="`partner_bronze_${idx}`">
-							  <a :href="`https://${partner.url}`">
-								  <img :src="partner.logoUrl"
-									   :alt="partner.name" />
-							  </a>
-						  </li>
-						</ul>
-					</div>
-					<div class="sponsors" v-if="partners.contributors.length > 0">
-						<h4>Soutiens</h4>
-						<ul>
-						  <li v-for="(partner, idx) in partners.contributors"
-							  :key="`partner_contributor_${idx}`">
-							  <a :href="`https://${partner.url}`">
-								  <img :src="partner.logoUrl"
-									   :alt="partner.name" />
-							  </a>
-						  </li>
-						</ul>
-					</div>
-        		</div>
-			</aside>
-		</div>
-
-		<hr />
-
-        <footer>
-          <div class="content">
-            <dl class="h-event">
-              <dt class="p-name">Devfest Lille 2021</dt>
-              <dd class="p-summary">
-                Une journée de conférences, de quickies et d'échanges sur les
-                sujets du web, du mobile, du cloud et des technologies Google.
-              </dd>
-              <dd>
-                <time class="dt-start" datetime="2021-11-19">19 Novembre 2021</time> -
-                <a href="#" class="p-location">Kinépolis Lomme</a>
-              </dd>
-            </dl>
-            <ul class="links-list">
-                      <li class="language"><a href="en/faq.html" lang="en">English Version</a></li>
-              <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
-              <li><a href="code-conduite.html">Code de conduite</a></li>
-              <li>
-                <a href="https://devfest-2019.gdglille.org/">Voyage 3/ 2019</a>
-              </li>
-              <li>
-                <a href="https://devfest-2018.gdglille.org/">Voyage 2/ 2018</a>
-              </li>
-              <li>
-                <a href="https://devfest-2017.gdglille.org/">Voyage 1/ 2017</a>
-              </li>
-            </ul>
+      <div id="wrapper">
+        <main>
+          <div class="group">
+            <div class="presentation">
+              <p>
+                Rejoignez nous pour une journée de <strong>conférences</strong> et d'<strong>échanges</strong> sur les
+                sujets autour du Web, Mobile, Cloud, et de leur utilisation par les acteurs locaux.
+              </p>
+              <p class="register"><a href="https://www.billetweb.fr/devfest-lille-2021">Inscrivez-vous!</a></p>
+            </div>
+            <div class="stats">
+              <h2>Ne ratez pas ce voyage!</h2>
+              <ul>
+                <li><strong>+500</strong> voyageurs</li>
+                <li><strong>30</strong> guides</li>
+                <li><strong>20</strong> recits de voyage</li>
+                <li><strong>2</strong> <span lang="en">compagnies</span></li>
+              </ul>
+            </div>
           </div>
-          <ul class="sm-list">
-            <li class="show-icons">
-              <a href="https://twitter.com/devfestLille/"
-                ><img src="img/twitter.svg" alt="Twitter"
-              /></a>
+
+          <div class="decor">
+            <h2>Le départ : <strong>Kinépolis Lomme</strong></h2>
+            <div class="content">
+              <p class="illustration"><img src="img/kinepolis.jpg" alt="Une salle du Kinepolis Lomme" /></p>
+              <p>
+                Le Kinepolis Lomme est le troisième plus grand cinéma du monde avec 7 286 places et le plus grand cinéma
+                d'Europe.
+              </p>
+              <p class="read-more">
+                <a
+                  rel="noreferrer noopener"
+                  target="_blank"
+                  href="https://www.google.fr/maps/place/Kinepolis/@50.6517681,2.9808181,15z/data=!4m2!3m1!1s0x0:0xf268b6955bfcfd0b?ved=2ahUKEwi9u_WU54HfAhVMzoUKHSpRAm8Q_BIwDnoECAQQCA"
+                  >Comment y aller</a
+                >
+              </p>
+            </div>
+          </div>
+        </main>
+
+        <aside>
+          <div class="loader" v-if="isLoading"></div>
+          <div class="content filled" v-else>
+            <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition 2021!</h3>
+            <div class="sponsors" v-if="partners.gold.length > 0">
+              <h4>Gold</h4>
+              <ul>
+                <li v-for="(partner, idx) in partners.gold" :key="`partner_gold_${idx}`">
+                  <a :href="`https://${partner.url}`">
+                    <img :src="partner.logoUrl" :alt="partner.name" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sponsors" v-if="partners.silver.length > 0">
+              <h4>Silver</h4>
+              <ul>
+                <li v-for="(partner, idx) in partners.silver" :key="`partner_silver_${idx}`">
+                  <a :href="`https://${partner.url}`">
+                    <img :src="partner.logoUrl" :alt="partner.name" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sponsors" v-if="partners.bronze.length > 0">
+              <h4>Bronze</h4>
+              <ul>
+                <li v-for="(partner, idx) in partners.bronze" :key="`partner_bronze_${idx}`">
+                  <a :href="`https://${partner.url}`">
+                    <img :src="partner.logoUrl" :alt="partner.name" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sponsors" v-if="partners.contributors.length > 0">
+              <h4>Soutiens</h4>
+              <ul>
+                <li v-for="(partner, idx) in partners.contributors" :key="`partner_contributor_${idx}`">
+                  <a :href="`https://${partner.url}`">
+                    <img :src="partner.logoUrl" :alt="partner.name" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <hr />
+
+      <footer>
+        <div class="content">
+          <dl class="h-event">
+            <dt class="p-name">Devfest Lille 2021</dt>
+            <dd class="p-summary">
+              Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile, du cloud et des
+              technologies Google.
+            </dd>
+            <dd>
+              <time class="dt-start" datetime="2021-11-19">19 Novembre 2021</time> -
+              <a href="#" class="p-location">Kinépolis Lomme</a>
+            </dd>
+          </dl>
+          <ul class="links-list">
+            <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
+            <li><a href="code-conduite.html">Code de conduite</a></li>
+            <li>
+              <a href="https://devfest-2019.gdglille.org/">Voyage 3/ 2019</a>
             </li>
-            <li class="show-icons">
-              <a href="https://www.linkedin.com/company/gdg-lille/"
-                ><img src="img/linkedin.svg" alt="LinkedIn"
-              /></a>
+            <li>
+              <a href="https://devfest-2018.gdglille.org/">Voyage 2/ 2018</a>
+            </li>
+            <li>
+              <a href="https://devfest-2017.gdglille.org/">Voyage 1/ 2017</a>
             </li>
           </ul>
-          <p class="copyright">GDG Lille, 2021</p>
-        </footer>
+        </div>
+        <ul class="sm-list">
+          <li class="show-icons">
+            <a href="https://twitter.com/devfestLille/"><img src="img/twitter.svg" alt="Twitter" /></a>
+          </li>
+          <li class="show-icons">
+            <a href="https://www.linkedin.com/company/gdg-lille/"><img src="img/linkedin.svg" alt="LinkedIn" /></a>
+          </li>
+        </ul>
+        <p class="copyright">GDG Lille, 2021</p>
+      </footer>
+    </div>
+    <!-- /container -->
 
-	</div> <!-- /container -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then(function (registration) {
+              // Registration was successful
+              console.log("ServiceWorker registration successful with scope: ", registration.scope);
+            })
+            .catch(function (err) {
+              // registration failed :(
+              console.log("ServiceWorker registration failed: ", err);
+            });
+        });
+      }
+    </script>
+    <script>
+      const app = new Vue({
+        el: "#wrapper",
+        data: () => {
+          return {
+            isLoading: false,
+            partners: {
+              gold: [],
+              silver: [],
+              bronze: [],
+              contributors: [],
+            },
+          };
+        },
+        created() {
+          //this.getPartners();
+        },
+        methods: {
+          getPartners() {
+            this.isLoading = true;
 
-
-	<script>
-		if ('serviceWorker' in navigator) {
-			window.addEventListener('load', function() {
-				navigator.serviceWorker.register('/sw.js').then(function(registration) {
-					// Registration was successful
-					console.log('ServiceWorker registration successful with scope: ', registration.scope);
-				}).catch(function(err) {
-					// registration failed :(
-					console.log('ServiceWorker registration failed: ', err);
-				});
-			});
-		}
-	</script>
-	<script>
-		const app = new Vue({
-			el: '#wrapper',
-			data: () => {
-				return {
-					isLoading: false,
-					partners: {
-						gold: [],
-						silver: [],
-						bronze: [],
-						contributors: [],
-					}
-				};
-			},
-			created() {
-				//this.getPartners();
-			},
-			methods: {
-				getPartners() {
-					this.isLoading = true;
-
-					axios.get('https://us-central1-cms-devfest.cloudfunctions.net/findAllActivePartners?editionId=Aem1o1TdRMZ94p1AxPw0')
-						.then(res => res.data)
-						.then(partners => {
-							this.partners.gold = Object.values(partners).filter(partner => partner.level === 'GOLD');
-							this.partners.silver = Object.values(partners).filter(partner => partner.level === 'SILVER');
-							this.partners.bronze = Object.values(partners).filter(partner => partner.level === 'BRONZE');
-							this.partners.contributors = Object.values(partners).filter(partner => partner.level === 'CONTRIBUTEUR');
-						})
-						.catch(err => console.error(err))
-						.finally(() => this.isLoading = false);
-				}
-			}
-		})
-	</script>
-</body>
+            axios
+              .get(
+                "https://us-central1-cms-devfest.cloudfunctions.net/findAllActivePartners?editionId=Aem1o1TdRMZ94p1AxPw0"
+              )
+              .then((res) => res.data)
+              .then((partners) => {
+                this.partners.gold = Object.values(partners).filter((partner) => partner.level === "GOLD");
+                this.partners.silver = Object.values(partners).filter((partner) => partner.level === "SILVER");
+                this.partners.bronze = Object.values(partners).filter((partner) => partner.level === "BRONZE");
+                this.partners.contributors = Object.values(partners).filter(
+                  (partner) => partner.level === "CONTRIBUTEUR"
+                );
+              })
+              .catch((err) => console.error(err))
+              .finally(() => (this.isLoading = false));
+          },
+        },
+      });
+    </script>
+  </body>
 </html>

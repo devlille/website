@@ -99,46 +99,76 @@
           <div class="loader" v-if="isLoading"></div>
           <div class="content filled" v-else>
             <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition 2021!</h3>
-            <div class="sponsors" v-if="partners.gold.length > 0">
+            {% if collections.gold.length > 0 %}
+            <div class="sponsors">
               <h4>Gold</h4>
+
               <ul>
-                <li v-for="(partner, idx) in partners.gold" :key="`partner_gold_${idx}`">
-                  <a :href="`https://${partner.url}`">
-                    <img :src="partner.logoUrl" :alt="partner.name" />
-                  </a>
-                </li>
+                {%- for p in collections.gold -%}
+                    <li>
+                      <a href="{{p.url}}">
+                        <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                      </a>
+                    </li>
+                {%- endfor -%}
+
               </ul>
             </div>
-            <div class="sponsors" v-if="partners.silver.length > 0">
+            {% endif %}
+            {% if collections.silver.length > 0 %}
+
+            <div class="sponsors">
               <h4>Silver</h4>
+
               <ul>
-                <li v-for="(partner, idx) in partners.silver" :key="`partner_silver_${idx}`">
-                  <a :href="`https://${partner.url}`">
-                    <img :src="partner.logoUrl" :alt="partner.name" />
-                  </a>
-                </li>
+                {%- for p in collections.silver -%}
+                    <li>
+                      <a href="{{p.url}}">
+                        <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                      </a>
+                    </li>
+                {%- endfor -%}
+
               </ul>
             </div>
-            <div class="sponsors" v-if="partners.bronze.length > 0">
+            {% endif %}
+
+            {% if collections.bronze.length > 0 %}
+
+            <div class="sponsors">
               <h4>Bronze</h4>
+
               <ul>
-                <li v-for="(partner, idx) in partners.bronze" :key="`partner_bronze_${idx}`">
-                  <a :href="`https://${partner.url}`">
-                    <img :src="partner.logoUrl" :alt="partner.name" />
-                  </a>
-                </li>
+                {%- for p in collections.bronze -%}
+                    <li>
+                      <a href="{{p.url}}">
+                        <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                      </a>
+                    </li>
+                {%- endfor -%}
+
               </ul>
             </div>
-            <div class="sponsors" v-if="partners.contributors.length > 0">
-              <h4>Soutiens</h4>
+            {% endif %}
+
+            {% if collections.partners.length > 0 %}
+
+            <div class="sponsors">
+              <h4>Partenaire</h4>
+
               <ul>
-                <li v-for="(partner, idx) in partners.contributors" :key="`partner_contributor_${idx}`">
-                  <a :href="`https://${partner.url}`">
-                    <img :src="partner.logoUrl" :alt="partner.name" />
-                  </a>
-                </li>
+                {%- for p in collections.partners -%}
+                    <li>
+                      <a href="{{p.url}}">
+                        <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                      </a>
+                    </li>
+                {%- endfor -%}
+
               </ul>
             </div>
+            {% endif %}
+
           </div>
         </aside>
       </div>
@@ -200,46 +230,6 @@
             });
         });
       }
-    </script>
-    <script>
-      const app = new Vue({
-        el: "#wrapper",
-        data: () => {
-          return {
-            isLoading: false,
-            partners: {
-              gold: [],
-              silver: [],
-              bronze: [],
-              contributors: [],
-            },
-          };
-        },
-        created() {
-          //this.getPartners();
-        },
-        methods: {
-          getPartners() {
-            this.isLoading = true;
-
-            axios
-              .get(
-                "https://us-central1-cms-devfest.cloudfunctions.net/findAllActivePartners?editionId=Aem1o1TdRMZ94p1AxPw0"
-              )
-              .then((res) => res.data)
-              .then((partners) => {
-                this.partners.gold = Object.values(partners).filter((partner) => partner.level === "GOLD");
-                this.partners.silver = Object.values(partners).filter((partner) => partner.level === "SILVER");
-                this.partners.bronze = Object.values(partners).filter((partner) => partner.level === "BRONZE");
-                this.partners.contributors = Object.values(partners).filter(
-                  (partner) => partner.level === "CONTRIBUTEUR"
-                );
-              })
-              .catch((err) => console.error(err))
-              .finally(() => (this.isLoading = false));
-          },
-        },
-      });
     </script>
   </body>
 </html>

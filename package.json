@@ -16,5 +16,8 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
     "html-minifier": "^4.0.0",
     "serve": "^11.3.2"
+  },
+  "dependencies": {
+    "@mozaic-ds/vue": "^0.3.1"
   }
 }

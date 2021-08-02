@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Benefiz",
+    "url": "https://benefiz.fr/",
+    "image": "benefiz.svg"
+  },
+  {
+    "name": "EKITE",
+    "url": "https://www.ekit3.com/",
+    "image": "ekite.png"
+  },
+  {
+    "name": "Infotel",
+    "url": "https://www.infotel.com/",
+    "image": "infotel.png"
+  },
+  {
+    "name": "IBM",
+    "url": "https://www.ibm.com/employment/ciceurope/fr-fr",
+    "image": "ibm.png"
+  }
+]

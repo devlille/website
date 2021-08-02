@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Sfeir",
+    "url": "https://www.sfeir.com/fr/",
+    "image": "sfeir.png"
+  },
+  {
+    "name": "SII",
+    "url": "https://sii-group.com/fr-FR",
+    "image": "sii.png"
+  },
+  {
+    "name": "Adeo et Leroy Merlin",
+    "url": "https://www.adeo.com/",
+    "image": "adeo.png"
+  },
+  {
+    "name": "Google",
+    "url": "https://www.google.fr/",
+    "image": "google.png"
+  }
+
+]

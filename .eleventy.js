@@ -1,20 +1,19 @@
 const htmlmin = require("html-minifier");
-const sponsors = require("./data/sponsors.json");
+const sponsors = require("./data/gold.json");
 
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("gold", function () {
-    console.log(sponsors.filter(sponsor => sponsor.type === 'gold'))
-    return sponsors.filter(sponsor => sponsor.type === 'gold')
+    return require("./data/gold.json");
   });
   eleventyConfig.addCollection("silver", function () {
-    return sponsors.filter(sponsor => sponsor.type === 'silver')
+    return require("./data/silver.json");
   });
   eleventyConfig.addCollection("bronze", function () {
-    return sponsors.filter(sponsor => sponsor.type === 'bronze')
+    return require("./data/bronze.json");
   });
   eleventyConfig.addCollection("partners", function () {
-    return sponsors.filter(sponsor => sponsor.type === 'partners')
+    return require("./data/partners.json");
   });
   eleventyConfig.setTemplateFormats(["png", "md", "html", "rss", "njk", "svg", "woff", "woff2"]);
 

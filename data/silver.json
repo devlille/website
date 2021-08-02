@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Ippon",
+    "url": "https://fr.ippon.tech/",
+    "image": "ippon.svg"
+  },
+  {
+    "name": "Axa",
+    "url": "https://www.axa.com/fr",
+    "image": "axa.svg"
+  },
+  {
+    "name": "Unis",
+    "url": "https://www.unis.fr/",
+    "image": "unis.png"
+  },
+  {
+    "name": "LinkValue",
+    "url": "https://link-value.fr/",
+    "image": "linkvalue.png"
+  },
+  {
+    "name": "Vaduo",
+    "url": "https://www.vaduoconsulting.com/",
+    "image": "vaduo.svg"
+  },
+  {
+    "name": "Microsoft",
+    "url": "https://www.microsoft.com/fr-fr/",
+    "image": "microsoft.png"
+  },
+  {
+    "name": "Worldline",
+    "url": "https://fr.worldline.com/fr/home.html",
+    "image": "worldline.png"
+  }
+]

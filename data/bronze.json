@@ -18,5 +18,10 @@
     "name": "IBM",
     "url": "https://www.ibm.com/employment/ciceurope/fr-fr",
     "image": "ibm.png"
+  },
+  {
+    "name": "JetDev",
+    "url": "https://www.jetdev.fr/",
+    "image": "jetdev.png"
   }
 ]

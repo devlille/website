@@ -23,5 +23,10 @@
     "name": "JetDev",
     "url": "https://www.jetdev.fr/",
     "image": "jetdev.svg"
+  },
+  {
+    "name": "Savoye",
+    "url": "https://www.savoye.com/",
+    "image": "savoye.png"
   }
 ]

@@ -33,5 +33,10 @@
     "name": "Worldline",
     "url": "https://fr.worldline.com/fr/home.html",
     "image": "worldline.png"
+  },
+  {
+    "name": "Qima",
+    "url": "https://www.qima.fr/",
+    "image": "qima.png"
   }
 ]

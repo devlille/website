@@ -17,11 +17,6 @@
     height: 100%;
     background: transparent url(../img/body-bg.png);
   }
-  h1 > span {
-    bottom: 2rem;
-    left: 10vw;
-    text-align: right;
-  }
 
   div.stats {display: flex;}
   div.stats ul {margin: 0 0 0 9vw;}
@@ -35,11 +30,13 @@
 
 @media screen and (min-width: 750px) {
   p, li, dt, dd {font-size: 1.3em; line-height: 1.45;}
+  p.s-job {font-size: 1em; line-height: 1.2;}
   p.register {
     position: relative;
     top: 4rem;
     z-index: 10;
   }
+  section.hour dd:last-of-type {font-size: 1.1em;}
 
 }
 
@@ -49,9 +46,7 @@
 
   h1 {flex-basis: 55%;}
   h1 > span {
-    position: relative;
-    top: -5vmax;
-    left: 4rem;
+    left: 10%;
   }
   img.report {
     position: absolute;
@@ -163,8 +158,16 @@
     display: flex;
     justify-content: space-between;
   }
-    div.faq h3 {flex-basis: 30%; margin-right: 5%;}
+    div.faq h3 {flex-basis: 33%; margin-right: 5%;}
     div.faq .content {flex-basis: 50%;}
+}
+
+@media screen and (min-width: 1000px) {
+  #inner h1 {position: static;}
+  #inner h1 > span {
+    top: 18vw;
+    left: 550px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -218,5 +221,14 @@
     right: 0;
     width: 90%;
     margin: -9rem auto 4vw;
+  }
+
+}
+
+
+@media screen and (min-width: 1500px) {
+  div.all-speakers {gap: 2rem;}
+  div.speaker-sheet {
+    flex-basis: 38%;
   }
 }

@@ -1,7 +1,6 @@
 {
   "name": "11ty",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",
@@ -12,12 +11,21 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
     "html-minifier": "^4.0.0",
     "serve": "^11.3.2"
   },
   "dependencies": {
     "@mozaic-ds/vue": "^0.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GDG-Lille/devfest-2020.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GDG-Lille/devfest-2020/issues"
+  },
+  "homepage": "https://github.com/GDG-Lille/devfest-2020#readme",
+  "description": ""
 }

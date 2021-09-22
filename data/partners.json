@@ -8,5 +8,10 @@
     "name": "Epitech",
     "url": "https://www.epitech.eu/fr/",
     "image": "epitech.png"
+  },
+  {
+    "name": "Efficom",
+    "url": "https://www.efficom.fr/",
+    "image": "efficom.png"
   }
 ]

@@ -15,7 +15,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("partners", function () {
     return require("./data/partners.json");
   });
-  eleventyConfig.setTemplateFormats(["png", "md", "html", "rss", "njk", "svg", "woff", "woff2"]);
+  eleventyConfig.setTemplateFormats(["png", "jpeg", "md", "html", "rss", "njk", "svg", "woff", "woff2"]);
 
   eleventyConfig.addPassthroughCopy("css/**/*.*");
   eleventyConfig.addPassthroughCopy("sw.js");

@@ -28,5 +28,20 @@
     "name": "Savoye",
     "url": "https://www.savoye.com/",
     "image": "savoye.png"
+  },
+  {
+  "name": "Kiabi",
+  "url": "https://www.kiabi.com/",
+  "image": "kiabi.png"
+  },
+  {
+    "name": "Davidson",
+    "url": "https://www.davidson.fr/",
+    "image": "davidson.png"
+  },
+  {
+    "name": "Inetum",
+    "url": "https://www.inetum.com/fr",
+    "image": "inetum.png"
   }
 ]

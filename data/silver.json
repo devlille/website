@@ -43,5 +43,10 @@
     "name": "SymbolIt",
     "url": "https://symbol-it.fr/",
     "image": "symbol.png"
+  },
+  {
+    "name": "WeLoveDevs",
+    "url": "https://welovedevs.com/",
+    "image": "welovedevs.png"
   }
 ]

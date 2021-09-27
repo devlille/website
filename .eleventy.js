@@ -6,6 +6,26 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("gold", function () {
     return require("./data/gold.json");
   });
+
+
+  eleventyConfig.addCollection("speakers", function () {
+    return require("./data/agenda.json").speakers;
+  });
+
+  eleventyConfig.addCollection("talks", function () {
+    const config = require("./data/agenda.json")
+    const talks = Object.entries(config.talks)
+    const oTalks = talks.map(([ _, talks]) => {
+      return [_, talks.map(talk => {
+        return {
+          ...talk,
+          speakers: talk.speakers?.map(speaker => config.speakers.find(({ uid }) => uid === speaker)?.displayName).join(', ')
+        }
+      })]
+    })
+
+    return oTalks;
+  });
   eleventyConfig.addCollection("silver", function () {
     return require("./data/silver.json");
   });

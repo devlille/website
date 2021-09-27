@@ -27,8 +27,8 @@
         <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
         <ul>
           <li><a href="/index.html">Accueil</a></li>
-          <li><a href="speakers/">Speakers</a></li>
-          <li><a href="agenda/" aria-current="page">Agenda</a></li>
+          <li><a href="/speakers/index.html">Speakers</a></li>
+            <li><a href="/agenda/index.html">Agenda</a></li>
           <li><a href="/faq">FAQ</a></li>
         </ul>
       </nav>
@@ -45,74 +45,26 @@
           </ul>
 
           <div class="agenda">
+              {%- for talk in collections.talks -%}
             <section class="hour">
-              <h3 id="h09:00">
-  							09:00
-  							<a href="https://devfest.gdglille.org/agenda.html#h09:00">
-                  <img src="../img/link.svg" alt="Ancre"></a>
+              <h3 id="h{{talk[0]}}">
+                  {{talk[0]}}
+  							<a href="https://devfest.gdglille.org/agenda.html#h{{talk[0]}}">
+                  <img src="/img/link.svg" alt="Ancre"></a>
               </h3>
               <div class="content">
-                <dl>
-                  <dt>Salle Europe</dt>
-                  <dd>Keynote d'ouverture</dd>
-                  <dd>François TEYCHENE</dd>
-                </dl>
-              </div>
-            </section>
-            <section class="hour">
-              <h3 id="h10:00">
-  							10:00
-  							<a href="https://devfest.gdglille.org/agenda.html#h10:00">
-                  <img src="../img/link.svg" alt="Ancre"></a>
-              </h3>
-              <div class="content">
-                <dl>
-                  <dt>Salle Amerique du Nord
-  									<img src="../img/cat-cloud.svg" alt="Cloud/DevOps">
-                  </dt>
-                  <dd>Des microservices aux migroservices</dd>
-                  <dd>François TEYCHENE</dd>
-                  <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
-                </dl>
-                <dl>
-                  <dt>Salle Océanie
-  									<img src="../img/cat-web.svg" alt="Web">
-                  </dt>
-                  <dd>Web Components can do that ?</dd>
-                  <dd>Vincent OGLOBLINSKY</dd>
-                  <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</dd>
-                </dl>
-                <dl>
-                  <dt>Salle Afrique
-  									<img src="../img/cat-cloud.svg" alt="Cloud/DevOps">
-                  </dt>
-                  <dd>Tests de propriétés : Ecrivez moins de tests, trouvez plus de bugs</dd>
-                  <dd>Julien DEBON</dd>
-                  <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
-                </dl>
-                <dl>
-                  <dt>Salle Asie
-  									<img src="../img/cat-mobile.svg" alt="Mobile/IoT">
-                  </dt>
-                  <dd>Android Debug Bridge, passez de l'autre côté du Black Mirror</dd>
-                  <dd>Eyal LEZMY</dd>
-                  <dd>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
-                  </dd>
-                </dl>
-              </div>
-            </section>
-            <section class="hour">
-              <h3 id="h10:50">
-  							10:50
-  							<a href="https://devfest.gdglille.org/agenda.html#h10:50">
-                  <img src="../img/link.svg" alt="Ancre"></a>
-              </h3>
-              <div class="content">
-                <p>Pause</p>
-              </div>
-            </section>
+                  {%- for t in talk[1] -%}
 
+                  <dl>
+                      <dt>Salle {{ t.room }}</dt>
+                      <dd>{{ t.title }}</dd>
+                      <dd> {{ t.speakers }}</dd>
+                  </dl>
+                  {%- endfor -%}
+
+              </div>
+            </section>
+              {%- endfor -%}
           </div>
 
         </main>

@@ -348,7 +348,7 @@
     {
       "uid": "2",
       "displayName": "Aurélie Vache",
-      "bio": "Aurélie est DevRel (Developer Advocate) chez OVHcloud à Toulouse. Elle est GDE (Google Developer Expert) Cloud & Docker captain. Développeuse depuis plus de 15 ans. Ancienne dev Java / JEE, puis dev Web, Full-Stack et Lead, elle est maintenant Cloud Developer et prône les bonnes pratiques du DevOps. Leader de Duchess France, une association qui promeut les femmes développeurs et les femmes travaillant dans l'informatique. Organisatrice du DevFest Pitchouns et membre de la core team du Toulouse Data Science (TDS). Rédactrice d'articles & de sketchnotes techniques \"Understanding Kubernetes|Istio|Docker in a visual way\".",
+      "bio": "Aurélie est DevRel (Developer Advocate) chez OVHcloud à Toulouse. Elle est GDE (Google Developer Expert) Cloud & Docker captain.",
       "company": "OVHcloud",
       "photoURL": "https://pbs.twimg.com/profile_images/1412503128977645575/Z55hCP1c_400x400.jpg",
       "twitter": "aurelievache",
@@ -357,7 +357,7 @@
     {
       "uid": "3",
       "displayName": "Audrey Neveu",
-      "bio": "Audrey Neveu est développeuse sur le projet Spring Cloud. Passionnée par son métier, Audrey a toujours été fortement engagée dans la communauté Java au travers de plusieurs JUGs et conférences (Duchess France, Paris JUG, Devoxx France, Devoxx UK) mais aussi au sein d’initiatives visant à faire découvrir la programmation aux plus jeunes (Programatoo, Devoxx4Kids). Plus récemment, elle a également rejoint l’équipe des Cast Codeurs et est nommée Java Champion en mai 2020.\n\n",
+      "bio": "Audrey Neveu est développeuse sur le projet Spring Cloud. Passionnée par son métier, Audrey a toujours été fortement engagée dans la communauté Java au travers de plusieurs JUGs et conférences.",
       "company": "VMWare",
       "photoURL": "https://www.volcamp.io/asset/images/speakers/audrey_neveu.jpg",
       "twitter": "Audrey_Neveu",
@@ -366,7 +366,7 @@
     {
       "uid": "4",
       "displayName": "Agnès Crepet",
-      "bio": "Agnès Crepet a travaillé pendant 15 ans dans différentes sociétés, en tant que développeuse ou architecte logiciel. Elle a été élue Java Champion en 2012 et elle a co-fondé la société Ninja Squad la même année. Aujourd’hui elle travaille sur Amsterdam pour Fairphone. Parce qu’elle aime apprendre et partager, elle est très active dans les communautés techniques ; co-leader de Duchess France et co-fondatrice de la conférence MiXiT.\n\n",
+      "bio": "Agnès Crepet a travaillé pendant 15 ans dans différentes sociétés, en tant que développeuse ou architecte logiciel. Aujourd’hui elle travaille sur Amsterdam pour Fairphone. ",
       "company": "Fairphone",
       "photoURL": "https://pbs.twimg.com/profile_images/1397615624696877056/B04op_8f_400x400.jpg",
       "twitter": "agnes_crepet",
@@ -403,7 +403,7 @@
     {
       "uid": "E3IVyFcvNReeThR8EXx2KI3SZBo1",
       "displayName": "Maxence LEFEBVRE",
-      "bio": "Hi everyone :) \n\nI've had a computer at home since I was 7, making my first website at 9 (it was about Pokemon obviously, built with FrontPage) !\n\nEver since, I've always been fascinated with the Web and how to build it.\n\nI took a position as a Software Engineer in Sopra Steria in 2013, working my way up to Senior Developer (Team Leader, Tech Leader and Dev Leader) and Software Architect.",
+      "bio": "I've had a computer at home since I was 7, making my first website at 9 (it was about Pokemon obviously, built with FrontPage) !\n\nEver since, I've always been fascinated with the Web and how to build it.\n\nI took a position as a Software Engineer in Sopra Steria in 2013, working my way up to Senior Developer and Software Architect.",
       "company": "SFEIR",
       "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GhjOwtO_V_MB99x8_d-N3CcoN7kASlVoG7vC2tT6Q",
       "address": {
@@ -499,7 +499,7 @@
     {
       "uid": "tQ2JiQjbJ2ZCS81oy3c7mRdSpp33",
       "displayName": "Antoine Meausoone",
-      "bio": "Cloud Architect | Certified Google Cloud Architect (4x) | Certified LF Trainer CKA-CKAD\n\nTeam Leader et Cloud Architect, je suis chez Sfeir depuis 4 ans. \n\nJe n’ai jamais pu choisir entre le Dév et l’Ops, je suis donc tombé dans le Cloud. Mon sujet de prédilection est l’automatisation, et comment faire collaborer tous les contributeurs d’un projet autour du code.\n",
+      "bio": "Cloud Architect | Certified Google Cloud Architect (4x) | Certified LF Trainer CKA-CKAD\n\nTeam Leader et Cloud Architect, je suis chez Sfeir depuis 4 ans. \n\nJe n’ai jamais pu choisir entre le Dév et l’Ops, je suis donc tombé dans le Cloud.\n",
       "speakerReferences": "https://www.meetup.com/fr-FR/DecathlonTech/events/267376278/\nhttps://www.youtube.com/watch?v=RHnTJBwcE98",
       "company": "Sfeir",
       "photoURL": "https://lh3.googleusercontent.com/-Bs0CsngAOE0/AAAAAAAAAAI/AAAAAAAAAB8/S31002Hbe3Y/photo.jpg",
@@ -527,7 +527,7 @@
     {
       "uid": "ZdNase96oBSI6QdrWySX9eCtJgs1",
       "displayName": "Julien Topçu",
-      "bio": "Tech Coach chez Shodo, j'accompagne le développement de logiciels à forte valeur métier en usant de techniques issues du Domain-Driven Design, le tout propulsé en Xtreme Programming dans la philosophie Kanban #NoEstimates. Membre de la fondation OWASP, j'évangélise sur les techniques de sécurité applicative afin d'éviter de se faire hacker bien comme il faut.",
+      "bio": "Tech Coach chez Shodo, j'accompagne le développement de logiciels à forte valeur métier en usant de techniques issues du Domain-Driven Design, le tout propulsé en Xtreme Programming dans la philosophie Kanban #NoEstimates.",
       "speakerReferences": "En tant que speaker, j'ai participé à plusieurs conférences : DevFest Nantes, VoxxedDays Microservices, DevFest Toulouse, BDX.io, Devoxx France, Devoxx Belgium, Codeurs en Seine, Mixit etc...\n\nLa liste de mes videos sur YouTube:\nhttps://www.youtube.com/playlist?list=PLuMbC-fWSyk3zf7o0idX1pXD4HSuTqCoY\n\n",
       "company": "Shodo",
       "photoURL": "https://fr.gravatar.com/userimage/123188453/975870a140996b955ead02165d002e51.png?size=500",
@@ -557,7 +557,7 @@
     },
     {
       "uid": "Vbw1XqNfXhXy6awpKDfSuYdKkHz1",
-      "displayName": "monsieurbadia",
+      "displayName": "William Badiabantou",
       "bio": "I am not a programmer bro.. i'm just curious",
       "speakerReferences": "- DevFestBdM 2020",
       "company": "Sfeir",
@@ -598,7 +598,7 @@
     {
       "uid": "pWx0GsBX8BRaPFyOBnLNo87tEPq1",
       "displayName": "Anthony DUROT",
-      "bio": "Anthony Durot est passionné par l’IT et plus particulièrement des mouvances DevOps et Cloud. \nPassionné par les architectures Cloud Native et l'automatisation ,  il travaille chez @Ippon Technologies à Lille en tant que Consultant DevOps & Cloud.\n\nAujourd’hui il accompagne ses clients dans leur migration et adoption du Cloud public : partage des bonnes pratiques DevOps, problématiques d’observabilité dans le Cloud, build d’infrastructures performantes, résilientes et sécurisées sont ses sujets au quotidien.\nDouble certifié GCP et AWS, il peaufine actuellement sa maîtrise de Datadog.\nSon prochain objectif: Mettre en place à plus grande échelle les bonnes pratiques du SRE au centre des architectures qu’il met en place.\n\nDans la vie Anthony se passionne également d’Astronomie, et joue à ses heures perdues à Minecraft.\n",
+      "bio": "Anthony Durot est passionné par l’IT et plus particulièrement des mouvances DevOps et Cloud. \nPassionné par les architectures Cloud Native et l'automatisation ,  il travaille chez @Ippon Technologies à Lille en tant que Consultant DevOps & Cloud.\n",
       "company": "Ippon Technologies",
       "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GjiovprfrkBcvLG_fVHmVYTA-9O369myWGD1GUt",
       "twitter": "AnthonyDurot",
@@ -625,7 +625,7 @@
     {
       "uid": "Bmtd3V1yADM8pk0SBQTROAyxSlh2",
       "displayName": "Amina Zamoun",
-      "bio": "Ingénieure en statistiques et coach professionnelle, je vous accompagne à évoluer dans votre carrière et trouver votre équilibre de vie.\n\nAvant de devenir coach, j'ai travaillé en tant que Data Scientist chez L'Oréal puis responsable du bureau des statistiques à la cour d'appel de Paris. J’ai expérimenté la réalité du terrain quant à l’évolution des femmes dans le monde professionnel, notamment dans le monde de la tech. Ainsi, je me suis de plus en plus intéressée aux problématiques de développement et d'épanouissement personnel et professionnel, ce qui m'a conduit à et devenir coach professionnelle. J'ai alors fondé Ambitieuse Heureuse pour pouvoir accompagner les femmes à aller vers leur ambition avec sérénité, tout en trouvant leur équilibre de vie.\n\nPour en savoir plus, n'hésitez pas à écouter mon podcast Ambitieuse Heureuse : à écouter sur mon site https://ambitieuseheureuse.com/podcast/ ou sur la plateforme d'écoute de votre choix https://smartlink.ausha.co/ambitieuseheureuse \n\nPour une vie professionnelle ambitieuse & une vie personnelle épanouie",
+      "bio": "Ingénieure en statistiques et coach professionnelle, je vous accompagne à évoluer dans votre carrière et trouver votre équilibre de vie.\n\nAvant de devenir coach, j'ai travaillé en tant que Data Scientist chez L'Oréal puis responsable du bureau des statistiques à la cour d'appel de Paris. ",
       "company": "Ambitieuse Heureuse",
       "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GjLl4pwLiid8sUH_C9-4Y9rTom8C25czfDJG6mTLw=s96-c",
       "address": {
@@ -675,7 +675,7 @@
     {
       "uid": "uiLrwHObbINL6Hd69VDIiS5gp3a2",
       "displayName": "Coenen Benjamin",
-      "bio": "Software engineer @ Cosmian\n\nUn belge perdu à Paris. Je suis tombé amoureux du développement informatique en écrivant de l'assembleur sur des microcontrôleurs. J'adore me battre avec des problèmes de performance. Aujourd'hui je développe un compilateur expérimental en Rust chez Cosmian. Toujours en recherche de comprendre ce qu'il se passe sous le capot je passe une bonne partie de mon temps à écrire du Rust & du Go. \"Opensource everything\" est mon objectif. Speaker à mes heures perdues. J'adore partager et contribuer dans la communauté tech et open source. Contributeur de Rust Analyzer, le compilateur expérimental pour IDE (https://github.com/rust-analyzer/rust-analyzer). Ancien contributeur actif de https://github.io/ovh/cds. ",
+      "bio": "Software engineer @ Cosmian\n\nUn belge perdu à Paris. Je suis tombé amoureux du développement informatique en écrivant de l'assembleur sur des microcontrôleurs. Aujourd'hui je développe un compilateur expérimental en Rust chez Cosmian. ",
       "speakerReferences": "Divers meetups (France et Belgique)\n\nDevoxx France (2018)\n\nDevoxx France (2019)\n\nBDX IO (2017)\n\nSnowcamp IO (2018 & 2019)\n\nBreizhcamp 2019 - Conférence - FIVE MILLION WORKERS\n\nOVH Meetup 10/2017 - Make Continuous Delivery Great Again\n\nFait partie de https://frenchgo.fr/\n\nReplay de certains talks https://www.youtube.com/playlist?list=PLTlMFHjjkl3TqVILjT8GPv1z69qk_LUCo",
       "company": "Cosmian",
       "photoURL": "https://avatars2.githubusercontent.com/u/5719034?v=4",
@@ -715,7 +715,7 @@
     {
       "uid": "9OvjJAwEdUWcs2PP9C9DfsnyEI82",
       "displayName": "Elaine Dias Batista",
-      "bio": "Elaine has been working with mobile apps development for the past 6 years. Since the launch of the Google Assistant, she has been following the developments around that area. She truly believes that interacting with technology using natural language will define the future of computing. Born and raised in Brazil, she's been living in France since 2004 and loves everything multicultural. She's a GDE for the Google Assistant.",
+      "bio": "Elaine has been working with mobile apps development for the past 6 years. Since the launch of the Google Assistant, she has been following the developments around that area. She truly believes that interacting with technology using natural language will define the future of computing. She's a GDE for the Google Assistant.",
       "company": "SFEIR",
       "photoURL": "https://lh6.googleusercontent.com/-qVmPBdEhaxE/AAAAAAAAAAI/AAAAAAAAAKM/_L59FcAo-S4/photo.jpg",
       "twitter": "elainedbatista",
@@ -740,7 +740,7 @@
     {
       "uid": "7TTU2GNH3fOu76Q5MrxNkV3ry7l1",
       "displayName": "Mathilde Rigabert Lemée",
-      "bio": "Après plusieurs années en tant qu'indépendante, Mathilde Lemée a rejoint Jolimoi, une beauty-tech spécialisée dans la recommandation autour de la beauté, en tant que CTO. Elle est très active au sein du JUG des Duchess, groupement feminin de développeuses, qu’elle a co-fondé en 2010 et s’occupe en parallèle de deux entreprises qu’elle a fondé, Aetys, un studio de jeu ludo-éducatifs sur mobile et SoFizz, une application de rencontre sociale.\n\n",
+      "bio": "Après plusieurs années en tant qu'indépendante, Mathilde Lemée a rejoint Jolimoi, une beauty-tech spécialisée dans la recommandation autour de la beauté, en tant que CTO. \n\n",
       "speakerReferences": "La conférence a déjà été donnée sur un sujet légèrement différent : https://cfp.devoxx.fr/2019/talk/AYM-9598/Ma_premiere_PWA_avec_vue.js",
       "company": "Jolimoi",
       "photoURL": "https://lh3.googleusercontent.com/a-/AAuE7mBhnnkwSxDXJfZwSrLRlMnMISKbNs9Yi8tI1c0qoA",
@@ -770,7 +770,7 @@
     {
       "uid": "sFPqcm3bkdcnJgLRZ9h2Wh81TRw2",
       "displayName": "Raphaël Verdier",
-      "bio": "Raphaël is a full-stack web developer at the beauty tech company Jolimoi. Jolimoi is a multi-brand social sales platform based on a community of people that all share a passion for beauty. Raphaël decided to study the craft of computer science at the University of Toronto. Embracing the fact that software development is not only lines of code he then studied innovation management at the university Pierre et Marie Curie. This mix of diverse teaching provided him with different point of views on how to solve both technical problems and management problems. His experiences in the startup industry allowed him to test different things he is eager to share.",
+      "bio": "Raphaël is a full-stack web developer at the beauty tech company Jolimoi. Jolimoi is a multi-brand social sales platform based on a community of people that all share a passion for beauty.",
       "company": "Jolimoi",
       "photoURL": "https://media-exp1.licdn.com/dms/image/C4D03AQE7OiP9aoaE_g/profile-displayphoto-shrink_800_800/0/1605862741880?e=1638403200&v=beta&t=9INBHEJUgtzQIIrkQuwnYXMa-wWDlhAR5sS9PB5-qMo",
       "address": {
@@ -799,7 +799,7 @@
     {
       "uid": "mM9cCQG86kWwoaCQsQ5pwq26d012",
       "displayName": "Grégoire Pineau",
-      "bio": "Arrivé en 2017 dans l’équipe de JoliCode, Grégoire a toujours aimé bidouiller,\ncomprendre et apprendre. À l’issue d’études éclectiques, il est revenu au Web en\n2010, domaine dans lequel il exerce depuis avec passion. Après avoir appris à se\nservir du framework Symfony, il a passé sa certification, puis a commencé à\ncontribuer timidement… Ce qui l’a mené, quelques années après, à devenir un des\ncore contributeurs du projet !\n\nDurant toutes ces années, il a toujours préféré le backend au frontend – même\ns’il apprécie React, Sass et ces autres joyeusetés, il s’amuse davantage avec\nAnsible, AWS ou Consul. Vous pourrez le croiser lors de meetups, ou dans des\nmatches de Volley :-)\n",
+      "bio": "Arrivé en 2017 dans l’équipe de JoliCode, Grégoire a toujours aimé bidouiller,\ncomprendre et apprendre. Durant toutes ces années, il a toujours préféré le backend au frontend – même\ns’il apprécie React, Sass et ces autres joyeusetés, il s’amuse davantage avec\nAnsible, AWS ou Consul. \n",
       "speakerReferences": "https://speakerdeck.com/lyrixx ",
       "company": "jolicode",
       "photoURL": "https://lh3.googleusercontent.com/a-/AAuE7mDuHlmv061hDvW5Br_b1xBkPM_ywv5xpltwuIV-TA",

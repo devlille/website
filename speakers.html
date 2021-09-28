@@ -42,7 +42,7 @@
               {%- for speaker in collections.speakers -%}
   					<div class="speaker-sheet">
   						<header>
-  							<p class="s-photo"><img v-if="speaker.photoURL" src="{{ speaker.photoURL }}" alt="Angela P Ricci" /></p>
+  							<p class="s-photo"><img src="{{ speaker.photoURL }}" alt="Photo de {{ speaker.displayName }}" /></p>
   							<h3>{{ speaker.displayName }}</h3>
   							<p class="s-job">{{ speaker.company }}</p>
   						</header>
@@ -51,15 +51,15 @@
               </div>
   						<ul class="social">
                             {% if speaker.twitter %}
-  							<li v-if="speaker.twitter">
+  							<li >
   								<img src="/img/twitter2.svg" alt="Twitter">
-  								<a href="`https://twitter.com/${speaker.twitter}`">{{ speaker.twitter }}</a>
+  								<a target="_blank" href="https://twitter.com/{{speaker.twitter}}">@{{ speaker.twitter }}</a>
   							</li>
                             {% endif %}
                             {% if speaker.github %}
   							<li>
   								<img src="/img/github-face.svg" alt="Github">
-  								<a href="`https://github.com/${speaker.github}`">{{ speaker.github }}</a>
+  								<a target="_blank" href="https://github.com/{{speaker.github}}">@{{ speaker.github }}</a>
   							</li>
                             {% endif %}
   						</ul>

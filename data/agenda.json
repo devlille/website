@@ -333,6 +333,13 @@
         ],
         "language": "French"
       }
+    ],
+    "18h10": [
+      {
+        "title": "Keynote de fermeture",
+        "room": "700",
+        "speakers": []
+      }
     ]
   },
   "speakers": [

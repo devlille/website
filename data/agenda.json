@@ -49,6 +49,7 @@
   "talks": {
     "9h00": [
       {
+          "id": "1",
         "title": "Keynote d'ouverture",
         "room": "700",
         "speakers": ["3", "4"]
@@ -306,7 +307,7 @@
     "17h20": [
       {
         "room": "700",
-        "id": "iaez2jBDOcnERURBWe6H",
+        "id": "2",
         "title": "L’intelligence artificielle au secours de l’accessibilité\n",
         "state": "confirmed",
         "level": "intermediate",
@@ -336,6 +337,7 @@
     ],
     "18h10": [
       {
+        "id": "3",
         "title": "Keynote de fermeture",
         "room": "700",
         "speakers": []
@@ -659,6 +661,7 @@
       "uid": "TLwmiKoVyvUzcK2GVM1QF3wMtlz2",
       "displayName": "Jomin Alexandre",
       "company": "Azfalte",
+      "bio": "CTO @ azfalte - Issu de l'ingénierie audiovisuelle, j'ai fait un virage profressionnel vers le web sous l'ère IE6. J'ai pu aborder dans ma carrière des sujets variés allant de l'ecommerce à l'IOT en passant par l'hébergement cloud. Même si j'ai pris un peu de recul avec le code, j'appécie toujours développer en Go et Vue.js.",
       "photoURL": "https://pbs.twimg.com/profile_images/875594458804305921/O0aVArT3_400x400.jpg",
       "twitter": "alexandrejomin",
       "address": {

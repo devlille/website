@@ -58,9 +58,15 @@
                   <dl>
                       <dt>Salle {{ t.room }}</dt>
                       <dd>
-                        <button class="modal-trigger" data-modal="conf-details">
+                          {% if t.abstract %}
+                        <button class="modal-trigger" data-modal="conf-details-{{t.id}}">
                           {{ t.title }}
                         </button>
+
+
+                          {% else %}
+                          {{ t.title }}
+                          {%- endif -%}
                       </dd>
                       <dd> {{ t.speakers }}</dd>
                   </dl>
@@ -73,8 +79,27 @@
 
         </main>
       </div>
+        {%- for talk in collections.talks -%}
+        {%- for t in talk[1] -%}
+        {% if t.abstract %}
+        <div class="modal" id="conf-details-{{t.id}}">
+            <div class="overlay"></div>
+            <div class="dialog" role="dialog" aria-labelledby="conf-details-title" aria-modal="true">
+                <header>
+                    <h4 id="conf-details-title">{{ t.title }}</h4>
+                    <p>{{ t.speakers }}</p>
+                </header>
+                <div class="content">
+                    <p>{{ t.abstract }}</p>
+                </div>
+                <button class="bt-close">[ Fermer ]</button>
+            </div>
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+        {%- endfor -%}
 
-      <hr />
+        <hr />
       <footer>
         <div class="content">
           <dl class="h-event">
@@ -115,24 +140,6 @@
       </footer>
     </div>
     <!-- /container -->
-
-    <div class="modal" id="conf-details">
-      <div class="overlay"></div>
-      <div class="dialog" role="dialog" aria-labelledby="conf-details-title" aria-modal="true">
-        <header>
-          <h4 id="conf-details-title">Titre de la conf</h4>
-          <p>Pipo Baldi, Pepe Legal</p>
-        </header>
-        <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-            sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <button class="bt-close">[ Fermer ]</button>
-      </div>
-    </div>
 
 
     <script src="/js/modal.js"></script>

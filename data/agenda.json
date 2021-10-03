@@ -49,7 +49,7 @@
   "talks": {
     "9h00": [
       {
-          "id": "1",
+        "id": "1",
         "title": "Keynote d'ouverture",
         "room": "700",
         "speakers": ["3", "4"]

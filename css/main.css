@@ -18,6 +18,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 }
 
 html {
+  height: 100%;
   overflow-y: scroll;
 }
 
@@ -51,6 +52,7 @@ header, footer, main, nav, aside, article, section, figure, figcaption {
 }
 
 body {
+  height: 100%;
   font: 100%/1.3 var(--stack);
   color: #000;
   background-color: var(--main-color);
@@ -379,6 +381,76 @@ div.faq:not(:last-of-type) {
 }
 
 article ul {margin: 2vw;}
+
+/* MODAL */
+
+div.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+div.modal.active {display: block;}
+
+  div.modal div.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(57, 119, 62,0.8);
+  }
+
+  div.modal div.dialog {
+    box-sizing: border-box;
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    background-color: var(--body-bg);
+    padding: 2rem;
+    margin: 5vh 5vw;
+    z-index: 2010;
+  }
+    div.modal div.content {
+      overflow-y: auto;
+      height: 60vh;
+    }
+
+  div.modal header {
+    margin: 0 5em 2rem 0;
+  }
+  div.modal h4 {
+    font: 1.4em var(--stack-b);
+    color: var(--main-color-d);
+    background-color: var(--body-bg);
+    margin-bottom: 0.5em;
+  }
+    div.modal header p {font-size: 0.95em;}
+
+  div.modal p {line-height: 1.45;}
+
+  button[data-modal] {
+    font-family: var(--stack-b);
+    text-align: left;
+    color: var(--main-color-d);
+    background-color: var(--body-bg);
+  }
+
+  button[data-modal]:hover, button[data-modal]:focus {
+    outline: 2px dotted var(--hot-color);
+  }
+
+  button.bt-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+
 
 /* -------------------------------------------------------------------- */
 /* -------------------------- HOME ------------------------------- */

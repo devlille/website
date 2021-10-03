@@ -18,10 +18,4 @@ function ship() {
 
 // Loading all scripts ...
 
-window.onload = function(e) {
-
-  if (document.getElementById('home') && window.innerWidth > 1200) {
-    ship();
-  }
-
-}
+//window.onload = function(e) {}

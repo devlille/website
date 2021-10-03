@@ -199,6 +199,13 @@
   div.decor {
     flex-basis: 60%;
   }
+
+  div.modal div.dialog {
+    width: 60vw;
+    margin: 5vh 20vw;
+  }
+  div.modal h4 {font-size: 1.5em;}
+  div.modal header p {font-size: 1.1em;}
 }
 
 @media screen and (min-width: 1399px) {

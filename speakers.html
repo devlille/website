@@ -44,7 +44,9 @@
   						<header>
   							<p class="s-photo"><img src="{{ speaker.photoURL }}" alt="Photo de {{ speaker.displayName }}" /></p>
   							<h3>{{ speaker.displayName }}</h3>
+                            {% if speaker.company %}
   							<p class="s-job">{{ speaker.company }}</p>
+                            {% endif %}
   						</header>
   						<div class="content">
                 <p>{{ speaker.bio }}</p>

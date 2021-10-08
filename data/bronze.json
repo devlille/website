@@ -49,6 +49,16 @@
     "name": "La mobilerie",
     "url": "https://www.lamobilery.fr",
     "image": "lamobilerie.png"
+  },
+  {
+    "name": "Daveo",
+    "url": "https://www.daveo.fr/nous-rejoindre/daveo-lille/",
+    "image": "daveo.png"
+  },
+  {
+    "name": "Whitedev",
+    "url": "https://whitedev.fr/",
+    "image": "whitedev.png"
   }
 ]
 

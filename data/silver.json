@@ -48,5 +48,15 @@
     "name": "WeLoveDevs",
     "url": "https://welovedevs.com/",
     "image": "welovedevs.png"
+  },
+  {
+    "name": "Norauto",
+    "url": "https://www.norauto.fr/",
+    "image": "norauto.png"
+  },
+  {
+    "name": "Gravitee",
+    "url": "https://www.gravitee.io/",
+    "image": "gravitee.png"
   }
 ]

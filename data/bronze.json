@@ -59,6 +59,11 @@
     "name": "Whitedev",
     "url": "https://whitedev.fr/",
     "image": "whitedev.png"
+  },
+  {
+    "name": "Bold",
+    "url": "https://www.bold.family/",
+    "image": "bold.png"
   }
 ]
 

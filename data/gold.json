@@ -18,6 +18,11 @@
     "name": "Google",
     "url": "https://www.google.fr/",
     "image": "google.png"
+  },
+  {
+    "name": "OVHcloud",
+    "url": "https://www.ovh.com/fr/",
+    "image": "ovhcloud.png"
   }
 
 ]

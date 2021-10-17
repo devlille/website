@@ -64,6 +64,21 @@
     "name": "Bold",
     "url": "https://www.bold.family/",
     "image": "bold.png"
+  },
+  {
+    "name": "Enaco",
+    "url": "https://www.enaco.fr/",
+    "image": "enaco.png"
+  },
+  {
+    "name": "Positive Thinking Company",
+    "url": "https://positivethinking.tech/fr/",
+    "image": "positivethinkingcompany.png"
+  },
+  {
+    "name": "Capgemini",
+    "url": "https://www.capgemini.com/fr-fr/",
+    "image": "capgemini.png"
   }
 ]
 

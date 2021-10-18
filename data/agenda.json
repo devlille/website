@@ -101,15 +101,15 @@
     "11h00": [
       {
         "room": "700",
-        "id": "4Uy8pH9sK9VLE89czh2R",
-        "title": "Continuous Localization in Web",
+        "id": "2",
+        "title": "L’intelligence artificielle au secours de l’accessibilité\n",
         "state": "confirmed",
-        "level": "beginner",
-        "abstract": "Internatiolazi, wait, Internationani, wait, i18n.\n\nWho here never lost an entire day making sure our JSON lang files are well synced with the codebase ?\n\nOr had to format/parse between excel files on the translator side and JSON files on our sides ?\n\nThis talk would like to present how to step up our i18n game, starting from a simple JSON files based solution to one based on Continous Localization, where merging translations becomes a non event.\n\nYou will be able to follow each step we took, their benefits and shortcomings, but also be aware of a few alternative solutions we considered and that might do the job for you.\n\n_Integration samples are written in React over react-i18n, but we believe the takeaways to be framework-agnostic._\n\n",
-        "categories": "cff3cdbc-52e9-5d5a-8f98-927ee005f59b",
+        "level": "intermediate",
+        "abstract": "Le machine learning, ce terme est sur toutes les lèvres, on en entend parler du soir au matin. Tellement que son intérêt semble plutôt d’être la carte joker pour gagner au buzzword bingo, mais il y a bien certaines problématiques où sortir cette carte fait sens : l’accessibilité ! Et oui, malgré les nouveautés technologiques, beaucoup de gens à l'heure actuelle sont exclus de notre univers numérique à cause d’un défaut de vision, d’audition, de diction, de langage, etc. Aujourd’hui, les avancées en terme de machine learning sur la compréhension de la parole, du texte et de ce qui est contenu dans les images et vidéos, sont telles qu’elles permettent de rendre beaucoup plus accessible les contenus numériques. Mais savons nous comment cela fonctionne et quelles en sont les limites ? Dans cette présentation, parsemée d'humour et de fun, Aurélie et Guillaume, vous montreront, au travers de démos et d’exemples concrets, comment l’accessibilité peut bénéficier des avancées du machine learning.",
+        "categories": "0f587c51-d8dd-50be-9ccd-2938d00d9336",
         "formats": "3439b584-eaed-5840-b7db-ab8cc75ce076",
         "speakers": [
-          "E3IVyFcvNReeThR8EXx2KI3SZBo1"
+          "1", "2"
         ],
         "language": "French"
       },
@@ -307,15 +307,15 @@
     "17h20": [
       {
         "room": "700",
-        "id": "2",
-        "title": "L’intelligence artificielle au secours de l’accessibilité\n",
+        "id": "4Uy8pH9sK9VLE89czh2R",
+        "title": "Continuous Localization in Web",
         "state": "confirmed",
-        "level": "intermediate",
-        "abstract": "Le machine learning, ce terme est sur toutes les lèvres, on en entend parler du soir au matin. Tellement que son intérêt semble plutôt d’être la carte joker pour gagner au buzzword bingo, mais il y a bien certaines problématiques où sortir cette carte fait sens : l’accessibilité ! Et oui, malgré les nouveautés technologiques, beaucoup de gens à l'heure actuelle sont exclus de notre univers numérique à cause d’un défaut de vision, d’audition, de diction, de langage, etc. Aujourd’hui, les avancées en terme de machine learning sur la compréhension de la parole, du texte et de ce qui est contenu dans les images et vidéos, sont telles qu’elles permettent de rendre beaucoup plus accessible les contenus numériques. Mais savons nous comment cela fonctionne et quelles en sont les limites ? Dans cette présentation, parsemée d'humour et de fun, Aurélie et Guillaume, vous montreront, au travers de démos et d’exemples concrets, comment l’accessibilité peut bénéficier des avancées du machine learning.",
-        "categories": "0f587c51-d8dd-50be-9ccd-2938d00d9336",
+        "level": "beginner",
+        "abstract": "Internatiolazi, wait, Internationani, wait, i18n.\n\nWho here never lost an entire day making sure our JSON lang files are well synced with the codebase ?\n\nOr had to format/parse between excel files on the translator side and JSON files on our sides ?\n\nThis talk would like to present how to step up our i18n game, starting from a simple JSON files based solution to one based on Continous Localization, where merging translations becomes a non event.\n\nYou will be able to follow each step we took, their benefits and shortcomings, but also be aware of a few alternative solutions we considered and that might do the job for you.\n\n_Integration samples are written in React over react-i18n, but we believe the takeaways to be framework-agnostic._\n\n",
+        "categories": "cff3cdbc-52e9-5d5a-8f98-927ee005f59b",
         "formats": "3439b584-eaed-5840-b7db-ab8cc75ce076",
         "speakers": [
-          "1", "2"
+          "E3IVyFcvNReeThR8EXx2KI3SZBo1"
         ],
         "language": "French"
       },

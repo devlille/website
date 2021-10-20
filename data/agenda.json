@@ -411,7 +411,7 @@
     },
     {
       "uid": "E3IVyFcvNReeThR8EXx2KI3SZBo1",
-      "displayName": "Maxence LEFEBVRE",
+      "displayName": "Maxence Lefebvre",
       "bio": "I've had a computer at home since I was 7, making my first website at 9 (it was about Pokemon obviously, built with FrontPage) !\n\nEver since, I've always been fascinated with the Web and how to build it.\n\nI took a position as a Software Engineer in Sopra Steria in 2013, working my way up to Senior Developer and Software Architect.",
       "company": "SFEIR",
       "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GhjOwtO_V_MB99x8_d-N3CcoN7kASlVoG7vC2tT6Q",
@@ -507,7 +507,7 @@
     },
     {
       "uid": "tQ2JiQjbJ2ZCS81oy3c7mRdSpp33",
-      "displayName": "Antoine Meausoone",
+      "displayName": "Antoine Méausoone",
       "bio": "Cloud Architect | Certified Google Cloud Architect (4x) | Certified LF Trainer CKA-CKAD\n\nTeam Leader et Cloud Architect, je suis chez Sfeir depuis 4 ans. \n\nJe n’ai jamais pu choisir entre le Dév et l’Ops, je suis donc tombé dans le Cloud.\n",
       "speakerReferences": "https://www.meetup.com/fr-FR/DecathlonTech/events/267376278/\nhttps://www.youtube.com/watch?v=RHnTJBwcE98",
       "company": "Sfeir",
@@ -606,7 +606,7 @@
     },
     {
       "uid": "pWx0GsBX8BRaPFyOBnLNo87tEPq1",
-      "displayName": "Anthony DUROT",
+      "displayName": "Anthony Durot",
       "bio": "Anthony Durot est passionné par l’IT et plus particulièrement des mouvances DevOps et Cloud. \nPassionné par les architectures Cloud Native et l'automatisation ,  il travaille chez @Ippon Technologies à Lille en tant que Consultant DevOps & Cloud.\n",
       "company": "Ippon Technologies",
       "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GjiovprfrkBcvLG_fVHmVYTA-9O369myWGD1GUt",
@@ -659,10 +659,10 @@
     },
     {
       "uid": "TLwmiKoVyvUzcK2GVM1QF3wMtlz2",
-      "displayName": "Jomin Alexandre",
+      "displayName": "Alexandre Jomin",
       "company": "Azfalte",
       "bio": "CTO @ azfalte - Issu de l'ingénierie audiovisuelle, j'ai fait un virage profressionnel vers le web sous l'ère IE6. J'ai pu aborder dans ma carrière des sujets variés allant de l'ecommerce à l'IOT en passant par l'hébergement cloud. Même si j'ai pris un peu de recul avec le code, j'appécie toujours développer en Go et Vue.js.",
-      "photoURL": "https://pbs.twimg.com/profile_images/875594458804305921/O0aVArT3_400x400.jpg",
+      "photoURL": "https://media-exp1.licdn.com/dms/image/C4E03AQEAgtTtPYA2vw/profile-displayphoto-shrink_800_800/0/1612797111903?e=1640217600&v=beta&t=lLKXOG43ZnqWpW_0mi6eexA2hIAh2l88MLvbtq8sAxo",
       "twitter": "alexandrejomin",
       "address": {
         "timezone": null,
@@ -684,7 +684,7 @@
     },
     {
       "uid": "uiLrwHObbINL6Hd69VDIiS5gp3a2",
-      "displayName": "Coenen Benjamin",
+      "displayName": "Benjamin Coenen",
       "bio": "Software engineer @ Cosmian\n\nUn belge perdu à Paris. Je suis tombé amoureux du développement informatique en écrivant de l'assembleur sur des microcontrôleurs. Aujourd'hui je développe un compilateur expérimental en Rust chez Cosmian. ",
       "speakerReferences": "Divers meetups (France et Belgique)\n\nDevoxx France (2018)\n\nDevoxx France (2019)\n\nBDX IO (2017)\n\nSnowcamp IO (2018 & 2019)\n\nBreizhcamp 2019 - Conférence - FIVE MILLION WORKERS\n\nOVH Meetup 10/2017 - Make Continuous Delivery Great Again\n\nFait partie de https://frenchgo.fr/\n\nReplay de certains talks https://www.youtube.com/playlist?list=PLTlMFHjjkl3TqVILjT8GPv1z69qk_LUCo",
       "company": "Cosmian",
@@ -712,7 +712,7 @@
     },
     {
       "uid": "sJdNS4vrHBb5lTMq9IhG3Zh0JGW2",
-      "displayName": "Oussama BEN WAFI",
+      "displayName": "Oussama Ben Wafi",
       "bio": "Oussama is an experienced Android engineer since the ages of Java and ADT. He likes the native approach for mobile development and Kotlin is his favorite programming language. He loves talking to people from around the world about anything mobile or culture.",
       "speakerReferences": "https://www.youtube.com/watch?v=gkyX-30vpCM&t=0\n\nhttps://speakerdeck.com/oussamto/android-modular-architecture",
       "company": "SFEIR",

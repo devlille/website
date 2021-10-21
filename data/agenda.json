@@ -339,7 +339,7 @@
         "id": "3",
         "title": "Keynote de fermeture",
         "room": "700",
-        "speakers": []
+        "speakers": ["5"]
       }
     ]
   },
@@ -381,6 +381,13 @@
       "language": "French"
     },
     {
+      "uid": "5",
+      "displayName": "Tristan Nitot",
+      "bio": "Tristan Nitot, 55 ans, est un entrepreneur, consultant, auteur et activiste. Tristan a été impliqué dans le projet Mozilla (Firefox) pendant 17 ans, depuis ses origines en 1998 jusqu'en 2015, il a en particulier co-fondé et présidé Mozilla Europe. Ensuite, Tristan a été Chief Product Officer du projet open source Cozy Cloud, un cloud personnel \"private by design\". En juin 2018, il a rejoint Qwant, le moteur de recherche européen respectueux de la vie privée en tant que VP Advocacy. Il est devenu CEO par intérim de Qwant entre septembre 2019 et janvier 2020 avant de quitter Qwant. Depuis, il produit le podcast \"l'Octet Vert\" sur le climat et le numérique, travaille sur le moteur de recherche spécialisé Unsearch.\nAprès avoir été trois ans membre du Conseil National du Numérique (2013-2016), Tristan a publié en octobre 2016 un livre intitulé \"Surveillance://\" sur le sujet de la vie privée à l'ère du numérique. Tristan est aussi membre du comité de prospective de la CNIL et du Comité National Pilote pour l'Éthique du Numérique.",
+      "photoURL": "https://media-exp1.licdn.com/dms/image/C4E03AQHS5oIK5dLzOw/profile-displayphoto-shrink_800_800/0/1611830710564?e=1640217600&v=beta&t=J3ZRbUnIxwHSyVdftDSyUhHoulabLaMFFw6_kAkGzJc",
+      "twitter": "nitot",
+      "language": "French"
+    },    {
       "uid": "fEH1SbhBOuM5ekRldhoiMOKu2Rt1",
       "displayName": "Aurélien Allienne",
       "bio": "Aurélien est développeur chez SFEIR. Véritable touche à tout, il est passionné par l'automatisation des tâches de développement. Ce qu’il aime par dessus tout c’est apprendre et partager ses connaissances.",

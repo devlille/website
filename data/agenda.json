@@ -329,7 +329,6 @@
         "categories": "6cb5455f-23f1-5da7-b066-19017060dda7",
         "formats": "3439b584-eaed-5840-b7db-ab8cc75ce076",
         "speakers": [
-          "sJdNS4vrHBb5lTMq9IhG3Zh0JGW2",
           "9OvjJAwEdUWcs2PP9C9DfsnyEI82"
         ],
         "language": "French"
@@ -709,18 +708,6 @@
       "language": "Français, Anglais",
       "email": "benjamin.coenen@hotmail.com",
       "phone": "0669513707"
-    },
-    {
-      "uid": "sJdNS4vrHBb5lTMq9IhG3Zh0JGW2",
-      "displayName": "Oussama Ben Wafi",
-      "bio": "Oussama is an experienced Android engineer since the ages of Java and ADT. He likes the native approach for mobile development and Kotlin is his favorite programming language. He loves talking to people from around the world about anything mobile or culture.",
-      "speakerReferences": "https://www.youtube.com/watch?v=gkyX-30vpCM&t=0\n\nhttps://speakerdeck.com/oussamto/android-modular-architecture",
-      "company": "SFEIR",
-      "photoURL": "https://lh3.googleusercontent.com/a-/AOh14Ghd44NY_WrPcQ0H6CXiAeP1dd58wR__dftTRGQ5",
-      "twitter": "oussamto",
-      "language": "English/French/Arabic",
-      "email": "benwafi.o@sfeir.com",
-      "phone": "0753242579"
     },
     {
       "uid": "9OvjJAwEdUWcs2PP9C9DfsnyEI82",

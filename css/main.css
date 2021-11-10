@@ -418,6 +418,9 @@ div.modal.active {display: block;}
       overflow-y: auto;
       height: 60vh;
     }
+    div.modal .openfeedback {
+      margin-top: 1em;
+    }
 
   div.modal header {
     margin: 0 5em 2rem 0;

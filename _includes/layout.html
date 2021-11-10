@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Devfest, Lille, GDG, Conférence, Web, Mobile, Cloud, Quickies" />
+    <meta name="theme-color" content="#006D6D" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@gericci" />
+    <meta property="og:url" content="https://devfest.gdglille.org/" />
+    <meta property="og:title" content="Devfest Lille 2021" />
+    <meta
+            property="og:description"
+            content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux"
+    />
+    <meta property="og:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
+    <link href="/img/favicon.png" type="image/png" rel="icon" />
+    <title>{{ title }}</title>
+
+    <link href="css/main.css" rel="stylesheet" media="all" />
+    <link href="css/queries.css" rel="stylesheet" media="all" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- GOOGLE ANALYTICS -->
+
+    <link rel="manifest" href="manifest.json" />
+</head>
+
+<body id="home">
+<div id="container">
+    <!-- PAGE HEADER -->
+    <header>
+        <h1>
+            <img src="/img/logo2021.svg" alt="Devfest Lille 2021" />
+            <span>
+            <time datetime="19-11-2021">19 Novembre <span>2021</span></time>
+            Kinepolis Lomme
+          </span>
+        </h1>
+        <p class="cfp">
+            <a href="https://conference-hall.io/public/event/AFtTtSMq1NY4tnK2gMg1">
+                <abbr lang="en" title="Call for Paper">CFP</abbr>!</a>
+        </p>
+    </header>
+
+    <nav class="main-nav">
+        <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
+        <ul>
+            <li><a href="/index.html" aria-current="page">Accueil</a></li>
+            <li><a href="/speakers/index.html">Speakers</a></li>
+            <li><a href="/agenda/index.html">Agenda</a></li>
+            <li><a href="/faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <div id="wrapper">
+        <main>
+            {{ content | safe }}
+        </main>
+
+        <aside>
+            <div class="loader" v-if="isLoading"></div>
+            <div class="content filled" v-else>
+                <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition 2021!</h3>
+                {% if collections.gold.length > 0 %}
+                <div class="sponsors">
+                    <h4>Gold</h4>
+
+                    <ul>
+                        {%- for p in collections.gold -%}
+                        <li>
+                            <a href="{{p.url}}">
+                                <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                            </a>
+                        </li>
+                        {%- endfor -%}
+
+                    </ul>
+                </div>
+                {% endif %}
+                {% if collections.silver.length > 0 %}
+
+                <div class="sponsors">
+                    <h4>Silver</h4>
+
+                    <ul>
+                        {%- for p in collections.silver -%}
+                        <li>
+                            <a href="{{p.url}}">
+                                <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                            </a>
+                        </li>
+                        {%- endfor -%}
+
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if collections.bronze.length > 0 %}
+
+                <div class="sponsors">
+                    <h4>Bronze</h4>
+
+                    <ul>
+                        {%- for p in collections.bronze -%}
+                        <li>
+                            <a href="{{p.url}}">
+                                <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                            </a>
+                        </li>
+                        {%- endfor -%}
+
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if collections.partners.length > 0 %}
+
+                <div class="sponsors">
+                    <h4>Partenaire</h4>
+
+                    <ul>
+                        {%- for p in collections.partners -%}
+                        <li>
+                            <a href="{{p.url}}">
+                                <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                            </a>
+                        </li>
+                        {%- endfor -%}
+
+                    </ul>
+                </div>
+                {% endif %}
+
+            </div>
+        </aside>
+    </div>
+
+    <hr />
+
+    <footer>
+        <div class="content">
+            <dl class="h-event">
+                <dt class="p-name">Devfest Lille 2021</dt>
+                <dd class="p-summary">
+                    Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile, du cloud et des
+                    technologies Google.
+                </dd>
+                <dd>
+                    <time class="dt-start" datetime="2021-11-19">19 Novembre 2021</time> -
+                    <a href="#" class="p-location">Kinépolis Lomme</a>
+                </dd>
+            </dl>
+            <ul class="links-list">
+                <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
+                <li><a href="/code-conduite">Code de conduite</a></li>
+                <li>
+                    <a href="https://devfest-2019.gdglille.org/">Voyage 3/ 2019</a>
+                </li>
+                <li>
+                    <a href="https://devfest-2018.gdglille.org/">Voyage 2/ 2018</a>
+                </li>
+                <li>
+                    <a href="https://devfest-2017.gdglille.org/">Voyage 1/ 2017</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="sm-list">
+            <li class="show-icons">
+                <a href="https://twitter.com/devfestLille/"><img src="/img/twitter.svg" alt="Twitter" /></a>
+            </li>
+            <li class="show-icons">
+                <a href="https://www.linkedin.com/company/gdg-lille/"><img src="/img/linkedin.svg" alt="LinkedIn" /></a>
+            </li>
+        </ul>
+        <p class="copyright">GDG Lille, 2021</p>
+    </footer>
+</div>
+<!-- /container -->
+
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+            navigator.serviceWorker
+                .register("/sw.js")
+                .then(function (registration) {
+                    // Registration was successful
+                    console.log("ServiceWorker registration successful with scope: ", registration.scope);
+                })
+                .catch(function (err) {
+                    // registration failed :(
+                    console.log("ServiceWorker registration failed: ", err);
+                });
+        });
+    }
+</script>
+</body>
+</html>

@@ -36,14 +36,6 @@
       <div id="wrapper">
         <main>
           <h2>Agenda</h2>
-          <ul class="legend">
-            <li><img src="../img/cat-bigdata.svg" alt="" /> Big Data/IA</li>
-            <li><img src="../img/cat-cloud.svg" alt="" /> Cloud/Devops</li>
-            <li><img src="../img/cat-discovery.svg" alt="" /> Découverte</li>
-            <li><img src="../img/cat-mobile.svg" alt="" /> Mobile/IoT</li>
-            <li><img src="../img/cat-web.svg" alt="" /> Web</li>
-          </ul>
-
           <div class="agenda">
               {%- for talk in collections.talks -%}
             <section class="hour">
@@ -56,7 +48,7 @@
                   {%- for t in talk[1] -%}
 
                   <dl>
-                      <dt>Salle {{ t.room }}</dt>
+                      <dt>{{ t.room }}</dt>
                       <dd>
                           {% if t.abstract %}
                         <button class="modal-trigger" data-modal="conf-details-{{t.id}}">

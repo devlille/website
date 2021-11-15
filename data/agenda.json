@@ -51,14 +51,14 @@
       {
         "id": "1",
         "title": "Keynote d'ouverture",
-        "room": "700",
+        "room": "Salle 700",
         "speakers": ["3", "4"],
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/vNtCXg3VOmR3iGF7fGaY"
       }
     ],
     "10h00": [
       {
-        "room": "700",
+        "room": "Salle 700",
         "id": "FOtf5DDjHiIwr16Zvkgb",
         "title": "Petit guide pratique pour commencer un design system",
         "state": "confirmed",
@@ -74,7 +74,7 @@
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/6wrvHZNLFAfn6O8D0NU1"
       },
       {
-        "room": "400",
+        "room": "Salle 400",
         "id": "bheyhdlcvIg4WbkoxIlR",
         "title": "Google BigQuery 101",
         "state": "accepted",
@@ -97,13 +97,13 @@
     ],
     "10h50": [
       {
-        "room": "700",
+        "room": "Espace Lumière",
         "title": "Pause"
       }
     ],
     "11h10": [
       {
-        "room": "700",
+        "room": "Salle 700",
         "id": "2",
         "title": "L’intelligence artificielle au secours de l’accessibilité\n",
         "state": "confirmed",
@@ -118,7 +118,7 @@
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/KeNXs2ILjylctRyuwYTN"
       },
       {
-        "room": "400",
+        "room": "Salle 400",
         "id": "hDkXIuWNfZPuRuIg2Wf8",
         "title": "Rust: sûr et concurrent. Mais comment fait-il ?",
         "state": "confirmed",
@@ -135,13 +135,13 @@
     ],
     "12h00": [
       {
-        "room": "700",
+        "room": "Espace Lumière",
         "title": "Pause"
       }
     ],
     "13h00": [
       {
-        "room": "700",
+        "room": "Salle 700",
         "id": "66SiKLyi5uRpn92nYBUw",
         "title": "Le GitOps dont vous êtes le héros",
         "state": "confirmed",
@@ -157,7 +157,7 @@
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/5rF3mVUZ3VehmQAY6yXd"
       },
       {
-        "room": "400",
+        "room": "Salle 400",
         "id": "BuwfGgFUMjMq0yJ91ANF",
         "title": "REST next level :  Ecrire des APIs web orientées métier",
         "state": "confirmed",
@@ -175,7 +175,7 @@
     ],
     "14h00": [
       {
-        "room": "700",
+        "room": "Salle 700",
         "id": "IJw9vUcGIDSgxuSqKg07",
         "title": "Comment sécuriser ses informations sensibles sur Kubernetes",
         "state": "confirmed",
@@ -191,7 +191,7 @@
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/w3KbMEoCnw0YghNFuJQp"
       },
       {
-        "room": "400",
+        "room": "Salle 400",
         "id": "AxJqNXcFVYgRWAmriQk7",
         "title": "Github Actions : enfin des pipelines accessible aux développeurs",
         "state": "confirmed",
@@ -209,13 +209,13 @@
     ],
     "14h50": [
       {
-        "room": "700",
+        "room": "Espace Lumière",
         "title": "Pause"
       }
     ],
     "15h10": [
       {
-        "room": "700",
+        "room": "Salle 700",
         "id": "smHIjirTqfAqt7qPEwF5",
         "title": "(Re) Découvrir les outils UNIX",
         "state": "confirmed",
@@ -230,7 +230,7 @@
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/2DYR24Hco0XRdwHspHte"
       },
       {
-        "room": "400",
+        "room": "Salle 400",
         "id": "Elj8JnQfv4wpYcmQ8cVy",
         "title": "Conception de language : communiquer avec la machine",
         "state": "confirmed",
@@ -248,7 +248,7 @@
     ],
     "15h40": [
       {
-        "room": "700",
+        "room": "Salle 700",
         "id": "WjNZT96IfvdqOEnGS61H",
         "title": "Devenir Manager dans le milieu de tech: un voyage inattendu.",
         "state": "confirmed",
@@ -262,12 +262,12 @@
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/Et1Bcfg3zoppJlU9koTh"
       },
       {
-        "room": "400",
+        "room": "Salle 400",
         "id": "nXyCNdbCgJyqzwAv9JQv",
         "title": "Les tests unitaires Javascript, vers l'infini et au-delà",
         "state": "confirmed",
         "level": "beginner",
-        "abstract": "Tester c’est bien, bien tester c’est mieux ! Les frameworks javascripts (vue.js, Angular, React) front sont de plus en plus populaires, et l’utilisation de node.js croît d’année en année. Comment écrire des tests maintenables ? Quels sont les cas limites ? Comment écrire des tests unitaires pour ces frameworks à l’architecture spécifique ?\n\nNous découvrirons les différents patterns utiles pour mettre en place les tests unitaires, que ce soit sur le back ou sur le front. On verra notamment les pièges les plus courants et leurs solutions (avec Jest, Sinon, Rewire …) pour tester du code sur node.js, vue.js et react.\n\nEn sortant de notre atelier vous serez capable de diviser et réaliser vos tests unitaires grâce à des outils plébiscités par l’industrie. Les patterns appris seront utilisables quelque soit le framework utilisé.",
+        "abstract": "Tester c’est bien, bien tester c’est mieux ! Les frameworks javascripts (vue.js, Angular, React) front sont de plus en plus populaires, et l’utilisation de node.js croît d’année en année. Comment écrire des tests maintenables ? Quels sont les cas limites ? Comment écrire des tests unitaires pour des frameworks front à l’architecture spécifique ?\nNous découvrirons les différents patterns utiles pour mettre en place les tests unitaires, que ce soit sur le back ou sur le front. On verra notamment les pièges les plus courants et leurs solutions (avec Jest, Rewire …) pour tester du code sur node.js et sur des frameworks à composants comme Vue.js.\nEn sortant de notre atelier vous serez capable de diviser et réaliser vos tests unitaires grâce à des outils plébiscités par l’industrie. Les patterns appris seront utilisables quelque soit le framework utilisé.",
         "categories": "cff3cdbc-52e9-5d5a-8f98-927ee005f59b",
         "formats": "3439b584-eaed-5840-b7db-ab8cc75ce076",
         "speakers": [
@@ -280,7 +280,7 @@
     ],
     "16h40": [
       {
-        "room": "700",
+        "room": "Salle 700",
         "id": "KHXQqpjeSG6FtyJp9Zov",
         "title": "Comment atteindre tous vos objectifs avec le modèle de Brooke Castillo ?",
         "state": "confirmed",
@@ -296,7 +296,7 @@
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/9zTHanLsmCL6T7Hy3JMr"
       },
       {
-        "room": "400",
+        "room": "Salle 400",
         "id": "90T5dMm4uw7wVAJDn5m1",
         "title": "L’expérience développeur par Quarkus 2.0",
         "state": "confirmed",
@@ -315,13 +315,13 @@
     ],
     "17h00": [
       {
-        "room": "700",
+        "room": "Espace Lumière",
         "title": "Pause"
       }
     ],
     "17h20": [
       {
-        "room": "700",
+        "room": "Salle 700",
         "id": "4Uy8pH9sK9VLE89czh2R",
         "title": "Continuous Localization in Web",
         "state": "confirmed",
@@ -336,7 +336,7 @@
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/LkDwzxGgAZ6bcwJ6eSuE"
       },
       {
-        "room": "400",
+        "room": "Salle 400",
         "id": "iaez2jBDOcnERURBWe6H",
         "title": "Comment choisir la bonne technologie mobile pour votre projet",
         "state": "confirmed",
@@ -355,7 +355,7 @@
       {
         "id": "3",
         "title": "Keynote de fermeture",
-        "room": "700",
+        "room": "Salle 700",
         "speakers": ["5"],
         "openfeedback": "https://openfeedback.io/e1Wt4hveV3UiEd5yxZ9k/2021-11-19/fHCYNCdMNdPIZWYhcxxM"
       }

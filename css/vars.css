@@ -1,19 +1,17 @@
 :root {
-  --body-text: #000;
-  --body-bg: #EDECCC;
-  --text-inv: #FFF;
+  --body-text: #BFBFBF;
+  --body-bg: #191919;
+  --text-high: #FFF;
+  --text-inv: #000;
 
   --main-color: #006D6D;
   --main-color-h: #71CC71;
   --main-color-d: #39773E;
   --main-color-light: #C1E0C1;
-  --hot-color: #B21414;
+  --hot-color: #E89C14;
   --hot-light: #FFC152;
-  --n-dark: #012625;
+  --n-dark: #000;
   --n-light: #EDECCC;
 
-  --stack: aleoregular, Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
-  --stack-b: aleobold, Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
-  --stack-i: aleolight, Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
-  --stack-t: aleolight, Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
+  --stack: "Archivo SemiBold", Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
 }

@@ -75,7 +75,7 @@ h1 > span {
 h1 time::after {content: "/ ";}
 
 h2 {
-  font-size: calc(1em + 0.7vmax);
+  font-size: calc(1.2em + 1vw);
   font-variation-settings: "wght" 800, "wdth" 100;
   margin-bottom: 0.8em;
 }
@@ -85,7 +85,7 @@ h3 {
 }
 
 p, li, dt, dd {
-  font-size: 0.95em;
+  font-size: 1em;
 }
 
 li p, li li, li dt, li dd {
@@ -125,9 +125,35 @@ hr {
 /* -------------------------- STRUCTURE ---------------------------- */
 
 header {
-  text-align: center;
-  margin: 4rem 0 1.5rem;
+  margin: 4rem 5% 1.5rem;
+  transition: all .3s;
 }
+
+header.active {
+  position: fixed;
+  top: 2rem;
+  left: 0;
+  width: 90%;
+  background-color: var(--n-dark);
+  padding: 1rem 5%;
+  margin: 0;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  transition: all .3s;
+  z-index: 10;
+}
+
+  header.active img {width: 140px;}
+  header.active span {
+    font-size: 0.8rem;
+    text-align: right;
+    background-color: var(--n-dark);
+  }
+  header.active time {display: block;}
+  header.active h1 {
+    display: flex;
+    justify-content: space-between;
+  }
+  header.active ~ #wrapper {margin-top: 15vh;}
 
 main {margin: 0 5%;}
 
@@ -135,27 +161,35 @@ aside {display: none;}
 
 footer {
   background-color: var(--n-dark);
-  padding: 1rem 5% 4rem;
+  padding: 2rem 5% 4rem;
 }
 
 footer .p-name {font-size: 1.2em; font-variant: small-caps;}
   footer .p-name::before {
-    content: url(../img/favicon.svg);
-    padding-right: 1rem;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    content: "";
+    background-image: url(../img/logotype.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 1rem;
   }
 
-footer .p-summary {margin: 1rem 0 0 2rem;}
+footer .p-summary {margin: 1rem 0 0 3rem;}
+
+.copyright {font-size: 0.8em;}
 
 dl.h-event dd:last-of-type {
   font-size: 0.85em;
-  margin: 1rem 0 0 2rem;
+  margin: 0.5rem 0 0 3rem;
 }
 
 ul.links-list {
-  margin: 1rem 0 0 2rem;
+  margin: 1rem 0 0 3rem;
 }
 
-  ul.links-list li {font-size: 0.85em; line-height: 2em;}
+  ul.links-list li {font-size: 0.85em; line-height: 2;}
 
 ul.sm-list {
   display: flex;
@@ -165,7 +199,7 @@ ul.sm-list {
   list-style-type: none;
   margin: 1rem 0 0 2rem;
 }
-  ul.sm-list li {width: 30px;}
+  ul.sm-list li {width: 25px;}
 
 
 /* ----------------------------------------------------------------- */
@@ -184,8 +218,8 @@ nav {
   width: 100%;
   bottom: 0;
   left: 0;
-  color: var(--text-inv);
-  background: var(--hot-color);
+  color: var(--hot-color);
+  background: var(--n-dark);
   box-shadow: -3px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
@@ -195,9 +229,10 @@ nav ul {
   justify-content: center;
   list-style-type: none;
   margin: 0;
+  border-top: 5px solid var(--body-bg);
 }
 nav li {
-  font-size: 0.75em;
+  font-size: 0.85em;
   font-variation-settings: "wght" 600, "wdth" 100;
   font-variant: small-caps;
   text-transform: uppercase;
@@ -207,13 +242,13 @@ nav li {
 nav a, nav a:visited {
   display: inline-block;
   text-decoration: none;
-  color: var(--text-inv);
-  background: var(--hot-color);
+  color: var(--hot-color);
+  background: var(--n-dark);
   padding: 0.5em 1em;
-  border-bottom: 2px solid var(--hot-color);
+  border-bottom: 2px solid var(--n-dark);
 }
 nav a:hover, nav a:focus, nav a[aria-current] {
-  border-color: var(--n-dark);
+  border-color: var(--hot-light);
 }
 
 
@@ -221,30 +256,80 @@ nav a:hover, nav a:focus, nav a[aria-current] {
 /* -------------------------- HOME ---------------------------- */
 
 div.presentation {
-  width: 70vw;
   line-height: 1.5;
-  margin: 0 auto 3rem;
+  margin: 7vw 0;
 }
 
-  div.presentation p {font-size: 1.4rem;}
+  div.presentation p {font-size: calc(1.2rem + 1vw);;}
 
 div.group {margin-bottom: 2rem;}
 
-div.stats ul {
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-}
-div.stats strong {
-  font-size: 1.4em;
-  color: var(--hot-color);
-}
+div.stats {margin-bottom: 4rem;}
 
-div.decor {margin-bottom: 2rem;}
-  div.decor h2 strong {display: block;}
+  div.stats ul {
+    list-style-type: none;
+    margin-bottom: 2rem;
+  }
+  div.stats strong {
+    display: block;
+    font-size: 250%;
+    color: var(--hot-color);
+    text-align: right;
+  }
+
+  div.stats span {
+    display: block;
+    border-top: 1px solid var(--hot-color);
+  }
+
+div.decor {
+  position: relative;
+  margin: 7vw 0;
+  z-index: 1;
+}
+  div.decor h2 strong {
+    display: block;
+    transition: all .5s;
+  }
 
 p.illustration {margin-bottom: 1rem;}
-p.read-more {text-align: right; margin-top: 1rem;}
+
+div.decor::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 50%;
+  bottom: 0;
+  left: 2rem;
+  background-color: var(--hot-color);
+  transition: all .5s;
+}
+
+div.decor p {line-height: 1.58;}
+
+div.decor p:not(.illustration) {
+  font-size: calc(0.8em + 1vw);
+  margin-left: 4rem;
+}
+p.read-more {margin-top: 1rem;}
+
+
+/* ----------------------------------------------------------------- */
+/* -------------------------- ARTICLE ---------------------------- */
+
+article {max-width: 55em; margin: 4rem 0;}
+
+  article p, article li {line-height: 1.6;}
+
+  article p + p {margin-top: 0.8em;}
+
+  article ul {margin: 1em;}
+
+div.faq + div.faq {margin-top: 2rem;}
+
+div.faq h3 {color: var(--hot-light);}
+
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- GENERAL ---------------------------- */
@@ -259,7 +344,13 @@ p.cfp {
   font-size: 0.85em;
   font-variant: small-caps;
   text-align: center;
-  background-color: var(--n-dark);
+  color: var(--text-inv);
+  background-color: var(--hot-light);
   padding: 0.5rem 0 0.65rem;
   z-index: 10;
+}
+
+p.cfp a {
+  color: var(--text-inv);
+  background-color: var(--hot-light);
 }

@@ -37,10 +37,10 @@
     <!-- PAGE HEADER -->
     <header>
         <h1>
-            <img src="/img/logodfl.svg" alt="Devfest Lille" />
-            <span>
-              <time datetime="2022-06-10">10 Juin <span>2022</span></time>
-              Kinepolis Lomme
+          <img src="/img/logodfl.svg" alt="Devfest Lille" />
+          <span>
+            <time datetime="2022-06-10">10 Juin <span>2022</span></time>
+            Kinepolis Lomme
           </span>
         </h1>
         <p class="cfp">
@@ -52,10 +52,13 @@
     <nav class="main-nav">
         <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
         <ul>
-            <li><a href="/index.html" aria-current="page">Accueil</a></li>
+            <li><a href="/index.html"
+              {% if currSection == "index" %} aria-current="page" {% endif %}>
+              Accueil</a></li>
             <!--li><a href="/speakers/index.html">Speakers</a></li>
             <li><a href="/agenda/index.html">Agenda</a></li-->
-            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>
+              FAQ</a></li>
         </ul>
     </nav>
 
@@ -202,5 +205,6 @@
         });
     }
 </script>
+<script src="js/load.js"></script>
 </body>
 </html>

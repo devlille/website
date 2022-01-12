@@ -3,3 +3,82 @@
                		Media Queries
           				Ge Ricci, 2022
 -------------------------------------------------------------------- */
+
+@media screen and (min-width: 600px) {
+  div.stats ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 5%;
+  }
+  div.stats li, div.stats strong {text-align: left;}
+
+  div.stats li {flex: 1;}
+
+  div.stats span {border: none;}
+
+  div.stats strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid var(--hot-color);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  p, li, dt, dd {font-size: 1.2em;}
+
+  dl.h-event dd:last-of-type {
+  	font-size: 1em;
+  }
+
+  footer .p-name {font-size: 2em;}
+
+  dl.h-event {
+    margin-bottom: 2rem;
+  }
+
+  ul.links-list li {font-size: 1em;}
+
+  div.decor .content {
+    display: flex;
+  }
+  div.decor .content div {flex: 1;}
+  div.decor h2 {margin-left: 4rem;}
+
+  div.decor h2 strong {color: var(--hot-color);}
+
+  div.decor::after {
+    bottom: auto;
+    top: 0;
+  }
+}
+
+
+@media screen and (min-width: 1300px) {
+  #wrapper {width: 80%;}
+
+  nav {
+  	position: fixed;
+  	width: 10em;
+  	bottom: auto;
+  	left: auto;
+    top: 8rem;
+    right: 0;
+    padding: 0.5rem 1rem 1rem 1rem;
+    box-shadow: none;
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: right;
+    border: none;
+  }
+  nav li {text-align: right;}
+
+  nav a, nav a:visited {
+  	padding-right: 0;
+  }
+
+  div.decor .content div {flex-basis: 60%;}
+
+  article {margin-left: 320px;}
+}

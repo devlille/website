@@ -50,6 +50,8 @@
     bottom: auto;
     top: 0;
   }
+
+  p.cfp {font-size: 0.95em;}
 }
 
 
@@ -58,7 +60,7 @@
 
   nav {
   	position: fixed;
-  	width: 10em;
+  	width: 6em;
   	bottom: auto;
   	left: auto;
     top: 8rem;

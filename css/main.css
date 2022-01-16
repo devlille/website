@@ -156,6 +156,7 @@ header.active {
     align-items: center;
   }
   header.active h1 strong {width: 60%;}
+  header.active h1 span {margin-left: 0;}
   header.active ~ #wrapper {margin-top: 15vh;}
 
 main, aside {margin: 0 5vw;}
@@ -289,21 +290,21 @@ aside div.be-partner {
     background-color: var(--hot-light);
   }
 
-div.presentation {
-  line-height: 1.5;
-  margin: 7vw 0;
+p.register {
+  font-variation-settings: "wght" 800;
+  margin-top: 0.8em;
 }
 
-  div.presentation p {font-size: calc(1.2rem + 1vw);;}
+div.presentation {
+  line-height: 1.5;
+  margin: 7vw 0 9vw;
+}
 
-div.group {margin-bottom: 2rem;}
+  div.presentation p {font-size: calc(1.2rem + 1vw);}
 
 div.stats {margin-bottom: 4rem;}
 
-  div.stats ul {
-    list-style-type: none;
-    margin-bottom: 2rem;
-  }
+  div.stats ul {list-style-type: none;}
   div.stats strong {
     display: block;
     font-size: 250%;

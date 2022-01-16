@@ -47,6 +47,7 @@
   }
   div.decor .content div {flex-basis: 60%;}
   div.decor h2 {margin-left: 4rem;}
+  div.decor p.illustration {flex-basis: 60%;}
 
   div.decor h2 strong {color: var(--hot-light);}
 
@@ -56,6 +57,7 @@
   }
 
   p.cfp {font-size: 0.95em;}
+  div.stats {margin-bottom: 8rem;}
 }
 
 
@@ -103,6 +105,7 @@
 
   footer {padding: 2rem 30% 4rem 5%;}
 
+  div.decor {margin: 0 0 7rem;}
   div.decor .content div {flex-basis: 60%;}
 
   article {margin-left: 287px; margin-bottom: 6rem;}

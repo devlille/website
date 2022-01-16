@@ -67,7 +67,7 @@ h1, h2, h3, h4 {
 
 h1 strong {
   display: block;
-  width: 60%;
+  width: 70%;
 }
 h1 > span {
   display: block;
@@ -96,12 +96,8 @@ li p, li li, li dt, li dd {
   font-size: 100%;
 }
 
-a {
-  color: var(--text-high);
-}
-a:visited {
-  color: var(--body-text);
-}
+a {color: var(--link-color);}
+a:visited {color: var(--text-high);}
 
 strong {
   font-variation-settings: "wght" 600, "wdth" 100;
@@ -129,7 +125,7 @@ hr {
 /* -------------------------- STRUCTURE ---------------------------- */
 
 header {
-  margin: 5rem 5% 1.5rem;
+  margin: 4rem 5% 3rem;
   transition: all .3s;
 }
 
@@ -156,37 +152,52 @@ header.active {
   header.active h1 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
+  header.active h1 strong {width: 60%;}
   header.active ~ #wrapper {margin-top: 15vh;}
 
-main {margin: 0 5vw;}
+main, aside {margin: 0 5vw;}
 
-aside {display: none;}
+aside div.content.filled {display: none;}
 
 footer {
   background-color: var(--n-dark);
-  padding: 2rem 5% 4rem;
+  padding: 2rem 5% 5rem;
 }
 
-footer .p-name {font-size: 1.2em; font-variant: small-caps;}
+footer li.editions {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px dotted var(--body-text);
+}
+
+footer .p-name {
+  font-size: 1.2em;
+  font-variant: small-caps;
+}
+
   footer .p-name::before {
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 2rem;
+    height: 2rem;
     content: "";
     background-image: url(../img/logotype.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
 
-footer .p-summary {margin: 1rem 0 0 3rem;}
+footer .p-summary {
+  max-width: 30em;
+  margin: 1rem 0 0 2.5rem;
+}
 
 .copyright {font-size: 0.8em;}
 
 dl.h-event dd:last-of-type {
   font-size: 0.85em;
-  margin: 0.5rem 0 0 3rem;
+  margin: 0.5rem 0 0 2.5rem;
 }
 
 ul.links-list {
@@ -235,22 +246,27 @@ nav ul {
   margin: 0;
   border-top: 5px solid var(--body-bg);
 }
+
 nav li {
-  font-size: 0.85em;
-  font-variation-settings: "wght" 600, "wdth" 100;
-  font-variant: small-caps;
-  text-transform: uppercase;
-  padding: 0.5em;
+	font-size: 0.95em;
+	font-variation-settings: "wght" 600, "wdth" 100;
+	font-variant: small-caps;
+	text-transform: uppercase;
+	padding: 0.75em;
 }
 
-nav a, nav a:visited {
+nav a {
   display: inline-block;
   text-decoration: none;
-  color: var(--hot-color);
-  background: var(--n-dark);
   padding: 0.5em 1em;
   border-bottom: 2px solid var(--n-dark);
 }
+
+nav a:visited {
+  color: var(--hot-color);
+  background: var(--n-dark);
+}
+
 nav a:hover, nav a:focus, nav a[aria-current] {
   border-color: var(--hot-light);
 }
@@ -258,6 +274,19 @@ nav a:hover, nav a:focus, nav a[aria-current] {
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- HOME ---------------------------- */
+
+aside div.be-partner {
+  color: var(--n-dark);
+  background: var(--hot-light);
+  padding: 1rem 1.5rem 1.5rem;
+  margin: 0 0 4rem;
+}
+
+  aside div.be-partner p {max-width: 25em;}
+  aside div.be-partner a, aside div.be-partner a:visited {
+    color: var(--n-dark);
+    background-color: var(--hot-light);
+  }
 
 div.presentation {
   line-height: 1.5;
@@ -277,18 +306,18 @@ div.stats {margin-bottom: 4rem;}
   div.stats strong {
     display: block;
     font-size: 250%;
-    color: var(--hot-color);
+    color: var(--hot-light);
     text-align: right;
   }
 
   div.stats span {
     display: block;
-    border-top: 1px solid var(--hot-color);
+    border-top: 1px solid var(--main-color);
   }
 
 div.decor {
   position: relative;
-  margin: 7vw 0;
+  margin: 0 0 4rem;
   z-index: 1;
 }
   div.decor h2 strong {
@@ -306,7 +335,7 @@ div.decor::after {
   height: 50%;
   bottom: 0;
   left: 2rem;
-  background-color: var(--hot-color);
+  border-left: 9px dotted var(--hot-light);
   transition: all .5s;
 }
 
@@ -338,7 +367,7 @@ div.faq h3 {color: var(--hot-light);}
 /* ----------------------------------------------------------------- */
 /* -------------------------- GENERAL ---------------------------- */
 
-.stressed {color: var(--hot-color);}
+.stressed {color: var(--main-color);}
 
 p.cfp {
   position: fixed;
@@ -347,6 +376,7 @@ p.cfp {
   width: 100%;
   font-size: 0.85em;
   font-variant: small-caps;
+  font-variation-settings: "wght" 800, "wdth" 100;
   text-align: center;
   color: var(--text-inv);
   background-color: var(--hot-light);

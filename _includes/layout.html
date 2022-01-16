@@ -69,6 +69,15 @@
 
         <aside>
             <div class="loader" v-if="isLoading"></div>
+            <div class="be-partner">
+              <h2>Devenez partenaire</h2>
+
+              <p>Profitez du Devfest Lille Saison 3 pour gagner en visibilité et échanger avec la
+						          communauté des développeurs de la région Haut de France.</p>
+              <p class="read-more">
+                <a target="_blank" href="https://drive.google.com/file/d/1SHnp1vUa1Yd3RslpNr56wX2wOJZVkEIs/view">Dossier de partenariat</a> [PDF, 5Mo]
+              </p>
+            </div>
             <div class="content filled" v-else>
                 <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition 2021!</h3>
                 {% if collections.gold.length > 0 %}
@@ -162,9 +171,8 @@
             </dl>
             <ul class="links-list">
                 <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
-
                 <li><a href="/code-conduite">Code de conduite</a></li>
-                <li><a href="https://devfest-2021-908e1.web.app/">Edition 2021</a></li>
+                <li class="editions"><a href="https://devfest-2021-908e1.web.app/">Edition 2021</a></li>
                 <li>
                     <a href="https://devfest-2019.gdglille.org/">Edition 2019</a>
                 </li>

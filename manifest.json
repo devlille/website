@@ -1,8 +1,8 @@
 {
-  "manifest_version": "2",
+  "manifest_version": "3",
   "name": "Devfest Lille 2021",
   "short_name": "devfestlille",
-  "version": "1",
+  "version": "3",
   "default_locale": "fr",
   "description": "La conférence GDG Lille",
   "icons": [{
@@ -25,6 +25,6 @@
   "author": "Angela P. Ricci",
   "display": "minimal-ui",
   "start_url": "/index.html",
-  "background_color": "#EDECCC",
-  "theme_color": "#006D6D"
+  "background_color": "#191919",
+  "theme_color": "#E6147C"
   }

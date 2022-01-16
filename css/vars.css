@@ -4,12 +4,14 @@
   --text-high: #FFF;
   --text-inv: #000;
 
-  --main-color: #006D6D;
+  --link-color: #EF7918;
+
+  --main-color: #E6147C;
   --main-color-h: #71CC71;
   --main-color-d: #39773E;
   --main-color-light: #C1E0C1;
-  --hot-color: #EF8B26;
-  --hot-light: #13AA93;
+  --hot-color: #EF7918;
+  --hot-light: #03B7D5;
   --n-dark: #000;
   --n-light: #EDECCC;
 

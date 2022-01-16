@@ -7,11 +7,11 @@
     <meta name="keywords" content="Devfest, Lille, GDG, Conférence, Web, Mobile, Cloud, Quickies" />
     <meta name="theme-color" content="#006D6D" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:title" content="{{ title }} DEVFEST LILLE {{  collections.config.edition }}" />
     <meta name="twitter:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
     <meta name="twitter:creator" content="@gericci" />
     <meta property="og:url" content="https://devfest.gdglille.org/" />
-    <meta property="og:title" content="Devfest Lille 2021" />
+    <meta property="og:title" content="Devfest Lille {{  collections.config.edition }}" />
     <meta
             property="og:description"
             content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux"
@@ -19,7 +19,7 @@
     <meta property="og:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
     <link href="/img/favicon.svg" type="image/svg+xml" rel="icon" />
     <link href="/img/favicon.png" type="image/png" rel="icon" />
-    <title>{{ title }}</title>
+    <title>{{ title }} DEVFEST LILLE {{  collections.config.edition }}</title>
 
     <link href="/css/main.css" rel="stylesheet" media="all" />
     <link href="/css/queries.css" rel="stylesheet" media="all" />
@@ -37,15 +37,15 @@
     <!-- PAGE HEADER -->
     <header>
         <h1>
-          <strong><img src="/img/logodfl.svg" alt="Devfest Lille 2022" /></strong>
+          <strong><img src="/img/logodfl.svg" alt="Devfest Lille {{  collections.config.edition }}" /></strong>
           <span>
-            <time datetime="2022-06-10">10 Juin <span>2022</span></time>
+            <time datetime="2022-06-10">{{  collections.config.date }} <span>{{  collections.config.edition }}</span></time>
             Kinepolis Lomme
           </span>
         </h1>
         <p class="cfp">
             <a href="https://conference-hall.io/public/event/vzbfowsExm54SrWLtxA5">
-                <abbr lang="en" title="Call for Paper">CFP</abbr> ouvert jusqu'au 31 mars 2022</a>
+                <abbr lang="en" title="Call for Paper">CFP</abbr> ouvert jusqu'au {{collections.config.cfpEndedDate}}</a>
         </p>
     </header>
 
@@ -72,14 +72,14 @@
             <div class="be-partner">
               <h2>Devenez partenaire</h2>
 
-              <p>Profitez du Devfest Lille Saison 3 pour gagner en visibilité et échanger avec la
+              <p>Profitez de la {{ collections.config.editionNumber }}ème Devfest Lille Saison pour gagner en visibilité et échanger avec la
 						          communauté des développeurs de la région Haut de France.</p>
               <p class="read-more">
-                <a target="_blank" href="https://drive.google.com/file/d/1SHnp1vUa1Yd3RslpNr56wX2wOJZVkEIs/view">Dossier de partenariat</a> [PDF, 5Mo]
+                <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a> [PDF, 5Mo]
               </p>
             </div>
             <div class="content filled" v-else>
-                <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition 2021!</h3>
+                <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition {{ collections.config.edition }}!</h3>
                 {% if collections.gold.length > 0 %}
                 <div class="sponsors">
                     <h4>Gold</h4>
@@ -159,13 +159,13 @@
     <footer>
         <div class="content">
             <dl class="h-event">
-                <dt class="p-name">Devfest Lille 2022</dt>
+                <dt class="p-name">Devfest Lille {{ collections.config.edition }}</dt>
                 <dd class="p-summary">
                     Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile, du cloud et des
                     technologies Google.
                 </dd>
                 <dd>
-                    <time class="dt-start" datetime="2022-06-10">10 Novembre 2022</time> -
+                    <time class="dt-start" datetime="2022-06-10">{{ collections.config.date }} {{ collections.config.edition }}</time> -
                     <a href="#" class="p-location">Kinépolis Lomme</a>
                 </dd>
             </dl>

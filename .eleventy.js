@@ -3,6 +3,10 @@ const sponsors = require("./data/gold.json");
 
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addCollection("config", function () {
+    return require("./data/config.json");
+  });
+
   eleventyConfig.addCollection("gold", function () {
     return require("./data/gold.json");
   });

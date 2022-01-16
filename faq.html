@@ -1,6 +1,6 @@
----
+﻿---
 layout: layout.html
-title: Foire aux questions/ DEVFEST LILLE 2022
+title: Foire aux questions /
 currSection: faq
 ---
 
@@ -36,12 +36,21 @@ currSection: faq
     <div class="content">
       <p>
         Consultez tout d'abord notre
-        <a href="/Devfest Lille 2021 - Dossier partenaires.pdf" target="_blank" class="style-scope df-faq">
+        <a href="{{ collections.config.partershipUrl}}" target="_blank" class="style-scope df-faq">
           dossier de partenariat
-        </a>, puis remplir <a href="https://cms4partners.gdglille.org/#/2022">ce formulaire</a>.
+        </a>, puis remplir <a href="{{ collections.config.cmsUrl}}" target="_blank">ce formulaire</a>.
       </p>
     </div>
   </div>
+
+    <div class="faq">
+        <h3>Comment pouvons-nous nous procurer des places ?</h3>
+        <div class="content">
+            <p>
+                Pour vous procurer des places, il suffit de visiter le site <a href="{{ collections.config.billetwebUrl}}" target="_blank">Billetweb</a>.
+            </p>
+        </div>
+    </div>
 
   <div class="faq">
     <h3>Comment va se dérouler le DevFest ?</h3>
@@ -51,7 +60,7 @@ currSection: faq
         les quickies (20mn).
       </p>
       <p>
-        Vous pouvez proposer des sujets jusqu'au 31 mars 2022 via <a href="https://conference-hall.io/public/event/vzbfowsExm54SrWLtxA5">le site Conference Hall</a>.
+        Vous pouvez proposer des sujets jusqu'au {{ collections.config.cfpEndedDate  }} via <a href="{{ collections.config.cmsUrl}}">le site Conference Hall</a>.
       </p>
     </div>
   </div>

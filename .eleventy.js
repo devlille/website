@@ -47,6 +47,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("*.pdf");
   eleventyConfig.addPassthroughCopy("js/*.*");
   eleventyConfig.addPassthroughCopy("img/*.*");
+  eleventyConfig.addPassthroughCopy("partenaire.pdf");
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (outputPath.endsWith(".html")) {

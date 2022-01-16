@@ -5,6 +5,7 @@
 -------------------------------------------------------------------- */
 
 @media screen and (min-width: 600px) {
+  header {margin-top: 5rem;}
   div.stats ul {
     display: flex;
     justify-content: space-around;
@@ -21,6 +22,9 @@
     margin-bottom: 0.25rem;
     border-bottom: 1px solid var(--main-color);
   }
+
+  h1 > span {font-size: 1.5rem; margin-left: 133px;}
+
 }
 
 @media screen and (min-width: 800px) {
@@ -101,5 +105,6 @@
 
   div.decor .content div {flex-basis: 60%;}
 
-  article {margin-left: 278px;}
+  article {margin-left: 287px; margin-bottom: 6rem;}
+    article h2 {font-size: 3em; margin-bottom: 4rem;}
 }

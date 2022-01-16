@@ -74,6 +74,7 @@ h1 > span {
   font-size: 1.2rem;
   color: var(--text-high);
   background-color: var(--body-bg);
+  margin-left: 23%;
 }
 
 h1 time::after {content: "/ ";}
@@ -353,6 +354,9 @@ p.read-more {margin-top: 1rem;}
 
 article {max-width: 55em; margin: 4rem 0;}
 
+  article h2 {
+    color: var(--main-color);
+  }
   article p, article li {line-height: 1.6;}
 
   article p + p {margin-top: 0.8em;}

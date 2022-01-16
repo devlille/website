@@ -32,170 +32,172 @@
     <link rel="manifest" href="manifest.json" />
 </head>
 
-<body id="home">
-<div id="container">
-    <!-- PAGE HEADER -->
-    <header>
-        <h1>
-          <strong><img src="/img/logodfl.svg" alt="Devfest Lille 2022" /></strong>
-          <span>
-            <time datetime="2022-06-10">10 Juin <span>2022</span></time>
-            Kinepolis Lomme
-          </span>
-        </h1>
-        <p class="cfp">
-            <a href="https://conference-hall.io/public/event/AFtTtSMq1NY4tnK2gMg1">
-                <abbr lang="en" title="Call for Paper">CFP</abbr> ouvert jusqu'au 15 mars 2022</a>
-        </p>
-    </header>
+<body>
+  <div id="container">
+      <!-- PAGE HEADER -->
+      <header>
+          <h1>
+            <strong><img src="/img/logodfl.svg" alt="Devfest Lille 2022" /></strong>
+            <span>
+              <time datetime="2022-06-10">10 Juin <span>2022</span></time>
+              Kinepolis Lomme
+            </span>
+          </h1>
+          <p class="cfp">
+              <a href="https://conference-hall.io/public/event/AFtTtSMq1NY4tnK2gMg1">
+                  <abbr lang="en" title="Call for Paper">CFP</abbr> ouvert jusqu'au 15 mars 2022</a>
+          </p>
+      </header>
 
-    <nav class="main-nav">
-        <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
-        <ul>
-            <li><a href="/index.html"
-              {% if currSection == "index" %} aria-current="page" {% endif %}>
-              Accueil</a></li>
-            <!--li><a href="/speakers/index.html">Speakers</a></li>
-            <li><a href="/agenda/index.html">Agenda</a></li-->
-            <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>
-              FAQ</a></li>
-        </ul>
-    </nav>
+      <nav class="main-nav">
+          <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
+          <ul>
+              <li><a href="/index.html"
+                {% if currSection == "index" %} aria-current="page" {% endif %}>
+                Accueil</a></li>
+              <!--li><a href="/speakers/index.html">Speakers</a></li>
+              <li><a href="/agenda/index.html">Agenda</a></li-->
+              <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>
+                FAQ</a></li>
+          </ul>
+      </nav>
 
-    <div id="wrapper">
-        <main>
-            {{ content | safe }}
-        </main>
+      <div id="wrapper">
+          <main>
+              {{ content | safe }}
+          </main>
 
-        <aside>
-            <div class="loader" v-if="isLoading"></div>
-            <div class="be-partner">
-              <h2>Devenez partenaire</h2>
+          {% if currSection == "index" %}
+          <aside>
+              <div class="loader" v-if="isLoading"></div>
+              <div class="be-partner">
+                <h2>Devenez partenaire</h2>
 
-              <p>Profitez du Devfest Lille Saison 3 pour gagner en visibilité et échanger avec la
-						          communauté des développeurs de la région Haut de France.</p>
-              <p class="read-more">
-                <a target="_blank" href="https://drive.google.com/file/d/1SHnp1vUa1Yd3RslpNr56wX2wOJZVkEIs/view">Dossier de partenariat</a> [PDF, 5Mo]
-              </p>
-            </div>
-            <div class="content filled" v-else>
-                <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition 2021!</h3>
-                {% if collections.gold.length > 0 %}
-                <div class="sponsors">
-                    <h4>Gold</h4>
+                <p>Profitez du Devfest Lille Saison 3 pour gagner en visibilité et échanger avec la
+  						          communauté des développeurs de la région Haut de France.</p>
+                <p class="read-more">
+                  <a target="_blank" href="https://drive.google.com/file/d/1SHnp1vUa1Yd3RslpNr56wX2wOJZVkEIs/view">Dossier de partenariat</a> [PDF, 5Mo]
+                </p>
+              </div>
+              <div class="content filled" v-else>
+                  <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition 2021!</h3>
+                  {% if collections.gold.length > 0 %}
+                  <div class="sponsors">
+                      <h4>Gold</h4>
 
-                    <ul>
-                        {%- for p in collections.gold -%}
-                        <li>
-                            <a href="{{p.url}}">
-                                <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
-                            </a>
-                        </li>
-                        {%- endfor -%}
+                      <ul>
+                          {%- for p in collections.gold -%}
+                          <li>
+                              <a href="{{p.url}}">
+                                  <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                              </a>
+                          </li>
+                          {%- endfor -%}
 
-                    </ul>
-                </div>
-                {% endif %}
-                {% if collections.silver.length > 0 %}
+                      </ul>
+                  </div>
+                  {% endif %}
+                  {% if collections.silver.length > 0 %}
 
-                <div class="sponsors">
-                    <h4>Silver</h4>
+                  <div class="sponsors">
+                      <h4>Silver</h4>
 
-                    <ul>
-                        {%- for p in collections.silver -%}
-                        <li>
-                            <a href="{{p.url}}">
-                                <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
-                            </a>
-                        </li>
-                        {%- endfor -%}
+                      <ul>
+                          {%- for p in collections.silver -%}
+                          <li>
+                              <a href="{{p.url}}">
+                                  <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                              </a>
+                          </li>
+                          {%- endfor -%}
 
-                    </ul>
-                </div>
-                {% endif %}
+                      </ul>
+                  </div>
+                  {% endif %}
 
-                {% if collections.bronze.length > 0 %}
+                  {% if collections.bronze.length > 0 %}
 
-                <div class="sponsors">
-                    <h4>Bronze</h4>
+                  <div class="sponsors">
+                      <h4>Bronze</h4>
 
-                    <ul>
-                        {%- for p in collections.bronze -%}
-                        <li>
-                            <a href="{{p.url}}">
-                                <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
-                            </a>
-                        </li>
-                        {%- endfor -%}
+                      <ul>
+                          {%- for p in collections.bronze -%}
+                          <li>
+                              <a href="{{p.url}}">
+                                  <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                              </a>
+                          </li>
+                          {%- endfor -%}
 
-                    </ul>
-                </div>
-                {% endif %}
+                      </ul>
+                  </div>
+                  {% endif %}
 
-                {% if collections.partners.length > 0 %}
+                  {% if collections.partners.length > 0 %}
 
-                <div class="sponsors">
-                    <h4>Partenaire</h4>
+                  <div class="sponsors">
+                      <h4>Partenaire</h4>
 
-                    <ul>
-                        {%- for p in collections.partners -%}
-                        <li>
-                            <a href="{{p.url}}">
-                                <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
-                            </a>
-                        </li>
-                        {%- endfor -%}
+                      <ul>
+                          {%- for p in collections.partners -%}
+                          <li>
+                              <a href="{{p.url}}">
+                                  <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                              </a>
+                          </li>
+                          {%- endfor -%}
 
-                    </ul>
-                </div>
-                {% endif %}
+                      </ul>
+                  </div>
+                  {% endif %}
 
-            </div>
-        </aside>
-    </div>
+              </div>
+          </aside>
+          {% endif %}
+      </div>
 
-    <hr />
+      <hr />
 
-    <footer>
-        <div class="content">
-            <dl class="h-event">
-                <dt class="p-name">Devfest Lille 2022</dt>
-                <dd class="p-summary">
-                    Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile, du cloud et des
-                    technologies Google.
-                </dd>
-                <dd>
-                    <time class="dt-start" datetime="2022-06-10">10 Novembre 2022</time> -
-                    <a href="#" class="p-location">Kinépolis Lomme</a>
-                </dd>
-            </dl>
-            <ul class="links-list">
-                <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
-                <li><a href="/code-conduite">Code de conduite</a></li>
-                <li class="editions"><a href="https://devfest-2021-908e1.web.app/">Edition 2021</a></li>
-                <li>
-                    <a href="https://devfest-2019.gdglille.org/">Edition 2019</a>
-                </li>
-                <li>
-                    <a href="https://devfest-2018.gdglille.org/">Edition 2018</a>
-                </li>
-                <li>
-                    <a href="https://devfest-2017.gdglille.org/">Edition 2017</a>
-                </li>
-            </ul>
-        </div>
-        <ul class="sm-list">
-            <li class="show-icons">
-                <a href="https://twitter.com/devfestLille/"><img src="/img/twitter.svg" alt="Devfest Lille sur Twitter" /></a>
-            </li>
-            <li class="show-icons">
-                <a href="https://www.linkedin.com/company/gdg-lille/"><img src="/img/linkedin.svg" alt="GDG Lille sur LinkedIn" /></a>
-            </li>
-        </ul>
-        <p class="copyright">GDG Lille, 2022</p>
-    </footer>
-</div>
-<!-- /container -->
+      <footer>
+          <div class="content">
+              <dl class="h-event">
+                  <dt class="p-name">Devfest Lille 2022</dt>
+                  <dd class="p-summary">
+                      Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile, du cloud et des
+                      technologies Google.
+                  </dd>
+                  <dd>
+                      <time class="dt-start" datetime="2022-06-10">10 Novembre 2022</time> -
+                      <a href="#" class="p-location">Kinépolis Lomme</a>
+                  </dd>
+              </dl>
+              <ul class="links-list">
+                  <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
+                  <li><a href="/code-conduite">Code de conduite</a></li>
+                  <li class="editions"><a href="https://devfest-2021-908e1.web.app/">Edition 2021</a></li>
+                  <li>
+                      <a href="https://devfest-2019.gdglille.org/">Edition 2019</a>
+                  </li>
+                  <li>
+                      <a href="https://devfest-2018.gdglille.org/">Edition 2018</a>
+                  </li>
+                  <li>
+                      <a href="https://devfest-2017.gdglille.org/">Edition 2017</a>
+                  </li>
+              </ul>
+          </div>
+          <ul class="sm-list">
+              <li class="show-icons">
+                  <a href="https://twitter.com/devfestLille/"><img src="/img/twitter.svg" alt="Devfest Lille sur Twitter" /></a>
+              </li>
+              <li class="show-icons">
+                  <a href="https://www.linkedin.com/company/gdg-lille/"><img src="/img/linkedin.svg" alt="GDG Lille sur LinkedIn" /></a>
+              </li>
+          </ul>
+          <p class="copyright">GDG Lille, 2022</p>
+      </footer>
+  </div>
+  <!-- /container -->
 
 <script>
     if ("serviceWorker" in navigator) {

@@ -161,8 +161,6 @@ header.active {
 
 main, aside {margin: 0 5vw;}
 
-aside div.content.filled {display: none;}
-
 footer {
   background-color: var(--n-dark);
   padding: 2rem 5% 5rem;

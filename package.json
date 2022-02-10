@@ -11,13 +11,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
+    "@11ty/eleventy": "^1.0.0",
     "html-minifier": "^4.0.0",
     "serve": "^11.3.2"
   },
   "dependencies": {
-    "@mozaic-ds/vue": "^0.3.1"
+    "clean-css": "^5.2.4",
+    "node-fetch": "2.6.7"
   },
   "repository": {
     "type": "git",

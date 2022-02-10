@@ -61,12 +61,11 @@
 
       <div id="wrapper">
           <main>
-              {{ content | safe }}
+              {{ content }}
           </main>
 
           {% if currSection == "index" %}
           <aside>
-              <div class="loader" v-if="isLoading"></div>
               <div class="be-partner">
                 <h2>Devenez partenaire</h2>
 
@@ -75,17 +74,17 @@
                 <p class="read-more">
                     <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a> [PDF, 5Mo]                </p>
               </div>
-              <div class="content filled" v-else>
+              <!-- div class="content filled">
                   <h3>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition {{ collections.config.edition }}!</h3>
-                  {% if collections.gold.length > 0 %}
+                  {% if collections.partners.golds.length > 0 %}
                   <div class="sponsors">
                       <h4>Gold</h4>
 
                       <ul>
-                          {%- for p in collections.gold -%}
+                          {%- for p in collections.partners.golds -%}
                           <li>
-                              <a href="{{p.url}}">
-                                  <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                              <a href="{{p.site_url}}">
+                                  <img src="{{p.logo_url}}" alt="{{p.name}}" />
                               </a>
                           </li>
                           {%- endfor -%}
@@ -93,16 +92,16 @@
                       </ul>
                   </div>
                   {% endif %}
-                  {% if collections.silver.length > 0 %}
+                  {% if collections.partners.silvers.length > 0 %}
 
                   <div class="sponsors">
                       <h4>Silver</h4>
 
                       <ul>
-                          {%- for p in collections.silver -%}
+                          {%- for p in collections.partners.silvers -%}
                           <li>
-                              <a href="{{p.url}}">
-                                  <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                              <a href="{{p.site_url}}">
+                                  <img src="{{p.logo_url}}" alt="{{p.name}}" />
                               </a>
                           </li>
                           {%- endfor -%}
@@ -111,16 +110,16 @@
                   </div>
                   {% endif %}
 
-                  {% if collections.bronze.length > 0 %}
+                  {% if collections.partners.bronzes.length > 0 %}
 
                   <div class="sponsors">
                       <h4>Bronze</h4>
 
                       <ul>
-                          {%- for p in collections.bronze -%}
+                          {%- for p in collections.partners.bronzes -%}
                           <li>
-                              <a href="{{p.url}}">
-                                  <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                              <a href="{{p.site_url}}">
+                                  <img src="{{p.logo_url}}" alt="{{p.name}}" />
                               </a>
                           </li>
                           {%- endfor -%}
@@ -137,8 +136,8 @@
                       <ul>
                           {%- for p in collections.partners -%}
                           <li>
-                              <a href="{{p.url}}">
-                                  <img src="/img/sponsors/{{p.image}}" alt="{{p.name}}" />
+                              <a href="{{p.site_url}}">
+                                  <img src="/img/sponsors/{{p.logo_url}}" alt="{{p.name}}" />
                               </a>
                           </li>
                           {%- endfor -%}
@@ -147,7 +146,7 @@
                   </div>
                   {% endif %}
 
-              </div>
+              </div-->
           </aside>
           {% endif %}
       </div>

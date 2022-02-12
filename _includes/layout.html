@@ -84,7 +84,7 @@
                           {%- for p in collections.partners.golds -%}
                           <li>
                               <a href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" />
+                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
                           {%- endfor -%}
@@ -101,7 +101,7 @@
                           {%- for p in collections.partners.silvers -%}
                           <li>
                               <a href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" />
+                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
                           {%- endfor -%}
@@ -119,7 +119,7 @@
                           {%- for p in collections.partners.bronzes -%}
                           <li>
                               <a href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" />
+                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
                           {%- endfor -%}
@@ -137,7 +137,7 @@
                           {%- for p in collections.partners -%}
                           <li>
                               <a href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" />
+                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
                           {%- endfor -%}
@@ -210,6 +210,5 @@
         });
     }
 </script>
-<script src="js/load.js"></script>
 </body>
 </html>

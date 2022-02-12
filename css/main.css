@@ -100,6 +100,8 @@ li p, li li, li dt, li dd {
 a {color: var(--link-color);}
 a:visited {color: var(--text-high);}
 
+:focus {outline: 2px dotted var(--link-color);}
+
 strong {
   font-variation-settings: "wght" 600, "wdth" 100;
   font-weight: normal;
@@ -220,12 +222,25 @@ ul.sm-list {
 /* ----------------------------------------------------------------- */
 /* -------------------------- NAVIGATION ---------------------------- */
 
-.k-skip, .no-display {
+.k-skip a, .no-display {
   position: absolute;
   overflow: hidden;
   width: 1px;
   height: 1px;
   left: -5000px;
+}
+
+h2.k-skip {font-size: 1em;}
+
+.k-skip a:focus {
+  width: 15em;
+  height: auto;
+  left: auto;
+  right: 22px;
+  top: -1em;
+  color: var(--link-color);
+  border: none;
+  text-align: right;
 }
 
 nav {
@@ -275,6 +290,10 @@ nav a:hover, nav a:focus, nav a[aria-current] {
 /* ----------------------------------------------------------------- */
 /* -------------------------- HOME ---------------------------- */
 
+aside {
+  margin: 0 5vw 6rem;
+}
+
 aside div.be-partner {
   color: var(--n-dark);
   background: var(--hot-light);
@@ -287,6 +306,51 @@ aside div.be-partner {
     color: var(--n-dark);
     background-color: var(--hot-light);
   }
+
+  div.sponsors {
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+  }
+  div.sponsors h3 {
+    font-variation-settings: "wght" 800;
+    color: var(--hot-color);
+    margin-bottom: 1rem;
+    border-top: 5px dotted var(--hot-color);
+  }
+  div.sponsors.silver h3 {
+    color: var(--main-color);
+    border-color: var(--main-color);
+  }
+  div.sponsors.bronze h3 {
+    color: var(--hot-light);
+    border-color: var(--hot-light);
+  }
+
+  div.sponsors ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style-type: none;
+  }
+
+  div.sponsors li {
+    box-sizing: border-box;
+    flex-basis: 20%;
+    min-width: 80px;
+    background-color: var(--text-high);
+    padding: 0.5rem;
+    margin: 0 2rem 2rem 0;
+    border-radius: 100%;
+  }
+    div.sponsors a {
+      display: block;
+      margin: 2rem;
+    }
+
+div.sponsors a:focus, aside div.be-partner a:focus, p.cfp a:focus {
+  outline-color: var(--body-bg);
+}
+
 
 p.register {
   font-variation-settings: "wght" 800;

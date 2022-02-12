@@ -61,3 +61,4 @@ typings/
 .next
 _site
 .DS_Store
+.tmp

@@ -311,6 +311,7 @@ aside div.be-partner {
     padding-top: 0.5rem;
     margin-top: 1rem;
   }
+
   div.sponsors h3 {
     font-variation-settings: "wght" 800;
     color: var(--hot-color);
@@ -343,8 +344,15 @@ aside div.be-partner {
     border-radius: 100%;
   }
     div.sponsors a {
-      display: block;
       margin: 2rem;
+
+      width: 150px;
+      height: 150px;
+      display: flex;
+    }
+
+    div.sponsors img {
+      margin: auto;
     }
 
 div.sponsors a:focus, aside div.be-partner a:focus, p.cfp a:focus {

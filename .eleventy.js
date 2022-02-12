@@ -1,10 +1,33 @@
 const htmlmin = require("html-minifier");
 const fetch = require("node-fetch")
+const fs = require("fs");
+const path = require("path");
+const { optimize } = require('svgo');
 
 module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("partners", async () => {
+    const tempFolder = path.resolve(__dirname, "_site/img")
     const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/vzbfowsExm54SrWLtxA5").then(res => res.json())
+
+    Object.values(sponsors.partners).forEach(pack => {
+      const sponsorsByPack = Object.values(pack);
+      sponsorsByPack.forEach(sponsor => {
+        fetch(sponsor.logo_url)
+            .then(response => response.text())
+            .then(blob => {
+              return optimize(blob, {
+                multipass: true,
+              })
+            })
+            .then(result => {
+              const optimizedSvgString = result.data;
+              fs.writeFileSync(tempFolder + "/" + sponsor.name +".svg", optimizedSvgString, { flag: 'w' })
+            })
+            .catch(err => console.error(err))
+      })
+    })
+
     return sponsors.partners;
   });
 

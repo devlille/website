@@ -55,12 +55,10 @@ module.exports = function (eleventyConfig) {
   });
 
 
-  eleventyConfig.addPassthroughCopy("sw.js");
   eleventyConfig.addPassthroughCopy("css/*.ttf");
   eleventyConfig.addPassthroughCopy("css/*.woff");
   eleventyConfig.addPassthroughCopy("css/*.woff2");
   eleventyConfig.addPassthroughCopy("manifest.json");
-  eleventyConfig.addPassthroughCopy("js/*.*");
   eleventyConfig.addPassthroughCopy("img/*.*");
   eleventyConfig.addPassthroughCopy("partenaire.pdf");
 
@@ -78,6 +76,17 @@ module.exports = function (eleventyConfig) {
             resolve(data.styles)
           });
         });
+      };
+    }
+  });
+
+  eleventyConfig.addTemplateFormats("js");
+  const { minify } = require("terser");
+  eleventyConfig.addExtension("js", {
+    outputFileExtension: "js",
+    compile: async (inputContent) => {
+      return async () => {
+        return minify(inputContent).then(result => result.code);
       };
     }
   });

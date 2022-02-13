@@ -1,19 +1,4 @@
-const cacheName = 'devfestlille-20';
-
-const filesToCache = [
-  '/',
-  '/css/vars.css',
-  '/css/aleo-bold-webfont.woff',
-  '/css/aleo-light-webfont.woff',
-  '/css/aleo-regular-webfont.woff',  
-  '/css/aleo-bold-webfont.woff2',
-  '/css/aleo-light-webfont.woff2',
-  '/css/aleo-regular-webfont.woff2',
-  '/img/logo-full.svg',
-  '/img/logo-sml.svg',
-  '/img/header.svg'
-];
-
+const cacheName = 'devfest-lille';
 
 self.addEventListener('install', function(e) {
   e.waitUntil(

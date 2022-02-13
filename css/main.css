@@ -339,7 +339,7 @@ aside div.be-partner {
     min-width: 80px;
     background-color: var(--text-high);
     padding: 0.5rem;
-    margin: 0 2rem 2rem 0;
+    margin: 0 auto 2rem auto;
     border-radius: 100%;
   }
     div.sponsors a {

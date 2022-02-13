@@ -1,13 +1,5 @@
 const cacheName = 'devfest-lille';
 
-self.addEventListener('install', function(e) {
-  e.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      return cache.addAll(filesToCache);
-    })
-  );
-});
-
 self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys().then(function(keyList) {

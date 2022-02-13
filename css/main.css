@@ -336,7 +336,6 @@ aside div.be-partner {
 
   div.sponsors li {
     box-sizing: border-box;
-    flex-basis: 20%;
     min-width: 80px;
     background-color: var(--text-high);
     padding: 0.5rem;

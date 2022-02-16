@@ -1,6 +1,8 @@
 name: CI for production
 
 on:
+  schedule:
+    - cron: '30 1 * * *'
   push:
     branches:
       - master

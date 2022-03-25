@@ -326,6 +326,10 @@ aside div.be-partner {
     color: var(--hot-light);
     border-color: var(--hot-light);
   }
+  div.sponsors.partner h3 {
+    color: var(--hot-color);
+    border-color: var(--hot-color);
+  }
 
   div.sponsors ul {
     display: flex;

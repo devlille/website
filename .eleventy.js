@@ -13,6 +13,9 @@ module.exports = function (eleventyConfig) {
     Object.values(sponsors.partners).forEach(pack => {
       const sponsorsByPack = Object.values(pack);
       sponsorsByPack.forEach(sponsor => {
+        if(sponsor.site_url.indexOf("https://") < 0){
+          sponsor.site_url = "https://" + sponsor.site_url;
+        }
         fetch(sponsor.logo_url)
             .then(response => response.text())
             .then(blob => {

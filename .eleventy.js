@@ -28,7 +28,20 @@ module.exports = function (eleventyConfig) {
       })
     })
 
-    return sponsors.partners;
+    return {
+      ...sponsors.partners,
+      partners: [
+        {
+          site_url: "https://www.epitech.eu/",
+          "name": "Epitech"
+        },
+        {
+          site_url: "https://www.sciences-u-lille.fr/",
+          "name": "Sciences-U Campus Lile",
+          "image": "SciencesU.png"
+        }
+      ]
+    };
   });
 
   eleventyConfig.addCollection("config", function () {

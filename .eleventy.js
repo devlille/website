@@ -3,12 +3,13 @@ const fetch = require("node-fetch")
 const fs = require("fs");
 const path = require("path");
 const { optimize } = require('svgo');
+const config = require("./data/config.json");
 
 module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("partners", async () => {
     const tempFolder = path.resolve(__dirname, "_site/img")
-    const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/vzbfowsExm54SrWLtxA5").then(res => res.json())
+    const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition).then(res => res.json())
 
     Object.values(sponsors.partners).forEach(pack => {
       const sponsorsByPack = Object.values(pack);
@@ -48,7 +49,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("config", function () {
-    return require("./data/config.json");
+    return config;
   });
 
   eleventyConfig.addCollection("speakers", function () {

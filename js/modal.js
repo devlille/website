@@ -8,13 +8,15 @@ No dependencies
 
   const modalTrigger = document.querySelectorAll('button[data-modal]');
 
+  console.log('modal loaded')
+
   function closeModal(modal, fbt) {
     modal.classList.remove('active');
     fbt.focus();
   }
 
   modalTrigger.forEach(function(bt) {
-    bt.addEventListener('click', function() {
+    bt.addEventListener('click', function() {console.log('prout')
       var modalTargetText = bt.getAttribute('data-modal');
       let modalTarget = document.getElementById(modalTargetText);
       let overlay = modalTarget.querySelector('div.overlay');

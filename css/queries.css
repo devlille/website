@@ -63,7 +63,7 @@
 
 @media screen and (min-width: 1000px) {
   aside div.be-partner {
-  	display: grid;
+  	display: none;
   	grid-template-columns: 1.5fr 2fr;
   	grid-template-rows: auto auto;
   	gap: 2rem;
@@ -108,6 +108,44 @@
   div.decor {margin: 0 0 7rem;}
   div.decor .content div {flex-basis: 60%;}
 
-  article {margin-left: 287px; margin-bottom: 6rem;}
-    article h2 {font-size: 3em; margin-bottom: 4rem;}
+  .page-body {margin-left: 287px; margin-bottom: 6rem;}
+    .page-body h2 {font-size: 3em; margin-bottom: 4rem;}
+
+  div.all-speakers {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 10%;
+    margin-top: 6rem;
+  }
+
+  div.speaker-sheet {
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.content {margin-bottom: 1.5rem;}
+  ul.social {
+    margin-top: auto;
+  }
+  ul.social li {
+    font-size: 0.95em;
+  }
+
+  section.hour {position: relative;}
+  section.hour + section.hour {
+    margin-top: 4rem;
+  }
+  section.hour dd {
+    margin-left: 2.5em;
+  }
+  section.hour h3 {
+    position: absolute;
+    width: 15em;
+    top: 0;
+    left: 0;
+  }
+  section.hour div.content {
+    margin-left: 15em;
+  }
 }

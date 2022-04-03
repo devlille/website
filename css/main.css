@@ -128,13 +128,13 @@ hr {
 /* -------------------------- STRUCTURE ---------------------------- */
 
 header {
-  margin: 4rem 5% 3rem;
+  margin: 1.5rem 5% 0;
   transition: all .3s;
 }
 
 header.active {
   position: fixed;
-  top: 2rem;
+  top: 0;
   left: 0;
   width: 90%;
   background-color: var(--n-dark);
@@ -295,6 +295,7 @@ aside {
 }
 
 aside div.be-partner {
+  display: none;
   color: var(--n-dark);
   background: var(--hot-light);
   padding: 1rem 1.5rem 1.5rem;
@@ -426,28 +427,193 @@ p.read-more {margin-top: 1rem;}
 /* ----------------------------------------------------------------- */
 /* -------------------------- ARTICLE ---------------------------- */
 
-article {max-width: 55em; margin: 4rem 0;}
 
-  article h2 {
+.page-body {max-width: 55em; margin: 4rem 0;}
+
+  .page-body h2 {
     color: var(--main-color);
   }
-  article p, article li {line-height: 1.6;}
+  .page-body p, .page-body li {line-height: 1.6;}
 
-  article p + p {margin-top: 0.8em;}
+  .page-body p + p {margin-top: 0.8em;}
 
-  article ul {margin: 1em;}
+  .page-body ul {margin: 1em;}
 
 div.faq + div.faq {margin-top: 2rem;}
 
 div.faq h3 {color: var(--hot-light);}
 
 
+
+/* ----------------------------------------------------------------- */
+/* -------------------------- SPEAKERS ---------------------------- */
+
+div.speaker-sheet  {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px dotted var(--n-light);
+}
+
+div.speaker-sheet header {
+  display: grid;
+  grid-template-columns: 160px auto;
+  grid-template-rows: auto auto;
+  gap: 0 2rem;
+  margin: 0 0 1.5rem;
+}
+
+div.speaker-sheet h3 {
+  align-self: end;
+  font-variation-settings: "wght" 800;
+}
+
+p.s-photo {
+  box-sizing: border-box;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  width: 160px;
+  height: 160px;
+  padding: 1rem;
+}
+
+div.speaker-sheet:nth-child(even) p.s-photo {
+  background: url(../img/blob.svg) no-repeat;
+  background-size: contain;
+}
+div.speaker-sheet:nth-child(odd) p.s-photo {
+  background: url(../img/blob2.svg) no-repeat;
+  background-size: contain;
+}
+
+  p.s-photo img {border-radius: 100%;}
+
+ul.social {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  gap: 2rem;
+}
+
+ul.social img {width: 1em; margin-right: 0.5em;}
+
+
+/* ----------------------------------------------------------------- */
+/* -------------------------- AGENDA ---------------------------- */
+
+section.hour + section.hour {margin-top: 2rem;}
+
+  section.hour h3 {
+    color: var(--main-color);
+    font-variation-settings: "wght" 800;
+    margin-bottom: 0.25em;
+  }
+
+  section.hour div.content {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border-left: 1px solid var(--hot-light);
+  }
+
+  section.hour dl + dl {margin-top: 1rem;}
+  section.hour dt {
+    color: var(--text-high);
+    font-variation-settings: "wght" 600;
+  }
+  section.hour dd {margin-left: 1rem;}
+
+  section.hour button.modal-trigger {
+    font-variation-settings: "wght" 800;
+    text-align: left;
+    color: var(--link-color);
+    background-color: var(--body-bg);
+    padding: 0.25em 0;
+  }
+
+img[alt=Ancre] {width: 1em;}
+
+
+
 /* ----------------------------------------------------------------- */
 /* -------------------------- GENERAL ---------------------------- */
+
+
+/* MODAL */
+
+div.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+div.modal.active {display: block;}
+
+  div.modal div.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--n-dark);
+  }
+
+  div.modal div.dialog {
+    box-sizing: border-box;
+    position: relative;
+    width: 90vw;
+    max-width: 800px;
+    height: 90vh;
+    background-color: var(--body-bg);
+    padding: 2rem;
+    margin: 5vh auto;
+    z-index: 2010;
+  }
+    div.modal div.content {
+      overflow-y: auto;
+      height: 60vh;
+    }
+
+  div.modal header {
+    margin: 0 5em 2rem 0;
+  }
+  div.modal h4 {
+    font-size: 1.4em;
+    font-variation-settings: "wght" 800;
+    color: var(--main-color);
+    background-color: var(--body-bg);
+    margin-bottom: 0.5em;
+  }
+    div.modal header p {font-size: 0.95em;}
+
+  div.modal p {line-height: 1.58;}
+
+  button[data-modal] {
+    font-family: var(--stack-b);
+    text-align: left;
+    color: var(--main-color-d);
+    background-color: var(--body-bg);
+  }
+
+  button[data-modal]:hover, button[data-modal]:focus {
+    outline: 2px dotted var(--hot-color);
+  }
+
+  button.bt-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+
 
 .stressed {color: var(--main-color);}
 
 p.cfp {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;

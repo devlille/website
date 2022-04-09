@@ -20,14 +20,14 @@ currSection: agenda
           <dl>
               <dt>{{ t.room }}</dt>
               <dd>
-                  {% if t.abstract %}
-                <button class="modal-trigger" data-modal="conf-details-{{t.id}}">
-                  {{ t.title }}
+                  {% if t.talk.abstract %}
+                <button class="modal-trigger" data-modal="conf-details-{{t.talk.id}}">
+                  {{ t.talk.title }}
                 </button>
 
 
                   {% else %}
-                  {{ t.title }}
+                  {{ t.talk.title }}
                   {%- endif -%}
               </dd>
               <dd> {{ t.speakers }}</dd>
@@ -43,17 +43,17 @@ currSection: agenda
 </div>
 {%- for talk in collections.talks -%}
 {%- for t in talk[1] -%}
-{% if t.abstract %}
-<div class="modal" id="conf-details-{{t.id}}">
+{% if t.talk.abstract %}
+<div class="modal" id="conf-details-{{t.talk.id}}">
     <div class="overlay"></div>
     <div class="dialog" role="dialog" aria-labelledby="conf-details-title" aria-modal="true">
         <header>
-            <h4 id="conf-details-title">{{ t.title }}</h4>
+            <h4 id="conf-details-title">{{ t.talk.title }}</h4>
             <p>{{ t.speakers }}</p>
         </header>
         <div class="content">
-            <p>{{ t.abstract }}</p>
-            <p class="openfeedback"> Suite à la conférence, vous pouvez faire un retour aux conférenciers et conférencières sur <a href="{{t.openfeedback}}" target="_blank">OpenFeedback</a></p>
+            <p>{{ t.talk.abstract }}</p>
+            <p class="openfeedback"> Suite à la conférence, vous pouvez faire un retour aux conférenciers et conférencières sur <a href="{{t.talk.open_feedback}}" target="_blank">OpenFeedback</a></p>
         </div>
         <button class="bt-close">[ Fermer ]</button>
     </div>

@@ -6,12 +6,11 @@ const { optimize } = require('svgo');
 const config = require("./data/config.json");
 
 module.exports = function (eleventyConfig) {
-
   eleventyConfig.addCollection("speakersFromApi", async () => {
     const speakers = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/speakers").then(res => res.json())
-    console.log(speakers);
     return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name))
   });
+
   eleventyConfig.addCollection("partners", async () => {
     const tempFolder = path.resolve(__dirname, "_site/img")
     const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition).then(res => res.json())
@@ -57,22 +56,17 @@ module.exports = function (eleventyConfig) {
     return config;
   });
 
-  eleventyConfig.addCollection("speakers", function () {
-    return require("./data/agenda.json").speakers;
-  });
-
-  eleventyConfig.addCollection("talks", function () {
-    const config = require("./data/agenda.json")
-    const talks = Object.entries(config.talks)
+  eleventyConfig.addCollection("talks", async () => {
+    const agenda = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/agenda").then(res => res.json())
+    const talks = Object.entries(agenda.talks)
     const oTalks = talks.map(([_, talks]) => {
       return [_, talks.map(talk => {
         return {
           ...talk,
-          speakers: talk.speakers?.map(speaker => config.speakers.find(({uid}) => uid === speaker)?.displayName).join(', ')
+          speakers: talk?.talk?.speakers?.map(speaker => speaker.display_name).join(', ')
         }
       })]
     })
-
     return oTalks;
   });
 

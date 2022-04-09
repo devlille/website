@@ -39,8 +39,7 @@ currSection: agenda
       {%- endfor -%}
   </div>
 
-</main>
-</div>
+
 {%- for talk in collections.talks -%}
 {%- for t in talk[1] -%}
 {% if t.talk.abstract %}
@@ -53,12 +52,12 @@ currSection: agenda
         </header>
         <div class="content">
             <p>{{ t.talk.abstract }}</p>
-            <p class="openfeedback"> Suite à la conférence, vous pouvez faire un retour aux conférenciers et conférencières sur <a href="{{t.talk.open_feedback}}" target="_blank">OpenFeedback</a></p>
         </div>
+        <p class="openfeedback">Suite à la conférence, vous pouvez faire un retour aux conférenciers
+          et conférencières sur <a href="{{t.talk.open_feedback}}" target="_blank">OpenFeedback</a></p>
         <button class="bt-close">[ Fermer ]</button>
     </div>
 </div>
 {%- endif -%}
 {%- endfor -%}
 {%- endfor -%}
-</div>

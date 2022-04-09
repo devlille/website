@@ -20,7 +20,7 @@ currSection: agenda
           <dl>
               <dt>{{ t.room }}</dt>
               <dd>
-                  {% if t.talk.abstract %}
+                {% if t.talk.abstract %}
                 <button class="modal-trigger" data-modal="conf-details-{{t.talk.id}}">
                   {{ t.talk.title }}
                 </button>
@@ -28,7 +28,7 @@ currSection: agenda
 
                   {% else %}
                   {{ t.talk.title }}
-                  {%- endif -%}
+                {%- endif -%}
               </dd>
               <dd> {{ t.speakers }}</dd>
           </dl>

@@ -62,11 +62,15 @@ module.exports = function (eleventyConfig) {
     const oTalks = talks.map(([_, talks]) => {
       return [_, talks.map(talk => {
         return {
-          ...talk,
+          talk: {
+            ...talk.talk,
+            title: talk.talk?.title ?? "Pause",
+          },
           speakers: talk?.talk?.speakers?.map(speaker => speaker.display_name).join(', ')
         }
       })]
     })
+    console.log(oTalks[1]);
     return oTalks;
   });
 

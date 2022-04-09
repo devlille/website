@@ -7,6 +7,11 @@ const config = require("./data/config.json");
 
 module.exports = function (eleventyConfig) {
 
+  eleventyConfig.addCollection("speakersFromApi", async () => {
+    const speakers = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/speakers").then(res => res.json())
+    console.log(speakers);
+    return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name))
+  });
   eleventyConfig.addCollection("partners", async () => {
     const tempFolder = path.resolve(__dirname, "_site/img")
     const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition).then(res => res.json())

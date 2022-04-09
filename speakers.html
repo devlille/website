@@ -9,11 +9,11 @@ currSection: speakers
 
   <div class="all-speakers">
   	<!-- SPEAKER SHEET/ -->
-      {%- for speaker in collections.speakers -%}
+      {%- for speaker in collections.speakersFromApi -%}
   	<div class="speaker-sheet">
   		<header>
-  			<p class="s-photo"><img src="{{ speaker.photoURL }}" alt="Photo de {{ speaker.displayName }}" /></p>
-  			<h3>{{ speaker.displayName }}</h3>
+  			<p class="s-photo"><img src="{{ speaker.photo_url }}" alt="Photo de {{ speaker.display_name }}" /></p>
+  			<h3>{{ speaker.display_name }}</h3>
         {% if speaker.company %}
            <p class="s-job">{{ speaker.company }}</p>
         {% endif %}
@@ -25,13 +25,13 @@ currSection: speakers
                     {% if speaker.twitter %}
   			<li>
   				<img src="/img/twitter.svg" alt="Twitter">
-  				<a target="_blank" href="https://twitter.com/{{speaker.twitter}}">@{{ speaker.twitter }}</a>
+  				<a target="_blank" href="{{speaker.twitter}}">Twitter</a>
   			</li>
                     {% endif %}
                     {% if speaker.github %}
   			<li>
   				<img src="/img/github-face.svg" alt="Github">
-  				<a target="_blank" href="https://github.com/{{speaker.github}}">@{{ speaker.github }}</a>
+  				<a target="_blank" href="https://github.com/{{speaker.github}}">Github</a>
   			</li>
                     {% endif %}
   		</ul>

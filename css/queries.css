@@ -76,7 +76,11 @@
 
 
 @media screen and (min-width: 1300px) {
-  #wrapper {width: 75%;}
+  #wrapper {width: 85%;}
+  main {
+    margin-right: 0;
+    margin-left: calc(5.2% + 145px);
+  }
 
   nav {
   	position: fixed;
@@ -108,7 +112,7 @@
   div.decor {margin: 0 0 7rem;}
   div.decor .content div {flex-basis: 60%;}
 
-  .page-body {margin-left: 287px; margin-bottom: 6rem;}
+  .page-body {margin-bottom: 6rem;}
     .page-body h2 {font-size: 3em; margin-bottom: 4rem;}
 
   div.all-speakers {
@@ -117,6 +121,7 @@
     grid-gap: 10%;
     margin-top: 6rem;
   }
+    div.all-speakers h3 {font-size: 1.5em;}
 
   div.speaker-sheet {
     flex-basis: 45%;
@@ -132,20 +137,17 @@
     font-size: 0.95em;
   }
 
-  section.hour {position: relative;}
-  section.hour + section.hour {
+  section.hour {
+    display: flex;
     margin-top: 4rem;
   }
+    section.hour h3 {margin: 2rem 0;}
+
   section.hour dd {
     margin-left: 2.5em;
   }
-  section.hour h3 {
-    position: absolute;
-    width: 15em;
-    top: 0;
-    left: 0;
-  }
   section.hour div.content {
-    margin-left: 15em;
+    flex: 1;
+    padding: 2rem 0;
   }
 }

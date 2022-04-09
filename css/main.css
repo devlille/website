@@ -132,34 +132,6 @@ header {
   transition: all .3s;
 }
 
-header.active {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 90%;
-  background-color: var(--n-dark);
-  padding: 1rem 5% 0.2rem;
-  margin: 0;
-  box-shadow: 0 0 15px rgba(255,255,255,0.5);
-  transition: all .3s;
-  z-index: 10;
-}
-
-  header.active img {width: 140px;}
-  header.active span {
-    font-size: 0.8rem;
-    text-align: right;
-    background-color: var(--n-dark);
-  }
-  header.active time {display: block;}
-  header.active h1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header.active h1 strong {width: 60%;}
-  header.active h1 span {margin-left: 0;}
-  header.active ~ #wrapper {margin-top: 15vh;}
 
 main, aside {margin: 0 5vw;}
 
@@ -289,6 +261,35 @@ nav a:hover, nav a:focus, nav a[aria-current] {
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- HOME ---------------------------- */
+
+#home header.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  background-color: var(--n-dark);
+  padding: 1rem 5% 0.2rem;
+  margin: 0;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  transition: all .3s;
+  z-index: 10;
+}
+
+  #home header.active img {width: 140px;}
+  #home header.active span {
+    font-size: 0.8rem;
+    text-align: right;
+    background-color: var(--n-dark);
+  }
+  #home header.active time {display: block;}
+  #home header.active h1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #home header.active h1 strong {width: 60%;}
+  #home header.active h1 span {margin-left: 0;}
+  #home header.active ~ #wrapper {margin-top: 15vh;}
 
 aside {
   margin: 0 5vw 6rem;
@@ -485,7 +486,11 @@ div.speaker-sheet:nth-child(odd) p.s-photo {
   background-size: contain;
 }
 
-  p.s-photo img {border-radius: 100%;}
+  p.s-photo img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+  }
 
 ul.social {
   display: flex;
@@ -524,6 +529,7 @@ section.hour + section.hour {margin-top: 2rem;}
 
   section.hour button.modal-trigger {
     font-variation-settings: "wght" 800;
+    line-height: 1.35;
     text-align: left;
     color: var(--link-color);
     background-color: var(--body-bg);
@@ -532,7 +538,10 @@ section.hour + section.hour {margin-top: 2rem;}
 
 img[alt=Ancre] {width: 1em;}
 
-
+p.openfeedback {
+  font-variation-settings: "wght" 600;
+  margin-top: 2rem;
+}
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- GENERAL ---------------------------- */

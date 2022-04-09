@@ -16,7 +16,7 @@ No dependencies
   }
 
   modalTrigger.forEach(function(bt) {
-    bt.addEventListener('click', function() {console.log('prout')
+    bt.addEventListener('click', function() {
       var modalTargetText = bt.getAttribute('data-modal');
       let modalTarget = document.getElementById(modalTargetText);
       let overlay = modalTarget.querySelector('div.overlay');

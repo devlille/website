@@ -1,6 +1,7 @@
 name: CI for production
 
 on:
+  repository_dispatch:
   schedule:
     - cron: '30 1 * * *'
   push:

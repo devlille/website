@@ -42,7 +42,7 @@ currSection: agenda
 
 {%- for talk in collections.talks -%}
 {%- for t in talk[1] -%}
-{% if t.talk.abstract %}
+{% if t.talk.abstract and t.talk.abstract != "" %}
 <div class="modal" id="conf-details-{{t.talk.id}}">
     <div class="overlay"></div>
     <div class="dialog" role="dialog" aria-labelledby="conf-details-title" aria-modal="true">

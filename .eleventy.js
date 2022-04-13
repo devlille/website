@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { optimize } = require('svgo');
 const config = require("./data/config.json");
+const md = require( "markdown" ).markdown;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("speakersFromApi", async () => {
@@ -64,6 +65,7 @@ module.exports = function (eleventyConfig) {
         return {
           talk: {
             ...talk.talk,
+            abstract: md.toHTML(talk.talk?.abstract ?? "").replace("h2", "p"),
             title: talk.talk?.title ?? "Pause",
           },
           speakers: talk?.talk?.speakers?.map(speaker => speaker.display_name).join(', ')

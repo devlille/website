@@ -19,8 +19,6 @@ No dependencies
     bt.addEventListener('click', function() {
       var modalTargetText = bt.getAttribute('data-modal');
       let modalTarget = document.getElementById(modalTargetText);
-      let overlay = modalTarget.querySelector('div.overlay');
-      let btClose = modalTarget.querySelector('button.bt-close');
 
       function handleKeyEvents(e) {
         if (e.key === 'Escape') {
@@ -44,6 +42,15 @@ No dependencies
           }
         }
       }
+
+
+      if(!modalTarget){
+        return;
+      }
+
+      let overlay = modalTarget.querySelector('div.overlay');
+      let btClose = modalTarget.querySelector('button.bt-close');
+
 
       let originalTrigger = document.activeElement;
 

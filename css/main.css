@@ -239,7 +239,7 @@ nav li {
 	font-variation-settings: "wght" 600, "wdth" 100;
 	font-variant: small-caps;
 	text-transform: uppercase;
-	padding: 0.75em;
+	padding: 0.75em 0;
 }
 
 nav a {
@@ -574,7 +574,6 @@ div.modal.active {display: block;}
     position: relative;
     width: 90vw;
     max-width: 800px;
-    height: 90vh;
     background-color: var(--body-bg);
     padding: 2rem;
     margin: 5vh auto;

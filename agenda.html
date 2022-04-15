@@ -18,11 +18,13 @@ currSection: agenda
           {%- for t in talk[1] -%}
 
           <dl>
-              <dt>{{ t.room }}</dt>
-              <dd>
+              <dt>{{ t.talk.room }} </dt>
+              <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}>
+
                 {% if t.talk.abstract %}
                 <button class="modal-trigger" data-modal="conf-details-{{t.talk.id}}">
                   {{ t.talk.title }}
+                  {% if t.talk.language == "English" %}<span aria-label="Talk in english"> 🇬🇧 </span>{%- endif -%}
                 </button>
 
 
@@ -30,7 +32,8 @@ currSection: agenda
                   {{ t.talk.title }}
                 {%- endif -%}
               </dd>
-              <dd> {{ t.speakers }}</dd>
+
+              <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}> {{ t.speakers }}</dd>
           </dl>
           {%- endfor -%}
 
@@ -45,9 +48,12 @@ currSection: agenda
 {% if t.talk.abstract and t.talk.abstract != "" %}
 <div class="modal" id="conf-details-{{t.talk.id}}">
     <div class="overlay"></div>
-    <div class="dialog" role="dialog" aria-labelledby="conf-details-title" aria-modal="true">
+    <div class="dialog" role="dialog" aria-labelledby="conf-details-title" aria-modal="true" {% if t.talk.language == "English" %} lang="en" {%- endif -%}>
         <header>
-            <h4 id="conf-details-title">{{ t.talk.title }}</h4>
+            <h4 id="conf-details-title">
+                {{ t.talk.title }}
+                {% if t.talk.language == "English" %}<span aria-label="Talk in english"> 🇬🇧 </span>{%- endif -%}
+            </h4>
             <p>{{ t.speakers }}</p>
         </header>
         <div class="content">

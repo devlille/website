@@ -65,6 +65,7 @@ module.exports = function (eleventyConfig) {
         return {
           talk: {
             ...talk.talk,
+            room: talk.room,
             abstract: md.toHTML(talk.talk?.abstract ?? "").replace("h2", "p"),
             title: talk.talk?.title ?? "Pause",
           },

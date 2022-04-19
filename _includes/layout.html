@@ -23,9 +23,51 @@
 
     <link href="/css/main.css" rel="stylesheet" media="all" />
     <link href="/css/queries.css" rel="stylesheet" media="all" />
-
-    <!-- GOOGLE ANALYTICS -->
-
+    
+     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "The Adventures of Kira and Morrison",
+      "startDate": "{{  collections.config.edition }}-06-10T08:00+02:00",
+      "endDate": "{{  collections.config.edition }}-06-10T18:30+02:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Kinepolis Lomme",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1 Rue du Château d'Isenghien",
+          "addressLocality": "Lille",
+          "postalCode": "59160",
+          "addressCountry": "FR"
+        }
+      },
+      "image": [
+        "https://devfest.gdglille.org/img/kinepolis.jpg",
+        "https://devfest.gdglille.org/img/lemessageur.jpg"
+       ],
+      "description": "Rejoignez nous pour une journée de conférences accessibles sur les thèmes suivants : Web, Mobile, Cloud, DevOps, Big Data et IA.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.billetweb.fr/devfest-lille-{{  collections.config.edition }}",
+        "price": "40",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/SoldOut",
+        "validFrom": "{{  collections.config.edition }}-01-01T08:00"
+      },
+      "performer": {
+        "@type": "PerformingGroup",
+        "name": "GDG Lille"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "GDG Lille",
+        "url": "https://www.meetup.com/fr-FR/GDG-Lille/"
+      }
+    }
+    </script>    
     <link rel="manifest" href="manifest.json" />
 </head>
 

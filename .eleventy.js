@@ -73,7 +73,6 @@ module.exports = function (eleventyConfig) {
         }
       })]
     })
-    console.log(oTalks[1]);
     return oTalks;
   });
 

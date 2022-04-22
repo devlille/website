@@ -16,6 +16,12 @@ module.exports = function (eleventyConfig) {
     const tempFolder = path.resolve(__dirname, "_site/img")
     const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition).then(res => res.json())
 
+    Object.entries(sponsors.partners).forEach(([pack, partners]) => {
+      sponsors.partners[pack] = partners.sort((p1, p2) => {
+        return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase())
+      })
+    })
+
     Object.values(sponsors.partners).forEach(pack => {
       const sponsorsByPack = Object.values(pack);
       sponsorsByPack.forEach(sponsor => {

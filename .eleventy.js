@@ -28,8 +28,7 @@ module.exports = function (eleventyConfig) {
         if(sponsor.site_url.indexOf("https://") < 0){
           sponsor.site_url = "https://" + sponsor.site_url;
         }
-        const array = sponsor.logo_url.split(".")
-        const originalExt = array[array.length - 1]
+        const originalExt = getExtension(sponsor.logo_url.split(".").pop())
         fetch(sponsor.logo_url)
             .then(response => response.text())
             .then(blob => {
@@ -47,6 +46,17 @@ module.exports = function (eleventyConfig) {
 
     return sponsors.partners;
   });
+
+  function getExtension(potentialExt) {
+    switch (potentialExt) {
+      case "png":
+        return "png";
+      case "svg":
+        return "svg";
+      default:
+        return "svg";
+    }
+  }
 
   eleventyConfig.addCollection("config", function () {
     return config;

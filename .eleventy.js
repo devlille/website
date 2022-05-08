@@ -28,6 +28,7 @@ module.exports = function (eleventyConfig) {
         if(sponsor.site_url.indexOf("https://") < 0){
           sponsor.site_url = "https://" + sponsor.site_url;
         }
+        const originalExt = sponsor.logo_url.split(".").pop()
         fetch(sponsor.logo_url)
             .then(response => response.text())
             .then(blob => {
@@ -37,7 +38,7 @@ module.exports = function (eleventyConfig) {
             })
             .then(result => {
               const optimizedSvgString = result.data;
-              fs.writeFileSync(tempFolder + "/" + sponsor.name +".svg", optimizedSvgString, { flag: 'w' })
+              fs.writeFileSync(tempFolder + "/" + sponsor.name + "." + originalExt, optimizedSvgString, { flag: 'w' })
             })
             .catch(err => console.error(err))
       })

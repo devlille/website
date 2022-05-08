@@ -128,7 +128,7 @@
                           {%- for p in collections.partners.golds -%}
                           <li>
                               <a href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" loading="lazy"/>
+                                  <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
                           {%- endfor -%}
@@ -145,7 +145,7 @@
                           {%- for p in collections.partners.silvers -%}
                           <li>
                               <a href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" loading="lazy"/>
+                                  <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
                           {%- endfor -%}
@@ -163,7 +163,7 @@
                           {%- for p in collections.partners.bronzes -%}
                           <li>
                               <a href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" loading="lazy"/>
+                                  <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
                           {%- endfor -%}
@@ -184,7 +184,7 @@
                                   {% if p.image %}
                                   <img src="/img/{{p.image}}" alt="{{p.name}}" loading="lazy"/>
                                   {% else %}
-                                  <img src="/img/{{p.name}}.svg" alt="{{p.name}}" loading="lazy"/>
+                                  <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
                                   {%- endif -%}
                               </a>
                           </li>

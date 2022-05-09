@@ -148,7 +148,7 @@
   }
   section.hour div.content {
     flex: 1;
-    padding: 2rem 0;
+    padding: 2rem 0 2rem 1rem;
   }
   div.modal div.content {height: 50vh;}
   div.modal h4 {

@@ -28,7 +28,7 @@ module.exports = function (eleventyConfig) {
         if(sponsor.site_url.indexOf("https://") < 0){
           sponsor.site_url = "https://" + sponsor.site_url;
         }
-        console.log(sponsor)
+        sponsor.ext = getExtension(sponsor.logo_url.split(".").pop())
         fetch(sponsor.logo_url)
             .then(response => response.text())
             .then(blob => {
@@ -38,27 +38,25 @@ module.exports = function (eleventyConfig) {
             })
             .then(result => {
               const optimizedSvgString = result.data;
-              fs.writeFileSync(tempFolder + "/" + sponsor.name +".svg", optimizedSvgString, { flag: 'w' })
+              fs.writeFileSync(tempFolder + "/" + sponsor.name + "." + sponsor.ext, optimizedSvgString, { flag: 'w' })
             })
             .catch(err => console.error(err))
       })
     })
 
-    return {
-      ...sponsors.partners,
-      partners: [
-        {
-          site_url: "https://www.epitech.eu/",
-          "name": "Epitech"
-        },
-        {
-          site_url: "https://www.sciences-u-lille.fr/",
-          "name": "Sciences-U Campus Lile",
-          "image": "SciencesU.png"
-        }
-      ]
-    };
+    return sponsors.partners;
   });
+
+  function getExtension(potentialExt) {
+    switch (potentialExt) {
+      case "png":
+        return "png";
+      case "svg":
+        return "svg";
+      default:
+        return "svg";
+    }
+  }
 
   eleventyConfig.addCollection("config", function () {
     return config;

@@ -28,6 +28,7 @@ module.exports = function (eleventyConfig) {
         if(sponsor.site_url.indexOf("https://") < 0){
           sponsor.site_url = "https://" + sponsor.site_url;
         }
+        console.log(sponsor)
         fetch(sponsor.logo_url)
             .then(response => response.text())
             .then(blob => {

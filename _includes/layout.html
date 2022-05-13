@@ -100,7 +100,7 @@
                 {% if currSection == "agenda" %} aria-current="page" {% endif %}>Agenda</a></li>
               <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>
                 FAQ</a></li>
-              <li><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a></li>
+              <li hidden><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a></li>
           </ul>
       </nav>
 
@@ -128,7 +128,7 @@
                       <ul>
                           {%- for p in collections.partners.golds -%}
                           <li>
-                              <a href="{{p.site_url}}">
+                              <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
                                   <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
@@ -145,7 +145,7 @@
                       <ul>
                           {%- for p in collections.partners.silvers -%}
                           <li>
-                              <a href="{{p.site_url}}">
+                              <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
                                   <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
@@ -163,7 +163,7 @@
                       <ul>
                           {%- for p in collections.partners.bronzes -%}
                           <li>
-                              <a href="{{p.site_url}}">
+                              <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
                                   <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
                               </a>
                           </li>
@@ -181,7 +181,7 @@
                       <ul>
                           {%- for p in collections.partners.others -%}
                           <li>
-                              <a href="{{p.site_url}}">
+                              <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
                                   {% if p.image %}
                                   <img src="/img/{{p.image}}" alt="{{p.name}}" loading="lazy"/>
                                   {% else %}

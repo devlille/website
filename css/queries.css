@@ -24,7 +24,9 @@
   }
 
   h1 > span {font-size: 1.5rem; margin-left: 133px;}
-
+  .main-nav li:last-child {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 800px) {

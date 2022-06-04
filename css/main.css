@@ -644,3 +644,8 @@ p.cfp a {
   color: var(--text-inv);
   background-color: var(--hot-light);
 }
+
+#menu dt {
+  margin-top: 1em;
+  text-decoration: underline;
+}

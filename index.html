@@ -11,15 +11,15 @@ currSection: index
               <span class="stressed">Cloud</span>, <span class="stressed">DevOps</span>, <span class="stressed">Big Data</span> et
                 <span class="stressed">IA</span>.
         </p>
-        <p class="register"><a href="https://www.billetweb.fr/devfest-lille-2022">Inscrivez-vous!</a></p>
+        <p class="register"><a href="{{ collections.config.billetwebUrl }}{{collections.config.edition}}">Inscrivez-vous!</a></p>
     </div>
     <div class="stats">
         <h2 class="no-display">Le Devfest Lille {{ collections.config.edition }} en chiffres</h2>
         <ul>
-            <li><strong>800</strong> <span>participants</span></li>
-            <li><strong>40</strong> <span>speakers</span></li>
-            <li><strong>26</strong> <span>conférences</span></li>
-            <li><strong>3</strong> <span lang="en">tracks</span></li>
+            <li><strong>{{ collections.config.numberOfPeople }}</strong> <span>participants</span></li>
+            <li><strong>{{ collections.config.numberOfSpeaker }}</strong> <span>speakers</span></li>
+            <li><strong>{{ collections.config.numberOfTalks }}</strong> <span>conférences</span></li>
+            <li><strong>{{ collections.config.numberOfTraks }}</strong> <span lang="en">tracks</span></li>
         </ul>
     </div>
 </div>

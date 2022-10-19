@@ -8,43 +8,54 @@ const md = require( "markdown" ).markdown;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("speakersFromApi", async () => {
-    const speakers = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/speakers").then(res => res.json())
-    return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name))
+    try {
+      const speakers = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/speakers").then(res => res.json())
+      console.log(speakers)
+      return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name))
+    } catch(e){
+      return [{}];
+    }
+
   });
 
   eleventyConfig.addCollection("partners", async () => {
-    const tempFolder = path.resolve(__dirname, "_site/img")
-    const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition).then(res => res.json())
+    try {
+      const tempFolder = path.resolve(__dirname, "_site/img")
+      const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition).then(res => res.json())
 
-    Object.entries(sponsors.partners).forEach(([pack, partners]) => {
-      sponsors.partners[pack] = partners.sort((p1, p2) => {
-        return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase())
+      Object.entries(sponsors.partners).forEach(([pack, partners]) => {
+        sponsors.partners[pack] = partners.sort((p1, p2) => {
+          return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase())
+        })
       })
-    })
 
-    Object.values(sponsors.partners).forEach(pack => {
-      const sponsorsByPack = Object.values(pack);
-      sponsorsByPack.forEach(sponsor => {
-        if(sponsor.site_url.indexOf("https://") < 0){
-          sponsor.site_url = "https://" + sponsor.site_url;
-        }
-        sponsor.ext = getExtension(sponsor.logo_url.split(".").pop())
-        fetch(sponsor.logo_url)
-            .then(response => response.text())
-            .then(blob => {
-              return optimize(blob, {
-                multipass: true,
+      Object.values(sponsors.partners).forEach(pack => {
+        const sponsorsByPack = Object.values(pack);
+        sponsorsByPack.forEach(sponsor => {
+          if(sponsor.site_url.indexOf("https://") < 0){
+            sponsor.site_url = "https://" + sponsor.site_url;
+          }
+          sponsor.ext = getExtension(sponsor.logo_url.split(".").pop())
+          fetch(sponsor.logo_url)
+              .then(response => response.text())
+              .then(blob => {
+                return optimize(blob, {
+                  multipass: true,
+                })
               })
-            })
-            .then(result => {
-              const optimizedSvgString = result.data;
-              fs.writeFileSync(tempFolder + "/" + sponsor.name + "." + sponsor.ext, optimizedSvgString, { flag: 'w' })
-            })
-            .catch(err => console.error(err))
+              .then(result => {
+                const optimizedSvgString = result.data;
+                fs.writeFileSync(tempFolder + "/" + sponsor.name + "." + sponsor.ext, optimizedSvgString, { flag: 'w' })
+              })
+              .catch(err => console.error(err))
+        })
       })
-    })
 
-    return sponsors.partners;
+      return sponsors.partners;
+    } catch(e){
+      return {}
+    }
+
   });
 
   function getExtension(potentialExt) {
@@ -63,22 +74,28 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("talks", async () => {
-    const agenda = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/agenda").then(res => res.json())
-    const talks = Object.entries(agenda.talks)
-    const oTalks = talks.map(([_, talks]) => {
-      return [_, talks.map(talk => {
-        return {
-          talk: {
-            ...talk.talk,
-            room: talk.room,
-            abstract: md.toHTML(talk.talk?.abstract ?? "").replace("h2", "p"),
-            title: talk.talk?.title ?? "Pause",
-          },
-          speakers: talk?.talk?.speakers?.map(speaker => speaker.display_name).join(', ')
-        }
-      })]
-    })
-    return oTalks;
+    try {
+      const agendaPromise = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/agenda")
+      const agenda = await agendaPromise.then(res => res.json())
+      const talks = Object.entries(agenda.talks)
+      const oTalks = talks.map(([_, talks]) => {
+        return [_, talks.map(talk => {
+          return {
+            talk: {
+              ...talk.talk,
+              room: talk.room,
+              abstract: md.toHTML(talk.talk?.abstract ?? "").replace("h2", "p"),
+              title: talk.talk?.title ?? "Pause",
+            },
+            speakers: talk?.talk?.speakers?.map(speaker => speaker.display_name).join(', ')
+          }
+        })]
+      })
+      return oTalks;
+    } catch(e){
+      return []
+    }
+
   });
 
 

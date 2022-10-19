@@ -94,10 +94,17 @@
               <li><a href="/index.html"
                 {% if currSection == "index" %} aria-current="page" {% endif %}>
                 Accueil</a></li>
+
+              {% if collections.speakersFromApi.length > 0 %}
               <li><a href="/speakers/index.html"
                 {% if currSection == "speakers" %} aria-current="page" {% endif %}>Speakers</a></li>
+              {% endif %}
+
+              {% if collections.talks.length > 0 %}
               <li><a href="/agenda/index.html"
                 {% if currSection == "agenda" %} aria-current="page" {% endif %}>Agenda</a></li>
+              {% endif %}
+
               <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>
                 FAQ</a></li>
               <li hidden><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a></li>
@@ -119,6 +126,8 @@
                 <p class="read-more">
                     <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a> [PDF, 5Mo]                </p>
               </div>
+
+              {% if collections.partners.golds.length > 0 or collections.partners.silvers.length > 0 or collections.partners.bronzes.length > 0 or collections.partners.others.length > 0 %}
               <div class="content filled">
                   <h2>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition {{ collections.config.edition }}!</h2>
                   {% if collections.partners.golds.length > 0 %}
@@ -196,6 +205,7 @@
                   {% endif %}
 
               </div>
+              {%- endif -%}
           </aside>
           {% endif %}
       </div>
@@ -207,8 +217,7 @@
               <dl class="h-event">
                   <dt class="p-name">Devfest Lille {{ collections.config.edition }}</dt>
                   <dd class="p-summary">
-                      Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile, du cloud et des
-                      technologies Google.
+                      Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile et du cloud.
                   </dd>
                   <dd>
                       <time class="dt-start" datetime="2022-06-10">{{ collections.config.date }} {{ collections.config.edition }}</time> -
@@ -239,7 +248,7 @@
                   <a href="https://www.linkedin.com/company/gdg-lille/"><img src="/img/linkedin.svg" alt="GDG Lille sur LinkedIn" /></a>
               </li>
           </ul>
-          <p class="copyright">GDG Lille, 2022</p>
+          <p class="copyright">GDG Lille, {{ collections.config.edition }}</p>
       </footer>
   </div>
   <!-- /container -->

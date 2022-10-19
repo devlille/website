@@ -10,10 +10,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("speakersFromApi", async () => {
     try {
       const speakers = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/speakers").then(res => res.json())
-      console.log(speakers)
       return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name))
     } catch(e){
-      return [{}];
+      return [];
     }
 
   });

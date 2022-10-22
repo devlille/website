@@ -9,7 +9,7 @@ const md = require( "markdown" ).markdown;
 module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("speakersFromApi", async () => {
     try {
-      const speakers = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/speakers").then(res => res.json())
+      const speakers = await fetch(config.cms4partnersApi + config.edition + "/speakers").then(res => res.json())
       return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name))
     } catch(e){
       return [];
@@ -20,7 +20,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("partners", async () => {
     try {
       const tempFolder = path.resolve(__dirname, "_site/img")
-      const sponsors = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition).then(res => res.json())
+      const sponsors = await fetch(config.cms4partnersApi + config.edition).then(res => res.json())
 
       Object.entries(sponsors.partners).forEach(([pack, partners]) => {
         sponsors.partners[pack] = partners.sort((p1, p2) => {
@@ -74,8 +74,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("talks", async () => {
     try {
-      const agendaPromise = await fetch("https://cms4partners-ce427.nw.r.appspot.com/events/" + config.edition + "/agenda")
-      const agenda = await agendaPromise.then(res => res.json())
+      const agenda = await fetch(config.cms4partnersApi + config.edition + "/agenda").then(res => res.json())
       const talks = Object.entries(agenda.talks)
       const oTalks = talks.map(([_, talks]) => {
         return [_, talks.map(talk => {
@@ -92,6 +91,7 @@ module.exports = function (eleventyConfig) {
       })
       return oTalks;
     } catch(e){
+      console.log(e);
       return []
     }
 

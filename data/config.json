@@ -6,6 +6,7 @@
   "billetwebUrl": "https://www.billetweb.fr/devfest-lille-",
   "cfpUrl": "https://conference-hall.io/public/event/vzbfowsExm54SrWLtxA5",
   "cmsUrl": "https://cms4partners.gdglille.org/#",
+  "cms4partnersApi": "https://cms4partners-ce427.nw.r.appspot.com/events/devfest-lille-",
   "cfpEndedDate": "31 mars 2023",
   "partershipUrl": "/partenaire.pdf",
   "numberOfPeople": 1200,

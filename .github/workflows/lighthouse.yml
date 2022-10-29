@@ -1,0 +1,20 @@
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Website
+          run: |
+            npm ci
+            npm run build
+            npm run start:prod
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            http://localhost:5000/
+          budgetPath: ./budget.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true

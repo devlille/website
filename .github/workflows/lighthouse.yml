@@ -14,5 +14,4 @@ jobs:
         with:
           configPath: './lighthouserc.json'
           budgetPath: ./budget.json
-          uploadArtifacts: true
-          temporaryPublicStorage: true
+          uploadArtifacts: false

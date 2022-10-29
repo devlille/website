@@ -77,15 +77,15 @@
       <header>
           <h1>
               <strong><img src="/img/logodfl.svg" alt="Devfest Lille {{  collections.config.edition }}" /></strong>
-            <span>
+            <!--span>
               <time datetime="2022-06-10">{{  collections.config.date }} <span>{{  collections.config.edition }}</span></time>
               Kinepolis Lomme
-            </span>
+            </span-->
           </h1>
-          <p class="cfp">
+          <!--p class="cfp">
               <a href="{{collections.config.cfpUrl}}">
                   <abbr lang="en" title="Call for Paper">CFP</abbr> ouvert jusqu'au {{collections.config.cfpEndedDate}}</a>
-          </p>
+          </p-->
       </header>
 
       <nav class="main-nav">
@@ -94,13 +94,13 @@
               <li><a href="/index.html"
                 {% if currSection == "index" %} aria-current="page" {% endif %}>
                 Accueil</a></li>
-              <li><a href="/speakers/index.html"
+              <!--li><a href="/speakers/index.html"
                 {% if currSection == "speakers" %} aria-current="page" {% endif %}>Speakers</a></li>
               <li><a href="/agenda/index.html"
-                {% if currSection == "agenda" %} aria-current="page" {% endif %}>Agenda</a></li>
+                {% if currSection == "agenda" %} aria-current="page" {% endif %}>Agenda</a></li-->
               <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>
                 FAQ</a></li>
-              <li hidden><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a></li>
+              <!--li><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a></li-->
           </ul>
       </nav>
 
@@ -110,7 +110,7 @@
           </main>
 
           {% if currSection == "index" %}
-          <aside>
+          <!--aside>
               <div class="be-partner">
                 <h2>Devenez partenaire</h2>
 
@@ -196,7 +196,7 @@
                   {% endif %}
 
               </div>
-          </aside>
+          </aside-->
           {% endif %}
       </div>
 
@@ -210,10 +210,10 @@
                       Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile, du cloud et des
                       technologies Google.
                   </dd>
-                  <dd>
+                  <!--dd>
                       <time class="dt-start" datetime="2022-06-10">{{ collections.config.date }} {{ collections.config.edition }}</time> -
                       <a href="#" class="p-location">Kinépolis Lomme</a>
-                  </dd>
+                  </dd-->
               </dl>
               <ul class="links-list">
                   <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
@@ -239,7 +239,7 @@
                   <a href="https://www.linkedin.com/company/gdg-lille/"><img src="/img/linkedin.svg" alt="GDG Lille sur LinkedIn" /></a>
               </li>
           </ul>
-          <p class="copyright">GDG Lille, 2022</p>
+          <p class="copyright">GDG Lille, {{ collections.config.edition }}</p>
       </footer>
   </div>
   <!-- /container -->

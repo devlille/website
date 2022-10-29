@@ -1,8 +1,9 @@
 {
-  "edition": 2022,
-  "editionNumber": 5,
+  "edition": 2023,
+  "editionNumber": 6,
   "date": "10 juin",
   "formatted-date": "2022-06-01",
+  "urledition": 2022,
   "billetwebUrl": "https://www.billetweb.fr/devfest-lille-2022",
   "cfpUrl": "https://conference-hall.io/public/event/vzbfowsExm54SrWLtxA5",
   "cmsUrl": "https://cms4partners.gdglille.org/#/2022",

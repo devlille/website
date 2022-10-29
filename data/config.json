@@ -1,12 +1,16 @@
 {
   "edition": 2023,
   "editionNumber": 6,
-  "date": "10 juin",
+  "date": "juin",
   "formatted-date": "2022-06-01",
-  "urledition": 2022,
-  "billetwebUrl": "https://www.billetweb.fr/devfest-lille-2022",
+  "billetwebUrl": "https://www.billetweb.fr/devfest-lille-",
   "cfpUrl": "https://conference-hall.io/public/event/vzbfowsExm54SrWLtxA5",
-  "cmsUrl": "https://cms4partners.gdglille.org/#/2022",
-  "cfpEndedDate": "31 mars 2022",
-  "partershipUrl": "/partenaire.pdf"
+  "cmsUrl": "https://cms4partners.gdglille.org/#",
+  "cms4partnersApi": "https://cms4partners-ce427.nw.r.appspot.com/events/devfest-lille-",
+  "cfpEndedDate": "31 mars 2023",
+  "partershipUrl": "/partenaire.pdf",
+  "numberOfPeople": 1200,
+  "numberOfSpeaker": 40,
+  "numberOfTalks": 26,
+  "numberOfTraks": 3
 }

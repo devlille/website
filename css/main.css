@@ -292,6 +292,24 @@ nav a:hover, nav a:focus, nav a[aria-current] {
   #home header.active h1 span {margin-left: 0;}
   #home header.active ~ #wrapper {margin-top: 15vh;}
 
+section.news {
+  background-color: rgba(255,255,255,0.05);
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 5px 5px var(--n-dark);
+}
+  section.news h3 {
+    font-variation-settings: "wght" 800,"wdth" 100;
+  }
+
+  section.news p {max-width: 35em; line-height: 1.5;}
+
+  section.news article + article {
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px dotted var(--text-high);
+  }
+
 aside {
   margin: 0 5vw 6rem;
 }
@@ -374,14 +392,18 @@ p.register {
 div.presentation {
   max-width: 45em;
   line-height: 1.5;
-  margin: 7vw 0 9vw;
+  margin: 7vw 0 5vw;
 }
 
   div.presentation p {font-size: calc(1.2rem + 1vw);}
 
 div.stats {margin-bottom: 4rem;}
 
-  div.stats ul {list-style-type: none;}
+  div.stats ul {
+    overflow: hidden;
+    min-height: 5rem;
+    list-style-type: none;
+  }
   div.stats strong {
     display: block;
     font-size: 250%;
@@ -394,6 +416,57 @@ div.stats {margin-bottom: 4rem;}
     border-top: 1px solid var(--main-color);
   }
 
+  div.stats li {
+    overflow: hidden;
+    position: relative;
+    height: 1px;
+    background-color: var(--body-bg);
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.1, -0.6, 0.2, 0);
+    transition: margin;
+  }
+
+  @keyframes slideStats1 {
+    0% {height: 1px;}
+    100% {height: 5rem;}
+  }
+  @keyframes slideStats2 {
+    0% {height: 1px; margin-top: -5rem;}
+    40% {margin-top: 0;}
+    100% {height: 5rem; margin-top: 0;}
+  }
+  @keyframes slideStats3 {
+    0% {height: 1px; margin-top: -10rem;}
+    50% {margin-top: 0;}
+    100% {height: 5rem; margin-top: 0;}
+  }
+  @keyframes slideStats4 {
+    0% {height: 1px; margin-top: -15rem;}
+    30% {margin-top: 0;}
+    100% {height: 5rem; margin-top: 0;}
+  }
+
+  div.stats li:nth-child(1) {
+    animation-name: slideStats1;
+    z-index: 4;
+  }
+  div.stats li:nth-child(2) {
+    margin-top: -5rem;
+    animation-name: slideStats2;
+    z-index: 1;
+  }
+  div.stats li:nth-child(3) {
+    margin-top: -10rem;
+    animation-name: slideStats3;
+    z-index: 2;
+  }
+  div.stats li:nth-child(4) {
+    margin-top: -15rem;
+    animation-name: slideStats4;
+    z-index: 3;
+  }
+
 div.decor {
   position: relative;
   margin: 0 0 4rem;
@@ -403,6 +476,8 @@ div.decor {
     display: block;
     transition: all .5s;
   }
+
+  div.decor .content {max-width: 800px;}
 
 p.illustration {margin-bottom: 1rem;}
 
@@ -418,10 +493,11 @@ div.decor::after {
   transition: all .5s;
 }
 
-div.decor p {line-height: 1.58;}
+div.decor p {line-height: 1.45;}
 
 div.decor p:not(.illustration) {
   font-size: calc(0.8em + 1vw);
+  margin-right: 2rem;
   margin-left: 4rem;
 }
 p.read-more {margin-top: 1rem;}
@@ -446,6 +522,50 @@ div.faq + div.faq {margin-top: 2rem;}
 
 div.faq h3 {color: var(--hot-light);}
 
+
+/* ----------------------------------------------------------------- */
+/* ------------------------------ TEAM ----------------------------- */
+
+div.intro {
+  font-size: 120%;
+  font-variant-setting: "wght" 600;
+  color: var(--text-high);
+  margin-bottom: calc(4rem + 2vw);
+}
+
+div.team {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem 10%;
+}
+
+section.member:nth-child(even) {
+  background-size: contain;
+  background-image: url(/img/blob2.svg);
+}
+section.member:nth-child(odd) {
+  background-size: contain;
+  background-image: url(/img/blob.svg);
+}
+
+  section.member h3 {
+    font-variation-settings: "wght" 900;
+    color: var(--text-high);
+  }
+  section.member p.illustration {
+    max-height: 100vw;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+  section.member p:not(.illustration) {
+    background: var(--body-bg);
+    padding: 1rem;
+  }
+  section.member p.illustration + p {margin-top: 0;}
+
+    section.member p.illustration img {
+      border-bottom-right-radius: 100%;
+    }
 
 
 /* ----------------------------------------------------------------- */

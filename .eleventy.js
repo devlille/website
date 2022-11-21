@@ -101,7 +101,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css/*.woff");
   eleventyConfig.addPassthroughCopy("css/*.woff2");
   eleventyConfig.addPassthroughCopy("manifest.json");
-  eleventyConfig.addPassthroughCopy("img/*.*");
+  eleventyConfig.addPassthroughCopy("img/**/*.*");
   eleventyConfig.addPassthroughCopy("partenaire.pdf");
 
   eleventyConfig.setTemplateFormats(["md", "html", "rss", "njk"]);

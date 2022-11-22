@@ -65,7 +65,6 @@
 
 @media screen and (min-width: 1000px) {
   aside div.be-partner {
-  	display: none;
   	grid-template-columns: 1.5fr 2fr;
   	grid-template-rows: auto auto;
   	gap: 2rem;

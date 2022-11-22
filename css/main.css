@@ -297,7 +297,6 @@ aside {
 }
 
 aside div.be-partner {
-  display: none;
   color: var(--n-dark);
   background: var(--hot-light);
   padding: 1rem 1.5rem 1.5rem;

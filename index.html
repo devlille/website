@@ -4,50 +4,101 @@ currSection: index
 ---
 
 <div class="group">
-    <div class="presentation">
-        <p>
-            Rejoignez nous pour une journée de <strong>conférences accessibles</strong> sur les
-            thèmes suivants : <span class="stressed">Web</span>, <span class="stressed">Mobile</span>,
-              <span class="stressed">Cloud</span>, <span class="stressed">DevOps</span>, <span class="stressed">Big Data</span> et
-                <span class="stressed">IA</span>.
-        </p>
-        <!--p class="register"><a href="{{ collections.config.billetwebUrl }}{{collections.config.edition}}">Inscrivez-vous!</a></p-->
-    </div>
-    <div class="stats">
-        <h2 class="no-display">Le Devfest Lille {{ collections.config.edition }} en chiffres</h2>
-        <ul>
-            <li><strong>{{ collections.config.numberOfPeople }}</strong> <span>participants</span></li>
-            <li><strong>{{ collections.config.numberOfSpeaker }}</strong> <span>speakers</span></li>
-            <li><strong>{{ collections.config.numberOfTalks }}</strong> <span>conférences</span></li>
-            <li><strong>{{ collections.config.numberOfTraks }}</strong> <span lang="en">tracks</span></li>
-        </ul>
-    </div>
+  <div class="presentation">
+    <p>
+      Rejoignez nous pour une journée de <strong>conférences accessibles</strong> sur les thèmes suivants :
+      <span class="stressed">Web</span>, <span class="stressed">Mobile</span>, <span class="stressed">Cloud</span>,
+      <span class="stressed">DevOps</span>, <span class="stressed">Big Data</span> et <span class="stressed">IA</span>.
+    </p>
+    <!--p class="register"><a href="{{ collections.config.billetwebUrl }}{{collections.config.edition}}">Inscrivez-vous!</a></p-->
+  </div>
+  <div class="stats">
+    <h2 class="no-display">Le Devfest Lille {{ collections.config.edition }} en chiffres</h2>
+    <ul>
+      <li><strong>{{ collections.config.numberOfPeople }}</strong> <span>participants</span></li>
+      <li><strong>{{ collections.config.numberOfSpeaker }}</strong> <span>speakers</span></li>
+      <li><strong>{{ collections.config.numberOfTalks }}</strong> <span>conférences</span></li>
+      <li><strong>{{ collections.config.numberOfTraks }}</strong> <span lang="en">tracks</span></li>
+    </ul>
+  </div>
 </div>
 
-<div class="decor">
-    <h2>Un lieu privilégié : <strong>Lille Grand Palais</strong></h2>
-    <div class="content">
-        <p class="illustration"><img loading="lazy" src="/img/kinepolis.jpg" alt="Une salle du Lille Grand Palais" /></p>
+<div class="with-news">
+  <section class="news">
+    <h2>News</h2>
+    <article class="h-entry">
+      <h3>Devfest Lille 2023 – RDV Le 26 Mai</h3>
+      <p>Vous l'attendez tous avec impatience, le Devfest Lille 2023 aura lieu le vendredi 26 Mai !</p>
+      <p>
+        En attendant, pour vous aider à vous préparer au mieux et vous laisser le temps de prendre connaissance des
+        partenariats possibles pour l'évènement. Vous pouvez dès à présent consulter
+        <a href="http://bit.ly/partenaires-devfest-lille" target="_blank">notre dossier de partenariat</a>.
+      </p>
+      <p>
+        Attention, les demandes seront acceptées uniquement à partir du 5 décembre à 14h, et se feront via un site web
+        que nous vous communiquerons par email au même moment. Un conseil, certains pack partent très vite alors
+        tenez-vous prêts.
+      </p>
+      <p>Nous reviendrons donc vers vous le 5 décembre, pour l'ouverture des partenariats.</p>
+      <p>
+        En ce qui concerne l’ouverture de la billetterie et du CFP, nous annoncerons la suite en début d’année
+        prochaine.
+      </p>
+    </article>
+
+    <!--article class="h-entry">
+      <h3>L'édition 2023 de Devfest est lancée !</h3>
+      <p class="illustration"><img src="/img/kinepolis.jpg" alt="Une salle du Kinepolis Lomme" /></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.</p>
+    </article-->
+  </section>
+
+  <div class="fixed">
+    <div class="decor">
+      <h2>Un lieu privilégié : <strong>Lille Grand Palais</strong></h2>
+      <div class="content">
+        <p class="illustration">
+          <img loading="lazy" src="/img/kinepolis.jpg" alt="Une salle du Lille Grand Palais" />
+        </p>
         <div>
-          <p>Lille Grand Palais est un lieu incourtable avec un espace de plus de 1900m2 et nous permettant d'accueillir plus de 1200 personnes.</p>
+          <p>
+            Lille Grand Palais est un lieu incourtable avec un espace de plus de 1900m2 et nous permettant d'accueillir
+            plus de 1200 personnes.
+          </p>
           <p class="read-more">
-              <a rel="noreferrer noopener" target="_blank" href="https://goo.gl/maps/cBSP9yZSHtMZuW9BA">
-                  Comment y aller</a>
+            <a rel="noreferrer noopener" target="_blank" href="https://goo.gl/maps/cBSP9yZSHtMZuW9BA">
+              Comment y aller</a
+            >
           </p>
         </div>
+      </div>
     </div>
-</div>
 
-
-<div class="decor">
-    <h2>Une conférence <strong>accessible</strong></h2>
-    <div class="content">
+    <div class="decor">
+      <h2>Une conférence <strong>accessible</strong></h2>
+      <div class="content">
         <p class="illustration">
-          <img src="/img/lemessageur.jpg" loading="lazy" alt="Salle du Kinepolis avec une retranscription en live de la conférence" />
+          <img
+            loading="lazy"
+            src="/img/lemessageur.jpg"
+            alt="Salle du Kinepolis avec une retranscription en live de la conférence"
+          />
         </p>
         <div>
-            <p><strong class="stressed">Toutes</strong> nos conférences sont sous-titrées grâce au service du
-              <a rel="noreferrer noopener" target="_blank" href="https://www.lemessageur.com/">Messageur</a>.</p>
+          <p>
+            <strong class="stressed">Toutes</strong> nos conférences sont sous-titrées grâce au service du
+            <a rel="noreferrer noopener" target="_blank" href="https://www.lemessageur.com/">
+              Messageur <img src="/img/external-link.svg" alt="Ouvre nouvel onglet" width="14" height="14"
+            /></a>
+          </p>
         </div>
+      </div>
     </div>
+  </div>
 </div>

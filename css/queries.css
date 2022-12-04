@@ -48,6 +48,28 @@
   .main-nav li:last-child {
     display: block;
   }
+  
+  div.footer-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  footer ul.editions {
+    padding-top: 0;
+    padding-left: 2rem;
+    margin-top: 0;
+    border-top: none;
+    border-left: 1px dotted var(--body-text);
+  }
+
+  ul.thumbs {flex-flow: row wrap;}
+  ul.thumbs li {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 42%;
+  }
+  ul.thumbs figure {display: flex; flex-direction: column;}
+  ul.thumbs figcaption {display: block; margin-top: auto; }
+
 }
 
 @media screen and (min-width: 750px) {
@@ -75,6 +97,8 @@
 
 @media screen and (min-width: 800px) {
   p, li, dt, dd {font-size: 1.2em;}
+
+  footer .p-name::before {top: 2rem;}
 
   dl.h-event dd:last-of-type {
   	font-size: 1em;
@@ -154,6 +178,7 @@
   }
 
   footer {padding: 2rem 30% 4rem 5%;}
+  footer div.content {margin-left: 2.5rem;}
 
   div.decor {margin: 0 0 7rem;}
   div.decor .content div {flex-basis: 60%;}

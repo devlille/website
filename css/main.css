@@ -121,9 +121,10 @@ button {
   cursor: pointer;
 }
 
-hr {
-  display: none;
-}
+hr {display: none;}
+
+abbr {cursor: help;}
+
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- STRUCTURE ---------------------------- */
@@ -137,14 +138,10 @@ header {
 main, aside {margin: 0 5vw;}
 
 footer {
+  position: relative;
   background-color: var(--n-dark);
-  padding: 2rem 5% 5rem;
-}
-
-footer li.editions {
-  padding-top: 1rem;
-  margin-top: 1rem;
-  border-top: 1px dotted var(--body-text);
+  padding: 2rem 5% 5rem calc(5% + 2.5rem);
+  z-index: 1;
 }
 
 footer .p-name {
@@ -153,9 +150,12 @@ footer .p-name {
 }
 
   footer .p-name::before {
-    display: inline-block;
+    display: block;
+    position: absolute;
     width: 2rem;
     height: 2rem;
+    top: 1.5rem;
+    left: 5%;
     content: "";
     background-image: url(../img/logotype.svg);
     background-repeat: no-repeat;
@@ -172,22 +172,34 @@ footer .p-summary {
 
 dl.h-event dd:last-of-type {
   font-size: 0.85em;
-  margin: 0.5rem 0 0 2.5rem;
+  margin: 0.5rem 0 0 0;
 }
 
-ul.links-list {
-  margin: 1rem 0 0 3rem;
+div.footer-links {margin: 1rem 0 0 0;}
+
+footer ul.editions {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px dotted var(--body-text);
 }
 
-  ul.links-list li {font-size: 0.85em; line-height: 2;}
+footer ul.editions::before {
+  content: "Editions précedentes: ";
+  font-size: 80%;
+}
+
+ul.links-list li {
+  font-size: 0.85em; 
+  line-height: 2;
+  list-style-position: inside;
+}
 
 ul.sm-list {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: 1em;
   list-style-type: none;
-  margin: 1rem 0 0 2rem;
+  margin: 2rem 0;
 }
   ul.sm-list li {width: 25px;}
 
@@ -236,7 +248,7 @@ nav ul {
 }
 
 nav li {
-	font-size: 0.95em;
+	font-size: 0.8em;
 	font-variation-settings: "wght" 600, "wdth" 100;
 	font-variant: small-caps;
 	text-transform: uppercase;
@@ -303,6 +315,7 @@ section.news {
   }
 
   section.news p {max-width: 35em; line-height: 1.5;}
+  section.news p + p  {margin-top: 0.8em;}
 
   section.news article + article {
     padding-top: 1rem;
@@ -521,13 +534,93 @@ div.faq + div.faq {margin-top: 2rem;}
 
 div.faq h3 {color: var(--hot-light);}
 
+article.h-entry p + h3 {
+  margin-top: 1em;
+}
+article.h-entry h3 {
+  font-variation-settings: "wght" 800;
+  color: var(--hot-light);
+}
+
+article.h-entry div.group {
+  margin-top: calc(2rem + 2vw);
+}
+
+article.h-entry div.group.typography {
+  padding: calc(1rem + 2vw) 0;
+  border-top: 10px dotted var(--hot-light);
+  border-bottom: 10px dotted var(--hot-light);
+}
+
+ul.thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style-type: none;
+  margin: 1rem 0 0;
+}
+
+  ul.thumbs li {
+    font-size: 0.9em;
+    text-align: center;
+    background-color: var(--n-dark);
+    padding: 1rem;
+  }
+  
+  ul.thumbs a {
+    box-sizing: border-box;
+    display: block; 
+    padding: 1rem 2rem;
+  }
+  ul.thumbs a:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M16 2l5 5v14.008a.993.993 0 0 1-.993.992H3.993A1 1 0 0 1 3 21.008V2.992C3 2.444 3.445 2 3.993 2H16zm-3 10V8h-2v4H8l4 4 4-4h-3z' style='fill:%23EF7918' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 15px right;
+  }
+
+  ul.palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style-type: none;
+    margin: 2rem 0 0;
+  }
+
+  ul.palette li {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  ul.palette li::before {
+    display: block;
+    content: "";
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    border-radius: 50px;
+  }
+
+  ul.palette li:nth-child(1)::before {
+    background-color: #F61C7C;
+  }
+  ul.palette li:nth-child(2)::before {
+    background-color: #EF7918;
+  }
+  ul.palette li:nth-child(3)::before {
+    background-color: #03B7D5;
+  }
+  ul.palette li:nth-child(4)::before {
+    background-color: #191919;
+    border: 1px solid currentColor;
+  }
+
 
 /* ----------------------------------------------------------------- */
 /* ------------------------------ TEAM ----------------------------- */
 
 div.intro {
   font-size: 120%;
-  font-variant-setting: "wght" 600;
+  font-variation-settings: "wght" 600;
   color: var(--text-high);
   margin-bottom: calc(4rem + 2vw);
 }

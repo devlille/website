@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,14 +13,10 @@
     <meta name="twitter:creator" content="@gericci" />
     <meta property="og:url" content="https://devfest.gdglille.org/" />
     <meta property="og:title" content="Devfest Lille {{  collections.config.edition }}" />
-    <meta
-            property="description"
-            content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux"
-    />
-    <meta
-            property="og:description"
-            content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux"
-    />
+    <meta property="description"
+        content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux" />
+    <meta property="og:description"
+        content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux" />
     <meta property="og:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
     <link href="/img/favicon.svg" type="image/svg+xml" rel="icon" />
     <link href="/img/favicon.png" type="image/png" rel="icon" />
@@ -28,249 +25,270 @@
     <link href="/css/main.css" rel="stylesheet" media="all" />
     <link href="/css/queries.css" rel="stylesheet" media="all" />
 
-     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "Devfest Lille {{  collections.config.edition }}",
-      "startDate": "{{  collections.config.formatted-date }}T08:00+02:00",
-      "endDate": "{{  collections.config.formatted-date }}T18:30+02:00",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "Place",
-        "name": "Kinepolis Lomme",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "1 Rue du Château d'Isenghien",
-          "addressLocality": "Lille",
-          "postalCode": "59160",
-          "addressCountry": "FR"
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "name": "Devfest Lille {{  collections.config.edition }}",
+            "startDate": "{{  collections.config.formatted-date }}T08:00+02:00",
+            "endDate": "{{  collections.config.formatted-date }}T18:30+02:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+                "@type": "Place",
+                "name": "Kinepolis Lomme",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "1 Rue du Château d'Isenghien",
+                    "addressLocality": "Lille",
+                    "postalCode": "59160",
+                    "addressCountry": "FR"
+                }
+            },
+            "image": [
+                "https://devfest.gdglille.org/img/kinepolis.jpg",
+                "https://devfest.gdglille.org/img/lemessageur.jpg"
+            ],
+            "description": "Rejoignez nous pour une journée de conférences accessibles sur les thèmes suivants : Web, Mobile, Cloud, DevOps, Big Data et IA.",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://www.billetweb.fr/devfest-lille-{{  collections.config.edition }}",
+                "price": "40",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/SoldOut",
+                "validFrom": "{{  collections.config.edition }}-01-01T08:00"
+            },
+            "performer": {
+                "@type": "PerformingGroup",
+                "name": "GDG Lille"
+            },
+            "organizer": {
+                "@type": "Organization",
+                "name": "GDG Lille",
+                "url": "https://www.meetup.com/fr-FR/GDG-Lille/"
+            }
         }
-      },
-      "image": [
-        "https://devfest.gdglille.org/img/kinepolis.jpg",
-        "https://devfest.gdglille.org/img/lemessageur.jpg"
-       ],
-      "description": "Rejoignez nous pour une journée de conférences accessibles sur les thèmes suivants : Web, Mobile, Cloud, DevOps, Big Data et IA.",
-      "offers": {
-        "@type": "Offer",
-        "url": "https://www.billetweb.fr/devfest-lille-{{  collections.config.edition }}",
-        "price": "40",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/SoldOut",
-        "validFrom": "{{  collections.config.edition }}-01-01T08:00"
-      },
-      "performer": {
-        "@type": "PerformingGroup",
-        "name": "GDG Lille"
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "GDG Lille",
-        "url": "https://www.meetup.com/fr-FR/GDG-Lille/"
-      }
-    }
     </script>
     <link rel="manifest" href="manifest.json" />
 </head>
 
 <body {% if currSection == "index" %} id="home" {% endif %}>
-  <div id="container">
-      <!-- PAGE HEADER -->
-      <header>
-          <h1>
-              <strong><img src="/img/logodfl.svg" alt="Devfest Lille {{  collections.config.edition }}" /></strong>
-            <span>
-              <time datetime="2022-05-26">{{  collections.config.date }} <span>{{  collections.config.edition }}</span></time>
-              Lille Grand Palais
-            </span>
-          </h1>
-          <!--p class="cfp">
+    <div id="container">
+        <!-- PAGE HEADER -->
+        <header>
+            <h1>
+                <strong><img src="/img/logodfl.svg" alt="Devfest Lille {{  collections.config.edition }}" /></strong>
+                <span>
+                    <time datetime="{{ collections.config.formatted-date }}">
+                        {{  collections.config.date }}
+                        <span>{{  collections.config.edition }}</span>
+                    </time>
+                    Lille Grand Palais
+                </span>
+            </h1>
+            <!--p class="cfp">
               <a href="{{collections.config.cfpUrl}}">
                   <abbr lang="en" title="Call for Paper">CFP</abbr> ouvert jusqu'au {{collections.config.cfpEndedDate}}</a>
           </p-->
-      </header>
+        </header>
 
-      <nav class="main-nav">
-          <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
-          <ul>
-              <li><a href="/index.html" {% if currSection == "index" %} aria-current="page" {% endif %}>Accueil</a></li>
+        <nav class="main-nav">
+            <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
+            <ul>
+                <li><a href="/index.html" {% if currSection == "index" %} aria-current="page" {% endif %}>Accueil</a>
+                </li>
 
-              {% if collections.speakersFromApi.length > 0 %}
-                <li><a href="/speakers/index.html" {% if currSection == "speakers" %} aria-current="page" {% endif %}>Speakers</a></li>
-              {% endif %}
+                {% if collections.speakersFromApi.length > 0 %}
+                <li><a href="/speakers/index.html" {% if currSection == "speakers" %} aria-current="page"
+                        {% endif %}>Speakers</a></li>
+                {% endif %}
 
-              {% if collections.talks.length > 0 %}
-                <li><a href="/agenda/index.html" {% if currSection == "agenda" %} aria-current="page" {% endif %}>Agenda</a></li>
-              {% endif %}
+                {% if collections.talks.length > 0 %}
+                <li><a href="/agenda/index.html" {% if currSection == "agenda" %} aria-current="page"
+                        {% endif %}>Agenda</a></li>
+                {% endif %}
 
-              <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>FAQ</a></li>
-              <li><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a></li>
-          </ul>
-      </nav>
+                <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>FAQ</a></li>
+                <li><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a>
+                </li>
+            </ul>
+        </nav>
 
-      <div id="wrapper">
-          <main>
-              {{ content }}
-          </main>
+        <div id="wrapper">
+            <main>
+                {{ content }}
+            </main>
 
-          {% if currSection == "index" %}
-          <aside>
-              <div class="be-partner">
-                <h2>Devenez partenaire</h2>
+            {% if currSection == "index" %}
+            <aside>
+                <div class="be-partner">
+                    <h2>Devenez partenaire</h2>
 
-                  <p>Profitez de la {{ collections.config.editionNumber }}ème Devfest Lille Saison pour gagner en visibilité et échanger avec la
-                      communauté des développeurs de la région Haut de France.</p>
-                <p class="read-more">
-                    <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a></p>
-              </div>
+                    <p>Profitez de la {{ collections.config.editionNumber }}ème Devfest Lille Saison pour gagner en
+                        visibilité et échanger avec la
+                        communauté des développeurs de la région Haut de France.</p>
+                    <p class="read-more">
+                        <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a></p>
+                </div>
 
-              {% if collections.partners.golds.length > 0 or collections.partners.silvers.length > 0 or collections.partners.bronzes.length > 0 or collections.partners.others.length > 0 %}
-              <div class="content filled">
-                  <h2>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition {{ collections.config.edition }}!</h2>
-                  {% if collections.partners.golds.length > 0 %}
-                  <div class="sponsors gold">
-                      <h3>Gold</h3>
+                {% if collections.partners.golds.length > 0 or collections.partners.silvers.length > 0 or collections.partners.bronzes.length > 0 or collections.partners.others.length > 0 %}
+                <div class="content filled">
+                    <h2>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition
+                        {{ collections.config.edition }}!</h2>
+                    {% if collections.partners.golds.length > 0 %}
+                    <div class="sponsors gold">
+                        <h3>Gold</h3>
 
-                      <ul>
-                          {%- for p in collections.partners.golds -%}
-                          <li>
-                              <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
-                              </a>
-                          </li>
-                          {%- endfor -%}
+                        <ul>
+                            {%- for p in collections.partners.golds -%}
+                            <li>
+                                <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
+                                    <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
+                                </a>
+                            </li>
+                            {%- endfor -%}
 
-                      </ul>
-                  </div>
-                  {% endif %}
-                  {% if collections.partners.silvers.length > 0 %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    {% if collections.partners.silvers.length > 0 %}
 
-                  <div class="sponsors silver">
-                      <h3>Silver</h3>
+                    <div class="sponsors silver">
+                        <h3>Silver</h3>
 
-                      <ul>
-                          {%- for p in collections.partners.silvers -%}
-                          <li>
-                              <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
-                              </a>
-                          </li>
-                          {%- endfor -%}
+                        <ul>
+                            {%- for p in collections.partners.silvers -%}
+                            <li>
+                                <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
+                                    <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
+                                </a>
+                            </li>
+                            {%- endfor -%}
 
-                      </ul>
-                  </div>
-                  {% endif %}
+                        </ul>
+                    </div>
+                    {% endif %}
 
-                  {% if collections.partners.bronzes.length > 0 %}
+                    {% if collections.partners.bronzes.length > 0 %}
 
-                  <div class="sponsors bronze">
-                      <h3>Bronze</h3>
+                    <div class="sponsors bronze">
+                        <h3>Bronze</h3>
 
-                      <ul>
-                          {%- for p in collections.partners.bronzes -%}
-                          <li>
-                              <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
-                                  <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
-                              </a>
-                          </li>
-                          {%- endfor -%}
+                        <ul>
+                            {%- for p in collections.partners.bronzes -%}
+                            <li>
+                                <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
+                                    <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
+                                </a>
+                            </li>
+                            {%- endfor -%}
 
-                      </ul>
-                  </div>
-                  {% endif %}
+                        </ul>
+                    </div>
+                    {% endif %}
 
-                  {% if collections.partners.others.length > 0 %}
+                    {% if collections.partners.others.length > 0 %}
 
-                  <div class="sponsors partner">
-                      <h3>Partenaire</h3>
+                    <div class="sponsors partner">
+                        <h3>Partenaire</h3>
 
-                      <ul>
-                          {%- for p in collections.partners.others -%}
-                          <li>
-                              <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
-                                  {% if p.image %}
-                                  <img src="/img/{{p.image}}" alt="{{p.name}}" loading="lazy"/>
-                                  {% else %}
-                                  <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy"/>
-                                  {%- endif -%}
-                              </a>
-                          </li>
-                          {%- endfor -%}
+                        <ul>
+                            {%- for p in collections.partners.others -%}
+                            <li>
+                                <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
+                                    {% if p.image %}
+                                    <img src="/img/{{p.image}}" alt="{{p.name}}" loading="lazy" />
+                                    {% else %}
+                                    <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
+                                    {%- endif -%}
+                                </a>
+                            </li>
+                            {%- endfor -%}
 
-                      </ul>
-                  </div>
-                  {% endif %}
+                        </ul>
+                    </div>
+                    {% endif %}
 
-              </div>
-              {% endif %}
-          </aside>
-          {% endif %}
-      </div>
+                </div>
+                {% endif %}
+            </aside>
+            {% endif %}
+        </div>
 
-      <hr />
+        <hr />
 
-      <footer>
-          <div class="content">
-              <dl class="h-event">
-                  <dt class="p-name">Devfest Lille {{ collections.config.edition }}</dt>
-                  <dd class="p-summary">
-                      Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile et du cloud.
-                  </dd>
-                  <!--dd>
+        <footer>
+            <div class="content">
+                <dl class="h-event">
+                    <dt class="p-name">Devfest Lille {{ collections.config.edition }}</dt>
+                    <dd class="p-summary">
+                        Une journée de conférences, de quickies et d'échanges sur les sujets du web, du mobile et du
+                        cloud.
+                    </dd>
+                    <!--dd>
                       <time class="dt-start" datetime="2022-06-10">{{ collections.config.date }} {{ collections.config.edition }}</time> -
                       <a href="#" class="p-location">Kinépolis Lomme</a>
                   </dd-->
-              </dl>
-              <ul class="links-list">
-                  <!--li><a href="/a-propos">L'équipe Devfest Lille</a></li-->
-                  <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
-                  <li><a href="/code-conduite">Code de conduite</a></li>
-                  <li><a href="/wld">Offres d'emploi</a></li>
-                  <li class="editions"><a href="https://devfest-2022-5849e.web.app/">Edition 2022</a></li>
-                  <li><a href="https://devfest-2021-908e1.web.app/">Edition 2021</a></li>
-                  <li>
-                      <a href="https://devfest-2019.gdglille.org/">Edition 2019</a>
-                  </li>
-                  <li>
-                      <a href="https://devfest-2018.gdglille.org/">Edition 2018</a>
-                  </li>
-                  <li>
-                      <a href="https://devfest-2017.gdglille.org/">Edition 2017</a>
-                  </li>
-              </ul>
-          </div>
-          <ul class="sm-list">
-              <li class="show-icons">
-                  <a href="https://twitter.com/devfestLille/"><img src="/img/twitter.svg" alt="Devfest Lille sur Twitter" loading="lazy" /></a>
-              </li>
-              <li class="show-icons">
-                  <a href="https://www.linkedin.com/company/gdg-lille/"><img src="/img/linkedin.svg" alt="GDG Lille sur LinkedIn" loading="lazy" /></a>
-              </li>
-          </ul>
-          <p class="copyright">GDG Lille, {{ collections.config.edition }}</p>
-      </footer>
-  </div>
-  <!-- /container -->
+                </dl>
+                <div class="footer-links">
+                    <ul class="links-list">
+                        <!--li><a href="/a-propos">L'équipe Devfest Lille</a></li-->
+                        <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
+                        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vQoIRxFaAFjNm0rVct5jzbJ9Xol7iIJkI6uKeazRb6uMHKZRnVsZuiKZ30LzUAresm1mPie2OT-2xDU/pub?start=false&loop=false&slide=id.g117aa382f2b_0_85">
+                            Devenez partenaire</a></li>
+                        <li><a href="/code-conduite">Code de conduite</a></li>
+                        <li><a href="/promo">Resources graphiques</a></li>
+                        <li><a href="/wld">Offres d'emploi</a></li>
+                    </ul>
+                    <ul class="links-list editions">
+                        <li><a href="https://devfest-2022-5849e.web.app/">2022</a></li>
+                        <li><a href="https://devfest-2021-908e1.web.app/">2021</a></li>
+                        <li>
+                            <a href="https://devfest-2019.gdglille.org/">2019</a>
+                        </li>
+                        <li>
+                            <a href="https://devfest-2018.gdglille.org/">2018</a>
+                        </li>
+                        <li>
+                            <a href="https://devfest-2017.gdglille.org/">2017</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="sm-list">
+                <li class="show-icons">
+                    <a href="https://twitter.com/devfestLille/"><img src="/img/twitter.svg"
+                            alt="Devfest Lille sur Twitter" loading="lazy" /></a>
+                </li>
+                <li class="show-icons">
+                    <a href="https://www.linkedin.com/company/gdg-lille/"><img src="/img/linkedin.svg"
+                            alt="GDG Lille sur LinkedIn" loading="lazy" /></a>
+                </li>
+            </ul>
+            <p class="copyright">GDG Lille, {{ collections.config.edition }}</p>
+        </footer>
+    </div>
+    <!-- /container -->
 
-<script>
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function () {
-            navigator.serviceWorker
-                .register("/sw.js")
-                .then(function (registration) {
-                    // Registration was successful
-                    console.log("ServiceWorker registration successful with scope: ", registration.scope);
-                })
-                .catch(function (err) {
-                    // registration failed :(
-                    console.log("ServiceWorker registration failed: ", err);
-                });
-        });
-    }
-</script>
-<script src="/js/modal.js" type="text/javascript"></script>
-<script src="/js/load.js" type="text/javascript"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("/sw.js")
+                    .then(function (registration) {
+                        // Registration was successful
+                        console.log("ServiceWorker registration successful with scope: ", registration
+                            .scope);
+                    })
+                    .catch(function (err) {
+                        // registration failed :(
+                        console.log("ServiceWorker registration failed: ", err);
+                    });
+            });
+        }
+    </script>
+    <script src="/js/modal.js" type="text/javascript"></script>
+    <script src="/js/load.js" type="text/javascript"></script>
 </body>
+
 </html>

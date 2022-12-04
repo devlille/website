@@ -135,6 +135,7 @@
 
 @media screen and (min-width: 1000px) {
   aside div.be-partner {
+    display: grid;
   	grid-template-columns: 1.5fr 2fr;
   	grid-template-rows: auto auto;
   	gap: 2rem;
@@ -148,7 +149,7 @@
 
 @media screen and (min-width: 1300px) {
   #wrapper {width: 85%;}
-  main {
+  main, aside {
     margin-left: calc(5.2% + 145px);
   }
 

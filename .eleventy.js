@@ -20,15 +20,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("partners", async () => {
     try {
       const tempFolder = path.resolve(__dirname, "_site/img")
-      const sponsors = await fetch(config.cms4partnersApi + config.edition).then(res => res.json())
-
-      Object.entries(sponsors.partners).forEach(([pack, partners]) => {
-        sponsors.partners[pack] = partners.sort((p1, p2) => {
+      const sponsors = await fetch(config.cms4partnersApi + config.edition + "/partners").then(res => res.json())
+      Object.entries(sponsors).forEach(([pack, partners]) => {
+        sponsors[pack] = partners.sort((p1, p2) => {
           return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase())
         })
       })
 
-      Object.values(sponsors.partners).forEach(pack => {
+      Object.values(sponsors).forEach(pack => {
         const sponsorsByPack = Object.values(pack);
         sponsorsByPack.forEach(sponsor => {
           if(sponsor.site_url.indexOf("https://") < 0){
@@ -50,7 +49,7 @@ module.exports = function (eleventyConfig) {
         })
       })
 
-      return sponsors.partners;
+      return sponsors;
     } catch(e){
       return {}
     }

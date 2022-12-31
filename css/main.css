@@ -839,7 +839,6 @@ div.modal.active {display: block;}
 .stressed {color: var(--main-color);}
 
 p.cfp {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;

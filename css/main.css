@@ -130,6 +130,8 @@ abbr {cursor: help;}
 /* -------------------------- STRUCTURE ---------------------------- */
 
 header {
+  display: flex;
+  flex-direction: column-reverse;
   margin: 1.5rem 5% 0;
   transition: all .3s;
 }
@@ -839,9 +841,6 @@ div.modal.active {display: block;}
 .stressed {color: var(--main-color);}
 
 p.cfp {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   font-size: 0.85em;
   font-variant: small-caps;
@@ -849,8 +848,8 @@ p.cfp {
   text-align: center;
   color: var(--text-inv);
   background-color: var(--hot-light);
-  padding: 0.5rem 0 0.65rem;
-  z-index: 10;
+  padding: 0.5rem 0.65rem;
+  margin: -1rem 0 1rem;
 }
 
 p.cfp a {

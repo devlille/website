@@ -217,10 +217,10 @@ ul.sm-list {
   left: -5000px;
 }
 
-h2.k-skip {font-size: 1em;}
-
 .k-skip {
+  font-size: 0.8em;
   text-align: center;
+  margin: 0;
 }
 
 .k-skip a {

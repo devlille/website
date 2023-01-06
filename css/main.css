@@ -844,7 +844,6 @@ div.modal.active {display: block;}
 .stressed {color: var(--main-color);}
 
 p.cfp {
-  width: 100%;
   font-size: 0.85em;
   font-variant: small-caps;
   font-variation-settings: "wght" 800, "wdth" 100;
@@ -852,7 +851,7 @@ p.cfp {
   color: var(--text-inv);
   background-color: var(--hot-light);
   padding: 0.5rem 0.65rem;
-  margin: -1rem 0 1rem;
+  margin: -1rem 0 2rem;
 }
 
 p.cfp a {

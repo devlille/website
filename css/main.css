@@ -385,10 +385,9 @@ aside div.be-partner {
     border-radius: 100%;
   }
     div.sponsors a {
-      margin: 2rem;
-
-      width: 150px;
-      height: 150px;
+      margin: 1rem;
+      width: 100px;
+      height: 100px;
       display: flex;
     }
 

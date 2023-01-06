@@ -209,7 +209,7 @@ ul.sm-list {
 /* ----------------------------------------------------------------- */
 /* -------------------------- NAVIGATION ---------------------------- */
 
-.k-skip a, .no-display {
+.no-display {
   position: absolute;
   overflow: hidden;
   width: 1px;
@@ -219,16 +219,20 @@ ul.sm-list {
 
 h2.k-skip {font-size: 1em;}
 
-.k-skip a:focus {
-  width: 15em;
-  height: auto;
-  left: auto;
-  right: 22px;
-  top: -1em;
-  color: var(--link-color);
-  border: none;
-  text-align: right;
+.k-skip {
+  text-align: center;
 }
+
+.k-skip a {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+}
+.k-skip a:focus {position: static; width: auto; height: auto;}
 
 nav {
   position: fixed;
@@ -246,7 +250,6 @@ nav ul {
   justify-content: center;
   list-style-type: none;
   margin: 0;
-  border-top: 5px solid var(--body-bg);
 }
 
 nav li {

@@ -339,7 +339,7 @@ aside div.be-partner {
   margin: 0 0 4rem;
 }
 
-  aside div.be-partner p {max-width: 25em;}
+  aside div.be-partner p {max-width: 25em; padding-top: 0.5rem;}
   aside div.be-partner a, aside div.be-partner a:visited {
     color: var(--n-dark);
     background-color: var(--hot-light);

@@ -640,29 +640,31 @@ div.team {
     color: var(--text-high);
   }
   section.member p.illustration {
-    max-width: 100vw;
-    max-height: 100vw;
+    width: 50vw;
+    height: 50vw;
+    max-width: 200px;
+    max-height: 200px;
     overflow: hidden;
     background: var(--body-bg);
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: 0;
+    margin: 1rem 0;
   }
   section.member p.illustration:nth-child(even) {
-    background-size: contain;
     background-image: url(/img/blob2.svg);
   }
   section.member p.illustration:nth-child(odd) {
-    background-size: contain;
     background-image: url(/img/blob.svg);
   }
 
-  section.member p:not(.illustration) {
-    padding: 1rem;
-  }
   section.member p.illustration + p {margin-top: 0;}
 
     section.member p.illustration img {
+      object-fit: cover;
+      width: 50vw;
+      height: 50vw;
+      max-width: 200px;
+      max-height: 200px;
       border-radius: 100%;
     }
 

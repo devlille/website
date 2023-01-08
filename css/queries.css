@@ -4,6 +4,19 @@
           				Ge Ricci, 2022
 -------------------------------------------------------------------- */
 
+@media screen and (min-width: 300px) {
+  section.member div.hgroup {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  section.member p.illustration {
+    background-size: contain;
+  }
+}
+
 @media screen and (min-width: 600px) {
   header {margin-top: 5rem;}
   div.stats ul {
@@ -70,29 +83,9 @@
   ul.thumbs figure {display: flex; flex-direction: column;}
   ul.thumbs figcaption {display: block; margin-top: auto; }
 
-}
+  div.team {flex-direction: row; flex-wrap: wrap;}
+  section.member {flex: 1 1 35%;}
 
-@media screen and (min-width: 750px) {
-  div.team {
-    gap: 4rem;
-    width: 89vw;
-  }
-  section.member p.illustration {max-height: 40vw;}
-
-  section.member:nth-child(even), section.member:nth-child(odd) {
-    background-size: cover;
-  }
-  section.member p:not(.illustration) {padding: 4rem;}
-
-  section.member {
-    gap: 0 3rem;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
-  section.member h3 {
-    grid-column-start: 1;
-    grid-column-end: -1;
-  }
 }
 
 @media screen and (min-width: 800px) {
@@ -227,9 +220,6 @@
     font-size: 1.4em;
     margin-right: 4.5rem;
   }
-
-  div.team {width: 65vw;}
-  section.member p.illustration {max-height: 20vw;}
 }
 
 @media screen and (min-width: 1500px) {

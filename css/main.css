@@ -130,6 +130,8 @@ abbr {cursor: help;}
 /* -------------------------- STRUCTURE ---------------------------- */
 
 header {
+  display: flex;
+  flex-direction: column-reverse;
   margin: 1.5rem 5% 0;
   transition: all .3s;
 }
@@ -207,7 +209,7 @@ ul.sm-list {
 /* ----------------------------------------------------------------- */
 /* -------------------------- NAVIGATION ---------------------------- */
 
-.k-skip a, .no-display {
+.no-display {
   position: absolute;
   overflow: hidden;
   width: 1px;
@@ -215,18 +217,22 @@ ul.sm-list {
   left: -5000px;
 }
 
-h2.k-skip {font-size: 1em;}
-
-.k-skip a:focus {
-  width: 15em;
-  height: auto;
-  left: auto;
-  right: 22px;
-  top: -1em;
-  color: var(--link-color);
-  border: none;
-  text-align: right;
+.k-skip {
+  font-size: 0.8em;
+  text-align: center;
+  margin: 0;
 }
+
+.k-skip a {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+}
+.k-skip a:focus {position: static; width: auto; height: auto;}
 
 nav {
   position: fixed;
@@ -244,7 +250,6 @@ nav ul {
   justify-content: center;
   list-style-type: none;
   margin: 0;
-  border-top: 5px solid var(--body-bg);
 }
 
 nav li {
@@ -334,7 +339,7 @@ aside div.be-partner {
   margin: 0 0 4rem;
 }
 
-  aside div.be-partner p {max-width: 25em;}
+  aside div.be-partner p {max-width: 25em; padding-top: 0.5rem;}
   aside div.be-partner a, aside div.be-partner a:visited {
     color: var(--n-dark);
     background-color: var(--hot-light);
@@ -380,10 +385,9 @@ aside div.be-partner {
     border-radius: 100%;
   }
     div.sponsors a {
-      margin: 2rem;
-
-      width: 150px;
-      height: 150px;
+      margin: 1rem;
+      width: 100px;
+      height: 100px;
       display: flex;
     }
 
@@ -842,19 +846,14 @@ div.modal.active {display: block;}
 .stressed {color: var(--main-color);}
 
 p.cfp {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   font-size: 0.85em;
   font-variant: small-caps;
   font-variation-settings: "wght" 800, "wdth" 100;
   text-align: center;
   color: var(--text-inv);
   background-color: var(--hot-light);
-  padding: 0.5rem 0 0.65rem;
-  z-index: 10;
+  padding: 0.5rem 0.65rem;
+  margin: -1rem 0 2rem;
 }
 
 p.cfp a {

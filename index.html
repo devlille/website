@@ -10,7 +10,7 @@ currSection: index
       <span class="stressed">Web</span>, <span class="stressed">Mobile</span>, <span class="stressed">Cloud</span>,
       <span class="stressed">DevOps</span>, <span class="stressed">Big Data</span> et <span class="stressed">IA</span>.
     </p>
-    <!--p class="register"><a href="{{ collections.config.billetwebUrl }}{{collections.config.edition}}">Inscrivez-vous!</a></p-->
+    <p class="register"><a rel="noreferrer noopener" target="_blank" href="{{ collections.config.billetwebUrl }}{{collections.config.edition}}">Inscrivez-vous!</a></p>
   </div>
   <div class="stats">
     <h2 class="no-display">Le Devfest Lille {{ collections.config.edition }} en chiffres</h2>
@@ -30,16 +30,15 @@ currSection: index
       <h3>Devfest Lille 2023 – <abbr title="Rendez-vous">RDV</abbr> le 26 Mai</h3>
       <p>Vous l'attendez tous avec impatience, le Devfest Lille 2023 aura lieu le vendredi 26 Mai !</p>
       <p>
-        Vous pouvez dès à présent consulter 
-        <a href="http://bit.ly/partenaires-devfest-lille" target="_blank">notre dossier de partenariat</a> 
-        pour vous aider à vous préparer au mieux et vous laisser le temps de prendre connaissance des
-        partenariats possibles.
+        Vous pouvez dès à présent consulter
+        <a href="http://bit.ly/partenaires-devfest-lille" target="_blank">notre dossier de partenariat</a>
+        pour vous aider à vous préparer au mieux et vous laisser le temps de prendre connaissance des partenariats
+        possibles.
       </p>
       <p>
-        Attention, les demandes seront acceptées uniquement à partir du <strong>5 décembre à 14h</strong>, 
-        et se feront via un site web 
-        que nous vous communiquerons par email au même moment. Un conseil, certains pack 
-        partent très vite, alors tenez-vous prêts.
+        Attention, les demandes seront acceptées uniquement à partir du <strong>5 décembre à 14h</strong>, et se feront
+        via un site web que nous vous communiquerons par email au même moment. Un conseil, certains pack partent très
+        vite, alors tenez-vous prêts.
       </p>
       <p>Nous reviendrons donc vers vous le 5 décembre, pour l'ouverture des partenariats.</p>
       <p>
@@ -54,7 +53,15 @@ currSection: index
       <h2>Un lieu privilégié : <strong>Lille Grand Palais</strong></h2>
       <div class="content">
         <p class="illustration">
-          <img loading="lazy" src="/img/kinepolis.jpg" alt="Une salle du Lille Grand Palais" />
+          <picture>
+            <source srcset="img/kinepolis.avif" type="image/avif" alt="Une salle du Lille Grand Palais"/>
+            <source srcset="img/kinepolis.webp" type="image/webp" alt="Une salle du Lille Grand Palais" />
+            <img
+              loading="lazy"
+              src="/img/kinepolis.jpg"
+              alt="Une salle du Lille Grand Palais"
+            />
+          </picture>
         </p>
         <div>
           <p>
@@ -74,17 +81,22 @@ currSection: index
       <h2>Une conférence <strong>accessible</strong></h2>
       <div class="content">
         <p class="illustration">
-          <img
-            loading="lazy"
-            src="/img/lemessageur.jpg"
-            alt="Salle du Kinepolis avec une retranscription en live de la conférence"
-          />
+          <picture>
+            <source srcset="img/lemessageur.avif" type="image/avif" alt="Salle du Kinepolis avec une retranscription en live de la conférence"/>
+            <source srcset="img/lemessageur.webp" type="image/webp" alt="Salle du Kinepolis avec une retranscription en live de la conférence" />
+            <img
+              loading="lazy"
+              src="/img/lemessageur.jpg"
+              alt="Salle du Kinepolis avec une retranscription en live de la conférence"
+            />
+          </picture>
         </p>
         <div>
           <p>
             <strong class="stressed">Toutes</strong> nos conférences sont sous-titrées grâce au service du
             <a rel="noreferrer noopener" target="_blank" href="https://www.lemessageur.com/">
-              Messageur <img src="/img/external-link.svg" alt="Ouvre nouvel onglet" width="14" height="14" loading="lazy"
+              Messageur
+              <img src="/img/external-link.svg" alt="Ouvre nouvel onglet" width="14" height="14" loading="lazy"
             /></a>
           </p>
         </div>

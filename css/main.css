@@ -129,6 +129,7 @@ abbr {cursor: help;}
 /* ----------------------------------------------------------------- */
 /* -------------------------- STRUCTURE ---------------------------- */
 
+
 header {
   display: flex;
   flex-direction: column-reverse;
@@ -291,6 +292,11 @@ nav a:hover, nav a:focus, nav a[aria-current] {
   box-shadow: 0 0 15px rgba(255,255,255,0.5);
   transition: all .3s;
   z-index: 10;
+}
+
+
+#home header.with-cfp {
+  padding-top: 3rem;
 }
 
   #home header.active img {width: 140px;}
@@ -848,6 +854,11 @@ div.modal.active {display: block;}
 .stressed {color: var(--main-color);}
 
 p.cfp {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
   font-size: 0.85em;
   font-variant: small-caps;
   font-variation-settings: "wght" 800, "wdth" 100;
@@ -855,7 +866,6 @@ p.cfp {
   color: var(--text-inv);
   background-color: var(--hot-light);
   padding: 0.5rem 0.65rem;
-  margin: -1rem 0 2rem;
 }
 
 p.cfp a {

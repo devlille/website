@@ -1,59 +1,83 @@
 const htmlmin = require("html-minifier");
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
 const fs = require("fs");
 const path = require("path");
-const { optimize } = require('svgo');
+const { optimize } = require("svgo");
 const config = require("./data/config.json");
-const md = require( "markdown" ).markdown;
+const md = require("markdown").markdown;
 
+const test = async () => {};
+test();
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addCollection("speakersFromApi", async () => {
+  eleventyConfig.addCollection("faqs", async () => {
     try {
-      const speakers = await fetch(config.cms4partnersApi + config.edition + "/speakers").then(res => res.json())
-      return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name))
-    } catch(e){
+      const data = await fetch(config.cms4partnersApi + config.edition).then((res) => res.json());
+      const qanda = data.qanda
+        .sort((f1, f2) => f1.order - f2.order)
+        .map((q) => {
+          console.log(q);
+          return {
+            ...q,
+            response: q.acronyms.reduce(
+              (acc, { key, value }) => acc.replace(key, `<abbr title="${value}">${key}</abbr>`),
+
+              q.actions.reduce((acc, { label, url }) => {
+                const regEx = new RegExp(label, "ig");
+                return acc.replace(regEx, `<a href="${url}">${label}</a>`);
+              }, q.response)
+            ),
+          };
+        });
+      return qanda;
+    } catch (e) {
       return [];
     }
-
+  });
+  eleventyConfig.addCollection("speakersFromApi", async () => {
+    try {
+      const speakers = await fetch(config.cms4partnersApi + config.edition + "/speakers").then((res) => res.json());
+      return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name));
+    } catch (e) {
+      return [];
+    }
   });
 
   eleventyConfig.addCollection("partners", async () => {
     try {
-      const tempFolder = path.resolve(__dirname, "_site/img")
-      const sponsors = await fetch(config.cms4partnersApi + config.edition + "/partners").then(res => res.json())
+      const tempFolder = path.resolve(__dirname, "_site/img");
+      const sponsors = await fetch(config.cms4partnersApi + config.edition + "/partners").then((res) => res.json());
       Object.entries(sponsors).forEach(([pack, partners]) => {
         sponsors[pack] = partners.sort((p1, p2) => {
-          return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase())
-        })
-      })
+          return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
+        });
+      });
 
-      Object.values(sponsors).forEach(pack => {
+      Object.values(sponsors).forEach((pack) => {
         const sponsorsByPack = Object.values(pack);
-        sponsorsByPack.forEach(sponsor => {
-          if(sponsor.site_url.indexOf("https://") < 0){
+        sponsorsByPack.forEach((sponsor) => {
+          if (sponsor.site_url.indexOf("https://") < 0) {
             sponsor.site_url = "https://" + sponsor.site_url;
           }
-          sponsor.ext = getExtension(sponsor.logo_url.split(".").pop())
+          sponsor.ext = getExtension(sponsor.logo_url.split(".").pop());
           fetch(sponsor.logo_url)
-              .then(response => response.text())
-              .then(blob => {
-                return optimize(blob, {
-                  multipass: true,
-                })
-              })
-              .then(result => {
-                const optimizedSvgString = result.data;
-                fs.writeFileSync(tempFolder + "/" + sponsor.name + "." + sponsor.ext, optimizedSvgString, { flag: 'w' })
-              })
-              .catch(err => console.error(err))
-        })
-      })
+            .then((response) => response.text())
+            .then((blob) => {
+              return optimize(blob, {
+                multipass: true,
+              });
+            })
+            .then((result) => {
+              const optimizedSvgString = result.data;
+              fs.writeFileSync(tempFolder + "/" + sponsor.name + "." + sponsor.ext, optimizedSvgString, { flag: "w" });
+            })
+            .catch((err) => console.error(err));
+        });
+      });
 
       return sponsors;
-    } catch(e){
-      return {}
+    } catch (e) {
+      return {};
     }
-
   });
 
   function getExtension(potentialExt) {
@@ -73,28 +97,30 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("talks", async () => {
     try {
-      const agenda = await fetch(config.cms4partnersApi + config.edition + "/agenda").then(res => res.json())
-      const talks = Object.entries(agenda.talks)
+      const agenda = await fetch(config.cms4partnersApi + config.edition + "/agenda").then((res) => res.json());
+      const talks = Object.entries(agenda.talks);
       const oTalks = talks.map(([_, talks]) => {
-        return [_, talks.map(talk => {
-          return {
-            talk: {
-              ...talk.talk,
-              room: talk.room,
-              abstract: md.toHTML(talk.talk?.abstract ?? "").replace("h2", "p"),
-              title: talk.talk?.title ?? "Pause",
-            },
-            speakers: talk?.talk?.speakers?.map(speaker => speaker.display_name).join(', ')
-          }
-        })]
-      })
+        return [
+          _,
+          talks.map((talk) => {
+            return {
+              talk: {
+                ...talk.talk,
+                room: talk.room,
+                abstract: md.toHTML(talk.talk?.abstract ?? "").replace("h2", "p"),
+                title: talk.talk?.title ?? "Pause",
+              },
+              speakers: talk?.talk?.speakers?.map((speaker) => speaker.display_name).join(", "),
+            };
+          }),
+        ];
+      });
       return oTalks;
-    } catch(e){
+    } catch (e) {
       console.log(e);
-      return []
+      return [];
     }
   });
-
 
   eleventyConfig.addPassthroughCopy("css/*.ttf");
   eleventyConfig.addPassthroughCopy("css/*.woff");
@@ -112,13 +138,13 @@ module.exports = function (eleventyConfig) {
     outputFileExtension: "css",
     compile: async (inputContent) => {
       return async () => {
-        return new Promise(resolve => {
-          new CleanCSS({ inline: ['remote'] }).minify(inputContent, (_, data) => {
-            resolve(data.styles)
+        return new Promise((resolve) => {
+          new CleanCSS({ inline: ["remote"] }).minify(inputContent, (_, data) => {
+            resolve(data.styles);
           });
         });
       };
-    }
+    },
   });
 
   eleventyConfig.addTemplateFormats("js");
@@ -127,11 +153,10 @@ module.exports = function (eleventyConfig) {
     outputFileExtension: "js",
     compile: async (inputContent) => {
       return async () => {
-        return minify(inputContent).then(result => result.code);
+        return minify(inputContent).then((result) => result.code);
       };
-    }
+    },
   });
-
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (outputPath.endsWith(".html")) {

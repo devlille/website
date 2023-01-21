@@ -6,8 +6,7 @@ const { optimize } = require("svgo");
 const config = require("./data/config.json");
 const md = require("markdown").markdown;
 
-const test = async () => {};
-test();
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("faqs", async () => {
     try {
@@ -15,7 +14,6 @@ module.exports = function (eleventyConfig) {
       const qanda = data.qanda
         .sort((f1, f2) => f1.order - f2.order)
         .map((q) => {
-          console.log(q);
           return {
             ...q,
             response: q.acronyms.reduce(

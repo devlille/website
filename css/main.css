@@ -129,6 +129,7 @@ abbr {cursor: help;}
 /* ----------------------------------------------------------------- */
 /* -------------------------- STRUCTURE ---------------------------- */
 
+
 header {
   display: flex;
   flex-direction: column-reverse;
@@ -295,6 +296,10 @@ nav a:hover, nav a:focus, nav a[aria-current] {
   box-shadow: 0 0 15px rgba(255,255,255,0.5);
   transition: all .3s;
   z-index: 10;
+}
+
+header.with-cfp {
+  padding-top: 3rem;
 }
 
   #home header.active img {width: 140px;}
@@ -639,33 +644,66 @@ div.team {
   gap: 3rem 10%;
 }
 
-section.member:nth-child(even) {
-  background-size: contain;
-  background-image: url(/img/blob2.svg);
-}
-section.member:nth-child(odd) {
-  background-size: contain;
-  background-image: url(/img/blob.svg);
-}
-
   section.member h3 {
     font-variation-settings: "wght" 900;
     color: var(--text-high);
   }
   section.member p.illustration {
-    max-height: 100vw;
+    width: 50vw;
+    height: 50vw;
+    max-width: 200px;
+    max-height: 200px;
     overflow: hidden;
-    margin-bottom: 0;
-  }
-  section.member p:not(.illustration) {
     background: var(--body-bg);
-    padding: 1rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 1rem 0;
   }
+  section.member p.illustration:nth-child(even) {
+    background-image: url(/img/blob2.svg);
+  }
+  section.member p.illustration:nth-child(odd) {
+    background-image: url(/img/blob.svg);
+  }
+
   section.member p.illustration + p {margin-top: 0;}
 
     section.member p.illustration img {
-      border-bottom-right-radius: 100%;
+      object-fit: cover;
+      width: 50vw;
+      height: 50vw;
+      max-width: 200px;
+      max-height: 200px;
+      border-radius: 100%;
     }
+
+div.highlight {
+  color: var(--text-inv);
+  background-color: var(--hot-color);
+  padding: 1.5rem;
+}
+
+div.highlight p {font-variation-settings: "wght" 600}
+
+.page-body p + p.volunteers {
+  margin-top: 1.5rem;
+}
+
+p.volunteers {
+  position: relative;
+  transform: rotate(5deg);
+}
+
+  p.volunteers::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid var(--body-text);
+    transform: rotate(-5deg);
+  }
 
 
 /* ----------------------------------------------------------------- */
@@ -847,8 +885,8 @@ div.modal.active {display: block;}
 .stressed {color: var(--main-color);}
 
 p.cfp {
-  position: absolute;
   box-sizing: border-box;
+  position: absolute;
   width: 100%;
   top: 0;
   left: 0;

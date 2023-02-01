@@ -281,6 +281,10 @@ nav a:hover, nav a:focus, nav a[aria-current] {
 /* ----------------------------------------------------------------- */
 /* -------------------------- HOME ---------------------------- */
 
+#home header.with-cfp, #home header.with-cfp.active {
+  padding-top: 3rem;
+}
+
 #home header.active {
   position: fixed;
   top: 0;

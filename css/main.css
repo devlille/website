@@ -294,8 +294,7 @@ nav a:hover, nav a:focus, nav a[aria-current] {
   z-index: 10;
 }
 
-
-#home header.with-cfp {
+header.with-cfp {
   padding-top: 3rem;
 }
 
@@ -673,6 +672,34 @@ div.team {
       max-height: 200px;
       border-radius: 100%;
     }
+
+div.highlight {
+  color: var(--text-inv);
+  background-color: var(--hot-color);
+  padding: 1.5rem;
+}
+
+div.highlight p {font-variation-settings: "wght" 600}
+
+.page-body p + p.volunteers {
+  margin-top: 1.5rem;
+}
+
+p.volunteers {
+  position: relative;
+  transform: rotate(5deg);
+}
+
+  p.volunteers::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid var(--body-text);
+    transform: rotate(-5deg);
+  }
 
 
 /* ----------------------------------------------------------------- */

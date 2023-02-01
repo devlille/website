@@ -84,7 +84,12 @@
   ul.thumbs figcaption {display: block; margin-top: auto; }
 
   div.team {flex-direction: row; flex-wrap: wrap;}
-  section.member {flex: 1 1 35%;}
+  section.member {flex: 1 1 35%; max-width: 400px;}
+
+  div.highlight {
+    display: flex;
+    gap: 2rem;
+  }
 
 }
 

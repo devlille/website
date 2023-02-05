@@ -4,11 +4,30 @@ title: Speakers /
 currSection: speakers
 ---
 
-<div class="page-body">
+<div class="page-body list">
   <h2>Speakers</h2>
 
   <div class="all-speakers">
-  	<!-- SPEAKER SHEET/ -->
+	<ul>
+		<li>
+			<p><strong><a href="/speaker-page/">Angela Ricci</a></strong></p>
+			<p>N'importe quoi sur le web</p>
+			<p class="s-photo"><img loading="lazy" src="/img/speakers/aricci.jpg" alt="Photo de {{ speaker.display_name }}" /></p>
+		</li>
+		<li>
+			<p><strong><a href="/speaker-page/">Angela Ricci</a></strong></p>
+			<p>N'importe quoi sur le web</p>
+			<p class="s-photo"><img loading="lazy" src="/img/speakers/aricci.jpg" alt="Photo de {{ speaker.display_name }}" /></p>
+		</li>
+		<li>
+			<p><strong><a href="/speaker-page/">Angela Ricci</a></strong></p>
+			<p>N'importe quoi sur le web</p>
+			<p class="s-photo"><img loading="lazy" src="/img/speakers/aricci.jpg" alt="Photo de {{ speaker.display_name }}" /></p>
+		</li>
+	</ul>
+  </div>
+
+  <!-- <div class="all-speakers">
       {%- for speaker in collections.speakersFromApi -%}
   	<div class="speaker-sheet">
   		<header>
@@ -19,8 +38,8 @@ currSection: speakers
         {% endif %}
   		</header>
   		<div class="content">
-        <p>{{ speaker.bio }}</p>
-      </div>
+			<p>{{ speaker.bio }}</p>
+		</div>
   		<ul class="social">
                     {% if speaker.twitter %}
   			<li>
@@ -36,7 +55,6 @@ currSection: speakers
                     {% endif %}
   		</ul>
   	</div>
-  	<!-- /SPEAKER SHEET -->
       {%- endfor -%}
-  </div>
+  </div> -->
 </div>

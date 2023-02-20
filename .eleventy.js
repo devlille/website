@@ -66,7 +66,8 @@ module.exports = function (eleventyConfig) {
             })
             .then((result) => {
               const optimizedSvgString = result.data;
-              fs.writeFileSync(tempFolder + "/" + sponsor.name + "." + sponsor.ext, optimizedSvgString, { flag: "w" });
+              sponsor.logoName = sponsor.name.toLowerCase().replace(' ', '-');
+              fs.writeFileSync(tempFolder + "/" + sponsor.logoName + "." + sponsor.ext, optimizedSvgString, { flag: "w" });
             })
             .catch((err) => console.error(err));
         });

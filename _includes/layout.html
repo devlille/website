@@ -86,6 +86,7 @@
                     Lille Grand Palais
                 </span>
             </h1>
+            <!-- Ajouter dans header la classe with-cfp si cfp est visible; la virer si non -->
             <p class="cfp">
               <a rel="noreferrer noopener" target="_blank" href="{{collections.config.cfpUrl}}">
                   <abbr lang="en" title="Call for Paper">CFP</abbr> ouvert jusqu'au {{collections.config.cfpEndedDate}}</a>
@@ -177,13 +178,13 @@
                     </div>
                     {% endif %}
 
-                    {% if collections.partners.Virtual.length > 0 %}
+                    {% if collections.partners.Virtuel.length > 0 %}
 
                     <div class="sponsors bronze">
-                        <h3>Bronze</h3>
+                        <h3>Virtuel</h3>
 
                         <ul>
-                            {%- for p in collections.partners.Virtual: -%}
+                            {%- for p in collections.partners.Virtuel: -%}
                             <li>
                                 <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
                                     <img src="/img/{{p.name}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
@@ -218,12 +219,12 @@
                 </dl>
                 <div class="footer-links">
                     <ul class="links-list">
-                        <!--li><a href="/a-propos">L'équipe Devfest Lille</a></li-->
+                        <li><a href="/a-propos">L'équipe Devfest Lille</a></li>
                         <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
                         <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vQoIRxFaAFjNm0rVct5jzbJ9Xol7iIJkI6uKeazRb6uMHKZRnVsZuiKZ30LzUAresm1mPie2OT-2xDU/pub?start=false&loop=false&slide=id.g117aa382f2b_0_85">
                             Devenez partenaire</a></li>
                         <li><a href="/code-conduite">Code de conduite</a></li>
-                        <li><a href="/promo">Resources graphiques</a></li>
+                        <li><a href="/promo">Ressources graphiques</a></li>
                         <li><a href="/wld">Offres d'emploi</a></li>
                     </ul>
                     <ul class="links-list editions">

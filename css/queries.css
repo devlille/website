@@ -4,6 +4,19 @@
           				Ge Ricci, 2022
 -------------------------------------------------------------------- */
 
+@media screen and (min-width: 300px) {
+  section.member div.hgroup {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  section.member p.illustration {
+    background-size: contain;
+  }
+}
+
 @media screen and (min-width: 600px) {
   header {margin-top: 5rem;}
   div.stats ul {
@@ -70,29 +83,14 @@
   ul.thumbs figure {display: flex; flex-direction: column;}
   ul.thumbs figcaption {display: block; margin-top: auto; }
 
-}
+  div.team {flex-direction: row; flex-wrap: wrap;}
+  section.member {flex: 1 1 35%; max-width: 400px;}
 
-@media screen and (min-width: 750px) {
-  div.team {
-    gap: 4rem;
-    width: 89vw;
+  div.highlight {
+    display: flex;
+    gap: 2rem;
   }
-  section.member p.illustration {max-height: 40vw;}
 
-  section.member:nth-child(even), section.member:nth-child(odd) {
-    background-size: cover;
-  }
-  section.member p:not(.illustration) {padding: 4rem;}
-
-  section.member {
-    gap: 0 3rem;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
-  section.member h3 {
-    grid-column-start: 1;
-    grid-column-end: -1;
-  }
 }
 
 @media screen and (min-width: 800px) {
@@ -130,6 +128,16 @@
 
   p.cfp {font-size: 0.95em;}
   div.stats {margin-bottom: 8rem;}
+
+  div.speaker-sheet {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: calc(2rem + 2vw);
+  }
+
+  div.speaker {flex: 1 1 30%; max-width: 315px;}
+  div.talk {flex: 0 1 60%;}
 }
 
 
@@ -187,20 +195,6 @@
   .page-body {margin-bottom: 6rem;}
     .page-body h2 {font-size: 3em; margin-bottom: 4rem;}
 
-  div.all-speakers {
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: 10%;
-    margin-top: 6rem;
-  }
-    div.all-speakers h3 {font-size: 1.5em;}
-
-  div.speaker-sheet {
-    flex-basis: 45%;
-    display: flex;
-    flex-direction: column;
-  }
-
   div.content {margin-bottom: 1.5rem;}
   ul.social {
     margin-top: auto;
@@ -227,9 +221,6 @@
     font-size: 1.4em;
     margin-right: 4.5rem;
   }
-
-  div.team {width: 65vw;}
-  section.member p.illustration {max-height: 20vw;}
 }
 
 @media screen and (min-width: 1500px) {
@@ -241,4 +232,9 @@
   }
   section.news {flex: 0 1 35%;}
   div.with-news div.decor .content {display: block;}
+}
+
+@media screen and (min-width: 1700px) {
+  div.all-speakers ul {flex-flow: row wrap;}  
+  div.all-speakers li {flex: 1 1 45%;}
 }

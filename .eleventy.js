@@ -53,6 +53,7 @@ module.exports = function (eleventyConfig) {
       Object.values(sponsors).forEach((pack) => {
         const sponsorsByPack = Object.values(pack);
         sponsorsByPack.forEach((sponsor) => {
+          sponsor.logoName = sponsor.name.toLowerCase().replace(' ', '-');
           if (sponsor.site_url.indexOf("https://") < 0) {
             sponsor.site_url = "https://" + sponsor.site_url;
           }
@@ -66,7 +67,7 @@ module.exports = function (eleventyConfig) {
             })
             .then((result) => {
               const optimizedSvgString = result.data;
-              sponsor.logoName = sponsor.name.toLowerCase().replace(' ', '-');
+              
               fs.writeFileSync(tempFolder + "/" + sponsor.logoName + "." + sponsor.ext, optimizedSvgString, { flag: "w" });
             })
             .catch((err) => console.error(err));

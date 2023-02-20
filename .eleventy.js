@@ -41,6 +41,9 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("partners", async () => {
+    const isURL = require('isurl');
+
+
     try {
       const tempFolder = path.resolve(__dirname, "_site/img");
       const sponsors = await fetch(config.cms4partnersApi + config.edition + "/partners").then((res) => res.json());
@@ -53,7 +56,12 @@ module.exports = function (eleventyConfig) {
       Object.values(sponsors).forEach((pack) => {
         const sponsorsByPack = Object.values(pack);
         sponsorsByPack.forEach((sponsor) => {
-          sponsor.logoName = sponsor.name.toLowerCase().replace(' ', '-');
+          try {
+            isURL(new URL(sponsor.site_url))
+          } catch(e){
+            process.exit(1)
+          }
+          sponsor.logoName = sponsor.name.toLowerCase().replaceAll(' ', '-');
           if (sponsor.site_url.indexOf("https://") < 0) {
             sponsor.site_url = "https://" + sponsor.site_url;
           }

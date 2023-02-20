@@ -13,6 +13,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^1.0.2",
     "html-minifier": "^4.0.0",
+    "isurl": "^4.0.2",
     "serve": "^14.0.1"
   },
   "dependencies": {

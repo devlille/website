@@ -59,6 +59,7 @@ module.exports = function (eleventyConfig) {
           try {
             isURL(new URL(sponsor.site_url))
           } catch(e){
+            console.error(`Bad URL for ${sponsor.name}`)
             process.exit(1)
           }
           sponsor.logoName = sponsor.name.toLowerCase().replaceAll(' ', '-');

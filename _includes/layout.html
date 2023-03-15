@@ -201,7 +201,7 @@
                         <h3>Community Partners</h3>
 
                         <ul>
-                            {%- for p in collections.partners.["Community Partners"] -%}
+                            {%- for p in collections.partners["Community Partners"] -%}
                             <li>
                                 <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
                                     <img src="/img/{{p.logoName}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />

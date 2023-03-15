@@ -127,7 +127,7 @@
                     <h2>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition
                         {{ collections.config.edition }}!</h2>
                     
-                        {% if collections.partners.Platinium.length > 0 %}
+                    {% if collections.partners.Platinium.length > 0 %}
                     <div class="sponsors gold">
                         <h3>Platinium</h3>
 
@@ -185,6 +185,23 @@
 
                         <ul>
                             {%- for p in collections.partners.Virtuel: -%}
+                            <li>
+                                <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
+                                    <img src="/img/{{p.logoName}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
+                                </a>
+                            </li>
+                            {%- endfor -%}
+
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    {% if collections.partners["Community Partners"].length > 0 %}
+                    <div class="sponsors gold">
+                        <h3>Community Partners</h3>
+
+                        <ul>
+                            {%- for p in collections.partners.["Community Partners"] -%}
                             <li>
                                 <a aria-label="Visiter le site de {{p.name}}" href="{{p.site_url}}">
                                     <img src="/img/{{p.logoName}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />

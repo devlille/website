@@ -365,6 +365,10 @@ aside div.be-partner {
     margin-bottom: 1rem;
     border-top: 5px dotted var(--hot-color);
   }
+  div.sponsors.platinium h3 {
+    color: var(--body-text);
+    border-color: var(--body-text);
+  }
   div.sponsors.silver h3 {
     color: var(--main-color);
     border-color: var(--main-color);
@@ -376,6 +380,10 @@ aside div.be-partner {
   div.sponsors.partner h3 {
     color: var(--hot-color);
     border-color: var(--hot-color);
+  }
+  div.sponsors.community h3 {
+    color: var(--main-color-h);
+    border-color: var(--main-color-h);
   }
 
   div.sponsors ul {

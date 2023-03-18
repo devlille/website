@@ -7,6 +7,63 @@ currSection: agenda
 <div class="page-body">
   <h2>Agenda</h2>
   <div class="agenda">
+    <section class="hour">
+      <h3 id="h{{talk[0]}}">
+          9:00
+          <a href="https://devfest.gdglille.org/agenda/index.html#h{{talk[0]}}">
+          <img src="/img/link.svg" alt="Ancre"></a>
+      </h3>
+      <div class="content">
+          <dl>
+              <dt>Salle 130</dt>
+              <dd>
+                <a href="/speaker-page/">
+                  Titre du talk
+                </a>
+              </dd>
+              <dd>Peter Parker</dd>
+          </dl>
+          <dl>
+              <dt>Salle 140</dt>
+              <dd>
+                <a href="/speaker-page/">
+                  Un autre titre du talk
+                </a>
+              </dd>
+              <dd>Jason Banner</dd>
+          </dl>
+      </div>
+    </section>
+    <section class="hour">
+      <h3 id="h{{talk[0]}}">
+          10:00
+          <a href="https://devfest.gdglille.org/agenda/index.html#h{{talk[0]}}">
+          <img src="/img/link.svg" alt="Ancre"></a>
+      </h3>
+      <div class="content">
+          <dl>
+              <dt>Salle 130</dt>
+              <dd>
+                <a href="/speaker-page/">
+                  Titre du talk tres tres tres tres long qui passe à la ligne et c moche parce que capasse
+                </a>
+              </dd>
+              <dd>Peter Parker</dd>
+          </dl>
+          <dl>
+              <dt>Salle 140</dt>
+              <dd>
+                <a href="/speaker-page/">
+                  Un autre titre du talk
+                </a>
+              </dd>
+              <dd>Jason Banner</dd>
+          </dl>
+      </div>
+    </section>
+
+
+
       {%- for talk in collections.talks -%}
     <section class="hour">
       <h3 id="h{{talk[0]}}">
@@ -42,7 +99,7 @@ currSection: agenda
       {%- endfor -%}
   </div>
 
-
+<!-- 
 {%- for talk in collections.talks -%}
 {%- for t in talk[1] -%}
 {% if t.talk.abstract and t.talk.abstract != "" %}
@@ -66,4 +123,4 @@ currSection: agenda
 </div>
 {%- endif -%}
 {%- endfor -%}
-{%- endfor -%}
+{%- endfor -%} -->

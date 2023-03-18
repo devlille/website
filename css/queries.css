@@ -207,15 +207,32 @@
     display: flex;
     margin-top: 4rem;
   }
-    section.hour h3 {margin: 2rem 0;}
+    section.hour h3 {
+      flex: 0 0 4.5em;
+      white-space: nowrap;
+      text-align: right;
+      margin: 2rem 0;
+    }
 
   section.hour dd {
     margin-left: 2.5em;
   }
   section.hour div.content {
     flex: 1;
-    padding: 2rem 0 2rem 1rem;
   }
+  
+  section.hour div.content a {
+    box-sizing: border-box;
+    padding-right: 65px;
+  }
+
+  section.hour div.content a:hover:after {
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 45px 45px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z' fill='%23EF7918' /%3E%3C/svg%3E");
+  }
+
   div.modal div.content {height: 50vh;}
   div.modal h4 {
     font-size: 1.4em;

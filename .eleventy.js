@@ -121,7 +121,8 @@ module.exports = function (eleventyConfig) {
                 title: talk?.talk?.title ?? "Pause",
               },
               id: talk?.talk?.speakers[0].id,
-              speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(','),
+              speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join('&amp;'),
+              speakersIds: talk?.talk?.speakers?.map((speaker) => speaker?.id),
             };
           }),
         ];

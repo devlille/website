@@ -34,7 +34,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("speakersFromApi", async () => {
     try {
       const speakers = await fetch(config.cms4partnersApi + config.edition + "/speakers").then((res) => res.json());
-      console.log(speakers)
       return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name));
     } catch (e) {
       return [];

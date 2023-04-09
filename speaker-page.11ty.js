@@ -1,9 +1,11 @@
 class SpeakerPage {
+    eleventyComputed = {
+        title: data => console.log(data)
+    }
     data() {
 
         return {
             layout: "layout.html",
-            title: "Nom du speaker",
             currSection: "speakers",
             pagination: {
                 data: "collections.speakersFromApi",
@@ -13,11 +15,16 @@ class SpeakerPage {
             permalink: (ctx) => {
                 return `speaker-page-${ ctx.speaker.id }/`
             },
+            eleventyComputed: {
+                title: (ctx) => {
+                    return ctx.speaker.display_name
+                }
+            }
         }
     }
     render(data){
         let talks = []
-        for(let slot of data.collections.talks){
+        for(let slot of data.collections.talks){    
             talks = [...talks, ...(slot[1] ?? [])]
         }
 
@@ -26,7 +33,6 @@ class SpeakerPage {
             return null;
         }
         const speakers = data.collections.speakersFromApi.filter(s => selectedTalk.speakersIds.indexOf(s.id) >= 0);
-        console.log(selectedTalk)
         
         return `
 <div class="page-body list">
@@ -39,8 +45,6 @@ class SpeakerPage {
                 <p><strong class="stressed">${speaker.display_name} ${speaker.pronouns ? `(${speaker.pronouns})` : ''}</strong>, ${speaker.company}, ${speaker.bio}</p>
                 `)
             }
-
-           
         </div>
 
         <div class="speaker-data-block">

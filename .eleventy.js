@@ -34,6 +34,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("speakersFromApi", async () => {
     try {
       const speakers = await fetch(config.cms4partnersApi + config.edition + "/speakers").then((res) => res.json());
+      console.log(speakers)
       return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name));
     } catch (e) {
       return [];
@@ -114,16 +115,18 @@ module.exports = function (eleventyConfig) {
           talks.map((talk) => {
             return {
               talk: {
-                ...talk.talk,
+                ...talk,
                 room: talk.room,
-                abstract: md.toHTML(talk.talk?.abstract ?? "").replaceAll("h2", "p"),
-                title: talk.talk?.title ?? "Pause",
+                abstract: md.toHTML(talk?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
+                title: talk?.talk?.title ?? "Pause",
               },
-              speakers: talk?.talk?.speakers?.map((speaker) => speaker.display_name).join(", "),
+              id: talk?.talk?.speakers[0].id,
+              speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(','),
             };
           }),
         ];
       });
+
       return oTalks;
     } catch (e) {
       console.log(e);

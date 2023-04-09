@@ -9,52 +9,13 @@ currSection: speakers
 
   <div class="all-speakers">
 	<ul>
+		{%- for speaker in collections.speakersFromApi -%}
 		<li>
-			<p><strong><a href="/speaker-page/">Angela Ricci</a></strong></p>
-			<p>N'importe quoi sur le web</p>
-			<p class="s-photo"><img loading="lazy" src="/img/speakers/aricci.jpg" alt="Photo de {{ speaker.display_name }}" /></p>
+			<p><strong><a href="/speaker-page-{{speaker.id}}">{{ speaker.display_name}}</a></strong></p>
+			<p>{{speaker.bio}}</p>
+			<p class="s-photo"><img loading="lazy" src="{{speaker.photo_url}}" alt="Photo de {{ speaker.display_name }}" /></p>
 		</li>
-		<li>
-			<p><strong><a href="/speaker-page/">Angela Ricci</a></strong></p>
-			<p>N'importe quoi sur le web</p>
-			<p class="s-photo"><img loading="lazy" src="/img/speakers/aricci.jpg" alt="Photo de {{ speaker.display_name }}" /></p>
-		</li>
-		<li>
-			<p><strong><a href="/speaker-page/">Angela Ricci</a></strong></p>
-			<p>N'importe quoi sur le web</p>
-			<p class="s-photo"><img loading="lazy" src="/img/speakers/aricci.jpg" alt="Photo de {{ speaker.display_name }}" /></p>
-		</li>
+		{%- endfor -%}
 	</ul>
   </div>
-
-  <!-- <div class="all-speakers">
-      {%- for speaker in collections.speakersFromApi -%}
-  	<div class="speaker-sheet">
-  		<header>
-  			<p class="s-photo"><img loading="lazy" src="{{ speaker.photo_url }}" alt="Photo de {{ speaker.display_name }}" /></p>
-  			<h3>{{ speaker.display_name }}</h3>
-        {% if speaker.company %}
-           <p class="s-job">{{ speaker.company }}</p>
-        {% endif %}
-  		</header>
-  		<div class="content">
-			<p>{{ speaker.bio }}</p>
-		</div>
-  		<ul class="social">
-                    {% if speaker.twitter %}
-  			<li>
-  				<img loading="lazy" src="/img/twitter.svg" alt="Twitter">
-  				<a target="_blank" href="{{speaker.twitter}}">Twitter</a>
-  			</li>
-                    {% endif %}
-                    {% if speaker.github %}
-  			<li>
-  				<img loading="lazy" src="/img/github-face.svg" alt="Github">
-  				<a target="_blank" href="{{speaker.github}}">Github</a>
-  			</li>
-                    {% endif %}
-  		</ul>
-  	</div>
-      {%- endfor -%}
-  </div> -->
 </div>

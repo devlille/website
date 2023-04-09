@@ -7,63 +7,6 @@ currSection: agenda
 <div class="page-body">
   <h2>Agenda</h2>
   <div class="agenda">
-    <section class="hour">
-      <h3 id="h{{talk[0]}}">
-          9:00
-          <a href="https://devfest.gdglille.org/agenda/index.html#h{{talk[0]}}">
-          <img src="/img/link.svg" alt="Ancre"></a>
-      </h3>
-      <div class="content">
-          <dl>
-              <dt>Salle 130</dt>
-              <dd>
-                <a href="/speaker-page/">
-                  Titre du talk
-                </a>
-              </dd>
-              <dd>Peter Parker</dd>
-          </dl>
-          <dl>
-              <dt>Salle 140</dt>
-              <dd>
-                <a href="/speaker-page/">
-                  Un autre titre du talk
-                </a>
-              </dd>
-              <dd>Jason Banner</dd>
-          </dl>
-      </div>
-    </section>
-    <section class="hour">
-      <h3 id="h{{talk[0]}}">
-          10:00
-          <a href="https://devfest.gdglille.org/agenda/index.html#h{{talk[0]}}">
-          <img src="/img/link.svg" alt="Ancre"></a>
-      </h3>
-      <div class="content">
-          <dl>
-              <dt>Salle 130</dt>
-              <dd>
-                <a href="/speaker-page/">
-                  Titre du talk tres tres tres tres long qui passe à la ligne et c moche parce que capasse
-                </a>
-              </dd>
-              <dd>Peter Parker</dd>
-          </dl>
-          <dl>
-              <dt>Salle 140</dt>
-              <dd>
-                <a href="/speaker-page/">
-                  Un autre titre du talk
-                </a>
-              </dd>
-              <dd>Jason Banner</dd>
-          </dl>
-      </div>
-    </section>
-
-
-
       {%- for talk in collections.talks -%}
     <section class="hour">
       <h3 id="h{{talk[0]}}">
@@ -77,17 +20,7 @@ currSection: agenda
           <dl>
               <dt>{{ t.talk.room }} </dt>
               <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}>
-
-                {% if t.talk.abstract %}
-                <button class="modal-trigger" data-modal="conf-details-{{t.talk.id}}">
-                  {{ t.talk.title }}
-                  {% if t.talk.language == "English" %}<span aria-label="Talk in english"> 🇬🇧 </span>{%- endif -%}
-                </button>
-
-
-                  {% else %}
-                  {{ t.talk.title }}
-                {%- endif -%}
+                <a href="/speaker-page-{{t.id}}">  {{ t.talk.title }}</a>
               </dd>
 
               <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}> {{ t.speakers }}</dd>
@@ -98,29 +31,3 @@ currSection: agenda
     </section>
       {%- endfor -%}
   </div>
-
-<!-- 
-{%- for talk in collections.talks -%}
-{%- for t in talk[1] -%}
-{% if t.talk.abstract and t.talk.abstract != "" %}
-<div class="modal" id="conf-details-{{t.talk.id}}">
-    <div class="overlay"></div>
-    <div class="dialog" role="dialog" aria-labelledby="conf-details-title" aria-modal="true" {% if t.talk.language == "English" %} lang="en" {%- endif -%}>
-        <header>
-            <h4 id="conf-details-title">
-                {{ t.talk.title }}
-                {% if t.talk.language == "English" %}<span aria-label="Talk in english"> 🇬🇧 </span>{%- endif -%}
-            </h4>
-            <p>{{ t.speakers }}</p>
-        </header>
-        <div class="content">
-            <p>{{ t.talk.abstract }}</p>
-        </div>
-        <p class="openfeedback">Suite à la conférence, vous pouvez faire un retour aux conférenciers
-          et conférencières sur <a href="{{t.talk.open_feedback}}" target="_blank">OpenFeedback</a></p>
-        <button class="bt-close">[ Fermer ]</button>
-    </div>
-</div>
-{%- endif -%}
-{%- endfor -%}
-{%- endfor -%} -->

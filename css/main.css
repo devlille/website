@@ -788,6 +788,7 @@ p.s-photo img {
     border-radius: 100%;
     vertical-align: bottom;
     z-index: 2;
+    background-color: white;
   }
   
   div.all-speakers p.s-photo::after {

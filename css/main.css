@@ -719,7 +719,7 @@ p.volunteers {
 /* -------------------------- SPEAKERS ---------------------------- */
 
 
-div.all-speakers ul {
+div.all-speakers {
   display: flex;
   flex-direction: column;
   gap: calc(1rem + 1vw);
@@ -727,22 +727,34 @@ div.all-speakers ul {
   margin: 0;
 }
 
-div.all-speakers li {
+div.all-speakers .speaker-card {
   box-sizing: border-box;
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(30px, 117px) auto;
-  grid-template-rows: auto auto;
-  gap: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
   max-width: 635px;
   background-color: rgba(255,255,255,0.1);
   padding: 1.5rem;
-  border-bottom-right-radius: 3rem;
+  border-bottom-right-radius: 1.5rem;
   box-shadow: 2px 3px 5px rgba(0,0,0,0.9);
 }
 
-div.all-speakers li a {text-decoration: none;}
-div.all-speakers li a::after {
+div.speaker-card h3 {
+  order: 2;
+  font-variation-settings: "wght" 800;
+  text-align: center;
+}
+
+div.speaker-card h3 + p {order: 3;}
+div.speaker-card p.s-photo {
+  order: 1;
+  max-width: 160px;
+  min-width: 90px;
+  margin: 0 auto 1rem;
+}
+
+div.speaker-card a {text-decoration: none;}
+div.speaker-card a::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -752,26 +764,11 @@ div.all-speakers li a::after {
   color: var(--body-text);
 }
 
-div.all-speakers li p {
-  line-height: 1.45;
-}
-div.all-speakers li p:first-of-type {
-  align-self: end;
-  font-size: 120%;
-  font-variation-settings: "wght" 800;
-}
-div.all-speakers li p:nth-child(2) {
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0H24V24H0z'/%3E%3Cpath d='M21 3c.552 0 1 .448 1 1v14c0 .552-.448 1-1 1H6.455L2 22.5V4c0-.552.448-1 1-1h18zm-1 2H4v13.385L5.763 17H20V5zm-9.485 2.412l.447.688c-1.668.903-1.639 2.352-1.639 2.664.155-.02.318-.024.48-.009.902.084 1.613.825 1.613 1.745 0 .966-.784 1.75-1.75 1.75-.537 0-1.05-.245-1.374-.59-.515-.546-.792-1.16-.792-2.155 0-1.75 1.228-3.318 3.015-4.093zm5 0l.447.688c-1.668.903-1.639 2.352-1.639 2.664.155-.02.318-.024.48-.009.902.084 1.613.825 1.613 1.745 0 .966-.784 1.75-1.75 1.75-.537 0-1.05-.245-1.374-.59-.515-.546-.792-1.16-.792-2.155 0-1.75 1.228-3.318 3.015-4.093z' style='fill: %23fff'/%3E%3C/svg%3E");
-  padding-left: 30px;
-}
-
-
 div.all-speakers em {
   display: block;
 }
 
-div.all-speakers p.s-photo {
+div.speaker-card p.s-photo {
   position: relative;
   box-sizing: border-box;
   grid-row-start: 1;

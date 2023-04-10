@@ -91,6 +91,14 @@
     gap: 2rem;
   }
 
+  div.all-speakers {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  div.speaker-card {
+    flex: 1 1 45%;
+  }
+
 }
 
 

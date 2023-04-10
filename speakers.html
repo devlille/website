@@ -8,14 +8,12 @@ currSection: speakers
   <h2>Speakers</h2>
 
   <div class="all-speakers">
-	<ul>
 		{%- for speaker in collections.speakersFromApi -%}
-		<li>
-			<p><strong><a href="/speaker-page-{{speaker.id}}">{{ speaker.display_name}}</a></strong></p>
+		<div class="speaker-card">
+			<h3><a href="/speaker-page-{{speaker.id}}">{{ speaker.display_name}}</a></h3>
 			<p>{{speaker.bio}}</p>
 			<p class="s-photo"><img loading="lazy" src="{{speaker.photo_url}}" alt="Photo de {{ speaker.display_name }}" /></p>
-		</li>
+		</div>
 		{%- endfor -%}
-	</ul>
   </div>
 </div>

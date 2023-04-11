@@ -119,7 +119,7 @@ module.exports = function (eleventyConfig) {
                 abstract: md.toHTML(talk?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
                 title: talk?.talk?.title ?? "Pause",
               },
-              id: talk?.talk?.speakers[0].id,
+              id: talk?.talk?.speakers[0]?.id,
               speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join('&amp;'),
               speakersIds: talk?.talk?.speakers?.map((speaker) => speaker?.id),
             };

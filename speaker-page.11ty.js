@@ -61,11 +61,11 @@ class SpeakerPage {
                     </li>`): ''}
                     ${!!speaker.twitter ? (`<li>
                         <strong class="stressed">Sur Twitter</strong>
-                        <a target="_blank" href="${speaker.twitter}">${speaker.twitter?.replace('https://twitter.com/', '@')}</a>
+                        <a target="_blank" href="${speaker.twitter}">${speaker.twitter?.replace('https://twitter.com/', '')}</a>
                     </li>`): ''}
                     ${!!speaker.github ? (`<li>
                         <strong class="stressed">Sur Github</strong> 
-                        <a target="_blank" href="${speaker.twitter}">${speaker.github?.replace('https://github.com/', '')}</a>
+                        <a target="_blank" href="${speaker.github}">${speaker.github?.replace('https://github.com/', '')}</a>
                     </li>`): ''}
                     ${!!speaker.linkedin ? (`<li>
                         <strong class="stressed">Sur LinkedIn</strong> 

@@ -42,7 +42,7 @@ class SpeakerPage {
         <div class="speaker">
             ${
                 speakers.map(speaker => `
-                <p><strong class="stressed">${speaker.display_name} ${speaker.pronouns ? `(${speaker.pronouns})` : ''}</strong>, ${speaker.company}, ${speaker.bio}</p>
+                <p><strong class="stressed">${speaker.display_name}${speaker.pronouns ? ` (${speaker.pronouns}),` : ','}</strong> ${!!speaker.company ? (speaker.company + ',') : ''} ${speaker.bio}</p>
                 `)
             }
         </div>

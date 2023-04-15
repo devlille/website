@@ -69,7 +69,7 @@ class SpeakerPage {
                     </li>`): ''}
                     ${!!speaker.linkedin ? (`<li>
                         <strong class="stressed">Sur LinkedIn</strong> 
-                        <a target="_blank" href="${speaker.linkedin}">${speaker.linkedin?.replace('https://linkedin.com/in/', '')}</a>
+                        <a target="_blank" href="${speaker.linkedin}">${decodeURI(speaker.linkedin)?.replace('https://www.linkedin.com/in/', '')}</a>
                     </li>`): ''}
                     ${!!speaker.website ? (`<li>
                         <strong class="stressed">Site Web</strong> 

@@ -789,6 +789,7 @@ p.s-photo img {
     vertical-align: bottom;
     z-index: 2;
     background-color: white;
+    aspect-ratio: 1;
   }
   
   div.all-speakers p.s-photo::after {

@@ -1,3 +1,5 @@
+const md = require("markdown").markdown;
+
 class SpeakerPage {
     eleventyComputed = {
         title: data => console.log(data)
@@ -33,16 +35,17 @@ class SpeakerPage {
             return null;
         }
         const speakers = data.collections.speakersFromApi.filter(s => selectedTalk.speakersIds.indexOf(s.id) >= 0);
-        
+
         return `
 <div class="page-body list">
+const md = require("markdown").markdown;
     <h2>${selectedTalk.speakers}</h2>
 
     <div class="speaker-sheet">
         <div class="speaker">
             ${
                 speakers.map(speaker => `
-                <p><strong class="stressed">${speaker.display_name}${speaker.pronouns ? ` (${speaker.pronouns}),` : ','}</strong> ${!!speaker.company ? (speaker.company + ',') : ''} ${speaker.bio}</p>
+                <p><strong class="stressed">${speaker.display_name}${speaker.pronouns ? ` (${speaker.pronouns}),` : ','}</strong> ${!!speaker.company ? (speaker.company + ',') : ''} ${md.toHTML(speaker.bio.replaceAll('- ', '\r\n\r\n- '))}</p>
                 `)
             }
         </div>

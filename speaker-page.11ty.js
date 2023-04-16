@@ -57,7 +57,7 @@ class SpeakerPage {
                 <ul class="social">
                     ${!!speaker.mastodon ? (`<li>
                         <strong class="stressed">Sur Mastodon</strong> 
-                        <a target="_blank" href="#">${speaker.mastodon}</a>
+                        <a target="_blank" href="${speaker.mastodon}">${speaker.mastodon.substring(speaker.mastodon.lastIndexOf("/") + 1)}</a>
                     </li>`): ''}
                     ${!!speaker.twitter ? (`<li>
                         <strong class="stressed">Sur Twitter</strong>
@@ -69,7 +69,7 @@ class SpeakerPage {
                     </li>`): ''}
                     ${!!speaker.linkedin ? (`<li>
                         <strong class="stressed">Sur LinkedIn</strong> 
-                        <a target="_blank" href="${speaker.linkedin}">${decodeURI(speaker.linkedin)?.replace('https://www.linkedin.com/in/', '')}</a>
+                        <a target="_blank" href="${speaker.linkedin}">${decodeURI(speaker.linkedin)?.replace('https://www.linkedin.com/in/', '').replace('/', '')}</a>
                     </li>`): ''}
                     ${!!speaker.website ? (`<li>
                         <strong class="stressed">Site Web</strong> 

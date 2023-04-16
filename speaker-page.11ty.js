@@ -35,10 +35,32 @@ class SpeakerPage {
             return null;
         }
         const speakers = data.collections.speakersFromApi.filter(s => selectedTalk.speakersIds.indexOf(s.id) >= 0);
-
+ 
+        const jsonld = {
+            "description": selectedTalk.talk.abstract,
+            "name": selectedTalk.talk.title,
+            "startDate": selectedTalk.talk.startTime,
+            "endDate": selectedTalk.talk.endTime,
+            "inLanguage": "fr",
+            "keywords": selectedTalk.talk?.talk?.category,
+            "location": selectedTalk.talk.room,
+            "maximumPhysicalAttendeeCapacity": selectedTalk.talk.room === 'Grand Théâtre' ? 1000 : 450,
+            "performer": {
+              "@type": "Person",
+              "image": speakers[0].photo_url,
+              "name": speakers[0].display_name,
+              "jobTitle": speakers[0].job_title ?? "",
+              "gender": speakers[0].pronouns ?? "",
+              "workFor": {
+                      "@type": "Organization",
+                      "name": speakers[0].company ?? ""
+                  }
+            }
+            
+          }
         return `
+        <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 <div class="page-body list">
-const md = require("markdown").markdown;
     <h2>${selectedTalk.speakers}</h2>
 
     <div class="speaker-sheet">

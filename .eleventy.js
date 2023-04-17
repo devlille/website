@@ -13,6 +13,12 @@ module.exports = function (eleventyConfig) {
       const data = await fetch(config.cms4partnersApi + config.edition).then((res) => res.json());
       const qanda = data.qanda
         .sort((f1, f2) => f1.order - f2.order)
+        .map(q => {
+          return {
+            ...q,
+            response: md.toHTML(q.response.replaceAll("* ", "\r\n\r\n* "))
+          }
+        })
         .map((q) => {
           return {
             ...q,
@@ -120,7 +126,7 @@ module.exports = function (eleventyConfig) {
                 title: talk?.talk?.title ?? "Pause",
               },
               id: talk?.talk?.speakers[0]?.id,
-              speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join('&amp;'),
+              speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(' &amp; '),
               speakersIds: talk?.talk?.speakers?.map((speaker) => speaker?.id),
             };
           }),

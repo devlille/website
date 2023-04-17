@@ -1,5 +1,16 @@
 const md = require("markdown").markdown;
 
+const displaySpeakers = speakers => {
+    let result = "";
+    speakers.forEach(speaker => 
+        result += `<p>
+        <strong class="stressed">${speaker.display_name}${speaker.pronouns ? ` (${speaker.pronouns}),` : ','}</strong> 
+        ${!!speaker.company ? (speaker.company) : ''} 
+    </p>
+    ${md.toHTML(speaker.bio.replaceAll('- ', '\r\n\r\n- '))}
+    `)
+    return result;
+}
 class SpeakerPage {
     eleventyComputed = {
         title: data => console.log(data)
@@ -65,11 +76,7 @@ class SpeakerPage {
 
     <div class="speaker-sheet">
         <div class="speaker">
-            ${
-                speakers.map(speaker => `
-                <p><strong class="stressed">${speaker.display_name}${speaker.pronouns ? ` (${speaker.pronouns}),` : ','}</strong> ${!!speaker.company ? (speaker.company + ',') : ''} ${md.toHTML(speaker.bio.replaceAll('- ', '\r\n\r\n- '))}</p>
-                `)
-            }
+            ${displaySpeakers(speakers)}
         </div>
 
         <div class="speaker-data-block">

@@ -12,9 +12,6 @@ const displaySpeakers = speakers => {
     return result;
 }
 class SpeakerPage {
-    eleventyComputed = {
-        title: data => console.log(data)
-    }
     data() {
 
         return {

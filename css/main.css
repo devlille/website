@@ -393,7 +393,7 @@ aside div.be-partner {
     list-style-type: none;
   }
 
-  div.sponsors li {
+  .sponsor {
     box-sizing: border-box;
     min-width: 80px;
     background-color: var(--text-high);
@@ -401,18 +401,18 @@ aside div.be-partner {
     margin: 0 auto 2rem auto;
     border-radius: 100%;
   }
-    div.sponsors a {
+  .sponsor a {
       margin: 1rem;
       width: 100px;
       height: 100px;
       display: flex;
     }
 
-    div.sponsors img {
+    .sponsor img {
       margin: auto;
     }
 
-div.sponsors a:focus, aside div.be-partner a:focus, p.cfp a:focus {
+.sponsor a:focus, aside div.be-partner a:focus, p.cfp a:focus {
   outline-color: var(--body-bg);
 }
 
@@ -842,6 +842,10 @@ div.speaker-data-block {
 
 div.speaker-data {margin-bottom: 2.5rem;}
 
+
+div.speaker-data .sponsor a {
+  margin: 1rem auto;
+}
 
 div.talk {
   order: 2;

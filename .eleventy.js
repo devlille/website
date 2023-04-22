@@ -49,7 +49,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("partners", async () => {
     const isURL = require('isurl');
 
-
     try {
       const tempFolder = path.resolve(__dirname, "_site/img");
       const sponsors = await fetch(config.cms4partnersApi + config.edition + "/partners").then((res) => res.json());
@@ -88,7 +87,6 @@ module.exports = function (eleventyConfig) {
             .catch((err) => console.error(err));
         });
       });
-
       return sponsors;
     } catch (e) {
       return {};

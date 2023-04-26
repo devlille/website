@@ -68,7 +68,7 @@ class SpeakerPage {
           }
         return `
         <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
-        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@DevfestLille">
         <meta name="twitter:creator" content="@DevfestLille">
         <meta name="twitter:title" content="${selectedTalk.talk?.title?.replaceAll("\"", "")}">

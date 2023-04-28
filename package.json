@@ -14,9 +14,11 @@
     "@11ty/eleventy": "^1.0.2",
     "html-minifier": "^4.0.0",
     "isurl": "^4.0.2",
+    "lightningcss": "^1.20.0",
     "serve": "^14.0.1"
   },
   "dependencies": {
+    "@11tyrocks/eleventy-plugin-lightningcss": "^1.1.2",
     "clean-css": "^5.3.1",
     "markdown": "^0.5.0",
     "markdown-it": "^13.0.1",

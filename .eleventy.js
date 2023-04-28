@@ -5,6 +5,7 @@ const path = require("path");
 const { optimize } = require("svgo");
 const config = require("./data/config.json");
 const md = require("markdown").markdown;
+const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
 
 
 module.exports = function (eleventyConfig) {
@@ -149,19 +150,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addTemplateFormats("css");
 
-  const CleanCSS = require("clean-css");
-  eleventyConfig.addExtension("css", {
-    outputFileExtension: "css",
-    compile: async (inputContent) => {
-      return async () => {
-        return new Promise((resolve) => {
-          new CleanCSS({ inline: ["remote"] }).minify(inputContent, (_, data) => {
-            resolve(data.styles);
-          });
-        });
-      };
-    },
-  });
+  eleventyConfig.addPlugin(lightningCSS);
 
   eleventyConfig.addTemplateFormats("js");
   const { minify } = require("terser");

@@ -7,17 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="Devfest, Lille, GDG, Conférence, Web, Mobile, Cloud, Quickies" />
     <meta name="theme-color" content="#006D6D" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{ title }} DEVFEST LILLE {{  collections.config.edition }}" />
-    <meta name="twitter:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
-    <meta name="twitter:creator" content="@gericci" />
-    <meta property="og:url" content="https://devfest.gdglille.org/" />
-    <meta property="og:title" content="Devfest Lille {{  collections.config.edition }}" />
-    <meta property="description"
-        content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux" />
-    <meta property="og:description"
-        content="Le Devfest Lille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux" />
-    <meta property="og:image" content="https://devfest.gdglille.org/img/logo-full.svg" />
+    <meta property="og:url" content="{{ogUrl}}" />
+    <meta property="og:title" content="{{  ogTitle }}" />
+    <meta property="description" content="{{ ogDescription}}" />
+    <meta property="og:description" content="{{ ogDescription}}" />
+    <meta property="og:image" content="{{ogImage}}" />
     <link href="/img/favicon.svg" type="image/svg+xml" rel="icon" />
     <link href="/img/favicon.png" type="image/png" rel="icon" />
     <title>{{ title }} DEVFEST LILLE {{  collections.config.edition }}</title>
@@ -105,7 +99,7 @@
                 {% endif %}
                 
                 <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>FAQ</a></li>
-                <li><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a>
+                <!--li><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a-->
                 </li>
             </ul>
         </nav>
@@ -237,7 +231,7 @@
                             Devenez partenaire</a></li>
                         <li><a href="/code-conduite">Code de conduite</a></li>
                         <li><a href="/promo">Ressources graphiques</a></li>
-                        <li><a href="/wld">Offres d'emploi</a></li>
+                        <!--li><a href="/wld">Offres d'emploi</a></li-->
                     </ul>
                     <ul class="links-list editions">
                         <li><a href="https://devfest-2022-5849e.web.app/">2022</a></li>

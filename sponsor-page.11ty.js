@@ -1,11 +1,11 @@
 const displayDescription = (partner) => {
-    if(!partner.description){
-        return '';
-    }
-    return `<div class="talk"><p>${partner.description ?? ""}</p></div>`;
-}
-const displaySocialMedias = (partner)=>{
-    return `
+  if (!partner.description) {
+    return "";
+  }
+  return `<div class="talk"><p>${partner.description ?? ""}</p></div>`;
+};
+const displaySocialMedias = (partner) => {
+  return `
     <div class="talk">
         <h3>Sur Internet</h3>
         <ul>
@@ -41,33 +41,33 @@ const displaySocialMedias = (partner)=>{
             }
         </ul>
         </div>
-    `
-}
+    `;
+};
 
-const displaySocialMediasMessages = (partner)=>{
-    return `
+const displaySocialMediasMessages = (partner) => {
+  return `
     ${
-        partner.twitter_message
-          ? `<div class="talk"><h3>Message sur Twitter </h3><p>${partner.twitter_message}</p></div>`
-          : ""
-      }
+      partner.twitter_message
+        ? `<div class="talk"><h3>Message sur Twitter </h3><p>${partner.twitter_message}</p></div>`
+        : ""
+    }
 
       ${
         partner.linkedin_message
           ? `<div class="talk"><h3>Message sur LinkedIn </h3><p>${partner.linkedin_message}</p></div>`
           : ""
       }
-    `
-}
+    `;
+};
 
-const displayWLDOffers = (partner) =>{
-    return partner.jobs?.length > 0
+const displayWLDOffers = (partner) => {
+  return partner.jobs?.length > 0
     ? `<div class="talk"><h3>Offres sur WeLoveDevs </h3><p>
 <ul>${partner.jobs.map((job) => `<li><a href="${job.url}">${job.title}</a></li>`).join("")}</ul>
 
 </p></div>`
-    : ""
-}
+    : "";
+};
 class SpeakerPage {
   data(s) {
     return {
@@ -89,6 +89,20 @@ class SpeakerPage {
         title: (ctx) => {
           return ctx.partner.name;
         },
+        ogUrl: (ctx) => {
+          return "https://devfest.gdglille.org/partner-" + ctx.partner.id;
+        },
+        ogTitle: (ctx) => {
+          return ctx.partner.name;
+        },
+        ogDescription: (ctx) => {
+          return ctx.partner.description;
+        },
+        ogImage: (ctx) => {
+          return `https://devfest.gdglille.org/img/${ctx.partner.logoName}.${
+            ctx.partner.ext
+          }`
+        },
       },
     };
   }
@@ -96,7 +110,6 @@ class SpeakerPage {
     if (!partner) {
       return null;
     }
-
 
     return `
 <div class="page-body list">
@@ -107,7 +120,6 @@ class SpeakerPage {
           <div class="speaker">
           ${displayDescription(partner)}
           ${displaySocialMedias(partner)}  
-          ${displaySocialMediasMessages(partner)}  
           ${displayWLDOffers(partner)}
         </div>
           

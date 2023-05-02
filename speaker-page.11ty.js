@@ -28,7 +28,20 @@ class SpeakerPage {
             eleventyComputed: {
                 title: (ctx) => {
                     return ctx.speaker.display_name
-                }
+                },
+                ogUrl: (ctx) => {
+                    return "https://devfest.gdglille.org/speaker-page-" + ctx.speaker.id
+                },
+                ogTitle: (ctx) => {
+                    return ctx.speaker.display_name
+                },
+                ogDescription: (ctx) => {
+                    return ctx.speaker.bio
+                },
+                ogImage: (ctx) => {
+                    return ctx.speaker.photo_url
+                },
+
             }
         }
     }

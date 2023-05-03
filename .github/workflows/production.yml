@@ -16,7 +16,7 @@ jobs:
     - name: View context attributes
       uses: actions/github-script@v6
       with:
-        script: console.log(context)
+        script: console.log(context.payload.pull_request.base)
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:

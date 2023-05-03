@@ -6,7 +6,7 @@ on:
     - cron: '30 1 * * *'
   push:
     branches:
-      - master
+      - *
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true

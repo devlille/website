@@ -7,9 +7,12 @@ currSection: faq
 <article class="page-body">
   <h2>Foire aux questions</h2>
   {%- for faq in collections.faqs -%}
-  <div class="faq">
+  <div class="faq" id="faq{{faq.order}}">
 
-    <h3>{{ faq.question }}</h3>
+    <h3>
+      {{ faq.question }}
+      <a href="/faq/index.html#faq{{faq.order}}"><img src="/img/link.svg" alt="Ancre"></a>
+    </h3>
     <div class="content">
       <p>{{ faq.response }}</p>
     </div>

@@ -21,6 +21,7 @@ module.exports = function (eleventyConfig) {
           }
         })
         .map((q) => {
+          console.log(q)
           return {
             ...q,
             response: q.acronyms.reduce(

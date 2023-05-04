@@ -843,8 +843,8 @@ div.speaker-data-block {
 div.speaker-data {margin-bottom: 2.5rem;}
 
 
-div.speaker-data .sponsor a {
-  margin: 1rem auto;
+div.speaker-data .sponsor {
+  display: inline-block;
 }
 
 div.talk {

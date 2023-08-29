@@ -1,16 +1,16 @@
 {
-  "edition": 2023,
-  "editionNumber": 6,
-  "date": "26 Mai",
-  "formatted-date": "2023-05-26",
+  "edition": 2024,
+  "editionNumber": 7,
+  "date": "6 et 7 Juin",
+  "formatted-date": "2024-06-06",
   "billetwebUrl": "https://www.billetweb.fr/devfest-lille-",
   "cfpUrl": "https://conference-hall.io/public/event/hRA5AjQjXYMPI3MpwyoF",
   "cmsUrl": "https://cms4partners.gdglille.org/#",
   "cms4partnersApi": "https://cms4partners-ce427.nw.r.appspot.com/events/devfest-lille-",
-  "cfpEndedDate": "31 mars 2023",
+  "cfpEndedDate": "31 mars 2024",
   "partershipUrl": "https://docs.google.com/presentation/d/e/2PACX-1vQoIRxFaAFjNm0rVct5jzbJ9Xol7iIJkI6uKeazRb6uMHKZRnVsZuiKZ30LzUAresm1mPie2OT-2xDU/pub?start=false&loop=false&slide=id.g117aa382f2b_0_85",
-  "numberOfPeople": 1200,
-  "numberOfSpeaker": 40,
-  "numberOfTalks": 26,
-  "numberOfTraks": 3
+  "numberOfPeople": 1500,
+  "numberOfSpeaker": 60,
+  "numberOfTalks": 44,
+  "numberOfTraks": 4
 }

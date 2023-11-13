@@ -111,6 +111,14 @@
 
             {% if currSection == "index" %}
             <aside>
+                <div class="be-partner">
+                    <h2>Devenez partenaire</h2>
+    
+                      <p>Profitez de la {{ collections.config.editionNumber }}ème Devfest Lille Saison pour gagner en visibilité et échanger avec la
+                          communauté des développeurs de la région Haut de France.</p>
+                    <p class="read-more">
+                        <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a> [PDF, 5Mo]                </p>
+                  </div>
                 {% if collections.partners.Platinium.length > 0 or collections.partners.Gold.length > 0 or collections.partners.Silver.length > 0 or collections.partners.Virtual.length > 0 or collections.partners.others.length > 0 %}
                 <div class="content filled">
                     <h2>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition

@@ -11,21 +11,21 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy": "2.0.1",
     "html-minifier": "^4.0.0",
     "isurl": "^4.0.2",
-    "lightningcss": "^1.20.0",
-    "serve": "^14.0.1"
+    "lightningcss": "1.22.1",
+    "serve": "14.2.1"
   },
   "dependencies": {
-    "@11tyrocks/eleventy-plugin-lightningcss": "^1.1.2",
+    "@11tyrocks/eleventy-plugin-lightningcss": "1.2.0",
     "clean-css": "^5.3.1",
     "markdown": "^0.5.0",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "13.0.2",
     "node-fetch": "^2.6.8",
-    "sharp": "^0.31.1",
-    "svgo": "^3.0.2",
-    "terser": "^5.15.1"
+    "sharp": "0.32.6",
+    "svgo": "3.0.3",
+    "terser": "5.24.0"
   },
   "repository": {
     "type": "git",

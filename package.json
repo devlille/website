@@ -19,13 +19,10 @@
   },
   "dependencies": {
     "@11tyrocks/eleventy-plugin-lightningcss": "1.2.0",
-    "clean-css": "^5.3.1",
     "markdown": "^0.5.0",
-    "markdown-it": "13.0.2",
     "node-fetch": "^2.6.8",
-    "sharp": "0.32.6",
-    "svgo": "3.0.3",
-    "terser": "5.24.0"
+    "svgo": "3.2.0",
+    "terser": "5.26.0"
   },
   "repository": {
     "type": "git",

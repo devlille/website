@@ -32,10 +32,10 @@ const displaySocialMedias = (partner) => {
                 : ""
             }
             ${
-              !!partner.site_url
+              !!partner.siteUrl
                 ? `<li>
                 <strong class="stressed">Site Web: </strong> 
-                <a target="_blank" href="${partner.site_url}">${partner.site_url}</a>
+                <a target="_blank" href="${partner.siteUrl}">${partner.siteUrl}</a>
             </li>`
                 : ""
             }
@@ -99,9 +99,7 @@ class SpeakerPage {
           return ctx.partner.description;
         },
         ogImage: (ctx) => {
-          return `https://devfest.gdglille.org/img/${ctx.partner.logoName}.${
-            ctx.partner.ext
-          }`
+          return `https://devfest.gdglille.org/img/${ctx.partner.logoName}.${ctx.partner.ext}`;
         },
       },
     };
@@ -126,7 +124,7 @@ class SpeakerPage {
 
         <div class="speaker-data-block">
         <div class="speaker-data">
-        <p class="sponsor"><a href="${partner.site_url}"><img loading="lazy" src="/img/${partner.logoName}.${
+        <p class="sponsor"><a href="${partner.siteUrl}"><img loading="lazy" src="/img/${partner.logoName}.${
       partner.ext
     }"" alt="Logo de ${partner.name}" /></a></p>
 

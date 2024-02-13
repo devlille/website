@@ -7,21 +7,19 @@ const config = require("./data/config.json");
 const md = require("markdown").markdown;
 const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
 
-
 module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("faqs", async () => {
     try {
       const data = await fetch(config.cms4partnersApi + config.edition).then((res) => res.json());
       const qanda = data.qanda
         .sort((f1, f2) => f1.order - f2.order)
-        .map(q => {
+        .map((q) => {
           return {
             ...q,
-            response: md.toHTML(q.response.replaceAll("* ", "\r\n\r\n* "))
-          }
+            response: md.toHTML(q.response.replaceAll("* ", "\r\n\r\n* ")),
+          };
         })
         .map((q) => {
-          console.log(q)
           return {
             ...q,
             response: q.acronyms.reduce(
@@ -49,32 +47,47 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("partners", async () => {
-    const isURL = require('isurl');
+    const isURL = require("isurl");
 
     try {
       const tempFolder = path.resolve(__dirname, "_site/img");
-      const sponsors = await fetch(config.cms4partnersApi + config.edition + "/partners").then((res) => res.json());
-      Object.entries(sponsors).forEach(([pack, partners]) => {
+      const sponsors = await fetch(
+        "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors"
+      ).then((res) => res.json());
+      console.log(sponsors);
+      const sponsorsByPacks = sponsors.reduce((acc, sponsor, index) => {
+        console.log(sponsor.sponsoring);
+        return {
+          ...acc,
+          [sponsor.sponsoring]: [...(acc[sponsor.sponsoring] ?? []), { id: index, ...sponsor }],
+        };
+      }, {});
+
+      Object.entries(sponsorsByPacks).forEach(([pack, partners]) => {
         sponsors[pack] = partners.sort((p1, p2) => {
           return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
         });
       });
 
-      Object.values(sponsors).forEach((pack) => {
+      Object.values(sponsorsByPacks).forEach((pack) => {
         const sponsorsByPack = Object.values(pack);
         sponsorsByPack.forEach((sponsor) => {
           try {
-            isURL(new URL(sponsor.site_url))
-          } catch(e){
-            console.error(`Bad URL for ${sponsor.name}`)
-            process.exit(1)
+            if (sponsor.siteUrl.indexOf("https://") < 0) {
+              sponsor.siteUrl = "https://" + sponsor.siteUrl;
+            }
+
+            isURL(new URL(sponsor.siteUrl));
+          } catch (e) {
+            console.log(sponsor);
+            console.log(sponsor.siteUrl);
+            console.error(`Bad URL for ${sponsor.name}`);
+            process.exit(1);
           }
-          sponsor.logoName = sponsor.name.toLowerCase().replaceAll(' ', '-');
-          if (sponsor.site_url.indexOf("https://") < 0) {
-            sponsor.site_url = "https://" + sponsor.site_url;
-          }
-          sponsor.ext = getExtension(sponsor.logo_url.split(".").pop());
-          fetch(sponsor.logo_url)
+          sponsor.logoName = sponsor.name.toLowerCase().replaceAll(" ", "-");
+
+          sponsor.ext = getExtension(sponsor.logoUrl.split(".").pop());
+          fetch(sponsor.logoUrl)
             .then((response) => response.text())
             .then((blob) => {
               return optimize(blob, {
@@ -83,14 +96,17 @@ module.exports = function (eleventyConfig) {
             })
             .then((result) => {
               const optimizedSvgString = result.data;
-              
-              fs.writeFileSync(tempFolder + "/" + sponsor.logoName + "." + sponsor.ext, optimizedSvgString, { flag: "w" });
+
+              fs.writeFileSync(tempFolder + "/" + sponsor.logoName + "." + sponsor.ext, optimizedSvgString, {
+                flag: "w",
+              });
             })
             .catch((err) => console.error(err));
         });
       });
-      return sponsors;
+      return sponsorsByPacks;
     } catch (e) {
+      console.log(e);
       return {};
     }
   });
@@ -126,7 +142,7 @@ module.exports = function (eleventyConfig) {
                 title: talk?.talk?.title ?? "Pause",
               },
               id: talk?.talk?.speakers[0]?.id,
-              speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(' &amp; '),
+              speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(" &amp; "),
               speakersIds: talk?.talk?.speakers?.map((speaker) => speaker?.id),
             };
           }),

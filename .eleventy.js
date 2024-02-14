@@ -54,12 +54,21 @@ module.exports = function (eleventyConfig) {
       const sponsors = await fetch(
         "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors"
       ).then((res) => res.json());
-      console.log(sponsors);
-      const sponsorsByPacks = sponsors.reduce((acc, sponsor, index) => {
-        console.log(sponsor.sponsoring);
+      const sponsorsByPacks = sponsors.reduce((acc, sponsor) => {
+
+        if(sponsor.twitterAccount){
+          let twitterAccount = sponsor.twitterAccount;
+          twitterAccount = twitterAccount.startsWith("https://twitter.com/") ? twitterAccount : `https://twitter.com/${twitterAccount}`
+          sponsor.twitterAccount = twitterAccount
+        }
+        if(sponsor.twitterAccount){
+          let twitterAccount = sponsor.twitterAccount;
+          twitterAccount = twitterAccount.startsWith("https://linkedin.com/company/") ? twitterAccount : `https://linkedin.com/company/${twitterAccount}`
+          sponsor.twitterAccount = twitterAccount
+        }
         return {
           ...acc,
-          [sponsor.sponsoring]: [...(acc[sponsor.sponsoring] ?? []), { id: index, ...sponsor }],
+          [sponsor.sponsoring]: [...(acc[sponsor.sponsoring] ?? []), sponsor],
         };
       }, {});
 

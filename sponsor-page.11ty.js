@@ -10,10 +10,10 @@ const displaySocialMedias = (partner) => {
         <h3>Sur Internet</h3>
         <ul>
             ${
-              !!partner.twitter_url
+              !!partner.twitterAccount
                 ? `<li>
                 <strong class="stressed">Sur Twitter: </strong>
-                <a target="_blank" href="${partner.twitter_url}">${partner.twitter_url?.replace(
+                <a target="_blank" href="${partner.twitterAccount}">${partner.twitterAccount?.replace(
                     "https://twitter.com/",
                     ""
                   )}</a>
@@ -21,10 +21,10 @@ const displaySocialMedias = (partner) => {
                 : ""
             }
             ${
-              !!partner.linkedin_url
+              !!partner.linkedinAccount
                 ? `<li>
                 <strong class="stressed">Sur LinkedIn: </strong> 
-                <a target="_blank" href="${partner.linkedin_url}">${decodeURI(partner.linkedin_url)
+                <a target="_blank" href="${partner.linkedinAccount}">${decodeURI(partner.linkedinAccount)
                     ?.replace("https://www.linkedin.com/in/", "")
                     ?.replace("https://www.linkedin.com/company/", "")
                     .replace("/", "")}</a>

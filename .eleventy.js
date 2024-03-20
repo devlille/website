@@ -64,7 +64,7 @@ module.exports = function (eleventyConfig) {
         }
         if (sponsor.linkedinAccount) {
           let linkedinAccount = sponsor.linkedinAccount;
-          linkedinAccount = linkedinAccount.startsWith("https://linkedin.com/company/")
+          linkedinAccount = linkedinAccount.includes("linkedin.com/company/")
             ? linkedinAccount
             : `https://linkedin.com/company/${linkedinAccount}`;
           sponsor.linkedinAccount = linkedinAccount;

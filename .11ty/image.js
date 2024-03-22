@@ -16,6 +16,7 @@ function getExtension(potentialExt) {
 }
 
 const fetchImage = ({ ext, logoName, logoUrl }) => {
+  console.log(logoUrl, logoName);
   return fetch(logoUrl)
     .then((response) => response.text())
     .then(optimize)

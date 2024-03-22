@@ -1,11 +1,9 @@
 const htmlmin = require("html-minifier");
 const fetch = require("node-fetch");
-const fs = require("fs");
-const path = require("path");
-const { optimize } = require("svgo");
 const config = require("./data/config.json");
 const md = require("markdown").markdown;
 const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
+const { getExtensionFromLogoUrl, fetchImage } = require("./.11ty/image");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("faqs", async () => {
@@ -50,7 +48,6 @@ module.exports = function (eleventyConfig) {
     const isURL = require("isurl");
 
     try {
-      const tempFolder = path.resolve(__dirname, "_site/img");
       const sponsors = await fetch(
         "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors"
       ).then((res) => res.json());
@@ -91,29 +88,13 @@ module.exports = function (eleventyConfig) {
 
             isURL(new URL(sponsor.siteUrl));
           } catch (e) {
-            console.log(sponsor);
-            console.log(sponsor.siteUrl);
             console.error(`Bad URL for ${sponsor.name}`);
             process.exit(1);
           }
           sponsor.logoName = sponsor.name.toLowerCase().replaceAll(" ", "-");
 
-          sponsor.ext = getExtension(sponsor.logoUrl.split(".").pop());
-          fetch(sponsor.logoUrl)
-            .then((response) => response.text())
-            .then((blob) => {
-              return optimize(blob, {
-                multipass: true,
-              });
-            })
-            .then((result) => {
-              const optimizedSvgString = result.data;
-
-              fs.writeFileSync(tempFolder + "/" + sponsor.logoName + "." + sponsor.ext, optimizedSvgString, {
-                flag: "w",
-              });
-            })
-            .catch((err) => console.error(err));
+          sponsor.ext = getExtensionFromLogoUrl(sponsor.logoUrl);
+          fetchImage(sponsor);
         });
       });
       return sponsorsByPacks;
@@ -123,20 +104,7 @@ module.exports = function (eleventyConfig) {
     }
   });
 
-  function getExtension(potentialExt) {
-    switch (potentialExt) {
-      case "png":
-        return "png";
-      case "svg":
-        return "svg";
-      default:
-        return "svg";
-    }
-  }
-
-  eleventyConfig.addCollection("config", function () {
-    return config;
-  });
+  eleventyConfig.addCollection("config", () => config);
 
   eleventyConfig.addCollection("talks", async () => {
     try {

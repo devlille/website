@@ -1,34 +1,33 @@
-const cacheName = 'devfest-lille';
+const cacheName = "devfest-lille-2024";
 
-self.addEventListener('install', function(e) {
+self.addEventListener("install", function (e) {});
 
-});
-
-self.addEventListener('activate', function(e) {
+self.addEventListener("activate", function (e) {
   e.waitUntil(
-    caches.keys().then(function(keyList) {
-      return Promise.all(keyList.map(function(key) {
-        if (key !== cacheName) {
-          return caches.delete(key);
-        }
-      }));
+    caches.keys().then(function (keyList) {
+      return Promise.all(
+        keyList.map(function (key) {
+          if (key !== cacheName) {
+            return caches.delete(key);
+          }
+        })
+      );
     })
   );
 });
 
-self.addEventListener('fetch', function(e) {
-  e.respondWith(async function() {
-    const cachedUrl = await fetch(e.request)
-    .then(response => {
-      return caches.open(cacheName).then(function(cache) {
-        cache.put(e.request, response.clone());
-        return response;
-      });
-    })
-    .catch(function() {
-      return caches.match(e.request);
-    })
+self.addEventListener("fetch", function (event) {
+  event.respondWith(
+    caches.open(cacheName).then((cache) => {
+      return fetch(event.request.url)
+        .then((fetchedResponse) => {
+          cache.put(event.request, fetchedResponse.clone());
 
-    return cachedUrl;
-  }());
+          return fetchedResponse;
+        })
+        .catch(() => {
+          return cache.match(event.request.url);
+        });
+    })
+  );
 });

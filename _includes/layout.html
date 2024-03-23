@@ -193,22 +193,37 @@
                     </div>
                     {% endif %}
 
-                    {% if collections.partners["Community Partners"].length > 0 %}
                     <div class="sponsors community">
                         <h3>Community Partners</h3>
 
                         <ul>
-                            {%- for p in collections.partners["Community Partners"] -%}
                             <li class="sponsor">
-                                <a aria-label="Visiter le site de {{p.name}}" href="partner-{{p.id}}">
-                                    <img src="/img/{{p.logoName}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
+                                <a aria-label="Visiter le site de Google" href="https://www.google.com/">
+                                    <img src="/img/google.svg" alt="" loading="lazy" />
                                 </a>
                             </li>
-                            {%- endfor -%}
-
+                            <li class="sponsor">
+                                <a aria-label="Visiter le site de Holberton School" href="https://www.holbertonschool.fr/campus/lille?utm_source=GOOGLE&utm_medium=LILLE&utm_campaign=MARQUE&gclid=EAIaIQobChMItpGH9I6LhQMVT1JBAh2lWgJbEAAYASAAEgJU-PD_BwE}">
+                                    <img src="/img/holberton.png" alt="" loading="lazy" />
+                                </a>
+                            </li>
+                            <li class="sponsor">
+                                <a aria-label="Visiter le site de Wild Code School" href="https://www.wildcodeschool.com/fr-FR/campus/a-distance?utm_feeditemid=&utm_device=c&utm_term=wild%20code%20school%20formation&utm_source=google&utm_medium=ppc&utm_campaign=FR-GGL-BRAND+CAMPAIGN&hsa_cam=14821000047&hsa_grp=136646397004&hsa_mt=p&hsa_src=g&hsa_ad=629161360522&hsa_acc=4421706736&hsa_net=adwords&hsa_kw=wild%20code%20school%20formation&hsa_tgt=kwd-1843089244925&hsa_ver=3&gad_source=1&gclid=EAIaIQobChMIjP3d_I6LhQMVhAQGAB1UzQ3gEAAYAiAAEgItffD_BwE">
+                                    <img src="/img/wcs.webp" alt="" loading="lazy" />
+                                </a>
+                            </li>
+                            <li class="sponsor">
+                                <a aria-label="Visiter le site de Chti JUG" href="https://chtijug.org/">
+                                    <img src="/img/chtijug.png" alt=""" loading="lazy" />
+                                </a>
+                            </li>
+                            <li class="sponsor">
+                                <a aria-label="Visiter le site de We love Devs" href="https://welovedevs.com/">
+                                    <img src="/img/wld.svg" alt="" loading="lazy" />
+                                </a>
+                            </li>
                         </ul>
                     </div>
-                    {% endif %}
     
                 </div>
                 {% endif %}

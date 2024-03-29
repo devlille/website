@@ -17,17 +17,5 @@ self.addEventListener("activate", function (e) {
 });
 
 self.addEventListener("fetch", function (event) {
-  event.respondWith(
-    caches.open(cacheName).then((cache) => {
-      return fetch(event.request.url)
-        .then((fetchedResponse) => {
-          cache.put(event.request, fetchedResponse.clone());
-
-          return fetchedResponse;
-        })
-        .catch(() => {
-          return cache.match(event.request.url);
-        });
-    })
-  );
+  event.respondWith(fetch(event.request.url));
 });

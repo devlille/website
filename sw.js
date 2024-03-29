@@ -1,21 +1,20 @@
-const cacheName = "devfest-lille-2024";
-
-self.addEventListener("install", function (e) {});
-
-self.addEventListener("activate", function (e) {
-  e.waitUntil(
-    caches.keys().then(function (keyList) {
-      return Promise.all(
-        keyList.map(function (key) {
-          if (key !== cacheName) {
-            return caches.delete(key);
-          }
-        })
-      );
-    })
-  );
+self.addEventListener('install', () => {
+  // Skip over the "waiting" lifecycle state, to ensure that our
+  // new service worker is activated immediately, even if there's
+  // another tab open controlled by our older service worker code.
+  self.skipWaiting();
 });
 
-self.addEventListener("fetch", function (event) {
-  event.respondWith(fetch(event.request.url));
+self.addEventListener('activate', () => {
+  // Optional: Get a list of all the current open windows/tabs under
+  // our service worker's control, and force them to reload.
+  // This can "unbreak" any open windows/tabs as soon as the new
+  // service worker activates, rather than users having to manually reload.
+  self.clients.matchAll({
+    type: 'window'
+  }).then(windowClients => {
+    windowClients.forEach((windowClient) => {
+      windowClient.navigate(windowClient.url);
+    });
+  });
 });

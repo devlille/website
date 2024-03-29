@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------
-               	DEVFEST LILLE 2022
+               	DEVFEST LILLE 2024
                		Main style-sheet
           				Ge Ricci, 2022
 -------------------------------------------------------------------- */
@@ -920,6 +920,28 @@ div.talk-links li:hover {
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- AGENDA ---------------------------- */
+
+/* Tabs */
+
+ul.tabs {
+  display: flex;
+  gap: 0.5rem;
+  list-style-type: none;
+  box-shadow: 0 1px 0 0 var(--body-text);
+}
+
+button[role=tab] {
+  font-variation-settings: "wght" 800;
+  color: var(--body-text);
+  background-color: var(--body-bg);
+  padding: 0.5em 1em;
+}
+
+button[role=tab]:hover, button[role=tab][aria-selected=true] {
+  color: var(--link-color);
+  box-shadow: 0 5px 0 0 var(--link-color);
+}
+
 
 section.hour + section.hour {margin-top: 2rem;}
 

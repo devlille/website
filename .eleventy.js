@@ -4,8 +4,11 @@ const config = require("./data/config.json");
 const md = require("markdown").markdown;
 const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
 const { getExtensionFromLogoUrl, fetchImage } = require("./.11ty/image");
-
+const { createTalksCollections, createTalksCollectionsBydate } = require("./.11ty/talks");
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addCollection("talks", createTalksCollections);
+  eleventyConfig.addCollection("talksByDate", createTalksCollectionsBydate);
+
   eleventyConfig.addCollection("faqs", async () => {
     try {
       const data = await fetch(config.cms4partnersApi + config.edition).then((res) => res.json());
@@ -105,47 +108,6 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("config", () => config);
-
-  eleventyConfig.addCollection("talks", async () => {
-    try {
-      const agenda = await fetch(config.cms4partnersApi + config.edition + "/agenda", {
-        headers: {
-          Accept: 'application/json; version=2'
-        }
-      }).then((res) => res.json());
-
-
-      const talksByDay = Object.entries(agenda).reduce((acc, [day, talks]) => {
-        console.log(talks)
-        return {
-          ...acc,
-          [day]: Object.entries(talks).map(([_, talks]) => {
-            return [
-              _,
-              talks.map((talk) => {
-                return {
-                  talk: {
-                    ...talk,
-                    room: talk.room,
-                    abstract: md.toHTML(talk?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
-                    title: talk?.talk?.title ?? "Pause",
-                  },
-                  id: talk?.talk?.speakers[0]?.id,
-                  speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(" &amp; "),
-                  speakersIds: talk?.talk?.speakers?.map((speaker) => speaker?.id),
-                };
-              }),
-            ];
-          })
-        }
-      }, {}) 
-      
-      return talksByDay;
-    } catch (e) {
-      console.log(e);
-      return [];
-    }
-  });
 
   eleventyConfig.addPassthroughCopy("css/*.ttf");
   eleventyConfig.addPassthroughCopy("css/*.woff");

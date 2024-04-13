@@ -108,28 +108,39 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("talks", async () => {
     try {
-      const agenda = await fetch(config.cms4partnersApi + config.edition + "/agenda").then((res) => res.json());
-      const talks = Object.entries(agenda.talks);
-      const oTalks = talks.map(([_, talks]) => {
-        return [
-          _,
-          talks.map((talk) => {
-            return {
-              talk: {
-                ...talk,
-                room: talk.room,
-                abstract: md.toHTML(talk?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
-                title: talk?.talk?.title ?? "Pause",
-              },
-              id: talk?.talk?.speakers[0]?.id,
-              speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(" &amp; "),
-              speakersIds: talk?.talk?.speakers?.map((speaker) => speaker?.id),
-            };
-          }),
-        ];
-      });
+      const agenda = await fetch(config.cms4partnersApi + config.edition + "/agenda", {
+        headers: {
+          Accept: 'application/json; version=2'
+        }
+      }).then((res) => res.json());
 
-      return oTalks;
+
+      const talksByDay = Object.entries(agenda).reduce((acc, [day, talks]) => {
+        console.log(talks)
+        return {
+          ...acc,
+          [day]: Object.entries(talks).map(([_, talks]) => {
+            return [
+              _,
+              talks.map((talk) => {
+                return {
+                  talk: {
+                    ...talk,
+                    room: talk.room,
+                    abstract: md.toHTML(talk?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
+                    title: talk?.talk?.title ?? "Pause",
+                  },
+                  id: talk?.talk?.speakers[0]?.id,
+                  speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(" &amp; "),
+                  speakersIds: talk?.talk?.speakers?.map((speaker) => speaker?.id),
+                };
+              }),
+            ];
+          })
+        }
+      }, {}) 
+      
+      return talksByDay;
     } catch (e) {
       console.log(e);
       return [];

@@ -22,7 +22,7 @@ ogImage: https://devfest.gdglille.org/img/logo-full.svg
     </ul>
     <div id="day1" class="tab-content" role="tabpanel" tabindex="0" aria-labelledby="tab1">
       <div class="agenda">
-        {%- for talk in collections.talks -%}
+        {%- for talk in collections.talks['2024-06-06'] -%}
       <section class="hour">
         <h3 id="h{{talk[0]}}">
             {{talk[0]}}
@@ -59,6 +59,42 @@ ogImage: https://devfest.gdglille.org/img/logo-full.svg
       </div>
     </div>
     <div id="day2" class="tab-content" role="tabpanel" tabindex="0" aria-labelledby="tab2">
+      <div class="agenda">
+        {%- for talk in collections.talks['2024-06-07'] -%}
+      <section class="hour">
+        <h3 id="h{{talk[0]}}">
+            {{talk[0]}}
+            <a href="https://devfest.gdglille.org/agenda/index.html#h{{talk[0]}}">
+            <img src="/img/link.svg" alt="Ancre"></a>
+        </h3>
+        <div class="content">
+            {%- for t in talk[1] -%}
+  
+            <dl>
+                <dt>{{ t.talk.room }} </dt>
+  
+                {% if t.id == undefined  %}
+                <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}>
+                  {{ t.talk.title }}
+                </dd>
+  
+                <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}> {{ t.speakers }}</dd>
+                {%- endif -%}
+  
+                {% if t.id  %}
+                <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}>
+                  <a href="/speaker-page-{{t.id}}">  {{ t.talk.title }}</a>
+                </dd>
+  
+                <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}> {{ t.speakers }}</dd>
+                {%- endif -%}
+            </dl>
+            {%- endfor -%}
+  
+          </div>
+        </section>
+          {%- endfor -%}
+      </div>
     </div>
   </div>
 

@@ -36,7 +36,7 @@ class SpeakerPage {
                     return ctx.speaker.display_name
                 },
                 ogDescription: (ctx) => {
-                    return ctx.speaker.bio
+                    return ctx.speaker.bio?.replaceAll("\"", "")
                 },
                 ogImage: (ctx) => {
                     return ctx.speaker.photo_url
@@ -46,13 +46,11 @@ class SpeakerPage {
         }
     }
     render(data){
-        let talks = []
-        for(let slot of data.collections.talks){    
-            talks = [...talks, ...(slot[1] ?? [])]
-        }
+    
+        let talks = Object.values(data.collections.talks).flat().map(([_, talks]) => talks ?? []).reduce((acc, talks) => ([...acc, ...talks]), [])
 
         const selectedTalk = talks.find(talk => talk.speakersIds?.indexOf(data.speaker.id) >= 0);
-        if(!selectedTalk){
+        if(!selectedTalk){ 
             return null;
         }
         const speakers = data.collections.speakersFromApi.filter(s => selectedTalk.speakersIds.indexOf(s.id) >= 0);

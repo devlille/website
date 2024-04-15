@@ -2,7 +2,7 @@ const displayDescription = (partner) => {
   if (!partner.description) {
     return "";
   }
-  return `<div class="talk"><p>${partner.description ?? ""}</p></div>`;
+  return `<div class="talk"><p>${partner.description?.replaceAll('"', "")?.trim() ?? ""}</p></div>`;
 };
 const displaySocialMedias = (partner) => {
   return `
@@ -96,7 +96,7 @@ class SpeakerPage {
           return ctx.partner.name;
         },
         ogDescription: (ctx) => {
-          return ctx.partner.description;
+          return ctx.partner.description?.replaceAll('"', "")?.trim();
         },
         ogImage: (ctx) => {
           return `https://devfest.gdglille.org/img/${ctx.partner.logoName}.${ctx.partner.ext}`;

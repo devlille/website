@@ -16,11 +16,14 @@ function getExtension(potentialExt) {
 }
 
 const fetchImage = ({ ext, logoName, logoUrl }) => {
-  console.log(logoUrl, logoName);
   return fetch(logoUrl)
     .then((response) => response.text())
-    .then(optimize)
-    .then(({ data }) => {
+    .then((blob) => {
+      let data = blob;
+      try {
+        data = optimize(blob)?.data;
+      } catch (e) {}
+
       fs.writeFileSync(`${tempFolder}/${logoName}.${ext}`, data, {
         flag: "w",
       });

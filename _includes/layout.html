@@ -119,34 +119,19 @@
                     <p class="read-more">
                         <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a> [PDF, 5Mo]                </p>
                   </div>
-                {% if collections.partners.Platinium.length > 0 or collections.partners.Gold.length > 0 or collections.partners.Silver.length > 0 or collections.partners.Virtual.length > 0 or collections.partners.others.length > 0 %}
+                {% if collections.partners.gold.length > 0 or collections.partners.silver.length > 0 or collections.partners.bronze.length > 0 or collections.partners.others.length > 0 %}
                 <div class="content filled">
                     <h2>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition
                         {{ collections.config.edition }}!</h2>
                     
-                    {% if collections.partners.Platinium.length > 0 %}
-                    <div class="sponsors platinium">
-                        <h3>Platinium</h3>
+            
 
-                        <ul>
-                            {%- for p in collections.partners.Platinium -%}
-                            <li class="sponsor">
-                                <a aria-label="Visiter le site de {{p.name}}" href="partner-{{p.id}}">
-                                    <img src="/img/{{p.logoName}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
-                                </a>
-                            </li>
-                            {%- endfor -%}
-
-                        </ul>
-                    </div>
-                    {% endif %}
-
-                    {% if collections.partners.Gold.length > 0 %}
+                    {% if collections.partners.gold.length > 0 %}
                     <div class="sponsors gold">
                         <h3>Gold</h3>
 
                         <ul>
-                            {%- for p in collections.partners.Gold -%}
+                            {%- for p in collections.partners.gold -%}
                             <li class="sponsor">
                                 <a aria-label="Visiter le site de {{p.name}}" href="partner-{{p.id}}">
                                     <img src="/img/{{p.logoName}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
@@ -157,13 +142,13 @@
                         </ul>
                     </div>
                     {% endif %}
-                    {% if collections.partners.Silver.length > 0 %}
+                    {% if collections.partners.silver.length > 0 %}
 
                     <div class="sponsors silver">
                         <h3>Silver</h3>
 
                         <ul>
-                            {%- for p in collections.partners.Silver -%}
+                            {%- for p in collections.partners.silver -%}
                             <li class="sponsor">
                                 <a aria-label="Visiter le site de {{p.name}}" href="partner-{{p.id}}">
                                     <img src="/img/{{p.logoName}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />
@@ -175,13 +160,13 @@
                     </div>
                     {% endif %}
 
-                    {% if collections.partners.Bronze.length > 0 %}
+                    {% if collections.partners.bronze.length > 0 %}
 
                     <div class="sponsors bronze">
                         <h3>Bronze</h3>
 
                         <ul>
-                            {%- for p in collections.partners.Bronze: -%}
+                            {%- for p in collections.partners.bronze: -%}
                             <li class="sponsor">
                                 <a aria-label="Visiter le site de {{p.name}}" href="partner-{{p.id}}">
                                     <img src="/img/{{p.logoName}}.{{p.ext}}" alt="{{p.name}}" loading="lazy" />

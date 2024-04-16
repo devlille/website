@@ -71,7 +71,7 @@ module.exports = function (eleventyConfig) {
         }
         return {
           ...acc,
-          [sponsor.sponsoring]: [...(acc[sponsor.sponsoring] ?? []), sponsor],
+          [sponsor.sponsoring.toLowerCase()]: [...(acc[sponsor.sponsoring.toLowerCase()] ?? []), sponsor],
         };
       }, {});
 

@@ -33,7 +33,7 @@ ogImage: https://devfest.gdglille.org/img/logo-full.svg
             {%- for t in talk[1] -%}
   
             <dl>
-                <dt>{{ t.talk.room }} </dt>
+                <dt>{{ t.talk.room }}</dt>
   
                 {% if t.id == undefined  %}
                 <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}>

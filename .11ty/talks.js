@@ -3,7 +3,7 @@ const md = require("markdown").markdown;
 
 const getTalks = async () => {
   try {
-    const agenda = await fetch(config.cms4partnersApi + config.edition + "/agenda", {
+    const agenda = await fetch(config.cms4partnersApi + config.edition + "/planning", {
       headers: {
         Accept: "application/json; version=2",
       },
@@ -12,20 +12,27 @@ const getTalks = async () => {
     const talksByDay = Object.entries(agenda).reduce((acc, [day, talks]) => {
       return {
         ...acc,
-        [day]: Object.entries(talks).map(([_, talks]) => {
+        [day]: Object.entries(talks).map(([_, slots]) => {
           return [
             _,
-            talks.map((talk) => {
+            slots.map((slot) => {
+              let id = slot?.info?.id ?? slot?.talk?.speakers[0]?.id;
+              let speakers = slot?.talk?.speakers?.map((speaker) => speaker?.display_name).join(" &amp; ");
+              if (slot.type === "event-session" && !slot.info.description) {
+                id = undefined;
+              }
+              if (slot.type === "event-session" && !!slot.info.description) {
+                speakers = "Devfest Lille";
+              }
               return {
                 talk: {
-                  ...talk,
-                  room: talk.room,
-                  abstract: md.toHTML(talk?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
-                  title: talk?.talk?.title ?? "Pause",
+                  ...slot,
+                  abstract: md.toHTML(slot?.info?.description ?? slot?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
+                  title: slot?.info?.title ?? slot?.talk?.title ?? "Pause",
                 },
-                id: talk?.talk?.speakers[0]?.id,
-                speakers: talk?.talk?.speakers?.map((speaker) => speaker?.display_name).join(" &amp; "),
-                speakersIds: talk?.talk?.speakers?.map((speaker) => speaker?.id),
+                id,
+                speakers,
+                speakersIds: slot?.info?.id ? [slot?.info?.id] : slot?.talk?.speakers?.map((speaker) => speaker?.id),
               };
             }),
           ];

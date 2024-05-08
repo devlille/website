@@ -41,6 +41,17 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("speakersFromApi", async () => {
     try {
       const speakers = await fetch(config.cms4partnersApi + config.edition + "/speakers").then((res) => res.json());
+      speakers.push({
+        id: "PNfgaI0tdHlKyoH5CfX8",
+        display_name: "Devfest Lille",
+        pronouns: null,
+        job_title: null,
+        website: "https://devfest.gdglille.org/",
+        twitter: "https://twitter.com/DevfestLille",
+        mastodon: null,
+        github: null,
+        linkedin: null,
+      });
       return speakers.sort((s1, s2) => s1.display_name.localeCompare(s2.display_name));
     } catch (e) {
       return [];

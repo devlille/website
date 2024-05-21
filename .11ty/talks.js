@@ -51,6 +51,18 @@ exports.createTalksCollections = async () => {
   return talks;
 };
 
+exports.createFlatTalksCollections = async () => {
+  const talks = await getTalks();
+  const flat = Object.values(talks)
+    .flat()
+    .map(([hour, talksArray]) => {
+      return talksArray.map((t) => t.talk);
+    })
+    .flat();
+
+  return flat;
+};
+
 exports.createTalksCollectionsBydate = async () => {
   const talks = await getTalks();
   return Object.entries(talks).map(([key, t]) => [

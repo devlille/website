@@ -45,7 +45,7 @@ ogImage: https://devfest.gdglille.org/img/logo-full.svg
   
                 {% if t.id  %}
                 <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}>
-                  <a href="/speaker-page-{{t.id}}">  {{ t.talk.title }}</a>
+                  <a href="/talk-page-{{t.talk.id}}">  {{ t.talk.title }}</a>
                 </dd>
   
                 <dd {% if t.talk.language == "English" %} lang="en" {%- endif -%}> {{ t.speakers }}</dd>

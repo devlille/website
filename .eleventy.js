@@ -4,9 +4,10 @@ const config = require("./data/config.json");
 const md = require("markdown").markdown;
 const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
 const { getExtensionFromLogoUrl, fetchImage } = require("./.11ty/image");
-const { createTalksCollections, createTalksCollectionsBydate } = require("./.11ty/talks");
+const { createTalksCollections, createTalksCollectionsBydate, createFlatTalksCollections } = require("./.11ty/talks");
 module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("talks", createTalksCollections);
+  eleventyConfig.addCollection("flatTalks", createFlatTalksCollections);
   eleventyConfig.addCollection("talksByDate", createTalksCollectionsBydate);
 
   eleventyConfig.addCollection("faqs", async () => {

@@ -43,8 +43,14 @@ class SpeakerPage {
             ${talk.abstract}
         </div>
         <div class="speaker-data-block"></div>
-        <div class="talks">
+
+        ${
+          talk.type === "event-session"
+            ? ""
+            : `<div class="talks">
         <div class="talk">
+        
+        
         ${
           !!talk?.talk?.open_feedback
             ? `
@@ -78,16 +84,20 @@ class SpeakerPage {
         }
         
     </div>
-        ${speakers?.map((s) => {
-          return `
+        ${
+          speakers?.map((s) => {
+            return `
                 <div class="talk">
             <h3>${s.display_name}</h3>
             <p>${s.bio?.replaceAll('"', "")}</p>
             <p><a href="/speaker-page-${s.id}">Page dédiée de ${s.display_name}</a></p>
             </div>
             `;
-        })}
-        </div>
+          }) ?? ""
+        }
+        </div>`
+        }
+        
     </div>
 </div>
 `;

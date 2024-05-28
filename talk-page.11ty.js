@@ -28,9 +28,10 @@ class SpeakerPage {
     };
   }
   render({ talk }) {
-    if (!talk.talk) {
+    if (!talk.talk && !talk.info) {
       return null;
     }
+    talk.talk = talk.talk ?? talk.info;
     const speakers = talk.talk.speakers;
     const selectedTalks = [];
     return `
@@ -77,7 +78,7 @@ class SpeakerPage {
         }
         
     </div>
-        ${speakers.map((s) => {
+        ${speakers?.map((s) => {
           return `
                 <div class="talk">
             <h3>${s.display_name}</h3>

@@ -1,5 +1,9 @@
+const dayjs = require("dayjs");
 const config = require("../data/config.json");
 const md = require("markdown").markdown;
+
+const duration = require("dayjs/plugin/duration");
+dayjs.extend(duration);
 
 const getTalks = async () => {
   try {
@@ -29,6 +33,9 @@ const getTalks = async () => {
                   ...slot,
                   abstract: md.toHTML(slot?.info?.description ?? slot?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
                   title: slot?.info?.title ?? slot?.talk?.title ?? "Pause",
+                  duration: `${dayjs
+                    .duration(dayjs(new Date(slot.endTime)).diff(dayjs(new Date(slot.startTime))))
+                    .asMinutes()} mn`,
                 },
                 id,
                 speakers,

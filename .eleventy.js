@@ -60,6 +60,9 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("partners", async () => {
+    return {}
+
+    /*
     const isURL = require("isurl");
 
     try {
@@ -116,7 +119,7 @@ module.exports = function (eleventyConfig) {
     } catch (e) {
       console.log(e);
       return {};
-    }
+    }*/
   });
 
   eleventyConfig.addCollection("config", () => config);

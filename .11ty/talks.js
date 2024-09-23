@@ -26,7 +26,7 @@ const getTalks = async () => {
                 id = undefined;
               }
               if (slot.type === "event-session" && !!slot.info.description) {
-                speakers = "Devfest Lille";
+                speakers = "DevLille";
               }
               return {
                 talk: {

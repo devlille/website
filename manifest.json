@@ -1,7 +1,7 @@
 {
   "manifest_version": "3",
-  "name": "Devfest Lille 2023",
-  "short_name": "devfestlille",
+  "name": "DevLille 2023",
+  "short_name": "devlille",
   "version": "3",
   "default_locale": "fr",
   "description": "La conférence GDG Lille",

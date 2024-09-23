@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------
-               	DEVFEST LILLE 2024
+               	  DEVLILLE 2025
                		Main style-sheet
           				Ge Ricci, 2022
 -------------------------------------------------------------------- */
@@ -28,37 +28,17 @@ header, footer, main, nav, aside, article, section, figure, figcaption {
 
 /* ------------------------------ DEFAULTS ---------------------------- */
 
-@font-face {
-    font-family: "Archivo SemiBold";
-    src: url("Archivo-VariableFont_wdth,wght.ttf");
-    font-weight: 100 900;
-    font-stretch: 62% 125%;
-    unicode-range: U+000D, U+0020-007E, U+00A0-017F, U+018F, U+0192, U+019D,
-        U+01A0-01A1, U+01AF-01B0, U+01C4-01DC, U+01E6-01E7, U+01EA-01EB,
-        U+01FA-021B, U+022A-022D, U+0230-0233, U+0237, U+0259, U+0272,
-        U+02B9-02BA, U+02BC, U+02C6-02C7, U+02C9, U+02D8-02DD, U+0300-0304,
-        U+0306-030C, U+030F, U+0311-0313, U+031B, U+0323-0324, U+0326-0328,
-        U+032E, U+0331, U+0335-0338, U+0394, U+03A9, U+03BC, U+03C0,
-        U+1E24-1E25, U+1E62-1E63, U+1E6C-1E6D, U+1E80-1E85, U+1E9E,
-        U+1EA0-1EF9, U+2009, U+2010-2011, U+2013-2015, U+2017-201A,
-        U+201C-201E, U+2020-2022, U+2026, U+2030, U+2032-2033, U+2039-203A,
-        U+203E, U+2044, U+2052, U+2070, U+2074-2079, U+207F-2089, U+2099,
-        U+20A1, U+20A3-20A4, U+20A6-20A7, U+20A9, U+20AB-20AD, U+20B1-20B2,
-        U+20B5, U+20B9-20BA, U+20BC-20BD, U+2105, U+2113, U+2116-2117, U+2122,
-        U+2126, U+212E, U+2190-2195, U+21A8, U+2202, U+2205-2206, U+220F,
-        U+2211-2212, U+2215, U+2219-221A, U+221E-221F, U+2229, U+222B, U+2248,
-        U+2260-2261, U+2264-2265, U+2302, U+2310, U+2320-2321, U+25CA,
-        U+27E8-27E9, U+E0FF, U+EFFD, U+F000, U+FB01-FB02, U+FEFF;
-}
 
 body {
   height: 100%;
-  font: 100%/1.3 "Archivo SemiBold", Calibri, "Droid Sans", Arial, Helvetica, sans-serif;
-  font-variation-settings: "wght" 250, "wdth" 100;
+  font: 100%/1.3 var(--stack);
+  font-variation-settings: "wght" 400;
   color: var(--body-text);
   background-color: var(--body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
+  background-image: url(/img/body-bg.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 2vh;
+  background-size: 206%;
 }
 
 h1, h2, h3, h4 {
@@ -81,30 +61,46 @@ h1 > span {
 h1 time::after {content: "/ ";}
 
 h2 {
-  font-size: calc(1.2em + 1vw);
-  font-variation-settings: "wght" 800, "wdth" 100;
+  font-size: calc(1.8em + 1vw);
+  font-variation-settings: "wght" 800;
+  line-height: 1.1;
+  text-transform: lowercase;
+  color: var(--light-cold);
   margin-bottom: 0.8em;
 }
+
+h2 strong {
+  font-variation-settings: "wght" 800;
+  color: var(--light-hot);
+}
+
+h2::first-letter {
+  font-size: 150%;
+}
+
 h3 {
   font-size: calc(0.75em + 0.9vmax);
   margin-bottom: 0.8em;
 }
 
 p, li, dt, dd {
-  font-size: 1em;
+  font-size: calc(1em + 0.5vw);
 }
 
 li p, li li, li dt, li dd {
   font-size: 100%;
 }
 
-a {color: var(--link-color);}
+a {
+  color: var(--link-color);
+  text-underline-position: under;
+}
 a:visited {color: var(--text-high);}
 
 :focus {outline: 2px dotted var(--link-color);}
 
 strong {
-  font-variation-settings: "wght" 600, "wdth" 100;
+  font-variation-settings: "wght" 700;
   font-weight: normal;
 }
 
@@ -131,25 +127,57 @@ abbr {cursor: help;}
 
 
 header {
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
+  grid-template-columns: 0.5fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 2vw;
   margin: 1.5rem 5% 0;
   transition: all .3s;
 }
 
+header .register {
+  display: none;
+  margin-top: 1em;
+}
+
+header .register a {
+  background-color: var(--link-color);
+  color: var(--text-inv);
+  text-decoration: none;
+  padding: 0.1em 1rem 0.25em;
+  transition: all 0.3s;
+  z-index: 1;
+}
+header .register a:hover {
+  background-color: var(--main-color);
+}
+
+header p {font-size: calc(1em + 1vw);}
+header span {display: block;}
+header time {font-variation-settings: "wght" 800;}
 
 main, aside {margin: 0 5vw;}
 
 footer {
   position: relative;
-  background-color: var(--n-dark);
+  background-color: var(--body-bg-dark);
   padding: 2rem 5% 5rem calc(5% + 2.5rem);
   z-index: 1;
+
+  a {
+    background-color: var(--body-bg-dark);
+  }
+  a:visited {
+    color: var(--text-inv);
+    background-color: rgba(255,255,255,0.25);
+  }
+
+  svg {fill: currentColor;}
 }
 
 footer .p-name {
   font-size: 1.2em;
-  font-variant: small-caps;
 }
 
   footer .p-name::before {
@@ -160,7 +188,7 @@ footer .p-name {
     top: 1.5rem;
     left: 5%;
     content: "";
-    background-image: url(../img/logotype.svg);
+    background-image: url(../img/favicon.svg);
     background-repeat: no-repeat;
     background-size: contain;
     margin-right: 0.5rem;
@@ -174,27 +202,51 @@ footer .p-summary {
 .copyright {font-size: 0.8em;}
 
 dl.h-event dd:last-of-type {
-  font-size: 0.85em;
+  font-size: calc(0.9em + 0.5vw);
   margin: 0.5rem 0 0 0;
 }
 
 div.footer-links {margin: 1rem 0 0 0;}
 
 footer ul.editions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.5rem;
+  list-style-type: none;
   padding-top: 1rem;
   margin-top: 1rem;
   border-top: 1px dotted var(--body-text);
 }
 
 footer ul.editions::before {
+  flex-basis: 100%;
   content: "Editions précedentes: ";
-  font-size: 80%;
+  font-size: (0.8em + 0.25vw); 
+  margin-bottom: 0.25em;
 }
 
 ul.links-list li {
-  font-size: 0.85em; 
+  font-size: calc(0.8em + 0.25vw); 
   line-height: 2;
   list-style-position: inside;
+}
+
+ul.editions li {
+  font-size: calc(0.8em + 0.25vw); 
+  line-height: 2;
+
+  a {
+    text-decoration: none;
+    color: var(--text-inv);
+    background-color: var(--hot-light);
+    padding: 0.2em 0.5em;
+  }
+  a:hover {
+    background-color: var(--light-hot);
+  }
+  a:visited {
+    background-color: rgba(255,255,255,0.25);
+  }
 }
 
 ul.sm-list {
@@ -241,31 +293,35 @@ nav {
   bottom: 0;
   left: 0;
   color: var(--hot-color);
-  background: var(--n-dark);
+  background: var(--body-bg-dark);
   box-shadow: -3px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 
 nav ul {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 66px);
   justify-content: center;
   list-style-type: none;
   margin: 0;
 }
 
 nav li {
-	font-size: 0.8em;
+	font-size: 0.75em;
 	font-variation-settings: "wght" 600, "wdth" 100;
-	font-variant: small-caps;
-	text-transform: uppercase;
 	padding: 0.75em 0;
 }
 
 nav a {
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
-  padding: 0.5em 1em;
-  border-bottom: 2px solid var(--n-dark);
+  padding: 0.55em 1em 0.4em 1em;
+}
+nav svg {
+  flex: 0 0 20px;
+  fill: currentColor;
 }
 
 nav a:visited {
@@ -274,7 +330,7 @@ nav a:visited {
 }
 
 nav a:hover, nav a:focus, nav a[aria-current] {
-  border-color: var(--hot-light);
+  background-color: rgba(255,255,255,0.2);
 }
 
 
@@ -290,25 +346,16 @@ nav a:hover, nav a:focus, nav a[aria-current] {
   top: 0;
   left: 0;
   width: 90%;
-  background-color: var(--n-dark);
-  padding: 1rem 5% 0.2rem;
+  background-color: var(--body-bg-dark);
+  padding: 1rem 5%;
   margin: 0;
-  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  box-shadow: 0 0 15px 5px rgba(0,0,0,0.5);
   transition: all .3s;
   z-index: 10;
 }
 
-header.with-cfp {
-  padding-top: 3rem;
-}
-
   #home header.active img {width: 140px;}
-  #home header.active span {
-    font-size: 0.8rem;
-    text-align: right;
-    background-color: var(--n-dark);
-  }
-  #home header.active time {display: block;}
+  
   #home header.active h1 {
     display: flex;
     justify-content: space-between;
@@ -343,15 +390,19 @@ aside {
 
 aside div.be-partner {
   color: var(--n-dark);
-  background: var(--hot-light);
-  padding: 1rem 1.5rem 1.5rem;
+  background: rgba(255,255,255,0.7);
+  padding:  calc(1rem + 0.5vw)calc(1.5rem + 0.5vw) calc(1.5rem + 0.5vw);
   margin: 0 0 4rem;
 }
+
+  aside div.be-partner h2 {
+    color: var(--main-dark);
+  }
 
   aside div.be-partner p {max-width: 25em; padding-top: 0.5rem;}
   aside div.be-partner a, aside div.be-partner a:visited {
     color: var(--n-dark);
-    background-color: var(--hot-light);
+    background-color: transparent;
   }
 
   div.sponsors {
@@ -425,62 +476,91 @@ p.register {
 div.presentation {
   max-width: 45em;
   line-height: 1.5;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 5vw 5.5vw;
   margin: 7vw 0 5vw;
 }
 
   div.presentation p {font-size: calc(1.2rem + 1vw);}
 
-div.stats {margin-bottom: 4rem;}
+div.stats {margin: calc(3rem + 1vw) 0;}
 
   div.stats ul {
-    overflow: hidden;
-    min-height: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
     list-style-type: none;
   }
   div.stats strong {
     display: block;
     font-size: 250%;
-    color: var(--hot-light);
-    text-align: right;
-  }
-
-  div.stats span {
-    display: block;
-    border-top: 1px solid var(--main-color);
   }
 
   div.stats li {
     overflow: hidden;
     position: relative;
-    height: 1px;
-    background-color: var(--body-bg);
-    animation-duration: 2s;
+    width: 10em;
+    height: 10em;
+    align-content: center;
+    text-align: center;
+    color: var(--body-bg);
+    margin: auto;
+    transform: rotate(0);
+    animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(0.1, -0.6, 0.2, 0);
-    transition: margin;
-  }
-
-  @keyframes slideStats1 {
-    0% {height: 1px;}
-    100% {height: 5rem;}
-  }
-  @keyframes slideStats2 {
-    0% {height: 1px; margin-top: -5rem;}
-    40% {margin-top: 0;}
-    100% {height: 5rem; margin-top: 0;}
-  }
-  @keyframes slideStats3 {
-    0% {height: 1px; margin-top: -10rem;}
-    50% {margin-top: 0;}
-    100% {height: 5rem; margin-top: 0;}
-  }
-  @keyframes slideStats4 {
-    0% {height: 1px; margin-top: -15rem;}
-    30% {margin-top: 0;}
-    100% {height: 5rem; margin-top: 0;}
   }
 
   div.stats li:nth-child(1) {
+    background-color: var(--main-light);
+    animation-name: slideStats1;
+  }
+  div.stats li:nth-child(2) {
+    background-color: var(--hot-light);
+    transform: rotate(-1deg);
+    animation-name: slideStats2;
+    animation-delay: 0.1s;
+  }
+  div.stats li:nth-child(3) {
+    background-color: var(--light-cold);
+    transform: rotate(-6deg);    
+    animation-name: slideStats3;
+    animation-delay: 0.2s;
+  }
+  div.stats li:nth-child(4) {
+    background-color:  var(--light-hot);
+    transform: rotate(1deg);
+    animation-name: slideStats4;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes slideStats1 {
+    0% {transform: rotate(0);}
+    50% {transform: rotate(2deg);}
+    70% {transform: rotate(1deg);}
+    100% {transform: rotate(2deg);}
+  }
+  @keyframes slideStats2 {    
+    0% {transform: rotate(0);}
+    50% {transform: rotate(-2deg);}
+    70% {transform: rotate(1deg);}
+    100% {transform: rotate(-1deg);}
+  }
+  @keyframes slideStats3 {
+    0% {transform: rotate(0);}
+    50% {transform: rotate(-6deg);}
+    70% {transform: rotate(-2deg);}
+    100% {transform: rotate(-6deg);}
+  }
+  @keyframes slideStats4 {
+    0% {transform: rotate(0);}
+    50% {transform: rotate(2deg);}
+    70% {transform: rotate(1deg);}
+    100% {transform: rotate(1deg);}
+  }
+
+  /* div.stats li:nth-child(1) {
     animation-name: slideStats1;
     z-index: 4;
   }
@@ -498,11 +578,12 @@ div.stats {margin-bottom: 4rem;}
     margin-top: -15rem;
     animation-name: slideStats4;
     z-index: 3;
-  }
+  } */
 
 div.decor {
-  position: relative;
+  padding: 0.5rem 1.5rem 1.5rem;
   margin: 0 0 4rem;
+  border: 1px solid rgba(255,255,255,0.5);
   z-index: 1;
 }
   div.decor h2 strong {
@@ -510,19 +591,25 @@ div.decor {
     transition: all .5s;
   }
 
-  div.decor .content {max-width: 800px;}
+  div.decor .content {
+    position: relative;
+  }
+
+  div.decor .content div {
+    position: relative;
+  }
 
 p.illustration {margin-bottom: 1rem;}
 
-div.decor::after {
+div.decor.venue div.content::after {
   content: "";
   display: block;
   position: absolute;
-  width: 5px;
-  height: 50%;
-  bottom: 0;
-  left: 2rem;
-  border-left: 9px dotted var(--hot-light);
+  width: 45px;
+  height: 45px;
+  top: -7px;
+  right: 15px;
+  background-color: var(--light-hot);
   transition: all .5s;
 }
 
@@ -530,8 +617,6 @@ div.decor p {line-height: 1.45;}
 
 div.decor p:not(.illustration) {
   font-size: calc(0.8em + 1vw);
-  margin-right: 2rem;
-  margin-left: 4rem;
 }
 p.read-more {margin-top: 1rem;}
 
@@ -543,9 +628,6 @@ p.read-more {margin-top: 1rem;}
 .page-body {max-width: 55em; margin: 4rem 0;}
 .page-body.list {max-width: 100%;}
 
-  .page-body h2 {
-    color: var(--main-color);
-  }
   .page-body p, .page-body li {line-height: 1.6;}
 
   .page-body p + p {margin-top: 0.8em;}

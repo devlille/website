@@ -1,2 +1,2 @@
-# devfest
-Official website of the DevFest Lille
+# devLille
+Official website of the DevLille

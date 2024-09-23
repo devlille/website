@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="Devfest, Lille, GDG, Conférence, Web, Mobile, Cloud, Quickies" />
+    <meta name="keywords" content="DevLille, Conférence, Web, Mobile, Cloud, Quickies" />
     <meta name="theme-color" content="#006D6D" />
     <meta property="og:url" content="{{ogUrl}}" />
     <meta property="og:title" content="{{  ogTitle }}" />
@@ -14,7 +14,7 @@
     <meta property="og:image" content="{{ogImage}}" />
     <link href="/img/favicon.svg" type="image/svg+xml" rel="icon" />
     <link href="/img/favicon.png" type="image/png" rel="icon" />
-    <title>{{ title }} DEVFEST LILLE {{  collections.config.edition }}</title>
+    <title>{{ title }} DEVLILLE {{  collections.config.edition }}</title>
 
     <link href="/css/main.css" rel="stylesheet" media="all" />
     <link href="/css/queries.css" rel="stylesheet" media="all" />
@@ -27,7 +27,7 @@
         {
             "@context": "https://schema.org",
             "@type": "Event",
-            "name": "Devfest Lille {{  collections.config.edition }}",
+            "name": "DevLille {{  collections.config.edition }}",
             "startDate": "{{  collections.config.formatted-date }}T08:00+02:00",
             "endDate": "{{  collections.config.formatted-date }}T18:30+02:00",
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -73,17 +73,26 @@
 <body {% if currSection == "index" %} id="home" {% endif %}>
     <div id="container">
         <!-- PAGE HEADER -->
-        <header class="with-cfp">
+        <header>
             <h1>
-                <strong><img src="/img/logodfl.svg" alt="Devfest Lille {{  collections.config.edition }}" /></strong>
-                <span>
+                <img src="/img/logodl.svg" alt="DevLille {{  collections.config.edition }}" />
+            </h1>
+            <div>
+                <p>
                     <time datetime="{{ collections.config.formatted-date }}">
                         {{  collections.config.date }}
-                        <span>{{  collections.config.edition }}</span>
+                        <!--{{  collections.config.edition }}-->
                     </time>
-                    Lille Grand Palais
-                </span>
-            </h1>
+                    <span>Lille Grand Palais</span>
+                </p>
+                <p class="register">
+                    <a 
+                    rel="noreferrer noopener" 
+                    target="_blank" 
+                    href="{{ collections.config.billetwebUrl }}{{collections.config.edition}}">
+                    Prenez votre place!</a>
+                </p>
+            </div>
             <!--p class="cfp">
               <a rel="noreferrer noopener" target="_blank" href="https://conference-hall.io/public/event/lfYn4Qk5xCAfLHrnNANa">
                   Le Call For Paper est ouvert </a>
@@ -93,17 +102,34 @@
         <nav class="main-nav">
             <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
             <ul>
-                <li><a href="/index.html" {% if currSection == "index" %} aria-current="page" {% endif %}>Accueil</a>
+                <li>
+                    <a href="/index.html" {% if currSection == "index" %} aria-current="page" {% endif %}>
+                        <svg role="img" width="20" height="20" aria-hidden="true">
+                            <use href="/img/sprite.svg#ic-home"></use>
+                        </svg>
+                        Accueil</a>
                 </li>
 
                 {% if collections.talksByDate.length > 0 %}
-                <li><a href="/agenda/index.html" {% if currSection == "agenda" %} aria-current="page"
-                        {% endif %}>Agenda</a></li>
+                <li>     
+                    <a href="/agenda/index.html" {% if currSection == "agenda" %} aria-current="page" {% endif %}>
+                        <svg role="img" width="20" height="20" aria-hidden="true">
+                            <use href="/img/sprite.svg#ic-agenda"></use>
+                        </svg>
+                        Agenda</a>
+                </li>
                 {% endif %}
                 
-                <li><a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>FAQ</a></li>
-                <li><a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a>
+                <li>
+                    <a href="/faq" {% if currSection == "faq" %} aria-current="page" {% endif %}>
+                        <svg role="img" width="20" height="20" aria-hidden="true">
+                            <use href="/img/sprite.svg#ic-faq"></use>
+                        </svg>
+                        FAQ</a>
                 </li>
+                <!-- <li>
+                    <a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a>
+                </li> -->
             </ul>
         </nav>
 
@@ -117,7 +143,7 @@
                 <div class="be-partner">
                     <h2>Devenez partenaire</h2>
     
-                      <p>Profitez de la {{ collections.config.editionNumber }}ème Devfest Lille Saison pour gagner en visibilité et échanger avec la
+                      <p>Profitez de la première édition du DevLille pour gagner en visibilité et échanger avec la
                           communauté des développeurs de la région Haut de France.</p>
                     <p class="read-more">
                         <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a> [PDF, 5Mo]                </p>
@@ -226,7 +252,7 @@
             <div class="content">
                 
                 <dl class="h-event">
-                    <dt class="p-name">Devfest Lille {{ collections.config.edition }}</dt>
+                    <dt class="p-name">DevLille {{ collections.config.edition }}</dt>
                     <dd class="p-summary">
                         2 jours de conférences et d"échanges accessibles à tous et toutes au coeur de Lille
                     </dd>
@@ -272,7 +298,7 @@
     
                 <div class="footer-links">
                     <ul class="links-list">
-                        <li><a href="/a-propos">L'équipe Devfest Lille</a></li>
+                        <li><a href="/a-propos">L'équipe DevLille</a></li>
                         <li><a href="mailto:contact@gdglille.org">Contactez-nous</a></li>
                         <li><a href="{{ collections.config.partershipUrl }}">
                             Devenez partenaire</a></li>
@@ -296,18 +322,25 @@
                     </ul>
                 </div>
             </div>
-            <ul class="sm-list">
-                <li class="show-icons">
-                    <a href="https://twitter.com/devfestLille/"><img src="/img/twitter.svg"
-                            alt="Devfest Lille sur Twitter" loading="lazy" /></a>
-                </li>
-                <li class="show-icons">
-                    <a href="https://www.linkedin.com/company/gdg-lille/"><img src="/img/linkedin.svg"
-                            alt="GDG Lille sur LinkedIn" loading="lazy" /></a>
-                </li>
-            </ul>
-
-            <p class="copyright">GDG Lille, {{ collections.config.edition }}</p>
+            <div class="related">
+                <ul class="sm-list">
+                    <li class="show-icons">
+                        <a href="https://twitter.com/devfestLille/">
+                            <svg role="img" width="24" height="24">
+                                <title>DevLille sur Twitter</title>
+                                <use href="/img/sprite.svg#ic-twitter"></use>
+                            </svg></a>
+                    </li>
+                    <li class="show-icons">
+                        <a href="https://www.linkedin.com/company/gdg-lille/">
+                            <svg role="img" width="24" height="24">
+                                <title>DevLille sur LinkedIn</title>
+                                <use href="/img/sprite.svg#ic-linkedin"></use>
+                            </svg></a>
+                    </li>
+                </ul>
+                <p class="copyright">GDG Lille, {{ collections.config.edition }}</p>
+            </div>
         </footer>
     </div>
     <!-- /container -->
@@ -329,7 +362,6 @@
             });
         }
     </script>
-    <script src="/js/load.js"></script>
 </body>
 
 </html>

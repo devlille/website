@@ -75,7 +75,13 @@
         <!-- PAGE HEADER -->
         <header>
             <h1>
-                <img src="/img/logodl.svg" alt="DevLille {{  collections.config.edition }}" />
+                {% if currSection == "index" %}
+                    <img src="/img/logodl.svg" alt="DevLille {{  collections.config.edition }}" />
+                {% else %}
+                <a href="/index.html" aria-label="DevLille: Retour à l'accueil">
+                    <img src="/img/logodl.svg" alt="DevLille {{  collections.config.edition }}" />
+                </a>
+                {% endif %}
             </h1>
             <div>
                 <p>
@@ -254,47 +260,87 @@
                 <dl class="h-event">
                     <dt class="p-name">DevLille {{ collections.config.edition }}</dt>
                     <dd class="p-summary">
-                        2 jours de conférences et d"échanges accessibles à tous et toutes au coeur de Lille
+                        2 jours de conférences et d'échanges accessibles 
+                        à tous et à toutes au coeur de Lille
                     </dd>
-                    <!--dd>
-                      <time class="dt-start" datetime="2022-06-10">{{ collections.config.date }} {{ collections.config.edition }}</time> -
-                      <a href="#" class="p-location">Kinépolis Lomme</a>
-                  </dd-->
                 </dl>
                 <div id="mc_embed_shell">
-                    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-                <style type="text/css">
-                      #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
-                      /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-                         We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-              </style>
-                <div id="newsletter">
-                    <div id="mc_embed_signup" style="background: black;">
-                        <form action="https://gdglille.us17.list-manage.com/subscribe/post?u=20e377fe4a62412ff254e60e0&amp;id=8ad076b614&amp;f_id=00c6cde3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-                            <div id="mc_embed_signup_scroll"><h2>S'inscrire à la newsletter du Devfest Lille</h2>
-                                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                                <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
-                    <div hidden=""><input type="hidden" name="tags" value="8399931"></div>
-                            <div id="mce-responses" class="clear foot">
-                                <div class="response" id="mce-error-response" style="display: none;"></div>
-                                <div class="response" id="mce-success-response" style="display: none;"></div>
-                            </div>
-                        <div aria-hidden="true" style="position: absolute; left: -5000px;">
-                            /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-                            <input type="text" name="b_20e377fe4a62412ff254e60e0_8ad076b614" tabindex="-1" value="">
-                        </div>
-                            <div class="optionalParent">
-                                <div class="clear foot">
-                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-                                    <p style="margin: 0px auto;"><a href="http://eepurl.com/iRWe4g" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
+                    <link 
+                        href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" 
+                        rel="stylesheet" 
+                        type="text/css">
+                    <div id="newsletter">
+                        <div id="mc_embed_signup">
+                            <form action="https://gdglille.us17.list-manage.com/subscribe/post?u=20e377fe4a62412ff254e60e0&amp;id=8ad076b614&amp;f_id=00c6cde3f0" 
+                                method="post" 
+                                id="mc-embedded-subscribe-form" 
+                                name="mc-embedded-subscribe-form" 
+                                class="validate" 
+                                target="_blank">
+                                <div id="mc_embed_signup_scroll">
+                                    <h2>
+                                        S'inscrire à la newsletter du Devfest Lille
+                                    </h2>
+                                    <p>
+                                        <label for="mce-EMAIL">
+                                            Email 
+                                            <span class="asterisk" aria-hidden="true">
+                                                *
+                                            </span>
+                                        </label>
+                                        <input 
+                                            type="email" 
+                                            name="EMAIL" 
+                                            class="email" 
+                                            id="mce-EMAIL" 
+                                            required="required" 
+                                            value="">
+                                    </p>
+                                <div hidden="">
+                                    <input type="hidden" name="tags" value="8399931">
+                                </div>
+                                <div id="mce-responses" class="clear foot">
+                                    <div 
+                                        class="response" 
+                                        id="mce-error-response" 
+                                        style="display: none;"></div>
+                                    <div 
+                                        class="response" 
+                                        id="mce-success-response" 
+                                        style="display: none;"></div>
+                                </div>
+                                <div 
+                                    aria-hidden="true" 
+                                    style="position: absolute; left: -5000px;">
+                                    /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                                    <input 
+                                        type="text" 
+                                        name="b_20e377fe4a62412ff254e60e0_8ad076b614" 
+                                        tabindex="-1" 
+                                        value="">
+                                </div>
+                                <div class="optionalParent">
+                                    <div class="clear foot">
+                                        <p>
+                                            <input 
+                                                type="submit" 
+                                                name="subscribe" 
+                                                id="mc-embedded-subscribe" 
+                                                value="Confirmer">
+                                        </p>
+                                        <p class="mce-logo">
+                                            <a href="http://eepurl.com/iRWe4g">
+                                                <img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-light.svg" alt="Intuit Mailchimp">
+                                            </a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                        </form>
                         </div>
-                    </form>
                     </div>
+                    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='BIRTHDAY';ftypes[3]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
                 </div>
-              <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='BIRTHDAY';ftypes[3]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
-              
     
                 <div class="footer-links">
                     <ul class="links-list">
@@ -339,7 +385,7 @@
                             </svg></a>
                     </li>
                 </ul>
-                <p class="copyright">GDG Lille, {{ collections.config.edition }}</p>
+                <p class="copyright">DevLille, {{ collections.config.edition }}</p>
             </div>
         </footer>
     </div>

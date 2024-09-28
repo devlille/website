@@ -4,6 +4,14 @@
           				Ge Ricci, 2022
 -------------------------------------------------------------------- */
 
+@media (prefers-reduced-motion) {
+  * {
+    animation-name: none;
+    animation-duration: unset;
+    transition: unset;
+  }
+}
+
 @media screen and (min-width: 300px) {
   section.member div.hgroup {
     display: flex;
@@ -40,7 +48,7 @@
     padding-left: 2rem;
     margin-top: 0;
     border-top: none;
-    border-left: 1px dotted var(--body-text);
+    border-left: 1px solid var(--body-text);
   }
 
   div.related {
@@ -67,6 +75,7 @@
     gap: 2rem;
   }
 
+  div.cfp a {display: inline;}
 }
 
 
@@ -152,6 +161,25 @@
   div.talk {order: 3;}
 }
 
+@media screen and (min-width: 1200px) {
+  div.group:has(div.cfp) {
+    position: relative;
+  }
+  div.cfp::before, div.cfp::after {
+    content: none;
+  }
+  div.cfp {
+    position: absolute;
+    width: 14em;
+    top: 1rem;
+    right: 101px;
+    transform: rotate(5deg);
+  }
+  div.presentation {max-width: 100%;}
+  div.presentation p {
+    max-width: 50rem;
+  }
+}
 
 @media screen and (min-width: 1300px) {
   body {background-size: cover;}
@@ -196,7 +224,9 @@
   nav a, nav a:visited {
     width: 100%;
     padding-top: 1.2rem;
-    backdrop-filter: blur(10px);
+  }
+  nav a:hover, nav a:focus, nav a[aria-current] {
+    backdrop-filter: blur(5px);
   }
 
   footer {
@@ -261,6 +291,14 @@
   div.modal h4 {
     font-size: 1.4em;
     margin-right: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  div.cfp {
+    height: 22em;
+    right: 50px;
+    transform: rotate(0);
   }
 }
 

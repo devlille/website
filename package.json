@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@11tyrocks/eleventy-plugin-lightningcss": "1.2.0",
-    "dayjs": "^1.11.11",
+    "dayjs": "^1.11.13",
     "markdown": "^0.5.0",
     "node-fetch": "^2.6.8",
     "svgo": "3.2.0",

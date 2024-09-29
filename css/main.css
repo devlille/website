@@ -1,7 +1,7 @@
 /* --------------------------------------------------------------------
                	  DEVLILLE 2025
                		Main style-sheet
-          				Ge Ricci, 2022
+          				Ge Ricci, 2022/25
 -------------------------------------------------------------------- */
 @import "vars.css";
 
@@ -39,6 +39,7 @@ body {
   background-repeat: no-repeat;
   background-position: 50% 2vh;
   background-size: 206%;
+  background-attachment: fixed;
 }
 
 h1, h2, h3, h4 {
@@ -79,7 +80,8 @@ h2::first-letter {
 }
 
 h3 {
-  font-size: calc(0.75em + 0.9vmax);
+  font-size: calc(1em + 0.9vw);
+  font-variation-settings: "wght" 800;
   margin-bottom: 0.8em;
 }
 
@@ -131,12 +133,16 @@ abbr {cursor: help;}
 
 header {
   display: grid;
-  grid-template-columns: 0.5fr auto;
+  grid-template-columns: minmax(70px, 560px) auto;
   align-items: center;
   gap: 2rem;
   padding-top: 2vw;
   margin: 1.5rem 5% 0;
   transition: all .3s;
+}
+
+body:not(#home) header {
+  grid-template-columns: minmax(70px, 265px) auto;
 }
 
 header .register {
@@ -164,6 +170,7 @@ main, aside {margin: 0 5vw;}
 
 footer {
   --footer-bg: #003646;
+  --footer-border: rgba(255,255,255,0.5);
   position: relative;
   background-color: var(--footer-bg);
   padding: 2rem 5% 5rem calc(5% + 2.5rem);
@@ -215,7 +222,7 @@ footer ul.editions {
   list-style-type: none;
   padding-top: 1rem;
   margin-top: 1rem;
-  border-top: 1px solid var(--body-text);
+  border-top: 1px solid var(--footer-border);
 }
 
 footer ul.editions::before {
@@ -676,16 +683,31 @@ p.read-more {margin-top: 1rem;}
 /* -------------------------- ARTICLE ---------------------------- */
 
 
-.page-body {max-width: 55em; margin: 4rem 0;}
+.page-body {
+  background-color: rgba(0,0,0,0.23);
+  backdrop-filter: blur(5px);
+  padding: calc(1rem + 1vw) calc(1.5rem + 1vw);
+  margin: 2rem 0;
+  transition: all 0.3s;
+}
 .page-body.list {max-width: 100%;}
 
-  .page-body p, .page-body li {line-height: 1.6;}
+  .page-body p, .page-body li {
+    max-width: 45rem;
+    line-height: calc(2.1ch + .15vw);
+  }
 
-  .page-body p + p {margin-top: 0.8em;}
+  .page-body p + p, .page-body li + li {
+    margin-top: 0.8em;
+  }
 
   .page-body ul {margin: 1em;}
 
-div.faq + div.faq {margin-top: 2rem;}
+div.faq + div.faq {
+  padding-top: calc(2rem + 1vw);
+  margin-top: calc(2rem + 1vw);
+  border-top: 2px solid rgba(255,255,255,0.25);
+}
 
 div.faq h3 {color: var(--hot-light);}
 
@@ -703,8 +725,8 @@ article.h-entry div.group {
 
 article.h-entry div.group.typography {
   padding: calc(1rem + 2vw) 0;
-  border-top: 10px dotted var(--hot-light);
-  border-bottom: 10px dotted var(--hot-light);
+  border-top: 10px solid var(--hot-light);
+  border-bottom: 10px solid var(--hot-light);
 }
 
 ul.thumbs {
@@ -718,7 +740,6 @@ ul.thumbs {
   ul.thumbs li {
     font-size: 0.9em;
     text-align: center;
-    background-color: var(--n-dark);
     padding: 1rem;
   }
   
@@ -745,6 +766,7 @@ ul.thumbs {
     font-size: 0.8em;
     text-align: center;
   }
+  ul.palette li + li {margin-top: 0;}
 
   ul.palette li::before {
     display: block;
@@ -756,17 +778,30 @@ ul.thumbs {
   }
 
   ul.palette li:nth-child(1)::before {
-    background-color: #F61C7C;
+    background-color: var(--body-bg-dark);
+    border: 1px solid currentColor;
   }
   ul.palette li:nth-child(2)::before {
-    background-color: #EF7918;
+    background-color: var(--body-bg);
+    border: 1px solid currentColor;
   }
   ul.palette li:nth-child(3)::before {
-    background-color: #03B7D5;
+    background-color: var(--main-color);
   }
   ul.palette li:nth-child(4)::before {
-    background-color: #191919;
-    border: 1px solid currentColor;
+    background-color: var(--main-light);
+  }
+  ul.palette li:nth-child(5)::before {
+    background-color: var(--hot-color);
+  }
+  ul.palette li:nth-child(6)::before {
+    background-color: var(--hot-light);
+  }
+  ul.palette li:nth-child(7)::before {
+    background-color: var(--light-hot);
+  }
+  ul.palette li:nth-child(8)::before {
+    background-color: var(--light-cold);
   }
 
 
@@ -801,27 +836,44 @@ div.team {
     background-repeat: no-repeat;
     margin: 1rem 0;
   }
-  section.member p.illustration:nth-child(even) {
-    background-image: url(/img/blob2.svg);
+
+  section.member div.hgroup {
+    position: relative;
   }
-  section.member p.illustration:nth-child(odd) {
-    background-image: url(/img/blob.svg);
+  section.member div.hgroup::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 45vw;
+    height: 50vw;
+    max-width: 200px;
+    max-height: 200px;
+    background-color: var(--light-cold);
+    margin: 1rem 0;
+    transform: rotate(5deg);
+    z-index: 1;
   }
 
   section.member p.illustration + p {margin-top: 0;}
+  
+  section.member p {
+    font-size: clamp(1em, 1.1em, 1.3em);
+  }
 
     section.member p.illustration img {
+      position: relative;
       object-fit: cover;
       width: 50vw;
       height: 50vw;
       max-width: 200px;
       max-height: 200px;
-      border-radius: 100%;
+      z-index: 2;
     }
 
 div.highlight {
   color: var(--text-inv);
-  background-color: var(--hot-color);
+  background-color: var(--light-cold);
   padding: 1.5rem;
 }
 
@@ -1201,12 +1253,28 @@ div.cfp a {
 
 /* MAILCHIMP */
 
+#newsletter p {font-size: 1.2em;}
+
+p.email {
+  display: flex;
+  align-items: baseline;
+  gap: 0 0.5rem;
+  flex-wrap: wrap;
+}
+
 #mc_embed_signup form {
   padding-bottom: 1rem;
-  margin-bottom: 0 !important;
-  margin-left: 0 !important;
-  border-top: 1px solid currentColor;
-  border-bottom: 1px solid currentColor;
+  margin: 1.5rem 0 0 !important;
+  border-top: 1px solid var(--footer-border);
+  border-bottom: 1px solid var(--footer-border);
+}
+#mc_embed_signup .foot {
+  display: block !important;
+}
+
+#mc_embed_signup input:not([type=submit]) {
+  width: 85%;
+  max-width: 17em;
 }
 
 #mc-embedded-subscribe {
@@ -1219,7 +1287,7 @@ div.cfp a {
 }
 
 p.mce-logo {
-  width: 124px;
+  width: 100px;
   margin-left: auto;
   opacity: 0.8;
 }

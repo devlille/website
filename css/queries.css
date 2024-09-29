@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------
-               	DEVFEST LILLE 2022
+               	DEVLILLE 2022
                		Media Queries
           				Ge Ricci, 2022
 -------------------------------------------------------------------- */
@@ -39,17 +39,23 @@
   
   div.footer-links {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 2rem;
     align-items: baseline;
   }
   footer ul.editions {
     padding-top: 0;
-    padding-left: 2rem;
     margin-top: 0;
     border-top: none;
-    border-left: 1px solid var(--body-text);
   }
+
+  footer ul.links-list:not(.editions) {
+    padding-top: 1.5rem;
+    padding-right: 2rem;
+    border-right: 1px solid var(--footer-border);
+  }
+
+  div.footer-links {margin-top: 0;}
 
   div.related {
     display: flex;
@@ -93,7 +99,7 @@
 @media screen and (min-width: 800px) {  
   div.talk-links h4 {font-size: 1.4em;}
 
-  footer .p-name::before {top: 2rem;}
+  footer .p-name::before {top: 2.35rem;}
 
   section.news {margin-bottom: 4rem;}
 
@@ -204,7 +210,7 @@
   	width: 7em;
   	bottom: auto;
   	left: auto;
-    top: 9rem;
+    top: 4rem;
     right: 35px;
     background-color: rgba(0,0,0,0);
     box-shadow: none;
@@ -234,6 +240,11 @@
     margin-right: 211px;
   }
   footer div.content {margin-left: 2.5rem;}
+
+  div.related {
+    margin-top: 2rem;
+    margin-left: 2.5rem;
+  }
 
   div.decor {
     margin: 0 0 7rem;
@@ -291,6 +302,13 @@
   div.modal h4 {
     font-size: 1.4em;
     margin-right: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .page-body {
+    margin-left: calc(265px + 7rem + 1vw);
+    margin-top: 5rem;
   }
 }
 

@@ -281,7 +281,7 @@
                                     <h2>
                                         S'inscrire à la newsletter du Devfest Lille
                                     </h2>
-                                    <p>
+                                    <p class="email">
                                         <label for="mce-EMAIL">
                                             Email 
                                             <span class="asterisk" aria-hidden="true">
@@ -294,7 +294,13 @@
                                             class="email" 
                                             id="mce-EMAIL" 
                                             required="required" 
+                                            autocomplete="email"
                                             value="">
+                                        <input 
+                                            type="submit" 
+                                            name="subscribe" 
+                                            id="mc-embedded-subscribe" 
+                                            value="Confirmer">
                                     </p>
                                 <div hidden="">
                                     <input type="hidden" name="tags" value="8399931">
@@ -321,13 +327,6 @@
                                 </div>
                                 <div class="optionalParent">
                                     <div class="clear foot">
-                                        <p>
-                                            <input 
-                                                type="submit" 
-                                                name="subscribe" 
-                                                id="mc-embedded-subscribe" 
-                                                value="Confirmer">
-                                        </p>
                                         <p class="mce-logo">
                                             <a href="http://eepurl.com/iRWe4g">
                                                 <img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-light.svg" alt="Intuit Mailchimp">

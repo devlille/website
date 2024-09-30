@@ -250,10 +250,6 @@
     margin: 0 0 7rem;
     border: none;
   }
-  div.decor.venue div.content::after {
-    content: none;
-  }
-
   .page-body {margin-bottom: 6rem;}
     .page-body h2 {font-size: 3em; margin-bottom: 4rem;}
 

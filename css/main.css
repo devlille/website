@@ -659,18 +659,6 @@ div.decor {
 
 p.illustration {margin-bottom: 1rem;}
 
-div.decor.venue div.content::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  top: -7px;
-  right: 15px;
-  background-color: var(--light-hot);
-  transition: all .5s;
-}
-
 div.decor p {line-height: 1.45;}
 
 div.decor p:not(.illustration) {

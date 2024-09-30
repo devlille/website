@@ -12,8 +12,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("faqs", async () => {
     try {
-      console.log(config.cms4partnersApi + 2024)
-      const data = await fetch(config.cms4partnersApi + 2024 + "").then((res) => res.json());
+      const data = await fetch(config.cms4partnersApi + 2025 + "").then((res) => res.json());
       const qanda = data.qanda
         .sort((f1, f2) => f1.order - f2.order)
         .map((q) => {

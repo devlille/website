@@ -1,6 +1,9 @@
-const { displaySpeakers, displaySpeakerSocialBlock } = require("./utils/speakers");
+import {
+  displaySpeakers,
+  displaySpeakerSocialBlock,
+} from "./utils/speakers.js";
 
-class SpeakerPage {
+export default class SpeakerPage {
   data() {
     return {
       layout: "layout.html",
@@ -33,21 +36,27 @@ class SpeakerPage {
     };
   }
   render(data) {
-    const speaker = data.collections.speakersFromApi.find((s) => s.id === data.speaker.id);
+    const speaker = data.collections.speakersFromApi.find(
+      (s) => s.id === data.speaker.id
+    );
 
     let talks = Object.values(data.collections.talks)
       .flat()
       .map(([_, talks]) => talks ?? [])
       .reduce((acc, talks) => [...acc, ...talks], []);
 
-    const selectedTalks = talks.filter((talk) => talk.speakersIds?.indexOf(data.speaker.id) >= 0);
+    const selectedTalks = talks.filter(
+      (talk) => talk.speakersIds?.indexOf(data.speaker.id) >= 0
+    );
     if (selectedTalks.length === 0) {
       return null;
     }
 
     return `
 <div class="page-body list">
-    <h2>${speaker.display_name}${speaker.pronouns ? ` (${speaker.pronouns})` : ""}</h2>
+    <h2>${speaker.display_name}${
+      speaker.pronouns ? ` (${speaker.pronouns})` : ""
+    }</h2>
 
     <div class="speaker-sheet">
         <div class="speaker">
@@ -78,7 +87,8 @@ class SpeakerPage {
             
 
             ${
-              !!selectedTalk.talk?.talk?.link_slides || !!selectedTalk.talk?.talk?.link_replay
+              !!selectedTalk.talk?.talk?.link_slides ||
+              !!selectedTalk.talk?.talk?.link_replay
                 ? `
             <div class="talk-links">
                 <h4>Regardez ou re-regardez</h4>
@@ -109,4 +119,3 @@ class SpeakerPage {
 `;
   }
 }
-module.exports = SpeakerPage;

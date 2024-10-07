@@ -1,18 +1,26 @@
-const htmlmin = require("html-minifier");
-const fetch = require("node-fetch");
-const config = require("./data/config.json");
-const md = require("markdown").markdown;
-const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
-const { getExtensionFromLogoUrl, fetchImage } = require("./.11ty/image");
-const { createTalksCollections, createTalksCollectionsBydate, createFlatTalksCollections } = require("./.11ty/talks");
-module.exports = function (eleventyConfig) {
+import htmlmin from "html-minifier";
+import fetch from "node-fetch";
+import config from "./data/config.js";
+import lightningCSS from "@11tyrocks/eleventy-plugin-lightningcss";
+import { markdown as md } from "markdown";
+import { getExtensionFromLogoUrl, fetchImage } from "./.11ty/image.js";
+import {
+  createTalksCollections,
+  createTalksCollectionsBydate,
+  createFlatTalksCollections,
+} from "./.11ty/talks.js";
+import { minify } from "terser";
+
+export default function (eleventyConfig) {
   // eleventyConfig.addCollection("talks", createTalksCollections);
   // eleventyConfig.addCollection("flatTalks", createFlatTalksCollections);
   // eleventyConfig.addCollection("talksByDate", createTalksCollectionsBydate);
 
   eleventyConfig.addCollection("faqs", async () => {
     try {
-      const data = await fetch(config.cms4partnersApi + 2025 + "").then((res) => res.json());
+      const data = await fetch(config.cms4partnersApi + 2025 + "").then((res) =>
+        res.json()
+      );
       const qanda = data.qanda
         .sort((f1, f2) => f1.order - f2.order)
         .map((q) => {
@@ -25,7 +33,8 @@ module.exports = function (eleventyConfig) {
           return {
             ...q,
             response: q.acronyms.reduce(
-              (acc, { key, value }) => acc.replace(key, `<abbr title="${value}">${key}</abbr>`),
+              (acc, { key, value }) =>
+                acc.replace(key, `<abbr title="${value}">${key}</abbr>`),
 
               q.actions.reduce((acc, { label, url }) => {
                 const regEx = new RegExp(label, "ig");
@@ -36,7 +45,7 @@ module.exports = function (eleventyConfig) {
         });
       return qanda;
     } catch (e) {
-      console.log(e)
+      console.log(e);
       return [];
     }
   });
@@ -61,7 +70,7 @@ module.exports = function (eleventyConfig) {
   // });
 
   eleventyConfig.addCollection("partners", async () => {
-    return {}
+    return {};
 
     /*
     const isURL = require("isurl");
@@ -139,7 +148,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(lightningCSS);
 
   eleventyConfig.addTemplateFormats("js");
-  const { minify } = require("terser");
   eleventyConfig.addExtension("js", {
     outputFileExtension: "js",
     compile: async (inputContent) => {
@@ -161,4 +169,4 @@ module.exports = function (eleventyConfig) {
 
   //   return content;
   // });
-};
+}

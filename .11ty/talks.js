@@ -1,17 +1,19 @@
-const dayjs = require("dayjs");
-const config = require("../data/config.json");
-const md = require("markdown").markdown;
+import dayjs from "dayjs";
+import config from "../data/config.js";
+import duration from "dayjs/plugin/duration.js";
 
-const duration = require("dayjs/plugin/duration");
 dayjs.extend(duration);
 
 const getTalks = async () => {
   try {
-    const agenda = await fetch(config.cms4partnersApi + config.edition + "/planning", {
-      headers: {
-        Accept: "application/json; version=2",
-      },
-    }).then((res) => res.json());
+    const agenda = await fetch(
+      config.cms4partnersApi + config.edition + "/planning",
+      {
+        headers: {
+          Accept: "application/json; version=2",
+        },
+      }
+    ).then((res) => res.json());
 
     const talksByDay = Object.entries(agenda).reduce((acc, [day, talks]) => {
       return {
@@ -21,7 +23,9 @@ const getTalks = async () => {
             _,
             slots.map((slot) => {
               let id = slot?.info?.id ?? slot?.talk?.speakers[0]?.id;
-              let speakers = slot?.talk?.speakers?.map((speaker) => speaker?.display_name).join(" &amp; ");
+              let speakers = slot?.talk?.speakers
+                ?.map((speaker) => speaker?.display_name)
+                .join(" &amp; ");
               if (slot.type === "event-session" && !slot.info.description) {
                 id = undefined;
               }
@@ -31,15 +35,25 @@ const getTalks = async () => {
               return {
                 talk: {
                   ...slot,
-                  abstract: md.toHTML(slot?.info?.description ?? slot?.talk?.abstract ?? "")?.replaceAll("h2", "p"),
+                  abstract: md
+                    .toHTML(
+                      slot?.info?.description ?? slot?.talk?.abstract ?? ""
+                    )
+                    ?.replaceAll("h2", "p"),
                   title: slot?.info?.title ?? slot?.talk?.title ?? "Pause",
                   duration: `${dayjs
-                    .duration(dayjs(new Date(slot.endTime)).diff(dayjs(new Date(slot.startTime))))
+                    .duration(
+                      dayjs(new Date(slot.endTime)).diff(
+                        dayjs(new Date(slot.startTime))
+                      )
+                    )
                     .asMinutes()} mn`,
                 },
                 id,
                 speakers,
-                speakersIds: slot?.info?.id ? [slot?.info?.id] : slot?.talk?.speakers?.map((speaker) => speaker?.id),
+                speakersIds: slot?.info?.id
+                  ? [slot?.info?.id]
+                  : slot?.talk?.speakers?.map((speaker) => speaker?.id),
               };
             }),
           ];
@@ -53,12 +67,12 @@ const getTalks = async () => {
   }
 };
 
-exports.createTalksCollections = async () => {
+export const createTalksCollections = async () => {
   const talks = await getTalks();
   return talks;
 };
 
-exports.createFlatTalksCollections = async () => {
+export const createFlatTalksCollections = async () => {
   const talks = await getTalks();
   const flat = Object.values(talks)
     .flat()
@@ -70,7 +84,7 @@ exports.createFlatTalksCollections = async () => {
   return flat;
 };
 
-exports.createTalksCollectionsBydate = async () => {
+export const createTalksCollectionsBydate = async () => {
   const talks = await getTalks();
   return Object.entries(talks).map(([key, t]) => [
     new Intl.DateTimeFormat("fr", { dateStyle: "long" }).format(new Date(key)),

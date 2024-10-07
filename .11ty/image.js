@@ -1,8 +1,8 @@
-const fs = require("fs");
-const path = require("path");
-const { optimize } = require("svgo");
+import { resolve } from "node:path";
+import { writeFileSync } from "node:fs";
+import { optimize } from "svgo";
 
-const tempFolder = path.resolve(__dirname, "../_site/img");
+const tempFolder = resolve(import.meta.dirname, "../_site/img");
 
 function getExtension(potentialExt) {
   switch (potentialExt) {
@@ -15,7 +15,7 @@ function getExtension(potentialExt) {
   }
 }
 
-const fetchImage = ({ ext, logoName, logoUrl }) => {
+export const fetchImage = ({ ext, logoName, logoUrl }) => {
   return fetch(logoUrl)
     .then((response) => response.text())
     .then((blob) => {
@@ -24,15 +24,13 @@ const fetchImage = ({ ext, logoName, logoUrl }) => {
         data = optimize(blob)?.data;
       } catch (e) {}
 
-      fs.writeFileSync(`${tempFolder}/${logoName}.${ext}`, data, {
+      writeFileSync(`${tempFolder}/${logoName}.${ext}`, data, {
         flag: "w",
       });
     })
     .catch(console.error);
 };
 
-const getExtensionFromLogoUrl = (logoUrl) => {
+export const getExtensionFromLogoUrl = (logoUrl) => {
   return getExtension(logoUrl.split(".").pop());
 };
-
-module.exports = { getExtensionFromLogoUrl, fetchImage };

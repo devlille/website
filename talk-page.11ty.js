@@ -1,4 +1,4 @@
-class SpeakerPage {
+export default class Page {
   data() {
     return {
       layout: "layout.html",
@@ -71,7 +71,11 @@ class SpeakerPage {
         <div class="talk-links">
             <h4>Regardez ou re-regardez</h4>
             <ul>
-                ${!!talk?.talk?.link_replay ? `<li><a href="${talk?.talk?.link_replay}">La vidéo du talk</a></li>` : ""}
+                ${
+                  !!talk?.talk?.link_replay
+                    ? `<li><a href="${talk?.talk?.link_replay}">La vidéo du talk</a></li>`
+                    : ""
+                }
                 ${
                   !!talk?.talk?.link_slides
                     ? `<li><a href="${talk?.talk?.link_slides}">Les slides du talk</a></li>`
@@ -90,7 +94,9 @@ class SpeakerPage {
                 <div class="talk">
             <h3>${s.display_name}</h3>
             <p>${s.bio?.replaceAll('"', "")}</p>
-            <p><a href="/speaker-page-${s.id}">Page dédiée de ${s.display_name}</a></p>
+            <p><a href="/speaker-page-${s.id}">Page dédiée de ${
+              s.display_name
+            }</a></p>
             </div>
             `;
           }) ?? ""
@@ -103,4 +109,3 @@ class SpeakerPage {
 `;
   }
 }
-module.exports = SpeakerPage;

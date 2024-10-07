@@ -2,7 +2,9 @@ const displayDescription = (partner) => {
   if (!partner.description) {
     return "";
   }
-  return `<div class="talk"><p>${partner.description?.replaceAll('"', "")?.trim() ?? ""}</p></div>`;
+  return `<div class="talk"><p>${
+    partner.description?.replaceAll('"', "")?.trim() ?? ""
+  }</p></div>`;
 };
 const displaySocialMedias = (partner) => {
   return `
@@ -13,7 +15,9 @@ const displaySocialMedias = (partner) => {
               !!partner.twitterAccount
                 ? `<li>
                 <strong class="stressed">Sur Twitter: </strong>
-                <a target="_blank" href="${partner.twitterAccount}">${partner.twitterAccount?.replace(
+                <a target="_blank" href="${
+                  partner.twitterAccount
+                }">${partner.twitterAccount?.replace(
                     "https://twitter.com/",
                     ""
                   )}</a>
@@ -24,7 +28,9 @@ const displaySocialMedias = (partner) => {
               !!partner.linkedinAccount
                 ? `<li>
                 <strong class="stressed">Sur LinkedIn: </strong> 
-                <a target="_blank" href="${partner.linkedinAccount}">${decodeURI(partner.linkedinAccount)
+                <a target="_blank" href="${
+                  partner.linkedinAccount
+                }">${decodeURI(partner.linkedinAccount)
                     ?.replace("https://www.linkedin.com/in/", "")
                     ?.replace("https://www.linkedin.com/company/", "")
                     .replace("/", "")}</a>
@@ -63,12 +69,14 @@ const displaySocialMediasMessages = (partner) => {
 const displayWLDOffers = (partner) => {
   return partner.jobs?.length > 0
     ? `<div class="talk"><h3>Offres sur WeLoveDevs </h3><p>
-<ul>${partner.jobs.map((job) => `<li><a href="${job.url}">${job.title}</a></li>`).join("")}</ul>
+<ul>${partner.jobs
+        .map((job) => `<li><a href="${job.url}">${job.title}</a></li>`)
+        .join("")}</ul>
 
 </p></div>`
     : "";
 };
-class SpeakerPage {
+export default class SponsorPage {
   data(s) {
     return {
       layout: "layout.html",
@@ -124,7 +132,9 @@ class SpeakerPage {
 
         <div class="speaker-data-block">
         <div class="speaker-data">
-        <p class="sponsor"><a href="${partner.siteUrl}"><img loading="lazy" src="/img/${partner.logoName}.${
+        <p class="sponsor"><a href="${
+          partner.siteUrl
+        }"><img loading="lazy" src="/img/${partner.logoName}.${
       partner.ext
     }"" alt="Logo de ${partner.name}" /></a></p>
 
@@ -139,5 +149,3 @@ class SpeakerPage {
 `;
   }
 }
-
-module.exports = SpeakerPage;

@@ -1,8 +1,10 @@
-const md = require("markdown").markdown;
+import { markdown as md } from "markdown";
 
-exports.displaySpeakers = (speaker) => {
+export const displaySpeakers = (speaker) => {
   return `<p>
-  <strong class="stressed">${speaker.display_name}${speaker.pronouns ? ` (${speaker.pronouns})` : ""}</strong>
+  <strong class="stressed">${speaker.display_name}${
+    speaker.pronouns ? ` (${speaker.pronouns})` : ""
+  }</strong>
   ${speaker.company ? ", " : ""}
   ${!!speaker.company ? speaker.company : ""} 
 </p>
@@ -10,7 +12,7 @@ ${!!speaker.bio ? md.toHTML(speaker.bio.replaceAll("- ", "\r\n\r\n- ")) : ""}
 `;
 };
 
-exports.displaySpeakerSocialBlock = (speaker) => {
+export const displaySpeakerSocialBlock = (speaker) => {
   return `
 <div class="speaker-data-block">
     <div class="speaker-data">
@@ -26,7 +28,9 @@ exports.displaySpeakerSocialBlock = (speaker) => {
           !!speaker.mastodon
             ? `<li>
             <strong class="stressed">Sur Mastodon</strong> 
-            <a target="_blank" href="${speaker.mastodon}">${speaker.mastodon.substring(
+            <a target="_blank" href="${
+              speaker.mastodon
+            }">${speaker.mastodon.substring(
                 speaker.mastodon.lastIndexOf("/") + 1
               )}</a>
         </li>`
@@ -36,7 +40,9 @@ exports.displaySpeakerSocialBlock = (speaker) => {
           !!speaker.twitter
             ? `<li>
             <strong class="stressed">Sur Twitter</strong>
-            <a target="_blank" href="${speaker.twitter}">${speaker.twitter?.replace("https://twitter.com/", "")}</a>
+            <a target="_blank" href="${
+              speaker.twitter
+            }">${speaker.twitter?.replace("https://twitter.com/", "")}</a>
         </li>`
             : ""
         }
@@ -44,7 +50,9 @@ exports.displaySpeakerSocialBlock = (speaker) => {
           !!speaker.github
             ? `<li>
             <strong class="stressed">Sur Github</strong> 
-            <a target="_blank" href="${speaker.github}">${speaker.github?.replace("https://github.com/", "")}</a>
+            <a target="_blank" href="${
+              speaker.github
+            }">${speaker.github?.replace("https://github.com/", "")}</a>
         </li>`
             : ""
         }
@@ -52,7 +60,9 @@ exports.displaySpeakerSocialBlock = (speaker) => {
           !!speaker.linkedin
             ? `<li>
             <strong class="stressed">Sur LinkedIn</strong> 
-            <a target="_blank" href="${speaker.linkedin}">${decodeURI(speaker.linkedin)
+            <a target="_blank" href="${speaker.linkedin}">${decodeURI(
+                speaker.linkedin
+              )
                 ?.replace("https://www.linkedin.com/in/", "")
                 .replace("/", "")}</a>
         </li>`
@@ -74,4 +84,4 @@ exports.displaySpeakerSocialBlock = (speaker) => {
 `;
 };
 
-exports.displayTalk = (talk) => {};
+export const displayTalk = (talk) => {};

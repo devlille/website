@@ -21,7 +21,7 @@ export default class SpeakerPage {
           return ctx.speaker.display_name;
         },
         ogUrl: (ctx) => {
-          return "https://devfest.gdglille.org/speaker-page-" + ctx.speaker.id;
+          return "https://devlille.fr/speaker-page-" + ctx.speaker.id;
         },
         ogTitle: (ctx) => {
           return ctx.speaker.display_name;

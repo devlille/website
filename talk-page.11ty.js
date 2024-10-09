@@ -16,7 +16,7 @@ export default class Page {
           return ctx.talk.title;
         },
         ogUrl: (ctx) => {
-          return "https://devfest.gdglille.org/talk-page-" + ctx.talk.id;
+          return "https://devlille.fr/talk-page-" + ctx.talk.id;
         },
         ogTitle: (ctx) => {
           return ctx.talk.title;

@@ -98,7 +98,7 @@ export default class SponsorPage {
           return ctx.partner.name;
         },
         ogUrl: (ctx) => {
-          return "https://devfest.gdglille.org/partner-" + ctx.partner.id;
+          return "https://devlille.fr/partner-" + ctx.partner.id;
         },
         ogTitle: (ctx) => {
           return ctx.partner.name;
@@ -107,7 +107,7 @@ export default class SponsorPage {
           return ctx.partner.description?.replaceAll('"', "")?.trim();
         },
         ogImage: (ctx) => {
-          return `https://devfest.gdglille.org/img/${ctx.partner.logoName}.${ctx.partner.ext}`;
+          return `https://devlille.fr/img/${ctx.partner.logoName}.${ctx.partner.ext}`;
         },
       },
     };

@@ -14,4 +14,9 @@ export default {
   numberOfSpeaker: 60,
   numberOfTalks: 44,
   numberOfTraks: 4,
+  enabled: {
+    welovedevs: false,
+    billetweb: false,
+    sponsoring: false,
+  },
 };

@@ -87,6 +87,7 @@
                     </time>
                     <span>Lille Grand Palais</span>
                 </p>
+                {% if collections.config.enabled.billetweb  %}
                 <p class="register">
                     <a 
                     rel="noreferrer noopener" 
@@ -94,6 +95,7 @@
                     href="{{ collections.config.billetwebUrl }}{{collections.config.edition}}">
                     Prenez votre place!</a>
                 </p>
+                {%- endif -%}
             </div>
         </header>
 
@@ -125,9 +127,12 @@
                         </svg>
                         FAQ</a>
                 </li>
-                <!-- <li>
+                {% if collections.config.enabled.welovedevs  %}
+                <li>
                     <a href="/wld" {% if currSection == "wld" %} aria-current="page" {% endif %}>Offres d'emploi</a>
-                </li> -->
+                </li>
+                {%- endif -%}
+      
             </ul>
         </nav>
 
@@ -137,6 +142,7 @@
             </main>
 
             {% if currSection == "index" %}
+            {% if collections.config.enabled.sponsoring  %}
             <aside>
                 <div class="be-partner">
                     <h2>Devenez partenaire</h2>
@@ -241,6 +247,7 @@
                 {% endif %}
             </aside>
             {% endif %}
+            {% endif %}
         </div>
 
         <hr />
@@ -341,7 +348,9 @@
                             Devenez partenaire</a></li>
                         <li><a href="/code-conduite">Code de conduite</a></li>
                         <li><a href="/promo">Ressources graphiques</a></li>
-                        <!--li><a href="/wld">Offres d'emploi</a></li-->
+                        {% if collections.config.enabled.welovedevs  %}
+                        <li><a href="/wld">Offres d'emploi</a></li>
+                        {%- endif -%}
                     </ul>
                     <ul class="links-list editions">
                         <li><a href="https://devfest-lille-2023.web.app/">2023</a></li>

@@ -18,7 +18,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addCollection("faqs", async () => {
     try {
-      const data = await fetch(config.cms4partnersApi + 2025 + "").then((res) =>
+      const data = await fetch(config.cms4partnersApi + config.edition + "").then((res) =>
         res.json()
       );
       const qanda = data.qanda

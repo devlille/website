@@ -7,8 +7,8 @@ export default {
   cfpUrl: "https://conference-hall.io/devlille-2025",
   cmsUrl: "https://partenaire.devlille.fr/#",
   cms4partnersApi: "https://api.devlille.fr/events/devlille-",
-  cfpStartedDate: "6 janvier 2025",
-  cfpEndedDate: "31 mars 2025",
+  cfpStartedDate: "6 Janvier",
+  cfpEndedDate: "31 Mars",
   partershipUrl:
     "https://docs.google.com/presentation/u/1/d/e/2PACX-1vRf18ULorPCSXjc4FDy7hHUp2rYIDZNefrsE7OkiXUJaTY1bzTYcDJBnfVDuWHvggglIipco8GCND-2/pub?start=false&loop=false&slide=id.g117aa382f2b_0_85",
   numberOfPeople: 1500,

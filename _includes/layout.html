@@ -27,39 +27,61 @@
         {
             "@context": "https://schema.org",
             "@type": "Event",
-            "name": "DevLille {{  collections.config.edition }}",
-            "startDate": "{{  collections.config.formatted-date }}T08:00+02:00",
-            "endDate": "{{  collections.config.formatted-date }}T18:30+02:00",
+            "name": "DevLille {{ collections.config.edition }}",
+            "startDate": "{{ collections.config.formattedStartDate }}T08:00+02:00",
+            "endDate": "{{ collections.config.formattedEndDate }}T19:00+02:00",
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "eventStatus": "https://schema.org/EventScheduled",
             "location": {
                 "@type": "Place",
-                "name": "Kinepolis Lomme",
+                "name": "Grand Palais",
                 "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "1 Rue du Château d'Isenghien",
+                    "streetAddress": "1 Bd des Cités Unies",
                     "addressLocality": "Lille",
-                    "postalCode": "59160",
+                    "postalCode": "59777",
                     "addressCountry": "FR"
                 }
             },
-            "description": "2 jours de conférences et d"échanges accessibles à tous et toutes au coeur de Lille.",
-            "offers": {
+            "description": "2 jours de conférences et d'échanges accessibles à tous et toutes au coeur de Lille.",
+            "offers": [{
                 "@type": "Offer",
-                "url": "https://www.billetweb.fr/devfest-lille-{{  collections.config.edition }}",
+                "name": "Billet 2 jours / Jeudi et Vendredi",
+                "url": "https://www.billetweb.fr/devlille-{{ collections.config.edition }}",
+                "price": "80",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/Reserved",
+                "availabilityStarts": "{{ collections.config.edition }}-01-15T08:00+2:00",
+                "availabilityEnds":	"{{ collections.config.formattedEndDate }}T08:00+2:00",
+                "validFrom": "{{ collections.config.formattedStartDate }}T08:00+2:00",
+                "validThrough": "{{ collections.config.formattedEndDate }}T19:00+2:00"
+            },{
+                "@type": "Offer",
+                "name": "Billet 1 jour / Jeudi",
+                "url": "https://www.billetweb.fr/devlille-{{ collections.config.edition }}",
                 "price": "40",
                 "priceCurrency": "EUR",
-                "availability": "https://schema.org/SoldOut",
-                "validFrom": "{{  collections.config.edition }}-01-01T08:00"
-            },
-            "performer": {
-                "@type": "PerformingGroup",
-                "name": "GDG Lille"
-            },
+                "availability": "https://schema.org/Reserved",
+                "availabilityStarts": "{{ collections.config.edition }}-01-15T08:00+2:00",
+                "availabilityEnds":	"{{ collections.config.formattedStartDate }}T08:00+2:00",
+                "validFrom": "{{ collections.config.formattedStartDate }}T08:00+2:00",
+                "validThrough": "{{ collections.config.formattedStartDate }}T19:00+2:00"
+            },{
+                "@type": "Offer",
+                "name": "Billet 1 jour / Vendredi",
+                "url": "https://www.billetweb.fr/devlille-{{ collections.config.edition }}",
+                "price": "40",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/Reserved",
+                "availabilityStarts": "{{ collections.config.edition }}-01-15T08:00+2:00",
+                "availabilityEnds":	"{{ collections.config.formattedEndDate }}T08:00+2:00",
+                "validFrom": "{{ collections.config.formattedEndDate }}T08:00+2:00",
+                "validThrough": "{{ collections.config.formattedEndDate }}T19:00+2:00"
+            }],
             "organizer": {
                 "@type": "Organization",
-                "name": "GDG Lille",
-                "url": "https://www.meetup.com/fr-FR/GDG-Lille/"
+                "name": "DevLille",
+                "url": "https://devlille.fr/"
             }
         }
     </script>
@@ -81,7 +103,7 @@
             </h1>
             <div>
                 <p>
-                    <time datetime="{{ collections.config.formatted-date }}">
+                    <time datetime="{{ collections.config.formattedStartDate }}">
                         {{  collections.config.date }}
                         <!--{{  collections.config.edition }}-->
                     </time>

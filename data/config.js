@@ -5,7 +5,7 @@ export default {
   formattedStartDate: "2024-06-12",
   formattedEndDate: "2024-06-13",
   billetwebUrl: "https://www.billetweb.fr/devlille-",
-  cfpUrl: "https://conference-hall.io/devlille-",
+  cfpUrl: "https://conference-hall.io/devlille-2025",
   cmsUrl: "https://partenaire.devlille.fr/#",
   cms4partnersApi: "https://api.devlille.fr/events/devlille-",
   cfpStartedDate: "6 janvier 2025",

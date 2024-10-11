@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "eleventy --serve",
+    "start": "./node_modules/.bin/eleventy --serve",
     "build": "eleventy"
   },
   "keywords": [],

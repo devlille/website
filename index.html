@@ -1,4 +1,4 @@
-﻿---
+---
 layout: layout.html
 currSection: index
 ogUrl: https://devlille.fr/
@@ -20,18 +20,20 @@ ogImage: https://devlille.fr/img/logo-full.svg
     <p>Notre ambition reste intacte : vous proposer deux journées de conférences tech enrichies d'une dimension
       <strong class="stressed">humaine</strong> et <strong class="stressed">environnementale</strong>, en harmonie avec les enjeux du monde actuel.
     </p>
+    {% if collections.config.enabled.billetweb %}
     <p class="register">
-      <a 
-        rel="noreferrer noopener" 
-        target="_blank" 
+      <a rel="noreferrer noopener" target="_blank"
         href="{{ collections.config.billetwebUrl }}{{collections.config.edition}}">
         Prenez votre place!</a>
     </p>
+    {%- endif -%}
   </div>
 
   <div class="cfp">
     <p>
-      <a href="{{collections.config.cfpUrl}}" lang="en">Call for Paper</a> ouvert du 6 Janvier jusqu'au 10 Mars 2025!
+      <a href="{{collections.config.cfpUrl}}{{collections.config.edition}}" lang="en">Call for Paper</a> ouvert du
+      {{ collections.config.cfpStartedDate }} jusqu'au {{ collections.config.cfpEndedDate }}
+      {{ collections.config.edition }}!
     </p>
   </div>
 
@@ -73,8 +75,8 @@ ogImage: https://devlille.fr/img/logo-full.svg
         </p>
         <div>
           <p>
-            Lille Grand Palais est un lieu incontournable avec un espace de plus de 1900m2 et nous permettant d'accueillir
-            plus de 1200 personnes.
+            Lille Grand Palais est un lieu incontournable avec un espace de plus de 1900m2 et nous permettant
+            d'accueillir plus de {{ collections.config.numberOfPeople }} personnes.
           </p>
           <p class="read-more">
             <a rel="noreferrer noopener" target="_blank" href="https://goo.gl/maps/cBSP9yZSHtMZuW9BA">
@@ -95,7 +97,7 @@ ogImage: https://devlille.fr/img/logo-full.svg
             <img
               loading="lazy"
               src="/img/accessibilite.jpg"
-              alt="Salle du Kinepolis avec une retranscription en live de la conférence"
+              alt="Salle du Grand Palais avec une retranscription en live de la conférence"
             />
           </picture>
         </p>

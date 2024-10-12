@@ -10,7 +10,10 @@ export default function (eleventyConfig) {
   // eleventyConfig.addCollection("flatTalks", createFlatTalksCollections);
   // eleventyConfig.addCollection("talksByDate", createTalksCollectionsBydate);
   eleventyConfig.addCollection("press", async () => {
-    return Object.values(press).flat();
+    return Object.entries(press)
+      .sort(([year], [year2]) => year2 - year)
+      .map(([year, articles]) => articles)
+      .flat();
   });
   eleventyConfig.addCollection("faqs", async () => {
     try {

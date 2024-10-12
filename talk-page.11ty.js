@@ -1,3 +1,40 @@
+const displayOpenFeedBackBlock = (talk) => {
+  if (!talk?.open_feedback) {
+    return "";
+  }
+  return `
+  <p>
+      Suite à la conférence, vous pouvez faire un retour aux conférenciers et 
+      conférencières sur 
+      <a href="${talk?.open_feedback}" target="_blank">OpenFeedback</a>
+  </p>
+  `;
+};
+
+export const displayReplayBlock = (talk) => {
+  if (!talk?.link_slides && !talk.link_replay) {
+    return "";
+  }
+
+  return `
+  <div class="talk-links">
+      <h4>Regardez ou re-regardez</h4>
+      <ul>
+          ${
+            !!talk?.link_replay
+              ? `<li><a href="${talk?.link_replay}">La vidéo du talk</a></li>`
+              : ""
+          }
+          ${
+            !!talk?.link_slides
+              ? `<li><a href="${talk?.link_slides}">Les slides du talk</a></li>`
+              : ""
+          }
+      </ul>
+  </div>
+  `;
+};
+
 export default class Page {
   data() {
     return {
@@ -51,41 +88,8 @@ export default class Page {
         <div class="talk">
         
         
-        ${
-          !!talk?.talk?.open_feedback
-            ? `
-        <p>
-            Suite à la conférence, vous pouvez faire un retour aux conférenciers et 
-            conférencières sur 
-            <a href="${talk?.talk?.open_feedback}" target="_blank">OpenFeedback</a>
-        </p>
-        `
-            : ""
-        }
-
-        
-
-        ${
-          !!talk?.talk?.link_slides || !!talk?.talk?.link_replay
-            ? `
-        <div class="talk-links">
-            <h4>Regardez ou re-regardez</h4>
-            <ul>
-                ${
-                  !!talk?.talk?.link_replay
-                    ? `<li><a href="${talk?.talk?.link_replay}">La vidéo du talk</a></li>`
-                    : ""
-                }
-                ${
-                  !!talk?.talk?.link_slides
-                    ? `<li><a href="${talk?.talk?.link_slides}">Les slides du talk</a></li>`
-                    : ""
-                }
-            </ul>
-        </div>
-        `
-            : ""
-        }
+        ${displayOpenFeedBackBlock(talk?.talk)}
+        ${displayReplayBlock(talk?.talk)}
         
     </div>
         ${

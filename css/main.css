@@ -673,7 +673,7 @@ p.read-more {margin-top: 1rem;}
 
 .page-body {
   background-color: rgba(0,0,0,0.23);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(15px);
   padding: calc(1rem + 1vw) calc(1.5rem + 1vw);
   margin: 2rem 0;
   transition: all 0.3s;

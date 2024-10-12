@@ -1,26 +1,22 @@
-import htmlmin from "html-minifier";
-import fetch from "node-fetch";
-import config from "./data/config.js";
 import lightningCSS from "@11tyrocks/eleventy-plugin-lightningcss";
 import { markdown as md } from "markdown";
-import { getExtensionFromLogoUrl, fetchImage } from "./.11ty/image.js";
-import {
-  createTalksCollections,
-  createTalksCollectionsBydate,
-  createFlatTalksCollections,
-} from "./.11ty/talks.js";
+import fetch from "node-fetch";
 import { minify } from "terser";
+import config from "./data/config.js";
+import press from "./data/press.js";
 
 export default function (eleventyConfig) {
   // eleventyConfig.addCollection("talks", createTalksCollections);
   // eleventyConfig.addCollection("flatTalks", createFlatTalksCollections);
   // eleventyConfig.addCollection("talksByDate", createTalksCollectionsBydate);
-
+  eleventyConfig.addCollection("press", async () => {
+    return Object.values(press).flat();
+  });
   eleventyConfig.addCollection("faqs", async () => {
     try {
-      const data = await fetch(config.cms4partnersApi + config.edition + "").then((res) =>
-        res.json()
-      );
+      const data = await fetch(
+        config.cms4partnersApi + config.edition + ""
+      ).then((res) => res.json());
       const qanda = data.qanda
         .sort((f1, f2) => f1.order - f2.order)
         .map((q) => {

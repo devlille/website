@@ -1238,8 +1238,29 @@ div.cfp a {
   text-decoration: underline;
 }
 
+/* ----------------------------------------------------------------- */
+/* -------------------------- PRESS ---------------------------- */
 
-/* MAILCHIMP */
+dl.press div {
+  background-image: url(../img/ic-press.svg);
+  background-size: 55px;
+  background-repeat: no-repeat;
+  padding-left: 75px;
+}
+
+dl.press div + div {
+  margin-top: calc(1rem + 1vw);
+}
+
+dl.press dd {
+  font-size: calc(0.85em + .25vw);
+  font-variation-settings: "wght" 200;
+  margin-top: 0.8em;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* -------------------------- NEWSLETTER FORM ---------------------- */
 
 #newsletter p {font-size: 1.2em;}
 
@@ -1250,7 +1271,7 @@ p.email {
   flex-wrap: wrap;
 }
 
-#mc_embed_signup form {
+#mc-embedded-subscribe-form {
   padding-bottom: 1rem;
   margin: 1.5rem 0 0 !important;
   border-top: 1px solid var(--footer-border);
@@ -1259,6 +1280,8 @@ p.email {
 #mc_embed_signup .foot {
   display: block !important;
 }
+
+#mc_embed_signup_scroll {position: relative;}
 
 #mc_embed_signup input:not([type=submit]) {
   width: 85%;

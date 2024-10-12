@@ -16,6 +16,10 @@
     "isurl": "^4.0.2",
     "lightningcss": "1.27.0"
   },
+  "exports": {
+    "import": "./Eleventy.js",
+		"require": "./EleventyCommonJs.cjs"
+  },
   "dependencies": {
     "@11tyrocks/eleventy-plugin-lightningcss": "1.4.0",
     "dayjs": "^1.11.13",

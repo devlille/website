@@ -82,6 +82,10 @@
   }
 
   div.cfp a {display: inline;}
+  
+  #mc_embed_signup_scroll h2 {
+    margin-bottom: 0 !important;
+  }
 }
 
 
@@ -165,6 +169,12 @@
     grid-row-end: -1;
   }
   div.talk {order: 3;}
+  
+  div.optionalParent {
+    position: absolute;
+    right: 0;
+    bottom: 1rem;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -236,7 +246,7 @@
   }
 
   footer {
-    padding: 2rem 30% 0rem 5%;
+    padding: 2rem 10% 0 5%;
     margin-right: 211px;
   }
   footer div.content {margin-left: 2.5rem;}

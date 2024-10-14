@@ -7,16 +7,19 @@ currSection: press
 <article class="page-body">
   <h2>On parle de nous</h2>
 
-  <h3>2024</h3>
+  {%- for press in collections.press -%}
+  <h3>{{ press.year }}</h3>
 
   <dl class="press">
-    {%- for p in collections.press -%}
+    {%- for article in press.articles -%}
     <div>
       <dt>
-        <a href="{{p.url}}">{{p.title }}</a>
+        <a href="{{p.url}}">{{ article.title }}</a>
       </dt>
-      <dd>Publié sur {{p.publishedBy}} le {{p.publishedAt}}</dd>
+      <dd>Publié sur {{article.publishedBy}} le {{article.publishedAt}}</dd>
     </div>
     {%- endfor -%}
   </dl>
+
+  {%- endfor -%}
 </article>

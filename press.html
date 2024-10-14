@@ -7,11 +7,13 @@ currSection: press
 <article class="page-body">
   <h2>On parle de nous</h2>
 
+  <h3>2024</h3>
+
   <dl class="press">
     {%- for p in collections.press -%}
     <div>
       <dt>
-        <a href="{{p.url}}"> {{p.title }}</a>
+        <a href="{{p.url}}">{{p.title }}</a>
       </dt>
       <dd>Publié sur {{p.publishedBy}} le {{p.publishedAt}}</dd>
     </div>

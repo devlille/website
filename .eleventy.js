@@ -12,8 +12,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("press", async () => {
     return Object.entries(press)
       .sort(([year], [year2]) => year2 - year)
-      .map(([year, articles]) => articles)
-      .flat();
+      .map(([year, articles]) => {
+        return {
+          year: year,
+          articles: articles
+        }
+      });
   });
   eleventyConfig.addCollection("faqs", async () => {
     try {

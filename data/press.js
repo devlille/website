@@ -53,7 +53,7 @@ export default {
   2023: [
     {
       title:
-        "[YOUTUBE] Parlons Tech – L’EMPREINTE NUMÉRIQUE avec Baptiste / DevFest Lille 2023",
+        "Parlons Tech – L’EMPREINTE NUMÉRIQUE avec Baptiste / DevFest Lille 2023",
       url: "https://welovedevs.com/fr/articles/youtube-parlons-tech-empreinte-numerique-avec-baptiste-devfest-lille-2023/",
       publishedAt: "11 septembre 2023",
       publishedBy: "WeLoveDevs",
@@ -61,7 +61,7 @@ export default {
     },
     {
       title:
-        "[YOUTUBE] Parlons Tech – LE DESIGN D’ATTENTION avec Alizée / DevFest Lille 2023",
+        "Parlons Tech – LE DESIGN D’ATTENTION avec Alizée / DevFest Lille 2023",
       url: "https://welovedevs.com/fr/articles/youtube-parlons-tech-le-design-dattention-avec-alizee-devfest-lille-2023/",
       publishedAt: "22 août 2023",
       publishedBy: "WeLoveDevs",

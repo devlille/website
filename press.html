@@ -13,7 +13,7 @@ currSection: press
   <dl class="press">
     {%- for article in press.articles -%}
 
-    {%- if p.type == "video" -%}
+    {%- if article.type == "video" -%}
     <div class="video">
     {%- else -%}
     <div>

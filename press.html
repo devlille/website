@@ -12,7 +12,12 @@ currSection: press
 
   <dl class="press">
     {%- for article in press.articles -%}
+
+    {%- if p.type == "video" -%}
+    <div class="video">
+    {%- else -%}
     <div>
+    {%- endif -%}
       <dt>
         <a href="{{p.url}}">{{ article.title }}</a>
       </dt>

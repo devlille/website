@@ -80,9 +80,10 @@ h2::first-letter {
 }
 
 h3 {
-  font-size: calc(1em + 0.9vw);
+  font-size: calc(1.3em + 0.9vw);
   font-variation-settings: "wght" 800;
-  margin-bottom: 0.8em;
+  color: var(--light-hot);
+  margin-bottom: 1em;
 }
 
 p, li, dt, dd {
@@ -1246,6 +1247,15 @@ dl.press div {
   background-size: 55px;
   background-repeat: no-repeat;
   padding-left: 75px;
+}
+dl.press div.video {
+  background-image: url(../img/ic-video.svg);
+}
+
+dl.press + h3 {
+  padding-top: 1rem;
+  margin-top: calc(2rem + 0.5vw);
+  border-top: 1px solid var(--light-hot);
 }
 
 dl.press div + div {

@@ -177,7 +177,7 @@ export default {
       title: "[REX] DevFest Lille 2022 🍻",
       url: "https://maximepawlak.medium.com/rex-devfest-lille-2022-9814f45eea52",
       publishedAt: "13 juin 2022",
-      publishedBy: "DN'D",
+      publishedBy: "Maxime Pawlak",
       type: "press",
     },
   ],

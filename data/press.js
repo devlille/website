@@ -1,6 +1,13 @@
 export default {
   2024: [
     {
+      title: "L’accessibilité au DevFest Lille 2024",
+      url: "https://www.sfeir.dev/front/laccessibilite-au-devfest-lille-2024/",
+      publishedAt: "26 août 2024",
+      publishedBy: "Sfeir",
+      type: "press",
+    },
+    {
       title: "Devfest Lille 2024 : vers un numérique responsable et performant",
       url: "https://www.urbilog.com/blogposts/devfest-lille-2024-vers-un-numerique-responsable-et-performant",
       publishedAt: "20 août 2024",
@@ -18,6 +25,13 @@ export default {
       title: "Retour sur le jour 2 du Devfest Lille 2024 !",
       url: "https://www.sfeir.dev/tendances/retour-sur-le-jour-2-du-devfest-lille-2024-2/",
       publishedAt: "01 juillet 2024",
+      publishedBy: "Sfeir",
+      type: "press",
+    },
+    {
+      title: "Retour sur le DevFest 2024 : une édition inoubliable !",
+      url: "https://www.sfeir.dev/tendances/retour-sur-le-devfest-2024-une-edition-inoubliable/",
+      publishedAt: "18 juin 2024",
       publishedBy: "Sfeir",
       type: "press",
     },
@@ -75,9 +89,10 @@ export default {
       type: "press",
     },
     {
-      title: "DevFest Lille 2023 : Les retours de conf' de nos Sfeiriens",
-      url: "https://www.sfeir.dev/tendances/devfest-lille-2023-les-retours-de-conf-de-nos-sfeiriens/",
-      publishedAt: "26 juin 2023",
+      title:
+        "DevFest Lille : Les retours de conf' de nos Sfeiriens - Partie 2",
+      url: "https://www.sfeir.dev/tendances/devfest-lille-les-retours-de-conf-de-nos-sfeiriens-partie-2/",
+      publishedAt: "08 juin 2023",
       publishedBy: "Sfeir",
       type: "press",
     },
@@ -87,6 +102,21 @@ export default {
       url: "https://digital4better.com/actualites/le-devfest-de-lille-2023-s%E2%80%99ouvre-avec-une-sensibilisation-au-design-d%E2%80%99attention/",
       publishedAt: "06 juin 2023",
       publishedBy: "Alizée Colin",
+      type: "press",
+    },
+    {
+      title:
+        "L'accessibilité et l'inclusivité au travail : des piliers fondamentaux au cœur du DevFest Lille",
+      url: "https://www.sfeir.dev/tendances/laccessibilite-et-linclusivite-au-travail-des-piliers-fondamentaux-au-coeur-du-devfest-lille/",
+      publishedAt: "06 juin 2023",
+      publishedBy: "Sfeir",
+      type: "press",
+    },
+    {
+      title: "DevFest Lille 2023 : Les retours de conf' de nos Sfeiriens",
+      url: "https://www.sfeir.dev/tendances/devfest-lille-2023-les-retours-de-conf-de-nos-sfeiriens/",
+      publishedAt: "1 juin 2023",
+      publishedBy: "Sfeir",
       type: "press",
     },
     {
@@ -132,7 +162,7 @@ export default {
       title: "Retour sur DevFest Lille 2022",
       url: "https://www.dnd.fr/retour-sur-devfest-lille-2022/",
       publishedAt: "05 juillet 2022",
-      publishedBy: "Sfeir",
+      publishedBy: "Dn'D",
       type: "press",
     },
 
@@ -147,7 +177,7 @@ export default {
       title: "[REX] DevFest Lille 2022 🍻",
       url: "https://maximepawlak.medium.com/rex-devfest-lille-2022-9814f45eea52",
       publishedAt: "13 juin 2022",
-      publishedBy: "DN'D",
+      publishedBy: "Maxime Pawlak",
       type: "press",
     },
   ],

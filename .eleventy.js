@@ -4,6 +4,7 @@ import fetch from "node-fetch";
 import { minify } from "terser";
 import config from "./data/config.js";
 import press from "./data/press.js";
+import editions from "./data/edition.js";
 
 export default function (eleventyConfig) {
   // eleventyConfig.addCollection("talks", createTalksCollections);
@@ -19,6 +20,11 @@ export default function (eleventyConfig) {
         }
       });
   });
+
+  eleventyConfig.addCollection("editions", async () => {
+    return editions;
+  });
+
   eleventyConfig.addCollection("faqs", async () => {
     try {
       const data = await fetch(
@@ -80,7 +86,7 @@ export default function (eleventyConfig) {
 
   //   try {
   //     const sponsors = await fetch(
-  //       "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors"
+  //       "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors?edition=" + config.edition
   //     ).then((res) => res.json());
   //     const sponsorsByPacks = sponsors.reduce((acc, sponsor) => {
   //       if (sponsor.twitterAccount) {

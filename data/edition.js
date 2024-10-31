@@ -9,7 +9,7 @@ export default [
     },
     {
         year: 2022,
-        url: 'https://devfest-2022-5849e.web.app/'
+        url: 'https://2022.devlille.fr/'
     },
     {
         year: 2021,

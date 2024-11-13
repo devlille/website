@@ -7,7 +7,7 @@ export default {
   billetwebUrl: "https://www.billetweb.fr/devlille-",
   cfpUrl: "https://conference-hall.io/devlille-",
   cmsUrl: "https://partenaire.devlille.fr/#",
-  cms4partnersApi: "https://api.devlille.fr/events/devlille-",
+  cms4partnersApi: "https://confily-486924521070.europe-west1.run.app/events/devlille-",
   cfpStartedDate: "6 Janvier",
   cfpEndedDate: "31 Mars",
   partershipUrl:

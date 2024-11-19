@@ -42,7 +42,7 @@ export default class SpeakerPage {
 
     let talks = Object.values(data.collections.talks)
       .flat()
-      .map(([_, talks]) => talks ?? [])
+      .map(([, talks]) => talks ?? [])
       .reduce((acc, talks) => [...acc, ...talks], []);
 
     const selectedTalks = talks.filter(
@@ -73,7 +73,7 @@ export default class SpeakerPage {
             <p>${selectedTalk.talk?.abstract}</p>
 
             ${
-              !!selectedTalk.talk?.talk?.open_feedback
+              selectedTalk.talk?.talk?.open_feedback
                 ? `
             <p class="openfeedback">
                 Suite à la conférence, vous pouvez faire un retour aux conférenciers et 
@@ -94,12 +94,12 @@ export default class SpeakerPage {
                 <h4>Regardez ou re-regardez</h4>
                 <ul>
                     ${
-                      !!selectedTalk.talk?.talk?.link_replay
+                      selectedTalk.talk?.talk?.link_replay
                         ? `<li><a href="${selectedTalk.talk?.talk?.link_replay}">La vidéo du talk</a></li>`
                         : ""
                     }
                     ${
-                      !!selectedTalk.talk?.talk?.link_slides
+                      selectedTalk.talk?.talk?.link_slides
                         ? `<li><a href="${selectedTalk.talk?.talk?.link_slides}">Les slides du talk</a></li>`
                         : ""
                     }

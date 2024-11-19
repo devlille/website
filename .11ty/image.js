@@ -22,7 +22,9 @@ export const fetchImage = ({ ext, logoName, logoUrl }) => {
       let data = blob;
       try {
         data = optimize(blob)?.data;
-      } catch (e) {}
+      } catch (e) {
+        console.error(e);
+      }
 
       writeFileSync(`${tempFolder}/${logoName}.${ext}`, data, {
         flag: "w",

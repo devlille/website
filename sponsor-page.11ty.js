@@ -12,7 +12,7 @@ const displaySocialMedias = (partner) => {
         <h3>Sur Internet</h3>
         <ul>
             ${
-              !!partner.twitterAccount
+              partner.twitterAccount
                 ? `<li>
                 <strong class="stressed">Sur Twitter: </strong>
                 <a target="_blank" href="${
@@ -25,7 +25,7 @@ const displaySocialMedias = (partner) => {
                 : ""
             }
             ${
-              !!partner.linkedinAccount
+              partner.linkedinAccount
                 ? `<li>
                 <strong class="stressed">Sur LinkedIn: </strong> 
                 <a target="_blank" href="${
@@ -38,7 +38,7 @@ const displaySocialMedias = (partner) => {
                 : ""
             }
             ${
-              !!partner.siteUrl
+              partner.siteUrl
                 ? `<li>
                 <strong class="stressed">Site Web: </strong> 
                 <a target="_blank" href="${partner.siteUrl}">${partner.siteUrl}</a>
@@ -47,22 +47,6 @@ const displaySocialMedias = (partner) => {
             }
         </ul>
         </div>
-    `;
-};
-
-const displaySocialMediasMessages = (partner) => {
-  return `
-    ${
-      partner.twitter_message
-        ? `<div class="talk"><h3>Message sur Twitter </h3><p>${partner.twitter_message}</p></div>`
-        : ""
-    }
-
-      ${
-        partner.linkedin_message
-          ? `<div class="talk"><h3>Message sur LinkedIn </h3><p>${partner.linkedin_message}</p></div>`
-          : ""
-      }
     `;
 };
 
@@ -77,7 +61,7 @@ const displayWLDOffers = (partner) => {
     : "";
 };
 export default class SponsorPage {
-  data(s) {
+  data() {
     return {
       layout: "layout.html",
       currSection: "partners",

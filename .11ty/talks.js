@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import config from "../data/config.js";
 import duration from "dayjs/plugin/duration.js";
+import { markdown as md } from "markdown";
 
 dayjs.extend(duration);
 
@@ -76,7 +77,7 @@ export const createFlatTalksCollections = async () => {
   const talks = await getTalks();
   const flat = Object.values(talks)
     .flat()
-    .map(([hour, talksArray]) => {
+    .map(([, talksArray]) => {
       return talksArray.map((t) => t.talk);
     })
     .flat();

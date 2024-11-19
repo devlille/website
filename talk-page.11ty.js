@@ -21,12 +21,12 @@ export const displayReplayBlock = (talk) => {
       <h4>Regardez ou re-regardez</h4>
       <ul>
           ${
-            !!talk?.link_replay
+            talk?.link_replay
               ? `<li><a href="${talk?.link_replay}">La vidéo du talk</a></li>`
               : ""
           }
           ${
-            !!talk?.link_slides
+            talk?.link_slides
               ? `<li><a href="${talk?.link_slides}">Les slides du talk</a></li>`
               : ""
           }
@@ -70,7 +70,6 @@ export default class Page {
     }
     talk.talk = talk.talk ?? talk.info;
     const speakers = talk.talk.speakers;
-    const selectedTalks = [];
     return `
 <div class="page-body list">
     <h2>${talk.title}</h2>

@@ -1,6 +1,13 @@
 export default {
   2024: [
     {
+      title: "Schema.org : définition",
+      url: "https://www.sfeir.dev/schema-org-definition/",
+      publishedAt: "21 novembre 2024",
+      publishedBy: "Sfeir",
+      type: "press",
+    }
+    {
       title: "L’accessibilité au DevFest Lille 2024",
       url: "https://www.sfeir.dev/front/laccessibilite-au-devfest-lille-2024/",
       publishedAt: "26 août 2024",

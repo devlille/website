@@ -96,8 +96,7 @@ export default {
       type: "press",
     },
     {
-      title:
-        "DevFest Lille : Les retours de conf' de nos Sfeiriens - Partie 2",
+      title: "DevFest Lille : Les retours de conf' de nos Sfeiriens - Partie 2",
       url: "https://www.sfeir.dev/tendances/devfest-lille-les-retours-de-conf-de-nos-sfeiriens-partie-2/",
       publishedAt: "08 juin 2023",
       publishedBy: "Sfeir",

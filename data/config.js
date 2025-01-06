@@ -5,9 +5,12 @@ export default {
   formattedStartDate: "2024-06-12",
   formattedEndDate: "2024-06-13",
   billetwebUrl: "https://www.billetweb.fr/devlille-",
+  earlyBirds:
+    "https://docs.google.com/forms/d/e/1FAIpQLSc-PIBQSB_G1WBTxeQIK2LUNm-GvaQYq08U9g4iGZCBQ-N-qw/viewform",
   cfpUrl: "https://conference-hall.io/devlille-",
   cmsUrl: "https://partenaire.devlille.fr/#",
-  cms4partnersApi: "https://confily-486924521070.europe-west1.run.app/events/devlille-",
+  cms4partnersApi:
+    "https://confily-486924521070.europe-west1.run.app/events/devlille-",
   cfpStartedDate: "6 Janvier",
   cfpEndedDate: "31 Mars",
   partershipUrl:
@@ -20,5 +23,6 @@ export default {
     welovedevs: false,
     billetweb: false,
     sponsoring: true,
+    earlyBirds: true,
   },
 };

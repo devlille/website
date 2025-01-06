@@ -27,13 +27,19 @@ ogImage: https://devlille.fr/img/logo-full.svg
         Prenez votre place!</a>
     </p>
     {%- endif -%}
+    {% if collections.config.enabled.earlyBirds %}
+    <p class="register">
+      <a rel="noreferrer noopener" target="_blank"
+        href="{{ collections.config.enabled.earlyBirds }}">
+        Prenez votre place Early Bird!</a>
+    </p>
+    {%- endif -%}
   </div>
 
   <div class="cfp">
     <p>
-      <!-- <a href="{{collections.config.cfpUrl}}{{collections.config.edition}}" lang="en">
-        Call for Paper</a>  -->
-        <strong>Call for Paper </strong>
+      <a href="{{collections.config.cfpUrl}}{{collections.config.edition}}" lang="en">
+        Call for Paper</a>
         ouvert du
       {{ collections.config.cfpStartedDate }} jusqu'au {{ collections.config.cfpEndedDate }}
       {{ collections.config.edition }}!

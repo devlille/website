@@ -118,6 +118,13 @@
                     Prenez votre place!</a>
                 </p>
                 {%- endif -%}
+                {% if collections.config.enabled.earlyBirds %}
+                <p class="register">
+                  <a rel="noreferrer noopener" target="_blank"
+                    href="{{ collections.config.earlyBirds }}">
+                    Prenez votre place Early Bird!</a>
+                </p>
+                {%- endif -%}
             </div>
         </header>
 

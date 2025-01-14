@@ -21,8 +21,8 @@ export default {
   numberOfTraks: 4,
   enabled: {
     welovedevs: false,
-    billetweb: false,
+    billetweb: true,
     sponsoring: true,
-    earlyBirds: true,
+    earlyBirds: false,
   },
 };

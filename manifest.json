@@ -1,10 +1,10 @@
 {
   "manifest_version": "3",
-  "name": "DevLille 2023",
+  "name": "DevLille 2025",
   "short_name": "devlille",
   "version": "3",
   "default_locale": "fr",
-  "description": "La conférence GDG Lille",
+  "description": "Deux journées de conférences tech enrichies d'une dimension humaine et environnementale",
   "icons": [{
         "src": "/img/icon48.png",
         "sizes": "48x48",
@@ -22,9 +22,23 @@
         "sizes": "512x512",
         "type": "image/png"
       }],
+  "screenshots": [
+    {
+      "src": "/img/screenshot1.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/img/screenshot2.jpg",
+      "type": "image/jpg",
+      "sizes": "898x540",
+      "form_factor": "wide"
+    }
+  ],
   "author": "Angela P. Ricci",
   "display": "minimal-ui",
   "start_url": "/index.html",
   "background_color": "#191919",
-  "theme_color": "#E6147C"
+  "theme_color": "#00A6E8"
   }

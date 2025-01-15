@@ -5,6 +5,8 @@ import { minify } from "terser";
 import config from "./data/config.js";
 import press from "./data/press.js";
 import editions from "./data/edition.js";
+import { fetchImage, getExtensionFromLogoUrl } from "./.11ty/image.js";
+import isURL from "isurl";
 
 export default function (eleventyConfig) {
   // eleventyConfig.addCollection("talks", createTalksCollections);
@@ -16,8 +18,8 @@ export default function (eleventyConfig) {
       .map(([year, articles]) => {
         return {
           year: year,
-          articles: articles
-        }
+          articles: articles,
+        };
       });
   });
 
@@ -79,56 +81,55 @@ export default function (eleventyConfig) {
   // });
 
   eleventyConfig.addCollection("partners", async () => {
-    return {};
+    try {
+      const sponsors = await fetch(
+        "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors?edition=" +
+          config.edition
+      ).then((res) => res.json());
+      const sponsorsByPacks = sponsors.reduce((acc, sponsor) => {
+        if (sponsor.twitterAccount) {
+          let twitterAccount = sponsor.twitterAccount;
+          twitterAccount = twitterAccount.startsWith("https://twitter.com/")
+            ? twitterAccount
+            : `https://twitter.com/${twitterAccount}`;
+          sponsor.twitterAccount = twitterAccount;
+        }
+        if (sponsor.linkedinAccount) {
+          let linkedinAccount = sponsor.linkedinAccount;
+          linkedinAccount = linkedinAccount.includes("linkedin.com/company/")
+            ? linkedinAccount
+            : `https://linkedin.com/company/${linkedinAccount}`;
+          sponsor.linkedinAccount = linkedinAccount;
+        }
+        return {
+          ...acc,
+          [sponsor.sponsoring.toLowerCase()]: [
+            ...(acc[sponsor.sponsoring.toLowerCase()] ?? []),
+            sponsor,
+          ],
+        };
+      }, {});
 
-    /*
-    const isURL = require("isurl");
+      Object.entries(sponsorsByPacks).forEach(([pack, partners]) => {
+        sponsors[pack] = partners.sort((p1, p2) => {
+          return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
+        });
+      });
 
-  //   try {
-  //     const sponsors = await fetch(
-  //       "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors?edition=" + config.edition
-  //     ).then((res) => res.json());
-  //     const sponsorsByPacks = sponsors.reduce((acc, sponsor) => {
-  //       if (sponsor.twitterAccount) {
-  //         let twitterAccount = sponsor.twitterAccount;
-  //         twitterAccount = twitterAccount.startsWith("https://twitter.com/")
-  //           ? twitterAccount
-  //           : `https://twitter.com/${twitterAccount}`;
-  //         sponsor.twitterAccount = twitterAccount;
-  //       }
-  //       if (sponsor.linkedinAccount) {
-  //         let linkedinAccount = sponsor.linkedinAccount;
-  //         linkedinAccount = linkedinAccount.includes("linkedin.com/company/")
-  //           ? linkedinAccount
-  //           : `https://linkedin.com/company/${linkedinAccount}`;
-  //         sponsor.linkedinAccount = linkedinAccount;
-  //       }
-  //       return {
-  //         ...acc,
-  //         [sponsor.sponsoring.toLowerCase()]: [...(acc[sponsor.sponsoring.toLowerCase()] ?? []), sponsor],
-  //       };
-  //     }, {});
+      Object.values(sponsorsByPacks).forEach((pack) => {
+        const sponsorsByPack = Object.values(pack);
+        sponsorsByPack.forEach((sponsor) => {
+          try {
+            if (sponsor.siteUrl.indexOf("https://") < 0) {
+              sponsor.siteUrl = "https://" + sponsor.siteUrl;
+            }
 
-  //     Object.entries(sponsorsByPacks).forEach(([pack, partners]) => {
-  //       sponsors[pack] = partners.sort((p1, p2) => {
-  //         return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
-  //       });
-  //     });
-
-  //     Object.values(sponsorsByPacks).forEach((pack) => {
-  //       const sponsorsByPack = Object.values(pack);
-  //       sponsorsByPack.forEach((sponsor) => {
-  //         try {
-  //           if (sponsor.siteUrl.indexOf("https://") < 0) {
-  //             sponsor.siteUrl = "https://" + sponsor.siteUrl;
-  //           }
-
-  //           isURL(new URL(sponsor.siteUrl));
-  //         } catch (e) {
-  //           console.error(`Bad URL for ${sponsor.name}`);
-  //           process.exit(1);
-  //         }
-  //         sponsor.logoName = sponsor.name.toLowerCase().replaceAll(" ", "-");
+            isURL(new URL(sponsor.siteUrl));
+          } catch {
+            console.error(`Bad URL for ${sponsor.name}`);
+            process.exit(1);
+          }
+          sponsor.logoName = sponsor.name.toLowerCase().replaceAll(" ", "-");
 
           sponsor.ext = getExtensionFromLogoUrl(sponsor.logoUrl);
           fetchImage(sponsor);
@@ -138,7 +139,7 @@ export default function (eleventyConfig) {
     } catch (e) {
       console.log(e);
       return {};
-    }*/
+    }
   });
 
   eleventyConfig.addCollection("config", () => config);

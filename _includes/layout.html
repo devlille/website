@@ -181,7 +181,6 @@
                     <p class="read-more">
                         <a target="_blank" href="{{ collections.config.partershipUrl }}">Dossier de partenariat</a> [PDF, 5Mo]                </p>
                   </div>
-                {% if collections.partners.gold.length > 0 or collections.partners.silver.length > 0 or collections.partners.bronze.length > 0 or collections.partners.others.length > 0 %}
                 <div class="content filled">
                     <h2>Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition
                         {{ collections.config.edition }}!</h2>
@@ -244,9 +243,26 @@
                         <h3>Community Partners</h3>
 
                         <ul>
+                            
                             <li class="sponsor">
-                                <a aria-label="Visiter le site de Google" href="https://www.google.com/">
-                                    <img src="/img/google.svg" alt="" loading="lazy" />
+                                <a aria-label="Visiter le site de chtitedev" href="https://mobilizon.fr/@chtitedev">
+                                    <img src="/img/community/chtitedev.png" alt=""" loading="lazy" />
+                                </a>
+                            </li>
+                            <li class="sponsor">
+                                <a aria-label="Visiter le site de Cloud Nord" href="https://cloudnord.fr/">
+                                    <img src="/img/community/cloudnord.png" alt=""" loading="lazy" />
+                                </a>
+                            </li>
+                            
+                            <li class="sponsor">
+                                <a aria-label="Visiter le site de Crafts Record" href="https://craftsrecords.org/">
+                                    <img src="/img/community/craftsrecord.png" alt=""" loading="lazy" />
+                                </a>
+                            </li>
+                            <li class="sponsor">
+                                <a aria-label="Visiter le site de Front(end | &) Beers" href="https://www.meetup.com/fr-FR/frontendbeers/">
+                                    <img src="/img/community/frontend.png" alt=""" loading="lazy" style="max-width: 90%;"/>
                                 </a>
                             </li>
                             <li class="sponsor">
@@ -255,13 +271,8 @@
                                 </a>
                             </li>
                             <li class="sponsor">
-                                <a aria-label="Visiter le site de Wild Code School" href="https://www.wildcodeschool.com/fr-FR/campus/a-distance?utm_feeditemid=&utm_device=c&utm_term=wild%20code%20school%20formation&utm_source=google&utm_medium=ppc&utm_campaign=FR-GGL-BRAND+CAMPAIGN&hsa_cam=14821000047&hsa_grp=136646397004&hsa_mt=p&hsa_src=g&hsa_ad=629161360522&hsa_acc=4421706736&hsa_net=adwords&hsa_kw=wild%20code%20school%20formation&hsa_tgt=kwd-1843089244925&hsa_ver=3&gad_source=1&gclid=EAIaIQobChMIjP3d_I6LhQMVhAQGAB1UzQ3gEAAYAiAAEgItffD_BwE">
-                                    <img src="/img/wcs.webp" alt="" loading="lazy" />
-                                </a>
-                            </li>
-                            <li class="sponsor">
-                                <a aria-label="Visiter le site de Chti JUG" href="https://chtijug.org/">
-                                    <img src="/img/chtijug.png" alt=""" loading="lazy" />
+                                <a aria-label="Visiter le site de MTG:Lille" href="https://www.meetup.com/fr-FR/mtg-lille/">
+                                    <img src="/img/community/mtg.png" alt=""" loading="lazy" />
                                 </a>
                             </li>
                             <li class="sponsor">
@@ -269,11 +280,15 @@
                                     <img src="/img/wld.svg" alt="" loading="lazy" />
                                 </a>
                             </li>
+                            <li class="sponsor">
+                                <a aria-label="Visiter le site de Wild Code School" href="https://www.wildcodeschool.com/fr-FR/campus/a-distance?utm_feeditemid=&utm_device=c&utm_term=wild%20code%20school%20formation&utm_source=google&utm_medium=ppc&utm_campaign=FR-GGL-BRAND+CAMPAIGN&hsa_cam=14821000047&hsa_grp=136646397004&hsa_mt=p&hsa_src=g&hsa_ad=629161360522&hsa_acc=4421706736&hsa_net=adwords&hsa_kw=wild%20code%20school%20formation&hsa_tgt=kwd-1843089244925&hsa_ver=3&gad_source=1&gclid=EAIaIQobChMIjP3d_I6LhQMVhAQGAB1UzQ3gEAAYAiAAEgItffD_BwE">
+                                    <img src="/img/wcs.webp" alt="" loading="lazy" />
+                                </a>
+                            </li>
                         </ul>
                     </div>
     
                 </div>
-                {% endif %}
             </aside>
             {% endif %}
             {% endif %}

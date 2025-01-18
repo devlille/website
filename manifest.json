@@ -30,8 +30,8 @@
       "form_factor": "narrow"
     },
     {
-      "src": "/img/screenshot2.jpg",
-      "type": "image/jpg",
+      "src": "/img/screenshot2.png",
+      "type": "image/png",
       "sizes": "898x540",
       "form_factor": "wide"
     }

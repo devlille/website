@@ -460,12 +460,12 @@ aside div.be-partner {
     border-color: var(--body-text);
   }
   div.sponsors.silver h3 {
-    color: var(--main-color);
-    border-color: var(--main-color);
-  }
-  div.sponsors.bronze h3 {
     color: var(--hot-light);
     border-color: var(--hot-light);
+  }
+  div.sponsors.bronze h3 {
+    color: var(--main-light);
+    border-color: var(--main-light);
   }
   div.sponsors.partner h3 {
     color: var(--hot-color);

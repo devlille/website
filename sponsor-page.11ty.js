@@ -14,7 +14,7 @@ const displaySocialMedias = (partner) => {
             ${
               partner.twitterAccount
                 ? `<li>
-                <strong class="stressed">Sur Twitter: </strong>
+                <strong class="stressed">Sur X: </strong>
                 <a target="_blank" href="${
                   partner.twitterAccount
                 }">${partner.twitterAccount?.replace(

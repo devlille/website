@@ -39,7 +39,7 @@ export const displaySpeakerSocialBlock = (speaker) => {
         ${
           speaker.twitter
             ? `<li>
-            <strong class="stressed">Sur Twitter</strong>
+            <strong class="stressed">Sur X</strong>
             <a target="_blank" href="${
               speaker.twitter
             }">${speaker.twitter?.replace("https://twitter.com/", "")}</a>

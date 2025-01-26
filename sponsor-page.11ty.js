@@ -2,13 +2,13 @@ const displayDescription = (partner) => {
   if (!partner.description) {
     return "";
   }
-  return `<div class="talk"><p>${
+  return `<div class="description"><p>${
     partner.description?.replaceAll('"', "")?.trim() ?? ""
   }</p></div>`;
 };
 const displaySocialMedias = (partner) => {
   return `
-    <div class="talk">
+    <div class="online">
         <h3>Sur Internet</h3>
         <ul>
             ${

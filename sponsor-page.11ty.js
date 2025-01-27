@@ -4,7 +4,7 @@ const displayVideo = (partner) => {
   }*/
 
   if (true) {
-    return;
+    return ``;
   }
   return `
   <link rel="stylesheet" href="/youtube/youtube.css" />

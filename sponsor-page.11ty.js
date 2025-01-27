@@ -1,3 +1,18 @@
+const displayVideo = (partner) => {
+  /*if (!partner.editedVideoUrl) {
+    return "";
+  }*/
+
+  if (true) {
+    return;
+  }
+  return `
+  <link rel="stylesheet" href="/youtube/youtube.css" />
+  <script src="/youtube/youtube.js"></script>
+  <lite-youtube videoid="YCSvfY5OPgI" style="background-image: url('https://i.ytimg.com/vi/YCSvfY5OPgI/hqdefault.jpg');">
+</lite-youtube>
+  `;
+};
 const displayDescription = (partner) => {
   if (!partner.description) {
     return "";
@@ -102,6 +117,8 @@ export default class SponsorPage {
     }
 
     return `
+
+
 <div class="page-body list">
     <h2>${partner.name}</h2>
 
@@ -110,6 +127,7 @@ export default class SponsorPage {
           <div class="speaker">
           ${displayDescription(partner)}
           ${displaySocialMedias(partner)}  
+          ${displayVideo(partner)}  
           ${displayWLDOffers(partner)}
         </div>
           

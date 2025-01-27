@@ -145,6 +145,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("config", () => config);
 
   eleventyConfig.addPassthroughCopy("css/*.ttf");
+  eleventyConfig.addPassthroughCopy("youtube/*");
   // eleventyConfig.addPassthroughCopy("css/*.woff");
   // eleventyConfig.addPassthroughCopy("css/*.woff2");
   eleventyConfig.addPassthroughCopy("manifest.json");

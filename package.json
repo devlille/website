@@ -13,8 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "3.0.0",
-    "@eslint/js": "^9.15.0",
-    "eslint": "^9.15.0",
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0",
     "globals": "^15.12.0",
     "html-minifier": "^4.0.0",
     "isurl": "^4.0.2",

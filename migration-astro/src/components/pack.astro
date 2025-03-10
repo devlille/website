@@ -1,0 +1,34 @@
+---
+export interface Props {
+  title: string;
+  partners: { name: string; id: string; logoName: string; ext: string }[];
+}
+
+const { title, partners: unsorted } = Astro.props;
+const partners = (unsorted ?? []).sort((p1, p2) => {
+  return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
+});
+---
+
+<div class="sponsors gold">
+  <h3>{title}</h3>
+
+  <ul>
+    {
+      partners.map((p) => (
+        <li class="sponsor">
+          <a
+            aria-label={`Visiter le site de ${p.name}`}
+            href={`partner-${p.id}`}
+          >
+            <img
+              src={`/img/sponsors/${p.logoName}.${p.ext}`}
+              alt={p.name}
+              loading="lazy"
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

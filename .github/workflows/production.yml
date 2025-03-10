@@ -24,6 +24,11 @@ jobs:
         run: |
           npm ci
           npm run build
+          cd migration-astro
+          npm ci 
+          npm run build
+          cd ..
+          cp -Ra migration-astro/dist/. ./_site
       - name: Deploy to Firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

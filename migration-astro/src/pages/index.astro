@@ -1,0 +1,230 @@
+---
+// Import the layout and config
+import Layout from "../layouts/Layout.astro";
+import config from "../config/config.ts";
+
+const og = {
+  ogTitle: "DevLille",
+  ogDescription:
+    "Le DevLille est une conférence de deux jours autour des sujets Web, Mobile et Cloud.",
+  ogImage: "https://devlille.fr/img/logo-full.svg",
+};
+---
+
+<Layout title="DevLille" currSection="index" og={og}>
+  <div class="group">
+    <div class="presentation">
+      <p>
+        <strong
+          >Devfest Lille devient
+          <span class="stressed back">DevLille !</span>
+        </strong>
+        <p>
+          Nous changeons seulement de nom, mais tout le reste demeure inchangé :
+          le même lieu, le même format, et la même équipe de bénévoles.
+        </p>
+        <p>
+          Notre ambition reste intacte : vous proposer deux journées de
+          conférences tech enrichies d'une dimension
+          <strong class="stressed">humaine</strong> et <strong class="stressed"
+            >environnementale</strong
+          >, en harmonie avec les enjeux du monde actuel.
+        </p>
+        <p class="register">
+          <a
+            rel="noreferrer noopener"
+            target="_blank"
+            href={config.billetwebUrl + config.edition}
+          >
+            Prenez votre place!
+          </a>
+        </p>
+        <p class="register">
+          <a
+            rel="noreferrer noopener"
+            target="_blank"
+            href="https://docs.google.com/forms/d/e/1FAIpQLScoYCZmUCC4ayhc2KormzAmtuhUGv9oR5FZdWViolJ5cfVrAQ/viewform?usp=sf_link"
+          >
+            Participez au Ch'ti Tremplin!
+          </a>
+        </p>
+        {
+          config.enabled.earlyBirds && (
+            <p class="register">
+              <a
+                rel="noreferrer noopener"
+                target="_blank"
+                href={config.billetwebUrl + config.edition}
+              >
+                Prenez votre place Early Bird!
+              </a>
+            </p>
+          )
+        }
+      </p>
+    </div>
+    <div class="cfp">
+      <p>
+        <a href={config.cfpUrl + config.edition} lang="en"> Call for Paper</a>
+        ouvert du
+        {config.cfpStartedDate} jusqu'au {config.cfpEndedDate}
+        {config.edition}!
+      </p>
+    </div>
+
+    <div class="stats">
+      <h2 class="no-display">
+        Le DevLille Lille {config.edition} en chiffres
+      </h2>
+      <ul>
+        <li>
+          <strong>{config.numberOfPeople}</strong>
+          <span>participants</span>
+        </li>
+        <li>
+          <strong>{config.numberOfSpeaker}</strong>
+          <span>speakers</span>
+        </li>
+        <li>
+          <strong>{config.numberOfTalks}</strong>
+          <span>conférences</span>
+        </li>
+        <li>
+          <strong>{config.numberOfTraks}</strong>
+          <span lang="en">tracks</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="with-news">
+    <!-- <section class="news">
+          <h2>News</h2>
+          <article class="h-entry">
+            <h3>N'oubliez pas la soirée du 6 juin !</h3>
+            <p>
+              Les équipes du Devfest Lille vous invitent à la 
+              <strong class="stressed">première soirée Devfest Lille</strong> 
+              le 6 juin à 18h30 au 
+              <a href="https://grand-scene.com/">Grand-Scène</a>.
+            </p>
+          </article>
+        </section> -->
+
+    <div class="fixed">
+      <div class="decor venue">
+        <h2>Un lieu privilégié : <strong>Lille Grand Palais</strong></h2>
+        <div class="content">
+          <p class="illustration">
+            <picture>
+              <source srcset="img/lgp.avif" type="image/avif" />
+              <source srcset="img/lgp.webp" type="image/webp" />
+              <img
+                loading="lazy"
+                src="/img/lgp.jpg"
+                alt="Une salle du Lille Grand Palais"
+              />
+            </picture>
+          </p>
+          <div>
+            <p>
+              Lille Grand Palais est un lieu incontournable avec un espace de
+              plus de 1900m2 et nous permettant d'accueillir plus de {
+                config.numberOfPeople
+              } personnes.
+            </p>
+            <p class="read-more">
+              <a
+                rel="noreferrer noopener"
+                target="_blank"
+                href="https://goo.gl/maps/cBSP9yZSHtMZuW9BA"
+              >
+                Comment y aller</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="decor">
+        <h2>Une conférence accessible</h2>
+        <div class="content">
+          <p class="illustration">
+            <picture>
+              <source srcset="img/accessibilite.avif" type="image/avif" />
+              <source srcset="img/accessibilite.webp" type="image/webp" />
+              <img
+                loading="lazy"
+                src="/img/accessibilite.jpg"
+                alt="Salle du Grand Palais avec une retranscription en live de la conférence"
+              />
+            </picture>
+          </p>
+          <div>
+            <p>
+              <strong class="stressed">Toutes</strong> nos conférences sont sous-titrées
+              grâce au service du <a
+                rel="noreferrer noopener"
+                target="_blank"
+                href="https://www.lemessageur.com/"
+              >
+                Messageur
+                <img
+                  src="/img/external-link.svg"
+                  alt="Ouvre nouvel onglet"
+                  width="14"
+                  height="14"
+                  loading="lazy"
+                /></a
+              >. Le lieu est également entièrement accessible aux personnes à
+              mobilité réduite. De plus, une salle de repos est à disposition
+              pour celles et ceux qui, pour des raisons de santé, auraient
+              besoin d'un espace calme.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="decor">
+        <h2>Une conférence écoresponsable</h2>
+        <div class="content">
+          <p class="illustration">
+            <picture>
+              <source srcset="img/consignerie.avif" type="image/avif" />
+              <source srcset="img/consignerie.webp" type="image/webp" />
+              <img
+                loading="lazy"
+                src="/img/consignerie.jpg"
+                alt="Salle du Grand Palais avec une retranscription en live de la conférence"
+              />
+            </picture>
+          </p>
+          <div>
+            <p>
+              Engagés dans une démarche <strong class="stressed"
+                >écoresponsable</strong
+              >, nous faisons notre maximum pour faire de notre conférence un
+              événement <strong class="stressed">zéro déchet</strong>. Nous
+              réduisons au maximum les déchets en favorisant la réutilisation et
+              en évitant le gaspillage. En collaboration avec <a
+                rel="noreferrer noopener"
+                target="_blank"
+                href="https://consignerie.com/"
+                >La Consignerie <img
+                  src="/img/external-link.svg"
+                  alt="Ouvre nouvel onglet"
+                  width="14"
+                  height="14"
+                  loading="lazy"
+                /></a
+              >, nous vous proposons des repas préparés à partir de produits
+              locaux, servis dans des contenants consignés, ainsi que des
+              boissons également présentées dans des bouteilles en verre
+              consignées.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

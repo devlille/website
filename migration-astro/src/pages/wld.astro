@@ -1,0 +1,22 @@
+﻿---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Les Offres de nos partenaires /" currSection="wld">
+  <article class="page-body">
+    <h2>Les Offres de nos partenaires</h2>
+    <script type="module" src="https://widget.welovedevs.com/jobs-widget.js"
+    ></script>
+    <jobs-widget
+      color="#220BAB"
+      locale="fr"
+      items="30"
+      hidepartnership="false"
+      hidefooter="false"
+      referralcode="GDGLille"
+      customAlgoliaFilters="inSelections.-Mmx2jtgtj4WnNVEC6Oy > 0"
+      eventMode="true"
+    >
+    </jobs-widget>
+  </article>
+</Layout>

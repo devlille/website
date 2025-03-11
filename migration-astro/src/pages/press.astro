@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import data from "../config/press.ts";
+const press = Object.entries(data)
+  .sort(([year], [year2]) => Number(year2) - Number(year))
+  .map(([year, articles]) => {
+    return {
+      year: year,
+      articles: articles,
+    };
+  });
+---
+
+<Layout title="On parle de nous /" currSection="press">
+  <article class="page-body">
+    <h2>On parle de nous</h2>
+
+    <h3>Pour la Presse</h3>
+    <dl class="press">
+      <div>
+        <dt>
+          <a
+            href="https://docs.google.com/document/d/e/2PACX-1vQAuQ3WYqRy2zZEn9PyQzjQm1Rzpib-zkhIdJLFQXsGcgOGO5didq_enLaBmx_olOHvU4rpl8nkhunO/pub"
+            >Communiqué de Presse</a
+          >
+        </dt>
+        <dd>Publié le 31 décembre 2024</dd>
+      </div>
+      <div>
+        <dt>
+          <a
+            href="https://docs.google.com/presentation/d/e/2PACX-1vSchJ5BqobOsw1fqM1grYSnl-mKQ7dbzLRkk5hwtqHl7qH26jw8mghcOtlTfkL_7HcvuSv0NnK07Y3K/pub?start=false&loop=false&delayms=3000&slide=id.g117aa382f2b_0_85"
+            >Dossier de Presse</a
+          >
+        </dt>
+        <dd>Publié le 31 décembre 2024</dd>
+      </div>
+    </dl>
+
+    {
+      press.map(({ year, articles }) => {
+        console.log(articles);
+        return (
+          <>
+            <h3>{year}</h3>
+            <dl class="press">
+              {articles.map((article) => {
+                return (
+                  <div class={article.type}>
+                    <dt>
+                      <a href={article.url}>{article.title}</a>
+                    </dt>
+                    <dd>
+                      Publié sur {article.publishedBy} le {article.publishedAt}
+                    </dd>
+                  </div>
+                );
+              })}
+            </dl>
+          </>
+        );
+      })
+    };
+  </article>
+</Layout>

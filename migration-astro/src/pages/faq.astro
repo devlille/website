@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import config from "../config/config";
+import { markdown as md } from "markdown";
+
+type FAQ = {
+  question: string;
+  order: number;
+  response: string;
+  acronyms: { key: string; value: string }[];
+  actions: { label: string; url: string }[];
+};
+const data = await fetch(config.cms4partnersApi + config.edition + "").then(
+  (res) => res.json()
+);
+const qanda: FAQ[] = data.qanda
+  .sort((f1: FAQ, f2: FAQ) => f1.order - f2.order)
+  .map((q: FAQ) => {
+    return {
+      ...q,
+      response: md.toHTML(q.response.replaceAll("* ", "\r\n\r\n* ")),
+    };
+  })
+  .map((q: FAQ) => {
+    return {
+      ...q,
+      response: q.acronyms.reduce(
+        (acc, { key, value }) =>
+          acc.replace(key, `<abbr title="${value}">${key}</abbr>`),
+
+        q.actions.reduce((acc, { label, url }) => {
+          const regEx = new RegExp(label, "ig");
+          return acc.replace(regEx, `<a href="${url}">${label}</a>`);
+        }, q.response)
+      ),
+    };
+  });
+---
+
+<Layout title="Foire aux questions /" currSection="faq">
+  <article class="page-body">
+    <h2>Foire aux questions</h2>
+    {
+      qanda.map((faq) => {
+        return (
+          <div class="faq" id={`faq{faq.order}`}>
+            <h3>
+              {faq.question}
+              <a href={`/faq/index.html#faq${faq.order}`}>
+                <img src="/img/link.svg" alt="Ancre" />
+              </a>
+            </h3>
+            <div class="content">
+              <p>
+                <Fragment set:html={faq.response} />
+              </p>
+            </div>
+          </div>
+        );
+      })
+    }
+  </article>
+</Layout>

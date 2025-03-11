@@ -1,7 +1,9 @@
 ---
+import type { ApiSponsor } from "../content/config";
+
 export interface Props {
   title: string;
-  partners: { name: string; id: string; logoName: string; ext: string }[];
+  partners: ApiSponsor[];
 }
 
 const { title, partners: unsorted } = Astro.props;

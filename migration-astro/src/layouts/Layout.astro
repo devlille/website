@@ -3,8 +3,8 @@ import config from "../config/config.ts";
 import editions from "../config/editions.ts";
 import Sponsors from '../components/sponsors.astro'
 
-const { title, currSection, og: { ogDescription, ogUrl, ogImage } } = Astro.props;
-
+const { title, currSection, og = {} } = Astro.props;
+const { ogDescription, ogUrl, ogImage } = og;
 
 ---
 
@@ -219,7 +219,7 @@ const { title, currSection, og: { ogDescription, ogUrl, ogImage } } = Astro.prop
                         <li><a href="/a-propos">L'équipe DevLille</a></li>
                         <li><a href="/press">On parle de nous</a></li>
                         <li><a href="mailto:contact@devlille.fr">Contactez-nous</a></li>
-                        {config.enabled.sponsoring &&  <li><a href="{{ collections.config.partershipUrl }}">Devenez partenaire</a></li>}
+                        {config.enabled.sponsoring &&  <li><a href={ config.partershipUrl }>Devenez partenaire</a></li>}
                         <li><a href="/code-conduite">Code de conduite</a></li>
                         <li><a href="/promo">Ressources graphiques</a></li>
                         {config.enabled.welovedevs && <li><a href="/wld">Offres d'emploi</a></li>}

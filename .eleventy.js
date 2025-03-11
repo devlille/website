@@ -3,7 +3,6 @@ import { markdown as md } from "markdown";
 import fetch from "node-fetch";
 import { minify } from "terser";
 import config from "./data/config.js";
-import press from "./data/press.js";
 import editions from "./data/edition.js";
 import { fetchImage, getExtensionFromLogoUrl } from "./.11ty/image.js";
 import isURL from "isurl";
@@ -12,16 +11,6 @@ export default function (eleventyConfig) {
   // eleventyConfig.addCollection("talks", createTalksCollections);
   // eleventyConfig.addCollection("flatTalks", createFlatTalksCollections);
   // eleventyConfig.addCollection("talksByDate", createTalksCollectionsBydate);
-  eleventyConfig.addCollection("press", async () => {
-    return Object.entries(press)
-      .sort(([year], [year2]) => year2 - year)
-      .map(([year, articles]) => {
-        return {
-          year: year,
-          articles: articles,
-        };
-      });
-  });
 
   eleventyConfig.addCollection("editions", async () => {
     return editions;

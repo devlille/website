@@ -1,0 +1,173 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import { markdown as md } from "markdown";
+
+interface Props {
+  speaker: CollectionEntry<"speakers">;
+}
+
+export const getStaticPaths = (async () => {
+  const speakers = await getCollection("speakers");
+
+  return speakers.map((speaker) => ({
+    params: {
+      id: speaker.data.id,
+    },
+    props: {
+      speaker: speaker,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { speaker } = Astro.props;
+
+const og = {
+  ogDescription: speaker.data.bio,
+  ogUrl: "https://devlille.fr/speaker-page-" + speaker.data.id,
+  ogImage: speaker.data.display_name,
+};
+
+const talks = (await getCollection("talks")).map((d) => d.data);
+
+const selectedTalks = talks.filter((t) =>
+  t.speakers?.find((s) => s.id === speaker.data.id)
+);
+---
+
+<Layout title={speaker.data.display_name} currSection="speakers" og={og}>
+  <div class="page-body list">
+    <h2>
+      {speaker.data.display_name}{
+        speaker.data.pronouns ? ` (${speaker.data.pronouns})` : ""
+      }
+    </h2>
+
+    <div class="speaker-sheet">
+      <div class="speaker">
+        <p>
+          <strong class="stressed"
+            >{speaker.data.display_name}{
+              speaker.data.pronouns ? ` (${speaker.data.pronouns})` : ""
+            }</strong
+          >
+          {speaker.data.company ? ", " : ""}
+          {speaker.data.company ? speaker.data.company : ""}
+        </p>
+        <Fragment
+          set:html={speaker.data.bio
+            ? md.toHTML(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
+            : ""}
+        />
+      </div>
+
+      <div class="speaker-data-block">
+        <div class="speaker-data">
+          {
+            speaker.data.photo_url && (
+              <p class="s-photo">
+                <img
+                  loading="lazy"
+                  src={speaker.data.photo_url}
+                  alt={`Photo de ${speaker.data.display_name}`}
+                />
+              </p>
+            )
+          }
+          <ul class="social">
+            {
+              speaker.data.mastodon && (
+                <li>
+                  <strong class="stressed">Sur Mastodon</strong>
+                  <a target="_blank" href={speaker.data.mastodon}>
+                    {speaker.data.mastodon.substring(
+                      speaker.data.mastodon.lastIndexOf("/") + 1
+                    )}
+                  </a>
+                </li>
+              )
+            }
+            {
+              speaker.data.twitter && (
+                <li>
+                  <strong class="stressed">Sur X</strong>
+                  <a target="_blank" href={speaker.data.twitter}>
+                    {speaker.data.twitter?.replace("https://twitter.com/", "")}
+                  </a>
+                </li>
+              )
+            }
+            {
+              speaker.data.github && (
+                <li>
+                  <strong class="stressed">Sur Github</strong>
+                  <a target="_blank" href={speaker.data.github}>
+                    {speaker.data.github?.replace("https://github.com/", "")}
+                  </a>
+                </li>
+              )
+            }
+            {
+              speaker.data.linkedin && (
+                <li>
+                  <strong class="stressed">Sur LinkedIn</strong>
+                  <a target="_blank" href={speaker.data.linkedin}>
+                    {decodeURI(speaker.data.linkedin)
+                      ?.replace("https://www.linkedin.com/in/", "")
+                      .replace("/", "")}
+                  </a>
+                </li>
+              )
+            }
+            {
+              speaker.data.website && (
+                <li>
+                  <strong class="stressed">Site Web</strong>
+                  <a target="_blank" href={speaker.data.website}>
+                    {speaker.data.website}
+                  </a>
+                </li>
+              )
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="talks">
+        {
+          selectedTalks.map((selectedTalk) => {
+            return (
+              <div class="talk">
+                <h3>{selectedTalk?.title}</h3>
+                <p>{selectedTalk?.abstract}</p>
+
+                {selectedTalk?.open_feedback && (
+                  <p class="openfeedback">
+                    Suite à la conférence, vous pouvez faire un retour aux
+                    conférenciers et conférencières sur
+                    <a href={selectedTalk?.open_feedback} target="_blank">
+                      OpenFeedback
+                    </a>
+                  </p>
+                )}
+
+                {(!!selectedTalk?.link_slides ||
+                  !!selectedTalk?.link_replay) && (
+                  <div class="talk-links">
+                    <h4>Regardez ou re-regardez</h4>
+                    <ul>
+                      {selectedTalk?.link_replay &&
+                        `<li><a href="${selectedTalk?.link_replay}">La vidéo du talk</a></li>`}
+                      {selectedTalk?.link_slides &&
+                        `<li><a href="${selectedTalk?.link_slides}">Les slides du talk</a></li>`}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</Layout>

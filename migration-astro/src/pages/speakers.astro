@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+const speakersFromApi = (await getCollection("speakers")).map((d) => d.data);
+---
+
+<Layout title="Speakers /" currSection="speakers">
+  <div class="page-body list">
+    <h2>Speakers</h2>
+
+    <div class="all-speakers">
+      <ul>
+        {
+          speakersFromApi.map((speaker) => {
+            return (
+              <li>
+                <p>
+                  <strong>
+                    <a href={`/speaker-page-${speaker.id}`}>
+                      {speaker.display_name}
+                    </a>
+                  </strong>
+                </p>
+                <p>{speaker.bio}</p>
+                <p class="s-photo">
+                  <img
+                    loading="lazy"
+                    src={speaker.photo_url}
+                    alt={`Photo de ${speaker.display_name}`}
+                  />
+                </p>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</Layout>

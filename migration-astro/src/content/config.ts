@@ -129,6 +129,79 @@ const sponsors = defineCollection({
   },
 });
 
+const speakers = defineCollection({
+  schema: z.object({
+    id: z.string(),
+    display_name: z.string().optional(),
+    bio: z.string().optional(),
+    photo_url: z.string(),
+    pronouns: z.nullable(z.string()),
+    company: z.nullable(z.string()),
+    mastodon: z.nullable(z.string()).optional(),
+    twitter: z.nullable(z.string()).optional(),
+    github: z.nullable(z.string()).optional(),
+    linkedin: z.nullable(z.string()).optional(),
+    website: z.nullable(z.string()).optional(),
+  }),
+
+  loader: async () => {
+    return fetch(
+      `https://confily-486924521070.europe-west1.run.app/events/devfest-lille-2024/speakers`
+    ).then((response) => response.json());
+  },
+});
+
+const talks = defineCollection({
+  schema: z.object({
+    id: z.string(),
+    title: z.string().optional(),
+    level: z.string().optional(),
+    abstract: z.string().optional(),
+    category: z.string().optional(),
+    category_style: z
+      .object({
+        id: z.string().optional(),
+        name: z.string(),
+        color: z.string(),
+        icon: z.string(),
+      })
+      .optional(),
+    format: z.string().optional(),
+    language: z.string().optional(),
+    speakers: z
+      .array(
+        z.object({
+          id: z.string().optional(),
+          display_name: z.string(),
+          pronouns: z.nullable(z.string()),
+          bio: z.string(),
+          job_title: z.nullable(z.string()),
+          company: z.nullable(z.string()),
+          photo_url: z.string(),
+          socials: z.array(z.unknown()),
+        })
+      )
+      .optional(),
+    link_slides: z.null().optional(),
+    link_replay: z.null().optional(),
+    open_feedback: z.null().optional(),
+  }),
+
+  loader: async () => {
+    const talkMap = await fetch(
+      `https://confily-486924521070.europe-west1.run.app/events/devfest-lille-2024/planning`
+    ).then((response) => response.json());
+
+    return Object.values(talkMap)
+      .flatMap((talk) => Object.values(talk))
+      .flat()
+      .map((a: any) => a.talk)
+      .filter((a) => !!a);
+  },
+});
+
 export const collections = {
   sponsors,
+  speakers,
+  talks,
 };

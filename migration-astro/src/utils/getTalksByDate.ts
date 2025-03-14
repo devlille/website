@@ -76,8 +76,8 @@ export const createFlatTalksCollections = async () => {
   const talks = await getTalks();
   const flat = Object.values(talks)
     .flat()
-    .map(([, talksArray]) => {
-      return talksArray.map((t) => t.talk);
+    .map(([, talksArray]: any) => {
+      return talksArray.map((t: any) => t.talk);
     })
     .flat();
 

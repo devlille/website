@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { createTalksCollectionsBydate } from "../utils/getTalksByDate";
+
+const og = {
+  ogTitle: "DevLille - Agenda",
+  ogDescription:
+    "2 jours de conférences et d'échanges accessibles à tous et toutes au coeur de Lille",
+  ogImage: "https://devlille.fr/img/logo-full.svg",
+};
+
+const talksByDate = await createTalksCollectionsBydate()
+---
+
+<Layout title="Agenda /" currSection="agenda">
+
+<div class="page-body">
+  <h2>Agenda</h2>
+
+  <div class="tabs-block">
+    <ul class="tabs" role="tablist">
+      { 
+        talksByDate.map(dateAndTalks => (
+        <li role="presentation">
+        <button id="tab{{loop.index}}">{ dateAndTalks[0] } </button>
+      </li>
+        ))
+      }
+    </ul>
+    {talksByDate.map((dateAndTalks: any, i) => {
+      return (
+      <div id={`day${i}`} class="tab-content" role="tabpanel" tabindex="0" aria-labelledby={`tab${i}`}>
+      <div class="agenda">
+        {dateAndTalks[1].map((talk: any) => {
+          return (
+          <section class="hour">
+        <h3 id={`h${talk[0]}`}>
+            {talk[0]}
+            <a href={`https://devlille.fr/agenda/index.html#h${talk[0]}`}>
+            <img src="/img/link.svg" alt="Ancre"></a>
+        </h3>
+        <div class="content">
+            {talk[1].map((t: any) => {
+              return (
+              <dl>
+                <dt>{ t.talk.room }</dt>
+  
+                {t.id == undefined  && (
+                <dd lang={t.talk.language == "English" ? 'en': 'fr'}>
+                  { t.talk.title }
+                </dd>
+  
+                <dd lang={t.talk.language == "English" ? 'en': 'fr'}> { t.speakers }</dd>
+              )}
+  
+                {!!t.id && (
+                <dd lang={t.talk.language == "English" ? 'en': 'fr'}>
+                  <a href="/talk-page-{{t.talk.id}}">  { t.talk.title } ({t.talk.duration})</a>
+                </dd>
+  
+                <dd lang={t.talk.language == "English" ? 'en': 'fr'}> { t.speakers }</dd>
+               )}
+            </dl>
+              )
+            })}
+  
+          </div>
+        </section>
+          )
+        })}
+      </div>
+    </div>
+      )
+    })}
+   
+  </div>
+
+  <script is:inline src="/js/tabs.js"></script>
+  </Layout>

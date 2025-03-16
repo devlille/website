@@ -1,48 +1,404 @@
-# Astro Starter Kit: Basics
+---
+import config from "../config/config.ts";
+import editions from "../config/editions.ts";
+import Sponsors from "../components/sponsors.astro";
 
-```sh
-npm create astro@latest -- --template basics
-```
+const {
+  title,
+  currSection,
+  og: { ogDescription, ogUrl, ogImage },
+} = Astro.props;
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+const offers = [
+  {
+    "@type": "Offer",
+    name: "Billet 2 jours / Jeudi et Vendredi",
+    url: "https://www.billetweb.fr/devlille-{{ collections.config.edition }}",
+    price: "80",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/Reserved",
+    availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
+    availabilityEnds: `${config.formattedEndDate}}T08:00+2:00`,
+    validFrom: `${config.formattedStartDate}}T08:00+2:00`,
+    validThrough: `${config.formattedEndDate}}T19:00+2:00`,
+  },
+  {
+    "@type": "Offer",
+    name: "Billet 1 jour / Jeudi",
+    url: `https://www.billetweb.fr/devlille-${config.edition}`,
+    price: "40",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/Reserved",
+    availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
+    availabilityEnds: `${config.formattedEndDate}}T08:00+2:00`,
+    validFrom: `${config.formattedStartDate}}T08:00+2:00`,
+    validThrough: `${config.formattedEndDate}}T19:00+2:00`,
+  },
+  {
+    "@type": "Offer",
+    name: "Billet 1 jour / Vendredi",
+    url: "https://www.billetweb.fr/devlille-{{ collections.config.edition }}",
+    price: "40",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/Reserved",
+    availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
+    availabilityEnds: `${config.formattedEndDate}}T08:00+2:00`,
+    validFrom: `${config.formattedStartDate}}T08:00+2:00`,
+    validThrough: `${config.formattedEndDate}}T19:00+2:00`,
+  },
+];
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+const jsonld = {
+  "@context": "https://schema.orglol",
+  "@type": "Event",
+  name: `DevLille ${config.edition}`,
+  startDate: `${config.formattedStartDate}T08:00+02:00`,
+  endDate: `${config.formattedEndDate}}T19:00+02:00`,
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  eventStatus: "https://schema.org/EventScheduled",
+  location: {
+    "@type": "Place",
+    name: "Grand Palais",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "1 Bd des Cités Unies",
+      addressLocality: "Lille",
+      postalCode: "59777",
+      addressCountry: "FR",
+    },
+  },
+  description:
+    "2 jours de conférences et d'échanges accessibles à tous et toutes au coeur de Lille.",
+  offers: offers,
+  organizer: {
+    "@type": "Organization",
+    name: "DevLille",
+    url: "https://devlille.fr/",
+  },
+};
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+console.log(jsonld);
+---
 
-## 🚀 Project Structure
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="DevLille, Conférence, Web, Mobile, Cloud, Quickies"
+    />
+    <meta name="description" content={ogDescription} />
+    <meta name="theme-color" content="#006D6D" />
+    <meta property="og  :url" content={ogUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
 
-Inside of your Astro project, you'll see the following folders and files:
+    <link href="/img/favicon.svg" type="image/svg+xml" rel="icon" />
+    <link href="/img/favicon.png" type="image/png" rel="icon" />
+    <title>{title} - DEVLILLE {config.edition}</title>
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+    <!-- ✅ Correct CSS Path -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/queries.css" />
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+    <script
+      src="https://cdn.metricalp.com/event/metricalp.js"
+      data-tid="mam196"
+      defer></script>
 
-## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+    <link rel="manifest" href="/manifest.json" />
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+  </head>
 
-## 👀 Want to learn more?
+  <body id={currSection === "index" ? "home" : ""}>
+    <div id="container">
+      <!-- 🏠 Page Header -->
+      <header>
+        <h1>
+          {
+            currSection === "index" ? (
+              <img src="/img/logodl.svg" alt={`DevLille ${config.edition}`} />
+            ) : (
+              <a href="/index.html" aria-label="DevLille: Retour à l'accueil">
+                <img src="/img/logodl.svg" alt={`DevLille ${config.edition}`} />
+              </a>
+            )
+          }
+          <div>
+            <p>
+              <time datetime={config.formattedStartDate}>
+                {config.date}
+              </time>
+              <span>Lille Grand Palais</span>
+            </p>
+            <p class="register">
+              <a
+                rel="noreferrer noopener"
+                target="_blank"
+                href={`${config.billetwebUrl}${config.edition}`}
+              >
+                Prenez votre place!
+              </a>
+            </p>
+          </div>
+        </h1>
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+        <!-- 🗂️ Navigation -->
+        <nav class="main-nav">
+          <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
+          <ul>
+            <li>
+              <a
+                href="/index.html"
+                aria-current={currSection === "index" ? "page" : "false"}
+                >Accueil</a
+              >
+            </li>
+            <li><a href="/agenda/index.html">Agenda</a></li>
+            <li><a href="/faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- 📌 Injecting Page-Specific Content -->
+        <div id="wrapper">
+          <main>
+            <slot />
+          </main>
+
+          {
+            currSection == "index" && config.enabled.sponsoring && (
+              <aside>
+                <div class="be-partner">
+                  <h2>Devenez partenaire</h2>
+
+                  <p>
+                    Profitez de la première édition du DevLille pour gagner en
+                    visibilité et échanger avec la communauté des développeurs
+                    de la région Haut de France.
+                  </p>
+                  <p class="read-more">
+                    <a target="_blank" href={config.partershipUrl}>
+                      Dossier de partenariat
+                    </a>{" "}
+                    [PDF, 5Mo]{" "}
+                  </p>
+                </div>
+                <div class="content filled">
+                  <h2>
+                    Un grand merci à nos partenaires qui nous soutiennent déjà
+                    pour l'édition
+                    {config.edition}!
+                  </h2>
+
+                  <Sponsors />
+                </div>
+              </aside>
+            )
+          }
+        </div>
+
+        <footer>
+          <div class="content">
+            <dl class="h-event">
+              <dt class="p-name">DevLille {config.edition}</dt>
+              <dd class="p-summary">
+                2 jours de conférences et d'échanges accessibles à tous et à
+                toutes au coeur de Lille
+              </dd>
+            </dl>
+            <div id="mc_embed_shell">
+              <link
+                href="//cdn-images.mailchimp.com/embedcode/classic-061523.css"
+                rel="stylesheet"
+                type="text/css"
+              />
+              <div id="newsletter">
+                <div id="mc_embed_signup">
+                  <form
+                    action="https://gdglille.us17.list-manage.com/subscribe/post?u=20e377fe4a62412ff254e60e0&id=8ad076b614&f_id=00c6cde3f0"
+                    method="post"
+                    id="mc-embedded-subscribe-form"
+                    name="mc-embedded-subscribe-form"
+                    class="validate"
+                    target="_blank"
+                  >
+                    <div id="mc_embed_signup_scroll">
+                      <h2>S'inscrire à la newsletter du DevLille</h2>
+                      <p class="email">
+                        <label for="mce-EMAIL">
+                          Email
+                          <span class="asterisk" aria-hidden="true"> * </span>
+                        </label>
+                        <input
+                          type="email"
+                          name="EMAIL"
+                          class="email"
+                          id="mce-EMAIL"
+                          required="required"
+                          autocomplete="email"
+                          value=""
+                        />
+                        <input
+                          type="submit"
+                          name="subscribe"
+                          id="mc-embedded-subscribe"
+                          value="Confirmer"
+                        />
+                      </p>
+                      <div hidden="">
+                        <input type="hidden" name="tags" value="8399931" />
+                      </div>
+                      <div id="mce-responses" class="clear foot">
+                        <div
+                          class="response"
+                          id="mce-error-response"
+                          style="display: none;"
+                        >
+                        </div>
+                        <div
+                          class="response"
+                          id="mce-success-response"
+                          style="display: none;"
+                        >
+                        </div>
+                      </div>
+                      <div
+                        aria-hidden="true"
+                        style="position: absolute; left: -5000px;"
+                      >
+                        /* real people should not fill this in and expect good
+                        things - do not remove this or risk form bot signups */
+                        <input
+                          type="text"
+                          name="b_20e377fe4a62412ff254e60e0_8ad076b614"
+                          tabindex="-1"
+                          value=""
+                        />
+                      </div>
+                      <div class="optionalParent">
+                        <div class="clear foot">
+                          <p class="mce-logo">
+                            <a href="http://eepurl.com/iRWe4g">
+                              <img
+                                class="refferal_badge"
+                                src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-light.svg"
+                                alt="Intuit Mailchimp"
+                              />
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <script
+                type="text/javascript"
+                src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+              ></script><script type="text/javascript">
+                (function ($) {
+                  window.fnames = new Array();
+                  window.ftypes = new Array();
+                  fnames[0] = "EMAIL";
+                  ftypes[0] = "email";
+                  fnames[1] = "FNAME";
+                  ftypes[1] = "text";
+                  fnames[2] = "LNAME";
+                  ftypes[2] = "text";
+                  fnames[3] = "BIRTHDAY";
+                  ftypes[3] = "birthday";
+                })(jQuery);
+                var $mcj = jQuery.noConflict(true);
+              </script>
+            </div>
+
+            <div class="footer-links">
+              <ul class="links-list">
+                <li><a href="/a-propos">L'équipe DevLille</a></li>
+                <li><a href="/press">On parle de nous</a></li>
+                <li><a href="mailto:contact@devlille.fr">Contactez-nous</a></li>
+                {
+                  config.enabled.sponsoring && (
+                    <li>
+                      <a href="{{ collections.config.partershipUrl }}">
+                        Devenez partenaire
+                      </a>
+                    </li>
+                  )
+                }
+                <li><a href="/code-conduite">Code de conduite</a></li>
+                <li><a href="/promo">Ressources graphiques</a></li>
+                {
+                  config.enabled.welovedevs && (
+                    <li>
+                      <a href="/wld">Offres d'emploi</a>
+                    </li>
+                  )
+                }
+              </ul>
+              <ul class="links-list editions">
+                {
+                  editions.map((edition) => (
+                    <li>
+                      <a href={edition.url}>{edition.year}</a>
+                    </li>
+                  ))
+                }
+                <!--li>
+                          {%- for edition in collections.editions -%}
+
+                        {%- endfor -%}
+                            <a href="https://devfest-2017.gdglille.org/">2017</a>
+                        </li-->
+              </ul>
+            </div>
+          </div>
+          <div class="related">
+            <ul class="sm-list">
+              <li class="show-icons">
+                <a href="https://bsky.app/profile/devlille.fr">
+                  <svg role="img" width="24" height="24">
+                    <title>DevLille sur BleuSky</title>
+                    <use href="/img/sprite.svg#ic-bluesky"></use>
+                  </svg></a
+                >
+              </li>
+              <li class="show-icons">
+                <a href="https://piaille.fr/@devlille">
+                  <svg role="img" width="24" height="24">
+                    <title>DevLille sur Mastodon</title>
+                    <use href="/img/sprite.svg#ic-mastodon"></use>
+                  </svg></a
+                >
+              </li>
+              <li class="show-icons">
+                <a href="https://www.linkedin.com/company/devlille/">
+                  <svg role="img" width="24" height="24">
+                    <title>DevLille sur LinkedIn</title>
+                    <use href="/img/sprite.svg#ic-linkedin"></use>
+                  </svg></a
+                >
+              </li>
+            </ul>
+            <p class="copyright">DevLille, {config.edition}</p>
+          </div>
+        </footer>
+      </header>
+
+      <!-- 🛠️ Service Worker -->
+      <script>
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", function () {
+            navigator.serviceWorker.register("/sw.js");
+          });
+        }
+      </script>
+    </div>
+
+  </body>
+</html>

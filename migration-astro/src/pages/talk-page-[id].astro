@@ -1,0 +1,99 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+  talk: CollectionEntry<"talks">;
+}
+
+export const getStaticPaths = (async () => {
+  const talks = await getCollection("talks");
+
+  return talks.map((talk) => ({
+    params: {
+      id: talk.data.id,
+    },
+    props: {
+      talk: talk,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { talk } = Astro.props;
+
+const og = {
+  ogDescription: talk.data.title?.replaceAll('"', ""),
+  ogUrl: "https://devlille.fr/talk-page-" + talk.data.id,
+  ogImage: talk.data.speakers?.[0].photo_url,
+};
+
+const speakers = talk.data.speakers ?? [];
+---
+
+<Layout title={talk.data.title} currSection="talks" og={og}>
+  <div class="page-body list">
+    <h2>{talk.data.title}</h2>
+
+    <div class="speaker-sheet">
+      <div class="speaker">
+        <Fragment set:html={talk.data.abstract} />
+      </div>
+      <div class="speaker-data-block"></div>
+
+      {
+        talk.data.type === "talk-session" && (
+          <div class="talks">
+            {(talk.data.open_feedback || talk.data.link_slides) && (
+              <div class="talk">
+                {talk.data.open_feedback && (
+                  <p>
+                    Suite à la conférence, vous pouvez faire un retour aux
+                    conférenciers et conférencières sur
+                    <a href={talk?.data.open_feedback} target="_blank">
+                      OpenFeedback
+                    </a>
+                  </p>
+                )}
+
+                {talk.data.link_slides && (
+                  <div class="talk-links">
+                    <h4>Regardez ou re-regardez</h4>
+                    <ul>
+                      {talk.data.link_replay && (
+                        <li>
+                          <a href="${talk.data.link_replay}">
+                            La vidéo du talk
+                          </a>
+                        </li>
+                      )}
+
+                      {talk.data.link_slides && (
+                        <li>
+                          <a href={talk.data.link_slides}>Les slides du talk</a>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+            {speakers?.map((s) => {
+              return (
+                <div class="talk">
+                  <h3>{s.display_name}</h3>
+                  <p>{s.bio?.replaceAll('"', "")}</p>
+                  <p>
+                    <a href={`/speaker-page-${s.id}`}>
+                      Page dédiée de {s.display_name}
+                    </a>
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</Layout>

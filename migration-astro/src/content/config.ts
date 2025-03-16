@@ -153,6 +153,7 @@ const speakers = defineCollection({
 
 const talks = defineCollection({
   schema: z.object({
+    type: z.string().optional(),
     id: z.string(),
     title: z.string().optional(),
     level: z.string().optional(),
@@ -195,8 +196,11 @@ const talks = defineCollection({
     return Object.values(talkMap)
       .flatMap((talk) => Object.values(talk))
       .flat()
-      .map((a: any) => a.talk)
-      .filter((a) => !!a);
+      .filter((a) => !!a.talk)
+      .map((a: any) => ({
+        type: a.type,
+        ...a.talk,
+      }));
   },
 });
 

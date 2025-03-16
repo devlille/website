@@ -55,7 +55,7 @@ const talksByDate = await createTalksCollectionsBydate()
   
                 {!!t.id && (
                 <dd lang={t.talk.language == "English" ? 'en': 'fr'}>
-                  <a href="/talk-page-{{t.talk.id}}">  { t.talk.title } ({t.talk.duration})</a>
+                  <a href={`/talk-page-${t.talk.id}`}>  { t.talk.title } ({t.talk.duration})</a>
                 </dd>
   
                 <dd lang={t.talk.language == "English" ? 'en': 'fr'}> { t.speakers }</dd>
@@ -76,4 +76,4 @@ const talksByDate = await createTalksCollectionsBydate()
   </div>
 
   <script is:inline src="/js/tabs.js"></script>
-  </Layout>
+  </Layout>Ó

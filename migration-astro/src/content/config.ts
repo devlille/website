@@ -4,6 +4,7 @@ import isURL from "isurl";
 import { resolve } from "node:path";
 import { writeFileSync } from "node:fs";
 import { optimize } from "svgo";
+import { glob } from "astro/loaders";
 
 const tempFolder = resolve(import.meta.dirname, "../../public/img/sponsors");
 
@@ -204,8 +205,15 @@ const talks = defineCollection({
   },
 });
 
+const verbatims = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/verbatim" }),
+  schema: z.object({
+    name: z.string(),
+  }),
+});
 export const collections = {
   sponsors,
   speakers,
   talks,
+  verbatims,
 };

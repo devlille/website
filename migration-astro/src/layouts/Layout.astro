@@ -2,9 +2,16 @@
 import config from "../config/config.ts";
 import editions from "../config/editions.ts";
 import Sponsors from "../components/sponsors.astro";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
 
 const { title, currSection, og = {} } = Astro.props;
 const { ogDescription, ogUrl, ogImage } = og;
+
+const verbatim = await getCollection("verbatims");
+const randomVerbatim = verbatim[Math.floor(Math.random() * verbatim.length)];
+const { Content } = await render(randomVerbatim);
 
 const offers = [
   {
@@ -179,11 +186,13 @@ const jsonld = {
               <div class="be-partner">
                 <h2>Devenez partenaire</h2>
 
-                <p>
-                  Profitez de la première édition du DevLille pour gagner en
-                  visibilité et échanger avec la communauté des développeurs de
-                  la région Haut de France.
-                </p>
+                <div>
+                  <blockquote>
+                    <Content />
+                  </blockquote>
+                  <p>—{randomVerbatim.data.name}</p>
+                </div>
+
                 <p class="read-more">
                   <a target="_blank" href={config.partershipUrl}>
                     Dossier de partenariat

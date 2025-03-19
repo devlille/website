@@ -1,44 +1,21 @@
 {
-  "name": "11ty",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "migration-astro",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "start": "./node_modules/.bin/eleventy --serve",
-    "build": "eleventy",
-    "lint": "eslint ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@11ty/eleventy": "3.0.0",
-    "@eslint/js": "^9.19.0",
-    "eslint": "^9.19.0",
-    "globals": "^15.12.0",
-    "html-minifier": "^4.0.0",
-    "isurl": "^4.0.2",
-    "lightningcss": "1.28.1"
-  },
-  "exports": {
-    "import": "./Eleventy.js",
-    "require": "./EleventyCommonJs.cjs"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@11tyrocks/eleventy-plugin-lightningcss": "1.4.0",
-    "dayjs": "^1.11.13",
+    "astro": "^5.3.1"
+  },
+  "devDependencies": {
+    "@types/isurl": "^4.0.0",
+    "@types/node": "^22.13.10",
+    "isurl": "^4.0.2",
     "markdown": "^0.5.0",
-    "node-fetch": "^3.3.2",
-    "svgo": "3.3.2",
-    "terser": "5.37.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GDG-Lille/devfest-2020.git"
-  },
-  "bugs": {
-    "url": "https://github.com/GDG-Lille/devfest-2020/issues"
-  },
-  "homepage": "https://github.com/GDG-Lille/devfest-2020#readme",
-  "description": ""
+    "svgo": "^3.3.2"
+  }
 }

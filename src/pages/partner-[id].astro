@@ -1,0 +1,137 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import { markdown as md } from "markdown";
+import Sponsors from "../components/sponsors.astro";
+
+interface Props {
+  sponsor: CollectionEntry<"sponsors">;
+}
+
+export const getStaticPaths = (async () => {
+  const sponsors = await getCollection("sponsors");
+
+  return sponsors.map((sponsor) => ({
+    params: {
+      id: sponsor.data.id,
+    },
+    props: {
+      sponsor: sponsor,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { sponsor } = Astro.props;
+
+const og = {
+  ogDescription: sponsor.data.description?.replaceAll('"', "")?.trim(),
+  ogUrl: "https://devlille.fr/partner-" + sponsor.data.id,
+  ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.${sponsor.data.ext}`,
+};
+---
+
+<Layout title={sponsor.data.name} currSection="partners" og={og}>
+  <div class="page-body list">
+    <h2>{sponsor.data.name}</h2>
+
+    <div class="speaker-sheet">
+      <div class="speaker">
+        {
+          sponsor.data.description && (
+            <div class="description">
+              <p>
+                {sponsor.data.description?.replaceAll('"', "")?.trim() ?? ""}
+              </p>
+            </div>
+          )
+        }
+        <div class="online">
+          <h3>Sur Internet</h3>
+          <ul>
+            {
+              sponsor.data.twitterAccount && (
+                <li>
+                  <strong class="stressed">Sur X: </strong>
+                  <a target="_blank" href={sponsor.data.twitterAccount}>
+                    {sponsor.data.twitterAccount?.replace(
+                      "https://twitter.com/",
+                      ""
+                    )}
+                  </a>
+                </li>
+              )
+            }
+            {
+              sponsor.data.linkedinAccount && (
+                <li>
+                  <strong class="stressed">Sur LinkedIn: </strong>
+                  <a target="_blank" href={sponsor.data.linkedinAccount}>
+                    {decodeURI(sponsor.data.linkedinAccount)
+                      ?.replace("https://www.linkedin.com/in/", "")
+                      ?.replace("https://www.linkedin.com/company/", "")
+                      .replace("/", "")}
+                  </a>
+                </li>
+              )
+            }
+            {
+              sponsor.data.siteUrl && (
+                <li>
+                  <strong class="stressed">Site Web: </strong>
+                  <a target="_blank" href={sponsor.data.siteUrl}>
+                    {sponsor.data.siteUrl}
+                  </a>
+                </li>
+              )
+            }
+          </ul>
+        </div>
+        {
+          sponsor.data.editedVideoUrl && (
+            <>
+              <link rel="stylesheet" href="/youtube/youtube.css" />
+              <script src="/youtube/youtube.js" />
+              <lite-youtube
+                videoid={sponsor.data.editedVideoUrl}
+                style="background-image: url('https://i.ytimg.com/vi/YCSvfY5OPgI/hqdefault.jpg');"
+              />
+            </>
+          )
+        }
+        {
+          (sponsor.data.jobs ?? []).length > 0 && (
+            <div class="talk">
+              <h3>Offres sur WeLoveDevs </h3>
+              <p>
+                <ul>
+                  {sponsor.data.jobs
+                    ?.map((job) => (
+                      <li>
+                        <a href={job.url}>{job.title}</a>
+                      </li>
+                    ))
+                    .join("")}
+                </ul>
+              </p>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="speaker-data-block">
+        <div class="speaker-data">
+          <p class="sponsor">
+            <a href={sponsor.data.siteUrl}
+              ><img
+                loading="lazy"
+                src={`/img/sponsors/${sponsor.data.logoName}.${sponsor.data.ext}`}
+                alt={`Logo de ${sponsor.data.name}`}
+              /></a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

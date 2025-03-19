@@ -1,0 +1,104 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+  sponsor: CollectionEntry<"sponsors">;
+}
+
+// Generate dynamic paths for each sponsor
+export const getStaticPaths = (async () => {
+  const sponsors = await getCollection("sponsors");
+
+  return sponsors.map((sponsor) => ({
+    params: { id: sponsor.data.id },
+    props: { sponsor: sponsor },
+  }));
+}) satisfies GetStaticPaths;
+
+const { sponsor } = Astro.props;
+
+const og = {
+  ogTitle: sponsor.data.name,
+  ogDescription: sponsor.data.description?.replaceAll('"', "").trim(),
+  ogUrl: `https://devlille.fr/partner-${sponsor.data.id}`,
+  ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.${sponsor.data.ext}`,
+};
+
+function displaySocialMedias(sponsor) {
+  return `
+    <div class="online">
+        <h3>Sur Internet</h3>
+        <ul>
+            ${
+              sponsor.data.twitterAccount
+                ? `<li><strong class="stressed">Sur X: </strong>
+                  <a target="_blank" href="${sponsor.data.twitterAccount}">
+                  ${sponsor.data.twitterAccount.replace("https://twitter.com/", "")}
+                  </a></li>`
+                : ""
+            }
+            ${
+              sponsor.data.linkedinAccount
+                ? `<li><strong class="stressed">Sur LinkedIn: </strong> 
+                  <a target="_blank" href="${sponsor.data.linkedinAccount}">
+                  ${decodeURI(sponsor.data.linkedinAccount)
+                    .replace("https://www.linkedin.com/in/", "")
+                    .replace("https://www.linkedin.com/company/", "")
+                    .replace("/", "")}
+                  </a></li>`
+                : ""
+            }
+            ${
+              sponsor.data.siteUrl
+                ? `<li><strong class="stressed">Site Web: </strong> 
+                  <a target="_blank" href="${sponsor.data.siteUrl}">${sponsor.data.siteUrl}</a>
+                  </li>`
+                : ""
+            }
+        </ul>
+    </div>
+  `;
+}
+
+function displayWLDOffers(sponsor) {
+  return sponsor.data.jobs?.length > 0
+    ? `<div class="talk"><h3>Offres sur WeLoveDevs </h3>
+      <ul>${sponsor.data.jobs
+        .map((job) => `<li><a href="${job.url}">${job.title}</a></li>`)
+        .join("")}</ul>
+      </div>`
+    : "";
+}
+---
+
+<Layout title={sponsor.data.name} currSection="sponsors" og={og}>
+  <div class="page-body list">
+    <h2>{sponsor.data.name}</h2>
+
+    <div class="sponsor-sheet">
+      <div class="sponsor">
+        <p class="description">
+          {sponsor.data.description?.replaceAll('"', "").trim()}
+        </p>
+        <Fragment set:html={displaySocialMedias(sponsor)} />
+        <Fragment set:html={displayWLDOffers(sponsor)} />
+      </div>
+
+      <div class="sponsor-data-block">
+        <div class="sponsor-data">
+          <p class="sponsor">
+            <a href={sponsor.data.siteUrl}>
+              <img
+                loading="lazy"
+                src={`/img/${sponsor.data.logoName}.${sponsor.data.ext}`}
+                alt={`Logo de ${sponsor.data.name}`}
+              />
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

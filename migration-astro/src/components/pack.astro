@@ -10,6 +10,7 @@ const { title, partners: unsorted } = Astro.props;
 const partners = (unsorted ?? []).sort((p1, p2) => {
   return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
 });
+
 ---
 
 <div class="sponsors gold">
@@ -21,10 +22,10 @@ const partners = (unsorted ?? []).sort((p1, p2) => {
         <li class="sponsor">
           <a
             aria-label={`Visiter le site de ${p.name}`}
-            href={`partner-${p.id}`}
+            href={`/sponsor-page-${p.id}`}
           >
             <img
-              src={`/img/${p.logoName}.${p.ext}`}
+              src={p.logoUrl}
               alt={p.name}
               loading="lazy"
             />

@@ -7,6 +7,7 @@ const sponsors = (await getCollection("sponsors")).map((c) => c.data);
 const gold = sponsors.filter((s) => s.sponsoring === "gold") ?? [];
 const silver = sponsors.filter((s) => s.sponsoring === "silver") ?? [];
 const bronze = sponsors.filter((s) => s.sponsoring === "bronze") ?? [];
+
 ---
 
 {gold.length > 0 && <Pack title="Gold" partners={gold} />}

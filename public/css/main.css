@@ -7,74 +7,13 @@
 
 /* ------------------------------ RESET ---------------------------- */
 
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-aside,
-article,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-figure,
-figcaption,
-footer,
-header,
-img,
-ins,
-kbd,
-main,
-nav,
-q,
-s,
-samp,
-section,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
+html, body, div, span, object, iframe, h1, h2, h3, h4, 
+h5, h6, p, blockquote, pre, a, abbr, acronym, address, aside,
+article, big, cite, code, del, dfn, em, figure, figcaption,
+footer, header, img, ins, kbd, main, nav, q, s, samp, section,
+small, strike,  strong, sub, sup, tt, var, b, u, i, dl, dt, dd,
+ol, ul, li, fieldset, form, label, legend, table, caption, tbody, 
+tfoot, thead, tr, th, td {
   margin: 0;
   padding: 0;
   border: 0;
@@ -85,15 +24,8 @@ html {
   overflow-y: scroll;
 }
 
-header,
-footer,
-main,
-nav,
-aside,
-article,
-section,
-figure,
-figcaption {
+header, footer, main, nav, aside, article, section,
+figure, figcaption {
   display: block;
 }
 
@@ -112,10 +44,7 @@ body {
   background-attachment: fixed;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   font-weight: normal;
 }
 
@@ -161,17 +90,11 @@ h3 {
   margin-bottom: 1em;
 }
 
-p,
-li,
-dt,
-dd {
+p, li, dt, dd {
   font-size: calc(1em + 0.5vw);
 }
 
-li p,
-li li,
-li dt,
-li dd {
+li p, li li, li dt, li dd {
   font-size: 100%;
 }
 
@@ -213,6 +136,33 @@ hr {
 abbr {
   cursor: help;
 }
+
+blockquote {
+  position: relative;
+  padding-left: 2rem;
+
+  & p {
+    font-variation-settings: "wght" 200;
+    line-height: 1.58;
+  }
+
+  & p + p {
+    font-variation-settings: "wght" 300;
+    margin-top: 1rem;
+  }
+}
+
+blockquote::before {
+  position: absolute;
+  width: 1em;
+  top: -1rem;
+  left: 0;
+  content: "\201C";
+  font-size: 4em;
+  color: var(--light-cold);
+}
+
+
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- STRUCTURE ---------------------------- */
@@ -258,8 +208,7 @@ header time {
   font-variation-settings: "wght" 800;
 }
 
-main,
-aside {
+main, aside {
   margin: 0 5vw;
 }
 
@@ -443,15 +392,15 @@ nav {
 }
 
 nav ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 66px);
+  display: flex;
   justify-content: center;
+  gap: 1em;
   list-style-type: none;
   margin: 0;
 }
 
 nav li {
-  font-size: 0.75em;
+  font-size: 0.8em;
   font-variation-settings: "wght" 600, "wdth" 100;
   padding: 0.75em 0;
 }
@@ -461,7 +410,7 @@ nav a {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  padding: 0.55em 1em 0.4em 1em;
+  padding: 1em 1.5em;
 }
 nav svg {
   flex: 0 0 20px;
@@ -558,9 +507,10 @@ aside div.be-partner h2 {
   color: var(--main-dark);
 }
 
-aside div.be-partner p {
-  max-width: 25em;
-  padding-top: 0.5rem;
+aside div.be-partner p.read-more {
+  background: var(--light-cold);
+  padding: 1rem;
+  margin-top: calc(2rem + 1vw);
 }
 aside div.be-partner a,
 aside div.be-partner a:visited {
@@ -853,8 +803,7 @@ p.read-more {
   max-width: 100%;
 }
 
-.page-body p,
-.page-body li {
+.page-body p, .page-body li {
   max-width: 45rem;
   line-height: calc(2.1ch + 0.15vw);
 }
@@ -1309,13 +1258,22 @@ ul.tabs {
   display: flex;
   gap: 0.5rem;
   list-style-type: none;
+  margin: 0;
   box-shadow: 0 1px 0 0 var(--body-text);
+
+  & li {
+    font-size: 145%;
+  }
+
+  & li + li {
+    margin-top: 0;
+  }
 }
 
 button[role="tab"] {
   font-variation-settings: "wght" 800;
   color: var(--body-text);
-  background-color: var(--body-bg);
+  background-color: rgba(0, 0, 0, 0);
   padding: 0.5em 1em;
 }
 
@@ -1325,18 +1283,21 @@ button[role="tab"][aria-selected="true"] {
   box-shadow: 0 5px 0 0 var(--link-color);
 }
 
+div.tab-content {
+  margin: calc(1.5rem + 1vw) 0;
+}
+
 section.hour + section.hour {
   margin-top: 2rem;
 }
 
 section.hour h3 {
-  color: var(--main-color);
+  color: var(--light-cold);
   font-variation-settings: "wght" 800;
   margin-bottom: 0.25em;
 }
 
 section.hour div.content {
-  background-color: #252525;
   padding: 1.5rem;
   margin-left: 1rem;
   border-left: 1px solid var(--hot-light);
@@ -1348,26 +1309,44 @@ section.hour dl {
 section.hour dl + dl {
   margin-top: 2rem;
 }
+
 section.hour dt {
+  position: relative;
   color: var(--text-high);
   font-variation-settings: "wght" 600;
 }
-section.hour dd {
-  margin-left: 1rem;
-  margin: 0.5em 0 0 1rem;
+
+section.hour dt::before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1px;
+  top: 0.5em;
+  left: -1.5rem;
+  background-color: var(--hot-light);
 }
 
-section.hour div.content a,
-section.hour div.content a:visited {
+section.hour dd {
+  padding-left: 35px;
+  margin-top: 0.5rem;
+}
+section.hour dd:first-of-type {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M11,15v3h5v2H4v-2h5v-3H2c-.55,0-1-.45-1-1V2H0V0h20v2h-1v12c0,.55-.45,1-1,1h-7ZM3,13h14V2H3v11Z' style='fill:%23fff; stroke-width:0px;'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 3px 3px;
+}
+
+section.hour h3 a,
+section.hour h3 a:visited {
+  display: inline-block;
+  width: 0.75em;
   font-variation-settings: "wght" 800;
   line-height: 1.35;
   text-align: left;
   text-decoration: none;
   color: var(--link-color);
-  background-color: #252525;
-}
-section.hour a:visited {
-  color: #d2660f;
+  background-color: transparent;
 }
 
 section.hour div.content a::after {
@@ -1378,10 +1357,6 @@ section.hour div.content a::after {
   height: 100%;
   top: 0;
   left: 0;
-}
-
-img[alt="Ancre"] {
-  width: 1em;
 }
 
 p.openfeedback {
@@ -1425,26 +1400,6 @@ div.cfp {
   padding: 1.5rem;
   margin-top: -4vw;
   transition: all 0.3s;
-}
-
-div.cfp::before,
-div.cfp::after {
-  display: block;
-  content: "";
-  position: absolute;
-  width: 6px;
-  height: 26px;
-  top: -15px;
-  line-height: 1.45;
-  background-color: var(--body-text);
-  border-radius: 6px;
-}
-
-div.cfp::before {
-  left: 25px;
-}
-div.cfp::after {
-  right: 25px;
 }
 
 div.cfp a {

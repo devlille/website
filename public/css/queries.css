@@ -23,6 +23,19 @@
   section.member p.illustration {
     background-size: contain;
   }
+
+  blockquote {
+    position: relative;
+    padding-left: 4rem;
+  }
+  
+  blockquote::before {
+    position: absolute;
+    width: 1em;
+    top: -1rem;
+    left: 0;
+    font-size: 7em;
+  }
 }
 
 @media screen and (min-width: 600px) {
@@ -81,7 +94,7 @@
     gap: 2rem;
   }
 
-  div.cfp a {display: inline;}
+  div.cfp a {margin-bottom: 0.5rem;}
   
   #mc_embed_signup_scroll h2 {
     margin-bottom: 0 !important;
@@ -180,9 +193,6 @@
 @media screen and (min-width: 1200px) {
   div.group:has(div.cfp) {
     position: relative;
-  }
-  div.cfp::before, div.cfp::after {
-    content: none;
   }
   div.cfp {
     position: absolute;

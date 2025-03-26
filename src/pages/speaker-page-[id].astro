@@ -37,24 +37,30 @@ const selectedTalks = talks.filter((t) =>
 ---
 
 <Layout title={speaker.data.display_name} currSection="speakers" og={og}>
-  <div class="page-body list">
-    <h2>
-      {speaker.data.display_name}{
-        speaker.data.pronouns ? ` (${speaker.data.pronouns})` : ""
-      }
-    </h2>
+  <div class="page-body list speaker-sheet">
+    <div class="h-group">
+        {
+          speaker.data.photo_url && (
+            <p class="s-photo">
+              <img
+                loading="lazy"
+                src={speaker.data.photo_url}
+                alt={`Photo de ${speaker.data.display_name}`} />
+            </p>
+          )
+        }
+      <h2>
+        {speaker.data.display_name}{
+          speaker.data.pronouns ? ` (${speaker.data.pronouns})` : ""}
+      </h2>
+      <p>
+        <span class="no-display">Entreprise: </span>
+        {speaker.data.company ? speaker.data.company : ""}
+      </p>   
+    </div>
 
     <div class="speaker-sheet">
       <div class="speaker">
-        <p>
-          <strong class="stressed"
-            >{speaker.data.display_name}{
-              speaker.data.pronouns ? ` (${speaker.data.pronouns})` : ""
-            }</strong
-          >
-          {speaker.data.company ? ", " : ""}
-          {speaker.data.company ? speaker.data.company : ""}
-        </p>
         <Fragment
           set:html={speaker.data.bio
             ? md.toHTML(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
@@ -64,17 +70,6 @@ const selectedTalks = talks.filter((t) =>
 
       <div class="speaker-data-block">
         <div class="speaker-data">
-          {
-            speaker.data.photo_url && (
-              <p class="s-photo">
-                <img
-                  loading="lazy"
-                  src={speaker.data.photo_url}
-                  alt={`Photo de ${speaker.data.display_name}`}
-                />
-              </p>
-            )
-          }
           <ul class="social">
             {
               speaker.data.mastodon && (
@@ -134,11 +129,15 @@ const selectedTalks = talks.filter((t) =>
         </div>
       </div>
       <div class="talks">
+        <h3>
+          <span lang="en">Talks</span> présentés par 
+          {speaker.data.display_name}
+        </h3>
         {
           selectedTalks.map((selectedTalk) => {
             return (
               <div class="talk">
-                <h3>{selectedTalk?.title}</h3>
+                <h4>{selectedTalk?.title}</h4>
                 <p>{selectedTalk?.abstract}</p>
 
                 {selectedTalk?.open_feedback && (

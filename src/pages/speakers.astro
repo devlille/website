@@ -14,21 +14,21 @@ const speakersFromApi = (await getCollection("speakers")).map((d) => d.data);
           speakersFromApi.map((speaker) => {
             return (
               <li>
-                <p>
-                  <strong>
-                    <a href={`/speaker-page-${speaker.id}`}>
-                      {speaker.display_name}
-                    </a>
-                  </strong>
-                </p>
-                <p>{speaker.bio}</p>
                 <p class="s-photo">
                   <img
                     loading="lazy"
+                    width="100"
+                    height="100"
                     src={speaker.photo_url}
                     alt={`Photo de ${speaker.display_name}`}
                   />
                 </p>
+                <h3>
+                  <a href={`/speaker-page-${speaker.id}`}>
+                    {speaker.display_name}
+                  </a>
+                </h3>
+                <p>{speaker.bio}</p>
               </li>
             );
           })

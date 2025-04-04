@@ -32,8 +32,18 @@ const og = {
 ---
 
 <Layout title={sponsor.data.name} currSection="partners" og={og}>
-  <div class="page-body list">
-    <h2>{sponsor.data.name}</h2>
+  <div class="page-body list sponsor-sheet">
+    <div class="h-group">
+      <p class="sponsor">
+        <a href={sponsor.data.siteUrl}>
+          <img
+            loading="lazy"
+            src={`/img/sponsors/${sponsor.data.logoName}.${sponsor.data.ext}`}
+            alt={`Logo de ${sponsor.data.name}`}/>
+        </a>
+      </p>
+      <h2>{sponsor.data.name}</h2>
+  </div>
 
     <div class="speaker-sheet">
       <div class="speaker">
@@ -117,20 +127,6 @@ const og = {
             </div>
           )
         }
-      </div>
-
-      <div class="speaker-data-block">
-        <div class="speaker-data">
-          <p class="sponsor">
-            <a href={sponsor.data.siteUrl}
-              ><img
-                loading="lazy"
-                src={`/img/sponsors/${sponsor.data.logoName}.${sponsor.data.ext}`}
-                alt={`Logo de ${sponsor.data.name}`}
-              /></a
-            >
-          </p>
-        </div>
       </div>
     </div>
   </div>

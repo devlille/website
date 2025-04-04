@@ -43,7 +43,7 @@ const talksByDate = await createTalksCollectionsBydate()
             {talk[1].map((t: any) => {
               return (
               <dl>
-                <dt>{ t.talk.room } {t.talk.type}</dt>
+                <dt>{ t.talk.room }</dt>
   
                 {t.id == undefined  && (
                 <dd lang={t.talk.language == "English" ? 'en': 'fr'} class={t.talk.type}>

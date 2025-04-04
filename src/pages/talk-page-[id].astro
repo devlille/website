@@ -26,7 +26,7 @@ const { talk } = Astro.props;
 const og = {
   ogDescription: talk.data.title?.replaceAll('"', ""),
   ogUrl: "https://devlille.fr/talk-page-" + talk.data.id,
-  ogImage: talk.data.speakers?.[0].photo_url,
+  ogImage: talk.data.speakers?.[0]?.photo_url,
 };
 
 const speakers = talk.data.speakers ?? [];

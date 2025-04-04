@@ -158,7 +158,7 @@ const speakers = defineCollection({
 
   loader: async () => {
     return fetch(
-      `https://confily-486924521070.europe-west1.run.app/events/devfest-lille-2024/speakers`
+      `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/speakers`
     ).then((response) => response.json());
   },
 });
@@ -202,7 +202,7 @@ const talks = defineCollection({
 
   loader: async () => {
     const talkMap = await fetch(
-      `https://confily-486924521070.europe-west1.run.app/events/devfest-lille-2024/planning`
+      `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/planning`
     ).then((response) => response.json());
 
     return Object.values(talkMap)

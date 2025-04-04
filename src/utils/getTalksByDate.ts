@@ -7,7 +7,7 @@ dayjs.extend(duration);
 const getTalks = async () => {
   try {
     const agenda = await fetch(
-      "https://confily-486924521070.europe-west1.run.app/events/devfest-lille-2024/planning",
+      "https://confily-486924521070.europe-west1.run.app/events/devlille-2025/planning",
       {
         headers: {
           Accept: "application/json; version=2",

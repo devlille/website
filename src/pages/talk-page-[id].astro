@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import { markdown as md } from "markdown";
 
 interface Props {
   talk: CollectionEntry<"talks">;
@@ -37,7 +38,11 @@ const speakers = talk.data.speakers ?? [];
 
     <div class="speaker-sheet">
       <div class="speaker">
-        <Fragment set:html={talk.data.abstract} />
+        <Fragment
+          set:html={md.toHTML(
+            talk.data.abstract.replaceAll("- ", "\r\n\r\n- ")
+          )}
+        />
       </div>
       <div class="speaker-data-block"></div>
 

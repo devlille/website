@@ -2,8 +2,8 @@ const config = {
   edition: 2025,
   editionNumber: 8,
   date: "12 et 13 Juin",
-  formattedStartDate: "2024-06-12",
-  formattedEndDate: "2024-06-13",
+  formattedStartDate: "2025-06-12",
+  formattedEndDate: "2025-06-13",
   billetwebUrl: "https://www.billetweb.fr/devlille-",
   earlyBirds:
     "https://docs.google.com/forms/d/e/1FAIpQLSc-PIBQSB_G1WBTxeQIK2LUNm-GvaQYq08U9g4iGZCBQ-N-qw/viewform",

@@ -25,7 +25,7 @@ const getTalks = async () => {
               let id = slot?.info?.id ?? slot?.talk?.speakers[0]?.id;
               let speakers = slot?.talk?.speakers
                 ?.map((speaker) => speaker?.display_name)
-                .join(" &amp; ");
+                .join(" & ");
               if (slot.type === "event-session" && !slot.info.description) {
                 id = undefined;
               }

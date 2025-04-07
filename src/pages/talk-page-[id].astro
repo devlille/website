@@ -88,13 +88,6 @@ const speakers = talk.data.speakers ?? [];
                 <div class="talk">
                   <h3>{s.display_name}</h3>
                   <p>
-                    <Fragment
-                      set:html={md
-                        .toHTML(s.bio.replaceAll("- ", "\r\n\r\n- "))
-                        .replaceAll('"', "")}
-                    />
-                  </p>
-                  <p>
                     <a href={`/speaker-page-${s.id}`}>
                       Page dédiée de {s.display_name}
                     </a>

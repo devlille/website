@@ -5,6 +5,7 @@ import { resolve } from "node:path";
 import { writeFileSync } from "node:fs";
 import { optimize } from "svgo";
 import { glob } from "astro/loaders";
+import { markdown as md } from "markdown";
 
 const tempFolder = resolve(import.meta.dirname, "../../public/img/sponsors");
 
@@ -208,11 +209,22 @@ const talks = defineCollection({
     return Object.values(talkMap)
       .flatMap((talk) => Object.values(talk))
       .flat()
-      .filter((a) => !!a.talk)
-      .map((a: any) => ({
-        type: a.type,
-        ...a.talk,
-      }));
+      .map((a: any) => {
+        console.log(a.type);
+        if (a.type === "event-session" && !!a.id) {
+          return {
+            id: a.id,
+            type: a.type,
+            abstract: a?.info?.description ?? "",
+            title: a?.info?.title,
+          };
+        }
+
+        return {
+          type: a.type,
+          ...a.talk,
+        };
+      });
   },
 });
 

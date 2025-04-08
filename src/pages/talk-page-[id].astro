@@ -40,7 +40,7 @@ const speakers = talk.data.speakers ?? [];
       <div class="speaker">
         <Fragment
           set:html={md.toHTML(
-            talk.data.abstract.replaceAll("- ", "\r\n\r\n- ")
+            talk.data.abstract?.replaceAll("- ", "\r\n\r\n- ")
           )}
         />
       </div>

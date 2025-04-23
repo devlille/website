@@ -330,7 +330,7 @@
     flex: 1;
   }
   
-  section.hour div.content a {
+  section.hour dd.talk-session {
     box-sizing: border-box;
     padding-right: 65px;
   }

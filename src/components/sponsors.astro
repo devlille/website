@@ -14,6 +14,25 @@ const bronze = sponsors.filter((s) => s.sponsoring === "bronze") ?? [];
 {bronze.length > 0 && <Pack title="Bronze" partners={bronze} />}
 
 <div class="sponsors community">
+  <h3>Partenaire Freelance et Startup</h3>
+  <ul>
+    <li class="sponsor">
+      <a
+        aria-label="Visiter le site de GreenNerds"
+        href="https://www.linkedin.com/company/codekaio/?originalSubdomain=fr"
+      >
+        <img
+          src="/img/codekaio.png"
+          alt=""
+          loading="lazy"
+          style="max-width: 90%;"
+        />
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="sponsors community">
   <h3>Partenaires DevLille Graine de Dev</h3>
   <ul>
     <li class="sponsor">
@@ -186,6 +205,16 @@ const bronze = sponsors.filter((s) => s.sponsoring === "bronze") ?? [];
       >
         <img
           src="https://rdv.lafrenchtechlille.com/images/configuration/logos/66431c8ab265e810426059.png"
+          alt=""
+          loading="lazy"
+          style="max-width: 90%;"
+        />
+      </a>
+    </li>
+    <li class="sponsor">
+      <a aria-label="Visiter le site de NCLS" href="https://ncls.tv/">
+        <img
+          src="/img/NCLS.svg"
           alt=""
           loading="lazy"
           style="max-width: 90%;"

@@ -2,8 +2,6 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { markdown as md } from "markdown";
-import Sponsors from "../components/sponsors.astro";
 
 interface Props {
   sponsor: CollectionEntry<"sponsors">;
@@ -39,11 +37,12 @@ const og = {
           <img
             loading="lazy"
             src={`/img/sponsors/${sponsor.data.logoName}.${sponsor.data.ext}`}
-            alt={`Logo de ${sponsor.data.name}`}/>
+            alt={`Logo de ${sponsor.data.name}`}
+          />
         </a>
       </p>
       <h2>{sponsor.data.name}</h2>
-  </div>
+    </div>
 
     <div class="speaker-sheet">
       <div class="speaker">

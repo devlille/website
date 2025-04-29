@@ -1,11 +1,10 @@
-import { defineCollection, z } from "astro:content";
-import config from "../config/config";
-import isURL from "isurl";
-import { resolve } from "node:path";
-import { writeFileSync } from "node:fs";
-import { optimize } from "svgo";
 import { glob } from "astro/loaders";
-import { markdown as md } from "markdown";
+import { defineCollection, z } from "astro:content";
+import isURL from "isurl";
+import { writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { optimize } from "svgo";
+import config from "../config/config";
 
 const tempFolder = resolve(import.meta.dirname, "../../public/img/sponsors");
 

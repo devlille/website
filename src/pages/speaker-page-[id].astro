@@ -44,7 +44,7 @@ const selectedTalks = talks.filter((t) =>
           <p class="s-photo">
             <img
               loading="lazy"
-              src={speaker.data.photo_url}
+              src={`${speaker.data.photo_url}?v=${Math.floor(Math.random() * 1000) + 1}`}
               alt={`Photo de ${speaker.data.display_name}`}
             />
           </p>

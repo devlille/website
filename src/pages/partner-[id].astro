@@ -3,6 +3,13 @@ import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
+const videos: Record<string, string> = {
+  aGaY4K4bmCui5YwHAX1P: "NnqC0mDkmDI",
+  nQ5LMHHfUnFZE85YdIOT: "7FPZqvYmdrA",
+  IskRAkrAh5kHqOUc8TuF: "18kdzQ0sOF0",
+  h5fEfoQf4jqXrQWbwD7v: "N53Ik0PvKYI",
+  yE6KTKUWbzi1AmJEeTCo: "XTkTvysN6gQ",
+};
 interface Props {
   sponsor: CollectionEntry<"sponsors">;
 }
@@ -27,6 +34,8 @@ const og = {
   ogUrl: "https://devlille.fr/partner-" + sponsor.data.id,
   ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.${sponsor.data.ext}`,
 };
+
+const video = videos[sponsor.data.id] as string | undefined
 ---
 
 <Layout title={sponsor.data.name} currSection="partners" og={og}>
@@ -95,19 +104,21 @@ const og = {
               )
             }
           </ul>
+
+          {
+            video && (
+              <>
+                <link rel="stylesheet" href="/youtube/youtube.css" />
+                <script is:inline src="/youtube/youtube.js" />
+                <lite-youtube
+                  videoid={video}
+                  style=`background-image: url('https://i.ytimg.com/vi/${video}/hqdefault.jpg');`
+                />
+              </>
+            )
+          }
         </div>
-        {
-          sponsor.data.editedVideoUrl && (
-            <>
-              <link rel="stylesheet" href="/youtube/youtube.css" />
-              <script is:inline src="/youtube/youtube.js" />
-              <lite-youtube
-                videoid={sponsor.data.editedVideoUrl}
-                style="background-image: url('https://i.ytimg.com/vi/YCSvfY5OPgI/hqdefault.jpg');"
-              />
-            </>
-          )
-        }
+        
         {
           (sponsor.data.jobs ?? []).length > 0 && (
             <div class="talk">

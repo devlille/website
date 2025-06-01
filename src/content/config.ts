@@ -195,9 +195,9 @@ const talks = defineCollection({
         })
       )
       .optional(),
-    link_slides: z.null().optional(),
-    link_replay: z.null().optional(),
-    open_feedback: z.null().optional(),
+    link_slides: z.string().optional(),
+    link_replay: z.string().optional(),
+    open_feedback: z.string().optional(),
   }),
 
   loader: async () => {

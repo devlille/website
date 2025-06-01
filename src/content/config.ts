@@ -195,8 +195,8 @@ const talks = defineCollection({
         })
       )
       .optional(),
-    link_slides: z.string().optional(),
-    link_replay: z.string().optional(),
+    link_slides: z.string().optional().nullable(),
+    link_replay: z.string().optional().nullable(),
     open_feedback: z.string().optional(),
   }),
 

@@ -17,6 +17,9 @@
     // Get the indices of the new and old tabs to find the correct
     // tab panels to show and hide
     let index = Array.prototype.indexOf.call(tabs, newTab);
+
+    localStorage.setItem("currentTab", index);
+
     let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
     panels[oldIndex].hidden = true;
     panels[index].hidden = false;
@@ -77,7 +80,14 @@
   });
 
   // Initially activate the first tab and reveal the first tab panel
-  tabs[0].removeAttribute("tabindex");
-  tabs[0].setAttribute("aria-selected", "true");
-  panels[0].hidden = false;
+  let initialTab;
+  if(localStorage.getItem("currentTab") != "") {
+    initialTab = localStorage.getItem("currentTab");
+  } else {
+    initialTab = 0;
+  }
+  
+  tabs[initialTab].removeAttribute("tabindex");
+  tabs[initialTab].setAttribute("aria-selected", "true");
+  panels[initialTab].hidden = false;
 })();

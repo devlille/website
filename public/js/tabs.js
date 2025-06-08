@@ -18,7 +18,9 @@
     // tab panels to show and hide
     let index = Array.prototype.indexOf.call(tabs, newTab);
 
-    localStorage.setItem("currentTab", index);
+    const url = new URL(window.location.href);
+    url.searchParams.set("currentTab", index);
+    window.history.pushState({}, "", url);
 
     let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
     panels[oldIndex].hidden = true;
@@ -80,13 +82,11 @@
   });
 
   // Initially activate the first tab and reveal the first tab panel
-  let initialTab;
-  if(localStorage.getItem("currentTab") != "") {
-    initialTab = localStorage.getItem("currentTab");
-  } else {
-    initialTab = 0;
-  }
-  
+  let initialTab = 0;
+
+  const params = new URLSearchParams(window.location.search);
+  initialTab = params.get("currentTab") ?? "0";
+
   tabs[initialTab].removeAttribute("tabindex");
   tabs[initialTab].setAttribute("aria-selected", "true");
   panels[initialTab].hidden = false;

@@ -36,11 +36,11 @@ export const fetchImage = ({
     .then((response) => response.text())
     .then((blob) => {
       let data = blob;
-      try {
+      /*try {
         data = optimize(blob)?.data;
       } catch (e) {
         console.error(e);
-      }
+      }*/
 
       writeFileSync(`${tempFolder}/${logoName}.${ext}`, data, {
         flag: "w",
@@ -209,7 +209,6 @@ const talks = defineCollection({
       .flatMap((talk) => Object.values(talk))
       .flat()
       .map((a: any) => {
-        console.log(a.type);
         if (a.type === "event-session" && !!a.id) {
           return {
             id: a.id,

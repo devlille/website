@@ -43,7 +43,7 @@ const qanda: FAQ[] = data.qanda
     {
       qanda.map((faq) => {
         return (
-          <div class="faq" id={`faq{faq.order}`}>
+          <div class="faq" id={`faq${faq.order}`}>
             <h3>
               {faq.question}
               <a href={`/faq/index.html#faq${faq.order}`}>

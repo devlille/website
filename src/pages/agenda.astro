@@ -34,9 +34,9 @@ const talksByDate = await createTalksCollectionsBydate()
         {dateAndTalks[1].map((talk: any) => {
           return (
           <section class="hour">
-        <h3 id={`h${talk[0]}`}>
+        <h3 id={`d-${i}-h${talk[0]}`}>
             {talk[0]}
-            <a href={`https://devlille.fr/agenda/index.html#h${talk[0]}`}>
+            <a href={`#d-${i}-h${talk[0]}`}>
             <img src="/img/link.svg" alt="Ancre"></a>
         </h3>
         <div class="content">

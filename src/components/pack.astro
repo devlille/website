@@ -17,20 +17,38 @@ const partners = (unsorted ?? []).sort((p1, p2) => {
 
   <ul>
     {
-      partners.map((p) => (
-        <li class="sponsor">
-          <a
-            aria-label={`Visiter le site de ${p.name}`}
-            href={`partner-${p.id}`}
-          >
-            <img
-              src={`/img/sponsors/${p.logoName}.${p.ext}`}
-              alt={p.name}
-              loading="lazy"
-            />
-          </a>
-        </li>
-      ))
+      partners.map((p) => {
+        if (p.id === "T7YKXfMS1xm2gl4tr31Y") {
+          return (
+            <li class="sponsor">
+              <a
+                aria-label={`Visiter le site de ${p.name}`}
+                href={`partner-${p.id}`}
+              >
+                <img
+                  src={`/img/${p.logoName}.png`}
+                  alt={p.name}
+                  loading="lazy"
+                />
+              </a>
+            </li>
+          );
+        }
+        return (
+          <li class="sponsor">
+            <a
+              aria-label={`Visiter le site de ${p.name}`}
+              href={`partner-${p.id}`}
+            >
+              <img
+                src={`/img/sponsors/${p.logoName}.${p.ext}`}
+                alt={p.name}
+                loading="lazy"
+              />
+            </a>
+          </li>
+        );
+      })
     }
   </ul>
 </div>

@@ -44,11 +44,16 @@ const video = videos[sponsor.data.id] as string | undefined
     <div class="h-group">
       <p class="sponsor">
         <a href={sponsor.data.siteUrl}>
-          <img
+          { sponsor.data.id === "T7YKXfMS1xm2gl4tr31Y" ?(<img
+          loading="lazy"
+          src={`/img/${sponsor.data.logoName}.png`}
+          alt={`Logo de ${sponsor.data.name}`} 
+        />)
+         : (<img
             loading="lazy"
             src={`/img/sponsors/${sponsor.data.logoName}.${sponsor.data.ext}`}
             alt={`Logo de ${sponsor.data.name}`}
-          />
+          />)}
         </a>
       </p>
       <h2>{sponsor.data.name}</h2>

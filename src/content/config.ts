@@ -81,6 +81,7 @@ const sponsors = defineCollection({
       z.literal("gold"),
       z.literal("silver"),
       z.literal("bronze"),
+      z.literal("freelance / startup"),
     ]),
     name: z.string(),
     logoName: z.string().optional(),

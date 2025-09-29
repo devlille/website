@@ -5,64 +5,13 @@ import config from "../config/config.ts";
 
 const og = {
   ogTitle: "DevLille",
-  ogDescription:
-    "Le DevLille est une conférence de deux jours autour des sujets Web, Mobile et Cloud.",
+  ogDescription: "Le DevLille est une conférence de deux jours autour des sujets Web, Mobile et Cloud.",
   ogImage: "https://devlille.fr/img/logo-full.svg",
 };
 ---
 
 <Layout title="DevLille" currSection="index" og={og}>
   <div class="group">
-    <div class="presentation">
-      <p>
-        <strong
-          >Devfest Lille devient
-          <span class="stressed back">DevLille !</span>
-        </strong>
-        <p>
-          Nous changeons seulement de nom, mais tout le reste demeure inchangé :
-          le même lieu, le même format, et la même équipe de bénévoles.
-        </p>
-        <p>
-          Notre ambition reste intacte : vous proposer deux journées de
-          conférences tech enrichies d'une dimension
-          <strong class="stressed">humaine</strong> et <strong class="stressed"
-            >environnementale</strong
-          >, en harmonie avec les enjeux du monde actuel.
-        </p>
-        <p class="register">
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href={config.billetwebUrl + config.edition}
-          >
-            Prenez votre place!
-          </a>
-        </p>
-        <!--p class="register">
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="https://docs.google.com/forms/d/e/1FAIpQLScoYCZmUCC4ayhc2KormzAmtuhUGv9oR5FZdWViolJ5cfVrAQ/viewform?usp=sf_link"
-          >
-            Participez au Ch'ti Tremplin!
-          </a>
-        </p-->
-        {
-          config.enabled.earlyBirds && (
-            <p class="register">
-              <a
-                rel="noreferrer noopener"
-                target="_blank"
-                href={config.billetwebUrl + config.edition}
-              >
-                Prenez votre place Early Bird!
-              </a>
-            </p>
-          )
-        }
-      </p>
-    </div>
     <!--div class="cfp">
       <p>
         <a href={config.cfpUrl + config.edition} lang="en"> Call for Paper</a>
@@ -119,26 +68,16 @@ const og = {
             <picture>
               <source srcset="img/lgp.avif" type="image/avif" />
               <source srcset="img/lgp.webp" type="image/webp" />
-              <img
-                loading="lazy"
-                src="/img/lgp.jpg"
-                alt="Une salle du Lille Grand Palais"
-              />
+              <img loading="lazy" src="/img/lgp.jpg" alt="Une salle du Lille Grand Palais" />
             </picture>
           </p>
           <div>
             <p>
-              Lille Grand Palais est un lieu incontournable avec un espace de
-              plus de 1900m2 et nous permettant d'accueillir plus de {
-                config.numberOfPeople
-              } personnes.
+              Lille Grand Palais est un lieu incontournable avec un espace de plus de 1900m2 et nous permettant
+              d'accueillir plus de {config.numberOfPeople} personnes.
             </p>
             <p class="read-more">
-              <a
-                rel="noreferrer noopener"
-                target="_blank"
-                href="https://goo.gl/maps/cBSP9yZSHtMZuW9BA"
-              >
+              <a rel="noreferrer noopener" target="_blank" href="https://goo.gl/maps/cBSP9yZSHtMZuW9BA">
                 Comment y aller</a
               >
             </p>
@@ -162,24 +101,16 @@ const og = {
           </p>
           <div>
             <p>
-              <strong class="stressed">Toutes</strong> nos conférences sont sous-titrées
-              grâce au service du <a
+              <strong class="stressed">Toutes</strong> nos conférences sont sous-titrées grâce au service du <a
                 rel="noreferrer noopener"
                 target="_blank"
                 href="https://www.lemessageur.com/"
               >
                 Messageur
-                <img
-                  src="/img/external-link.svg"
-                  alt="Ouvre nouvel onglet"
-                  width="14"
-                  height="14"
-                  loading="lazy"
-                /></a
-              >. Le lieu est également entièrement accessible aux personnes à
-              mobilité réduite. De plus, une salle de repos est à disposition
-              pour celles et ceux qui, pour des raisons de santé, auraient
-              besoin d'un espace calme.
+                <img src="/img/external-link.svg" alt="Ouvre nouvel onglet" width="14" height="14" loading="lazy" /></a
+              >. Le lieu est également entièrement accessible aux personnes à mobilité réduite. De plus, une salle de
+              repos est à disposition pour celles et ceux qui, pour des raisons de santé, auraient besoin d'un espace
+              calme.
             </p>
           </div>
         </div>
@@ -201,12 +132,9 @@ const og = {
           </p>
           <div>
             <p>
-              Engagés dans une démarche <strong class="stressed">
-                écoresponsable</strong
-              >, nous faisons notre maximum pour faire de notre conférence un
-              événement <strong class="stressed">zéro déchet</strong>. Nous
-              réduisons au maximum les déchets en favorisant la réutilisation et
-              en évitant le gaspillage. En collaboration avec <a
+              Engagés dans une démarche <strong class="stressed"> écoresponsable</strong>, nous faisons notre maximum
+              pour faire de notre conférence un événement <strong class="stressed">zéro déchet</strong>. Nous réduisons
+              au maximum les déchets en favorisant la réutilisation et en évitant le gaspillage. En collaboration avec <a
                 rel="noreferrer noopener"
                 target="_blank"
                 href="https://consignerie.com/"
@@ -218,10 +146,8 @@ const og = {
                   height="14"
                   loading="lazy"
                 />
-              </a>, nous vous proposons des repas préparés à partir de produits
-              locaux, servis dans des contenants consignés, ainsi que des
-              boissons également présentées dans des bouteilles en verre
-              consignées.
+              </a>, nous vous proposons des repas préparés à partir de produits locaux, servis dans des contenants
+              consignés, ainsi que des boissons également présentées dans des bouteilles en verre consignées.
             </p>
           </div>
         </div>
@@ -232,20 +158,15 @@ const og = {
         <div class="content">
           <p class="illustration">
             <picture>
-              <img
-                loading="lazy"
-                src="https://framalibre.org/images/logo/Scratch.png"
-                alt="Logo du logiciel Scratch"
-              />
+              <img loading="lazy" src="https://framalibre.org/images/logo/Scratch.png" alt="Logo du logiciel Scratch" />
             </picture>
           </p>
           <div>
             <p>
-              Animée par <strong class="stressed"> Exotec</strong> et en partenariat
-              avec <strong class="stressed">Zenika</strong>, nous organisons
-              pour la première année une sensibilisation à la programmation pour
-              des lycées et des collèges. Environ 60 élèves vont ainsi découvrir
-              notre métier et rencontrer certains partenaires.
+              Animée par <strong class="stressed"> Exotec</strong> et en partenariat avec <strong class="stressed"
+                >Zenika</strong
+              >, nous organisons pour la première année une sensibilisation à la programmation pour des lycées et des
+              collèges. Environ 60 élèves vont ainsi découvrir notre métier et rencontrer certains partenaires.
             </p>
           </div>
         </div>
@@ -265,8 +186,7 @@ const og = {
           </p>
           <div>
             <p>
-              Afin de continuer notre sensibilisation sur les conséquences du
-              numérique sur notre planète, des ateliers <strong
+              Afin de continuer notre sensibilisation sur les conséquences du numérique sur notre planète, des ateliers <strong
                 class="stressed"
               >
                 Fresque du Climat</strong
@@ -274,13 +194,7 @@ const og = {
               seront proposés.
             </p>
             <p class="read-more">
-              <a
-                rel="noreferrer noopener"
-                target="_blank"
-                href="https://devlille.fr/agenda"
-              >
-                Accéder à l'agenda</a
-              >
+              <a rel="noreferrer noopener" target="_blank" href="https://devlille.fr/agenda"> Accéder à l'agenda</a>
             </p>
           </div>
         </div>

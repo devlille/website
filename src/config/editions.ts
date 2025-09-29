@@ -1,7 +1,7 @@
 export default [
   {
     year: 2025,
-    url: "https://2024.devlille.fr/",
+    url: "https://2025.devlille.fr/",
   },
   {
     year: 2024,

@@ -19,7 +19,7 @@ const config = {
   enabled: {
     welovedevs: false,
     billetweb: false,
-    sponsoring: false,
+    sponsoring: true,
     earlyBirds: false,
   },
 };

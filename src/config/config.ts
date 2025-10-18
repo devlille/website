@@ -11,7 +11,7 @@ const config = {
   cfpStartedDate: "5 Janvier",
   cfpEndedDate: "31 Mars",
   partershipUrl:
-    "https://docs.google.com/presentation/d/e/2PACX-1vSo0McftZg-uPKKsoJnKGmzny9pEB2G_6XHVPK3MXiEfMk2J4UgXGJ_JWS77namY9lw5Fqj1Ace8Ftr/pub?start=false&loop=false&delayms=3000",
+    "https://docs.google.com/presentation/d/e/2PACX-1vQ8NK6ZjZRNFbRAae5CkmqRDMA0C_PuIUYGuBX6B-_OT_LSqC_T5cGOwj4iFpMIpzaTk4vfv82dAEqX/pub?start=false&loop=false&delayms=3000",
   numberOfPeople: 1500,
   numberOfSpeaker: 60,
   numberOfTalks: 44,

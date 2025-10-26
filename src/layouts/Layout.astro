@@ -22,9 +22,9 @@ const offers = [
     priceCurrency: "EUR",
     availability: "https://schema.org/Reserved",
     availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
-    availabilityEnds: `${config.formattedEndDate}}T08:00+2:00`,
-    validFrom: `${config.formattedStartDate}}T08:00+2:00`,
-    validThrough: `${config.formattedEndDate}}T19:00+2:00`,
+    availabilityEnds: `${config.formattedEndDate}T08:00+2:00`,
+    validFrom: `${config.formattedStartDate}T08:00+2:00`,
+    validThrough: `${config.formattedEndDate}T19:00+2:00`,
   },
   {
     "@type": "Offer",
@@ -34,9 +34,9 @@ const offers = [
     priceCurrency: "EUR",
     availability: "https://schema.org/Reserved",
     availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
-    availabilityEnds: `${config.formattedEndDate}}T08:00+2:00`,
-    validFrom: `${config.formattedStartDate}}T08:00+2:00`,
-    validThrough: `${config.formattedEndDate}}T19:00+2:00`,
+    availabilityEnds: `${config.formattedEndDate}T08:00+2:00`,
+    validFrom: `${config.formattedStartDate}T08:00+2:00`,
+    validThrough: `${config.formattedEndDate}T19:00+2:00`,
   },
   {
     "@type": "Offer",
@@ -46,9 +46,9 @@ const offers = [
     priceCurrency: "EUR",
     availability: "https://schema.org/Reserved",
     availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
-    availabilityEnds: `${config.formattedEndDate}}T08:00+2:00`,
-    validFrom: `${config.formattedStartDate}}T08:00+2:00`,
-    validThrough: `${config.formattedEndDate}}T19:00+2:00`,
+    availabilityEnds: `${config.formattedEndDate}T08:00+2:00`,
+    validFrom: `${config.formattedStartDate}T08:00+2:00`,
+    validThrough: `${config.formattedEndDate}T19:00+2:00`,
   },
 ];
 
@@ -57,7 +57,7 @@ const jsonld = {
   "@type": "Event",
   name: `DevLille ${config.edition}`,
   startDate: `${config.formattedStartDate}T08:00+02:00`,
-  endDate: `${config.formattedEndDate}}T19:00+02:00`,
+  endDate: `${config.formattedEndDate}T19:00+02:00`,
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   eventStatus: "https://schema.org/EventScheduled",
   location: {
@@ -94,7 +94,7 @@ const jsonld = {
     />
     <meta name="description" content={ogDescription} />
     <meta name="theme-color" content="#006D6D" />
-    <meta property="og  :url" content={ogUrl} />
+    <meta property="og:url" content={ogUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:image" content={ogImage} />

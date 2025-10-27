@@ -206,8 +206,8 @@ const talks = defineCollection({
       `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/planning`
     ).then((response) => response.json());
 
-    return Object.values(talkMap)
-      .flatMap((talk) => Object.values(talk))
+    return Object.values(talkMap as Record<string, unknown>)
+      .flatMap((talk) => Object.values(talk as Record<string, unknown>))
       .flat()
       .map((a: any) => {
         if (a.type === "event-session" && !!a.id) {
@@ -233,9 +233,61 @@ const verbatims = defineCollection({
     name: z.string(),
   }),
 });
+
+const youtubeVideos = defineCollection({
+  schema: z.object({
+    id: z.string(),
+    videoId: z.string(),
+    title: z.string(),
+    description: z.string(),
+    publishedAt: z.string(),
+    thumbnailUrl: z.string(),
+  }),
+
+  loader: async () => {
+    try {
+      // Utilisation de l'API YouTube Data v3 via l'endpoint RSS (pas besoin de clé API)
+      // On récupère les vidéos via l'API YouTube oEmbed pour avoir plus de détails
+      const playlistId = config.youtubePlaylistId;
+
+      // L'API RSS de YouTube pour les playlists
+      const rssUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+
+      const response = await fetch(rssUrl);
+      const xmlText = await response.text();
+
+      // Parser simple du XML (sans dépendance externe)
+      const entries = xmlText.match(/<entry>[\s\S]*?<\/entry>/g) || [];
+
+      const videos = entries.map((entry, index) => {
+        const videoId = entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/)?.[1] || "";
+        const title = entry.match(/<title>(.*?)<\/title>/)?.[1] || "";
+        const description = entry.match(/<media:description>(.*?)<\/media:description>/)?.[1] || "";
+        const publishedAt = entry.match(/<published>(.*?)<\/published>/)?.[1] || "";
+        const thumbnailUrl = entry.match(/<media:thumbnail url="(.*?)"/)?.[1] || "";
+
+        return {
+          id: videoId,
+          videoId,
+          title: title.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'"),
+          description: description.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'"),
+          publishedAt,
+          thumbnailUrl,
+        };
+      });
+
+      return videos;
+    } catch (error) {
+      console.error("Erreur lors de la récupération des vidéos YouTube:", error);
+      return [];
+    }
+  },
+});
+
 export const collections = {
   sponsors,
   speakers,
   talks,
   verbatims,
+  youtubeVideos,
 };

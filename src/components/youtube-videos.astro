@@ -13,13 +13,12 @@ const randomVideos = shuffled.slice(0, 3);
     <h2>Revivez les <strong>éditions précédentes</strong></h2>
     <div class="videos-grid">
       {randomVideos.map((video) => (
-        <div class="video-card">
+        <figure class="video-card">
           <div class="video-container" data-video-id={video.data.videoId}>
             <img
               src={video.data.thumbnailUrl}
               alt={video.data.title}
-              class="video-thumbnail"
-            />
+              class="video-thumbnail">
             <button class="play-button" aria-label={`Lire la vidéo: ${video.data.title}`}>
               <svg width="68" height="48" viewBox="0 0 68 48">
                 <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
@@ -27,12 +26,12 @@ const randomVideos = shuffled.slice(0, 3);
               </svg>
             </button>
           </div>
-          <h3>
+          <figcaption>
             <a href={`https://www.youtube.com/watch?v=${video.data.videoId}`} target="_blank" rel="noopener noreferrer">
               {video.data.title}
             </a>
-          </h3>
-        </div>
+          </figcaption>
+        </figure>
       ))}
     </div>
   </div>
@@ -73,120 +72,3 @@ const randomVideos = shuffled.slice(0, 3);
   }
 </script>
 
-<style>
-  .youtube-videos {
-    margin: 4rem 0;
-  }
-
-  .youtube-videos h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .videos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .video-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    border-radius: 8px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-
-  .video-card:hover {
-    transform: translateY(-5px);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* Ratio 16:9 */
-    margin-bottom: 1rem;
-    overflow: hidden;
-    border-radius: 4px;
-    background-color: #000;
-    cursor: pointer;
-  }
-
-  .video-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 10;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.9;
-  }
-
-  .play-button:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    opacity: 1;
-  }
-
-  .play-button:focus-visible {
-    outline: 3px solid var(--link-color);
-    outline-offset: 5px;
-    border-radius: 4px;
-  }
-
-  .video-card h3 {
-    font-size: 1rem;
-    font-variation-settings: "wght" 600;
-    line-height: 1.4;
-    margin: 0;
-  }
-
-  .video-card h3 a {
-    color: var(--text-high);
-    text-decoration: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
-
-  .video-card h3 a:hover {
-    color: var(--link-color);
-  }
-
-  @media (max-width: 1024px) {
-    .videos-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .videos-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-  }
-</style>

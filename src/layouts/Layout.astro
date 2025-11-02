@@ -71,8 +71,7 @@ const jsonld = {
       addressCountry: "FR",
     },
   },
-  description:
-    "2 jours de conférences et d'échanges accessibles à tous et toutes au coeur de Lille.",
+  description: "2 jours de conférences et d'échanges accessibles à tous et toutes au coeur de Lille.",
   offers: offers,
   organizer: {
     "@type": "Organization",
@@ -88,10 +87,7 @@ const jsonld = {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="keywords"
-      content="DevLille, Conférence, Web, Mobile, Cloud, Quickies"
-    />
+    <meta name="keywords" content="DevLille, Conférence, Web, Mobile, Cloud, Quickies" />
     <meta name="description" content={ogDescription} />
     <meta name="theme-color" content="#006D6D" />
     <meta property="og:url" content={ogUrl} />
@@ -107,10 +103,7 @@ const jsonld = {
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/queries.css" />
 
-    <script
-      src="https://cdn.metricalp.com/event/metricalp.js"
-      data-tid="mam196"
-      defer></script>
+    <script src="https://cdn.metricalp.com/event/metricalp.js" data-tid="mam196" defer></script>
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
 
@@ -137,10 +130,7 @@ const jsonld = {
           <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
           <ul>
             <li>
-              <a
-                href="/index.html"
-                aria-current={currSection === "index" && "page"}>
-                Accueil</a>
+              <a href="/index.html" aria-current={currSection === "index" && "page"}> Accueil</a>
             </li>
             <!-- <li>
               <a
@@ -149,23 +139,23 @@ const jsonld = {
                 Agenda</a>
             </li> -->
             <li>
-              <a href="/faq" aria-current={currSection === "faq" && "page"}>
-                FAQ</a>
+              <a href="/faq" aria-current={currSection === "faq" && "page"}> FAQ</a>
             </li>
             <li>
-              <a href="/wld" aria-current={currSection === "wld" && "page"}>
-                Emplois</a>
+              <a href="/wld" aria-current={currSection === "wld" && "page"}> Emplois</a>
             </li>
           </ul>
         </nav>
-      
-        <p class="register">
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href={`${config.billetwebUrl}${config.edition}`}>
-            Prenez votre place!</a>
-        </p>
+
+        {
+          config.enabled.tickets && (
+            <p class="register">
+              <a rel="noreferrer noopener" target="_blank" href={`${config.billetwebUrl}${config.edition}`}>
+                Prenez votre place!
+              </a>
+            </p>
+          )
+        }
         <!-- <div>
           <p>
             <time datetime={config.formattedStartDate}>
@@ -176,7 +166,6 @@ const jsonld = {
         </div> -->
       </header>
 
-
       <!-- 📌 Injecting Page-Specific Content -->
       <div id="wrapper">
         <main>
@@ -184,7 +173,7 @@ const jsonld = {
         </main>
 
         {
-          currSection == "index" && config.enabled.sponsoring && (
+          currSection == "index" && (
             <aside>
               <div class="be-partner">
                 <h2>Devenez partenaire</h2>
@@ -203,15 +192,16 @@ const jsonld = {
                   [PDF, 5Mo]{" "}
                 </p>
               </div>
-              <div class="content filled">
-                <h2>
-                  Un grand merci à nos partenaires qui nous soutiennent déjà
-                  pour l'édition
-                  {config.edition}!
-                </h2>
+              {config.enabled.sponsoring && (
+                <div class="content filled">
+                  <h2>
+                    Un grand merci à nos partenaires qui nous soutiennent déjà pour l'édition
+                    {config.edition}!
+                  </h2>
 
-                <Sponsors />
-              </div>
+                  <Sponsors />
+                </div>
+              )}
             </aside>
           )
         }
@@ -222,16 +212,11 @@ const jsonld = {
           <dl class="h-event">
             <dt class="p-name">DevLille {config.edition}</dt>
             <dd class="p-summary">
-              2 jours de conférences et d'échanges accessibles à tous et à
-              toutes au coeur de Lille
+              2 jours de conférences et d'échanges accessibles à tous et à toutes au coeur de Lille
             </dd>
           </dl>
           <div id="mc_embed_shell">
-            <link
-              href="//cdn-images.mailchimp.com/embedcode/classic-061523.css"
-              rel="stylesheet"
-              type="text/css"
-            />
+            <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />
             <div id="newsletter">
               <div id="mc_embed_signup">
                 <form
@@ -258,42 +243,19 @@ const jsonld = {
                         autocomplete="email"
                         value=""
                       />
-                      <input
-                        type="submit"
-                        name="subscribe"
-                        id="mc-embedded-subscribe"
-                        value="Confirmer"
-                      />
+                      <input type="submit" name="subscribe" id="mc-embedded-subscribe" value="Confirmer" />
                     </p>
                     <div hidden="">
                       <input type="hidden" name="tags" value="8399931" />
                     </div>
                     <div id="mce-responses" class="clear foot">
-                      <div
-                        class="response"
-                        id="mce-error-response"
-                        style="display: none;"
-                      >
-                      </div>
-                      <div
-                        class="response"
-                        id="mce-success-response"
-                        style="display: none;"
-                      >
-                      </div>
+                      <div class="response" id="mce-error-response" style="display: none;"></div>
+                      <div class="response" id="mce-success-response" style="display: none;"></div>
                     </div>
-                    <div
-                      aria-hidden="true"
-                      style="position: absolute; left: -5000px;"
-                    >
-                      /* real people should not fill this in and expect good
-                      things - do not remove this or risk form bot signups */
-                      <input
-                        type="text"
-                        name="b_20e377fe4a62412ff254e60e0_8ad076b614"
-                        tabindex="-1"
-                        value=""
-                      />
+                    <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                      /* real people should not fill this in and expect good things - do not remove this or risk form
+                      bot signups */
+                      <input type="text" name="b_20e377fe4a62412ff254e60e0_8ad076b614" tabindex="-1" value="" />
                     </div>
                     <div class="optionalParent">
                       <div class="clear foot">
@@ -312,9 +274,7 @@ const jsonld = {
                 </form>
               </div>
             </div>
-            <script
-              type="text/javascript"
-              src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+            <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
             ></script><script type="text/javascript">
               (function ($) {
                 window.fnames = new Array();

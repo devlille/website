@@ -22,6 +22,7 @@ const config = {
     billetweb: false,
     sponsoring: false,
     earlyBirds: false,
+    tickets: false,
   },
 };
 

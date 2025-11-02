@@ -12,16 +12,17 @@ const og = {
 ---
 
 <Layout title="DevLille" currSection="index" og={og}>
-  <div class="group">
-    <!--div class="cfp">
-      <p>
-        <a href={config.cfpUrl + config.edition} lang="en"> Call for Paper</a>
-        ouvert du
-        {config.cfpStartedDate} jusqu'au {config.cfpEndedDate}
-        {config.edition}!
-      </p>
-    </div-->
+  <div class="hero">
+    <p><img src="/img/home-2026.svg" width="512" alt="DevLille Année 2026"></p>
+    <p class="where-n-when">
+      <time datetime={config.formattedStartDate}>
+        {config.date}
+      </time>
+      <span>Lille Grand Palais</span>
+    </p>
+  </div>
 
+  <div class="group">
     <div class="stats">
       <h2 class="no-display">
         Le DevLille Lille {config.edition} en chiffres
@@ -61,117 +62,116 @@ const og = {
           </article>
         </section> -->
 
-    <div class="fixed">
-      <div class="decor venue">
+    <div class="venue">
+      <p class="illustration">
+        <picture>          
+          <source srcset="img/gp.webp" type="image/webp" media="(min-width: 800px)" />
+          <img loading="lazy" src="/img/grand-palais.webp" alt="Espace exposant du Lille Grand Palais" />
+        </picture>
+      </p>
+      <div class="content"> 
         <h2>Un lieu privilégié : <strong>Lille Grand Palais</strong></h2>
+        <p>
+          Lille Grand Palais est un lieu incontournable avec un espace de plus de 1900m2 et nous permettant
+          d'accueillir plus de {config.numberOfPeople} personnes.
+        </p>
+        <p class="read-more">
+          <a rel="noreferrer noopener" target="_blank" href="https://goo.gl/maps/cBSP9yZSHtMZuW9BA">
+            Comment y aller</a>
+        </p>
+      </div>
+      <p class="illustration secondary">
+        <picture>          
+          <source srcset="img/attendees-1.avif" type="image/avif" media="(min-width: 800px)" />
+          <img loading="lazy" src="/img/attendees.avif" alt="Une salle du Lille Grand Palais" />
+        </picture>
+      </p>
+    </div>
+
+    <div class="fixed">
+      <div class="decor">
+        <p class="illustration">
+          <picture>
+            <source srcset="img/screencap.webp" type="image/webp" media="(min-width: 800px)" />
+            <img
+              loading="lazy"
+              src="/img/screen-cap.avif"
+              alt="Salle du Grand Palais avec une retranscription en live de la conférence">
+          </picture>
+        </p>
         <div class="content">
-          <p class="illustration">
-            <picture>
-              <source srcset="img/lgp.avif" type="image/avif" />
-              <source srcset="img/lgp.webp" type="image/webp" />
-              <img loading="lazy" src="/img/lgp.jpg" alt="Une salle du Lille Grand Palais" />
-            </picture>
+          <h2>Une conférence accessible</h2>
+          <p>
+            <strong class="stressed">Toutes</strong> nos conférences sont sous-titrées grâce au service du <a
+              rel="noreferrer noopener"
+              target="_blank"
+              href="https://www.lemessageur.com/">
+              Messageur
+              <img src="/img/external-link.svg" alt="Ouvre nouvel onglet" width="14" height="14" loading="lazy" /></a>. 
+              Le lieu est également entièrement accessible aux personnes à mobilité réduite. De plus, une salle de
+            repos est à disposition pour celles et ceux qui, pour des raisons de santé, auraient besoin d'un espace
+            calme.
           </p>
-          <div>
-            <p>
-              Lille Grand Palais est un lieu incontournable avec un espace de plus de 1900m2 et nous permettant
-              d'accueillir plus de {config.numberOfPeople} personnes.
-            </p>
-            <p class="read-more">
-              <a rel="noreferrer noopener" target="_blank" href="https://goo.gl/maps/cBSP9yZSHtMZuW9BA">
-                Comment y aller</a
-              >
-            </p>
-          </div>
         </div>
       </div>
 
       <div class="decor">
-        <h2>Une conférence accessible</h2>
+        <p class="illustration">
+          <picture>
+            <source srcset="img/consignerie-1.webp" type="image/webp" media="(min-width: 800px)" />
+            <img
+              loading="lazy"
+              src="/img/consignerie.webp"
+              alt="Salle du Grand Palais avec une retranscription en live de la conférence">
+          </picture>
+        </p>
         <div class="content">
-          <p class="illustration">
+          <h2>Une conférence écoresponsable</h2>
+          <p>
+            Engagés dans une démarche <strong class="stressed"> écoresponsable</strong>, nous faisons notre maximum
+            pour faire de notre conférence un événement <strong class="stressed">zéro déchet</strong>. 
+            Nous réduisons
+            au maximum les déchets en favorisant la réutilisation et en évitant le gaspillage. 
+          </p>
+          <p>En collaboration avec <a
+              rel="noreferrer noopener"
+              target="_blank"
+              href="https://consignerie.com/">
+              La Consignerie <img
+                src="/img/external-link.svg"
+                alt="Ouvre nouvel onglet"
+                width="14"
+                height="14"
+                loading="lazy"></a>, 
+              nous vous proposons des repas préparés à partir de produits locaux, servis dans des contenants
+            consignés, ainsi que des boissons également présentées dans des bouteilles en verre consignées.
+          </p>
+        </div>
+      </div>
+
+      <div class="decor">
+        <p class="illustration">
+          <picture>
             <picture>
-              <source srcset="img/accessibilite.avif" type="image/avif" />
-              <source srcset="img/accessibilite.webp" type="image/webp" />
+              <source srcset="img/scratch-1.webp" type="image/webp" media="(min-width: 800px)" />
               <img
                 loading="lazy"
-                src="/img/accessibilite.jpg"
-                alt="Salle du Grand Palais avec une retranscription en live de la conférence"
-              />
+                src="/img/scratch.webp"
+                alt="Session de sensibilisation à la programmation">
             </picture>
+          </picture>
+        </p>
+        <div class="content">
+          <h2>Une sensibilisation à la programmation</h2>
+          <p>
+            Animée par <strong class="stressed"> Exotec</strong> et en partenariat avec 
+            <strong class="stressed">Zenika</strong>, 
+            nous organisons pour la première année une sensibilisation à la programmation pour des lycées et des
+            collèges. Environ 60 élèves vont ainsi découvrir notre métier et rencontrer certains partenaires.
           </p>
-          <div>
-            <p>
-              <strong class="stressed">Toutes</strong> nos conférences sont sous-titrées grâce au service du <a
-                rel="noreferrer noopener"
-                target="_blank"
-                href="https://www.lemessageur.com/"
-              >
-                Messageur
-                <img src="/img/external-link.svg" alt="Ouvre nouvel onglet" width="14" height="14" loading="lazy" /></a
-              >. Le lieu est également entièrement accessible aux personnes à mobilité réduite. De plus, une salle de
-              repos est à disposition pour celles et ceux qui, pour des raisons de santé, auraient besoin d'un espace
-              calme.
-            </p>
-          </div>
         </div>
       </div>
 
-      <div class="decor">
-        <h2>Une conférence écoresponsable</h2>
-        <div class="content">
-          <p class="illustration">
-            <picture>
-              <source srcset="img/consignerie.avif" type="image/avif" />
-              <source srcset="img/consignerie.webp" type="image/webp" />
-              <img
-                loading="lazy"
-                src="/img/consignerie.jpg"
-                alt="Salle du Grand Palais avec une retranscription en live de la conférence"
-              />
-            </picture>
-          </p>
-          <div>
-            <p>
-              Engagés dans une démarche <strong class="stressed"> écoresponsable</strong>, nous faisons notre maximum
-              pour faire de notre conférence un événement <strong class="stressed">zéro déchet</strong>. Nous réduisons
-              au maximum les déchets en favorisant la réutilisation et en évitant le gaspillage. En collaboration avec <a
-                rel="noreferrer noopener"
-                target="_blank"
-                href="https://consignerie.com/"
-              >
-                La Consignerie <img
-                  src="/img/external-link.svg"
-                  alt="Ouvre nouvel onglet"
-                  width="14"
-                  height="14"
-                  loading="lazy"
-                />
-              </a>, nous vous proposons des repas préparés à partir de produits locaux, servis dans des contenants
-              consignés, ainsi que des boissons également présentées dans des bouteilles en verre consignées.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="decor">
-        <h2>Une sensibilisation à la programmation</h2>
-        <div class="content">
-          <p class="illustration">
-            <picture>
-              <img loading="lazy" src="https://framalibre.org/images/logo/Scratch.png" alt="Logo du logiciel Scratch" />
-            </picture>
-          </p>
-          <div>
-            <p>
-              Animée par <strong class="stressed"> Exotec</strong> et en partenariat avec <strong class="stressed"
-                >Zenika</strong
-              >, nous organisons pour la première année une sensibilisation à la programmation pour des lycées et des
-              collèges. Environ 60 élèves vont ainsi découvrir notre métier et rencontrer certains partenaires.
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <YoutubeVideos />

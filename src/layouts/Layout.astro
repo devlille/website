@@ -132,51 +132,50 @@ const jsonld = {
             )
           }
         </h1>
-        <div>
+        <!-- 🗂️ Navigation -->
+        <nav class="main-nav">
+          <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
+          <ul>
+            <li>
+              <a
+                href="/index.html"
+                aria-current={currSection === "index" && "page"}>
+                Accueil</a>
+            </li>
+            <!-- <li>
+              <a
+                href="/agenda/index.html"
+                aria-current={currSection === "agenda" && "page"}>
+                Agenda</a>
+            </li> -->
+            <li>
+              <a href="/faq" aria-current={currSection === "faq" && "page"}>
+                FAQ</a>
+            </li>
+            <li>
+              <a href="/wld" aria-current={currSection === "wld" && "page"}>
+                Emplois</a>
+            </li>
+          </ul>
+        </nav>
+      
+        <p class="register">
+          <a
+            rel="noreferrer noopener"
+            target="_blank"
+            href={`${config.billetwebUrl}${config.edition}`}>
+            Prenez votre place!</a>
+        </p>
+        <!-- <div>
           <p>
             <time datetime={config.formattedStartDate}>
               {config.date}
             </time>
             <span>Lille Grand Palais</span>
           </p>
-          <p class="register">
-            <a
-              rel="noreferrer noopener"
-              target="_blank"
-              href={`${config.billetwebUrl}${config.edition}`}
-            >
-              Prenez votre place!
-            </a>
-          </p>
-        </div>
+        </div> -->
       </header>
 
-      <!-- 🗂️ Navigation -->
-      <nav class="main-nav">
-        <h2 class="k-skip"><a href="#wrapper">Navigation (Sauter)</a></h2>
-        <ul>
-          <li>
-            <a
-              href="/index.html"
-              aria-current={currSection === "index" && "page"}>Accueil</a
-            >
-          </li>
-          <li>
-            <a
-              href="/agenda/index.html"
-              aria-current={currSection === "agenda" && "page"}>Agenda</a>
-          </li>
-          <li>
-            <a href="/faq" aria-current={currSection === "faq" && "page"}>FAQ</a
-            >
-          </li>
-          <li>
-            <a href="/wld" aria-current={currSection === "wld" && "page"}
-              >Emploi</a
-            >
-          </li>
-        </ul>
-      </nav>
 
       <!-- 📌 Injecting Page-Specific Content -->
       <div id="wrapper">

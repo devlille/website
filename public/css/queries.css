@@ -322,6 +322,8 @@
     background-repeat: no-repeat;
     background-position-x: right 77vw, left 77vw, center;
   }
+
+  .youtube-videos {padding-top: 0;}
 }
 
 @media screen and (min-width: 1200px) {

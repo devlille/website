@@ -228,7 +228,7 @@ blockquote::before {
   left: 0;
   content: "\201C";
   font-size: 4em;
-  color: var(--light-cold);
+  color: var(--light-hot);
 }
 
 picture img {vertical-align: bottom;}
@@ -638,6 +638,7 @@ aside div.be-partner {
   background-size: cover;
   backdrop-filter: brightness(2);
   background-position: top -30vw left -56vw;
+  background-blend-mode: lighten;
   padding: calc(1rem + 0.5vw) calc(1.5rem + 0.5vw) calc(1.5rem + 0.5vw);
   margin: 0 0 4rem;
   
@@ -1652,7 +1653,7 @@ p.mce-logo {
 /* -------------------------- YOUTUBE VIDEOS ---------------------- */
 
 .youtube-videos {
-  padding: 0 5vw 12vw;
+  padding: 10vw 5vw 12vw;
   background-color: var(--body-bg-dark);
 }
 

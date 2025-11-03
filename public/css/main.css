@@ -163,6 +163,17 @@ a {
 a:visited {
   color: var(--text-high);
 }
+a[target]::after {
+  content: 'Ouvre un nouvel onglet';
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 50px;
+  white-space: nowrap;
+  width: 16px;
+  height: 16px;
+  background: url('../img/external-link.svg') no-repeat bottom right;
+  padding-left: 0.5rem;
+}
 
 :focus-visible {
   outline: 2px solid var(--link-color);
@@ -200,12 +211,12 @@ blockquote {
   padding-left: 2rem;
 
   & p {
-    font-variation-settings: "wght" 200;
+    font-variation-settings: "wght" 300;
     line-height: 1.58;
   }
 
   & p + p {
-    font-variation-settings: "wght" 300;
+    font-variation-settings: "wght" 400;
     margin-top: 1rem;
   }
 }
@@ -297,11 +308,12 @@ footer {
   padding: 2rem 5% 5rem calc(5% + 2.5rem);
   z-index: 1;
 
-  a {
+  & a, a:visited {
+    color: var(--link-color);
     background-color: var(--footer-bg);
   }
 
-  svg {
+  & svg {
     fill: currentColor;
   }
 }
@@ -389,10 +401,13 @@ ul.sm-list {
   gap: 1em;
   list-style-type: none;
   margin: 2rem 0;
+
+  & li {
+    width: 25px;
+  }
 }
-ul.sm-list li {
-  width: 25px;
-}
+
+
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- FORMS ---------------------------- */
@@ -617,13 +632,22 @@ aside {
 
 aside div.be-partner {
   color: var(--n-dark);
-  background: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url(/img/home-2026.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: brightness(2);
+  background-position: top -30vw left -56vw;
   padding: calc(1rem + 0.5vw) calc(1.5rem + 0.5vw) calc(1.5rem + 0.5vw);
   margin: 0 0 4rem;
+  
+  & a[target]::after {
+    background-image: url('../img/external-link-black.svg');
+  }
 }
 
 aside div.be-partner h2 {
-  color: var(--main-dark);
+  color: var(--text-inv);
 }
 
 aside div.be-partner p.read-more {
@@ -901,7 +925,7 @@ div.decor p {
 }
 
 div.decor p:not(.illustration) {
-  font-size: clamp(0.8em, calc(0.8em + 1vw), 1.2em);
+  font-size: clamp(0.85em, calc(0.9em + 1vw), 1.3em);
 }
 p.read-more {
   margin-top: 1rem;
@@ -1628,7 +1652,7 @@ p.mce-logo {
 /* -------------------------- YOUTUBE VIDEOS ---------------------- */
 
 .youtube-videos {
-  padding: 10vw 5vw 12vw;
+  padding: 0 5vw 12vw;
   background-color: var(--body-bg-dark);
 }
 
@@ -1647,6 +1671,7 @@ p.mce-logo {
 
 .video-card {
   background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(25px);
   padding: 1rem;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }

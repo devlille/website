@@ -277,8 +277,11 @@
   	gap: 2rem;
   }
     aside div.be-partner p.read-more {
+      position: relative;
+      left: 4rem;
       grid-column-start: 2;
       margin-top: 2rem;
+      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
     }
   
   div.speaker-sheet .h-group {

@@ -12,6 +12,7 @@
     "astro": "^5.15.3"
   },
   "devDependencies": {
+    "@astrojs/sitemap": "^3.6.0",
     "@types/isurl": "^4.0.0",
     "@types/node": "^24.9.2",
     "dayjs": "^1.11.19",

@@ -19,7 +19,7 @@ const config = {
   numberOfTraks: 4,
   enabled: {
     welovedevs: false,
-    sponsoring: false,
+    sponsoring: true,
     tickets: true,
   },
 };

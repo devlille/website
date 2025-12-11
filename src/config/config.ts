@@ -19,10 +19,8 @@ const config = {
   numberOfTraks: 4,
   enabled: {
     welovedevs: false,
-    billetweb: false,
-    sponsoring: false,
-    earlyBirds: false,
-    tickets: false,
+    sponsoring: true,
+    tickets: true,
   },
 };
 

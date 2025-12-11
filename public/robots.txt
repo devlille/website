@@ -1,0 +1,31 @@
+# robots.txt pour DevLille 2026
+# https://2026.devlille.fr
+
+# Autoriser tous les robots d'indexation
+User-agent: *
+Allow: /
+
+# Bloquer l'indexation de certaines pages
+Disallow: /privacy-mobile
+Disallow: /404
+
+# Sitemap XML
+Sitemap: https://devlille.fr/sitemap-index.xml
+Sitemap: https://devlille.fr/sitemap-0.xml
+
+# Crawl-delay pour éviter la surcharge (optionnel)
+# Crawl-delay: 1
+
+# Règles spécifiques pour certains robots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Bloquer les robots de scraping agressifs
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

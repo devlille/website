@@ -267,6 +267,10 @@ p.register {
   animation-duration: 1s;
   animation-fill-mode: forwards;
   z-index: 1;
+
+  & a[target]::after {
+    background-image: url('../img/external-link-black.svg');
+  }
 }
 
 @keyframes slideRight {
@@ -298,6 +302,8 @@ p.register a:hover {
 
 .main-wrap, aside {
   margin: 0 5vw;
+
+  & h2 {max-width: 20em;}
 }
 
 footer {
@@ -951,7 +957,7 @@ div.extra {
   transition: all 0.3s;
 }
 .page-body.list {
-  max-width: 100%;
+  max-width: 70%;
 }
 
 .page-body p,

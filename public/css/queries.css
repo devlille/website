@@ -341,6 +341,16 @@
   div.presentation p {
     max-width: 50rem;
   }
+
+  div.sponsor-sheet div.speaker {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 5vw;
+  }
+  div.sponsor-sheet div.online {
+    margin-top: 0;
+  }
 }
 
 @media screen and (min-width: 1300px) {

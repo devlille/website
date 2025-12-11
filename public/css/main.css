@@ -228,7 +228,7 @@ blockquote::before {
   left: 0;
   content: "\201C";
   font-size: 4em;
-  color: var(--light-hot);
+  color: color-mix(in srgb, var(--light-hot), #ff0054 36%);
 }
 
 picture img {vertical-align: bottom;}
@@ -1647,6 +1647,11 @@ p.mce-logo {
   margin-left: auto;
   opacity: 0.8;
 }
+
+/* 404 */
+
+#message p {color: var(--body-text);}
+#message a, #message a:visited {color: var(--link-color);}
 
 
 /* ----------------------------------------------------------------- */

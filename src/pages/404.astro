@@ -12,21 +12,21 @@
     <style media="screen">
 
       h1 {
-        position: relative;
-        top: -19vw;
-        font: 35vw var(--stack-b);
-        color: var(--n-light);
+        width: auto;
+        font-size: clamp(4em, calc(4em + 3vw), 6em); 
+        font-variation-settings: "wght" 800;
         text-shadow: -2px 3px 2px rgba(0,0,0,.5);
         text-align: center;
-        margin: 0 auto;
-        z-index: 1;
+        color: var(--n-light);
+        margin: -0.5em auto 0;
+        transition: all .1s;
       }
+      div.intro {margin-bottom: 0;}
       div.group {
         line-height: 1.58;
         text-align: center;
         background: var(--main-color-light);
-        padding: 14vw 10vw 10vw;
-        margin-top: -32vw;
+        padding: 0 10vw 10vw;
       }
 
       #message {
@@ -35,9 +35,9 @@
         margin: 5vh auto;
       }
       #canvas {
-        position: relative;
-        max-width: 800px;
-        z-index: 2;
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
       }
       @keyframes spin {
         0% { transform: rotate(0); }
@@ -81,13 +81,19 @@
         animation-name: poing;
       }
 
-      @media screen and (min-width: 850px) {
+      
+      @media screen and (min-width: 820px) {
+        h1 {
+          font-size: clamp(8em,calc(18em + 1vw),18em); 
+        }
+      }
+
+      @media screen and (min-width: 1200px) {
         #message {
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
-        h1 {top: -12vh; font-size: 18em;}
         div.group {
           box-sizing: border-box;
           flex-basis: 40%;

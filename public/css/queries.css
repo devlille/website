@@ -246,8 +246,6 @@
   }
   nav li {
     font-size: 1.3em;
-    text-align: right;
-    padding: 0;
   }
 
   nav a[aria-current=page] {
@@ -267,8 +265,10 @@
 
   p.register {
     position: static;
-    animation: none;
+    width: min-content;
+    margin-left: auto;
   }
+  p.register a {padding-right: 1.5em;}
 
   aside div.be-partner {
     display: grid;
@@ -283,33 +283,27 @@
       margin-top: 2rem;
       box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
     }
-  
-  div.speaker-sheet .h-group {
+
+  div.talk-data-block {
+    text-align: center;
+  }
+  div.talk-data-block p {
+    flex-direction: column;
+  }
+
+  div.talk-top {
     display: grid;
-    grid-template-columns: 200px auto;
-    grid-template-rows: auto auto;
-    gap: 0 3rem;
-
-    & h2 {align-self: center;}
-
-    & p.s-photo {
-      grid-row: 1/-1;
-      margin-bottom: 0;
-    }
-    & p:not(.s-photo) {
-      grid-column: 2/-1;
-    }
+    grid-template-columns: auto 270px;
+    gap: calc(2rem + 2vw);
   }
 
-  div.speaker {order: 1;}
-  div.speaker-data-block {
-    order: 2;
-    grid-column-start: 2;
-    grid-column-end: -1;
-    grid-row-start: 1;
-    grid-row-end: -1;
+  div.talk-top img {
+    transform: rotate(0);
   }
-  div.talk {order: 3;}
+
+  div.talk-material {
+    margin-top: calc(2rem + 2vw);
+  }
   
   div.optionalParent {
     position: absolute;
@@ -326,7 +320,31 @@
   .youtube-videos {padding-top: 0;}
 }
 
+
+@media screen and (min-width: 1000px) and (max-width: 1300px) {
+  div.speaker-sheet .h-group {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto auto;
+    gap: 0 3rem;
+
+    & h2 {align-self: center;}
+
+    & p.s-photo {
+      grid-row: 1/-1;
+      margin-bottom: 0;
+    }
+    & p:not(.s-photo) {
+      grid-column: 2/-1;
+    }
+  }
+}
+
 @media screen and (min-width: 1200px) {
+  nav li {
+    font-size: 1.6em;
+    padding: 1rem;
+  }
   div.group:has(div.cfp) {
     position: relative;
   }
@@ -446,6 +464,19 @@
   }
 
   div.hero p:not(.where-n-when) {margin: 0;}
+
+  div.speaker-sheet {
+    display: grid;
+    grid-template-columns: 300px auto;
+    gap: calc(2rem + 2vw);
+  }
+
+  div.speaker-sheet div.content {
+    grid-column: 2;
+  }
+  div.speaker-sheet .h-group {
+    grid-row: 1/ span 2;
+  }
 }
 
 @media screen and (min-width: 1500px) {

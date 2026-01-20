@@ -34,32 +34,42 @@ const speakers = talk.data.speakers ?? [];
 
 <Layout title={talk.data.title} currSection="talks" og={og}>
   <div class="page-body list">
-    <h2>{talk.data.title}</h2>
 
-    <div class="speaker-sheet">
-      <div class="speaker">
-        <Fragment
-          set:html={md.toHTML(
-            talk.data.abstract?.replaceAll("- ", "\r\n\r\n- ")
-          )}
-        />
+    <div class="talk-sheet">
+      <div class="talk-top">
+        <div class="description">
+          <h2>{talk.data.title}</h2>
+          <Fragment
+            set:html={md.toHTML(
+              talk.data.abstract?.replaceAll("- ", "\r\n\r\n- ")
+            )}
+          />
+        </div>
+        <div class="talk-data-block card">
+          <h3>Présenté par :</h3>
+          {speakers?.map((s) => {
+            return (
+                <p>
+                  <img
+                    loading="lazy"
+                    width="100"
+                    height="100"
+                    src={`${s.photo_url}?v=${Math.floor(Math.random() * 1000) + 1}`}
+                    alt={`Photo de ${s.display_name}`}/>
+                  <a href={`/speaker-page-${s.id}`}>
+                    {s.display_name}
+                  </a>
+                </p>
+            );
+          })}
+        </div>
       </div>
-      <div class="speaker-data-block"></div>
 
       {
         talk.data.type === "talk-session" && (
-          <div class="talks">
+          <div class="talk-material">
             {(talk.data.open_feedback || talk.data.link_slides) && (
-              <div class="talk">
-                {talk.data.open_feedback && (
-                  <p>
-                    Suite à la conférence, vous pouvez faire un retour aux
-                    conférenciers et conférencières sur
-                    <a href={talk?.data.open_feedback} target="_blank">
-                      OpenFeedback
-                    </a>
-                  </p>
-                )}
+              <div class="content">
 
                 {talk.data.link_slides && (
                   <div class="talk-links">
@@ -81,20 +91,18 @@ const speakers = talk.data.speakers ?? [];
                     </ul>
                   </div>
                 )}
-              </div>
-            )}
-            {speakers?.map((s) => {
-              return (
-                <div class="talk">
-                  <h3>{s.display_name}</h3>
-                  <p>
-                    <a href={`/speaker-page-${s.id}`}>
-                      Page dédiée de {s.display_name}
+                {talk.data.open_feedback && (
+                  <p class="openfb">
+                    Suite à la conférence, vous pouvez faire un retour aux
+                    conférenciers et conférencières sur
+                    <a href={talk?.data.open_feedback} target="_blank">
+                      OpenFeedback
                     </a>
                   </p>
-                </div>
-              );
-            })}
+                )}
+              </div>              
+            )}
+            
           </div>
         )
       }

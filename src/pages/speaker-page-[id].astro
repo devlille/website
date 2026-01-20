@@ -59,78 +59,75 @@ const selectedTalks = talks.filter((t) =>
         <span class="no-display">Entreprise: </span>
         {speaker.data.company ? speaker.data.company : ""}
       </p>
+      <ul class="social">
+        {
+          speaker.data.mastodon && (
+            <li>
+              <strong class="stressed">Sur Mastodon</strong>
+              <a target="_blank" href={speaker.data.mastodon}>
+                {speaker.data.mastodon.substring(
+                  speaker.data.mastodon.lastIndexOf("/") + 1
+                )}
+              </a>
+            </li>
+          )
+        }
+        {
+          speaker.data.twitter && (
+            <li>
+              <strong class="stressed">Sur X</strong>
+              <a target="_blank" href={speaker.data.twitter}>
+                {speaker.data.twitter?.replace("https://twitter.com/", "")}
+              </a>
+            </li>
+          )
+        }
+        {
+          speaker.data.github && (
+            <li>
+              <strong class="stressed">Sur Github</strong>
+              <a target="_blank" href={speaker.data.github}>
+                {speaker.data.github?.replace("https://github.com/", "")}
+              </a>
+            </li>
+          )
+        }
+        {
+          speaker.data.linkedin && (
+            <li>
+              <strong class="stressed">Sur LinkedIn</strong>
+              <a target="_blank" href={speaker.data.linkedin}>
+                {decodeURI(speaker.data.linkedin)
+                  ?.replace("https://www.linkedin.com/in/", "")
+                  .replace("/", "")}
+              </a>
+            </li>
+          )
+        }
+        {
+          speaker.data.website && (
+            <li>
+              <strong class="stressed">Site Web</strong>
+              <a target="_blank" href={speaker.data.website}>
+                {speaker.data.website}
+              </a>
+            </li>
+          )
+        }
+      </ul>
     </div>
 
-    <div class="speaker-sheet">
-      <div class="speaker">
-        <Fragment
-          set:html={speaker.data.bio
-            ? md.toHTML(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
-            : ""}
-        />
-      </div>
+    <div class="speaker">
+      <Fragment
+        set:html={speaker.data.bio
+          ? md.toHTML(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
+          : ""}
+      />
+    </div>
 
-      <div class="speaker-data-block">
-        <div class="speaker-data">
-          <ul class="social">
-            {
-              speaker.data.mastodon && (
-                <li>
-                  <strong class="stressed">Sur Mastodon</strong>
-                  <a target="_blank" href={speaker.data.mastodon}>
-                    {speaker.data.mastodon.substring(
-                      speaker.data.mastodon.lastIndexOf("/") + 1
-                    )}
-                  </a>
-                </li>
-              )
-            }
-            {
-              speaker.data.twitter && (
-                <li>
-                  <strong class="stressed">Sur X</strong>
-                  <a target="_blank" href={speaker.data.twitter}>
-                    {speaker.data.twitter?.replace("https://twitter.com/", "")}
-                  </a>
-                </li>
-              )
-            }
-            {
-              speaker.data.github && (
-                <li>
-                  <strong class="stressed">Sur Github</strong>
-                  <a target="_blank" href={speaker.data.github}>
-                    {speaker.data.github?.replace("https://github.com/", "")}
-                  </a>
-                </li>
-              )
-            }
-            {
-              speaker.data.linkedin && (
-                <li>
-                  <strong class="stressed">Sur LinkedIn</strong>
-                  <a target="_blank" href={speaker.data.linkedin}>
-                    {decodeURI(speaker.data.linkedin)
-                      ?.replace("https://www.linkedin.com/in/", "")
-                      .replace("/", "")}
-                  </a>
-                </li>
-              )
-            }
-            {
-              speaker.data.website && (
-                <li>
-                  <strong class="stressed">Site Web</strong>
-                  <a target="_blank" href={speaker.data.website}>
-                    {speaker.data.website}
-                  </a>
-                </li>
-              )
-            }
-          </ul>
-        </div>
-      </div>
-      <div class="talks">
+    <div class="content">
+
+      <div class="talks card">
         <h3>
           <span lang="en">Talks</span> présentés par
           {speaker.data.display_name}
@@ -138,9 +135,12 @@ const selectedTalks = talks.filter((t) =>
         {
           selectedTalks.map((selectedTalk) => {
             return (
-              <div class="talk">
-                <h4>{selectedTalk?.title}</h4>
-                {selectedTalk?.open_feedback && (
+              <ul class="talk">
+                <li>
+                  <a href={`/talk-page-${selectedTalk.id}`}>
+                    {selectedTalk?.title}</a>
+                </li>
+                {/* {selectedTalk?.open_feedback && (
                   <p class="openfeedback">
                     Suite à la conférence, vous pouvez faire un retour aux
                     conférenciers et conférencières sur
@@ -148,7 +148,7 @@ const selectedTalks = talks.filter((t) =>
                       OpenFeedback
                     </a>
                   </p>
-                )}
+                )} */}
 
                 {(!!selectedTalk?.link_slides ||
                   !!selectedTalk?.link_replay) && (
@@ -163,12 +163,12 @@ const selectedTalks = talks.filter((t) =>
                   </div>
                 )}
 
-                <p>
+                {/* <p>
                   <a href={`/talk-page-${selectedTalk.id}`}>
                     Page dédiée de ce talk
                   </a>
-                </p>
-              </div>
+                </p> */}
+              </ul>
             );
           })
         }

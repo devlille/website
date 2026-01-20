@@ -40,9 +40,9 @@ const video = videos[sponsor.data.id] as string | undefined
 ---
 
 <Layout title={sponsor.data.name} currSection="partners" og={og}>
-  <div class="page-body list sponsor-sheet">
-    <div class="h-group">
-      <p class="sponsor">
+  <div class="page-body">
+    <div class="h-group sponsor">
+      <p>
         <a href={sponsor.data.siteUrl}>
           { sponsor.data.id === "T7YKXfMS1xm2gl4tr31Y" ?(<img
           loading="lazy"
@@ -59,71 +59,88 @@ const video = videos[sponsor.data.id] as string | undefined
       <h2>{sponsor.data.name}</h2>
     </div>
 
-    <div class="speaker-sheet">
-      <div class="speaker">
+    <div class="sponsor-sheet">
+      <div class="description">
         {
           sponsor.data.description && (
-            <div class="description">
+            <div class="content">
               <p>
                 {sponsor.data.description?.replaceAll('"', "")?.trim() ?? ""}
               </p>
             </div>
           )
         }
-        <div class="online">
-          <h3>Sur Internet</h3>
-          <ul>
-            {
-              sponsor.data.twitterAccount && (
-                <li>
-                  <strong class="stressed">Sur X: </strong>
-                  <a target="_blank" href={sponsor.data.twitterAccount}>
-                    {sponsor.data.twitterAccount?.replace(
-                      "https://twitter.com/",
-                      ""
-                    )}
-                  </a>
-                </li>
-              )
-            }
-            {
-              sponsor.data.linkedinAccount && (
-                <li>
-                  <strong class="stressed">Sur LinkedIn: </strong>
-                  <a target="_blank" href={sponsor.data.linkedinAccount}>
-                    {decodeURI(sponsor.data.linkedinAccount)
-                      ?.replace("https://www.linkedin.com/in/", "")
-                      ?.replace("https://www.linkedin.com/company/", "")
-                      .replace("/", "")}
-                  </a>
-                </li>
-              )
-            }
-            {
-              sponsor.data.siteUrl && (
-                <li>
-                  <strong class="stressed">Site Web: </strong>
-                  <a target="_blank" href={sponsor.data.siteUrl}>
-                    {sponsor.data.siteUrl}
-                  </a>
-                </li>
-              )
-            }
-          </ul>
 
+        {
+          video && (
+            <>
+              <link rel="stylesheet" href="/youtube/youtube.css" />
+              <script is:inline src="/youtube/youtube.js" />
+              <lite-youtube
+                videoid={video}
+                style=`background-image: url('https://i.ytimg.com/vi/${video}/hqdefault.jpg');`
+              />
+            </>
+          )
+        }
+      </div>
+
+      <div class="the-talks">
+        <h3>Les talks de nos colaborateurs</h3>
+
+        <ul>
+          <li>
+            <strong><a href="#">Le nom du talk tres tres long qui passe à la logne</a></strong>
+            Le nom du speaker
+          </li>
+          <li>
+            <strong><a href="#">Le nom du talk</a></strong>
+            Le nom du speaker
+          </li>
+        </ul>
+      </div>
+
+      <div class="online">
+        <h3>Suivre {sponsor.data.name}</h3>
+        <ul>
           {
-            video && (
-              <>
-                <link rel="stylesheet" href="/youtube/youtube.css" />
-                <script is:inline src="/youtube/youtube.js" />
-                <lite-youtube
-                  videoid={video}
-                  style=`background-image: url('https://i.ytimg.com/vi/${video}/hqdefault.jpg');`
-                />
-              </>
+            sponsor.data.twitterAccount && (
+              <li>
+                <strong class="stressed">Sur X: </strong>
+                <a target="_blank" href={sponsor.data.twitterAccount}>
+                  {sponsor.data.twitterAccount?.replace(
+                    "https://twitter.com/",
+                    ""
+                  )}
+                </a>
+              </li>
             )
           }
-        </div>
+          {
+            sponsor.data.linkedinAccount && (
+              <li>
+                <strong class="stressed">Sur LinkedIn: </strong>
+                <a target="_blank" href={sponsor.data.linkedinAccount}>
+                  {decodeURI(sponsor.data.linkedinAccount)
+                    ?.replace("https://www.linkedin.com/in/", "")
+                    ?.replace("https://www.linkedin.com/company/", "")
+                    .replace("/", "")}
+                </a>
+              </li>
+            )
+          }
+          {
+            sponsor.data.siteUrl && (
+              <li>
+                <strong class="stressed">Site Web: </strong>
+                <a target="_blank" href={sponsor.data.siteUrl}>
+                  {sponsor.data.siteUrl}
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </div>
         
         {
           (sponsor.data.jobs ?? []).length > 0 && (
@@ -143,7 +160,6 @@ const video = videos[sponsor.data.id] as string | undefined
             </div>
           )
         }
-      </div>
     </div>
   </div>
 </Layout>

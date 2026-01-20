@@ -1,5 +1,5 @@
 const config = {
-  edition: 2026,
+  edition: 2025,
   editionNumber: 9,
   date: "11 et 12 Juin",
   formattedStartDate: "2026-06-11",

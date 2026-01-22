@@ -71,7 +71,7 @@ const sponsors = defineCollection({
         z.object({
           title: z.string(),
           url: z.string(),
-        })
+        }),
       )
       .optional(),
     editedVideoUrl: z.string().optional(),
@@ -93,7 +93,7 @@ const sponsors = defineCollection({
   loader: async () => {
     const sponsors: ApiSponsor[] = await fetch(
       "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors?edition=" +
-        config.edition
+        config.edition,
     ).then((res) => res.json());
 
     const formattedSponsors = sponsors.map((sponsor) => {
@@ -142,6 +142,24 @@ const sponsors = defineCollection({
   },
 });
 
+type ApiSpeaker = {
+  id: string;
+  display_name: string;
+  bio?: string;
+  photo_url: string;
+  pronouns: string | null;
+  company: string | null;
+  socials: Array<{ type: string; url: string }>;
+};
+
+const getSocialUrl = (
+  socials: Array<{ type: string; url: string }>,
+  type: string,
+): string | null => {
+  const social = socials.find((s) => s.type === type);
+  return social?.url ?? null;
+};
+
 const speakers = defineCollection({
   schema: z.object({
     id: z.string(),
@@ -155,12 +173,28 @@ const speakers = defineCollection({
     github: z.nullable(z.string()).optional(),
     linkedin: z.nullable(z.string()).optional(),
     website: z.nullable(z.string()).optional(),
+    bluesky: z.nullable(z.string()).optional(),
   }),
 
   loader: async () => {
-    return fetch(
-      `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/speakers`
+    const apiSpeakers: ApiSpeaker[] = await fetch(
+      `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/speakers`,
     ).then((response) => response.json());
+
+    return apiSpeakers.map((speaker) => ({
+      id: speaker.id,
+      display_name: speaker.display_name,
+      bio: speaker.bio,
+      photo_url: speaker.photo_url,
+      pronouns: speaker.pronouns,
+      company: speaker.company,
+      twitter: getSocialUrl(speaker.socials, "x"),
+      github: getSocialUrl(speaker.socials, "github"),
+      linkedin: getSocialUrl(speaker.socials, "linkedin"),
+      mastodon: getSocialUrl(speaker.socials, "mastodon"),
+      website: getSocialUrl(speaker.socials, "website"),
+      bluesky: getSocialUrl(speaker.socials, "bluesky"),
+    }));
   },
 });
 
@@ -193,7 +227,7 @@ const talks = defineCollection({
           company: z.nullable(z.string()),
           photo_url: z.string(),
           socials: z.array(z.unknown()),
-        })
+        }),
       )
       .optional(),
     link_slides: z.string().optional().nullable(),
@@ -203,7 +237,7 @@ const talks = defineCollection({
 
   loader: async () => {
     const talkMap = await fetch(
-      `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/planning`
+      `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/planning`,
     ).then((response) => response.json());
 
     return Object.values(talkMap as Record<string, unknown>)
@@ -260,17 +294,28 @@ const youtubeVideos = defineCollection({
       const entries = xmlText.match(/<entry>[\s\S]*?<\/entry>/g) || [];
 
       const videos = entries.map((entry, index) => {
-        const videoId = entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/)?.[1] || "";
+        const videoId =
+          entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/)?.[1] || "";
         const title = entry.match(/<title>(.*?)<\/title>/)?.[1] || "";
-        const description = entry.match(/<media:description>(.*?)<\/media:description>/)?.[1] || "";
-        const publishedAt = entry.match(/<published>(.*?)<\/published>/)?.[1] || "";
-        const thumbnailUrl = entry.match(/<media:thumbnail url="(.*?)"/)?.[1] || "";
+        const description =
+          entry.match(/<media:description>(.*?)<\/media:description>/)?.[1] ||
+          "";
+        const publishedAt =
+          entry.match(/<published>(.*?)<\/published>/)?.[1] || "";
+        const thumbnailUrl =
+          entry.match(/<media:thumbnail url="(.*?)"/)?.[1] || "";
 
         return {
           id: videoId,
           videoId,
-          title: title.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'"),
-          description: description.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'"),
+          title: title
+            .replace(/&amp;/g, "&")
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'"),
+          description: description
+            .replace(/&amp;/g, "&")
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'"),
           publishedAt,
           thumbnailUrl,
         };
@@ -278,7 +323,10 @@ const youtubeVideos = defineCollection({
 
       return videos;
     } catch (error) {
-      console.error("Erreur lors de la récupération des vidéos YouTube:", error);
+      console.error(
+        "Erreur lors de la récupération des vidéos YouTube:",
+        error,
+      );
       return [];
     }
   },

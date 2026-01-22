@@ -5,142 +5,163 @@ import Layout from "../layouts/Layout.astro";
 import { markdown as md } from "markdown";
 
 interface Props {
-  speaker: CollectionEntry<"speakers">;
+    speaker: CollectionEntry<"speakers">;
 }
 
 export const getStaticPaths = (async () => {
-  const speakers = await getCollection("speakers");
+    const speakers = await getCollection("speakers");
 
-  return speakers.map((speaker) => ({
-    params: {
-      id: speaker.data.id,
-    },
-    props: {
-      speaker: speaker,
-    },
-  }));
+    return speakers.map((speaker) => ({
+        params: {
+            id: speaker.data.id,
+        },
+        props: {
+            speaker: speaker,
+        },
+    }));
 }) satisfies GetStaticPaths;
 
 const { speaker } = Astro.props;
 
 const og = {
-  ogDescription: speaker.data.bio,
-  ogUrl: "https://devlille.fr/speaker-page-" + speaker.data.id,
-  ogImage: speaker.data.display_name,
+    ogDescription: speaker.data.bio,
+    ogUrl: "https://devlille.fr/speaker-page-" + speaker.data.id,
+    ogImage: speaker.data.display_name,
 };
 
 const talks = (await getCollection("talks")).map((d) => d.data);
 
 const selectedTalks = talks.filter((t) =>
-  t.speakers?.find((s) => s.id === speaker.data.id)
+    t.speakers?.find((s) => s.id === speaker.data.id),
 );
 ---
 
 <Layout title={speaker.data.display_name} currSection="speakers" og={og}>
-  <div class="page-body list speaker-sheet">
-    <div class="h-group">
-      {
-        speaker.data.photo_url && (
-          <p class="s-photo">
-            <img
-              loading="lazy"
-              src={`${speaker.data.photo_url}?v=${Math.floor(Math.random() * 1000) + 1}`}
-              alt={`Photo de ${speaker.data.display_name}`}
+    <div class="page-body list speaker-sheet">
+        <div class="h-group">
+            {
+                speaker.data.photo_url && (
+                    <p class="s-photo">
+                        <img
+                            loading="lazy"
+                            src={`${speaker.data.photo_url}?v=${Math.floor(Math.random() * 1000) + 1}`}
+                            alt={`Photo de ${speaker.data.display_name}`}
+                        />
+                    </p>
+                )
+            }
+            <h2>
+                {speaker.data.display_name}{
+                    speaker.data.pronouns ? ` (${speaker.data.pronouns})` : ""
+                }
+            </h2>
+            <p>
+                <span class="no-display">Entreprise: </span>
+                {speaker.data.company ? speaker.data.company : ""}
+            </p>
+            <ul class="social">
+                {
+                    speaker.data.mastodon && (
+                        <li>
+                            <strong class="stressed">Sur Mastodon</strong>
+                            <a target="_blank" href={speaker.data.mastodon}>
+                                {speaker.data.mastodon.substring(
+                                    speaker.data.mastodon.lastIndexOf("/") + 1,
+                                )}
+                            </a>
+                        </li>
+                    )
+                }
+                {
+                    speaker.data.twitter && (
+                        <li>
+                            <strong class="stressed">Sur X</strong>
+                            <a target="_blank" href={speaker.data.twitter}>
+                                {speaker.data.twitter
+                                    ?.replace("https://twitter.com/", "")
+                                    .replace("https://x.com/", "")}
+                            </a>
+                        </li>
+                    )
+                }
+                {
+                    speaker.data.bluesky && (
+                        <li>
+                            <strong class="stressed">Sur Bluesky</strong>
+                            <a target="_blank" href={speaker.data.bluesky}>
+                                {speaker.data.bluesky?.replace(
+                                    "https://bsky.app/profile/",
+                                    "",
+                                )}
+                            </a>
+                        </li>
+                    )
+                }
+                {
+                    speaker.data.github && (
+                        <li>
+                            <strong class="stressed">Sur Github</strong>
+                            <a target="_blank" href={speaker.data.github}>
+                                {speaker.data.github?.replace(
+                                    "https://github.com/",
+                                    "",
+                                )}
+                            </a>
+                        </li>
+                    )
+                }
+                {
+                    speaker.data.linkedin && (
+                        <li>
+                            <strong class="stressed">Sur LinkedIn</strong>
+                            <a target="_blank" href={speaker.data.linkedin}>
+                                {decodeURI(speaker.data.linkedin)
+                                    ?.replace(
+                                        "https://www.linkedin.com/in/",
+                                        "",
+                                    )
+                                    .replace("/", "")}
+                            </a>
+                        </li>
+                    )
+                }
+                {
+                    speaker.data.website && (
+                        <li>
+                            <strong class="stressed">Site Web</strong>
+                            <a target="_blank" href={speaker.data.website}>
+                                {speaker.data.website}
+                            </a>
+                        </li>
+                    )
+                }
+            </ul>
+        </div>
+
+        <div class="speaker">
+            <Fragment
+                set:html={speaker.data.bio
+                    ? md.toHTML(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
+                    : ""}
             />
-          </p>
-        )
-      }
-      <h2>
-        {speaker.data.display_name}{
-          speaker.data.pronouns ? ` (${speaker.data.pronouns})` : ""
-        }
-      </h2>
-      <p>
-        <span class="no-display">Entreprise: </span>
-        {speaker.data.company ? speaker.data.company : ""}
-      </p>
-      <ul class="social">
-        {
-          speaker.data.mastodon && (
-            <li>
-              <strong class="stressed">Sur Mastodon</strong>
-              <a target="_blank" href={speaker.data.mastodon}>
-                {speaker.data.mastodon.substring(
-                  speaker.data.mastodon.lastIndexOf("/") + 1
-                )}
-              </a>
-            </li>
-          )
-        }
-        {
-          speaker.data.twitter && (
-            <li>
-              <strong class="stressed">Sur X</strong>
-              <a target="_blank" href={speaker.data.twitter}>
-                {speaker.data.twitter?.replace("https://twitter.com/", "")}
-              </a>
-            </li>
-          )
-        }
-        {
-          speaker.data.github && (
-            <li>
-              <strong class="stressed">Sur Github</strong>
-              <a target="_blank" href={speaker.data.github}>
-                {speaker.data.github?.replace("https://github.com/", "")}
-              </a>
-            </li>
-          )
-        }
-        {
-          speaker.data.linkedin && (
-            <li>
-              <strong class="stressed">Sur LinkedIn</strong>
-              <a target="_blank" href={speaker.data.linkedin}>
-                {decodeURI(speaker.data.linkedin)
-                  ?.replace("https://www.linkedin.com/in/", "")
-                  .replace("/", "")}
-              </a>
-            </li>
-          )
-        }
-        {
-          speaker.data.website && (
-            <li>
-              <strong class="stressed">Site Web</strong>
-              <a target="_blank" href={speaker.data.website}>
-                {speaker.data.website}
-              </a>
-            </li>
-          )
-        }
-      </ul>
-    </div>
+        </div>
 
-    <div class="speaker">
-      <Fragment
-        set:html={speaker.data.bio
-          ? md.toHTML(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
-          : ""}
-      />
-    </div>
-
-    <div class="content">
-
-      <div class="talks card">
-        <h3>
-          <span lang="en">Talks</span> présentés par
-          {speaker.data.display_name}
-        </h3>
-        {
-          selectedTalks.map((selectedTalk) => {
-            return (
-              <ul class="talk">
-                <li>
-                  <a href={`/talk-page-${selectedTalk.id}`}>
-                    {selectedTalk?.title}</a>
-                </li>
-                {/* {selectedTalk?.open_feedback && (
+        <div class="content">
+            <div class="talks card">
+                <h3>
+                    <span lang="en">Talks</span> présentés par
+                    {speaker.data.display_name}
+                </h3>
+                {
+                    selectedTalks.map((selectedTalk) => {
+                        return (
+                            <ul class="talk">
+                                <li>
+                                    <a href={`/talk-page-${selectedTalk.id}`}>
+                                        {selectedTalk?.title}
+                                    </a>
+                                </li>
+                                {/* {selectedTalk?.open_feedback && (
                   <p class="openfeedback">
                     Suite à la conférence, vous pouvez faire un retour aux
                     conférenciers et conférencières sur
@@ -150,29 +171,29 @@ const selectedTalks = talks.filter((t) =>
                   </p>
                 )} */}
 
-                {(!!selectedTalk?.link_slides ||
-                  !!selectedTalk?.link_replay) && (
-                  <div class="talk-links">
-                    <h4>Regardez ou re-regardez</h4>
-                    <ul>
-                      {selectedTalk?.link_replay &&
-                        `<li><a href="${selectedTalk?.link_replay}">La vidéo du talk</a></li>`}
-                      {selectedTalk?.link_slides &&
-                        `<li><a href="${selectedTalk?.link_slides}">Les slides du talk</a></li>`}
-                    </ul>
-                  </div>
-                )}
+                                {(!!selectedTalk?.link_slides ||
+                                    !!selectedTalk?.link_replay) && (
+                                    <div class="talk-links">
+                                        <h4>Regardez ou re-regardez</h4>
+                                        <ul>
+                                            {selectedTalk?.link_replay &&
+                                                `<li><a href="${selectedTalk?.link_replay}">La vidéo du talk</a></li>`}
+                                            {selectedTalk?.link_slides &&
+                                                `<li><a href="${selectedTalk?.link_slides}">Les slides du talk</a></li>`}
+                                        </ul>
+                                    </div>
+                                )}
 
-                {/* <p>
+                                {/* <p>
                   <a href={`/talk-page-${selectedTalk.id}`}>
                     Page dédiée de ce talk
                   </a>
                 </p> */}
-              </ul>
-            );
-          })
-        }
-      </div>
+                            </ul>
+                        );
+                    })
+                }
+            </div>
+        </div>
     </div>
-  </div>
 </Layout>

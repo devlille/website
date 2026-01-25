@@ -1,13 +1,15 @@
 const config = {
-  edition: 2025,
+  edition: 2026,
   editionNumber: 9,
+  eventId: "7193c477-1579-4216-a6cb-c8854e848395",
   date: "11 et 12 Juin",
   formattedStartDate: "2026-06-11",
   formattedEndDate: "2026-06-12",
   billetwebUrl: "https://www.billetweb.fr/devlille-",
   cfpUrl: "https://conference-hall.io/devlille-",
   cmsUrl: "https://partenaire.devlille.fr/#",
-  cms4partnersApi: "https://confily-486924521070.europe-west1.run.app/events/devlille-",
+  cms4partnersApi:
+    "https://confily-486924521070.europe-west1.run.app/events/devlille-",
   cfpStartedDate: "5 Janvier",
   cfpEndedDate: "31 Mars",
   partershipUrl:

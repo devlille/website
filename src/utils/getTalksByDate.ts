@@ -1,18 +1,18 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration.js";
-import { markdown as md } from "markdown";
+import { marked } from "marked";
 
 dayjs.extend(duration);
 
 const getTalks = async () => {
   try {
     const agenda = await fetch(
-      "https://confily-486924521070.europe-west1.run.app/events/devlille-2025/planning",
+      "https://confily-486924521070.europe-west1.run.app/events/devlille-2026/planning",
       {
         headers: {
           Accept: "application/json; version=2",
         },
-      }
+      },
     ).then((res) => res.json());
 
     const talksByDay = Object.entries(agenda).reduce((acc, [day, talks]) => {
@@ -35,17 +35,15 @@ const getTalks = async () => {
               return {
                 talk: {
                   ...slot,
-                  abstract: md
-                    .toHTML(
-                      slot?.info?.description ?? slot?.talk?.abstract ?? ""
-                    )
-                    ?.replaceAll("h2", "p"),
+                  abstract: marked(
+                    slot?.info?.description ?? slot?.talk?.abstract ?? "",
+                  )?.replaceAll("h2", "p"),
                   title: slot?.info?.title ?? slot?.talk?.title ?? "Pause",
                   duration: `${dayjs
                     .duration(
                       dayjs(new Date(slot.endTime)).diff(
-                        dayjs(new Date(slot.startTime))
-                      )
+                        dayjs(new Date(slot.startTime)),
+                      ),
                     )
                     .asMinutes()} mn`,
                 },

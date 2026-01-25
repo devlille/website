@@ -2,53 +2,33 @@
 import type { ApiSponsor } from "../content/config";
 
 export interface Props {
-  title: string;
-  partners: ApiSponsor[];
+    title: string;
+    partners: ApiSponsor[];
 }
 
 const { title, partners: unsorted } = Astro.props;
 const partners = (unsorted ?? []).sort((p1, p2) => {
-  return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
+    return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
 });
 ---
 
 <div class="sponsors gold">
-  <h3>{title}</h3>
+    <h3>{title}</h3>
 
-  <ul>
-    {
-      partners.map((p) => {
-        if (p.id === "T7YKXfMS1xm2gl4tr31Y") {
-          return (
-            <li class="sponsor">
-              <a
-                aria-label={`Visiter le site de ${p.name}`}
-                href={`partner-${p.id}`}
-              >
-                <img
-                  src={`/img/${p.logoName}.png`}
-                  alt={p.name}
-                  loading="lazy"
-                />
-              </a>
-            </li>
-          );
+    <ul>
+        {
+            partners.map((p) => {
+                return (
+                    <li class="sponsor">
+                        <a
+                            aria-label={`Visiter le site de ${p.name}`}
+                            href={`partner-${p.id}`}
+                        >
+                            <img src={p.logoUrl} alt={p.name} loading="lazy" />
+                        </a>
+                    </li>
+                );
+            })
         }
-        return (
-          <li class="sponsor">
-            <a
-              aria-label={`Visiter le site de ${p.name}`}
-              href={`partner-${p.id}`}
-            >
-              <img
-                src={`/img/sponsors/${p.logoName}.${p.ext}`}
-                alt={p.name}
-                loading="lazy"
-              />
-            </a>
-          </li>
-        );
-      })
-    }
-  </ul>
+    </ul>
 </div>

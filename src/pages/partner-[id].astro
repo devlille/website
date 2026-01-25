@@ -44,16 +44,11 @@ const video = videos[sponsor.data.id] as string | undefined
     <div class="h-group sponsor">
       <p>
         <a href={sponsor.data.siteUrl}>
-          { sponsor.data.id === "T7YKXfMS1xm2gl4tr31Y" ?(<img
-          loading="lazy"
-          src={`/img/${sponsor.data.logoName}.png`}
-          alt={`Logo de ${sponsor.data.name}`} 
-        />)
-         : (<img
+          <img
             loading="lazy"
-            src={`/img/sponsors/${sponsor.data.logoName}.${sponsor.data.ext}`}
+            src={sponsor.data.logoUrl}
             alt={`Logo de ${sponsor.data.name}`}
-          />)}
+          />
         </a>
       </p>
       <h2>{sponsor.data.name}</h2>
@@ -85,7 +80,7 @@ const video = videos[sponsor.data.id] as string | undefined
         }
       </div>
 
-      <div class="the-talks">
+      <!--div class="the-talks">
         <h3>Les talks de nos colaborateurs</h3>
 
         <ul>
@@ -98,7 +93,7 @@ const video = videos[sponsor.data.id] as string | undefined
             Le nom du speaker
           </li>
         </ul>
-      </div>
+      </div-->
 
       <div class="online">
         <h3>Suivre {sponsor.data.name}</h3>
@@ -108,10 +103,9 @@ const video = videos[sponsor.data.id] as string | undefined
               <li>
                 <strong class="stressed">Sur X: </strong>
                 <a target="_blank" href={sponsor.data.twitterAccount}>
-                  {sponsor.data.twitterAccount?.replace(
-                    "https://twitter.com/",
-                    ""
-                  )}
+                  {sponsor.data.twitterAccount
+                    ?.replace("https://twitter.com/", "")
+                    ?.replace("https://x.com/", "")}
                 </a>
               </li>
             )
@@ -130,6 +124,30 @@ const video = videos[sponsor.data.id] as string | undefined
             )
           }
           {
+            sponsor.data.instagramAccount && (
+              <li>
+                <strong class="stressed">Sur Instagram: </strong>
+                <a target="_blank" href={sponsor.data.instagramAccount}>
+                  {sponsor.data.instagramAccount
+                    ?.replace("https://www.instagram.com/", "")
+                    ?.replace("https://instagram.com/", "")}
+                </a>
+              </li>
+            )
+          }
+          {
+            sponsor.data.facebookAccount && (
+              <li>
+                <strong class="stressed">Sur Facebook: </strong>
+                <a target="_blank" href={sponsor.data.facebookAccount}>
+                  {sponsor.data.facebookAccount
+                    ?.replace("https://www.facebook.com/", "")
+                    ?.replace("https://facebook.com/", "")}
+                </a>
+              </li>
+            )
+          }
+          {
             sponsor.data.siteUrl && (
               <li>
                 <strong class="stressed">Site Web: </strong>
@@ -141,7 +159,7 @@ const video = videos[sponsor.data.id] as string | undefined
           }
         </ul>
       </div>
-        
+
         {
           (sponsor.data.jobs ?? []).length > 0 && (
             <div class="talk">

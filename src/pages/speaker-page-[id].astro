@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { markdown as md } from "markdown";
+import { marked } from "marked";
 
 interface Props {
     speaker: CollectionEntry<"speakers">;
@@ -141,7 +141,7 @@ const selectedTalks = talks.filter((t) =>
         <div class="speaker">
             <Fragment
                 set:html={speaker.data.bio
-                    ? md.toHTML(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
+                    ? marked(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
                     : ""}
             />
         </div>

@@ -49,17 +49,55 @@ export const fetchImage = ({
     .catch(console.error);
 };
 
+type ApiPartnerType = {
+  id: string;
+  name: string;
+  order: number;
+};
+
+type ApiPartnerMedia = {
+  svg: string;
+  png: {
+    "250": string;
+    "500": string;
+    "1000": string;
+  };
+};
+
+type ApiPartnerSocial = {
+  type: string;
+  url: string;
+};
+
+type ApiPartnerResponse = {
+  types: ApiPartnerType[];
+  partners: Array<{
+    id: string;
+    name: string;
+    description: string;
+    media: ApiPartnerMedia;
+    videoUrl: string | null;
+    address: any;
+    types: string[];
+    socials: ApiPartnerSocial[];
+  }>;
+  activities: any[];
+};
+
 export type ApiSponsor = {
   id: string;
-  twitterAccount: string;
-  linkedinAccount: string;
-  sponsoring: "gold" | "silver" | "bronze";
+  twitterAccount?: string;
+  linkedinAccount?: string;
+  instagramAccount?: string;
+  facebookAccount?: string;
+  sponsoring: string[];
   name: string;
   logoName: string;
-  siteUrl: string;
+  siteUrl?: string;
   logoUrl: string;
   ext: string;
   description?: string;
+  editedVideoUrl?: string;
 };
 
 const sponsors = defineCollection({
@@ -77,12 +115,9 @@ const sponsors = defineCollection({
     editedVideoUrl: z.string().optional(),
     twitterAccount: z.string().optional(),
     linkedinAccount: z.string().optional(),
-    sponsoring: z.union([
-      z.literal("gold"),
-      z.literal("silver"),
-      z.literal("bronze"),
-      z.literal("freelance / startup"),
-    ]),
+    instagramAccount: z.string().optional(),
+    facebookAccount: z.string().optional(),
+    sponsoring: z.array(z.string()),
     name: z.string(),
     logoName: z.string().optional(),
     siteUrl: z.string().optional(),
@@ -91,54 +126,83 @@ const sponsors = defineCollection({
   }),
 
   loader: async () => {
-    const sponsors: ApiSponsor[] = await fetch(
-      "https://us-central1-cms4partners-ce427.cloudfunctions.net/cms-getAllPublicSponsors?edition=" +
-        config.edition,
-    ).then((res) => res.json());
+    try {
+      const response: ApiPartnerResponse = await fetch(
+        `https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/${config.eventId}/partners/activities`,
+      ).then((res) => res.json());
 
-    const formattedSponsors = sponsors.map((sponsor) => {
-      let twitterAccount = sponsor.twitterAccount;
+      console.log(`Loaded ${response.partners.length} partners from API`);
 
-      if (twitterAccount) {
-        twitterAccount = twitterAccount.startsWith("https://x.com/")
-          ? twitterAccount
-          : `https://x.com/${twitterAccount}`;
-      }
+      const formattedSponsors: ApiSponsor[] = response.partners.map(
+        (partner) => {
+          const getSocial = (type: string) => {
+            if (!partner.socials || !Array.isArray(partner.socials)) {
+              return undefined;
+            }
+            // Les types dans l'API sont en minuscules
+            const social = partner.socials.find(
+              (s) => s.type.toLowerCase() === type.toLowerCase(),
+            );
+            // L'API utilise 'url' au lieu de 'link'
+            return social?.url;
+          };
 
-      let linkedinAccount = sponsor.linkedinAccount;
+          const twitterAccount = getSocial("x");
+          const linkedinAccount = getSocial("linkedin");
+          const instagramAccount = getSocial("instagram");
+          const facebookAccount = getSocial("facebook");
+          const siteUrl = getSocial("site web");
 
-      if (linkedinAccount) {
-        linkedinAccount = linkedinAccount.includes("linkedin.com/company/")
-          ? linkedinAccount
-          : `https://linkedin.com/company/${linkedinAccount}`;
-      }
+          const logoUrl = partner.media.svg;
+          const ext = "svg";
+          const logoName = partner.name.toLowerCase().replaceAll(" ", "-");
 
-      sponsor.linkedinAccount = linkedinAccount;
+          // partner.types contient directement les noms des catégories (tableau de strings)
+          const sponsoring = partner.types || [];
 
-      return {
-        ...sponsor,
-        twitterAccount,
-        linkedinAccount,
-      };
-    });
+          return {
+            id: partner.id,
+            name: partner.name,
+            description: partner.description,
+            twitterAccount,
+            linkedinAccount,
+            instagramAccount,
+            facebookAccount,
+            siteUrl,
+            logoUrl,
+            ext,
+            logoName,
+            sponsoring,
+            editedVideoUrl: partner.videoUrl ?? undefined,
+          };
+        },
+      );
 
-    (formattedSponsors ?? []).forEach(async (sponsor) => {
-      try {
-        if (sponsor.siteUrl.indexOf("https://") < 0) {
-          sponsor.siteUrl = "https://" + sponsor.siteUrl;
+      // Valider les URLs
+      for (const sponsor of formattedSponsors) {
+        if (sponsor.siteUrl) {
+          try {
+            if (
+              sponsor.siteUrl.indexOf("https://") < 0 &&
+              sponsor.siteUrl.indexOf("http://") < 0
+            ) {
+              sponsor.siteUrl = "https://" + sponsor.siteUrl;
+            }
+            isURL(new URL(sponsor.siteUrl));
+          } catch {
+            console.error(`Bad URL for ${sponsor.name}`);
+          }
         }
-
-        isURL(new URL(sponsor.siteUrl));
-      } catch {
-        console.error(`Bad URL for ${sponsor.name}`);
       }
-      sponsor.logoName = sponsor.name.toLowerCase().replaceAll(" ", "-");
 
-      sponsor.ext = getExtensionFromLogoUrl(sponsor.logoUrl);
-      await fetchImage(sponsor);
-    });
-
-    return formattedSponsors;
+      console.log(
+        `Returning ${formattedSponsors.length} formatted sponsors immediately (without downloading images)`,
+      );
+      return formattedSponsors;
+    } catch (error) {
+      console.error("Error loading sponsors:", error);
+      return [];
+    }
   },
 });
 
@@ -178,7 +242,7 @@ const speakers = defineCollection({
 
   loader: async () => {
     const apiSpeakers: ApiSpeaker[] = await fetch(
-      `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/speakers`,
+      `https://confily-486924521070.europe-west1.run.app/events/devlille-2026/speakers`,
     ).then((response) => response.json());
 
     return apiSpeakers.map((speaker) => ({
@@ -237,7 +301,7 @@ const talks = defineCollection({
 
   loader: async () => {
     const talkMap = await fetch(
-      `https://confily-486924521070.europe-west1.run.app/events/devlille-2025/planning`,
+      `https://confily-486924521070.europe-west1.run.app/events/devlille-2026/planning`,
     ).then((response) => response.json());
 
     return Object.values(talkMap as Record<string, unknown>)

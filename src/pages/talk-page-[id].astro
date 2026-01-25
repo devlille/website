@@ -2,110 +2,121 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { markdown as md } from "markdown";
+import { marked } from "marked";
 
 interface Props {
-  talk: CollectionEntry<"talks">;
+    talk: CollectionEntry<"talks">;
 }
 
 export const getStaticPaths = (async () => {
-  const talks = await getCollection("talks");
+    const talks = await getCollection("talks");
 
-  return talks.map((talk) => ({
-    params: {
-      id: talk.data.id,
-    },
-    props: {
-      talk: talk,
-    },
-  }));
+    return talks.map((talk) => ({
+        params: {
+            id: talk.data.id,
+        },
+        props: {
+            talk: talk,
+        },
+    }));
 }) satisfies GetStaticPaths;
 
 const { talk } = Astro.props;
 
 const og = {
-  ogDescription: talk.data.title?.replaceAll('"', ""),
-  ogUrl: "https://devlille.fr/talk-page-" + talk.data.id,
-  ogImage: talk.data.speakers?.[0]?.photo_url,
+    ogDescription: talk.data.title?.replaceAll('"', ""),
+    ogUrl: "https://devlille.fr/talk-page-" + talk.data.id,
+    ogImage: talk.data.speakers?.[0]?.photo_url,
 };
 
 const speakers = talk.data.speakers ?? [];
 ---
 
 <Layout title={talk.data.title} currSection="talks" og={og}>
-  <div class="page-body list">
+    <div class="page-body list">
+        <div class="talk-sheet">
+            <div class="talk-top">
+                <div class="description">
+                    <h2>{talk.data.title}</h2>
+                    <Fragment
+                        set:html={marked(
+                            talk.data.abstract?.replaceAll("- ", "\r\n\r\n- "),
+                        )}
+                    />
+                </div>
+                <div class="talk-data-block card">
+                    <h3>Présenté par :</h3>
+                    {
+                        speakers?.map((s) => {
+                            return (
+                                <p>
+                                    <img
+                                        loading="lazy"
+                                        width="100"
+                                        height="100"
+                                        src={`${s.photo_url}?v=${Math.floor(Math.random() * 1000) + 1}`}
+                                        alt={`Photo de ${s.display_name}`}
+                                    />
+                                    <a href={`/speaker-page-${s.id}`}>
+                                        {s.display_name}
+                                    </a>
+                                </p>
+                            );
+                        })
+                    }
+                </div>
+            </div>
 
-    <div class="talk-sheet">
-      <div class="talk-top">
-        <div class="description">
-          <h2>{talk.data.title}</h2>
-          <Fragment
-            set:html={md.toHTML(
-              talk.data.abstract?.replaceAll("- ", "\r\n\r\n- ")
-            )}
-          />
+            {
+                talk.data.type === "talk-session" && (
+                    <div class="talk-material">
+                        {(talk.data.open_feedback || talk.data.link_slides) && (
+                            <div class="content">
+                                {talk.data.link_slides && (
+                                    <div class="talk-links">
+                                        <h4>Regardez ou re-regardez</h4>
+                                        <ul>
+                                            {talk.data.link_replay && (
+                                                <li>
+                                                    <a href="${talk.data.link_replay}">
+                                                        La vidéo du talk
+                                                    </a>
+                                                </li>
+                                            )}
+
+                                            {talk.data.link_slides && (
+                                                <li>
+                                                    <a
+                                                        href={
+                                                            talk.data
+                                                                .link_slides
+                                                        }
+                                                    >
+                                                        Les slides du talk
+                                                    </a>
+                                                </li>
+                                            )}
+                                        </ul>
+                                    </div>
+                                )}
+                                {talk.data.open_feedback && (
+                                    <p class="openfb">
+                                        Suite à la conférence, vous pouvez faire
+                                        un retour aux conférenciers et
+                                        conférencières sur
+                                        <a
+                                            href={talk?.data.open_feedback}
+                                            target="_blank"
+                                        >
+                                            OpenFeedback
+                                        </a>
+                                    </p>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                )
+            }
         </div>
-        <div class="talk-data-block card">
-          <h3>Présenté par :</h3>
-          {speakers?.map((s) => {
-            return (
-                <p>
-                  <img
-                    loading="lazy"
-                    width="100"
-                    height="100"
-                    src={`${s.photo_url}?v=${Math.floor(Math.random() * 1000) + 1}`}
-                    alt={`Photo de ${s.display_name}`}/>
-                  <a href={`/speaker-page-${s.id}`}>
-                    {s.display_name}
-                  </a>
-                </p>
-            );
-          })}
-        </div>
-      </div>
-
-      {
-        talk.data.type === "talk-session" && (
-          <div class="talk-material">
-            {(talk.data.open_feedback || talk.data.link_slides) && (
-              <div class="content">
-
-                {talk.data.link_slides && (
-                  <div class="talk-links">
-                    <h4>Regardez ou re-regardez</h4>
-                    <ul>
-                      {talk.data.link_replay && (
-                        <li>
-                          <a href="${talk.data.link_replay}">
-                            La vidéo du talk
-                          </a>
-                        </li>
-                      )}
-
-                      {talk.data.link_slides && (
-                        <li>
-                          <a href={talk.data.link_slides}>Les slides du talk</a>
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                )}
-                {talk.data.open_feedback && (
-                  <p class="openfb">
-                    Suite à la conférence, vous pouvez faire un retour aux
-                    conférenciers et conférencières sur
-                    <a href={talk?.data.open_feedback} target="_blank">
-                      OpenFeedback
-                    </a>
-                  </p>
-                )}
-              </div>              
-            )}
-            
-          </div>
-        )
-      }
     </div>
-  </div>
 </Layout>

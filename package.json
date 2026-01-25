@@ -4,20 +4,26 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run minify-css",
+    "minify-css": "postcss dist/css/*.css dist/youtube/*.css --replace --no-map",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.3"
+    "astro": "^5.15.3",
+    "marked": "^17.0.1"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.6.0",
     "@types/isurl": "^4.0.0",
     "@types/node": "^24.9.2",
+    "cssnano": "^7.1.2",
     "dayjs": "^1.11.19",
     "isurl": "^4.0.2",
-    "markdown": "^0.5.0",
-    "svgo": "^4.0.0"
+    "lightningcss": "^1.31.1",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "svgo": "^4.0.0",
+    "terser": "^5.46.0"
   }
 }

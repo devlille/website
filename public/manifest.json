@@ -1,27 +1,32 @@
 {
   "manifest_version": "3",
-  "name": "DevLille 2025",
+  "name": "DevLille 2026",
   "short_name": "devlille",
   "version": "3",
   "default_locale": "fr",
   "description": "Deux journées de conférences tech enrichies d'une dimension humaine et environnementale",
-  "icons": [{
-        "src": "/img/icon48.png",
-        "sizes": "48x48",
-        "type": "image/png"
-      }, {
-        "src": "/img/icon128.png",
-        "sizes": "128x128",
-        "type": "image/png"
-      }, {
-        "src": "/img/icon192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      }, {
-        "src": "/img/icon512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }],
+  "icons": [
+    {
+      "src": "/img/icon48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
   "screenshots": [
     {
       "src": "/img/screenshot1.png",
@@ -41,4 +46,4 @@
   "start_url": "/index.html",
   "background_color": "#191919",
   "theme_color": "#00A6E8"
-  }
+}

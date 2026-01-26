@@ -5,6 +5,7 @@ import Pack from "../components/pack.astro";
 const sponsors = (await getCollection("sponsors")).map((c) => c.data);
 
 console.log(`Total sponsors in component: ${sponsors.length}`);
+
 if (sponsors.length > 0) {
     console.log("First sponsor:", JSON.stringify(sponsors[0], null, 2));
 }
@@ -34,9 +35,13 @@ const communityPartners =
     sponsors.filter((s) =>
         s.sponsoring.some((type) => type === "Community Partners"),
     ) ?? [];
+const mediaPartners =
+    sponsors.filter((s) =>
+        s.sponsoring.some((type) => type === "Partenaires Média"),
+    ) ?? [];
 
 console.log(
-    `Gold: ${gold.length}, Silver: ${silver.length}, GraineDeDev: ${graineDeDevPartners.length}, Hébergement: ${hebergementPartners.length}, Community: ${communityPartners.length}`,
+    `Gold: ${gold.length}, Silver: ${silver.length}, GraineDeDev: ${graineDeDevPartners.length}, Hébergement: ${hebergementPartners.length}, Community: ${communityPartners.length}, Média: ${mediaPartners.length}`,
 );
 ---
 
@@ -58,5 +63,10 @@ console.log(
 {
     communityPartners.length > 0 && (
         <Pack title="Community Partners" partners={communityPartners} />
+    )
+}
+{
+    mediaPartners.length > 0 && (
+        <Pack title="Partenaires Média" partners={mediaPartners} />
     )
 }

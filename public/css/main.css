@@ -546,6 +546,12 @@ div.hero {
     font-variation-settings: "wght" 900;
     color: var(--hot-color);
   }
+
+  & p.where-n-when a {
+    display: block;
+    margin-top: 1em;
+    font-size: 70%;
+  }
 }
 
 

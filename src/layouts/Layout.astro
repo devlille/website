@@ -169,14 +169,6 @@ const jsonld = {
                                 FAQ</a
                             >
                         </li>
-                        <li>
-                            <a
-                                href="/wld"
-                                aria-current={currSection === "wld" && "page"}
-                            >
-                                Emplois</a
-                            >
-                        </li>
                     </ul>
                 </nav>
 
@@ -390,7 +382,8 @@ const jsonld = {
                             <li><a href="/press">On parle de nous</a></li>
                             <li>
                                 <a href="mailto:contact@devlille.fr"
-                                    >Contactez-nous</a>
+                                    >Contactez-nous</a
+                                >
                             </li>
                             {
                                 config.enabled.sponsoring && (
@@ -405,13 +398,6 @@ const jsonld = {
                                 <a href="/code-conduite">Code de conduite</a>
                             </li>
                             <li><a href="/promo">Ressources graphiques</a></li>
-                            {
-                                config.enabled.welovedevs && (
-                                    <li>
-                                        <a href="/wld">Offres d'emploi</a>
-                                    </li>
-                                )
-                            }
                         </ul>
                         <ul class="links-list editions">
                             {

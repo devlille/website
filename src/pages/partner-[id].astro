@@ -37,19 +37,27 @@ const og = {
 };
 
 const video = videos[sponsor.data.id] as string | undefined
+
+const logoImg = (
+  <img
+    loading="lazy"
+    src={sponsor.data.logoUrl}
+    alt={`Logo de ${sponsor.data.name}`}
+  />
+);
 ---
 
 <Layout title={sponsor.data.name} currSection="partners" og={og}>
   <div class="page-body">
     <div class="h-group sponsor">
       <p>
-        <a href={sponsor.data.siteUrl}>
-          <img
-            loading="lazy"
-            src={sponsor.data.logoUrl}
-            alt={`Logo de ${sponsor.data.name}`}
-          />
-        </a>
+        {sponsor.data.siteUrl ? (
+          <a href={sponsor.data.siteUrl} target="_blank" rel="noopener noreferrer">
+            {logoImg}
+          </a>
+        ) : (
+          logoImg
+        )}
       </p>
       <h2>{sponsor.data.name}</h2>
     </div>

@@ -17,6 +17,7 @@
     "@astrojs/sitemap": "^3.6.0",
     "@types/isurl": "^4.0.0",
     "@types/node": "^24.9.2",
+    "astro-robots-txt": "^1.0.0",
     "cssnano": "^7.1.2",
     "dayjs": "^1.11.19",
     "isurl": "^4.0.2",

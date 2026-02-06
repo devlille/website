@@ -245,12 +245,14 @@ picture img {
     vertical-align: bottom;
 }
 
+summary {cursor: pointer;}
+
 /* ----------------------------------------------------------------- */
 /* -------------------------- STRUCTURE ---------------------------- */
 
 header {
     padding: calc(1rem + 2vw) 0 0.65rem calc(1rem + 2vw);
-    margin-bottom: calc(2rem + 2vw);
+    margin-bottom: calc(1rem + 1vw);
     transition: all 0.3s;
 }
 
@@ -552,6 +554,7 @@ nav a[aria-current="page"] {
 /* ----------------------------------------------------------------- */
 /* -------------------------- HOME ---------------------------- */
 
+
 div.hero {
     position: relative;
     background-image: linear-gradient(
@@ -652,6 +655,17 @@ section.news article + article {
     border-top: 1px dotted var(--text-high);
 }
 
+
+@keyframes venue-photo-1 {
+    0% {opacity: 0; transform: scale(0.5) rotate(0);}
+    100% {opacity: 1; transform: scale(1) rotate(15deg);}
+}
+
+@keyframes venue-photo-2 {
+    0% {opacity: 0; transform: scale(0.5) rotate(0);}
+    100% {opacity: 1; transform: scale(1) rotate(-13deg);}
+}
+
 div.venue {
     position: relative;
     margin: 10vw 0;
@@ -736,7 +750,8 @@ div.sponsors {
 div.sponsors h3 {
     font-variation-settings: "wght" 800;
     color: var(--hot-color);
-    margin-bottom: 1rem;
+    padding-top: 0.5em;
+    margin-bottom: 1.5rem;
     border-top: 5px dotted var(--hot-color);
 }
 div.sponsors.platinium h3 {
@@ -786,13 +801,36 @@ div.sponsor-sheet {
     }
     & p {
         box-sizing: border-box;
-        align-self: start;
+        align-self: stretch;
         background-color: var(--text-high);
         padding: 0.5rem;
         margin: 0;
         display: flex;
         justify-content: center;
     }
+
+    & div.with-contact ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        list-style-type: none;
+        margin: 0.5rem 0 0;
+    }
+
+    & div.with-contact li + li {
+        margin-top: 0;
+    }
+
+    & div.with-contact a {
+        display: flex;
+        overflow: hidden;
+        gap: 3rem;
+        width: 24px;
+        height: 24px;
+        white-space: nowrap;
+    }
+
+    & svg {fill: currentColor;}
 }
 
 .sponsor p.dark {
@@ -883,91 +921,45 @@ div.stats li {
     text-align: center;
     color: var(--body-bg);
     margin: auto;
-    transform: rotate(0);
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.1, -0.6, 0.2, 0);
+    box-shadow: 0 0 8px 2px rgba(0,0,0, 0.5);
 }
 
 div.stats li:nth-child(1) {
     background-color: var(--main-light);
-    animation-name: slideStats1;
-    animation-delay: 4.9s;
 }
 div.stats li:nth-child(2) {
     background-color: var(--hot-light);
     transform: rotate(-1deg);
-    animation-name: slideStats2;
-    animation-delay: 5s;
 }
 div.stats li:nth-child(3) {
     background-color: var(--light-cold);
     transform: rotate(-6deg);
-    animation-name: slideStats3;
-    animation-delay: 5.1s;
 }
 div.stats li:nth-child(4) {
     background-color: var(--light-hot);
     transform: rotate(1deg);
-    animation-name: slideStats4;
-    animation-delay: 5.2s;
 }
 
 @keyframes slideStats1 {
-    0% {
-        transform: rotate(0);
-    }
-    50% {
-        transform: rotate(2deg);
-    }
-    70% {
-        transform: rotate(1deg);
-    }
-    100% {
-        transform: rotate(2deg);
-    }
+    0% {transform: rotate(0);}
+    40% {transform: rotate(-3deg);}
+    80% {transform: rotate(2deg);}
+    100% {transform: rotate(-3deg);}
 }
 @keyframes slideStats2 {
-    0% {
-        transform: rotate(0);
-    }
-    50% {
-        transform: rotate(-2deg);
-    }
-    70% {
-        transform: rotate(1deg);
-    }
-    100% {
-        transform: rotate(-1deg);
-    }
+    0% {transform: translateX(-22vw) rotate(0);}
+    80% {transform: translateX(0) rotate(-3deg);}
+    100% {transform: translateX(0) rotate(4deg);}
 }
 @keyframes slideStats3 {
-    0% {
-        transform: rotate(0);
-    }
-    50% {
-        transform: rotate(-6deg);
-    }
-    70% {
-        transform: rotate(-2deg);
-    }
-    100% {
-        transform: rotate(-6deg);
-    }
+    0% {transform: translateX(-44vw) rotate(0);}
+    80% {transform: translateX(0) rotate(3deg);}
+    100% {transform: translateX(0) rotate(-6deg);}
 }
 @keyframes slideStats4 {
-    0% {
-        transform: rotate(0);
-    }
-    50% {
-        transform: rotate(2deg);
-    }
-    70% {
-        transform: rotate(1deg);
-    }
-    100% {
-        transform: rotate(1deg);
-    }
+    0% {transform: translateX(-66vw) rotate(0);}
+    80% {transform: translateX(0) rotate(-3deg);}
+    100% {transform: translateX(0) rotate(3deg);}
 }
 
 div.fixed {
@@ -1445,6 +1437,10 @@ div.online {
     & ul {
         margin: 0 1em 1em 1.8em;
     }
+
+    & a {
+        overflow-wrap: break-word;
+    }
 }
 
 div.talk h4,
@@ -1549,6 +1545,61 @@ p.openfb {
     padding-top: 1.5rem;
     border-top: 3px dotted currentColor;
 }
+
+
+/* ----------------------------------------------------------------- */
+/* -------------------------- JPB OFFERS ---------------------------- */
+
+.job-offers {
+    & summary {
+        font-size: calc(0.95em + 0.5vw);
+        font-variation-settings: "wght" 700;
+        list-style: none;
+        color: var(--n-dark);
+        background-color: var(--hot-color);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M9 17C9 17 16 18 19 21H20C20.5523 21 21 20.5523 21 20V13.937C21.8626 13.715 22.5 12.9319 22.5 12C22.5 11.0681 21.8626 10.285 21 10.063V4C21 3.44772 20.5523 3 20 3H19C16 6 9 7 9 7H5C3.89543 7 3 7.89543 3 9V15C3 16.1046 3.89543 17 5 17H6L7 22H9V17ZM11 8.6612C11.6833 8.5146 12.5275 8.31193 13.4393 8.04373C15.1175 7.55014 17.25 6.77262 19 5.57458V18.4254C17.25 17.2274 15.1175 16.4499 13.4393 15.9563C12.5275 15.6881 11.6833 15.4854 11 15.3388V8.6612ZM5 9H9V15H5V9Z'%3E%3C/path%3E%3C/svg%3E"), 
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 16L6 10H18L12 16Z'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 1.52rem;
+        background-position: 0.45em 40%, center right 8px;
+        padding: 0.5em 2rem 0.6em 2.5rem;
+    }
+
+    & div.content {
+        background-color: color-mix(in srgb, var(--hot-light), #000 75%);
+        padding: calc(1rem + 1vw) calc(1.5rem + 1vw) calc(1.5rem + 1vw) 2.5rem;
+    }
+
+    & dl + dl {margin-top: 1.5rem;}
+
+    & dt {
+        font-size: calc(0.9em + 0.5vw);
+        margin-bottom: 0.5em;
+    }
+    & dd {
+        font-size: calc(0.8em + 0.5vw);
+        padding-bottom: 0.25em;
+        padding-left: 1em;
+        margin-left: 1em;
+        border-left: 1px solid currentColor;
+    }
+
+    & .p-action {
+        font-variation-settings: "wght" 700;
+    }
+}
+
+details.job-offers[open] summary {    
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M9 17C9 17 16 18 19 21H20C20.5523 21 21 20.5523 21 20V13.937C21.8626 13.715 22.5 12.9319 22.5 12C22.5 11.0681 21.8626 10.285 21 10.063V4C21 3.44772 20.5523 3 20 3H19C16 6 9 7 9 7H5C3.89543 7 3 7.89543 3 9V15C3 16.1046 3.89543 17 5 17H6L7 22H9V17ZM11 8.6612C11.6833 8.5146 12.5275 8.31193 13.4393 8.04373C15.1175 7.55014 17.25 6.77262 19 5.57458V18.4254C17.25 17.2274 15.1175 16.4499 13.4393 15.9563C12.5275 15.6881 11.6833 15.4854 11 15.3388V8.6612ZM5 9H9V15H5V9Z'%3E%3C/path%3E%3C/svg%3E"), 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 8L18 14H6L12 8Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+div.job-offers dl {
+    background-color: color-mix(in srgb, #FFF 10%, var(--body-bg-dark) 5%);
+    padding: calc(1rem + 1vw) calc(1.5rem + 1vw);
+}
+
+
 
 /* ----------------------------------------------------------------- */
 /* -------------------------- AGENDA ---------------------------- */

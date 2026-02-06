@@ -59,7 +59,71 @@ const video = videos[sponsor.data.id] as string | undefined
           />
         )}
       </p>
-      <h2>{sponsor.data.name}</h2>
+      <div class="with-contact">
+        <h2>{sponsor.data.name}</h2>
+        <ul>
+          {
+            sponsor.data.twitterAccount && (
+              <li>
+                <a href={sponsor.data.twitterAccount}>
+                  <svg role="img" width="24" height="24">
+                    <title>X</title>
+                    <use href="/img/sprite.svg#ic-twitter"></use>
+                  </svg>
+                </a>
+              </li>
+            )
+          }
+          {
+            sponsor.data.linkedinAccount && (
+              <li>
+                <a href={sponsor.data.linkedinAccount}>
+                  <svg role="img" width="24" height="24">
+                    <title>LinkedIn</title>
+                    <use href="/img/sprite.svg#ic-linkedin"></use>
+                  </svg>
+                </a>
+              </li>
+            )
+          }
+          {
+            sponsor.data.instagramAccount && (
+              <li>
+                <a href={sponsor.data.instagramAccount}>
+                  <svg role="img" width="24" height="24">
+                    <title>Instagram</title>
+                    <use href="/img/sprite.svg#ic-insta"></use>
+                  </svg>
+                </a>
+              </li>
+            )
+          }
+          {
+            sponsor.data.facebookAccount && (
+              <li>
+                <a href={sponsor.data.facebookAccount}>
+                  <svg role="img" width="24" height="24">
+                    <title>Facebook</title>
+                    <use href="/img/sprite.svg#ic-fb"></use>
+                  </svg>
+                </a>
+              </li>
+            )
+          }
+          {
+            sponsor.data.siteUrl && (
+              <li>
+                <a href={sponsor.data.siteUrl}>
+                  <svg role="img" width="24" height="24">
+                    <title>Site Web</title>
+                    <use href="/img/sprite.svg#ic-website"></use>
+                  </svg>
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </div>
     </div>
 
     <div class="sponsor-sheet">
@@ -103,7 +167,29 @@ const video = videos[sponsor.data.id] as string | undefined
         </ul>
       </div-->
 
-      <div class="online">
+      <details class="job-offers">
+        <summary>Offres d'emploi chez {sponsor.data.name}</summary>
+
+        <div class="content">
+          <dl class="h-listing">
+            <dt class="p-action wanted">
+                <a href="#" class="u-url" target="_blank">Developeur Fullstack Senior</a>
+            </dt>
+            <dd>Paris</dd>
+            <dd>Offre publiée le <span class="dt-listed">15/01/26</span></dd>
+          </dl>
+          <dl class="h-listing">
+            <dt class="p-action wanted">
+                <a href="#" class="u-url" target="_blank">Poste</a>
+            </dt>
+            <dd>Localisation</dd>            
+            <dd>5 ans et plus</dd>
+            <dd>Offre publiée le <span class="dt-listed">JJ/MM/AA</span></dd>
+          </dl>
+        </div>
+      </details>
+
+      <!-- <div class="online">
         <h3>Suivre {sponsor.data.name}</h3>
         <ul>
           {
@@ -166,9 +252,9 @@ const video = videos[sponsor.data.id] as string | undefined
             )
           }
         </ul>
-      </div>
+      </div> -->
 
-        {
+        <!-- {
           (sponsor.data.jobs ?? []).length > 0 && (
             <div class="talk">
               <h3>Mes Offres</h3>
@@ -185,7 +271,7 @@ const video = videos[sponsor.data.id] as string | undefined
               </p>
             </div>
           )
-        }
+        } -->
     </div>
   </div>
 </Layout>

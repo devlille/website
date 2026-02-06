@@ -171,4 +171,33 @@ const og = {
 
     <YoutubeVideos />
   </div>
+
+  <script>
+      const stats = document.querySelector('div.stats');
+      const venue = document.querySelector('div.venue');
+
+      const observer = new window.IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+            stats?.classList.add('active');
+            return
+        }
+        stats?.classList.remove('active');
+        }, {
+        root: null,
+        threshold: 0.5, // set offset 0.1 means trigger if atleast 10% of element in viewport
+      })
+      const observer2 = new window.IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          venue?.classList.add('active');
+            return
+        }
+        venue?.classList.remove('active');
+        }, {
+        root: null,
+        threshold: 0.5
+      })
+
+      observer.observe(stats);
+      observer2.observe(venue);
+  </script>
 </Layout>

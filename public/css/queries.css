@@ -186,28 +186,64 @@
       transform: rotate(-10deg);
     }
   }
-  
-  /* div.venue::before, div.venue::after {  
-    display: block;
-    position: absolute;
-    content: "";
-    background-color: rgb(255,255,255,0.1);
-  }
-  div.venue::before {
-    width: 90vw;
-    height: 80%;
-    left: 5vw;
-  }
-  div.venue::after {
-    width: 10vw;
-    height: 10vw;
-    top: 0;
-    right: 16vw;
-    transform: rotate(10deg);
-    z-index: 2;
-  } */
 }
 
+
+@media screen and (min-width: 850px) and (prefers-reduced-motion: no-preference) {
+  div.stats.active {
+    & ul {position: relative;}
+    & li:nth-child(2), & li:nth-child(3), & li:nth-child(4) {
+      transform: rotate(0);
+    }
+    & li:nth-child(1) {
+      animation-delay: 0.95;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      animation-name: slideStats1;
+    }
+    & li:nth-child(2) {
+      transform: translateX(-22vw);
+      animation-delay: 0.85;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      animation-name: slideStats2;
+    }
+    & li:nth-child(3) {
+      transform: translateX(-44vw);
+      animation-delay: 0.65;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      animation-name: slideStats3;
+    }
+    & li:nth-child(4) {
+      transform: translateX(-66vw);
+      animation-delay: 0;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      animation-name: slideStats4;
+    }
+  }
+
+  div.venue.active p.illustration {
+    animation-delay: 1;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-name: venue-photo-1;
+  }
+  div.venue.active p.illustration.secondary {
+    display: block;
+    animation-delay: 0;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-name: venue-photo-2;
+  }
+}
 
 @media screen and (min-width: 800px) and (max-width: 1299px) {
   div.decor {

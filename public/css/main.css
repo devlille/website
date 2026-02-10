@@ -831,6 +831,8 @@ div.sponsor-sheet {
     }
 
     & svg {fill: currentColor;}
+
+    & img {object-fit: contain;}
 }
 
 .sponsor p.dark {

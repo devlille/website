@@ -100,6 +100,11 @@
   #mc_embed_signup_scroll h2 {
     margin-bottom: 0 !important;
   }
+
+  .job-offers dl {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
 }
 
 
@@ -203,7 +208,6 @@
       animation-name: slideStats1;
     }
     & li:nth-child(2) {
-      transform: translateX(-22vw);
       animation-delay: 0.85;
       animation-duration: 1s;
       animation-fill-mode: forwards;
@@ -211,7 +215,6 @@
       animation-name: slideStats2;
     }
     & li:nth-child(3) {
-      transform: translateX(-44vw);
       animation-delay: 0.65;
       animation-duration: 1s;
       animation-fill-mode: forwards;
@@ -219,7 +222,6 @@
       animation-name: slideStats3;
     }
     & li:nth-child(4) {
-      transform: translateX(-66vw);
       animation-delay: 0;
       animation-duration: 1s;
       animation-fill-mode: forwards;
@@ -229,20 +231,30 @@
   }
 
   div.venue.active p.illustration {
-    animation-delay: 1;
-    animation-duration: 1s;
+    opacity: 0;
+    animation-delay: 0s;
+    animation-duration: 0.25s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
     animation-name: venue-photo-1;
   }
   div.venue.active p.illustration.secondary {
+    opacity: 0;
     display: block;
-    animation-delay: 0;
-    animation-duration: 1s;
+    animation-delay: 0.25s;
+    animation-duration: 0.25s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
     animation-name: venue-photo-2;
   }
+
+  /* div.be-partner p.read-more.active {
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-name: slideIn;
+  } */
 }
 
 @media screen and (min-width: 800px) and (max-width: 1299px) {
@@ -255,15 +267,12 @@
 
 
 @media screen and (min-width: 1000px) {
-  header {
+  #container > header {
       display: grid;
       grid-template-columns: 200px 1fr 1fr;
       justify-content: space-between;
       align-items: center;
       gap: 3rem;
-  }
-  header p {
-    font-size: calc(1.5em + 1vw);
   }
 
   h1 {z-index: 1001;}

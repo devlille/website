@@ -175,29 +175,48 @@ const og = {
   <script>
       const stats = document.querySelector('div.stats');
       const venue = document.querySelector('div.venue');
+      const partner = document.querySelector('div.be-partner p.read-more');
 
-      const observer = new window.IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-            stats?.classList.add('active');
-            return
-        }
-        stats?.classList.remove('active');
-        }, {
-        root: null,
-        threshold: 0.5, // set offset 0.1 means trigger if atleast 10% of element in viewport
-      })
-      const observer2 = new window.IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          venue?.classList.add('active');
-            return
-        }
-        venue?.classList.remove('active');
-        }, {
-        root: null,
-        threshold: 0.5
-      })
+      if(stats) {
+        const observer = new window.IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+              stats.classList.add('active');
+              return
+          }
+          stats.classList.remove('active');
+          }, {
+          root: null,
+          threshold: 0.5, // set offset 0.1 means trigger if atleast 10% of element in viewport
+        })
+        observer.observe(stats);
+      }
 
-      observer.observe(stats);
-      observer2.observe(venue);
+      if(venue) {
+        const observer2 = new window.IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            venue.classList.add('active');
+              return
+          }
+          venue.classList.remove('active');
+          }, {
+          root: null,
+          threshold: 0.5
+        })
+        observer2.observe(venue);
+      }
+
+      if(partner) {
+        const observer3 = new window.IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            partner.classList.add('active');
+              return
+          }
+          partner.classList.remove('active');
+          }, {
+          root: null,
+          threshold: 0.5
+        })
+        observer3.observe(partner);
+      }
   </script>
 </Layout>

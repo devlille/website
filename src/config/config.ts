@@ -14,6 +14,8 @@ const config = {
   cfpEndedDate: "31 Mars",
   partershipUrl:
     "https://docs.google.com/presentation/d/e/2PACX-1vQ8NK6ZjZRNFbRAae5CkmqRDMA0C_PuIUYGuBX6B-_OT_LSqC_T5cGOwj4iFpMIpzaTk4vfv82dAEqX/pub?start=false&loop=false&delayms=3000",
+  partershipUrlEn:
+    "https://docs.google.com/presentation/d/e/2PACX-1vQXNOhmshQ9qr39AAYOVbWsTcstKpbglCYNPOUGcTPBboKzaOS2C-reB6vSVm_sl3AM3EBRLgS0i0ZZ/pub?start=false&loop=false&delayms=3000",
   youtubePlaylistId: "PLXbqr_rv1t4P8qX9IEgd3vnjm9IbEHDG8",
   numberOfPeople: 1500,
   numberOfSpeaker: 60,

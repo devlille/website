@@ -2,6 +2,7 @@
 import config from "../config/config.ts";
 import editions from "../config/editions.ts";
 import Sponsors from "../components/sponsors.astro";
+import PartnershipLink from "../components/partnership-link.astro";
 import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import { render } from "astro:content";
@@ -216,15 +217,14 @@ const jsonld = {
                                     </blockquote>
                                 </div>
 
-                                <p class="read-more">
-                                    <a
-                                        target="_blank"
-                                        href={config.partershipUrl}
-                                    >
-                                        Dossier de partenariat
-                                    </a>{" "}
-                                    [PDF, 5Mo]{" "}
-                                </p>
+                                <PartnershipLink
+                                    url={config.partershipUrl}
+                                    text="Dossier de partenariat"
+                                />
+                                <PartnershipLink
+                                    url={config.partershipUrlEn}
+                                    text="Partnership deck"
+                                />
                             </div>
                             {config.enabled.sponsoring && (
                                 <div class="content filled">
@@ -387,11 +387,21 @@ const jsonld = {
                             </li>
                             {
                                 config.enabled.sponsoring && (
-                                    <li>
-                                        <a href={config.partershipUrl}>
-                                            Devenez partenaire
-                                        </a>
-                                    </li>
+                                    <>
+                                        <li>
+                                            <a href={config.partershipUrl}>
+                                                Devenez partenaire
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://docs.google.com/presentation/d/e/2PACX-1vQXNOhmshQ9qr39AAYOVbWsTcstKpbglCYNPOUGcTPBboKzaOS2C-reB6vSVm_sl3AM3EBRLgS0i0ZZ/pub?start=false&loop=false&delayms=3000"
+                                                target="_blank"
+                                            >
+                                                Partnership deck (English)
+                                            </a>
+                                        </li>
+                                    </>
                                 )
                             }
                             <li>

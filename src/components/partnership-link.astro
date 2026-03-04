@@ -1,0 +1,15 @@
+---
+export interface Props {
+    url: string;
+    text: string;
+}
+
+const { url, text } = Astro.props;
+---
+
+<p class="read-more">
+    <a target="_blank" href={url}>
+        {text}
+    </a>{" "}
+    [PDF, 5Mo]
+</p>

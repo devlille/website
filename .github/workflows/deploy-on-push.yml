@@ -1,0 +1,11 @@
+name: Deploy on push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-clevercloud.yml
+    secrets: inherit

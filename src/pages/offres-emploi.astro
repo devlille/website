@@ -1,5 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import config from "../config/config";
+import JobCard, { type Job } from "../components/JobCard.astro";
+
+type Partner = {
+  id: string;
+  name: string;
+  jobs?: Job[];
+};
+
+type ApiResponse = {
+  partners: Partner[];
+};
+
+const response: ApiResponse = await fetch(
+  `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
+).then((res) => res.json());
+
+const jobsWithPartner = response.partners.flatMap((partner) =>
+  (partner.jobs ?? []).map((job) => ({ ...job, partnerName: partner.name })),
+);
 ---
 
 <Layout title="Les offres d'emploi de nos partenaires" currSection="offres">
@@ -8,59 +28,17 @@ import Layout from "../layouts/Layout.astro";
       <h2 class="p-name">Les offres d'emploi de nos partenaires</h2>
 
       <div class="intro">
-        <p>
-            Nos partenaires nous partagent leurs offres d'emploi actuelles.
-        </p>
+        <p>Nos partenaires nous partagent leurs offres d'emploi actuelles.</p>
       </div>
 
       <div class="job-offers">
-        <section class="h-listing">
-          <header>
-            <h3 class="p-action wanted">
-              <a href="#" class="u-url" target="_blank">Developeur Fullstack Senior</a>
-            </h3>
-            <p class="dt-location">Paris</p>
-          </header>
-          <dl>
-            <div>
-              <dt>Expérience</dt>
-              <dd>Minimum 5 ans</dd>
-            </div>
-            <div>
-              <dt>Salaire</dt>
-              <dd>36k à 55k</dd>
-            </div>
-            <div>
-              <dt>Publiée le</dt>
-              <dd class="dt-listed">15/01/26</dd>
-            </div>
-          </dl>
-        </section>
-        <section class="h-listing">
-          <header>
-            <h3 class="p-action wanted">
-              <a href="#" class="u-url" target="_blank">Developeur Fullstack Senior</a>
-            </h3>
-            <p class="dt-location">Paris</p>
-          </header>
-          <dl>
-            <div>
-              <dt>Expérience</dt>
-              <dd>Minimum 5 ans</dd>
-            </div>
-            <div>
-              <dt>Salaire</dt>
-              <dd>36k à 55k</dd>
-            </div>
-            <div>
-              <dt>Publiée le</dt>
-              <dd class="dt-listed">15/01/26</dd>
-            </div>
-          </dl>
-        </section>
+        {jobsWithPartner.map((job) => (
+          <JobCard job={job} partnerName={job.partnerName} />
+        ))}
+        {jobsWithPartner.length === 0 && (
+          <p>Aucune offre d'emploi disponible pour le moment.</p>
+        )}
       </div>
-
     </article>
   </div>
-
-  </Layout>
+</Layout>

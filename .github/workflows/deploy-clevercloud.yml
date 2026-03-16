@@ -1,0 +1,31 @@
+name: Deploy to CleverCloud
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install CleverCloud CLI
+        run: npm install -g clever-tools
+
+      - name: Deploy to CleverCloud
+        env:
+          CLEVER_TOKEN: ${{ secrets.CLEVER_TOKEN }}
+          CLEVER_SECRET: ${{ secrets.CLEVER_SECRET }}
+        run: |
+          clever link ${{ secrets.CLEVER_APP_ID }}
+          clever deploy --force

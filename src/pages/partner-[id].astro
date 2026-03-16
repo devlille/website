@@ -2,6 +2,8 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import JobCard, { type Job } from "../components/JobCard.astro";
+import config from "../config/config";
 
 const videos: Record<string, string> = {
   aGaY4K4bmCui5YwHAX1P: "NnqC0mDkmDI",
@@ -13,22 +15,33 @@ const videos: Record<string, string> = {
 };
 interface Props {
   sponsor: CollectionEntry<"sponsors">;
+  jobs: Job[];
 }
 
 export const getStaticPaths = (async () => {
   const sponsors = await getCollection("sponsors");
 
+  type ApiPartner = { id: string; jobs?: Job[] };
+  type ApiResponse = { partners: ApiPartner[] };
+
+  const response: ApiResponse = await fetch(
+    `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
+  ).then((res) => res.json());
+
+  const jobsByPartnerId = new Map<string, Job[]>(
+    response.partners.map((p) => [p.id, p.jobs ?? []]),
+  );
+
   return sponsors.map((sponsor) => ({
-    params: {
-      id: sponsor.data.id,
-    },
+    params: { id: sponsor.data.id },
     props: {
-      sponsor: sponsor,
+      sponsor,
+      jobs: jobsByPartnerId.get(sponsor.data.id) ?? [],
     },
   }));
 }) satisfies GetStaticPaths;
 
-const { sponsor } = Astro.props;
+const { sponsor, jobs } = Astro.props;
 
 const og = {
   ogDescription: sponsor.data.description?.replaceAll('"', "")?.trim(),
@@ -167,78 +180,14 @@ const video = videos[sponsor.data.id] as string | undefined
         </ul>
       </div-->
 
-      <details class="job-offers">
-        <summary><h2>Offres d'emploi chez {sponsor.data.name}</h2></summary>
-
-        <div class="content">
-          <section class="h-listing">
-            <header>
-              <h3 class="p-action wanted">
-                <a href="#" class="u-url" target="_blank">Developeur Fullstack Senior</a>
-              </h3>
-              <p class="dt-location">Paris</p>
-            </header>
-            <dl>
-              <div>
-                <dt>Expérience</dt>
-                <dd>Minimum 5 ans</dd>
-              </div>
-              <div>
-                <dt>Salaire</dt>
-                <dd>36k à 55k</dd>
-              </div>
-              <div>
-                <dt>Publiée le</dt>
-                <dd class="dt-listed">15/01/26</dd>
-              </div>
-            </dl>
-          </section>
-          <section class="h-listing">
-            <header>
-              <h3 class="p-action wanted">
-                <a href="#" class="u-url" target="_blank">Developeur Fullstack Senior</a>
-              </h3>
-              <p class="dt-location">Paris</p>
-            </header>
-            <dl>
-              <div>
-                <dt>Expérience</dt>
-                <dd>Minimum 5 ans</dd>
-              </div>
-              <div>
-                <dt>Salaire</dt>
-                <dd>36k à 55k</dd>
-              </div>
-              <div>
-                <dt>Publiée le</dt>
-                <dd class="dt-listed">15/01/26</dd>
-              </div>
-            </dl>
-          </section>
-          <section class="h-listing">
-            <header>
-              <h3 class="p-action wanted">
-                <a href="#" class="u-url" target="_blank">Developeur Fullstack Senior</a>
-              </h3>
-              <p class="dt-location">Paris</p>
-            </header>
-            <dl>
-              <div>
-                <dt>Expérience</dt>
-                <dd>Minimum 5 ans</dd>
-              </div>
-              <div>
-                <dt>Salaire</dt>
-                <dd>36k à 55k</dd>
-              </div>
-              <div>
-                <dt>Publiée le</dt>
-                <dd class="dt-listed">15/01/26</dd>
-              </div>
-            </dl>
-          </section>
-        </div>
-      </details>
+      {jobs.length > 0 && (
+        <details class="job-offers">
+          <summary><h2>Offres d'emploi chez {sponsor.data.name}</h2></summary>
+          <div class="content">
+            {jobs.map((job) => <JobCard job={job} />)}
+          </div>
+        </details>
+      )}
 
       <!-- <div class="online">
         <h3>Suivre {sponsor.data.name}</h3>

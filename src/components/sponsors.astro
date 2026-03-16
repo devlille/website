@@ -10,17 +10,13 @@ if (sponsors.length > 0) {
     console.log("First sponsor:", JSON.stringify(sponsors[0], null, 2));
 }
 
-const gold =
-    sponsors.filter((s) => s.sponsoring.some((type) => type === "Pack Gold")) ??
-    [];
-const silver =
-    sponsors.filter((s) =>
-        s.sponsoring.some((type) => type === "Pack Silver"),
-    ) ?? [];
-const bronze =
-    sponsors.filter((s) =>
-        s.sponsoring.some((type) => type === "Pack Bronze"),
-    ) ?? [];
+const isGold = (type: string) => type === "gold" || type === "Pack Gold";
+const isSilver = (type: string) => type === "silver" || type === "Pack Silver";
+const isBronze = (type: string) => type === "bronze" || type === "Pack Bronze";
+
+const gold = sponsors.filter((s) => s.sponsoring.some(isGold)) ?? [];
+const silver = sponsors.filter((s) => s.sponsoring.some(isSilver)) ?? [];
+const bronze = sponsors.filter((s) => s.sponsoring.some(isBronze)) ?? [];
 const graineDeDevPartners =
     sponsors.filter((s) =>
         s.sponsoring.some(

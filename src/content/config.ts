@@ -128,7 +128,7 @@ const sponsors = defineCollection({
   loader: async () => {
     try {
       const response: ApiPartnerResponse = await fetch(
-        `https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/${config.eventId}/partners/activities`,
+        `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
       ).then((res) => res.json());
       console.log(`Loaded ${response.partners.length} partners from API`);
 

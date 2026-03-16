@@ -2,6 +2,8 @@ name: Manual CleverCloud Deploy
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"
 
 jobs:
   deploy:

@@ -28,4 +28,4 @@ jobs:
           CLEVER_SECRET: ${{ secrets.CLEVER_SECRET }}
         run: |
           clever link ${{ secrets.CLEVER_APP_ID }}
-          clever deploy --force
+          clever restart --without-cache

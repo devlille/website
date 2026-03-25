@@ -6,9 +6,6 @@ import robotsTxt from "astro-robots-txt";
 // https://astro.build/config
 export default defineConfig({
   site: "https://devlille.fr",
-  redirects: {
-    "/slides": "/slides/",
-  },
   integrations: [
     sitemap({
       // Exclure uniquement les pages qu'on ne veut pas indexer

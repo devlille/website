@@ -1,53 +1,59 @@
 ---
 export type Salary = {
-  min: number;
-  max: number;
-  recurrence: string;
+    min: number;
+    max: number;
+    recurrence: string;
 };
 
 export type Job = {
-  url: string;
-  title: string;
-  company_name: string;
-  location: string;
-  salary: Salary | null;
-  requirements: number | null;
-  publish_date: number;
+    url: string;
+    title: string;
+    company_name: string;
+    location: string;
+    salary: Salary | null;
+    requirements: number | null;
+    publish_date: number;
 };
 
 interface Props {
-  job: Job;
-  partnerName?: string;
+    job: Job;
+    partnerName?: string;
 }
 
 const { job, partnerName } = Astro.props;
 ---
 
 <section class="h-listing">
-  <header>
-    <h3 class="p-action wanted">
-      <a href={job.url} class="u-url" target="_blank" rel="noopener noreferrer">{job.title}</a>
-    </h3>
-    <p class="dt-location">{job.location}</p>
-  </header>
-  <dl>
-    {job.requirements !== null && job.requirements > 0 && (
-      <div>
-        <dt>Expérience</dt>
-        <dd>Minimum {job.requirements} ans</dd>
-      </div>
-    )}
-    {job.salary && (
-      <div>
-        <dt>Salaire</dt>
-        <dd>{job.salary.min.toLocaleString("fr-FR")}€ à {job.salary.max.toLocaleString("fr-FR")}€</dd>
-      </div>
-    )}
-    {partnerName && (
-      <div>
-        <dt>Entreprise</dt>
-        <dd>{partnerName}</dd>
-      </div>
-    )}
-  </dl>
+    <header>
+        <h3 class="p-action wanted">
+            <a
+                href={job.url}
+                class="u-url"
+                target="_blank"
+                rel="noopener noreferrer">{partnerName} - {job.title}</a
+            >
+        </h3>
+        <p class="dt-location">{job.location}</p>
+    </header>
+    {
+        (job.requirements || job.salary) && (
+            <dl>
+                {job.requirements !== null && job.requirements > 0 && (
+                    <div>
+                        <dt>Expérience</dt>
+                        <dd>Minimum {job.requirements} ans</dd>
+                    </div>
+                )}
+                {job.salary && (
+                    <div>
+                        <dt>Salaire</dt>
+                        <dd>
+                            {job.salary.min.toLocaleString("fr-FR")}€ à{" "}
+                            {job.salary.max.toLocaleString("fr-FR")}€
+                        </dd>
+                    </div>
+                )}
+            </dl>
+        )
+    }
 </section>

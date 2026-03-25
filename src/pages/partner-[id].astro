@@ -184,7 +184,7 @@ const video = videos[sponsor.data.id] as string | undefined
         <details class="job-offers">
           <summary><h2>Offres d'emploi chez {sponsor.data.name}</h2></summary>
           <div class="content">
-            {jobs.map((job) => <JobCard job={job} />)}
+            {jobs.map((job) => <JobCard job={job} partnerName={sponsor.data.name} />)}
           </div>
         </details>
       )}

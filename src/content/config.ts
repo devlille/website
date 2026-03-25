@@ -131,7 +131,9 @@ const sponsors = defineCollection({
         `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
       ).then((res) => res.json());
       console.log(`Loaded ${response.partners.length} partners from API`);
-
+      console.log(
+        `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
+      );
       const formattedSponsors: ApiSponsor[] = response.partners.map(
         (partner) => {
           console.log(partner.name, partner.types);
@@ -159,7 +161,6 @@ const sponsors = defineCollection({
 
           // partner.types contient directement les noms des catégories (tableau de strings)
           const sponsoring = partner.types || [];
-
           return {
             id: partner.id,
             name: partner.name,

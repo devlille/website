@@ -134,6 +134,7 @@ const sponsors = defineCollection({
 
       const formattedSponsors: ApiSponsor[] = response.partners.map(
         (partner) => {
+          console.log(partner.name, partner.types);
           const getSocial = (type: string) => {
             if (!partner.socials || !Array.isArray(partner.socials)) {
               return undefined;

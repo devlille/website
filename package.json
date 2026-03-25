@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "node scripts/generate-slides.mjs && astro build && npm run build:slides && npm run minify-css",
-    "build:slides": "slidev build slides/slides.md --base /slides/ --out dist/slides",
+    "build:slides": "slidev build slides/slides.md --base /slides/ --out \"$PWD/dist/slides\"",
     "generate-slides": "node scripts/generate-slides.mjs",
     "minify-css": "postcss dist/css/*.css dist/youtube/*.css --replace --no-map",
     "preview": "astro preview",

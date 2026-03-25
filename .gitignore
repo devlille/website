@@ -24,3 +24,7 @@ pnpm-debug.log*
 .idea/
 
 public/img/sponsors/*.svg
+
+# generated Slidev slides
+slides/slides.md
+slides/public/

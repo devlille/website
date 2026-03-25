@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npm run minify-css",
+    "build": "node scripts/generate-slides.mjs && astro build && npm run build:slides && npm run minify-css",
+    "build:slides": "slidev build slides/slides.md --base /slides/ --out dist/slides",
+    "generate-slides": "node scripts/generate-slides.mjs",
     "minify-css": "postcss dist/css/*.css dist/youtube/*.css --replace --no-map",
     "preview": "astro preview",
     "astro": "astro"
@@ -15,6 +17,8 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.6.0",
+    "@slidev/cli": "^52.14.1",
+    "@slidev/theme-default": "^0.25.0",
     "@types/isurl": "^4.0.0",
     "@types/node": "^24.9.2",
     "astro-robots-txt": "^1.0.0",

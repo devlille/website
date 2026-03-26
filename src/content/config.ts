@@ -196,6 +196,30 @@ const sponsors = defineCollection({
         }
       }
 
+      const partnerActivities: Record<string, boolean> = {};
+      if (Array.isArray(response.activities)) {
+        for (const activity of response.activities) {
+          if (activity?.partnerId) {
+            partnerActivities[activity.partnerId] = true;
+          }
+        }
+      }
+
+      const check = (val: unknown) => (val ? "✓" : "✗");
+      const tableData = formattedSponsors.map((s) => ({
+        Nom: s.name,
+        Description: check(s.description),
+        Offres: check(s.jobs && s.jobs.length > 0),
+        Activités: check(partnerActivities[s.id]),
+        Twitter: check(s.twitterAccount),
+        LinkedIn: check(s.linkedinAccount),
+        Instagram: check(s.instagramAccount),
+        Facebook: check(s.facebookAccount),
+        Site: check(s.siteUrl),
+      }));
+      console.log("\n=== Audit des sponsors ===");
+      console.table(tableData);
+
       console.log(
         `Returning ${formattedSponsors.length} formatted sponsors immediately (without downloading images)`,
       );

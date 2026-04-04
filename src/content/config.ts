@@ -266,11 +266,23 @@ const speakers = defineCollection({
   }),
 
   loader: async () => {
-    const apiSpeakers: ApiSpeaker[] = await fetch(
-      `https://confily-486924521070.europe-west1.run.app/events/devlille-2026/speakers`,
+    const agenda = await fetch(
+      `https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/7193c477-1579-4216-a6cb-c8854e848395/agenda`,
     ).then((response) => response.json());
 
-    return apiSpeakers.map((speaker) => ({
+    const speakersMap = new Map<string, ApiSpeaker>();
+
+    for (const sessions of Object.values(agenda.talks as Record<string, any[]>)) {
+      for (const session of sessions) {
+        for (const speaker of session.talk?.speakers ?? []) {
+          if (!speakersMap.has(speaker.id)) {
+            speakersMap.set(speaker.id, speaker);
+          }
+        }
+      }
+    }
+
+    return Array.from(speakersMap.values()).map((speaker) => ({
       id: speaker.id,
       display_name: speaker.display_name,
       bio: speaker.bio,
@@ -289,7 +301,6 @@ const speakers = defineCollection({
 
 const talks = defineCollection({
   schema: z.object({
-    type: z.string().optional(),
     id: z.string(),
     title: z.string().optional(),
     level: z.string().optional(),
@@ -321,32 +332,21 @@ const talks = defineCollection({
       .optional(),
     link_slides: z.string().optional().nullable(),
     link_replay: z.string().optional().nullable(),
-    open_feedback: z.string().optional(),
+    open_feedback: z.string().optional().nullable(),
   }),
 
   loader: async () => {
-    const talkMap = await fetch(
-      `https://confily-486924521070.europe-west1.run.app/events/devlille-2026/planning`,
+    const agenda = await fetch(
+      `https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/7193c477-1579-4216-a6cb-c8854e848395/agenda`,
     ).then((response) => response.json());
 
-    return Object.values(talkMap as Record<string, unknown>)
-      .flatMap((talk) => Object.values(talk as Record<string, unknown>))
+    return Object.values(agenda.talks as Record<string, any[]>)
       .flat()
-      .map((a: any) => {
-        if (a.type === "event-session" && !!a.id) {
-          return {
-            id: a.id,
-            type: a.type,
-            abstract: a?.info?.description ?? "",
-            title: a?.info?.title,
-          };
-        }
-
-        return {
-          type: a.type,
-          ...a.talk,
-        };
-      });
+      .filter((session: any) => session.talk !== null)
+      .map((session: any) => ({
+        ...session.talk,
+        id: session.id,
+      }));
   },
 });
 

@@ -68,52 +68,45 @@ const speakers = talk.data.speakers ?? [];
             </div>
 
             {
-                talk.data.type === "talk-session" && (
+                (talk.data.open_feedback || talk.data.link_slides) && (
                     <div class="talk-material">
-                        {(talk.data.open_feedback || talk.data.link_slides) && (
-                            <div class="content">
-                                {talk.data.link_slides && (
-                                    <div class="talk-links">
-                                        <h4>Regardez ou re-regardez</h4>
-                                        <ul>
-                                            {talk.data.link_replay && (
-                                                <li>
-                                                    <a href="${talk.data.link_replay}">
-                                                        La vidéo du talk
-                                                    </a>
-                                                </li>
-                                            )}
+                        <div class="content">
+                            {talk.data.link_slides && (
+                                <div class="talk-links">
+                                    <h4>Regardez ou re-regardez</h4>
+                                    <ul>
+                                        {talk.data.link_replay && (
+                                            <li>
+                                                <a href={talk.data.link_replay}>
+                                                    La vidéo du talk
+                                                </a>
+                                            </li>
+                                        )}
 
-                                            {talk.data.link_slides && (
-                                                <li>
-                                                    <a
-                                                        href={
-                                                            talk.data
-                                                                .link_slides
-                                                        }
-                                                    >
-                                                        Les slides du talk
-                                                    </a>
-                                                </li>
-                                            )}
-                                        </ul>
-                                    </div>
-                                )}
-                                {talk.data.open_feedback && (
-                                    <p class="openfb">
-                                        Suite à la conférence, vous pouvez faire
-                                        un retour aux conférenciers et
-                                        conférencières sur
-                                        <a
-                                            href={talk?.data.open_feedback}
-                                            target="_blank"
-                                        >
-                                            OpenFeedback
-                                        </a>
-                                    </p>
-                                )}
-                            </div>
-                        )}
+                                        {talk.data.link_slides && (
+                                            <li>
+                                                <a href={talk.data.link_slides}>
+                                                    Les slides du talk
+                                                </a>
+                                            </li>
+                                        )}
+                                    </ul>
+                                </div>
+                            )}
+                            {talk.data.open_feedback && (
+                                <p class="openfb">
+                                    Suite à la conférence, vous pouvez faire
+                                    un retour aux conférenciers et
+                                    conférencières sur
+                                    <a
+                                        href={talk.data.open_feedback}
+                                        target="_blank"
+                                    >
+                                        OpenFeedback
+                                    </a>
+                                </p>
+                            )}
+                        </div>
                     </div>
                 )
             }

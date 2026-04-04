@@ -7,58 +7,54 @@ dayjs.extend(duration);
 const getTalks = async () => {
   try {
     const agenda = await fetch(
-      "https://confily-486924521070.europe-west1.run.app/events/devlille-2026/planning",
-      {
-        headers: {
-          Accept: "application/json; version=2",
-        },
-      },
+      "https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/7193c477-1579-4216-a6cb-c8854e848395/agenda",
     ).then((res) => res.json());
 
-    const talksByDay = Object.entries(agenda).reduce((acc, [day, talks]) => {
-      return {
-        ...acc,
-        [day]: Object.entries(talks).map(([_, slots]) => {
-          return [
-            _,
-            slots.map((slot) => {
-              let id = slot?.info?.id ?? slot?.talk?.speakers[0]?.id;
-              let speakers = slot?.talk?.speakers
-                ?.map((speaker) => speaker?.display_name)
-                .join(" & ");
-              if (slot.type === "event-session" && !slot.info.description) {
-                id = undefined;
-              }
-              if (slot.type === "event-session" && !!slot.info.description) {
-                speakers = "DevLille";
-              }
-              return {
-                talk: {
-                  ...slot,
-                  abstract: marked(
-                    slot?.info?.description ?? slot?.talk?.abstract ?? "",
-                  )?.replaceAll("h2", "p"),
-                  title: slot?.info?.title ?? slot?.talk?.title ?? "Pause",
-                  duration: `${dayjs
-                    .duration(
-                      dayjs(new Date(slot.endTime)).diff(
-                        dayjs(new Date(slot.startTime)),
-                      ),
-                    )
-                    .asMinutes()} mn`,
-                },
-                id,
-                speakers,
-                speakersIds: slot?.info?.id
-                  ? [slot?.info?.id]
-                  : slot?.talk?.speakers?.map((speaker) => speaker?.id),
-              };
-            }),
-          ];
-        }),
-      };
-    }, {});
-    return talksByDay;
+    const talksByDay: Record<string, Record<string, any[]>> = {};
+
+    for (const [timeSlot, sessions] of Object.entries(
+      agenda.talks as Record<string, any[]>,
+    )) {
+      for (const session of sessions) {
+        const day = session.startTime.split("T")[0];
+        if (!talksByDay[day]) talksByDay[day] = {};
+        if (!talksByDay[day][timeSlot]) talksByDay[day][timeSlot] = [];
+
+        const id = session.talk?.id;
+        const speakers = session.talk?.speakers
+          ?.map((s: any) => s.display_name)
+          .join(" & ");
+        const speakersIds = session.talk?.speakers?.map((s: any) => s.id);
+
+        talksByDay[day][timeSlot].push({
+          talk: {
+            ...session,
+            abstract: marked(session.talk?.abstract ?? "")?.replaceAll(
+              "h2",
+              "p",
+            ),
+            title: session.talk?.title ?? "Pause",
+            duration: `${dayjs
+              .duration(
+                dayjs(new Date(session.endTime)).diff(
+                  dayjs(new Date(session.startTime)),
+                ),
+              )
+              .asMinutes()} mn`,
+          },
+          id,
+          speakers,
+          speakersIds,
+        });
+      }
+    }
+
+    return Object.fromEntries(
+      Object.entries(talksByDay).map(([day, slots]) => [
+        day,
+        Object.entries(slots).sort(([a], [b]) => a.localeCompare(b)),
+      ]),
+    );
   } catch (e) {
     console.log(e);
     return [];

@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { marked } from "marked";
+import PartnerBlock from "../components/PartnerBlock.astro";
 
 interface Props {
     speaker: CollectionEntry<"speakers">;
@@ -13,7 +14,7 @@ export const getStaticPaths = (async () => {
 
     return speakers.map((speaker) => ({
         params: {
-            id: speaker.data.id,
+            id: speaker.id,
         },
         props: {
             speaker: speaker,
@@ -25,14 +26,14 @@ const { speaker } = Astro.props;
 
 const og = {
     ogDescription: speaker.data.bio,
-    ogUrl: "https://devlille.fr/speaker-page-" + speaker.data.id,
+    ogUrl: "https://devlille.fr/speaker-page-" + speaker.id,
     ogImage: speaker.data.display_name,
 };
 
-const talks = (await getCollection("talks")).map((d) => d.data);
+const talks = await getCollection("talks");
 
 const selectedTalks = talks.filter((t) =>
-    t.speakers?.find((s) => s.id === speaker.data.id),
+    t.data.speakers?.find((s) => s.id === speaker.id),
 );
 ---
 
@@ -158,28 +159,29 @@ const selectedTalks = talks.filter((t) =>
                             <ul class="talk">
                                 <li>
                                     <a href={`/talk-page-${selectedTalk.id}`}>
-                                        {selectedTalk?.title}
+                                        {selectedTalk.data?.title}
                                     </a>
                                 </li>
-                                {/* {selectedTalk?.open_feedback && (
-                  <p class="openfeedback">
-                    Suite à la conférence, vous pouvez faire un retour aux
-                    conférenciers et conférencières sur
-                    <a href={selectedTalk?.open_feedback} target="_blank">
-                      OpenFeedback
-                    </a>
-                  </p>
-                )} */}
 
-                                {(!!selectedTalk?.link_slides ||
-                                    !!selectedTalk?.link_replay) && (
+                                {(!!selectedTalk.data?.link_slides ||
+                                    !!selectedTalk.data?.link_replay) && (
                                     <div class="talk-links">
                                         <h4>Regardez ou re-regardez</h4>
                                         <ul>
-                                            {selectedTalk?.link_replay &&
-                                                `<li><a href="${selectedTalk?.link_replay}">La vidéo du talk</a></li>`}
-                                            {selectedTalk?.link_slides &&
-                                                `<li><a href="${selectedTalk?.link_slides}">Les slides du talk</a></li>`}
+                                            {selectedTalk.data?.link_replay && (
+                                                <li>
+                                                    <a href={selectedTalk.data.link_replay}>
+                                                        La vidéo du talk
+                                                    </a>
+                                                </li>
+                                            )}
+                                            {selectedTalk.data?.link_slides && (
+                                                <li>
+                                                    <a href={selectedTalk.data.link_slides}>
+                                                        Les slides du talk
+                                                    </a>
+                                                </li>
+                                            )}
                                         </ul>
                                     </div>
                                 )}
@@ -194,6 +196,8 @@ const selectedTalks = talks.filter((t) =>
                     })
                 }
             </div>
+
+            <PartnerBlock partners={speaker.data.partners ?? []} className="speaker-partners" />
         </div>
     </div>
 </Layout>

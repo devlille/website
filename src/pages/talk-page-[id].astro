@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { marked } from "marked";
+import PartnerBlock from "../components/PartnerBlock.astro";
 
 interface Props {
     talk: CollectionEntry<"talks">;
@@ -13,7 +14,7 @@ export const getStaticPaths = (async () => {
 
     return talks.map((talk) => ({
         params: {
-            id: talk.data.id,
+            id: talk.id,
         },
         props: {
             talk: talk,
@@ -25,11 +26,26 @@ const { talk } = Astro.props;
 
 const og = {
     ogDescription: talk.data.title?.replaceAll('"', ""),
-    ogUrl: "https://devlille.fr/talk-page-" + talk.data.id,
+    ogUrl: "https://devlille.fr/talk-page-" + talk.id,
     ogImage: talk.data.speakers?.[0]?.photo_url,
 };
 
 const speakers = talk.data.speakers ?? [];
+
+const partners = [
+    ...new Map(
+        speakers.flatMap((s) => s.partners ?? []).map((p) => [p.id, p]),
+    ).values(),
+];
+
+function shiftHeadings(html: string): string {
+    return html
+        .replaceAll("<h5", "<h6").replaceAll("</h5>", "</h6>")
+        .replaceAll("<h4", "<h5").replaceAll("</h4>", "</h5>")
+        .replaceAll("<h3", "<h4").replaceAll("</h3>", "</h4>")
+        .replaceAll("<h2", "<h3").replaceAll("</h2>", "</h3>")
+        .replaceAll("<h1", "<h2").replaceAll("</h1>", "</h2>");
+}
 ---
 
 <Layout title={talk.data.title} currSection="talks" og={og}>
@@ -39,8 +55,8 @@ const speakers = talk.data.speakers ?? [];
                 <div class="description">
                     <h2>{talk.data.title}</h2>
                     <Fragment
-                        set:html={marked(
-                            talk.data.abstract?.replaceAll("- ", "\r\n\r\n- "),
+                        set:html={shiftHeadings(
+                            marked(talk.data.abstract?.replaceAll("- ", "\r\n\r\n- ")) as string,
                         )}
                     />
                 </div>
@@ -65,6 +81,8 @@ const speakers = talk.data.speakers ?? [];
                         })
                     }
                 </div>
+
+                <PartnerBlock partners={partners} className="talk-partners" />
             </div>
 
             {

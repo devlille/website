@@ -1,0 +1,29 @@
+---
+interface Partner {
+    id: string;
+    name: string;
+    logo_url: string;
+}
+
+interface Props {
+    partners: Partner[];
+    className?: string;
+}
+
+const { partners, className } = Astro.props;
+---
+
+{partners.length > 0 && (
+    <div class={`sponsors gold ${className ?? ""}`}>
+        <h3>Partenaire{partners.length > 1 ? "s" : ""}</h3>
+        <ul>
+            {partners.map((p) => (
+                <li class="sponsor">
+                    <a href={`/partner-${p.id}`} aria-label={`Visiter le site de ${p.name}`}>
+                        <img loading="lazy" src={p.logo_url} alt={p.name} />
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+)}

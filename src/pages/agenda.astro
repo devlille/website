@@ -46,19 +46,19 @@ const talksByDate = await createTalksCollectionsBydate()
                 <dt>{ t.talk.room }</dt>
   
                 {t.id == undefined  && (
-                <dd lang={t.talk.language == "English" ? 'en': 'fr'} class={t.talk.type}>
-                  { t.talk.title } 
+                <dd lang={t.talk.language == "en" ? 'en': 'fr'} class={t.talk.type}>
+                  { t.talk.title }
                 </dd>
-  
-                <dd lang={t.talk.language == "English" ? 'en': 'fr'}> { t.speakers }</dd>
+
+                <dd lang={t.talk.language == "en" ? 'en': 'fr'}> { t.speakers }</dd>
               )}
   
                 {!!t.id && (
-                <dd lang={t.talk.language == "English" ? 'en': 'fr'} class={t.talk.type}>
-                  <a href={`/talk-page-${t.talk.id}`}>  { t.talk.title } ({t.talk.duration})</a>
+                <dd lang={t.talk.language == "en" ? 'en': 'fr'} class={t.talk.type}>
+                  <a href={`/talk-page-${t.id}`}>  { t.talk.title } ({t.talk.duration})</a>
                 </dd>
-  
-                <dd lang={t.talk.language == "English" ? 'en': 'fr'}> { t.speakers }</dd>
+
+                <dd lang={t.talk.language == "en" ? 'en': 'fr'}> { t.speakers }</dd>
                )}
             </dl>
               )

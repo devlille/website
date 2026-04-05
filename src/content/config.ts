@@ -239,6 +239,7 @@ type ApiSpeaker = {
   pronouns: string | null;
   company: string | null;
   socials: Array<{ type: string; url: string }>;
+  partners?: Array<{ id: string; name: string; logo_url: string }>;
 };
 
 const getSocialUrl = (
@@ -251,7 +252,6 @@ const getSocialUrl = (
 
 const speakers = defineCollection({
   schema: z.object({
-    id: z.string(),
     display_name: z.string().optional(),
     bio: z.string().optional(),
     photo_url: z.string(),
@@ -263,26 +263,16 @@ const speakers = defineCollection({
     linkedin: z.nullable(z.string()).optional(),
     website: z.nullable(z.string()).optional(),
     bluesky: z.nullable(z.string()).optional(),
+    partners: z.array(z.object({ id: z.string(), name: z.string(), logo_url: z.string() })).optional(),
   }),
 
   loader: async () => {
     const agenda = await fetch(
       `https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/7193c477-1579-4216-a6cb-c8854e848395/agenda`,
+      { headers: { Accept: "application/json; version=4" } },
     ).then((response) => response.json());
 
-    const speakersMap = new Map<string, ApiSpeaker>();
-
-    for (const sessions of Object.values(agenda.talks as Record<string, any[]>)) {
-      for (const session of sessions) {
-        for (const speaker of session.talk?.speakers ?? []) {
-          if (!speakersMap.has(speaker.id)) {
-            speakersMap.set(speaker.id, speaker);
-          }
-        }
-      }
-    }
-
-    return Array.from(speakersMap.values()).map((speaker) => ({
+    return agenda.speakers.map((speaker: ApiSpeaker) => ({
       id: speaker.id,
       display_name: speaker.display_name,
       bio: speaker.bio,
@@ -295,13 +285,13 @@ const speakers = defineCollection({
       mastodon: getSocialUrl(speaker.socials, "mastodon"),
       website: getSocialUrl(speaker.socials, "website"),
       bluesky: getSocialUrl(speaker.socials, "bluesky"),
+      partners: speaker.partners ?? [],
     }));
   },
 });
 
 const talks = defineCollection({
   schema: z.object({
-    id: z.string(),
     title: z.string().optional(),
     level: z.string().optional(),
     abstract: z.string().optional(),
@@ -327,6 +317,7 @@ const talks = defineCollection({
           company: z.nullable(z.string()),
           photo_url: z.string(),
           socials: z.array(z.unknown()),
+          partners: z.array(z.object({ id: z.string(), name: z.string(), logo_url: z.string() })).optional(),
         }),
       )
       .optional(),
@@ -338,15 +329,40 @@ const talks = defineCollection({
   loader: async () => {
     const agenda = await fetch(
       `https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/7193c477-1579-4216-a6cb-c8854e848395/agenda`,
+      { headers: { Accept: "application/json; version=4" } },
     ).then((response) => response.json());
 
-    return Object.values(agenda.talks as Record<string, any[]>)
-      .flat()
-      .filter((session: any) => session.talk !== null)
-      .map((session: any) => ({
-        ...session.talk,
-        id: session.id,
-      }));
+    const sessionsMap = new Map<string, any>(
+      agenda.sessions.map((s: any) => [s.id, s]),
+    );
+    const speakersMap = new Map<string, any>(
+      agenda.speakers.map((s: any) => [s.id, s]),
+    );
+
+    return agenda.schedules
+      .filter(
+        (schedule: any) =>
+          schedule.session_id !== "null" &&
+          sessionsMap.get(schedule.session_id)?.type === "talk-session",
+      )
+      .map((schedule: any) => {
+        const session = sessionsMap.get(schedule.session_id);
+        const speakerObjects = (session.speakers ?? [])
+          .map((id: string) => speakersMap.get(id))
+          .filter(Boolean);
+
+        return {
+          id: schedule.id,
+          title: session.title,
+          abstract: session.abstract,
+          level: session.level,
+          language: session.language,
+          speakers: speakerObjects,
+          link_slides: session.link_slides,
+          link_replay: session.link_replay,
+          open_feedback: session.open_feedback,
+        };
+      });
   },
 });
 

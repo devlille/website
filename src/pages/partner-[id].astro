@@ -16,6 +16,7 @@ const videos: Record<string, string> = {
 interface Props {
   sponsor: CollectionEntry<"sponsors">;
   jobs: Job[];
+  speakerIds: string[];
 }
 
 export const getStaticPaths = (async () => {
@@ -24,12 +25,25 @@ export const getStaticPaths = (async () => {
   type ApiPartner = { id: string; jobs?: Job[] };
   type ApiResponse = { partners: ApiPartner[] };
 
-  const response: ApiResponse = await fetch(
-    `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
-  ).then((res) => res.json());
+  const [activitiesResponse, partnersResponse] = await Promise.all([
+    fetch(
+      `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
+    ).then((res) => res.json() as Promise<ApiResponse>),
+    fetch(
+      `${config.partnersActivitiesApi}/events/${config.eventId}/partners`,
+    ).then((res) => res.json()),
+  ]);
 
   const jobsByPartnerId = new Map<string, Job[]>(
-    response.partners.map((p) => [p.id, p.jobs ?? []]),
+    activitiesResponse.partners.map((p) => [p.id, p.jobs ?? []]),
+  );
+
+  const allPartners: any[] = Object.values(partnersResponse).flat();
+  const speakersByPartnerId = new Map<string, string[]>(
+    allPartners.map((p: any) => [
+      p.id,
+      (p.speakers ?? []).map((s: any) => s.id),
+    ]),
   );
 
   return sponsors.map((sponsor) => ({
@@ -37,11 +51,19 @@ export const getStaticPaths = (async () => {
     props: {
       sponsor,
       jobs: jobsByPartnerId.get(sponsor.data.id) ?? [],
+      speakerIds: speakersByPartnerId.get(sponsor.data.id) ?? [],
     },
   }));
 }) satisfies GetStaticPaths;
 
-const { sponsor, jobs } = Astro.props;
+const { sponsor, jobs, speakerIds } = Astro.props;
+
+const allTalks = await getCollection("talks");
+const partnerTalks = speakerIds.length > 0
+  ? allTalks.filter((t) =>
+      t.data.speakers?.some((s) => speakerIds.includes(s.id ?? ""))
+    )
+  : [];
 
 const og = {
   ogDescription: sponsor.data.description?.replaceAll('"', "")?.trim(),
@@ -165,20 +187,21 @@ const video = videos[sponsor.data.id] as string | undefined
         }
       </div>
 
-      <!--div class="the-talks">
-        <h3>Les talks de nos colaborateurs</h3>
-
-        <ul>
-          <li>
-            <strong><a href="#">Le nom du talk tres tres long qui passe à la logne</a></strong>
-            Le nom du speaker
-          </li>
-          <li>
-            <strong><a href="#">Le nom du talk</a></strong>
-            Le nom du speaker
-          </li>
-        </ul>
-      </div-->
+      {partnerTalks.length > 0 && (
+        <div class="the-talks">
+          <h3>Les talks de nos collaborateurs</h3>
+          <ul>
+            {partnerTalks.map((talk) => (
+              <li>
+                <strong>
+                  <a href={`/talk-page-${talk.id}`}>{talk.data.title}</a>
+                </strong>
+                {talk.data.speakers?.map((s) => s.display_name).join(" & ")}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {jobs.length > 0 && (
         <details class="job-offers">

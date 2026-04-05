@@ -1,0 +1,75 @@
+---
+interface Props {
+    talkId: string;
+    sessionId: string;
+}
+
+const { talkId, sessionId } = Astro.props;
+---
+
+<!--button
+    type="button"
+    class="btn-favorite"
+    data-talk-id={talkId}
+    data-session-id={sessionId}
+    aria-label="Ajouter aux favoris"
+>
+    Favori
+</button-->
+<script is:inline data-talk-id={talkId} data-session-id={sessionId}>
+    (function () {
+        const STORAGE_KEY = "devlille_favorites";
+        const VOTE_API =
+            "https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/7193c477-1579-4216-a6cb-c8854e848395/sessions";
+
+        const talkId = document.currentScript.dataset.talkId;
+        const sessionId = document.currentScript.dataset.sessionId;
+        const btn = document.currentScript.previousElementSibling;
+
+        function getFavorites() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
+            } catch {
+                return [];
+            }
+        }
+
+        function updateButton() {
+            const isFavorite = getFavorites().includes(talkId);
+            btn.classList.toggle("is-favorite", isFavorite);
+            btn.setAttribute("aria-pressed", String(isFavorite));
+        }
+
+        updateButton();
+
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const favorites = getFavorites();
+            const index = favorites.indexOf(talkId);
+            if (index === -1) {
+                favorites.push(talkId);
+                fetch(`${VOTE_API}/${sessionId}/vote`, {
+                    method: "POST",
+                }).catch(function () {});
+            } else {
+                favorites.splice(index, 1);
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+            updateButton();
+        });
+    })();
+</script>
+
+<style>
+    .btn-favorite {
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn-favorite.is-favorite {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+</style>

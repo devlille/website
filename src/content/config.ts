@@ -324,6 +324,7 @@ const talks = defineCollection({
     link_slides: z.string().optional().nullable(),
     link_replay: z.string().optional().nullable(),
     open_feedback: z.string().optional().nullable(),
+    session_id: z.string().optional(),
   }),
 
   loader: async () => {
@@ -353,6 +354,7 @@ const talks = defineCollection({
 
         return {
           id: schedule.id,
+          session_id: schedule.session_id,
           title: session.title,
           abstract: session.abstract,
           level: session.level,

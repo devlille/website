@@ -4,6 +4,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { marked } from "marked";
 import PartnerBlock from "../components/PartnerBlock.astro";
+import FavoriteButton from "../components/FavoriteButton.astro";
 
 interface Props {
     talk: CollectionEntry<"talks">;
@@ -54,6 +55,7 @@ function shiftHeadings(html: string): string {
             <div class="talk-top">
                 <div class="description">
                     <h2>{talk.data.title}</h2>
+                    <FavoriteButton talkId={talk.id} sessionId={talk.data.session_id ?? ""} />
                     <Fragment
                         set:html={shiftHeadings(
                             marked(talk.data.abstract?.replaceAll("- ", "\r\n\r\n- ")) as string,

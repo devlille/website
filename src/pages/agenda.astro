@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { createTalksCollectionsBydate } from "../utils/getTalksByDate";
+import FavoriteButton from "../components/FavoriteButton.astro";
+import FavoritesSwitch from "../components/FavoritesSwitch.astro";
 
 const og = {
   ogTitle: "DevLille - Agenda",
@@ -15,7 +17,10 @@ const talksByDate = await createTalksCollectionsBydate()
 <Layout title="Agenda /" currSection="agenda">
 
 <div class="page-body">
-  <h2>Agenda</h2>
+  <h2>
+    Agenda
+    <FavoritesSwitch />
+  </h2>
 
   <div class="tabs-block">
     <ul class="tabs" role="tablist">
@@ -42,7 +47,7 @@ const talksByDate = await createTalksCollectionsBydate()
         <div class="content">
             {talk[1].map((t: any) => {
               return (
-              <dl>
+              <dl data-talk-id={t.id ?? undefined}>
                 <dt>{ t.talk.room }</dt>
   
                 {t.id == undefined  && (
@@ -59,7 +64,10 @@ const talksByDate = await createTalksCollectionsBydate()
                 </dd>
 
                 <dd lang={t.talk.language == "en" ? 'en': 'fr'}> { t.speakers }</dd>
+
+                <dd><FavoriteButton talkId={t.id} sessionId={t.sessionId} /></dd>
                )}
+
             </dl>
               )
             })}

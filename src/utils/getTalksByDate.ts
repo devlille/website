@@ -103,6 +103,8 @@ const getTalks = async () => {
 
       const id =
         session.type === "talk-session" ? schedule.id : undefined;
+      const sessionId =
+        session.type === "talk-session" ? schedule.session_id : undefined;
       const speakers =
         speakerObjects.length > 0
           ? speakerObjects.map((s: any) => s.display_name).join(" & ")
@@ -138,6 +140,7 @@ const getTalks = async () => {
           open_feedback: session.open_feedback,
         },
         id,
+        sessionId,
         speakers,
         speakersIds,
       });

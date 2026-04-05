@@ -1,0 +1,59 @@
+---
+
+---
+
+<!--label class="favorites-filter">
+  <input type="checkbox" id="filter-favorites" />
+  Mes favoris uniquement
+</label-->
+<script is:inline>
+    (function () {
+        const STORAGE_KEY = "devlille_favorites";
+        const PARAM = "favoris";
+
+        function getFavorites() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
+            } catch {
+                return [];
+            }
+        }
+
+        function applyFilter(active) {
+            const favorites = getFavorites();
+            document
+                .querySelectorAll("dl[data-talk-id]")
+                .forEach(function (dl) {
+                    const id = dl.dataset.talkId;
+                    dl.hidden = active && !favorites.includes(id);
+                });
+
+            document
+                .querySelectorAll("section.hour")
+                .forEach(function (section) {
+                    const visibleTalks = section.querySelectorAll(
+                        "dl[data-talk-id]:not([hidden])",
+                    );
+                    section.hidden = active && visibleTalks.length === 0;
+                });
+        }
+
+        const checkbox = document.getElementById("filter-favorites");
+        const params = new URLSearchParams(window.location.search);
+        const initialActive = params.get(PARAM) === "1";
+
+        checkbox.checked = initialActive;
+        applyFilter(initialActive);
+
+        checkbox.addEventListener("change", function () {
+            const url = new URL(window.location.href);
+            if (checkbox.checked) {
+                url.searchParams.set(PARAM, "1");
+            } else {
+                url.searchParams.delete(PARAM);
+            }
+            window.history.pushState({}, "", url);
+            applyFilter(checkbox.checked);
+        });
+    })();
+</script>

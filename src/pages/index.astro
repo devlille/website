@@ -19,7 +19,7 @@ const og = {
         {config.date}
       </time>
       <span>Lille Grand Palais</span>
-      <a href="https://conference-hall.io/devlille-2026" target="_blank">CFP Ouvert</a>
+      <!-- <a href="https://conference-hall.io/devlille-2026" target="_blank">CFP Ouvert</a> -->
     </p>
   </div>
 
@@ -183,7 +183,7 @@ const og = {
               stats.classList.add('active');
               return
           }
-          stats.classList.remove('active');
+          //stats.classList.remove('active');
           }, {
           root: null,
           threshold: 0.5, // set offset 0.1 means trigger if atleast 10% of element in viewport
@@ -197,10 +197,10 @@ const og = {
             venue.classList.add('active');
               return
           }
-          venue.classList.remove('active');
+          //venue.classList.remove('active');
           }, {
           root: null,
-          threshold: 0.5
+          threshold: 1
         })
         observer2.observe(venue);
       }
@@ -211,10 +211,10 @@ const og = {
             partner.classList.add('active');
               return
           }
-          partner.classList.remove('active');
+          //partner.classList.remove('active');
           }, {
           root: null,
-          threshold: 0.5
+          threshold: 1
         })
         observer3.observe(partner);
       }

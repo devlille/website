@@ -332,9 +332,6 @@
   div.talk-data-block {
     text-align: center;
   }
-  div.talk-data-block p {
-    flex-direction: column;
-  }
 
   div.talk-top {
     display: grid;
@@ -376,7 +373,7 @@
     & h2 {align-self: center;}
 
     & p.s-photo {
-      grid-row: 1/-1;
+      grid-row: 1/4;
       margin-bottom: 0;
     }
     & p:not(.s-photo) {
@@ -452,15 +449,15 @@
     margin-left: 2.5rem;
   }
   .page-body {margin-bottom: 6rem;}
-    .page-body h2 {font-size: 3em; margin-bottom: 4rem;}
+  .page-body h2 {font-size: 3em; margin-bottom: 4rem;}
+
+  .page-body .h-group {margin-bottom: 2rem;}
+  .page-body .h-group h2 {margin-bottom: 1rem;}
 
   div.stats li {
     font-size: calc(1.2em + 0.5vw);
   }
 
-  ul.social {
-    margin-top: auto;
-  }
   ul.social li {
     font-size: 0.95em;
   }

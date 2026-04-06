@@ -355,8 +355,8 @@ const talks = defineCollection({
         return {
           id: schedule.id,
           session_id: schedule.session_id,
-          title: session.title,
-          abstract: session.abstract,
+          title: typeof session.title === "string" ? session.title.replaceAll("\u00A0", " ") : session.title,
+          abstract: typeof session.abstract === "string" ? session.abstract.replaceAll("\u00A0", " ") : session.abstract,
           level: session.level,
           language: session.language,
           speakers: speakerObjects,

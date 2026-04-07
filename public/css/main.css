@@ -352,6 +352,7 @@ footer {
 
 footer .p-name {
     font-size: 1.2em;
+    font-variation-settings: "wgth" 800;
 }
 
 footer .p-name::before {
@@ -862,6 +863,8 @@ div.the-talks {
     & a {
         display: block;
         font-size: 110%;
+        text-decoration: none;
+        color: var(--link-color);
         padding-bottom: 0.25em;
     }
 }
@@ -1026,13 +1029,13 @@ div.extra {
 
 .page-body {
     max-width: 960px;
-    padding: 4vw 5vw;
+    padding: 4vw calc(1rem + 2vw);
     margin: 2rem auto;
     transition: all 0.3s;
 }
-.page-body.list {
+/* .page-body.list {
     max-width: 70%;
-}
+} */
 
 .page-body p,
 .page-body li {
@@ -1316,37 +1319,43 @@ div.all-speakers p.s-photo::after {
 }
 
 ul.social {
+    display: flex;
+    gap: 1rem;
     list-style-type: none;
+
+    & a {text-decoration: none;}
+    & a[target]::after {content: none;}
 }
+
+.page-body ul.social li + li {margin-top: 0;}
 
 ul.social li {
     font-size: 90%;
     line-height: 1.3;
     text-align: center;
 }
-ul.social li + li {
-    margin-top: 1rem;
+.speaker-sheet ul.social {
+    margin-bottom: 0;
+    margin-left: 0;
+}
+.speaker-sheet ul.social li {
+    text-align: left;
 }
 
-ul.social strong {
-    display: block;
-    font-size: 90%;
-}
+ul.social a svg {fill: var(--link-color);}
 
-ul.social img {
-    width: 1em;
-    margin-right: 0.5em;
-}
+div.page-body .speaker-sheet,
+div.page-body .talk-sheet {
+    & .h-group {margin-bottom: calc(2rem + 1vw);}
 
-div.page-body.speaker-sheet,
-div.page-body.talk-sheet {
     & .h-group p {
+        font-size: 1em;
         text-transform: uppercase;
     }
 
     & h2 {
         text-transform: initial;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -1354,15 +1363,25 @@ div.talk-top {
     display: flex;
     flex-direction: column;
     gap: calc(2rem + 2vw);
+
+    & h2 {margin-bottom: 0.5rem;}
+    & .description ul {margin-left: 1.5rem;}
 }
 
 div.speaker-sheet {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+
+    & h2 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 }
 
 div.talk-data-block {
+    container-name: talkData;
+    container-type: inline-size;
     color: var(--text-high);
     background-color: rgba(255, 255, 255, 0.1);
     padding: calc(1rem + 1vw) calc(1.5rem + 1vw);
@@ -1374,12 +1393,8 @@ div.talk-data-block {
 
     & p {
         position: relative;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem 1.5rem;
         font-size: 1em;
-        background-color: rgba(0, 0, 0, 0.1);
-        padding: 1.5rem 1.5rem 1rem;
+        line-height: 1.2;
     }
 
     & p + p {
@@ -1391,7 +1406,11 @@ div.talk-data-block {
     }
 
     & a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
         text-decoration: none;
+        text-transform: capitalize;
     }
     & a:hover::after {
         backdrop-filter: drop-shadow(4px 4px 10px black);
@@ -1402,8 +1421,17 @@ div.talk-data-block {
         position: absolute;
         width: 100%;
         height: 100%;
-        top: 0;
-        left: 0;
+        top: -1rem;
+        left: -1rem;
+        padding: 1rem;
+    }
+}
+
+@container talkData (width > 400px) {
+    div.talk-data-block p.s-photo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem 1.5rem;
     }
 }
 
@@ -1463,6 +1491,7 @@ div.online h3 {
 
 ul.talk {
     margin-left: 0;
+
     & li {
         font-variation-settings: "wght" 500;
         list-style-type: none;
@@ -1473,6 +1502,11 @@ ul.talk {
         background-size: 1em;
         padding-left: 1.5em;
         margin-bottom: calc(1em + 0.5vw);
+    }
+
+    & a {
+        color: var(--link-color);
+        text-decoration: none;
     }
 }
 
@@ -1486,13 +1520,29 @@ div.online li {
 }
 
 div.speaker-sheet p.s-photo {
+    position: relative;
     max-width: 200px;
     min-width: 90px;
     margin: 0 0 1rem;
 
     & img {
+        position: relative;
         min-width: 100%;
+        z-index: 2;
     }
+}
+
+div.speaker-sheet p.s-photo::after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--light-cold);
+    transform: rotate(8deg);
+    z-index: 1;
 }
 
 div.speaker-sheet div.speaker {

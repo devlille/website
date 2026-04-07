@@ -64,11 +64,14 @@ const selectedTalks = talks.filter((t) =>
                 {
                     speaker.data.mastodon && (
                         <li>
-                            <strong class="stressed">Sur Mastodon</strong>
                             <a target="_blank" href={speaker.data.mastodon}>
-                                {speaker.data.mastodon.substring(
+                                {/* {speaker.data.mastodon.substring(
                                     speaker.data.mastodon.lastIndexOf("/") + 1,
-                                )}
+                                )} */}
+                                <svg role="img" width="24" height="24">
+                                    <title>Mastodon (Ouvre nouvel onglet)</title>
+                                    <use href="/img/sprite.svg#ic-mastodon"></use>
+                                </svg>
                             </a>
                         </li>
                     )
@@ -76,11 +79,14 @@ const selectedTalks = talks.filter((t) =>
                 {
                     speaker.data.twitter && (
                         <li>
-                            <strong class="stressed">Sur X</strong>
                             <a target="_blank" href={speaker.data.twitter}>
-                                {speaker.data.twitter
+                                {/* {speaker.data.twitter
                                     ?.replace("https://twitter.com/", "")
-                                    .replace("https://x.com/", "")}
+                                    .replace("https://x.com/", "")} */}
+                                    <svg role="img" width="24" height="24">
+                                <title>X (Ouvre nouvel onglet)</title>
+                                <use href="/img/sprite.svg#ic-twitter"></use>
+                            </svg>
                             </a>
                         </li>
                     )
@@ -88,12 +94,15 @@ const selectedTalks = talks.filter((t) =>
                 {
                     speaker.data.bluesky && (
                         <li>
-                            <strong class="stressed">Sur Bluesky</strong>
                             <a target="_blank" href={speaker.data.bluesky}>
-                                {speaker.data.bluesky?.replace(
+                                {/* {speaker.data.bluesky?.replace(
                                     "https://bsky.app/profile/",
                                     "",
-                                )}
+                                )} */}
+                                <svg role="img" width="24" height="24">
+                                    <title>Bluesky (Ouvre nouvel onglet)</title>
+                                    <use href="/img/sprite.svg#ic-bluesky"></use>
+                                </svg>
                             </a>
                         </li>
                     )
@@ -101,12 +110,15 @@ const selectedTalks = talks.filter((t) =>
                 {
                     speaker.data.github && (
                         <li>
-                            <strong class="stressed">Sur Github</strong>
                             <a target="_blank" href={speaker.data.github}>
-                                {speaker.data.github?.replace(
+                                {/* {speaker.data.github?.replace(
                                     "https://github.com/",
                                     "",
-                                )}
+                                )} */}
+                                <svg role="img" width="24" height="24">
+                                    <title>Github (Ouvre nouvel onglet)</title>
+                                    <use href="/img/sprite.svg#ic-github"></use>
+                                </svg>
                             </a>
                         </li>
                     )
@@ -114,14 +126,17 @@ const selectedTalks = talks.filter((t) =>
                 {
                     speaker.data.linkedin && (
                         <li>
-                            <strong class="stressed">Sur LinkedIn</strong>
                             <a target="_blank" href={speaker.data.linkedin}>
-                                {decodeURI(speaker.data.linkedin)
+                                {/* {decodeURI(speaker.data.linkedin)
                                     ?.replace(
                                         "https://www.linkedin.com/in/",
                                         "",
                                     )
-                                    .replace("/", "")}
+                                    .replace("/", "")} */}
+                                <svg role="img" width="24" height="24">
+                                    <title>Linkedin (Ouvre nouvel onglet)</title>
+                                    <use href="/img/sprite.svg#ic-linkedin"></use>
+                                </svg>
                             </a>
                         </li>
                     )
@@ -129,9 +144,12 @@ const selectedTalks = talks.filter((t) =>
                 {
                     speaker.data.website && (
                         <li>
-                            <strong class="stressed">Site Web</strong>
                             <a target="_blank" href={speaker.data.website}>
-                                {speaker.data.website}
+                                {/* {speaker.data.website} */}
+                                <svg role="img" width="24" height="24">
+                                    <title>Website (Ouvre nouvel onglet)</title>
+                                    <use href="/img/sprite.svg#ic-website"></use>
+                                </svg>
                             </a>
                         </li>
                     )

@@ -54,8 +54,10 @@ function shiftHeadings(html: string): string {
         <div class="talk-sheet">
             <div class="talk-top">
                 <div class="description">
-                    <h2>{talk.data.title}</h2>
-                    <FavoriteButton talkId={talk.id} sessionId={talk.data.session_id ?? ""} />
+                    <div class="h-group">
+                        <h2>{talk.data.title}</h2>
+                        <FavoriteButton talkId={talk.id} sessionId={talk.data.session_id ?? ""} />
+                    </div>
                     <Fragment
                         set:html={shiftHeadings(
                             marked(talk.data.abstract?.replaceAll("- ", "\r\n\r\n- ")) as string,
@@ -67,7 +69,7 @@ function shiftHeadings(html: string): string {
                     {
                         speakers?.map((s) => {
                             return (
-                                <p>
+                                <p class="s-photo">
                                     <img
                                         loading="lazy"
                                         width="100"

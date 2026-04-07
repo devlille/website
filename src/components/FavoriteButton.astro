@@ -36,6 +36,10 @@ const { talkId, sessionId } = Astro.props;
             const isFavorite = getFavorites().includes(talkId);
             btn.classList.toggle("is-favorite", isFavorite);
             btn.setAttribute("aria-pressed", String(isFavorite));
+
+if(isFavorite){
+   btn.textContent = "Favori";
+}
         }
 
         updateButton();

@@ -3,7 +3,6 @@ import { defineCollection, z } from "astro:content";
 import isURL from "isurl";
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { optimize } from "svgo";
 import config from "./config/config";
 
 const tempFolder = resolve(import.meta.dirname, "../public/img/sponsors");
@@ -35,14 +34,7 @@ export const fetchImage = ({
   return fetch(logoUrl)
     .then((response) => response.text())
     .then((blob) => {
-      let data = blob;
-      /*try {
-        data = optimize(blob)?.data;
-      } catch (e) {
-        console.error(e);
-      }*/
-
-      writeFileSync(`${tempFolder}/${logoName}.${ext}`, data, {
+      writeFileSync(`${tempFolder}/${logoName}.${ext}`, blob, {
         flag: "w",
       });
     })
@@ -134,91 +126,15 @@ const sponsors = defineCollection({
       console.log(
         `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
       );
-      const formattedSponsors: ApiSponsor[] = response.partners.map(
-        (partner) => {
-          console.log(partner.name, partner.types);
-          const getSocial = (type: string) => {
-            if (!partner.socials || !Array.isArray(partner.socials)) {
-              return undefined;
-            }
-            // Les types dans l'API sont en minuscules
-            const social = partner.socials.find(
-              (s) => s.type.toLowerCase() === type.toLowerCase(),
-            );
-            // L'API utilise 'url' au lieu de 'link'
-            return social?.url;
-          };
+      const formattedSponsors: ApiSponsor[] = response.partners.map(formatPartner);
 
-          const twitterAccount = getSocial("x");
-          const linkedinAccount = getSocial("linkedin");
-          const instagramAccount = getSocial("instagram");
-          const facebookAccount = getSocial("facebook");
-          const siteUrl = getSocial("site web");
-
-          const logoUrl = partner.media.svg;
-          const ext = "svg";
-          const logoName = partner.name.toLowerCase().replaceAll(" ", "-");
-
-          // partner.types contient directement les noms des catégories (tableau de strings)
-          const sponsoring = partner.types || [];
-          return {
-            id: partner.id,
-            name: partner.name,
-            description: partner.description,
-            twitterAccount,
-            linkedinAccount,
-            instagramAccount,
-            facebookAccount,
-            siteUrl,
-            logoUrl,
-            ext,
-            logoName,
-            sponsoring,
-            editedVideoUrl: partner.videoUrl ?? undefined,
-          };
-        },
-      );
-
-      // Valider les URLs
       for (const sponsor of formattedSponsors) {
-        if (sponsor.siteUrl) {
-          try {
-            if (
-              sponsor.siteUrl.indexOf("https://") < 0 &&
-              sponsor.siteUrl.indexOf("http://") < 0
-            ) {
-              sponsor.siteUrl = "https://" + sponsor.siteUrl;
-            }
-            isURL(new URL(sponsor.siteUrl));
-          } catch {
-            console.error(`Bad URL for ${sponsor.name}`);
-          }
-        }
+        normalizeSponsorUrl(sponsor);
       }
 
-      const partnerActivities: Record<string, boolean> = {};
-      if (Array.isArray(response.activities)) {
-        for (const activity of response.activities) {
-          if (activity?.partnerId) {
-            partnerActivities[activity.partnerId] = true;
-          }
-        }
-      }
+      const partnerActivities = buildPartnerActivities(response.activities);
 
-      const check = (val: unknown) => (val ? "✓" : "✗");
-      const tableData = formattedSponsors.map((s) => ({
-        Nom: s.name,
-        Description: check(s.description),
-        Offres: check(s.jobs && s.jobs.length > 0),
-        Activités: check(partnerActivities[s.id]),
-        Twitter: check(s.twitterAccount),
-        LinkedIn: check(s.linkedinAccount),
-        Instagram: check(s.instagramAccount),
-        Facebook: check(s.facebookAccount),
-        Site: check(s.siteUrl),
-      }));
-      console.log("\n=== Audit des sponsors ===");
-      console.table(tableData);
+      logSponsorsAudit(formattedSponsors, partnerActivities);
 
       console.log(
         `Returning ${formattedSponsors.length} formatted sponsors immediately (without downloading images)`,
@@ -230,6 +146,88 @@ const sponsors = defineCollection({
     }
   },
 });
+
+const getPartnerSocial = (
+  socials: ApiPartnerSocial[] | undefined,
+  type: string,
+): string | undefined => {
+  if (!Array.isArray(socials)) {
+    return undefined;
+  }
+  const social = socials.find(
+    (s) => s.type.toLowerCase() === type.toLowerCase(),
+  );
+  return social?.url;
+};
+
+const formatPartner = (
+  partner: ApiPartnerResponse["partners"][number],
+): ApiSponsor => {
+  console.log(partner.name, partner.types);
+  return {
+    id: partner.id,
+    name: partner.name,
+    description: partner.description,
+    twitterAccount: getPartnerSocial(partner.socials, "x"),
+    linkedinAccount: getPartnerSocial(partner.socials, "linkedin"),
+    instagramAccount: getPartnerSocial(partner.socials, "instagram"),
+    facebookAccount: getPartnerSocial(partner.socials, "facebook"),
+    siteUrl: getPartnerSocial(partner.socials, "site web"),
+    logoUrl: partner.media.svg,
+    ext: "svg",
+    logoName: partner.name.toLowerCase().replaceAll(" ", "-"),
+    sponsoring: partner.types || [],
+    editedVideoUrl: partner.videoUrl ?? undefined,
+  };
+};
+
+const normalizeSponsorUrl = (sponsor: ApiSponsor): void => {
+  if (!sponsor.siteUrl) return;
+  try {
+    if (
+      !sponsor.siteUrl.includes("https://") &&
+      !sponsor.siteUrl.includes("http://")
+    ) {
+      sponsor.siteUrl = "https://" + sponsor.siteUrl;
+    }
+    isURL(new URL(sponsor.siteUrl));
+  } catch {
+    console.error(`Bad URL for ${sponsor.name}`);
+  }
+};
+
+const buildPartnerActivities = (
+  activities: unknown,
+): Record<string, boolean> => {
+  const result: Record<string, boolean> = {};
+  if (!Array.isArray(activities)) return result;
+  for (const activity of activities) {
+    if (activity?.partnerId) {
+      result[activity.partnerId] = true;
+    }
+  }
+  return result;
+};
+
+const logSponsorsAudit = (
+  formattedSponsors: ApiSponsor[],
+  partnerActivities: Record<string, boolean>,
+): void => {
+  const check = (val: unknown) => (val ? "✓" : "✗");
+  const tableData = formattedSponsors.map((s) => ({
+    Nom: s.name,
+    Description: check(s.description),
+    Offres: check((s as { jobs?: unknown[] }).jobs?.length),
+    Activités: check(partnerActivities[s.id]),
+    Twitter: check(s.twitterAccount),
+    LinkedIn: check(s.linkedinAccount),
+    Instagram: check(s.instagramAccount),
+    Facebook: check(s.facebookAccount),
+    Site: check(s.siteUrl),
+  }));
+  console.log("\n=== Audit des sponsors ===");
+  console.table(tableData);
+};
 
 type ApiSpeaker = {
   id: string;
@@ -416,13 +414,13 @@ const youtubeVideos = defineCollection({
           id: videoId,
           videoId,
           title: title
-            .replace(/&amp;/g, "&")
-            .replace(/&quot;/g, '"')
-            .replace(/&#39;/g, "'"),
+            .replaceAll("&amp;", "&")
+            .replaceAll("&quot;", '"')
+            .replaceAll("&#39;", "'"),
           description: description
-            .replace(/&amp;/g, "&")
-            .replace(/&quot;/g, '"')
-            .replace(/&#39;/g, "'"),
+            .replaceAll("&amp;", "&")
+            .replaceAll("&quot;", '"')
+            .replaceAll("&#39;", "'"),
           publishedAt,
           thumbnailUrl,
         };

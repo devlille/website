@@ -12,11 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.3",
+    "astro": "^6.1.7",
     "marked": "^17.0.1"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "^3.7.2",
     "@slidev/cli": "^52.14.1",
     "@slidev/theme-default": "^0.25.0",
     "@types/isurl": "^4.0.0",

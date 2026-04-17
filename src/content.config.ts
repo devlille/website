@@ -4,9 +4,9 @@ import isURL from "isurl";
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { optimize } from "svgo";
-import config from "../config/config";
+import config from "./config/config";
 
-const tempFolder = resolve(import.meta.dirname, "../../public/img/sponsors");
+const tempFolder = resolve(import.meta.dirname, "../public/img/sponsors");
 
 function getExtension(potentialExt?: string) {
   switch (potentialExt) {

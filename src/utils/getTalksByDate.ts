@@ -121,7 +121,7 @@ const getTalks = async () => {
           id: schedule.id,
           type: session.type,
           title: session.title ?? "Pause",
-          abstract: marked(rawText)?.replaceAll("h2", "p"),
+          abstract: marked.parse(rawText, { async: false }).replaceAll("h2", "p"),
           language: session.language ?? "fr",
           level: session.level,
           room: schedule.room,

@@ -158,23 +158,6 @@ const getTalks = async () => {
   }
 };
 
-export const createTalksCollections = async () => {
-  const talks = await getTalks();
-  return talks;
-};
-
-export const createFlatTalksCollections = async () => {
-  const talks = await getTalks();
-  const flat = Object.values(talks)
-    .flat()
-    .map(([, talksArray]: any) => {
-      return talksArray.map((t: any) => t.talk);
-    })
-    .flat();
-
-  return flat;
-};
-
 export const createTalksCollectionsBydate = async () => {
   const talks = await getTalks();
   return Object.entries(talks).map(([key, t]) => [

@@ -9,7 +9,8 @@
     "generate-slides": "node scripts/generate-slides.mjs",
     "minify-css": "postcss dist/css/*.css dist/youtube/*.css --replace --no-map",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "knip": "knip"
   },
   "dependencies": {
     "astro": "^6.1.7",
@@ -25,10 +26,10 @@
     "cssnano": "^7.1.2",
     "dayjs": "^1.11.19",
     "isurl": "^4.0.2",
+    "knip": "^6.4.1",
     "lightningcss": "^1.31.1",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
-    "svgo": "^4.0.0",
     "terser": "^5.46.0"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignore": ["public/**"],
+  "ignoreDependencies": [
+    "@slidev/cli",
+    "@slidev/theme-default",
+    "lightningcss",
+    "terser"
+  ]
+}

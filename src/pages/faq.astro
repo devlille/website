@@ -10,9 +10,9 @@ type FAQ = {
     acronyms: { key: string; value: string }[];
     actions: { label: string; url: string }[];
 };
-const data = await fetch(config.cms4partnersApi + config.edition + "").then(
-    (res) => res.json(),
-);
+const data = await fetch(
+    `${config.partnersActivitiesApi}/events/${config.eventId}`,
+).then((res) => res.json());
 const qanda: FAQ[] = data.qanda
     .sort((f1: FAQ, f2: FAQ) => f1.order - f2.order)
     .map((q: FAQ) => {

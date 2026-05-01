@@ -8,8 +8,6 @@ const config = {
   billetwebUrl: "https://www.billetweb.fr/devlille-",
   cfpUrl: "https://conference-hall.io/devlille-",
   cmsUrl: "https://partenaire.devlille.fr/#",
-  cms4partnersApi:
-    "https://confily-486924521070.europe-west1.run.app/events/devlille-",
   partnersActivitiesApi:
     "https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io",
   cfpStartedDate: "5 Janvier",

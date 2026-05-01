@@ -1,0 +1,94 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+interface Props {
+    partnerId: string;
+}
+
+const { partnerId } = Astro.props;
+
+type PartnerActivity = CollectionEntry<"partnerActivities">;
+
+const allActivities = await getCollection("partnerActivities");
+const partnerActivities = allActivities.filter(
+    (a) => a.data.partner_id === partnerId,
+);
+
+const toDateOnly = (iso: string) => iso.split("T")[0];
+const toHour = (iso: string) => (iso.split("T")[1] ?? "00:00").slice(0, 5);
+
+const formatLocalDate = (d: Date): string => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+};
+
+const eachDayBetween = (startIso: string, endIso: string): string[] => {
+    const start = new Date(`${toDateOnly(startIso)}T00:00:00`);
+    const end = new Date(`${toDateOnly(endIso)}T00:00:00`);
+    const days: string[] = [];
+    for (
+        let d = new Date(start);
+        d.getTime() <= end.getTime();
+        d.setDate(d.getDate() + 1)
+    ) {
+        days.push(formatLocalDate(d));
+    }
+    return days;
+};
+
+const byDayMap: Record<string, PartnerActivity[]> = {};
+for (const activity of partnerActivities) {
+    const days = eachDayBetween(
+        activity.data.start_time,
+        activity.data.end_time,
+    );
+    for (const day of days) {
+        if (!byDayMap[day]) byDayMap[day] = [];
+        byDayMap[day].push(activity);
+    }
+}
+
+const activitiesByDay = Object.entries(byDayMap)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([day, items]) => ({
+        date: day,
+        label: new Intl.DateTimeFormat("fr", { dateStyle: "long" }).format(
+            new Date(`${day}T12:00:00`),
+        ),
+        activities: items.sort((a, b) =>
+            a.data.start_time.localeCompare(b.data.start_time),
+        ),
+    }));
+---
+
+{
+    activitiesByDay.length > 0 && (
+        <div class="the-talks partner-activities">
+            <h3>Nos activités pendant le DevLille</h3>
+            {activitiesByDay.map((day) => (
+                <div class="activity-day">
+                    <h4>{day.label}</h4>
+                    <ul>
+                        {day.activities.map((activity) => (
+                            <li>
+                                <strong>{activity.data.name}</strong>
+                                <span>
+                                    {toHour(activity.data.start_time)} -{" "}
+                                    {toHour(activity.data.end_time)}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+<style>
+    .partner-activities .activity-day h4 {
+        margin-top: 1.5rem;
+    }
+</style>

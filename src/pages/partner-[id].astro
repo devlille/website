@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import JobCard, { type Job } from "../components/JobCard.astro";
+import SponsorActivities from "../components/SponsorActivities.astro";
 import config from "../config/config";
 
 const videos: Record<string, string> = {
@@ -203,6 +204,8 @@ const video = videos[sponsor.data.id] as string | undefined
         </div>
       )}
 
+      <SponsorActivities partnerId={sponsor.data.id} />
+
       {jobs.length > 0 && (
         <details class="job-offers">
           <summary><h2>Offres d'emploi chez {sponsor.data.name}</h2></summary>
@@ -214,3 +217,4 @@ const video = videos[sponsor.data.id] as string | undefined
     </div>
   </div>
 </Layout>
+

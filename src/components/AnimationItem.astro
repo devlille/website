@@ -1,0 +1,17 @@
+---
+interface Props {
+    item: any;
+}
+
+const { item: activity } = Astro.props;
+---
+
+<dl data-activity-id={activity.id}>
+    <dt>{activity.display_range}</dt>
+    <dd class="event-session">
+        <a href={`/partner-${activity.partner_id}`}>{activity.name}</a>
+    </dd>
+    <dd>
+        {activity.partner_name}
+    </dd>
+</dl>

@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Timeline from "../components/Timeline.astro";
+import AnimationItem from "../components/AnimationItem.astro";
+import { createActivitiesCollectionsByDate } from "../utils/getActivitiesByDate";
+
+const og = {
+    ogTitle: "DevLille - Animations",
+    ogDescription:
+        "Les animations proposées par nos sponsors pendant les 2 jours de DevLille",
+    ogImage: "https://devlille.fr/img/logo-full.svg",
+};
+
+const activitiesByDate = await createActivitiesCollectionsByDate();
+---
+
+<Layout title="Animations /" currSection="animations">
+    <div class="page-body">
+        <h2>Animations</h2>
+
+        <Timeline
+            data={activitiesByDate}
+            ItemComponent={AnimationItem}
+            autoScrollToHour={false}
+        />
+    </div>
+</Layout>

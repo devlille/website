@@ -85,7 +85,21 @@
   let initialTab = 0;
 
   const params = new URLSearchParams(window.location.search);
-  initialTab = params.get("currentTab") ?? "0";
+  if (params.has("currentTab")) {
+    initialTab = params.get("currentTab");
+  } else {
+    try {
+      const todayParis = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Europe/Paris",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).format(new Date());
+      Array.prototype.forEach.call(tabs, (b, i) => {
+        if (b.dataset.date === todayParis) initialTab = i;
+      });
+    } catch (e) {}
+  }
 
   tabs[initialTab].removeAttribute("tabindex");
   tabs[initialTab].setAttribute("aria-selected", "true");

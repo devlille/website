@@ -61,6 +61,14 @@ type ApiPartnerSocial = {
   url: string;
 };
 
+type ApiPartnerActivity = {
+  id: string;
+  name: string;
+  start_time: string;
+  end_time: string;
+  partner_id: string;
+};
+
 type ApiPartnerResponse = {
   types: ApiPartnerType[];
   partners: Array<{
@@ -73,7 +81,7 @@ type ApiPartnerResponse = {
     types: string[];
     socials: ApiPartnerSocial[];
   }>;
-  activities: any[];
+  activities: ApiPartnerActivity[];
 };
 
 export type ApiSponsor = {
@@ -437,10 +445,51 @@ const youtubeVideos = defineCollection({
   },
 });
 
+const partnerActivities = defineCollection({
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    start_time: z.string(),
+    end_time: z.string(),
+    partner_id: z.string(),
+    partner_name: z.string(),
+    partner_logo_url: z.string().optional(),
+  }),
+
+  loader: async () => {
+    try {
+      const response: ApiPartnerResponse = await fetch(
+        `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
+      ).then((res) => res.json());
+
+      const partnersById = new Map(
+        response.partners.map((p) => [p.id, p]),
+      );
+
+      return (response.activities ?? []).map((activity) => {
+        const partner = partnersById.get(activity.partner_id);
+        return {
+          id: activity.id,
+          name: activity.name,
+          start_time: activity.start_time,
+          end_time: activity.end_time,
+          partner_id: activity.partner_id,
+          partner_name: partner?.name ?? "",
+          partner_logo_url: partner?.media?.svg,
+        };
+      });
+    } catch (error) {
+      console.error("Error loading partner activities:", error);
+      return [];
+    }
+  },
+});
+
 export const collections = {
   sponsors,
   speakers,
   talks,
   verbatims,
   youtubeVideos,
+  partnerActivities,
 };

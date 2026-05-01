@@ -1,0 +1,41 @@
+---
+import FavoriteButton from "./FavoriteButton.astro";
+
+interface Props {
+    item: any;
+}
+
+const { item: t } = Astro.props;
+const lang = t.talk.language == "en" ? "en" : "fr";
+---
+
+<dl data-talk-id={t.id ?? undefined}>
+    <dt>{t.talk.room}</dt>
+
+    {
+        t.id == undefined && (
+            <Fragment>
+                <dd lang={lang} class={t.talk.type}>
+                    {t.talk.title}
+                </dd>
+                <dd lang={lang}>{t.speakers}</dd>
+            </Fragment>
+        )
+    }
+
+    {
+        !!t.id && (
+            <Fragment>
+                <dd lang={lang} class={t.talk.type}>
+                    <a href={`/talk-page-${t.id}`}>
+                        {t.talk.title} ({t.talk.duration})
+                    </a>
+                </dd>
+                <dd lang={lang}>{t.speakers}</dd>
+                <dd>
+                    <FavoriteButton talkId={t.id} sessionId={t.sessionId} />
+                </dd>
+            </Fragment>
+        )
+    }
+</dl>

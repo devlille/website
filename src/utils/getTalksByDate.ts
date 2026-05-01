@@ -160,8 +160,11 @@ const getTalks = async () => {
 
 export const createTalksCollectionsBydate = async () => {
   const talks = await getTalks();
-  return Object.entries(talks).map(([key, t]) => [
-    new Intl.DateTimeFormat("fr", { dateStyle: "long" }).format(new Date(key)),
-    t,
-  ]);
+  return Object.entries(talks).map(([key, t]) => ({
+    date: key,
+    label: new Intl.DateTimeFormat("fr", { dateStyle: "long" }).format(
+      new Date(key),
+    ),
+    slots: t as any[],
+  }));
 };

@@ -1,0 +1,127 @@
+---
+interface DayEntry {
+    date: string;
+    label: string;
+    slots: any[];
+}
+
+interface Props {
+    data: DayEntry[];
+    ItemComponent: any;
+    autoScrollToHour?: boolean;
+}
+
+const { data, ItemComponent, autoScrollToHour = true } = Astro.props;
+---
+
+<div class="tabs-block">
+    <ul class="tabs" role="tablist">
+        {
+            data.map((entry) => (
+                <li role="presentation">
+                    <button data-date={entry.date}>{entry.label}</button>
+                </li>
+            ))
+        }
+    </ul>
+    {
+        data.map((entry, i) => (
+            <div
+                id={`day${i}`}
+                class="tab-content"
+                role="tabpanel"
+                tabindex="0"
+                aria-labelledby={`tab${i}`}
+                data-date={entry.date}
+            >
+                <div class="agenda">
+                    {entry.slots.map((slot: any) => (
+                        <section class="hour" data-hour={slot[0]}>
+                            <h3 id={`d-${i}-h${slot[0]}`}>
+                                {slot[0]}
+                                <a href={`#d-${i}-h${slot[0]}`}>
+                                    <img src="/img/link.svg" alt="Ancre" />
+                                </a>
+                            </h3>
+                            <div class="content">
+                                {slot[1].map((item: any) => (
+                                    <ItemComponent item={item} />
+                                ))}
+                            </div>
+                        </section>
+                    ))}
+                </div>
+            </div>
+        ))
+    }
+</div>
+
+<script is:inline src="/js/tabs.js"></script>
+
+{autoScrollToHour && (
+<script is:inline>
+    (function () {
+        try {
+            if (window.location.hash) return;
+            const tabsBlock = document.querySelector(".tabs-block");
+            if (!tabsBlock) return;
+            const buttons = tabsBlock.querySelectorAll(".tabs button");
+            const todayParis = new Intl.DateTimeFormat("en-CA", {
+                timeZone: "Europe/Paris",
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+            }).format(new Date());
+
+            let activeIdx = -1;
+            buttons.forEach((b, i) => {
+                if (b.getAttribute("aria-selected") === "true") activeIdx = i;
+            });
+            if (activeIdx < 0) return;
+            if (buttons[activeIdx].dataset.date !== todayParis) return;
+
+            const panels = tabsBlock.querySelectorAll(".tab-content");
+            const panel = panels[activeIdx];
+            if (!panel) return;
+
+            const parts = new Intl.DateTimeFormat("en-CA", {
+                timeZone: "Europe/Paris",
+                hourCycle: "h23",
+                hour: "2-digit",
+                minute: "2-digit",
+            }).formatToParts(new Date());
+            const hh = parseInt(
+                parts.find((p) => p.type === "hour").value,
+                10,
+            );
+            const mm = parseInt(
+                parts.find((p) => p.type === "minute").value,
+                10,
+            );
+            const nowMinutes = hh * 60 + mm;
+
+            const sections = panel.querySelectorAll("section.hour");
+            let target = null;
+            for (let i = 0; i < sections.length; i++) {
+                const h = sections[i].dataset.hour;
+                if (!h) continue;
+                const seg = h.split(":");
+                const sMin =
+                    parseInt(seg[0], 10) * 60 + parseInt(seg[1], 10);
+                if (sMin >= nowMinutes) {
+                    target = sections[i];
+                    break;
+                }
+            }
+            if (!target && sections.length > 0) {
+                target = sections[sections.length - 1];
+            }
+
+            if (target) {
+                const heading = target.querySelector("h3");
+                if (heading) heading.scrollIntoView({ block: "start" });
+            }
+        } catch (e) {}
+    })();
+</script>
+)}

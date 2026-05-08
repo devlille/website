@@ -80,6 +80,7 @@ type ApiPartnerResponse = {
     address: any;
     types: string[];
     socials: ApiPartnerSocial[];
+    siteUrl?: string;
   }>;
   activities: ApiPartnerActivity[];
 };
@@ -180,7 +181,7 @@ const formatPartner = (
     linkedinAccount: getPartnerSocial(partner.socials, "linkedin"),
     instagramAccount: getPartnerSocial(partner.socials, "instagram"),
     facebookAccount: getPartnerSocial(partner.socials, "facebook"),
-    siteUrl: getPartnerSocial(partner.socials, "site web"),
+    siteUrl: partner.siteUrl ?? getPartnerSocial(partner.socials, "site web"),
     logoUrl: partner.media.svg,
     ext: "svg",
     logoName: partner.name.toLowerCase().replaceAll(" ", "-"),

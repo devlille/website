@@ -8,6 +8,7 @@
     "build:slides": "node scripts/build-slides.mjs",
     "generate-slides": "node scripts/generate-slides.mjs",
     "minify-css": "postcss dist/css/*.css dist/youtube/*.css --replace --no-map",
+    "test:seo": "node scripts/check-seo.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "knip": "knip"

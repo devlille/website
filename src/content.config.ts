@@ -56,8 +56,25 @@ type ApiPartnerMedia = {
   };
 };
 
-type ApiPartnerSocial = {
+export const SOCIAL_TYPES = [
+  "linkedin",
+  "youtube",
+  "github",
+  "bluesky",
+  "instagram",
+  "x",
+  "mastodon",
+] as const;
+
+export type SocialType = (typeof SOCIAL_TYPES)[number];
+
+type ApiSocial = {
   type: string;
+  url: string;
+};
+
+export type Social = {
+  type: SocialType;
   url: string;
 };
 
@@ -79,7 +96,7 @@ type ApiPartnerResponse = {
     videoUrl: string | null;
     address: any;
     types: string[];
-    socials: ApiPartnerSocial[];
+    socials: ApiSocial[];
     siteUrl?: string;
   }>;
   activities: ApiPartnerActivity[];
@@ -87,10 +104,7 @@ type ApiPartnerResponse = {
 
 export type ApiSponsor = {
   id: string;
-  twitterAccount?: string;
-  linkedinAccount?: string;
-  instagramAccount?: string;
-  facebookAccount?: string;
+  socials: Social[];
   sponsoring: string[];
   name: string;
   logoName: string;
@@ -114,10 +128,14 @@ const sponsors = defineCollection({
       )
       .optional(),
     editedVideoUrl: z.string().optional(),
-    twitterAccount: z.string().optional(),
-    linkedinAccount: z.string().optional(),
-    instagramAccount: z.string().optional(),
-    facebookAccount: z.string().optional(),
+    socials: z
+      .array(
+        z.object({
+          type: z.enum(SOCIAL_TYPES),
+          url: z.string(),
+        }),
+      )
+      .default([]),
     sponsoring: z.array(z.string()),
     name: z.string(),
     logoName: z.string().optional(),
@@ -128,6 +146,9 @@ const sponsors = defineCollection({
 
   loader: async () => {
     try {
+      console.log(
+        `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
+      );
       const response: ApiPartnerResponse = await fetch(
         `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
       ).then((res) => res.json());
@@ -135,7 +156,8 @@ const sponsors = defineCollection({
       console.log(
         `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
       );
-      const formattedSponsors: ApiSponsor[] = response.partners.map(formatPartner);
+      const formattedSponsors: ApiSponsor[] =
+        response.partners.map(formatPartner);
 
       for (const sponsor of formattedSponsors) {
         normalizeSponsorUrl(sponsor);
@@ -156,32 +178,27 @@ const sponsors = defineCollection({
   },
 });
 
-const getPartnerSocial = (
-  socials: ApiPartnerSocial[] | undefined,
-  type: string,
-): string | undefined => {
-  if (!Array.isArray(socials)) {
-    return undefined;
-  }
-  const social = socials.find(
-    (s) => s.type.toLowerCase() === type.toLowerCase(),
-  );
-  return social?.url;
+const isSocialType = (type: string): type is SocialType =>
+  (SOCIAL_TYPES as readonly string[]).includes(type.toLowerCase());
+
+const normalizeSocials = (
+  socials: ApiSocial[] | undefined,
+): Social[] => {
+  if (!Array.isArray(socials)) return [];
+  return socials
+    .map((s) => ({ ...s, type: s.type.toLowerCase() }))
+    .filter((s): s is Social => isSocialType(s.type));
 };
 
 const formatPartner = (
   partner: ApiPartnerResponse["partners"][number],
 ): ApiSponsor => {
-  console.log(partner.name, partner.types);
   return {
     id: partner.id,
     name: partner.name,
     description: partner.description,
-    twitterAccount: getPartnerSocial(partner.socials, "x"),
-    linkedinAccount: getPartnerSocial(partner.socials, "linkedin"),
-    instagramAccount: getPartnerSocial(partner.socials, "instagram"),
-    facebookAccount: getPartnerSocial(partner.socials, "facebook"),
-    siteUrl: partner.siteUrl ?? getPartnerSocial(partner.socials, "site web"),
+    socials: normalizeSocials(partner.socials),
+    siteUrl: partner.siteUrl,
     logoUrl: partner.media.svg,
     ext: "svg",
     logoName: partner.name.toLowerCase().replaceAll(" ", "-"),
@@ -223,15 +240,17 @@ const logSponsorsAudit = (
   partnerActivities: Record<string, boolean>,
 ): void => {
   const check = (val: unknown) => (val ? "✓" : "✗");
+  const hasSocial = (s: ApiSponsor, type: SocialType) =>
+    s.socials.some((social) => social.type === type);
   const tableData = formattedSponsors.map((s) => ({
     Nom: s.name,
     Description: check(s.description),
     Offres: check((s as { jobs?: unknown[] }).jobs?.length),
     Activités: check(partnerActivities[s.id]),
-    Twitter: check(s.twitterAccount),
-    LinkedIn: check(s.linkedinAccount),
-    Instagram: check(s.instagramAccount),
-    Facebook: check(s.facebookAccount),
+    X: check(hasSocial(s, "x")),
+    LinkedIn: check(hasSocial(s, "linkedin")),
+    Instagram: check(hasSocial(s, "instagram")),
+    YouTube: check(hasSocial(s, "youtube")),
     Site: check(s.siteUrl),
   }));
   console.log("\n=== Audit des sponsors ===");
@@ -264,13 +283,20 @@ const speakers = defineCollection({
     photo_url: z.string(),
     pronouns: z.nullable(z.string()),
     company: z.nullable(z.string()),
-    mastodon: z.nullable(z.string()).optional(),
-    twitter: z.nullable(z.string()).optional(),
-    github: z.nullable(z.string()).optional(),
-    linkedin: z.nullable(z.string()).optional(),
+    socials: z
+      .array(
+        z.object({
+          type: z.enum(SOCIAL_TYPES),
+          url: z.string(),
+        }),
+      )
+      .default([]),
     website: z.nullable(z.string()).optional(),
-    bluesky: z.nullable(z.string()).optional(),
-    partners: z.array(z.object({ id: z.string(), name: z.string(), logo_url: z.string() })).optional(),
+    partners: z
+      .array(
+        z.object({ id: z.string(), name: z.string(), logo_url: z.string() }),
+      )
+      .optional(),
   }),
 
   loader: async () => {
@@ -286,12 +312,8 @@ const speakers = defineCollection({
       photo_url: speaker.photo_url,
       pronouns: speaker.pronouns,
       company: speaker.company,
-      twitter: getSocialUrl(speaker.socials, "x"),
-      github: getSocialUrl(speaker.socials, "github"),
-      linkedin: getSocialUrl(speaker.socials, "linkedin"),
-      mastodon: getSocialUrl(speaker.socials, "mastodon"),
+      socials: normalizeSocials(speaker.socials),
       website: getSocialUrl(speaker.socials, "website"),
-      bluesky: getSocialUrl(speaker.socials, "bluesky"),
       partners: speaker.partners ?? [],
     }));
   },
@@ -324,7 +346,15 @@ const talks = defineCollection({
           company: z.nullable(z.string()),
           photo_url: z.string(),
           socials: z.array(z.unknown()),
-          partners: z.array(z.object({ id: z.string(), name: z.string(), logo_url: z.string() })).optional(),
+          partners: z
+            .array(
+              z.object({
+                id: z.string(),
+                name: z.string(),
+                logo_url: z.string(),
+              }),
+            )
+            .optional(),
         }),
       )
       .optional(),
@@ -362,8 +392,14 @@ const talks = defineCollection({
         return {
           id: schedule.id,
           session_id: schedule.session_id,
-          title: typeof session.title === "string" ? session.title.replaceAll("\u00A0", " ") : session.title,
-          abstract: typeof session.abstract === "string" ? session.abstract.replaceAll("\u00A0", " ") : session.abstract,
+          title:
+            typeof session.title === "string"
+              ? session.title.replaceAll("\u00A0", " ")
+              : session.title,
+          abstract:
+            typeof session.abstract === "string"
+              ? session.abstract.replaceAll("\u00A0", " ")
+              : session.abstract,
           level: session.level,
           language: session.language,
           speakers: speakerObjects,
@@ -463,9 +499,7 @@ const partnerActivities = defineCollection({
         `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
       ).then((res) => res.json());
 
-      const partnersById = new Map(
-        response.partners.map((p) => [p.id, p]),
-      );
+      const partnersById = new Map(response.partners.map((p) => [p.id, p]));
 
       return (response.activities ?? []).map((activity) => {
         const partner = partnersById.get(activity.partner_id);

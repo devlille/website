@@ -4,64 +4,66 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import JobCard, { type Job } from "../components/JobCard.astro";
 import SponsorActivities from "../components/SponsorActivities.astro";
+import SocialList from "../components/SocialList.astro";
 import config from "../config/config";
 
 interface Props {
-  sponsor: CollectionEntry<"sponsors">;
-  jobs: Job[];
-  speakerIds: string[];
+    sponsor: CollectionEntry<"sponsors">;
+    jobs: Job[];
+    speakerIds: string[];
 }
 
 export const getStaticPaths = (async () => {
-  const sponsors = await getCollection("sponsors");
+    const sponsors = await getCollection("sponsors");
 
-  type ApiPartner = { id: string; jobs?: Job[] };
-  type ApiResponse = { partners: ApiPartner[] };
+    type ApiPartner = { id: string; jobs?: Job[] };
+    type ApiResponse = { partners: ApiPartner[] };
 
-  const [activitiesResponse, partnersResponse] = await Promise.all([
-    fetch(
-      `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
-    ).then((res) => res.json() as Promise<ApiResponse>),
-    fetch(
-      `${config.partnersActivitiesApi}/events/${config.eventId}/partners`,
-    ).then((res) => res.json()),
-  ]);
+    const [activitiesResponse, partnersResponse] = await Promise.all([
+        fetch(
+            `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
+        ).then((res) => res.json() as Promise<ApiResponse>),
+        fetch(
+            `${config.partnersActivitiesApi}/events/${config.eventId}/partners`,
+        ).then((res) => res.json()),
+    ]);
 
-  const jobsByPartnerId = new Map<string, Job[]>(
-    activitiesResponse.partners.map((p) => [p.id, p.jobs ?? []]),
-  );
+    const jobsByPartnerId = new Map<string, Job[]>(
+        activitiesResponse.partners.map((p) => [p.id, p.jobs ?? []]),
+    );
 
-  const allPartners: any[] = Object.values(partnersResponse).flat();
-  const speakersByPartnerId = new Map<string, string[]>(
-    allPartners.map((p: any) => [
-      p.id,
-      (p.speakers ?? []).map((s: any) => s.id),
-    ]),
-  );
+    const allPartners: any[] = Object.values(partnersResponse).flat();
+    const speakersByPartnerId = new Map<string, string[]>(
+        allPartners.map((p: any) => [
+            p.id,
+            (p.speakers ?? []).map((s: any) => s.id),
+        ]),
+    );
 
-  return sponsors.map((sponsor) => ({
-    params: { id: sponsor.data.id },
-    props: {
-      sponsor,
-      jobs: jobsByPartnerId.get(sponsor.data.id) ?? [],
-      speakerIds: speakersByPartnerId.get(sponsor.data.id) ?? [],
-    },
-  }));
+    return sponsors.map((sponsor) => ({
+        params: { id: sponsor.data.id },
+        props: {
+            sponsor,
+            jobs: jobsByPartnerId.get(sponsor.data.id) ?? [],
+            speakerIds: speakersByPartnerId.get(sponsor.data.id) ?? [],
+        },
+    }));
 }) satisfies GetStaticPaths;
 
 const { sponsor, jobs, speakerIds } = Astro.props;
 
 const allTalks = await getCollection("talks");
-const partnerTalks = speakerIds.length > 0
-  ? allTalks.filter((t) =>
-      t.data.speakers?.some((s) => speakerIds.includes(s.id ?? ""))
-    )
-  : [];
+const partnerTalks =
+    speakerIds.length > 0
+        ? allTalks.filter((t) =>
+              t.data.speakers?.some((s) => speakerIds.includes(s.id ?? "")),
+          )
+        : [];
 
 const og = {
-  ogDescription: sponsor.data.description?.replaceAll('"', "")?.trim(),
-  ogUrl: "https://devlille.fr/partner-" + sponsor.data.id,
-  ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.${sponsor.data.ext}`,
+    ogDescription: sponsor.data.description?.replaceAll('"', "")?.trim(),
+    ogUrl: "https://devlille.fr/partner-" + sponsor.data.id,
+    ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.${sponsor.data.ext}`,
 };
 
 const video = sponsor.data.editedVideoUrl;
@@ -69,145 +71,118 @@ console.log(`[partner-${sponsor.data.id}] editedVideoUrl =`, video);
 ---
 
 <Layout title={sponsor.data.name} currSection="partners" og={og}>
-  <div class="page-body">
-    <div class="h-group sponsor">
-      <p>
-        {sponsor.data.siteUrl ? (
-          <a href={sponsor.data.siteUrl} target="_blank" rel="noopener noreferrer">
-            <img
-              loading="lazy"
-              src={sponsor.data.logoUrl}
-              alt={`Logo de ${sponsor.data.name}`}
-            />
-          </a>
-        ) : (
-          <img
-            loading="lazy"
-            src={sponsor.data.logoUrl}
-            alt={`Logo de ${sponsor.data.name}`}
-          />
-        )}
-      </p>
-      <div class="with-contact">
-        <h2>{sponsor.data.name}</h2>
-        <ul>
-          {
-            sponsor.data.twitterAccount && (
-              <li>
-                <a href={sponsor.data.twitterAccount}>
-                  <svg role="img" width="24" height="24">
-                    <title>X</title>
-                    <use href="/img/sprite.svg#ic-twitter"></use>
-                  </svg>
-                </a>
-              </li>
-            )
-          }
-          {
-            sponsor.data.linkedinAccount && (
-              <li>
-                <a href={sponsor.data.linkedinAccount}>
-                  <svg role="img" width="24" height="24">
-                    <title>LinkedIn</title>
-                    <use href="/img/sprite.svg#ic-linkedin"></use>
-                  </svg>
-                </a>
-              </li>
-            )
-          }
-          {
-            sponsor.data.instagramAccount && (
-              <li>
-                <a href={sponsor.data.instagramAccount}>
-                  <svg role="img" width="24" height="24">
-                    <title>Instagram</title>
-                    <use href="/img/sprite.svg#ic-insta"></use>
-                  </svg>
-                </a>
-              </li>
-            )
-          }
-          {
-            sponsor.data.facebookAccount && (
-              <li>
-                <a href={sponsor.data.facebookAccount}>
-                  <svg role="img" width="24" height="24">
-                    <title>Facebook</title>
-                    <use href="/img/sprite.svg#ic-fb"></use>
-                  </svg>
-                </a>
-              </li>
-            )
-          }
-          {
-            sponsor.data.siteUrl && (
-              <li>
-                <a href={sponsor.data.siteUrl}>
-                  <svg role="img" width="24" height="24">
-                    <title>Site Web</title>
-                    <use href="/img/sprite.svg#ic-website"></use>
-                  </svg>
-                </a>
-              </li>
-            )
-          }
-        </ul>
-      </div>
-    </div>
-
-    <div class="sponsor-sheet">
-      <div class="description">
-
-
-        {
-          sponsor.data.description && (
-            <div class="content">
-              <p>
-                {sponsor.data.description?.replaceAll('"', "")?.trim() ?? ""}
-              </p>
+    <div class="page-body">
+        <div class="h-group sponsor">
+            <p>
+                {
+                    sponsor.data.siteUrl ? (
+                        <a
+                            href={sponsor.data.siteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                loading="lazy"
+                                src={sponsor.data.logoUrl}
+                                alt={`Logo de ${sponsor.data.name}`}
+                            />
+                        </a>
+                    ) : (
+                        <img
+                            loading="lazy"
+                            src={sponsor.data.logoUrl}
+                            alt={`Logo de ${sponsor.data.name}`}
+                        />
+                    )
+                }
+            </p>
+            <div class="with-contact">
+                <h2>{sponsor.data.name}</h2>
+                <SocialList
+                    socials={sponsor.data.socials}
+                    siteUrl={sponsor.data.siteUrl}
+                />
             </div>
-          )
-        }
-
-        {
-          video && (
-            <video controls preload="metadata" class="sponsor-video">
-              <source src={video} />
-            </video>
-          )
-        }
-      </div>
-
-      <script is:inline define:vars={{ video, sponsorId: sponsor.data.id }}>
-        console.log(`[partner-${sponsorId}] editedVideoUrl (client) =`, video);
-      </script>
-
-      {partnerTalks.length > 0 && (
-        <div class="the-talks">
-          <h3>Les talks de nos collaborateurs</h3>
-          <ul>
-            {partnerTalks.map((talk) => (
-              <li>
-                <strong>
-                  <a href={`/talk-page-${talk.id}`}>{talk.data.title}</a>
-                </strong>
-                {talk.data.speakers?.map((s) => s.display_name).join(" & ")}
-              </li>
-            ))}
-          </ul>
         </div>
-      )}
 
-      <SponsorActivities partnerId={sponsor.data.id} />
+        <div class="sponsor-sheet">
+            <div class="description">
+                {
+                    sponsor.data.description && (
+                        <div class="content">
+                            <p>
+                                {sponsor.data.description
+                                    ?.replaceAll('"', "")
+                                    ?.trim() ?? ""}
+                            </p>
+                        </div>
+                    )
+                }
 
-      {jobs.length > 0 && (
-        <details class="job-offers">
-          <summary><h2>Offres d'emploi chez {sponsor.data.name}</h2></summary>
-          <div class="content">
-            {jobs.map((job) => <JobCard job={job} partnerName={sponsor.data.name} />)}
-          </div>
-        </details>
-      )}
+                {
+                    video && (
+                        <video
+                            controls
+                            preload="metadata"
+                            class="sponsor-video"
+                        >
+                            <source src={video} />
+                        </video>
+                    )
+                }
+            </div>
+
+            <script
+                is:inline
+                define:vars={{ video, sponsorId: sponsor.data.id }}
+            >
+                console.log(
+                    `[partner-${sponsorId}] editedVideoUrl (client) =`,
+                    video,
+                );
+            </script>
+
+            {
+                partnerTalks.length > 0 && (
+                    <div class="the-talks">
+                        <h3>Les talks de nos collaborateurs</h3>
+                        <ul>
+                            {partnerTalks.map((talk) => (
+                                <li>
+                                    <strong>
+                                        <a href={`/talk-page-${talk.id}`}>
+                                            {talk.data.title}
+                                        </a>
+                                    </strong>
+                                    {talk.data.speakers
+                                        ?.map((s) => s.display_name)
+                                        .join(" & ")}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            }
+
+            <SponsorActivities partnerId={sponsor.data.id} />
+
+            {
+                jobs.length > 0 && (
+                    <details class="job-offers">
+                        <summary>
+                            <h2>Offres d'emploi chez {sponsor.data.name}</h2>
+                        </summary>
+                        <div class="content">
+                            {jobs.map((job) => (
+                                <JobCard
+                                    job={job}
+                                    partnerName={sponsor.data.name}
+                                />
+                            ))}
+                        </div>
+                    </details>
+                )
+            }
+        </div>
     </div>
-  </div>
 </Layout>

@@ -1,0 +1,52 @@
+---
+import type { Social } from "../content.config";
+
+interface Props {
+    socials: Social[];
+    siteUrl?: string | null;
+    class?: string;
+}
+
+const { socials, siteUrl, class: className } = Astro.props;
+
+const SOCIAL_ICONS: Record<string, { icon: string; title: string }> = {
+    x: { icon: "ic-twitter", title: "X" },
+    linkedin: { icon: "ic-linkedin", title: "LinkedIn" },
+    instagram: { icon: "ic-instagram", title: "Instagram" },
+    youtube: { icon: "ic-youtube", title: "YouTube" },
+    github: { icon: "ic-github", title: "GitHub" },
+    bluesky: { icon: "ic-bluesky", title: "Bluesky" },
+    mastodon: { icon: "ic-mastodon", title: "Mastodon" },
+};
+---
+
+<ul class={className}>
+    {
+        socials.map((social) => {
+            const meta = SOCIAL_ICONS[social.type];
+            if (!meta) return null;
+            return (
+                <li>
+                    <a href={social.url}>
+                        <svg role="img" width="24" height="24">
+                            <title>{meta.title}</title>
+                            <use href={`/img/sprite.svg#${meta.icon}`} />
+                        </svg>
+                    </a>
+                </li>
+            );
+        })
+    }
+    {
+        siteUrl && (
+            <li>
+                <a href={siteUrl}>
+                    <svg role="img" width="24" height="24">
+                        <title>Site Web</title>
+                        <use href="/img/sprite.svg#ic-website" />
+                    </svg>
+                </a>
+            </li>
+        )
+    }
+</ul>

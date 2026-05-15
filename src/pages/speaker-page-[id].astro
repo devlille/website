@@ -4,6 +4,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { marked } from "marked";
 import PartnerBlock from "../components/PartnerBlock.astro";
+import SocialList from "../components/SocialList.astro";
 import config from "../config/config.ts";
 
 interface Props {
@@ -82,101 +83,11 @@ const selectedTalks = talks.filter((t) =>
                 <span class="no-display">Entreprise: </span>
                 {speaker.data.company ? speaker.data.company : ""}
             </p>
-            <ul class="social">
-                {
-                    speaker.data.mastodon && (
-                        <li>
-                            <a target="_blank" href={speaker.data.mastodon}>
-                                {/* {speaker.data.mastodon.substring(
-                                    speaker.data.mastodon.lastIndexOf("/") + 1,
-                                )} */}
-                                <svg role="img" width="24" height="24">
-                                    <title>Mastodon (Ouvre nouvel onglet)</title>
-                                    <use href="/img/sprite.svg#ic-mastodon"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    speaker.data.twitter && (
-                        <li>
-                            <a target="_blank" href={speaker.data.twitter}>
-                                {/* {speaker.data.twitter
-                                    ?.replace("https://twitter.com/", "")
-                                    .replace("https://x.com/", "")} */}
-                                    <svg role="img" width="24" height="24">
-                                <title>X (Ouvre nouvel onglet)</title>
-                                <use href="/img/sprite.svg#ic-twitter"></use>
-                            </svg>
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    speaker.data.bluesky && (
-                        <li>
-                            <a target="_blank" href={speaker.data.bluesky}>
-                                {/* {speaker.data.bluesky?.replace(
-                                    "https://bsky.app/profile/",
-                                    "",
-                                )} */}
-                                <svg role="img" width="24" height="24">
-                                    <title>Bluesky (Ouvre nouvel onglet)</title>
-                                    <use href="/img/sprite.svg#ic-bluesky"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    speaker.data.github && (
-                        <li>
-                            <a target="_blank" href={speaker.data.github}>
-                                {/* {speaker.data.github?.replace(
-                                    "https://github.com/",
-                                    "",
-                                )} */}
-                                <svg role="img" width="24" height="24">
-                                    <title>Github (Ouvre nouvel onglet)</title>
-                                    <use href="/img/sprite.svg#ic-github"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    speaker.data.linkedin && (
-                        <li>
-                            <a target="_blank" href={speaker.data.linkedin}>
-                                {/* {decodeURI(speaker.data.linkedin)
-                                    ?.replace(
-                                        "https://www.linkedin.com/in/",
-                                        "",
-                                    )
-                                    .replace("/", "")} */}
-                                <svg role="img" width="24" height="24">
-                                    <title>Linkedin (Ouvre nouvel onglet)</title>
-                                    <use href="/img/sprite.svg#ic-linkedin"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    speaker.data.website && (
-                        <li>
-                            <a target="_blank" href={speaker.data.website}>
-                                {/* {speaker.data.website} */}
-                                <svg role="img" width="24" height="24">
-                                    <title>Website (Ouvre nouvel onglet)</title>
-                                    <use href="/img/sprite.svg#ic-website"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    )
-                }
-            </ul>
+            <SocialList
+                socials={speaker.data.socials}
+                siteUrl={speaker.data.website}
+                class="social"
+            />
         </div>
 
         <div class="speaker">

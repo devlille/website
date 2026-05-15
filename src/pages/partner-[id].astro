@@ -6,14 +6,6 @@ import JobCard, { type Job } from "../components/JobCard.astro";
 import SponsorActivities from "../components/SponsorActivities.astro";
 import config from "../config/config";
 
-const videos: Record<string, string> = {
-  aGaY4K4bmCui5YwHAX1P: "NnqC0mDkmDI",
-  nQ5LMHHfUnFZE85YdIOT: "7FPZqvYmdrA",
-  IskRAkrAh5kHqOUc8TuF: "18kdzQ0sOF0",
-  h5fEfoQf4jqXrQWbwD7v: "N53Ik0PvKYI",
-  yE6KTKUWbzi1AmJEeTCo: "XTkTvysN6gQ",
-  f7J4vkm24BaPxHPy7VJE: "QdTMvu3mAYE"
-};
 interface Props {
   sponsor: CollectionEntry<"sponsors">;
   jobs: Job[];
@@ -72,7 +64,7 @@ const og = {
   ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.${sponsor.data.ext}`,
 };
 
-const video = videos[sponsor.data.id] as string | undefined
+const video = sponsor.data.editedVideoUrl;
 ---
 
 <Layout title={sponsor.data.name} currSection="partners" og={og}>
@@ -178,14 +170,9 @@ const video = videos[sponsor.data.id] as string | undefined
 
         {
           video && (
-            <>
-              <link rel="stylesheet" href="/youtube/youtube.css" />
-              <script is:inline src="/youtube/youtube.js" />
-              <lite-youtube
-                videoid={video}
-                style=`background-image: url('https://i.ytimg.com/vi/${video}/hqdefault.jpg');`
-              />
-            </>
+            <video controls preload="metadata" class="sponsor-video">
+              <source src={video} />
+            </video>
           )
         }
       </div>

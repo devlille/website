@@ -789,6 +789,14 @@ div.sponsor-sheet {
     & div.description {
         margin-bottom: calc(1.5rem + 1vw);
     }
+
+    & video.sponsor-video {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 1rem;
+    }
 }
 
 .h-group.sponsor {

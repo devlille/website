@@ -156,8 +156,9 @@ const sponsors = defineCollection({
       console.log(
         `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
       );
-      const formattedSponsors: ApiSponsor[] =
-        response.partners.map(formatPartner);
+      const formattedSponsors: ApiSponsor[] = response.partners
+        .map(formatPartner)
+        .map(applySponsoringOverride);
 
       for (const sponsor of formattedSponsors) {
         normalizeSponsorUrl(sponsor);
@@ -188,6 +189,18 @@ const normalizeSocials = (
   return socials
     .map((s) => ({ ...s, type: s.type.toLowerCase() }))
     .filter((s): s is Social => isSocialType(s.type));
+};
+
+// Overrides temporaires du niveau de sponsoring, en attendant la mise à jour
+// côté backend (CMS partenaires). Clé = id du partenaire, valeur = types forcés.
+const SPONSORING_OVERRIDES: Record<string, string[]> = {
+  // DECATHLON DIGITAL : Pack Bronze -> Pack Gold
+  "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0": ["Pack Gold"],
+};
+
+const applySponsoringOverride = (sponsor: ApiSponsor): ApiSponsor => {
+  const override = SPONSORING_OVERRIDES[sponsor.id];
+  return override ? { ...sponsor, sponsoring: override } : sponsor;
 };
 
 const formatPartner = (

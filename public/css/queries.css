@@ -191,6 +191,12 @@
       transform: rotate(-10deg);
     }
   }
+
+  h2.with-favs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 

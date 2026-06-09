@@ -3,7 +3,9 @@ name: Manual CleverCloud Deploy
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"
+    # Toutes les 15 min, décalé hors des minutes rondes (:00/:15/:30/:45)
+    # pour éviter les pics de charge GitHub où les schedules sont sautés/retardés.
+    - cron: "7,22,37,52 * * * *"
 
 jobs:
   deploy:

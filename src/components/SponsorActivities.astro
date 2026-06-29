@@ -92,16 +92,18 @@ const activitiesByDay = Object.entries(byDayMap)
         margin: 1.5rem;
     }
     
-    div.the-talks .activity-day li {
-        background-position: 0;
+    div.the-talks .activity-day li {        
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFF'%3E%3Cpath d='M12 2C15.1215 2 17.9089 3.43021 19.7428 5.67108L13.4142 12L19.7428 18.3289C17.9089 20.5698 15.1215 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C13.7232 20 15.3548 19.4531 16.6974 18.4774L16.905 18.32L10.5859 12L16.905 5.679L16.6974 5.52261C15.4338 4.60431 13.9142 4.06583 12.3031 4.00565L12 4ZM12 5C12.8284 5 13.5 5.67157 13.5 6.5C13.5 7.32843 12.8284 8 12 8C11.1716 8 10.5 7.32843 10.5 6.5C10.5 5.67157 11.1716 5 12 5Z'%3E%3C/path%3E%3C/svg%3E");
+        background-position: top 7px left 11px;
         padding-left: 51px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M16 13V5H6V13C6 14.1046 6.89543 15 8 15H14C15.1046 15 16 14.1046 16 13ZM5 3H20C21.1046 3 22 3.89543 22 5V8C22 9.10457 21.1046 10 20 10H18V13C18 15.2091 16.2091 17 14 17H8C5.79086 17 4 15.2091 4 13V4C4 3.44772 4.44772 3 5 3ZM18 5V8H20V5H18ZM2 19H20V21H2V19Z'%3E%3C/path%3E%3C/svg%3E");
+        background-size: 24px;
     }
     .partner-activities .activity-day h4 {
         color: var(--light-cold);
         margin-top: 1.5rem;
     }
     .partner-activities .activity-day strong {
+        display: block;
         margin-right: 1.5rem;
     }
 </style>

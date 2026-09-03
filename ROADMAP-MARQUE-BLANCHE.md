@@ -16,7 +16,7 @@
 - [Phase 1 — Couche données : domaine + port + adapter HTTP](#phase-1--couche-données--domaine--port--adapter-http) ✅
 - [Phase 2 — Nettoyage et corrections](#phase-2--nettoyage-et-corrections) ✅
 - [Phase 3 — Adapter statique (le « sans backend »)](#phase-3--adapter-statique-le--sans-backend-) ✅
-- [Phase 4 — Config et contenu](#phase-4--config-et-contenu)
+- [Phase 4 — Config et contenu](#phase-4--config-et-contenu) ✅
 - [Phase 5 — Thème et assets](#phase-5--thème-et-assets)
 - [Phase 6 — Extraction du paquet](#phase-6--extraction-du-paquet)
 - [Décisions à arbitrer](#décisions-à-arbitrer)
@@ -465,58 +465,197 @@ avec le resolveur d'Astro. Aucun code de production ne l'importe.
 
 ---
 
-## Phase 4 — Config et contenu
+## Phase 4 — Config et contenu ✅
+
+> Sépare ce qui appartient au DevLille de ce qui appartiendra au paquet.
+> À la fin de cette phase, aucun composant ne porte de texte, d'URL ni de
+> valeur métier en dur.
 
 ### Découper la config
 
-`src/config/config.ts` mélange aujourd'hui identité, dates, intégrations, statistiques
-et feature flags. À éclater :
+`src/config/config.ts` mélangeait identité, dates, intégrations, statistiques
+et feature flags. Éclaté en quatre fichiers, tous validés par Zod :
 
-- [ ] `site.config.ts` — nom, domaine, locale, réseaux sociaux, e-mail de contact
-- [ ] `event.config.ts` — édition, dates, lieu (adresse + JSON-LD), tarifs, statistiques
-- [ ] `integrations.config.ts` — API, billetterie, CFP, newsletter, playlist YouTube
-- [ ] `features.ts` — les flags existants (`welovedevs`, `sponsoring`, `tickets`)
-- [ ] **Valider ces configs avec Zod au démarrage.** Une instance marque blanche mal
-      configurée doit échouer au build, pas produire une page cassée.
+- [x] `site.config.ts` — nom, domaine, locale, réseaux sociaux, e-mail de
+      contact, mots-clés, couleur de thème, organisateur, **navigation** et
+      **liens de pied de page**
+- [x] `event.config.ts` — édition, dates, fuseau, lieu (adresse JSON-LD),
+      tarifs, statistiques, **packs de sponsoring**, **overrides de pack**,
+      **règles de libellé des créneaux**
+- [x] `integrations.config.ts` — API, billetterie (gabarit d'URL), newsletter,
+      playlist YouTube, dossiers de partenariat
+- [x] `features.ts` — les trois drapeaux existants
+- [x] **Configs validées par Zod au chargement du module.** Une instance mal
+      configurée échoue au build en nommant le fichier et le chemin du champ :
+
+      event.config.ts ne respecte pas le format attendu :
+        - startDate : date `YYYY-MM-DD`
+        - ticketing.offers[1].name : Too small: expected string to have >=1 characters
+
+      Le formatage des erreurs (`src/core/zod-errors.ts`) est celui de
+      l'adapter statique, remonté et partagé.
+
+Les composants importent `src/config/index.ts`, jamais un fichier de config
+directement : c'est lui qui expose les valeurs dérivées (`lang`, `ticketsUrl`,
+`favoritesStorageKey`).
 
 ### Sortir le métier DevLille du code générique
 
-- [ ] `src/core/sponsor-tiers.ts` — la table `SPONSOR_TIERS` remplace déjà les
-      7 filtres copiés-collés de `sponsors.astro` (phase 0), mais ses libellés
-      restent du DevLille en dur (`"Pack Gold"`,
-      `"Partenaires DevLille Graine de Dev"`, `"Partenaire Hébergement"`…)
-      → la table descend en configuration d'instance.
-- [ ] `data/adapters/http/mappers.ts` `TIER_OVERRIDES` — un UUID Decathlon en dur dans ce
-      qui deviendra du code partagé → config d'instance.
-- [ ] `src/core/agenda.ts` `guessEventTitle()` — heuristiques 100 % DevLille : salle
-      `"Grand Théâtre"`, plages horaires, libellés `"Keynote d'ouverture"` / `"Lunch"` /
-      `"Pause"` → stratégie injectable, ou suppression en fiabilisant les données source.
-- [ ] `FavoriteButton.astro` — `STORAGE_KEY = "devlille_favorites"` → dérivé du
-      `site.config`. (L'URL de vote, elle, vient déjà de la config depuis la phase 1.)
+- [x] `src/core/sponsor-tiers.ts` — la table descend en configuration
+      (`event.sponsorTiers`). `match: (s) => boolean` devient
+      `labels: string[]` : sérialisable, donc validable, et `groupSponsorsByTier`
+      reçoit la table en paramètre au lieu de la connaître.
+- [x] `data/adapters/http/mappers.ts` `TIER_OVERRIDES` — l'UUID Decathlon en dur
+      devient `event.sponsorTierOverrides`, injecté dans
+      `createHttpDataSource({ tierOverrides })`.
+- [x] `src/core/agenda.ts` `guessEventTitle()` — les heuristiques deviennent
+      `resolveSlotTitle()`, un moteur de règles déclaratives lu dans
+      `event.slotTitles` (`room`, `fromHour`, `beforeHour`, puis
+      `titleContains` / `titleEquals`). Plus une seule salle ni un seul horaire
+      DevLille dans `src/core`.
+- [x] `FavoriteButton.astro` — `STORAGE_KEY` et les deux libellés passent par
+      des `data-*`, dérivés de `site.id` et du dictionnaire. Idem pour
+      `FavoritesSwitch.astro`, qui portait la même clé en double.
+- [x] `Timeline.astro` — `Europe/Paris` en dur dans le script de défilement
+      devient `event.timezone`, transmis par `data-timezone`. (Point non
+      inventorié : trouvé en cours de phase.)
 
 ### Sortir le contenu des templates
 
-- [ ] `a-propos.astro` — l'équipe est en dur dans le HTML (~90 lignes) → collection
-      `team` (Markdown + photo).
-- [ ] `index.astro` — les 4 sections (lieu, accessibilité, écoresponsable, Graine de Dev)
-      → collection `sections` ou config, avec image + titre + corps.
-- [ ] `Layout.astro` — JSON-LD (adresse Grand Palais, tarifs), `<meta keywords>`,
-      `theme-color`, titre → générés depuis `event.config` / `site.config`.
-- [ ] `Footer.astro` — formulaire Mailchimp avec IDs de liste, liens sociaux, e-mail →
-      config + composant newsletter paramétrable.
-- [ ] `MainNav.astro` — items de nav en dur → `nav` en config.
-- [ ] `press.ts` et `editions.ts` — ce sont des contenus, pas de la config → collections.
+Cinq collections de contenu nouvelles, toutes typées :
+
+| Collection | Source | Remplace |
+|---|---|---|
+| `team` | `src/content/team/*.md` | ~90 lignes de HTML dans `a-propos.astro` |
+| `sections` | `src/content/sections/*.md` | les 4 sections de `index.astro` |
+| `blocks` | `src/content/blocks/*.md` | l'encart bénévoles de `a-propos.astro` |
+| `editions` | `src/content/editions/editions.json` | `src/config/editions.ts` |
+| `pressKit` + `pressArticles` | `src/content/press/*.json` | `src/config/press.ts` |
+
+- [x] `a-propos.astro` — l'équipe et son encart sont du contenu ; la page ne
+      porte plus que la mise en page.
+- [x] `index.astro` — les 4 sections deviennent des fichiers Markdown avec
+      titre, illustrations et lien optionnel. `variant` (`venue` / `decor`)
+      choisit la mise en page, `Illustration.astro` factorise le `<picture>`.
+- [x] `Layout.astro` — JSON-LD, `<meta keywords>`, `theme-color`, `lang`, titre :
+      tout se déduit de la config. Le JSON-LD sort dans
+      `src/core/event-jsonld.ts`, fonction pure et testée.
+- [x] `Footer.astro` — le formulaire Mailchimp devient `Newsletter.astro`,
+      paramétré par `integrations.newsletter` (action, champs cachés,
+      pot-de-miel, feuille de style, script, badge). Liens sociaux, liens de
+      pied de page et e-mail viennent de `site.config.ts` ; un lien peut être
+      conditionné à un drapeau (`feature: "sponsoring"`).
+- [x] `MainNav.astro` — les items viennent de `site.nav`.
+- [x] `press.ts` et `editions.ts` — supprimés, devenus des collections.
 
 ### i18n
 
-- [ ] `locale` en config, `lang` du `<html>` dérivé.
-- [ ] Helper `formatDate` centralisé : `formatLongDate` vit déjà dans
-      `src/core/date.ts` (phase 0) mais la locale `"fr"` y est en dur, tout comme
-      le `toLocaleString("fr-FR")` de `JobCard.astro`.
-- [ ] Dictionnaire `t()` + extraction de toutes les chaînes des composants.
-      Même sans jamais faire d'anglais, c'est ce qui permet de rebrander.
+- [x] `locale` en config (`fr-FR`), `lang` du `<html>` dérivé.
+- [x] `formatLongDate(date, locale)` — la locale n'est plus en dur, et un
+      formateur `Intl` est mémoïsé par locale. Elle traverse `buildTalkDays`
+      (via un objet d'options `{ slotTitles, locale }`) et
+      `groupActivitiesByDate` / `groupActivitiesByDay`. `JobCard.astro` formate
+      les salaires avec la même locale.
+- [x] Dictionnaire `src/i18n/` : `translate.ts` (moteur, marqueurs `{nom}`),
+      `fr.ts` (62 messages), `index.ts` (le `t` lié à la locale de l'instance).
+      Une clé inconnue **ou un paramètre manquant lève** — mieux vaut un build
+      rouge qu'un `{name}` publié.
+- [x] Toutes les chaînes des composants et des pages de listing / fiches sont
+      extraites. Restent en dur, volontairement, les **pages purement
+      éditoriales** (`code-conduite`, `privacy-mobile`, `promo`, `404`) : c'est
+      du contenu d'instance, qu'une autre conférence réécrit entièrement.
 
----
+### Critère de sortie
+
+- [x] `npm test` vert : **202 tests sur 18 fichiers** (+29, +6 fichiers).
+      99,7 % des lignes de `src/config`, `src/core`, `src/data` et `src/i18n`.
+- [x] `npx knip` sans signalement.
+- [x] `npm run test:seo` vert (204 URLs, 77 titres et descriptions uniques).
+- [x] `npm run test:build` vert (206 pages, 4 985 liens internes résolus).
+- [x] **Build HTTP et build statique toujours identiques au octet près.**
+- [x] **Build toujours reproductible** et toujours possible sans réseau
+      (proxy mort + `NODE_USE_ENV_PROXY`, 206 pages).
+- [x] Une config invalide **fait échouer le build** en nommant le champ fautif
+      (vérifié en cassant volontairement `event.config.ts`).
+
+### Écarts assumés sur le HTML produit
+
+326 fichiers de part et d'autre, aucun manquant ni ajouté. L'audit automatisé
+ne relève aucun écart hors de cette liste :
+
+1. **Échappement d'entités** — les textes passent désormais par des expressions
+      (`{t(…)}`, `{event.tagline}`) : Astro y échappe `'` en `&#39;` et `&` en
+      `&amp;`. Rendu strictement identique.
+2. **Espaces manquants corrigés** — le découpage JSX collait certains mots :
+      `l'édition2026!`, `présentés parAnaïs Moulin`, `avec<strong>Zenika`,
+      `<strong> Exotec`. Les messages du dictionnaire rétablissent l'espace.
+3. **Markup mort supprimé** — le lien CFP commenté et le bloc `<section class="news">`
+      commenté, tous deux expédiés sur la page d'accueil.
+4. **Pot-de-miel Mailchimp** — le commentaire `/* real people should not fill
+      this in… */`, jusqu'ici publié comme **texte visible** dans un `<div>`
+      masqué, devient un commentaire HTML.
+5. **Apostrophes typographiques** — `smartypants` est désactivé : le Markdown
+      local sort tel qu'il est écrit. Seul le verbatim affiché change
+      (`s’appuyer` -> `s'appuyer`), et il est désormais fidèle à son fichier
+      source.
+6. **`/agenda`** — la description Open Graph reprend `event.tagline`, la
+      formulation canonique (« à tous et à toutes »), au lieu de sa variante
+      locale. Le script de défilement lit son fuseau dans un `data-timezone`.
+7. **`/press`** — un `;` parasite entre `</dl>` et `</article>` disparaît.
+8. **Ordre de deux règles CSS scopées** sur `/agenda`, comme en phase 1 : même
+      contenu, aucun effet visuel.
+
+### Ce que la phase 4 a mis au jour
+
+- **`z.string().url()` *normalise* la valeur** dans le zod livré par Astro :
+  il a encodé `{edition}` en `%7Bedition%7D`, ce qui a fait échouer la
+  validation du gabarit d'URL de billetterie — et aurait silencieusement
+  réécrit les URLs publiées. Toutes les validations d'URL passent désormais par
+  une expression régulière non transformante. À garder en tête pour
+  `src/data/schemas.ts`, qui n'utilise pas `.url()`.
+- **Le HTML brut dans le Markdown local ne survit pas en ligne** : les liens
+  automatiques de GFM ré-attaquent l'URL d'un attribut `href` et produisent un
+  `<a>` imbriqué cassé. Un `<a>` doit donc être écrit dans un bloc HTML
+  (paragraphe `<p>…</p>` à part entière), pas au fil d'un paragraphe Markdown.
+  `markdown.rehypePlugins` n'est pas une porte de sortie : Astro 7 les a
+  déplacés derrière un `@astrojs/markdown-remark` qui n'est plus installé.
+- **Offsets JSON-LD non normalisés** : les trois offres publient `+2:00` là où
+  l'événement publie `+02:00`. **Arbitré : conservé tel quel.** Le comportement
+  est celui du site depuis l'origine ; il est désormais documenté et centralisé
+  dans `src/core/event-jsonld.ts` plutôt que dispersé dans le template.
+- **Clés de config sans consommateur**, supprimées au passage : `editionNumber`,
+  `cfpUrl`, `cmsUrl`, `cfpStartedDate`, `cfpEndedDate`. Le drapeau `welovedevs`
+  est dans le même cas mais reste, faute d'arbitrage.
+- **`FavoritesSwitch.astro` portait une seconde copie** de la clé de stockage
+  des favoris, absente de l'inventaire de départ.
+- Toujours **pas de vérification de types** : ni `typescript` ni
+  `@astrojs/check` n'est installé. Le typage de `t()` (clés littérales) et des
+  configs (`z.input`) ne sera vraiment exploité qu'une fois `astro check` câblé.
+
+### Architecture livrée
+
+```
+src/config/
+  schema.ts                    # schémas Zod des quatre configs
+  define.ts                    # validation au chargement du module
+  site.config.ts               # identité, nav, liens, réseaux sociaux
+  event.config.ts              # édition, lieu, tarifs, packs, règles d'agenda
+  integrations.config.ts       # API, billetterie, newsletter, YouTube
+  features.ts                  # drapeaux d'activation
+  index.ts                     # point d'entrée + valeurs dérivées
+
+src/i18n/
+  translate.ts                 # moteur générique, marqueurs `{nom}`
+  fr.ts                        # dictionnaire français
+  index.ts                     # le `t` lié à la locale de l'instance
+
+src/core/
+  event-jsonld.ts              # données structurées schema.org, testées
+  zod-errors.ts                # formatage des erreurs, partagé
+
+src/content/
+  team/  sections/  blocks/  editions/  press/
+```
 
 ## Phase 5 — Thème et assets
 
@@ -591,16 +730,20 @@ des pages).
 
 ### Fichiers les plus couplés à DevLille
 
-| Fichier | Nature du couplage |
-|---|---|
-| `src/layouts/Layout.astro` | JSON-LD (adresse, tarifs), meta, titre, logo, verbatim |
-| `src/pages/index.astro` | 4 sections de contenu entièrement en dur |
-| `src/pages/a-propos.astro` | équipe en dur dans le HTML |
-| `src/components/Footer.astro` | Mailchimp, liens sociaux, e-mail, stores |
-| `src/core/agenda.ts` | heuristiques de salles et d'horaires (`guessEventTitle`) |
-| `src/core/sponsor-tiers.ts` | libellés des packs de sponsoring |
-| `src/data/adapters/http/mappers.ts` | `TIER_OVERRIDES` (un UUID en dur) |
-| `src/config/config.ts` | 4 responsabilités mélangées |
+Tous **découplés en phase 4** : le couplage subsistant est celui du thème et
+des assets, traité en phase 5.
+
+| Fichier | Nature du couplage | Statut |
+|---|---|---|
+| `src/layouts/Layout.astro` | JSON-LD (adresse, tarifs), meta, titre, logo | ✅ config + `core/event-jsonld.ts` |
+| `src/pages/index.astro` | 4 sections de contenu entièrement en dur | ✅ collection `sections` |
+| `src/pages/a-propos.astro` | équipe en dur dans le HTML | ✅ collections `team` et `blocks` |
+| `src/components/Footer.astro` | Mailchimp, liens sociaux, e-mail, stores | ✅ config + `Newsletter.astro` |
+| `src/core/agenda.ts` | heuristiques de salles et d'horaires | ✅ `resolveSlotTitle` + `event.slotTitles` |
+| `src/core/sponsor-tiers.ts` | libellés des packs de sponsoring | ✅ `event.sponsorTiers` |
+| `src/data/adapters/http/mappers.ts` | `TIER_OVERRIDES` (un UUID en dur) | ✅ `event.sponsorTierOverrides` |
+| `src/config/config.ts` | 4 responsabilités mélangées | ✅ éclaté en 4 fichiers validés |
+| `public/css/`, `public/img/` | couleurs, polices, logos, sprite | ⏳ phase 5 |
 
 ### Métriques de suivi
 
@@ -608,8 +751,8 @@ des pages).
 |---|---|---|---|
 | Appels HTTP par build | 10 | **4** | 3 |
 | `fetch` hors couche données | 8 | **0** | 0 |
-| Fichiers de test | 0 | **12** | ≥ 8 |
-| Tests | 0 | **173** | — |
+| Fichiers de test | 0 | **18** | ≥ 8 |
+| Tests | 0 | **202** | — |
 | `console.log` en production | 18 | **0** | 0 |
 | Appels `marked` divergents | 5 | **0** | 0 |
 | Build reproductible | non | **oui** | oui |
@@ -618,3 +761,6 @@ des pages).
 | Couleurs en dur (CSS) | 5 | 5 | 0 |
 | Occurrences de `any` dans `src/` | 23 | **0** | 0 |
 | Pages déclarant un `og` non publié | 2 | **0** | 0 |
+| Fichiers de configuration | 3 | **4 + 1 index** | validés par Zod |
+| Chaînes visibles en dur dans les composants | 62 | **0** | 0 |
+| Collections de contenu local | 1 | **6** | — |

@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
+import config from "./src/config/config.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +15,7 @@ export default defineConfig({
       // Fréquence de changement pour toutes les pages
       changefreq: "weekly",
       priority: 0.7,
-      lastmod: new Date(),
+      lastmod: new Date(config.contentUpdatedAt),
     }),
     robotsTxt({
       policy: [

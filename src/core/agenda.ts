@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration.js";
-import { marked } from "marked";
 import type { Agenda, ScheduleSlot, Session, Speaker } from "../data/domain";
 import { formatLongDate } from "./date";
+import { renderMarkdown } from "./markdown";
 
 dayjs.extend(duration);
 
@@ -130,8 +130,9 @@ export const buildTalkSheets = (agenda: Agenda): TalkSheet[] => {
   });
 };
 
+/** Sur une carte d'agenda, les titres du résumé sont aplatis en paragraphes. */
 const renderAbstract = (raw: string): string =>
-  marked.parse(raw, { async: false }).replaceAll("h2", "p");
+  renderMarkdown(raw, { flattenHeadings: true });
 
 /**
  * Groupe les créneaux de l'agenda par jour puis par heure de début.

@@ -7,6 +7,7 @@ import { createTalksCollectionsBydate } from "../utils/getTalksByDate";
 
 const og = {
     ogTitle: "DevLille - Agenda",
+    ogUrl: "https://devlille.fr/agenda",
     ogDescription:
         "2 jours de conférences et d'échanges accessibles à tous et toutes au coeur de Lille",
     ogImage: "https://devlille.fr/img/logo-full.svg",
@@ -15,7 +16,7 @@ const og = {
 const talksByDate = await createTalksCollectionsBydate();
 ---
 
-<Layout title="Agenda /" currSection="agenda">
+<Layout title="Agenda /" currSection="agenda" og={og}>
     <div class="page-body">
         <h2 class="with-favs">
             Agenda

@@ -6,6 +6,7 @@ import { createActivitiesCollectionsByDate } from "../utils/getActivitiesByDate"
 
 const og = {
     ogTitle: "DevLille - Animations",
+    ogUrl: "https://devlille.fr/animations",
     ogDescription:
         "Les animations proposées par nos sponsors pendant les 2 jours de DevLille",
     ogImage: "https://devlille.fr/img/logo-full.svg",
@@ -14,7 +15,7 @@ const og = {
 const activitiesByDate = await createActivitiesCollectionsByDate();
 ---
 
-<Layout title="Animations /" currSection="animations">
+<Layout title="Animations /" currSection="animations" og={og}>
     <div class="page-body">
         <h2>Animations</h2>
 

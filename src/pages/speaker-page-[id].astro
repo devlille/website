@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { marked } from "marked";
+import { renderMarkdown } from "../core/markdown";
 import PartnerBlock from "../components/PartnerBlock.astro";
 import SocialList from "../components/SocialList.astro";
 import config from "../config/config.ts";
@@ -68,7 +68,7 @@ const selectedTalks = talks.filter((t) =>
                     <p class="s-photo">
                         <img
                             loading="lazy"
-                            src={`${speaker.data.photoUrl}?v=${Math.floor(Math.random() * 1000) + 1}`}
+                            src={speaker.data.photoUrl}
                             alt={`Photo de ${speaker.data.name}`}
                         />
                     </p>
@@ -92,9 +92,7 @@ const selectedTalks = talks.filter((t) =>
 
         <div class="speaker">
             <Fragment
-                set:html={speaker.data.bio
-                    ? marked(speaker.data.bio.replaceAll("- ", "\r\n\r\n- "))
-                    : ""}
+                set:html={renderMarkdown(speaker.data.bio)}
             />
         </div>
 

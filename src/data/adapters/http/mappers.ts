@@ -70,12 +70,7 @@ const TIER_OVERRIDES: Record<string, string[]> = {
   "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0": ["Pack Gold"],
 };
 
-/**
- * Complète en `https://` une URL de site sans schéma.
- *
- * NB : le test porte sur `includes` et non `startsWith`, comportement d'origine
- * conservé tel quel — corrigé en phase 2.
- */
+/** Complète en `https://` une URL de site sans schéma. */
 const normalizeSiteUrl = (
   siteUrl: string | undefined,
   partnerName: string,
@@ -83,7 +78,7 @@ const normalizeSiteUrl = (
   if (!siteUrl) return null;
   let normalized = siteUrl;
   try {
-    if (!normalized.includes("https://") && !normalized.includes("http://")) {
+    if (!/^https?:\/\//.test(normalized)) {
       normalized = "https://" + normalized;
     }
     isURL(new URL(normalized));

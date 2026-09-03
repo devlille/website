@@ -1,23 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { marked } from "marked";
+import { renderFaqResponse } from "../core/faq";
 import { dataSource } from "../data";
 
 const qanda = (await dataSource.getFaq()).map((entry) => ({
     ...entry,
-    response: entry.acronyms.reduce(
-        (acc, { key, value }) =>
-            acc.replace(key, `<abbr title="${value}">${key}</abbr>`),
-
-        entry.actions.reduce(
-            (acc, { label, url }) =>
-                acc.replace(
-                    new RegExp(label, "ig"),
-                    `<a href="${url}">${label}</a>`,
-                ),
-            marked(entry.response.replaceAll("* ", "\r\n\r\n* ")) as string,
-        ),
-    ),
+    response: renderFaqResponse(entry),
 }));
 ---
 

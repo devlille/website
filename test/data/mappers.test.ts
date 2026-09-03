@@ -222,14 +222,10 @@ describe("toPartners", () => {
     expect(warn).toHaveBeenCalledWith("Bad URL for Clever Cloud");
   });
 
-  // Comportement actuel, volontairement figé : le test porte sur `includes`
-  // et non sur `startsWith`. À corriger en phase 2.
-  it("ne préfixe pas une URL sans schéma contenant https:// dans un paramètre", () => {
-    using _warn = vi.spyOn(console, "error").mockImplementation(() => {});
-
+  it("préfixe une URL sans schéma qui contient https:// dans un paramètre", () => {
     expect(
       onePartner({ siteUrl: "devlille.fr?from=https://google.com" }).siteUrl,
-    ).toBe("devlille.fr?from=https://google.com");
+    ).toBe("https://devlille.fr?from=https://google.com");
   });
 
   it("force le pack d'un partenaire listé dans les overrides", () => {

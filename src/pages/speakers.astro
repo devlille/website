@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 const speakersFromApi = (await getCollection("speakers")).map((d) => ({ id: d.id, ...d.data }));
-import { marked } from "marked";
+import { renderMarkdown } from "../core/markdown";
 ---
 
 <Layout title="Speakers /" currSection="speakers">
@@ -20,7 +20,7 @@ import { marked } from "marked";
                                         loading="lazy"
                                         width="100"
                                         height="100"
-                                        src={`${speaker.photoUrl}?v=${Math.floor(Math.random() * 1000) + 1}`}
+                                        src={speaker.photoUrl}
                                         alt={`Photo de ${speaker.name}`}
                                     />
                                 </p>
@@ -31,16 +31,7 @@ import { marked } from "marked";
                                 </h3>
                                 <p>
                                     <Fragment
-                                        set:html={
-                                            speaker.bio
-                                                ? marked(
-                                                      speaker.bio.replaceAll(
-                                                          "- ",
-                                                          "\r\n\r\n- ",
-                                                      ),
-                                                  )
-                                                : ""
-                                        }
+                                        set:html={renderMarkdown(speaker.bio)}
                                     />
                                 </p>
                             </li>

@@ -5,6 +5,12 @@ const config = {
   date: "11 et 12 Juin",
   formattedStartDate: "2026-06-11",
   formattedEndDate: "2026-06-12",
+  /**
+   * Date de dernière mise à jour du contenu éditorial, publiée dans le
+   * `lastmod` du sitemap. À bumper à la main : un `new Date()` faisait churner
+   * tout le sitemap à chaque build nocturne.
+   */
+  contentUpdatedAt: "2026-09-03",
   billetwebUrl: "https://www.billetweb.fr/devlille-",
   cfpUrl: "https://conference-hall.io/devlille-",
   cmsUrl: "https://partenaire.devlille.fr/#",

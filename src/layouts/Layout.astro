@@ -1,6 +1,6 @@
 ---
 import config from "../config/config.ts";
-import editions from "../config/editions.ts";
+import { pickOneWithSeed } from "../core/pick";
 import Sponsors from "../components/sponsors.astro";
 import PartnershipLink from "../components/partnership-link.astro";
 import Footer from "../components/Footer.astro";
@@ -10,17 +10,19 @@ import { getCollection } from "astro:content";
 import { render } from "astro:content";
 
 const { title, currSection, og = {} } = Astro.props;
-const { ogDescription, ogUrl, ogImage } = og;
+const { ogTitle, ogDescription, ogUrl, ogImage } = og;
 
+// Tirage stable sur l'édition : le verbatim change d'une année à l'autre, pas
+// d'un build à l'autre.
 const verbatim = await getCollection("verbatims");
-const randomVerbatim = verbatim[Math.floor(Math.random() * verbatim.length)];
-const { Content } = await render(randomVerbatim);
+const editionVerbatim = pickOneWithSeed(verbatim, `verbatim-${config.edition}`)!;
+const { Content } = await render(editionVerbatim);
 
 const offers = [
     {
         "@type": "Offer",
         name: "Billet 2 jours / Jeudi et Vendredi",
-        url: "https://www.billetweb.fr/devlille-{{ collections.config.edition }}",
+        url: `${config.billetwebUrl}${config.edition}`,
         price: "80",
         priceCurrency: "EUR",
         availability: "https://schema.org/Reserved",
@@ -32,7 +34,7 @@ const offers = [
     {
         "@type": "Offer",
         name: "Billet 1 jour / Jeudi",
-        url: `https://www.billetweb.fr/devlille-${config.edition}`,
+        url: `${config.billetwebUrl}${config.edition}`,
         price: "40",
         priceCurrency: "EUR",
         availability: "https://schema.org/Reserved",
@@ -44,7 +46,7 @@ const offers = [
     {
         "@type": "Offer",
         name: "Billet 1 jour / Vendredi",
-        url: "https://www.billetweb.fr/devlille-{{ collections.config.edition }}",
+        url: `${config.billetwebUrl}${config.edition}`,
         price: "40",
         priceCurrency: "EUR",
         availability: "https://schema.org/Reserved",
@@ -98,7 +100,7 @@ const jsonld = {
         <meta name="description" content={ogDescription} />
         <meta name="theme-color" content="#006D6D" />
         <meta property="og:url" content={ogUrl} />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={ogTitle ?? title} />
         <meta property="og:description" content={ogDescription} />
         <meta property="og:image" content={ogImage} />
 
@@ -155,14 +157,6 @@ const jsonld = {
                         </p>
                     )
                 }
-                <!-- <div>
-          <p>
-            <time d time={config.formattedStartDate}>
-              {config.date}
-            </time>
-            <span>Lille Grand Palais</span>
-          </p>
-        </div> -->
             </header>
 
             <!-- 📌 Injecting Page-Specific Content -->
@@ -181,7 +175,7 @@ const jsonld = {
                                     <blockquote>
                                         <Content />
                                         <p>
-                                            &mdash; {randomVerbatim.data.name}
+                                            &mdash; {editionVerbatim.data.name}
                                         </p>
                                     </blockquote>
                                 </div>

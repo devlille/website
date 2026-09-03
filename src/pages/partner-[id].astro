@@ -37,7 +37,6 @@ const og = {
 };
 
 const video = sponsor.data.videoUrl;
-console.log(`[partner-${sponsor.data.id}] editedVideoUrl =`, video);
 ---
 
 <Layout title={sponsor.data.name} currSection="partners" og={og}>
@@ -101,16 +100,6 @@ console.log(`[partner-${sponsor.data.id}] editedVideoUrl =`, video);
                     )
                 }
             </div>
-
-            <script
-                is:inline
-                define:vars={{ video, sponsorId: sponsor.data.id }}
-            >
-                console.log(
-                    `[partner-${sponsorId}] editedVideoUrl (client) =`,
-                    video,
-                );
-            </script>
 
             {
                 partnerTalks.length > 0 && (

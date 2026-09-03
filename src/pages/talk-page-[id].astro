@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { marked } from "marked";
+import { renderMarkdown } from "../core/markdown";
 import PartnerBlock from "../components/PartnerBlock.astro";
 import FavoriteButton from "../components/FavoriteButton.astro";
 
@@ -39,14 +39,9 @@ const partners = [
     ).values(),
 ];
 
-function shiftHeadings(html: string): string {
-    return html
-        .replaceAll("<h5", "<h6").replaceAll("</h5>", "</h6>")
-        .replaceAll("<h4", "<h5").replaceAll("</h4>", "</h5>")
-        .replaceAll("<h3", "<h4").replaceAll("</h3>", "</h4>")
-        .replaceAll("<h2", "<h3").replaceAll("</h2>", "</h3>")
-        .replaceAll("<h1", "<h2").replaceAll("</h1>", "</h2>");
-}
+// Le titre du talk occupe le `h2` de la page : les titres du résumé descendent
+// donc d'un niveau (`# ` -> `<h2>`), comme le faisait l'ancien `shiftHeadings`.
+const abstract = renderMarkdown(talk.data.abstract, { headingOffset: 1 });
 ---
 
 <Layout title={talk.data.title} currSection="talks" og={og}>
@@ -58,11 +53,7 @@ function shiftHeadings(html: string): string {
                         <h2>{talk.data.title}</h2>
                         <FavoriteButton talkId={talk.id} sessionId={talk.data.sessionId} />
                     </div>
-                    <Fragment
-                        set:html={shiftHeadings(
-                            marked(talk.data.abstract.replaceAll("- ", "\r\n\r\n- ")) as string,
-                        )}
-                    />
+                    <Fragment set:html={abstract} />
                 </div>
                 <div class="talk-data-block card">
                     <h3>Présenté par :</h3>
@@ -74,7 +65,7 @@ function shiftHeadings(html: string): string {
                                         loading="lazy"
                                         width="100"
                                         height="100"
-                                        src={`${s.photoUrl}?v=${Math.floor(Math.random() * 1000) + 1}`}
+                                        src={s.photoUrl}
                                         alt={`Photo de ${s.name}`}
                                     />
                                     <a href={`/speaker-page-${s.id}`}>

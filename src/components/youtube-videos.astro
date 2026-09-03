@@ -1,11 +1,13 @@
 ---
 import { getCollection } from "astro:content";
+import config from "../config/config.ts";
+import { pickWithSeed } from "../core/pick";
 
 const allVideos = await getCollection("youtubeVideos");
 
-// Sélectionner 3 vidéos aléatoires
-const shuffled = [...allVideos].sort(() => 0.5 - Math.random());
-const randomVideos = shuffled.slice(0, 3);
+// 3 vidéos, tirées de façon stable sur l'édition : la sélection change d'une
+// année à l'autre, pas d'un build à l'autre.
+const randomVideos = pickWithSeed(allVideos, `videos-${config.edition}`, 3);
 ---
 
 {randomVideos.length > 0 && (

@@ -65,7 +65,7 @@ const sponsors = defineCollection({
         dataSource.getActivities(),
       ]);
 
-      logSponsorsAudit(partners, activities);
+      if (AUDIT_SPONSORS) logSponsorsAudit(partners, activities);
 
       return partners;
     } catch (error) {
@@ -74,6 +74,12 @@ const sponsors = defineCollection({
     }
   },
 });
+
+/**
+ * Tableau de complétude des fiches partenaires, à destination de l'équipe
+ * contenu. Bruyant dans les logs de build : sur demande explicite seulement.
+ */
+const AUDIT_SPONSORS = process.env.AUDIT_SPONSORS === "1";
 
 const logSponsorsAudit = (
   partners: Partner[],

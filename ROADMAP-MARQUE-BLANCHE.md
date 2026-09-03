@@ -15,7 +15,7 @@
 - [Phase 0 — Filet de sécurité (tests)](#phase-0--filet-de-sécurité-tests-) ✅
 - [Phase 1 — Couche données : domaine + port + adapter HTTP](#phase-1--couche-données--domaine--port--adapter-http) ✅
 - [Phase 2 — Nettoyage et corrections](#phase-2--nettoyage-et-corrections) ✅
-- [Phase 3 — Adapter statique (le « sans backend »)](#phase-3--adapter-statique-le--sans-backend-)
+- [Phase 3 — Adapter statique (le « sans backend »)](#phase-3--adapter-statique-le--sans-backend-) ✅
 - [Phase 4 — Config et contenu](#phase-4--config-et-contenu)
 - [Phase 5 — Thème et assets](#phase-5--thème-et-assets)
 - [Phase 6 — Extraction du paquet](#phase-6--extraction-du-paquet)
@@ -346,25 +346,122 @@ aucun manquant ni ajouté). Tous les écarts sont voulus :
 `sanitize-html` (+ `@types/sanitize-html`). Elle ne tourne qu'au build, jamais
 dans le navigateur.
 
-## Phase 3 — Adapter statique (le « sans backend »)
+## Phase 3 — Adapter statique (le « sans backend ») ✅
 
 > **C'est le livrable qui prouve que l'extraction fonctionne.** Un jeu de fixtures =
 > un site complet, sans aucun appel réseau.
 
 ### Tâches
 
-- [ ] Choisir le format d'entrée (voir [Décisions à arbitrer](#décisions-à-arbitrer)).
-- [ ] Implémenter `src/data/adapters/static.ts` conforme à `EventDataSource`.
-- [ ] Valider les fichiers d'entrée avec les **mêmes schémas Zod** que l'adapter HTTP :
-      un fichier mal formé doit faire échouer le build avec un message exploitable.
-- [ ] Fournir un jeu d'exemple complet et documenté (`examples/static-event/`).
-- [ ] CI : un job qui build le site avec `DATA_SOURCE=static` sur les fixtures.
-      C'est le test de non-régression de l'extraction.
-- [ ] Documenter la marche à suivre pour un organisateur non-développeur.
+- [x] Choisir le format d'entrée : **JSON calqué sur le domaine**, cinq fichiers.
+      Arbitré au profit du JSON plutôt que de collections Markdown parce que le
+      cœur des données est relationnel (`schedules` ↔ `sessions` ↔ `speakers`) :
+      le Markdown aurait exigé un fichier de planning à part de toute façon,
+      plus un parseur YAML. Surtout, le JSON permet que **les fichiers soient le
+      domaine sérialisé**, donc zéro mapping dans l'adapter et un aller-retour
+      vérifiable par test.
+- [x] Implémenter `src/data/adapters/static/` conforme à `EventDataSource`.
+- [x] Valider les fichiers d'entrée avec les **mêmes schémas Zod** que les
+      collections de contenu : les schémas sont remontés de `content.config.ts`
+      vers `src/data/schemas.ts`, désormais l'unique définition. Un fichier mal
+      formé fait échouer le build en nommant le fichier **et** le chemin du
+      champ fautif (`[3].jobs[1].publishDate`).
+- [x] Fournir un jeu d'exemple complet et documenté (`examples/static-event/`) :
+      instantané de l'API de production — 71 créneaux, 352 sessions,
+      77 speakers, 61 partenaires, 32 offres, 36 animations, 15 vidéos, 9 FAQ —
+      régénérable par `npm run dump:static`.
+- [x] CI : `.github/workflows/static-build.yml` build le site avec
+      `DATA_SOURCE=static` sur les fixtures, **tout trafic HTTP sortant coupé**
+      (proxy mort + `NODE_USE_ENV_PROXY`), puis vérifie le résultat.
+- [x] Documenter la marche à suivre pour un organisateur non-développeur :
+      `examples/static-event/README.md` — les cinq fichiers champ par champ, les
+      conventions (Markdown, dates, `null` vs liste omise), et les trois
+      messages d'erreur possibles avec leur traduction en geste correctif.
 
 ### Critère de sortie
 
 `DATA_SOURCE=static npm run build` produit un site complet et navigable, sans réseau.
+
+**Atteint, et plus que cela : le `dist/` produit est identique au octet près à
+celui du build HTTP** (326 fichiers de part et d'autre, `diff -r` muet).
+
+Vérification faite dans les conditions les plus défavorables : cache de contenu
+d'Astro supprimé (`.astro/data-store.json`, `.astro/collections`) et
+`HTTP_PROXY`/`HTTPS_PROXY` pointés sur un port fermé. Le contrôle est concluant
+dans les deux sens — le même environnement fait **échouer** le build HTTP
+(`fetch failed / ECONNREFUSED`, 0 page produite) et laisse le build statique
+intact (206 pages).
+
+- [x] `npm test` vert : **173 tests sur 12 fichiers** (+17, +2 fichiers).
+      `src/data/adapters/static` couvert à 100 % des lignes.
+- [x] `npx knip` sans signalement.
+- [x] `npm run test:seo` vert sur le build statique (77 titres et descriptions
+      uniques).
+- [x] `npm run test:build` — nouveau : 206 pages, **4 985 liens internes tous
+      résolus**, et chaque famille de pages alimentée par une source présente.
+
+### Architecture livrée
+
+```
+src/data/
+  schemas.ts                   # schémas Zod du domaine — définition unique,
+                               # partagée par l'adapter statique et les
+                               # collections de contenu
+  adapters/
+    once.ts                    # mémoïsation, partagée par les deux adapters
+    static/index.ts            # lecture + validation des 5 fichiers JSON
+
+examples/static-event/         # le jeu de démonstration, et sa documentation
+  event.json  agenda.json  partners.json  activities.json  videos.json
+  README.md
+
+scripts/
+  dump-static.mjs              # HTTP -> fichiers statiques (npm run dump:static)
+  check-static-build.mjs       # dist/ complet et navigable (npm run test:build)
+```
+
+Sélection par variable d'environnement :
+
+| `DATA_SOURCE` | Source | Dossier |
+|---|---|---|
+| `http` (défaut) | l'API DevLille | — |
+| `static` | fichiers JSON locaux | `STATIC_DATA_DIR`, défaut `examples/static-event` |
+
+### Ce qui garantit que le format ne dérivera pas
+
+Le format statique n'est pas un format de plus : c'est `domain.ts` sérialisé.
+Trois garde-fous le maintiennent :
+
+1. `test/data/adapters-agree.test.ts` — ce que produit l'adapter HTTP à partir
+   des fixtures d'API est réinjecté dans l'adapter statique et doit ressortir
+   **identique**. Tout écart entre `domain.ts` et `schemas.ts` casse ce test.
+2. `schemas.ts` est l'unique définition des schémas : `content.config.ts` ne
+   décrit plus les mêmes champs une seconde fois.
+3. Un test vérifie que le jeu livré reste valide **et** référentiellement
+   cohérent (aucun créneau vers une session inconnue, aucun `speakerId` ni
+   `partnerId` orphelin).
+
+### Ce que la phase 3 a mis au jour
+
+- `src/pages/sponsors.astro` n'existe plus : la liste des partenaires est un
+  composant de la page d'accueil (`src/components/sponsors.astro`). L'inventaire
+  de la phase 0 le désignait encore comme une page.
+- Le `recurrence` d'un salaire est exigé par le format mais n'est affiché nulle
+  part (`JobCard.astro` ne rend que `min`, `max` et `requirements`). Aucune
+  offre du dump n'a d'ailleurs de salaire renseigné. Candidat à la suppression
+  du domaine.
+- Toujours **pas de vérification de types** : ni `typescript` ni
+  `@astrojs/check` n'est installé. L'adapter statique s'en passe en faisant
+  inférer ses types de retour par les schémas (`z.infer`) plutôt qu'en les
+  affirmant par un cast : une dérive schéma/domaine deviendra une erreur de
+  compilation le jour où `astro check` sera câblé, au lieu d'être silencieuse.
+
+### Dépendance ajoutée
+
+`vite` en `devDependencies`. Elle était déjà installée (dépendance directe
+d'Astro) : la déclarer ne change rien à l'arbre, elle rend seulement honnête
+l'usage qu'en fait `scripts/dump-static.mjs` pour charger le TypeScript du site
+avec le resolveur d'Astro. Aucun code de production ne l'importe.
 
 ---
 
@@ -462,7 +559,7 @@ et feature flags. À éclater :
 
 | Sujet | Options | Impact |
 |---|---|---|
-| **Format de l'adapter statique** | JSON plat *vs* collections Markdown | Ergonomie pour un organisateur non-développeur. Le Markdown est plus agréable pour les textes longs (bios, abstracts), le JSON plus simple à générer depuis un export. |
+| ~~**Format de l'adapter statique**~~ | **Arbitré en phase 3 : JSON calqué sur le domaine.** Le relationnel de l'agenda imposait un fichier de planning à part quoi qu'il arrive ; le JSON permet en prime que les fichiers *soient* le domaine, donc aucun mapping et un aller-retour testable. | — |
 | **Structure des URLs** | Garder `/talk-page-{id}` *vs* passer à `/talks/{id}` | Le second est conventionnel pour un produit réutilisable, mais impose des redirections pour préserver le référencement existant. |
 | **Périmètre du paquet** | Composants inclus *vs* données seules | Extraire aussi les composants donne un vrai produit, mais impose la discipline « ni texte ni couleur en dur ». Extraire seulement la couche données est plus rapide mais moins réutilisable. |
 | **Monorepo** | npm workspaces *vs* pnpm *vs* garder un seul dépôt | Choix à faire avant la phase 6 seulement. |
@@ -511,11 +608,13 @@ des pages).
 |---|---|---|---|
 | Appels HTTP par build | 10 | **4** | 3 |
 | `fetch` hors couche données | 8 | **0** | 0 |
-| Fichiers de test | 0 | **10** | ≥ 8 |
-| Tests | 0 | **156** | — |
+| Fichiers de test | 0 | **12** | ≥ 8 |
+| Tests | 0 | **173** | — |
 | `console.log` en production | 18 | **0** | 0 |
 | Appels `marked` divergents | 5 | **0** | 0 |
 | Build reproductible | non | **oui** | oui |
+| Sources de données | 1 | **2** (`http`, `static`) | ≥ 2 |
+| Build possible sans réseau | non | **oui** | oui |
 | Couleurs en dur (CSS) | 5 | 5 | 0 |
 | Occurrences de `any` dans `src/` | 23 | **0** | 0 |
 | Pages déclarant un `og` non publié | 2 | **0** | 0 |

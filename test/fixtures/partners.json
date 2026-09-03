@@ -1,0 +1,3433 @@
+{
+  "types": [
+    "Pack Gold",
+    "Pack Silver",
+    "Pack Bronze",
+    "Partenaire Hébergement",
+    "Partenaires DevLille Graine de Dev",
+    "Partenaires Média",
+    "Community Partners"
+  ],
+  "partners": [
+    {
+      "id": "a7322c29-5be0-475b-8d24-056073b7efda",
+      "name": "Clever Cloud",
+      "description": "",
+      "media": {
+        "svg": "https://www.clever.cloud/app/themes/Starter/assets/img/brand-assets/logo_on_white.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/4f6fdc55-5428-4052-9d62-1224babb7924/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/4f6fdc55-5428-4052-9d62-1224babb7924/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/4f6fdc55-5428-4052-9d62-1224babb7924/1000.png"
+        }
+      },
+      "siteUrl": "https://www.clever.cloud/fr/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Partenaire Hébergement"
+      ]
+    },
+    {
+      "id": "6bf4ee1c-888c-427a-aea3-9cf3e6cb29a3",
+      "name": "Exotec",
+      "description": "",
+      "media": {
+        "svg": "https://www.exotec.com/app/uploads/2022/10/Exotec-Wordmark-Teal-Web.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/0268add4-315a-44e5-9a9d-f3c3d11de901/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/0268add4-315a-44e5-9a9d-f3c3d11de901/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/0268add4-315a-44e5-9a9d-f3c3d11de901/1000.png"
+        }
+      },
+      "siteUrl": "https://www.exotec.com/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Partenaires DevLille Graine de Dev"
+      ]
+    },
+    {
+      "id": "77a9a4d7-bf8d-40f6-9ef8-a2a534d2a7c1",
+      "name": "Ch'ti JUG",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/chtijug.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/35ef163c-eb39-4fa7-bafb-204475bea34c/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/35ef163c-eb39-4fa7-bafb-204475bea34c/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/35ef163c-eb39-4fa7-bafb-204475bea34c/1000.png"
+        }
+      },
+      "siteUrl": "https://chtijug.org/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "7c29b2ec-ab4d-49d9-8ba1-195e6a79f79c",
+      "name": "chtitedev",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/community/chtitedev.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/d32da35f-251a-43e2-a4b1-2a6dc697ff17/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/d32da35f-251a-43e2-a4b1-2a6dc697ff17/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/d32da35f-251a-43e2-a4b1-2a6dc697ff17/1000.png"
+        }
+      },
+      "siteUrl": "https://mobilizon.fr/@chtitedev",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "fcd043ea-c27f-40f9-98df-888e0308374a",
+      "name": "Cloud Nord",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/community/cloudnord.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/e438259e-4a61-43f8-b4de-0db1bc55677f/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/e438259e-4a61-43f8-b4de-0db1bc55677f/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/e438259e-4a61-43f8-b4de-0db1bc55677f/1000.png"
+        }
+      },
+      "siteUrl": "https://cloudnord.fr/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "9ae8b83b-434e-4efa-b127-3594bdeca1c3",
+      "name": "Crafts Records",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/community/craftsrecord.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/8c982d54-8d83-419d-a9a7-9441964290cc/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/8c982d54-8d83-419d-a9a7-9441964290cc/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/8c982d54-8d83-419d-a9a7-9441964290cc/1000.png"
+        }
+      },
+      "siteUrl": "https://craftsrecords.org/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "280a7421-3ec9-4e17-84e3-1219f2aab5d0",
+      "name": "Estamitech",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/community/LogoEstamitech.jpg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/a44cd224-f073-4df0-814b-913d791bcfad/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/a44cd224-f073-4df0-814b-913d791bcfad/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/a44cd224-f073-4df0-814b-913d791bcfad/1000.png"
+        }
+      },
+      "siteUrl": "https://estamitech.fr/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "11971457-4467-4788-b8af-10ff1a44b7d3",
+      "name": "Frontendbeers",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/community/frontend.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/a6c818ae-0b5b-4f57-9847-021fb3b0f731/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/a6c818ae-0b5b-4f57-9847-021fb3b0f731/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/a6c818ae-0b5b-4f57-9847-021fb3b0f731/1000.png"
+        }
+      },
+      "siteUrl": "https://www.meetup.com/fr-fr/frontendbeers/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "6d26c317-e2eb-4e6e-b373-281a3614cd19",
+      "name": "Holbertonschool",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/holberton-school.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/89511bc3-9247-45fc-bc8a-da4b580d102d/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/89511bc3-9247-45fc-bc8a-da4b580d102d/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/89511bc3-9247-45fc-bc8a-da4b580d102d/1000.png"
+        }
+      },
+      "siteUrl": "https://www.holbertonschool.fr/campus/lille",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "f0ae3275-8cdf-4d52-ba99-ffa7f96a7d72",
+      "name": "Lille Android User Group",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/laug.avif",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/2f5ce8c2-eb2b-4dbb-adac-9124470e09b0/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/2f5ce8c2-eb2b-4dbb-adac-9124470e09b0/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/2f5ce8c2-eb2b-4dbb-adac-9124470e09b0/1000.png"
+        }
+      },
+      "siteUrl": "https://www.meetup.com/fr-fr/lille-android-user-group/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "99cd5e1f-8083-4fab-8356-147b10f59b04",
+      "name": "MTG Lille",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/community/mtg.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/20f1e1a3-0518-4a1e-b4ca-edb4045e274e/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/20f1e1a3-0518-4a1e-b4ca-edb4045e274e/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/20f1e1a3-0518-4a1e-b4ca-edb4045e274e/1000.png"
+        }
+      },
+      "siteUrl": "https://www.meetup.com/fr-fr/mtg-lille/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "22bd4c45-eaaa-45e1-aa34-ab651eb34c89",
+      "name": "PostgreSQL Lille",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/postgre.jpeg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/1079be05-6c07-4b85-9cbd-4b1bfba7b3e1/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/1079be05-6c07-4b85-9cbd-4b1bfba7b3e1/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/1079be05-6c07-4b85-9cbd-4b1bfba7b3e1/1000.png"
+        }
+      },
+      "siteUrl": "https://www.linkedin.com/company/meetup-postgresql-lille/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "ab3fd99a-65c4-4a6d-9cfb-d493943d1f4c",
+      "name": "Software Craft Lille",
+      "description": "",
+      "media": {
+        "svg": "https://devlille.fr/img/community/IMG_9952.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/548c6b62-c4e2-4915-9ffc-f9f718e25d9f/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/548c6b62-c4e2-4915-9ffc-f9f718e25d9f/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/548c6b62-c4e2-4915-9ffc-f9f718e25d9f/1000.png"
+        }
+      },
+      "siteUrl": "https://www.meetup.com/fr-FR/software-craftsmanship-lille/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "343d8b05-7e0b-4b43-b898-14b169ea5006",
+      "name": "greenspector",
+      "description": "Editeur de logiciel de mesure de l'impact et de la performance des applications mobiles? Web , Android et IOS ",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/c1908dfe-e185-4b7c-9d92-7e5d486dd831/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/c1908dfe-e185-4b7c-9d92-7e5d486dd831/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/c1908dfe-e185-4b7c-9d92-7e5d486dd831/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/c1908dfe-e185-4b7c-9d92-7e5d486dd831/1000.png"
+        }
+      },
+      "siteUrl": "https://greenspector.com",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "9 Rue du Petit Châtelier",
+          "Nantes",
+          "44300",
+          "France"
+        ],
+        "address": "9 Rue du Petit Châtelier",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Nantes",
+        "lat": 47.2459493,
+        "lng": -1.5052195
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "speakers": [
+        {
+          "id": "9d94bbcc-5d65-47d0-824b-5d4e995c2b47",
+          "display_name": "Olivier Philippot",
+          "pronouns": null,
+          "bio": "Olivier est CTO de Greenspector mais avant tout un fervant défenseur de la réduction de l'impact des technologies sur l'environnement. Il accompagne et sensibilise les développeurs et entreprises à réduire la consommation d'énergie de leur site et applications mobiles.",
+          "job_title": null,
+          "company": "Greenspector",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/olivier-philippot.png",
+          "socials": [
+            {
+              "type": "x",
+              "url": "https://x.com/simplygreenit"
+            }
+          ],
+          "partners": [
+            {
+              "id": "343d8b05-7e0b-4b43-b898-14b169ea5006",
+              "name": "greenspector",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/c1908dfe-e185-4b7c-9d92-7e5d486dd831/original.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9e6dbc2a-8d43-478b-a097-c62344d73182",
+      "name": "TECHSYS",
+      "description": "TECHSYS est une PME des Hauts-de-France, une ESN en expertises OPS, une influenceuse écologique et sociale pour une économie éthique et durable.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/457acc1a-b8e9-470f-b1b5-15873bd3953e/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/457acc1a-b8e9-470f-b1b5-15873bd3953e/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/457acc1a-b8e9-470f-b1b5-15873bd3953e/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/457acc1a-b8e9-470f-b1b5-15873bd3953e/1000.png"
+        }
+      },
+      "siteUrl": "https://techsys.fr",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "11 Avenue de la Créativité",
+          "Villeneuve-d'Ascq",
+          "59650",
+          "France"
+        ],
+        "address": "11 Avenue de la Créativité",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Villeneuve-d'Ascq",
+        "lat": 50.6394124,
+        "lng": 3.1463122
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/techsys"
+        }
+      ]
+    },
+    {
+      "id": "251502df-3668-4dfe-ba9f-2c71f3c2e296",
+      "name": "Human Coders",
+      "description": "",
+      "media": {
+        "svg": "https://2025.devlille.fr/img/hc.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/22a27bbe-e276-4bc4-ac5e-4658724009ca/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/22a27bbe-e276-4bc4-ac5e-4658724009ca/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/22a27bbe-e276-4bc4-ac5e-4658724009ca/1000.png"
+        }
+      },
+      "siteUrl": "https://www.humancoders.com/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Partenaires Média"
+      ]
+    },
+    {
+      "id": "d2364373-a68c-452f-9a52-3650847fcace",
+      "name": "Shodo Lille",
+      "description": "Shodo c'est l’ESN militante qui casse les codes. \nNous réunissons une communauté de développeur·euse·s tous.tes engagé·e·s dans les bonnes pratiques et la qualité du code tout en redonnant du sens au salariat à travers un modèle social plus juste.\n\nVoici les piliers de notre modèle :\n\nLa transparence ⇒ une grille de salaires publique et transparente indexée sur les années d’expérience\nBye, bye les avantages aux meilleurs négociateur·trice·s\n\nLa redistribution des richesses ⇒ grâce à nos marges fixes et transparentes, tout ce que le membre de Shodo facture au-dessus du TJM seuil lui est redistribué\nTestez notre Shomulator pour voir les avantages dont vous bénéficieriez chez Shodo !\n\nLe respect de l’équilibre vie pro/vie perso ⇒ des congés supra légaux et des journées dédiées à rencontrer et échanger auprès de ses collègues\nPlus besoin de sacrifier de son temps perso pour être dans les petits papiers\n\nLa confiance ⇒ Pas de période d’essai et chaque Shodoer possède une carte bancaire d’entreprise\n\nHello le CDI ! Out les notes de frais !\n\nL’inclusion ⇒ congé menstruel, congé arrêt naturel de grossesse et IVG, reprise adaptée après un congé maternité. Des mesures appliquées à l'initiative du groupe de réflexion 100% féminin, la Shororité\nNous sommes engagé·e·s dans la lutte pour l'égalité des genres\n\nVaste projet que de remettre l'humain au centre du fonctionnement d'une ESN ? Oui !\nMais est-ce que ça fonctionne ?\nBien sûr !\n\nNotre modèle est déjà déployé à Paris, Nantes, Lyon et Rennes.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/1000.png"
+        }
+      },
+      "siteUrl": "https://shodo.io/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "19 Rue d'Amiens",
+          "Lille",
+          "59800",
+          "France"
+        ],
+        "address": "19 Rue d'Amiens",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lille",
+        "lat": 50.6338141,
+        "lng": 3.0642598
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/shodo-lille/"
+        }
+      ],
+      "speakers": [
+        {
+          "id": "038d37f7-6983-41ed-9c74-0d11de680a0c",
+          "display_name": "Emmanuelle ABOAF",
+          "pronouns": null,
+          "bio": "Sourde de naissance et bionique avec mes deux implants cochléaires, je suis développeuse fullstack et coach en accessibilité chez Shodo. Dans mon monde idéal, tout doit être accessible aussi bien dans la vraie vie que sur le Web.",
+          "job_title": null,
+          "company": "Shodo",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/emmanuelle-aboaf.png",
+          "socials": [
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/emmanuelle-aboaf/"
+            }
+          ],
+          "partners": [
+            {
+              "id": "d2364373-a68c-452f-9a52-3650847fcace",
+              "name": "Shodo Lille",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png"
+            }
+          ]
+        },
+        {
+          "id": "3a9d48c3-4b36-4865-bb58-8ae4f30637e7",
+          "display_name": "Manon Carbonnel",
+          "pronouns": null,
+          "bio": "Développeuse web front et back, experte en intégration web, design systems et accessibilité. \n\nSpécialisée en tests automatisés (unitaires, composants, mutation, UI, non‑régression visuelle, accessibilité) et en analyse statique.\n\nJ’accompagne les équipes vers les pratiques software craft grâce à la facilitation, au mentoring et à l’animation de workshops (pair & mob programming, TDD, tests, coding dojos, mindset Agile).\n\nJe suis passionnée par le HTML/CSS et j'ai créé [Csscade](https://csscade.fr/), une communauté française sur l'intégration web.\n\nJe m'investis activement pour promouvoir la diversité dans la tech. En tant que [Yeeso](https://yeeso.fr/) Leader à Rennes, animatrice de [La Fresque Du Sexisme](https://www.fresque-du-sexisme.org/), et mentor/marraine pour [Craft Records](https://craftsrecords.org/).",
+          "job_title": null,
+          "company": "Shodo",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/manon-carbonnel.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/manoncarbonnel"
+            },
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/manon-carbonnel/"
+            },
+            {
+              "type": "bluesky",
+              "url": "https://bsky.app/profile/manoncarbonnel.bsky.social"
+            }
+          ],
+          "partners": [
+            {
+              "id": "d2364373-a68c-452f-9a52-3650847fcace",
+              "name": "Shodo Lille",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png"
+            }
+          ]
+        },
+        {
+          "id": "98a26a05-de82-40f0-a9ca-b83196ee4536",
+          "display_name": "Nathan Castelein",
+          "pronouns": null,
+          "bio": "Basé à Lille, j'ai travaillé plus de 10 ans chez un hébergeur français, dans un environnement technique qui mêle Golang, PostgreSQL, Kubernetes, OpenStack.\n\nDepuis janvier 2024, je suis cofondateur de Shodo Lille, une ESN militante à l'expertise craft.\n\nAu sein de cette nouvelle structure, j'essaie de mettre en avant des valeurs qui me tiennent à coeur: transparence, redistribution des richesses, confiance et inclusion.\n\nJe continue aussi mon aventure dans le développement, principalement en Go, et le lead technique, avec l'envie d'apporter des bonnes pratiques et de la qualité.\n\nEn plus d'une passion et d'une curiosité forte pour l'informatique, je m'intéresse depuis plusieurs années aux thématiques d'inclusion et de diversité dans la vie quotidienne mais aussi dans mon cadre professionnel.",
+          "job_title": null,
+          "company": "Shodo Lille",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/nathan-castelein.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/nathancastelein"
+            }
+          ],
+          "partners": [
+            {
+              "id": "d2364373-a68c-452f-9a52-3650847fcace",
+              "name": "Shodo Lille",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png"
+            }
+          ]
+        },
+        {
+          "id": "7731d720-7624-4532-814a-4d1f78ed5b48",
+          "display_name": "Jordan NOURRY",
+          "pronouns": null,
+          "bio": "Cofondateur de Shodo Studio, je construis depuis 15 ans du code durable et accompagne des équipes sur leurs projets les plus critiques. Convaincu que le développement est un artisanat qui se transmet, je partage mon savoir-faire avec la communauté sous plusieurs formats : articles, talks, et au sein de CraftsRecords, un collectif de passionnés.\n\nAujourd'hui, j'explore comment l'IA peut devenir un véritable allié dans la reprise de contrôle sur le legacy — à condition de garder la main et d'éviter les promesses marketing.",
+          "job_title": null,
+          "company": "Shodo Studio",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/jordan-nourry.png",
+          "socials": [
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/jordan-nourry-20377a50/"
+            }
+          ],
+          "partners": [
+            {
+              "id": "d2364373-a68c-452f-9a52-3650847fcace",
+              "name": "Shodo Lille",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png"
+            }
+          ]
+        },
+        {
+          "id": "17e59c6e-1b33-4605-a976-3d3a549a8279",
+          "display_name": "Benjamin Lacroix",
+          "pronouns": null,
+          "bio": "Développeur mobile, Web & Back j'aide nos clients à choisir, puis à implémenter la meilleure stack pour leurs besoins.\n\nJ'adore apprendre, bidouiller et entreprendre, je le raconte au détour de différentes conférences : XebiCon, DevFest, Android Makers et en interne.",
+          "job_title": null,
+          "company": "Shodo Studio",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/benjamin-lacroix.png",
+          "socials": [
+            {
+              "type": "x",
+              "url": "https://x.com/benjlacroix"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/blacroix"
+            }
+          ],
+          "partners": [
+            {
+              "id": "d2364373-a68c-452f-9a52-3650847fcace",
+              "name": "Shodo Lille",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png"
+            }
+          ]
+        },
+        {
+          "id": "7cd2e38b-759d-4985-aeea-58238fe7f850",
+          "display_name": "Sylvain Decout",
+          "pronouns": null,
+          "bio": "Sylvain est coding architect chez Shodo. Développeur dans l'écosystème Java depuis 2007, il apprécie avant tout le craftsmanship, l'architecture logicielle en général et le domain-driven design en particulier.",
+          "job_title": null,
+          "company": "Shodo",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/sylvain-decout.png",
+          "socials": [
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/sylvain-decout/"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/sylvaindecout"
+            }
+          ],
+          "partners": [
+            {
+              "id": "d2364373-a68c-452f-9a52-3650847fcace",
+              "name": "Shodo Lille",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bdd51206-4351-48e6-8687-e5ea227fb53e",
+      "name": "EKITE",
+      "description": "Passionné de développement logiciel !",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/1000.png"
+        }
+      },
+      "siteUrl": "https://ekite.info/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "9 Rue des Bouleaux",
+          "Lesquin",
+          "59810",
+          "France"
+        ],
+        "address": "9 Rue des Bouleaux",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lesquin",
+        "lat": 50.5961145,
+        "lng": 3.1310445
+      },
+      "types": [
+        "Pack Gold"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/ekite/"
+        },
+        {
+          "type": "instagram",
+          "url": "https://www.instagram.com/ekite_dev/"
+        },
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/@EKIT3"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://ivy-feeling-af5.notion.site/DEVOPS-exp-riment-H-F-cloud-souverain-fran-ais-37befdfbd24380348a86d9e3ff389064",
+          "title": "DEVOPS expérimenté H/F - cloud souverain français",
+          "company_name": "EKITE",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://ivy-feeling-af5.notion.site/DEV-Java-Exp-riment-H-F-cloud-souverain-fran-ais-37aefdfbd24380c2823dd60c4461c563",
+          "title": "DEV Java Expérimenté H/F - cloud souverain français",
+          "company_name": "EKITE",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ],
+      "speakers": [
+        {
+          "id": "0d7911a0-bdb0-425d-bb27-09c2dfc85329",
+          "display_name": "Julien WITTOUCK",
+          "pronouns": null,
+          "bio": "Je suis fan de Star Wars 💫, de Dragon Ball 🐉, et de rock seventies & nineties 🎸🤘.\n\nJe suis aussi Architecte Solution 🏗️  indépendant, associé chez [Ekité](https://ekite.info) et j'enseigne le développement Java / Spring à l'université de Lille 🎓 depuis plus de 10 ans.\nJe suis aussi l'auteur du livre [L’infrastructure as Code avec Terraform](https://www.editions-eni.fr/livre/l-infrastructure-as-code-avec-terraform-deployez-votre-infrastructure-sur-le-cloud-9782409046629) paru aux éditions ENI, et membre du comité d'organisation de la conférence ☁️ Cloud Nord\n\nJe publie régulièrement des articles de veille sur mon site perso [codeka.io](https://codeka.io).\n\nMes sujets de prédilection:\n\n* ☕ : Java/Spring\n* ☁️ : Cloud/IaC/Terraform\n* 🐋 : Docker/Kubernetes\n* 🐧 : Linux 💙",
+          "job_title": null,
+          "company": "Freelance / Associé chez Ekité",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/julien-wittouck.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/juwit"
+            },
+            {
+              "type": "bluesky",
+              "url": "https://bsky.app/profile/codeka.io"
+            },
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/julien-wittouck/"
+            }
+          ],
+          "partners": [
+            {
+              "id": "b2dd94d5-56c3-4f92-954d-bbbbf8d13de5",
+              "name": "CodeKaio",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/23f76cd4-0717-4cc8-9c04-acc4953b582f/original.png"
+            },
+            {
+              "id": "bdd51206-4351-48e6-8687-e5ea227fb53e",
+              "name": "EKITE",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/original.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6601dd21-bc44-404b-9d7e-d3f2f91299de",
+      "name": "Baptiste FAMCHON",
+      "description": "J'ai lancé mon entreprise pour accompagner les clients autour de mes spécialités : React / Node / Architecture, depuis plus de 9 ans.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/c0439101-c10f-4c94-85d9-5096ff1e03f5/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/c0439101-c10f-4c94-85d9-5096ff1e03f5/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/c0439101-c10f-4c94-85d9-5096ff1e03f5/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/c0439101-c10f-4c94-85d9-5096ff1e03f5/1000.png"
+        }
+      },
+      "siteUrl": "https://www.linkedin.com/in/baptiste-famchon/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "200 Rue de la Croix Nivert",
+          "Paris",
+          "75015",
+          "France"
+        ],
+        "address": "200 Rue de la Croix Nivert",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Paris",
+        "lat": 48.8380374,
+        "lng": 2.2889564
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/in/baptiste-famchon/"
+        }
+      ]
+    },
+    {
+      "id": "52718a08-88e6-4d74-9339-9adaa44d8ef7",
+      "name": "Collaboration Betters The World (CBTW)",
+      "description": "CBTW soutient les organisations dans leurs transformations grâce à des solutions technologiques sur-mesure, conçues pour stimuler l’innovation et assurer une croissance durable.\n \nNous sommes une Global Tech Company créée en 2015. CBTW est un acteur mondial avec 3 000 collaborateurs et 300 millions d’euros de chiffre d’affaires. En France, nous comptons 1 000 personnes réparties dans plusieurs villes (Paris, Lille, Lyon, Nantes, Toulouse, Bordeaux, Nice et Marseille), ce qui nous permet d’accompagner nos clients localement. À Lille, notre équipe se compose d’une cinquantaine de personnes, au service d’une vingtaine de clients issus de secteurs variés : retail, banque, assurance, immobilier et transports.\n \nNous intervenons sur 5 expertises majeures : Strategy Product & Transformation, Software Engineering, Data & AI Platforms, Cybersecurity et Cloud & Enterprise Apps. Nos accompagnements se déclinent en trois formats : assistance technique, forfaits via nos centres de services, et accompagnement technologique avec des partenaires de référence tels qu’Atlassian, SAS, IBM, Microsoft, Darktrace ou Contentsquare.\n \nNous sommes certifiés ISO 9001, ISO 27001 et Ecovadis, gage de qualité et de sécurité.\n \nEnfin, nous plaçons la responsabilité au cœur de notre stratégie : objectif zéro émission carbone d’ici 2050 et 3 % de notre chiffre d’affaires dédié à l’éducation. Nos quatre valeurs sont la Collaboration, Évolution, Engagement et Pensée positive qui guident chacune de nos actions. Plus qu’une entreprise technologique, nous sommes un partenaire de confiance, engagé pour l’innovation et la durabilité.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/ab04d342-b873-41a9-aac6-2ea312fd2e81/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/ab04d342-b873-41a9-aac6-2ea312fd2e81/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/ab04d342-b873-41a9-aac6-2ea312fd2e81/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/ab04d342-b873-41a9-aac6-2ea312fd2e81/1000.png"
+        }
+      },
+      "siteUrl": "https://cbtw.tech/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "34 Rue Laffitte",
+          "Paris",
+          "75009",
+          "France"
+        ],
+        "address": "34 Rue Laffitte",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Paris",
+        "lat": 48.8735421,
+        "lng": 2.3383851
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/collaboration-betters-the-world/"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://www.linkedin.com/jobs/view/4425458658/",
+          "title": "Automation QA Engineer",
+          "company_name": "Collaboration Betters The World (CBTW)",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.linkedin.com/jobs/view/4420446841/",
+          "title": "Ingénieur(e) DevOps",
+          "company_name": "Collaboration Betters The World (CBTW)",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.linkedin.com/jobs/view/4420458395/",
+          "title": "Développeur(se) Java fullstack",
+          "company_name": "Collaboration Betters The World (CBTW)",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.linkedin.com/jobs/view/4420411369/",
+          "title": "Développeur(se) C# .NET",
+          "company_name": "Collaboration Betters The World (CBTW)",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "975cb0db-c274-46b8-955f-6d3538fe86aa",
+      "name": "SFEIR",
+      "description": "SFEIR | Sharp Tech, Real Impact \nPlus qu'un « enabler », la technologie est un élément déclencheur. À l’instar de l’IA générative, elle crée des ruptures et renouvelle la donne à l'échelle de la société, des organisations et des individus. SFEIR accompagne les entreprises européennes dans ces bascules en conjuguant excellence technique, vision prospective et innovation responsable.\nAvec des bureaux en France, en Belgique et au Luxembourg et plus de 900 experts, SFEIR se positionne comme moteur de transformation digitale à travers quatre piliers complémentaires :\n4 piliers\nConsulting – Nous guidons vos choix stratégiques et vous aidons à (re)penser votre organisation, vos processus et votre culture tech pour anticiper les risques de disruption et gagner en autonomie.\nSoftware engineering – Nos équipes construisent des solutions élégantes et pérennes, en maîtrisant l'ensemble de la stack technologique, aux côtés des tech leaders du marché. \nProducts – Pour accélérer vos projets IA, Data et Cloud, nous construisons des plateformes ouvertes, scalables, prêtes à être intégrées dans vos environnements. Notre dernier-né, Raise, vous permet de mettre sur pied votre plateforme IA générative en restant maître de votre patrimoine informationnel.\nTraining – SFEIR Institute propose des formations technologiques conçues et animées par des praticiens pour développer les compétences et l'autonomie. Parcours certifiants, montées en compétence collectives : nous formons les talents qui façonneront demain. (sfeir.dev/training)\nNotre ADN : Learn and Share\nTravailler chez SFEIR, c'est rejoindre une communauté rassemblée par ses valeurs : le sens du partage, la puissance du collectif, l'esprit du pionnier et l'exigence de l'excellence. Bienveillants, exigeants, passionnés par les nouvelles technologies, nous avons la conviction que l'innovation doit être responsable et que les technologies doivent d’abord rendre autonomes.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/1000.png"
+        }
+      },
+      "siteUrl": "https://www.sfeir.com",
+      "videoUrl": "https://storage.googleapis.com/partners-connect/events/fae8f913-26be-4b5b-b6ee-c3c2c2406555/partnerships/d13e56e5-d2d6-489a-a277-38f9f6bf5c3a/support-video.mp4",
+      "address": {
+        "formatted": [
+          "48 Rue Jacques Dulud",
+          "Neuilly-sur-Seine",
+          "92200",
+          "France"
+        ],
+        "address": "48 Rue Jacques Dulud",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Neuilly-sur-Seine",
+        "lat": 48.8809776,
+        "lng": 2.2670379
+      },
+      "types": [
+        "Pack Gold"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/sfeir/"
+        },
+        {
+          "type": "instagram",
+          "url": "https://www.instagram.com/sfeircode/"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://www.sfeir.com/carrieres/offres-emploi/lille-data-engineer-confirme-e/",
+          "title": "Data Engineer Confirmé(e)",
+          "company_name": "SFEIR",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ],
+      "speakers": [
+        {
+          "id": "9b65c5ed-5b97-4f25-a74f-f435310d6e61",
+          "display_name": "Erwan Le Tutour",
+          "pronouns": null,
+          "bio": "# LE TUTOUR Erwan\n## 🧑‍💻 Analyste programmeur\nDéveloppeur passionné, curieux et toujours en quête d'amélioration continue, je mets mes compétences au service de projets exigeants avec rigueur et enthousiasme. Mes expériences variées m'ont permis d'évoluer dans des environnements agiles, et de contribuer activement à des projets à fort impact métier. \n\n## 🎯 Mes valeurs\n- Apprendre\n- Transmettre\n- Tout faire avec passion",
+          "job_title": null,
+          "company": "SFEIR",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/erwan-le-tutour.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/ErwanLT"
+            },
+            {
+              "type": "x",
+              "url": "https://x.com/ErwanLeTutour"
+            }
+          ],
+          "partners": [
+            {
+              "id": "975cb0db-c274-46b8-955f-6d3538fe86aa",
+              "name": "SFEIR",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/original.png"
+            }
+          ]
+        },
+        {
+          "id": "cd4a6100-1c10-4d69-96dd-df83aa4802ae",
+          "display_name": "Benoit MARTIN",
+          "pronouns": null,
+          "bio": "Fort de plus de 20 ans d'expérience en développement web, j'évolue aujourd'hui en tant que Lead Tech chez SFEIR.\n\nPassionné par mon métier, j'attache une importance particulière au craft, au clean code et aux bonnes pratiques pour contribuer à la qualité des projets et accompagner les équipes dans leur montée en compétences.",
+          "job_title": null,
+          "company": null,
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/benoit-martin.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "975cb0db-c274-46b8-955f-6d3538fe86aa",
+              "name": "SFEIR",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/original.png"
+            }
+          ]
+        },
+        {
+          "id": "2e758669-9fc2-4a18-91a9-f636369aef9f",
+          "display_name": "Pierre LECLAIRE",
+          "pronouns": null,
+          "bio": "**Version courte pour la conférence :** \n\nJe suis développeur frontend, passionné par l’accessibilité web. J’ai découvert ce sujet lors d’un DevLille il y a quelques années, et il est rapidement devenu central dans mon travail. Aujourd’hui, je conçois et anime des formations sur l’accessibilité chez SFEIR, et j’aime accompagner les développeurs vers un web plus inclusif et responsable.\n\n**Version longue pour mes chers lecteurs de CFP :**\n\nPassionné par l’accessibilité depuis plusieurs années, j’ai découvert ce sujet lors d’un DevLille où il occupait une place centrale. Cette expérience a marqué un tournant dans ma carrière et m’a amené à en faire un axe majeur de mon expertise professionnelle.\n\nDepuis, j’ai conçu et j’anime la principale formation sur l’accessibilité au sein de mon entreprise, SFEIR. J’ai également eu l’opportunité de donner plusieurs conférences sur le sujet, en interne comme lors de meetups.\n\nAujourd’hui, je m’investis activement pour sensibiliser à l’accessibilité et, plus largement, aux enjeux de responsabilité numérique, comme le numérique responsable.\n\nLa prise de parole fait partie de mon parcours depuis assez tôt : d’abord à travers le théâtre, puis avec les plaidoiries durant mes études de droit, et aujourd’hui en tant que formateur et conférencier.\n\n**Voici quelques exemples de contenus et interventions récents :**\n\nUne présentation d’introduction à l’accessibilité (interne)\nhttps://docs.google.com/presentation/d/16S_7sSORNGMhUUL-g2c4spxTSDukbkZ-qiW3NhBMroM/edit?usp=sharing\nSlides de la formation accessibilité (en cours d’amélioration)\nhttps://sfeir-open-source.github.io/sfeir-school-accessibilite/#/\nAccessibility: L'heure des comptes (meetups et Touraine Tech)\nhttps://docs.google.com/presentation/d/1jT5rHHc01b5QZNgbYzJejOdD3A19_WERrYqq44evzUw/edit?usp=sharing",
+          "job_title": null,
+          "company": "SFEIR",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/pierre-leclaire.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "975cb0db-c274-46b8-955f-6d3538fe86aa",
+              "name": "SFEIR",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/original.png"
+            }
+          ]
+        },
+        {
+          "id": "81ea125c-8641-4136-bd82-a472e6a775ce",
+          "display_name": "Aurélien Allienne",
+          "pronouns": null,
+          "bio": "Engineering Director chez SFEIR, je cumule plus de 15 ans d'expérience dans l'univers du développement logiciel. Mon parcours m'a permis d'acquérir une expertise approfondie des stacks back et front, avant de m'orienter vers les enjeux de la data et plus récemment de l'IA Générarive. J'ai principalement évolué dans le secteur du retail, où j'ai pu accompagner la transformation digitale de grands acteurs du marché. Passionné par la transmission des connaissances, j'interviens également en tant que formateur pour partager mon expertise. Aujourd'hui, je mets cette expérience au service de nos clients pour les guider dans leurs défis technologiques, de l'architecture logicielle jusqu'aux solutions d'IA les plus innovantes.",
+          "job_title": null,
+          "company": "SFEIR",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/aur-lien-allienne.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/allienna"
+            },
+            {
+              "type": "x",
+              "url": "https://x.com/sn0rks"
+            }
+          ],
+          "partners": [
+            {
+              "id": "975cb0db-c274-46b8-955f-6d3538fe86aa",
+              "name": "SFEIR",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/original.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fab8bf86-47c8-4669-949f-b666066fd78e",
+      "name": "Clever Cloud",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/e0a42993-3b90-4182-bd4b-6af1f85a961f/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/e0a42993-3b90-4182-bd4b-6af1f85a961f/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/e0a42993-3b90-4182-bd4b-6af1f85a961f/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/e0a42993-3b90-4182-bd4b-6af1f85a961f/1000.png"
+        }
+      },
+      "siteUrl": "https://clever.cloud",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "4 Rue Voltaire",
+          "Nantes",
+          "44000",
+          "France"
+        ],
+        "address": "4 Rue Voltaire",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Nantes",
+        "lat": 47.212896,
+        "lng": -1.5634023
+      },
+      "types": [
+        "Pack Silver"
+      ]
+    },
+    {
+      "id": "385b318d-f5e4-4edc-942d-0a5685d21c67",
+      "name": "ZENIKA",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/1000.png"
+        }
+      },
+      "siteUrl": "https://www.zenika.com",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "53 Rue de Châteaudun",
+          "Paris",
+          "75009",
+          "France"
+        ],
+        "address": "53 Rue de Châteaudun",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Paris",
+        "lat": 48.8761275,
+        "lng": 2.3336328
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "jobs": [
+        {
+          "url": "https://jobs.zenika.com/jobs/6849823-developpeur-backend-java-f-h",
+          "title": "Développeur Backend Java F/H",
+          "company_name": "ZENIKA",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ],
+      "speakers": [
+        {
+          "id": "d44d5f43-3229-4ba7-8f3f-7aa887016c96",
+          "display_name": "Nicolas Delsaux",
+          "pronouns": null,
+          "bio": "Développeur Java pendant 15 ans, je suis devenu depuis quelques années peut-être un peu plus qu'un vieux développeur : un architecte, un référent technique, peut-être un mentor.\nJ'ai fait du Java dans suffisamment d'environnements différents pour apprendre beaucoup à la fois sur la technique, mais aussi sur le coeur du développement : l'humain.",
+          "job_title": null,
+          "company": "Zenika",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/nicolas-delsaux.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/riduidel"
+            }
+          ],
+          "partners": [
+            {
+              "id": "385b318d-f5e4-4edc-942d-0a5685d21c67",
+              "name": "ZENIKA",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/original.svg"
+            }
+          ]
+        },
+        {
+          "id": "9ee32e8a-825c-4280-b33d-69d2c9df688d",
+          "display_name": "Rémi Even",
+          "pronouns": null,
+          "bio": "Rémi Even est développeur chez Zenika. Spécialisé dans le développement backend, que ce soit en Java, Javascript ou Go, il apprécie tous les domaines connexes, qu'il s'agisse du devops, du front, ou du jeu vidéo.",
+          "job_title": null,
+          "company": "Zenika",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/r-mi-even.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "385b318d-f5e4-4edc-942d-0a5685d21c67",
+              "name": "ZENIKA",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/original.svg"
+            }
+          ]
+        },
+        {
+          "id": "b9fba184-d4a0-4afc-8025-b5ef4efd713e",
+          "display_name": "Logan HAUSPIE",
+          "pronouns": null,
+          "bio": "Consultant [@ZenikaLille](https://twitter.com/ZenikaLille) orienté vers l'architecture de solution et le DDD.  \nAvide d'explorations techniques, c'est un vrai touche à tout qui n’hésite pas à tenter de nouvelles aventures.\nSpeaker à ses heures autour de sujets divers, il aime la bonne bouffe, la bonne bière, les soirées entre amis et le billard.",
+          "job_title": null,
+          "company": "Zenika",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/logan-hauspie.png",
+          "socials": [
+            {
+              "type": "x",
+              "url": "https://x.com/lhauspie"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/lhauspie"
+            }
+          ],
+          "partners": [
+            {
+              "id": "385b318d-f5e4-4edc-942d-0a5685d21c67",
+              "name": "ZENIKA",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/original.svg"
+            }
+          ]
+        },
+        {
+          "id": "cef049a7-8460-4671-bb1a-d1dc8ed7a53a",
+          "display_name": "Clement Bout",
+          "pronouns": null,
+          "bio": "Passionné par l'impact des relations humaines sur la production logicielle, je m'efforce d'aligner la technique, la collaboration et les organisations pour rendre les équipes plus efficaces. Je cultive une approche DevOps, Craft et DevEx au quotidien. Mon objectif ? Améliorer l’expérience utilisateur en lui fournissant les solutions adaptées. Ma conviction ? L’intelligence émerge de la communauté.",
+          "job_title": null,
+          "company": "Zenika",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/clement-bout.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/cbout22"
+            },
+            {
+              "type": "linkedin",
+              "url": "https://fr.linkedin.com/in/clement-bout-59000lille"
+            }
+          ],
+          "partners": [
+            {
+              "id": "385b318d-f5e4-4edc-942d-0a5685d21c67",
+              "name": "ZENIKA",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/original.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e477e888-2bc6-4fc4-80e3-ccd2ce5d3f24",
+      "name": "Boulanger",
+      "description": "Depuis 70 ans, Boulanger accompagne et réinvente le quotidien des Français. Bien plus qu’un leader de l'électroménager grâce à nos 220 magasins et notre plateforme digitale, nous sommes un moteur technologique où l’expérience client et l’innovation prennent tout leur sens. \nRejoindre notre DSI, c’est intégrer un collectif de 300 experts au cœur de l’écosystème pour apporter son expertise sur des projets stratégiques avec une stack moderne et agile. \nEnsemble, nous relevons les défis d’un commerce connecté, responsable et profondément humain. \nBoulanger : Apprendre, grandir, réussir : Plaisir partagé !",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/c89e4d6e-1a25-494c-ae15-62000abbb737/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/c89e4d6e-1a25-494c-ae15-62000abbb737/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/c89e4d6e-1a25-494c-ae15-62000abbb737/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/c89e4d6e-1a25-494c-ae15-62000abbb737/1000.png"
+        }
+      },
+      "siteUrl": "https://www.boulanger.com",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "Avenue de la Motte",
+          "Lesquin",
+          "59810",
+          "France"
+        ],
+        "address": "Avenue de la Motte",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lesquin",
+        "lat": 50.5847363,
+        "lng": 3.0974988
+      },
+      "types": [
+        "Pack Silver"
+      ]
+    },
+    {
+      "id": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413",
+      "name": "Sopra Steria",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/1000.png"
+        }
+      },
+      "siteUrl": "https://www.soprasteria.com/fr",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Pack Gold"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://fr.linkedin.com/company/soprasteria"
+        },
+        {
+          "type": "instagram",
+          "url": "https://www.instagram.com/soprasteria_fr/"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://careers.soprasteria.fr/job/developpeur-se-full-stack-senior-java-angular-transport-lille-in-villeneuve-d-ascq-france-jid-7053",
+          "title": "Développeur/se Full Stack Senior Java/Angular",
+          "company_name": "Sopra Steria",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://careers.soprasteria.fr/job/tech-lead-architecte-full-stack-defense-and-securite-lille-in-villeneuve-d-ascq-france-jid-7246",
+          "title": "Tech Lead/Architecte Full Stack - Défense & Sécurité",
+          "company_name": "Sopra Steria",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "90599db0-a641-414a-b89b-9a6da1d532cf",
+      "name": "Kestra",
+      "description": "Kestra est une plateforme d’orchestration open source qui permet d’automatiser et de coordonner des workflows complexes à travers toute votre stack: data, infrastructure, et applications. Grâce à une approche déclarative, API-first et language-agnostic, Kestra permet aux équipes data, platform et engineering de construire des automatisations fiables, observables et versionnées. Des pipelines de données aux opérations d’infrastructure, Kestra agit comme le control plane qui relie vos outils existants et transforme vos processus en workflows orchestrés.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/262c95b4-8429-4cf7-89dc-de264898ba7e/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/262c95b4-8429-4cf7-89dc-de264898ba7e/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/262c95b4-8429-4cf7-89dc-de264898ba7e/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/262c95b4-8429-4cf7-89dc-de264898ba7e/1000.png"
+        }
+      },
+      "siteUrl": "https://kestra.io",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "81 Rue du Pré Catelan",
+          "La Madeleine",
+          "59110",
+          "France"
+        ],
+        "address": "81 Rue du Pré Catelan",
+        "country": "France",
+        "country_code": "FR",
+        "city": "La Madeleine",
+        "lat": 50.6565869,
+        "lng": 3.0606685
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/kestra"
+        },
+        {
+          "type": "x",
+          "url": "https://x.com/kestra_io"
+        },
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/@kestra-io"
+        },
+        {
+          "type": "bluesky",
+          "url": "https://bsky.app/profile/kestra.io"
+        }
+      ],
+      "speakers": [
+        {
+          "id": "2213fe62-d7e2-4ca8-8581-c009e49a24b5",
+          "display_name": "Loïc MATHIEU",
+          "pronouns": null,
+          "bio": "Loïc est  Lead Software Engineer chez [Kestra Technologies](https://kestra.io/) où il aide à créer leur SaaS, anciennement consultant formateur chez Zenika Lille, il est aussi Google Developer Expert (GDE) Google Cloud. \nIl réalise des missions variées autour de Java, de la JVM, de l’architecture solution et de la performance. Ni le Cloud, ni Kubernetes, ni Kafka ne lui font peur; il aime relever des défis et apprendre de nouvelles choses. \nContributeur Quarkus depuis plus de 7 ans, il contribue à plusieurs extensions et parle régulièrement de Quarkus (et d’autres sujets) dans des meetups ou des conférences, et même parfois sur son [blog](https://www.loicmathieu.fr).",
+          "job_title": null,
+          "company": "Kestra Technologies",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/lo-c-mathieu.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/loicmathieu"
+            },
+            {
+              "type": "x",
+              "url": "https://x.com/loicmathieu"
+            }
+          ],
+          "partners": [
+            {
+              "id": "90599db0-a641-414a-b89b-9a6da1d532cf",
+              "name": "Kestra",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/262c95b4-8429-4cf7-89dc-de264898ba7e/original.svg"
+            }
+          ]
+        },
+        {
+          "id": "0d2557a9-7e96-4a75-aa28-9c416bf71adb",
+          "display_name": "François Delbrayelle",
+          "pronouns": null,
+          "bio": "Lead Software Engineer chez **Kestra** depuis mai 2025, François est responsable de l'écosystème des plugins et des intégrations. Avec plus de 15 ans d'expérience naviguant entre le monde des ESN et maintenant celui des start-ups, il a développé une passion pour l'architecture logicielle et l'efficacité des développeurs.\n\nSpeaker régulier, il a exploré des sujets aussi variés que le **RGPD pour les développeurs**, les architectures **Cloud (nua.ge, Kubernetes)**, les frameworks modernes (**Micronaut, Quarkus, JHipster**) ou encore les protocoles de communication (**REST, gRPC, GraphQL**). \n\nAujourd'hui, il se concentre sur l'intersection entre l'orchestration de workflows et l'IA générative, avec une obsession : transformer la manière dont les ingénieurs (Data, Platform, Software) construisent et déploient leurs briques métier.",
+          "job_title": null,
+          "company": "Kestra",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/fran-ois-delbrayelle.png",
+          "socials": [
+            {
+              "type": "x",
+              "url": "https://twitter.com/fdelbrayelle"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/fdelbrayelle"
+            },
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/fdelbrayelle/"
+            }
+          ],
+          "partners": [
+            {
+              "id": "90599db0-a641-414a-b89b-9a6da1d532cf",
+              "name": "Kestra",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/262c95b4-8429-4cf7-89dc-de264898ba7e/original.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1f609018-58a7-4829-9e51-c05e7fc4d0d6",
+      "name": "Wemanity Reply",
+      "description": "Wemanity Reply est un cabinet de conseil spécialisé dans la transformation IA, fondé en 2013.\nMembre du groupe Reply, acteur international des services technologiques de pointe, nous allions proximité, innovation et la puissance d’un réseau mondial d’experts.\n\nD’ici 2050, nous façonnerons une nouvelle ère du travail où l’IA, l’humanité et la durabilité convergeront pour créer un monde aux possibilités infinies, fondé sur des écosystèmes collaboratifs et une innovation porteuse de sens.\n\nNotre mission : aider les organisations à relever les défis de l’innovation et à devenir plus agiles, responsables et performantes.\nAujourd’hui, notre communauté compte plus de 450 coopérateurs à travers la France (Paris HQ et Lille), la Belgique, les Pays-Bas, le Luxembourg et le Maroc. Avec un fort esprit international, nous collaborons avec des partenaires dans 17 pays et sur 5 continents.\n\nNotre culture est ancrée dans trois valeurs fondamentales :\n\n🌍 Esprit d’Ubuntu : l’humanité en tant que collectif\n🎯 L’obsession de la réussite du client\n🌱 Un engagement envers l’excellence et la responsabilité\n\nRejoindre Wemanity, c’est faire partie d’une communauté d’experts diversifiée et passionnée, motivée par l’apprentissage, le partage et des moments de croissance significatifs.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/4be0e69d-3fb8-4921-89b0-050f3390c325/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/4be0e69d-3fb8-4921-89b0-050f3390c325/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/4be0e69d-3fb8-4921-89b0-050f3390c325/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/4be0e69d-3fb8-4921-89b0-050f3390c325/1000.png"
+        }
+      },
+      "siteUrl": "https://wemanity.com/fr/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "33 Rue de Châteaudun",
+          "Paris",
+          "75009",
+          "France"
+        ],
+        "address": "33 Rue de Châteaudun",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Paris",
+        "lat": 48.8759165,
+        "lng": 2.3366897
+      },
+      "types": [
+        "Pack Gold"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/81485024/admin/dashboard/"
+        }
+      ]
+    },
+    {
+      "id": "0665de74-9828-4fce-880d-6737200a2e97",
+      "name": "ID6",
+      "description": "ID6 conçoit et met à disposition des solutions numériques et pédagogiques au service des transitions professionnelle.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/96a06b61-d3c7-490f-aeba-a5914718eaf4/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/96a06b61-d3c7-490f-aeba-a5914718eaf4/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/96a06b61-d3c7-490f-aeba-a5914718eaf4/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/96a06b61-d3c7-490f-aeba-a5914718eaf4/1000.png"
+        }
+      },
+      "siteUrl": "https://diagoriente.fr/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/id6/posts/?feedView=all"
+        }
+      ]
+    },
+    {
+      "id": "b6ccd088-e10d-417d-8f14-6bd72c52b0ac",
+      "name": "La French Tech Lille",
+      "description": "",
+      "media": {
+        "svg": "https://rdv.lafrenchtechlille.com/images/configuration/logos/66431c8ab265e810426059.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/502beb2e-f070-483f-a7c0-56b08e53171c/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/502beb2e-f070-483f-a7c0-56b08e53171c/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/502beb2e-f070-483f-a7c0-56b08e53171c/1000.png"
+        }
+      },
+      "siteUrl": "https://www.lafrenchtechlille.com/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Partenaires Média"
+      ]
+    },
+    {
+      "id": "f9ba6b5f-1690-427b-a32c-94bffebf9b2d",
+      "name": "Cast AI",
+      "description": "CAST AI aide les entreprises à reprendre le contrôle de leurs coûts Kubernetes et à améliorer les performances applicatives grâce à une optimisation automatisée et intelligente des ressources cloud.\n\n---\n\nUne plateforme cloud et Kubernetes basée sur l’IA :  CAST AI accompagne les équipes DevOps, Cloud et SRE dans l’optimisation de leurs environnements Kubernetes.\n\n---\n\nCe que nous permettons\n\n* Réduction des coûts cloud (AWS, GCP, Azure)\n* Optimisation automatique des clusters Kubernetes\n* Ajustement des ressources CPU / RAM (requests et limits)\n* Prévention des problèmes de performance (OOMKills, sur/sous-dimensionnement)\n* Automatisation progressive de l’optimisation des infrastructures",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/b81dc27a-2921-4c73-a455-7d8c1953afba/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/b81dc27a-2921-4c73-a455-7d8c1953afba/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/b81dc27a-2921-4c73-a455-7d8c1953afba/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/b81dc27a-2921-4c73-a455-7d8c1953afba/1000.png"
+        }
+      },
+      "siteUrl": "https://cast.ai",
+      "videoUrl": "https://storage.googleapis.com/partners-connect/events/fae8f913-26be-4b5b-b6ee-c3c2c2406555/partnerships/c098fa13-310f-4eea-a104-2b19ba04b3fc/support-video.mp4",
+      "address": {
+        "formatted": [
+          "111 Northeast 1st Street",
+          "Miami",
+          "33132",
+          "United States"
+        ],
+        "address": "111 Northeast 1st Street",
+        "country": "United States",
+        "country_code": "US",
+        "city": "Miami",
+        "lat": 25.7753959,
+        "lng": -80.1917414
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/cast-ai/"
+        },
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/zen-ops/"
+        }
+      ]
+    },
+    {
+      "id": "90513346-a349-4812-b197-54748d673684",
+      "name": "Simplon",
+      "description": "",
+      "media": {
+        "svg": "https://cdn.prod.website-files.com/6703a475ba8103794242a832/6703aae143d2a47a93037982_Calque_1.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/3e7a7b01-627a-41d7-9f7b-a72d5720d66c/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/3e7a7b01-627a-41d7-9f7b-a72d5720d66c/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/3e7a7b01-627a-41d7-9f7b-a72d5720d66c/1000.png"
+        }
+      },
+      "siteUrl": "https://www.simplon.co/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "b2dd94d5-56c3-4f92-954d-bbbbf8d13de5",
+      "name": "CodeKaio",
+      "description": "Derrière le nom \"CodeKaio\" se cache Julien Wittouck 🫣.\n\nPassez voir mon talk Let's play Factorio, jeudi à 11h15, ou passez me voir sur le stand Ekité",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/23f76cd4-0717-4cc8-9c04-acc4953b582f/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/23f76cd4-0717-4cc8-9c04-acc4953b582f/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/23f76cd4-0717-4cc8-9c04-acc4953b582f/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/23f76cd4-0717-4cc8-9c04-acc4953b582f/1000.png"
+        }
+      },
+      "siteUrl": "https://codeka.io",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "19 Rue de la Couture",
+          "Sailly-lez-Lannoy",
+          "59390",
+          "France"
+        ],
+        "address": "19 Rue de la Couture",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Sailly-lez-Lannoy",
+        "lat": 50.6500273,
+        "lng": 3.2223576
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "mastodon",
+          "url": "https://mas.to/@codekaio"
+        },
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/in/julien-wittouck/"
+        },
+        {
+          "type": "bluesky",
+          "url": "https://bsky.app/profile/codeka.io"
+        }
+      ],
+      "speakers": [
+        {
+          "id": "0d7911a0-bdb0-425d-bb27-09c2dfc85329",
+          "display_name": "Julien WITTOUCK",
+          "pronouns": null,
+          "bio": "Je suis fan de Star Wars 💫, de Dragon Ball 🐉, et de rock seventies & nineties 🎸🤘.\n\nJe suis aussi Architecte Solution 🏗️  indépendant, associé chez [Ekité](https://ekite.info) et j'enseigne le développement Java / Spring à l'université de Lille 🎓 depuis plus de 10 ans.\nJe suis aussi l'auteur du livre [L’infrastructure as Code avec Terraform](https://www.editions-eni.fr/livre/l-infrastructure-as-code-avec-terraform-deployez-votre-infrastructure-sur-le-cloud-9782409046629) paru aux éditions ENI, et membre du comité d'organisation de la conférence ☁️ Cloud Nord\n\nJe publie régulièrement des articles de veille sur mon site perso [codeka.io](https://codeka.io).\n\nMes sujets de prédilection:\n\n* ☕ : Java/Spring\n* ☁️ : Cloud/IaC/Terraform\n* 🐋 : Docker/Kubernetes\n* 🐧 : Linux 💙",
+          "job_title": null,
+          "company": "Freelance / Associé chez Ekité",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/julien-wittouck.png",
+          "socials": [
+            {
+              "type": "bluesky",
+              "url": "https://bsky.app/profile/codeka.io"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/juwit"
+            },
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/julien-wittouck/"
+            }
+          ],
+          "partners": [
+            {
+              "id": "b2dd94d5-56c3-4f92-954d-bbbbf8d13de5",
+              "name": "CodeKaio",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/23f76cd4-0717-4cc8-9c04-acc4953b582f/original.png"
+            },
+            {
+              "id": "bdd51206-4351-48e6-8687-e5ea227fb53e",
+              "name": "EKITE",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/original.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c550512d-c20d-4201-a7f8-1d9edb0f3dcc",
+      "name": "Ch'ti JUG",
+      "description": "Le Ch’ti JUG est un groupe de développeurs ayant pour but de faire vivre la communauté des développeurs autours de Lille. Notre mission est d’organiser chaque mois une rencontre ayant pour thème le développement logiciel au sens large. Ces évènements sont mensuels, gratuits et ouverts à tous. Chaque rencontre consiste en une présentation que se termine autour d’un verre et d’un buffet.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/c1fc8e67-bc7e-4a2a-89fa-c98fd641c97d/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/c1fc8e67-bc7e-4a2a-89fa-c98fd641c97d/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/c1fc8e67-bc7e-4a2a-89fa-c98fd641c97d/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/c1fc8e67-bc7e-4a2a-89fa-c98fd641c97d/1000.png"
+        }
+      },
+      "siteUrl": "https://chtijug.org",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "10b Rue Arthur Béarez",
+          "Chéreng",
+          "59152",
+          "France"
+        ],
+        "address": "10b Rue Arthur Béarez",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Chéreng",
+        "lat": 50.6095878,
+        "lng": 3.1992828
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/chtijug/"
+        },
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/@chtijug"
+        }
+      ]
+    },
+    {
+      "id": "58ec3eba-d35c-4eea-94cf-e58a620bad6a",
+      "name": "Exotec SAS",
+      "description": "Chez Exotec, nous concevons, intégrons et déployons des solutions d’automatisation élégantes qui associent robotique, logiciel et expertise opérationnelle. En tant qu’OEM et intégrateur end-to-end, nous accompagnons des marques internationales pour relever leurs défis intralogistiques et améliorer à la fois la performance et les conditions de travail dans leurs entrepôts.\nNos solutions sont utilisées chaque jour par plus de 50 clients à travers le monde et s’appuient sur le savoir‑faire d’équipes passionnées qui partagent leurs expertises, challengent les idées et évoluent dans un environnement respectueux, enrichi par la diversité de nos 1 300 ExoPeople.\nChaque innovation passe du concept à l’intégration sur le terrain, entre les mains de clients qui comptent au quotidien sur la fiabilité et l’efficacité de nos systèmes. Collaboration, excellence et impact guident la manière dont nous concevons l’automatisation de demain.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/9df9f57e-bf4e-42fb-8323-fc5e28f2aaf7/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/9df9f57e-bf4e-42fb-8323-fc5e28f2aaf7/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/9df9f57e-bf4e-42fb-8323-fc5e28f2aaf7/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/9df9f57e-bf4e-42fb-8323-fc5e28f2aaf7/1000.png"
+        }
+      },
+      "siteUrl": "https://www.exotec.com/?EX00_control=true&pk_abe=Redirect_Calibration&pk_abv=Variation2",
+      "videoUrl": "https://storage.googleapis.com/partners-connect/events/fae8f913-26be-4b5b-b6ee-c3c2c2406555/partnerships/3ee71c74-3509-4c41-95e2-366550053df6/support-video.mp4",
+      "address": {
+        "formatted": [
+          "1 Avenue du Molinel",
+          "Wasquehal",
+          "59290",
+          "France"
+        ],
+        "address": "1 Avenue du Molinel",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Wasquehal",
+        "lat": 50.6749333,
+        "lng": 3.1263439
+      },
+      "types": [
+        "Pack Gold"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/exotec"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://careers.exotec.com/_/j/91417FBF56/",
+          "title": "Ingénieur.e R&D Logiciel Java",
+          "company_name": "Exotec SAS",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://careers.exotec.com/_/j/F1F34DE298/",
+          "title": "Product Owner : Koddex et Outils SaaS",
+          "company_name": "Exotec SAS",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://careers.exotec.com/_/j/F3D9519C48/",
+          "title": "Product Owner IA",
+          "company_name": "Exotec SAS",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://careers.exotec.com/_/j/03582B0237/",
+          "title": "Software Quality Management Engineer",
+          "company_name": "Exotec SAS",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://careers.exotec.com/_/j/64C5A35CA6/",
+          "title": "Senior Product Owner - Logistics Software",
+          "company_name": "Exotec SAS",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://careers.exotec.com/_/j/CA377A06E6/",
+          "title": "Software R&D Manager",
+          "company_name": "Exotec SAS",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://careers.exotec.com/_/j/A82425146D/",
+          "title": "Architect Robotics",
+          "company_name": "Exotec SAS",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "9f783acc-fc9d-4628-a030-56e1952dcff3",
+      "name": "Vaduo Consulting",
+      "description": "Vaduo, c’est une ESN lilloise conviviale et participative, née en 2016 avec une ambition forte : replacer l’humain au centre de la technologie.\n\nNotre offre se concentre sur 3 domaines d'expertise : le développement Web, l'Agilité, la gestion de Produits et de Projets. \n\nPassionnés par leur métier et en veille constante sur les dernières innovations, nos collaborateurs apportent bien plus qu’un simple renfort : un véritable savoir-faire technique et méthodologique. Leur mission ? Proposer des solutions performantes, durables et adaptées aux enjeux métiers, tout en construisant des partenariats solides et pérennes.\n\n💙 \"Replaçons l’humain au centre de la technologie\", c’est notre raison d’être et notre moteur au quotidien. Pour nous, l’excellence technique, opérationnelle et numérique repose avant tout sur l’épanouissement de celles et ceux qui la rendent possible.\n\nNos valeurs (A.C.T.E.S) guident notre vision et nos actions : Adaptabilité, Convivialité, Transparence, Épanouissement et Savoir-faire. Elles nous permettent d’offrir un cadre où chacun peut évoluer et s’investir pleinement, dans un environnement de travail sain et stimulant.\n\n📩Contactez-nous : hello@vaduoconsulting.com\n🖇️Découvrez notre univers : https://www.vaduoconsulting.com/\n💼 Rejoignez l'aventure : https://www.hellowork.com/fr-fr/entreprises/vaduo-consulting-132862.html\n✒️Explorez nos articles : https://www.vaduoconsulting.com/blog/",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/1000.png"
+        }
+      },
+      "siteUrl": "https://vaduoconsulting.com",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Pack Silver"
+      ],
+      "jobs": [
+        {
+          "url": "https://www.hellowork.com/fr-fr/emplois/78665566.html",
+          "title": "Développeur Fullstack Java-Js H/F",
+          "company_name": "Vaduo Consulting",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.hellowork.com/fr-fr/emplois/78665559.html",
+          "title": "Product Owner Po H/F",
+          "company_name": "Vaduo Consulting",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.hellowork.com/fr-fr/emplois/78665558.html",
+          "title": "Leader Technique H/F",
+          "company_name": "Vaduo Consulting",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.hellowork.com/fr-fr/emplois/78665552.html",
+          "title": "Développeur Backend Java H/F",
+          "company_name": "Vaduo Consulting",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "7a9670f3-c0d6-4d96-8e57-8fa4cb6a9ab1",
+      "name": "HoppR",
+      "description": "HoppR est agence de conseil et d'expertise qui accompagne les DSI et leurs équipes dans leur transition technologique, leur démarche d'innovation et la prise en main des défis technologiques complexes.\n\nNotre Vision 🔭\nConcevoir l’excellence et réussir des projets tech audacieux, c'est d'abord une histoire de talents et cela passe par créer les conditions d’une relation durable avec ses partenaires, ses clients et ses équipes\n\nNotre mission 🎯\nProposer un cadre propice à la valorisation du talent de nos équipes, favorisant le partage, la veille, la formation, l'innovation pour répondre aux enjeux et défis technologiques de nos clients\n\nEt du coup ?\nChez HoppR, nous avons une organisation où la transparence est au cœur de notre modèle. Toutes les informations sont accessibles et partagées.\n\n👉 Grille de salaire basée sur le nombre d'années et redistribution des marges excédentaires au bénéfice de nos consultants\n👉 Des jours dédiés au destaffing communautaire : pour faire de la veille, partager des connaissances ou simplement profiter de congés supplémentaires.\nNous prônons un modèle flexible, et la liberté pour nos équipes de gérer leur temps et rythme\n\nSi tu nous rejoins, tu découvriras que nous ne sommes, ni une ESN classique, ni un simple collectif de freelances. Nous proposons un modèle hybride pour créer plus de valeur et de partage",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/99c7f111-0a82-4849-98b4-c1943e29584b/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/99c7f111-0a82-4849-98b4-c1943e29584b/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/99c7f111-0a82-4849-98b4-c1943e29584b/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/99c7f111-0a82-4849-98b4-c1943e29584b/1000.png"
+        }
+      },
+      "siteUrl": "https://www.hoppr.tech/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "177 Allée Clémentine Deman",
+          "Lille",
+          "59000",
+          "France"
+        ],
+        "address": "177 Allée Clémentine Deman",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lille",
+        "lat": 50.633941,
+        "lng": 3.023034
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/hopprtech"
+        }
+      ]
+    },
+    {
+      "id": "8239fc66-d32e-47c7-a2d7-abf116a558dd",
+      "name": "Holberton",
+      "description": "L'approche de Holberton School Lille privilégie les fondements de l'ingénierie logicielle par une immersion « low-level » exigeante. En priorisant la maîtrise du C, de la gestion mémoire et de l'algorithmie, nous formons des profils capables de comprendre l'abstraction technique avant d'utiliser les frameworks. \n\nCette pédagogie par projets et en peer-learning forge une autonomie critique et une réelle capacité de résolution de problèmes en environnement de production. \nLe cursus intègre des spécialisations avancées en Fullstack, Machine Learning / IA et Cybersécurité.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/297875f9-fe0c-4106-8c92-00b3ff9a3ec5/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/297875f9-fe0c-4106-8c92-00b3ff9a3ec5/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/297875f9-fe0c-4106-8c92-00b3ff9a3ec5/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/297875f9-fe0c-4106-8c92-00b3ff9a3ec5/1000.png"
+        }
+      },
+      "siteUrl": "https://www.holbertonschool.fr/campus/lille?utm_campaign=devLille26&utm_content=Partenaire&utm_sourceRS=&utm_source=&utm_medium=site&utm_webflowlpid=6908c856ee627565cf514c64&utm_source=bouton",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "25 Rue Corneille",
+          "Roubaix",
+          "59100",
+          "France"
+        ],
+        "address": "25 Rue Corneille",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Roubaix",
+        "lat": 50.7006284,
+        "lng": 3.1595581
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/school/holberton-school-france/posts/?feedView=all"
+        },
+        {
+          "type": "instagram",
+          "url": "https://www.instagram.com/holbertonfrance"
+        },
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/@HolbertonFrance"
+        }
+      ]
+    },
+    {
+      "id": "f50984e3-ad15-42b4-9be5-cc2ba0a2a3a3",
+      "name": "Faceel-IT",
+      "description": "Faceel-IT est une ESN lilloise basée sur 4 Business Units : \n- Digital\n- Data & IA\n- Cybersécurité\n- Product\nLes Directeurs(rices) et RH de chaque BU sont spécialisés dans leur domaine afin de pouvoir répondre aux enjeux des clients de manière efficace et pertinente.\nLe but est également de pouvoir créer un réel sentiment d'appartenance et une vraie montée en compétence en interne de nos collaborateurs.\nLa croissance est une bonne chose mais elle doit surtout s'appuyer sur un socle fort caractérisé par les collaborateurs et donc s'appuyer sur un turnover très faible.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/8508158f-476c-4321-94eb-b2c73c570a2d/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/8508158f-476c-4321-94eb-b2c73c570a2d/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/8508158f-476c-4321-94eb-b2c73c570a2d/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/8508158f-476c-4321-94eb-b2c73c570a2d/1000.png"
+        }
+      },
+      "siteUrl": "https://faceel-it.com/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "10 Allée du Château Blanc",
+          "Wasquehal",
+          "59290",
+          "France"
+        ],
+        "address": "10 Allée du Château Blanc",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Wasquehal",
+        "lat": 50.6800518,
+        "lng": 3.1180219
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/faceel-it/"
+        },
+        {
+          "type": "instagram",
+          "url": "https://instagram.com/faceelit"
+        }
+      ]
+    },
+    {
+      "id": "c2388cde-1d8e-4411-8723-449ed4160981",
+      "name": "IKIVIA",
+      "description": "Créée en 2022, Ikivia est une société de conseil en IT & Digital. Ikivia propose un modèle d’entreprise basé sur l’accompagnement et la recherche de sens dans le milieu professionnel.  \n\nL'accompagnement d'Ikivia se structure autour de quatre grandes expertises métiers que sont : la gestion de projet, le développement, la Big Data et l’infrastructure IT.  \n\nEn dehors de la seule expertise métier, chez Ikivia nous sommes convaincus que le milieu professionnel doit permettre à chacun de s’épanouir. Pour ce faire, nous nous appuyons sur le modèle Ikigai. Issu de la tradition japonaise, ce modèle propose une approche autour de 4 éléments clés pour accompagner chacun dans la découverte de sa “raison d’être”.  \n\nAppliquée au milieu professionnel, cette recherche se traduit par une activité qui a du sens, pour nous, comme pour le monde.   \n\nRejoignez une entreprise certifiée 3ème Best WorkPlaces 2025 où la bienveillance et l’épanouissement professionnel sont au cœur de nos priorités !   \n\nVous souhaitez nous rejoindre ? Ikivia recrute ! Envoyez votre candidature à job@ikivia.com",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/b407a8d4-5adb-47bb-8b13-71b9c36f0bcb/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/b407a8d4-5adb-47bb-8b13-71b9c36f0bcb/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/b407a8d4-5adb-47bb-8b13-71b9c36f0bcb/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/b407a8d4-5adb-47bb-8b13-71b9c36f0bcb/1000.png"
+        }
+      },
+      "siteUrl": "https://www.ikivia.com",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "48 Rue des Canonniers",
+          "Lille",
+          "59000",
+          "France"
+        ],
+        "address": "48 Rue des Canonniers",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lille",
+        "lat": 50.6408715,
+        "lng": 3.0689542
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/ikivia/"
+        },
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/@ikivia-it"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://www.linkedin.com/jobs/view/4405273387",
+          "title": "Développeur.euse Java",
+          "company_name": "IKIVIA",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "a235dbab-e6d5-4762-a2b5-aca9c3f3bee3",
+      "name": "Gravitational, Inc. (Teleport)",
+      "description": "Teleport est une plateforme d’accès sécurisé unifié conçue pour les environnements cloud hybrides, avec un focus fort sur les infrastructures legacy, Kubernetes et workloads d’IA.\nElle permet aux équipes DevOps, SRE et Security de moderniser et sécuriser l’accès aux systèmes critiques sans dépendre de VPN ou de clés statiques, tout en s’adaptant à des environnements souvent hétérogènes et historiques.\nConcrètement, Teleport permet de :\nCentraliser les accès à SSH, Kubernetes, bases de données et applications, y compris sur des environnements legacy\nUnifier la gestion des accès dans des environnements Kubernetes et plateformes IA\nRemplacer les VPN et clés SSH statiques par une approche basée sur l’identité\nAppliquer un modèle Zero Trust Zero Trust pour tous les accès privilégiés\nTracer, enregistrer et auditer toutes les sessions utilisateurs de bout en bout\nRéduire fortement la surface d’attaque liée aux accès privilégiés dans des environnements complexes et hybrides\nEn résumé : Teleport modernise la gestion des accès en apportant une couche de sécurité unifiée et auditable, capable de couvrir aussi bien des infrastructures legacy critiques que des plateformes Kubernetes et IA à grande échelle, sans compromettre l’agilité des équipes.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/261fc1d3-bd18-4521-be66-1e9ec9355358/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/261fc1d3-bd18-4521-be66-1e9ec9355358/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/261fc1d3-bd18-4521-be66-1e9ec9355358/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/261fc1d3-bd18-4521-be66-1e9ec9355358/1000.png"
+        }
+      },
+      "siteUrl": "https://goteleport.fr/devlille26",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "2100 Franklin Street",
+          "Oakland",
+          "94612",
+          "United States"
+        ],
+        "address": "2100 Franklin Street",
+        "country": "United States",
+        "country_code": "US",
+        "city": "Oakland",
+        "lat": 37.8101377,
+        "lng": -122.2663485
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/go-teleport/"
+        },
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/zen-ops/"
+        }
+      ]
+    },
+    {
+      "id": "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
+      "name": "DECATHLON DIGITAL",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/1000.png"
+        }
+      },
+      "siteUrl": "https://www.decathlon.fr/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "4 Boulevard de Mons",
+          "Villeneuve-d'Ascq",
+          "59650",
+          "France"
+        ],
+        "address": "4 Boulevard de Mons",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Villeneuve-d'Ascq",
+        "lat": 50.6445701,
+        "lng": 3.1426117
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/decathlondigital/posts/?feedView=all"
+        },
+        {
+          "type": "x",
+          "url": "https://x.com/decathlon"
+        },
+        {
+          "type": "instagram",
+          "url": "https://www.instagram.com/decathlon/"
+        },
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/user/decathfrance"
+        }
+      ],
+      "speakers": [
+        {
+          "id": "43ed2c7f-96ab-40a4-98b1-3e879d32db1e",
+          "display_name": "Nait Belkacem Youssef",
+          "pronouns": null,
+          "bio": "Ce que j’aime par-dessus tout, c’est transformer les idées de mes clients en projet concret. \n\nMon terrain de jeu principal, c’est le backend, Java principalement mais j’ai aussi exploré d'autres langages de programmation par le passé C, C++, TypeScript, .. etc. Ma dernière découverte est Rust, je passe pas mal de temps à comprendre la philosophie derrière ce language fascinant \n\nJe prends beaucoup de plaisir à remettre du sens dans le code à travers le refactoring, à relever des défis de performance (usage des resources à disposition, délais de traitement etc) et à évangéliser tout ce qui touche au craftsmanship.",
+          "job_title": null,
+          "company": "Decathlon",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/nait-belkacem-youssef.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/NaitYoussef"
+            }
+          ],
+          "partners": [
+            {
+              "id": "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
+              "name": "DECATHLON DIGITAL",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/original.png"
+            }
+          ]
+        },
+        {
+          "id": "ff617503-9447-4d69-950d-26dd065ed2cf",
+          "display_name": "Bastien TERRIER",
+          "pronouns": null,
+          "bio": "🇫🇷\nDéveloppeur Backend chez Decathlon depuis 7 ans, j'ai consacré 5 années au projet de Location. Cette expérience a été un véritable déclencheur, éveillant mon intérêt pour l'architecture logicielle. Aujourd'hui, j'utilise les approches DDD et EDA, ainsi que des pratiques de test rigoureuses, pour m'assurer que les solutions développées répondent précisément aux enjeux métier.\n\n🇬🇧\nBackend Developer at Decathlon for 7 years, I have dedicated 5 of them to the Rental project. This experience was a real turning point, sparking my interest in software architecture. Today, I apply DDD and EDA approaches, along with rigorous testing practices, to ensure that the solutions developed precisely address business challenges.",
+          "job_title": null,
+          "company": "Decathlon",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/bastien-terrier.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
+              "name": "DECATHLON DIGITAL",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/original.png"
+            }
+          ]
+        },
+        {
+          "id": "5bc51434-8aea-40a3-96e9-03a639d44e1d",
+          "display_name": "VIRGINIE ZINCK",
+          "pronouns": null,
+          "bio": "My career began with 10 years of international IT consulting in the USA, Germany, Portugal, and Belgium. \n\nI returned to France to build my IT experience further in a startup and a finance company before joining Decathlon in 2012.\n\n8 years ago, after many years in management, I seized the opportunity at Decathlon to reorient my career and become a web developer. \n\nSince then, I've specialized in backend development, with a strong focus on Java and Kafka. \n\nI am currently a Staff Engineer in the eCommerce domain, working on Giftcard solutions.",
+          "job_title": null,
+          "company": "Decathlon",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/virginie-zinck.png",
+          "socials": [
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/virginiez/"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/VirginieZinck"
+            }
+          ],
+          "partners": [
+            {
+              "id": "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
+              "name": "DECATHLON DIGITAL",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/original.png"
+            }
+          ]
+        },
+        {
+          "id": "68f95aa2-aae4-4e4a-954a-9d58aa24c119",
+          "display_name": "Ludovic ROLAND",
+          "pronouns": null,
+          "bio": "",
+          "job_title": null,
+          "company": "Decathlon",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/ludovic-roland.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
+              "name": "DECATHLON DIGITAL",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/original.png"
+            }
+          ]
+        },
+        {
+          "id": "6be6bb73-1c1a-45bf-9d38-144529cde965",
+          "display_name": "Nathalie OTTE",
+          "pronouns": null,
+          "bio": "Hello, I'm Nathalie, and my mission is to make Sustainable IT a driving force behind our 'Planet & Environment' commitment.\n\nAfter 20 years managing complex industrial systems 24/7, I've come to understand that innovation is only meaningful if it's responsible. My background, shaped by training in deep ecology, has led me to take action where few dare to go: the dark side of digital technology.\n\nToday, I'm putting our Responsibility value into practice with projects like the Cloud Ecoscore and by bringing together 21 European NGOs. My goal? To keep Decathlon at the forefront of technology, but with conscious technology that protects our shared environment.",
+          "job_title": null,
+          "company": "Decathlon",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/nathalie-otte.png",
+          "socials": [
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/ottenathalie"
+            }
+          ],
+          "partners": [
+            {
+              "id": "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
+              "name": "DECATHLON DIGITAL",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/original.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "383bf55f-c3a3-415f-be0e-92bd3fd8aa8a",
+      "name": "skiils",
+      "description": "skiils est un cabinet de conseil spécialisé en IA, qui place l’Humain, la stratégie et l'innovation au cœur de la transformation des entreprises.\n\n🎯 Notre MISSION ?\nFédérer et connecter les meilleurs talents à vos enjeux métiers pour garantir l’impact durable de vos projets technologiques, Data et IA.\n\n🧬 Notre ADN ?\nUne communauté de talents engagés et fédérés par des Guild Master : une équipe Tech animée par des Techs !\nChez skiils, nous pensons que l’IA et l’innovation passent avant tout par le déploiement d’une équipe collaborative.\n\n🎈 Pourquoi skiils ?\n• Une forte expertise dans le pilotage de projets technologiques, Data et IA complexes.\n• L'accompagnement de projets ambitieux servant les enjeux IA et d'innovation d'une clientèle Grands Comptes.\n• Une relation directe, transparente et durable avec les équipes.\n• Des valeurs fortes, incarnées au quotidien : Excellence, Passion et Audace.\n\nskiils, c’est surtout une ambition claire : faire de chaque projet un levier de performance et d’épanouissement mutuel.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/82cf7cff-bfd0-4027-90ee-3bf3bbde71da/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/82cf7cff-bfd0-4027-90ee-3bf3bbde71da/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/82cf7cff-bfd0-4027-90ee-3bf3bbde71da/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/82cf7cff-bfd0-4027-90ee-3bf3bbde71da/1000.png"
+        }
+      },
+      "siteUrl": "https://skiils-x-digidop.webflow.io/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "8 Rue Benoît Malon",
+          "Suresnes",
+          "92150",
+          "France"
+        ],
+        "address": "8 Rue Benoît Malon",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Suresnes",
+        "lat": 48.8734118,
+        "lng": 2.231341
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/skiils-group/"
+        },
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/@skiilsgroup6897"
+        }
+      ]
+    },
+    {
+      "id": "76ad35d3-ab23-49cb-82d5-f86fd1205b2a",
+      "name": "Promod",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/14b74cbc-ccd4-43b0-979a-8afb72c76f20/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/14b74cbc-ccd4-43b0-979a-8afb72c76f20/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/14b74cbc-ccd4-43b0-979a-8afb72c76f20/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/14b74cbc-ccd4-43b0-979a-8afb72c76f20/1000.png"
+        }
+      },
+      "siteUrl": "https://www.promod.fr/fr-fr/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "Chemin du Verseau",
+          "Marcq-en-Barœul",
+          "",
+          "France"
+        ],
+        "address": "Chemin du Verseau",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Marcq-en-Barœul",
+        "lat": 50.6901125,
+        "lng": 3.1204039
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/promod/ "
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://promodjob.talentview.io/jobs/zslydi?source=site_entreprise&utm_source=site_entreprise",
+          "title": "Lead Developer Fullstack H/F",
+          "company_name": "Promod",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "8df653fc-69b9-4fca-a0ca-eb15cc228b16",
+      "name": "Oney",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/69cfe16d-2efd-44d0-9b6a-4a2491f54676/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/69cfe16d-2efd-44d0-9b6a-4a2491f54676/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/69cfe16d-2efd-44d0-9b6a-4a2491f54676/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/69cfe16d-2efd-44d0-9b6a-4a2491f54676/1000.png"
+        }
+      },
+      "siteUrl": "https://www.oney.com",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "34 Avenue de Flandre",
+          "Croix",
+          "59170",
+          "France"
+        ],
+        "address": "34 Avenue de Flandre",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Croix",
+        "lat": 50.6683704,
+        "lng": 3.1534548
+      },
+      "types": [
+        "Pack Silver"
+      ]
+    },
+    {
+      "id": "c184a1e9-0e4a-4ad4-b2a7-2e95d72ffb9a",
+      "name": "Elosi",
+      "description": "Depuis 2005, nous concevons vos projets digitaux, de la conception à l’hébergement. Aujourd’hui, le groupe Elosi c'est 120 collaborateurs à votre service dans un environnement convivial et de proximité.\n\nDev, green IT, data, ERP, e-commerce, cloud, sécurité... nous concevons des solutions digitales à forte valeur ajoutée et respectant les principes d'écoconception.\n\nDeux offres pour répondre à vos besoins :\n- Elosi Solutions : Digitalisez votre entreprise avec des solutions adaptées à vos besoins peu importe vos secteurs, tailles et activités.\n- Elosi : Renforcez vos équipes avec nos experts en régie et accélérez la performance de votre entreprise.\n👉 Donnons vie à votre projet ensemble : https://www.elosi.com/business \n\nRejoindre Elosi, c’est rejoindre une ESN où chacun peut développer ses compétences, accéder à des formations certifiantes et évoluer. \n👉 De nombreuses opportunités s’offrent à vous : https://www.elosi.com/carriere",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/47786f6f-13b9-4db6-bda3-fc81db420795/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/47786f6f-13b9-4db6-bda3-fc81db420795/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/47786f6f-13b9-4db6-bda3-fc81db420795/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/47786f6f-13b9-4db6-bda3-fc81db420795/1000.png"
+        }
+      },
+      "siteUrl": "https://www.elosi.com/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Pack Gold"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/elosi/mycompany/"
+        }
+      ]
+    },
+    {
+      "id": "c97398ee-845e-4981-9652-4b8b8dc2c49b",
+      "name": "ZATSIT",
+      "description": "👉 Zatsit est une 𝗘𝗦𝗡 𝗲𝗻𝗴𝗮𝗴𝗲́𝗲 💻\n\nActuellement déjà une quarantaine de personnes au service de l'impact !\n🌍 L'aventure répond à ces nombreux critères 👥 :\n\n# 𝗜𝗺𝗽𝗮𝗰𝘁\n# Transparence\n# 𝗘𝘅𝗽𝗲𝗿𝘁𝗶𝘀𝗲 𝘁𝗲𝗰𝗵𝗻𝗼\n# 𝗣𝗼𝘀𝗶𝘁𝗶𝗳 \n# 𝗣𝗮𝗿𝘁𝗲𝗻𝗮𝗿𝗶𝗮𝗹 \n# 𝗦𝗼𝗰𝗶𝗲́𝘁𝗮𝗹\n# 𝗘𝗻𝘃𝗶𝗿𝗼𝗻𝗻𝗲𝗺𝗲𝗻𝘁𝗮𝗹 \n# 𝗣𝗹𝗮𝗶𝘀𝗶𝗿 \n# 𝗛𝘂𝗺𝗮𝗶𝗻\n# 𝗘𝗻𝗴𝗮𝗴𝗲𝗺𝗲𝗻𝘁\n\n\n𝗖𝗼𝗻𝘀𝘂𝗹𝘁𝗮𝗻𝘁𝘀 : Vous voulez mettre votre expertise au service de l'impact ?! \n==> cette aventure, pleine de sens, est faite pour vous !\n𝗖𝗹𝗶𝗲𝗻𝘁𝘀 : Vous voulez un partenaire, à vos côtés, avec des profils de qualité et ayant une culture de l'impact \n==> nous sommes fait pour collaborer ensemble ! \n𝗙𝗼𝘂𝗿𝗻𝗶𝘀𝘀𝗲𝘂𝗿𝘀 : Vos produits/vos services sont pensés pour avoir un impact positif ?!\n==> Discutons en ensemble\n\n\n𝗘̲𝗡̲𝗦̲𝗘̲𝗠̲𝗕̲𝗟̲𝗘̲, 𝗶𝗺𝗽𝗮𝗰𝘁𝗼𝗻𝘀 𝗹𝗲 𝗺𝗼𝗻𝗱𝗲 𝗱'𝗮𝘂𝗷𝗼𝘂𝗿𝗱'𝗵𝘂𝗶 𝗲𝘁 𝗱𝗲 𝗱𝗲𝗺𝗮𝗶𝗻 𝗽𝗼𝘀𝗶𝘁𝗶𝘃𝗲𝗺𝗲𝗻𝘁 !\nL'économie partenariale (et non plus uniquement actionnariale) est possible 😊\n\nRencontrons nous, échangeons, collaborons, bref... passons à l'action ! 💥",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/22d6fa6a-7d1c-484c-970b-e5d6ccab4de2/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/22d6fa6a-7d1c-484c-970b-e5d6ccab4de2/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/22d6fa6a-7d1c-484c-970b-e5d6ccab4de2/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/22d6fa6a-7d1c-484c-970b-e5d6ccab4de2/1000.png"
+        }
+      },
+      "siteUrl": "https://zatsit.fr/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "2 Allée de la haye du temple",
+          "Lille",
+          "59160",
+          "France"
+        ],
+        "address": "2 Allée de la haye du temple",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lille",
+        "lat": 50.632515,
+        "lng": 3.0184537
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/101125534/admin/dashboard/"
+        }
+      ],
+      "speakers": [
+        {
+          "id": "b15cfe26-d3d8-4984-a493-e7d58f48c9c4",
+          "display_name": "Quentin Burg",
+          "pronouns": null,
+          "bio": "Développeur touche-à-tout depuis plus de 7 ans, j'ai commencé en tant que développeur fullstack, principalement avec Javascript.\nCurieux et passionné, j’élargis mes compétences en explorant des domaines comme l’OPS, l’architecture logicielle, la qualité logicielle, le numérique responsable, ...\nJ'aime aussi transmettre mes connaissances, que ce soit au travers de mes cours à la FAC, de posts sur les réseaux ou de talks.",
+          "job_title": null,
+          "company": "zatsit",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/quentin-burg.png",
+          "socials": [
+            {
+              "type": "x",
+              "url": "https://x.com/qburg28"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/quentin-burg"
+            }
+          ],
+          "partners": [
+            {
+              "id": "c97398ee-845e-4981-9652-4b8b8dc2c49b",
+              "name": "ZATSIT",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/22d6fa6a-7d1c-484c-970b-e5d6ccab4de2/original.png"
+            }
+          ]
+        },
+        {
+          "id": "cfb4d5b5-3ad1-46dc-8916-f0a8c7dcc5d2",
+          "display_name": "Ludovic Dussart",
+          "pronouns": null,
+          "bio": "Passionné depuis l'adolescence par l'informatique (j'ai aujourd'hui 39 ans), j'ai commencé ma carrière par le développement Java pour basculer quelques années plus tard sur des postes de référents / lead dev. Je suis devenu dev full stack un peu plus tard et me suis ensuite intéressé à l'infra, le Cloud ainsi qu'à toutes les problématiques d'industrialisation. \n\nDepuis 2024, je m'intéresse de près aux méthodologies et technologies Green afin de sensibiliser mes pairs sur ce sujet. Combinant cette sensibilité avec le monde de l'agentique auquel nous ne pouvons pas faire face.\n\nJ'alterne aujourd'hui entre le rôle de TL produit et celui d'Architecte Solutions dans mes différentes missions en fonction de la typologie des équipes.",
+          "job_title": null,
+          "company": "zatsit",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/ludovic-dussart.png",
+          "socials": [
+            {
+              "type": "x",
+              "url": "https://x.com/ldussart"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/m3lkior"
+            }
+          ],
+          "partners": [
+            {
+              "id": "c97398ee-845e-4981-9652-4b8b8dc2c49b",
+              "name": "ZATSIT",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/22d6fa6a-7d1c-484c-970b-e5d6ccab4de2/original.png"
+            }
+          ]
+        },
+        {
+          "id": "06fdde47-abcb-4b1f-86af-c4313a83eba5",
+          "display_name": "Emmanuel Peru",
+          "pronouns": null,
+          "bio": "Je suis CTO et co-fondateur de l'entreprise zatsit, co-fondateur du Flutter Lille Meetup.\nDéveloppeur et Architecte depuis presque 18 ans, j'ai pu naviguer dans pas mal d'univers : back, font web, mobile, data, IOT, ops, cloud... \n\nJe partage mon expérience au sein de mon entreprise, mes clients et la communauté.",
+          "job_title": null,
+          "company": "zatsit",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/emmanuel-peru.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/emmanuelperu/"
+            },
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/emmanuel-peru-10111274/"
+            }
+          ],
+          "partners": [
+            {
+              "id": "c97398ee-845e-4981-9652-4b8b8dc2c49b",
+              "name": "ZATSIT",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/22d6fa6a-7d1c-484c-970b-e5d6ccab4de2/original.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5dd7905c-eb65-4856-a593-1ca7aed39d09",
+      "name": "NEXTOO",
+      "description": "Eh non, \"Développeurs de progrès\", n’est pas qu'un joli slogan pour nos T-shirts ; c'est une véritable philosophie. Elle repose sur la conviction que notre capacité à développer des solutions numériques sur mesure a des impacts importants non seulement sur les organisations et les entreprises, mais aussi sur la société dans son ensemble. Ainsi, nous nous engageons pour un numérique responsable et plus vertueux.\n\nNous croyons fermement que le progrès technologique doit aller de pair avec le développement des individus qui y contribuent. Il est de notre responsabilité de créer un environnement propice à l’épanouissement et à l’engagement, de permettre à chacun d’être acteur du changement : c’est pourquoi, chez nous, nous parlons de CollaborActeurs et CollaborActrices.\n\nFondée en 2002, Nextoo est une Entreprise de Services du Numérique (ESN) qui compte aujourd'hui 120 collaborateurs. Pur produit de l'économie locale, nous sommes fiers de contribuer au dynamisme de notre région.\n\nNos métiers ? Le conseil & l’expertise technique et méthodologique. Nous intervenons sur la conception, le développement et la maintenance d’applicatifs web/e-commerce, mobile mais également sur les applicatifs métiers. Nous sommes également centre de formation méthodologique (référencé QUALIOPI), pour accompagner nos clients et collaborateurs vers plus de performance.\n\nChez Nextoo, nous plaçons le bien-être de nos collaborateurs au cœur de notre culture. Nous sommes plus qu’une entreprise : nous sommes une communauté soudée et engagée.\n\nNous sommes Nextoo, nous sommes Développeurs de Progrès.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/16b8b32c-06ca-439c-bee5-aa1d33e7bd5b/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/16b8b32c-06ca-439c-bee5-aa1d33e7bd5b/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/16b8b32c-06ca-439c-bee5-aa1d33e7bd5b/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/16b8b32c-06ca-439c-bee5-aa1d33e7bd5b/1000.png"
+        }
+      },
+      "siteUrl": "https://nextoo.fr/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "15 Boulevard du Général Leclerc",
+          "Roubaix",
+          "59100",
+          "France"
+        ],
+        "address": "15 Boulevard du Général Leclerc",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Roubaix",
+        "lat": 50.6882209,
+        "lng": 3.1753367
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/nextoo/"
+        },
+        {
+          "type": "instagram",
+          "url": "https://www.instagram.com/nextooconseil/?hl=fr"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://nextoo.fr/nos-offres",
+          "title": "Développeur.se java back/fullstack expérimenté.e",
+          "company_name": "NEXTOO",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "03544387-0596-454a-80b9-30bd1b67188f",
+      "name": "Philibert Consulting",
+      "description": "Philibert Consulting est une société de développement web, d'audit et de formations.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/8ff5206f-706d-4866-80ea-3154ecfba1c4/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/8ff5206f-706d-4866-80ea-3154ecfba1c4/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/8ff5206f-706d-4866-80ea-3154ecfba1c4/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/8ff5206f-706d-4866-80ea-3154ecfba1c4/1000.png"
+        }
+      },
+      "siteUrl": "https://emmanueldemey.fr",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "21 Rue des Anciens Combattants",
+          "Pont-à-Marcq",
+          "59710",
+          "France"
+        ],
+        "address": "21 Rue des Anciens Combattants",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Pont-à-Marcq",
+        "lat": 50.5236593,
+        "lng": 3.1099555
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/in/emmanueldemey/"
+        },
+        {
+          "type": "bluesky",
+          "url": "https://bsky.app/profile/emmanueldemey.dev"
+        }
+      ]
+    },
+    {
+      "id": "5a92d7b9-9263-4a96-b645-ef76051e495a",
+      "name": "ADEO Services",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/380d62a9-75cd-438f-9bf0-8d97b99db896/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/380d62a9-75cd-438f-9bf0-8d97b99db896/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/380d62a9-75cd-438f-9bf0-8d97b99db896/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/380d62a9-75cd-438f-9bf0-8d97b99db896/1000.png"
+        }
+      },
+      "siteUrl": "https://www.adeo.com/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "135 Rue Sadi Carnot",
+          "Ronchin",
+          "59790",
+          "France"
+        ],
+        "address": "135 Rue Sadi Carnot",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Ronchin",
+        "lat": 50.606499,
+        "lng": 3.1020003
+      },
+      "types": [
+        "Pack Gold"
+      ],
+      "speakers": [
+        {
+          "id": "4c1f2030-1f1e-4163-bbc0-91d26b7d0156",
+          "display_name": "Julien Roynette",
+          "pronouns": null,
+          "bio": "20 ans d'expérience dans la Tech et toujours passionné par le développement logiciel.\n\nDe Tech Lead à Software Architect, en passant par Guild Leader et Manager, j'occupe aujourd'hui le rôle de Head of Developer Experience chez ADEO, où j'accompagne plus de 3000 ingénieurs.\n\nMon approche est guidée par l'action et le pragmatisme : trouver des solutions simples aux problèmes complexes. J'aime partager mes retours d'expérience et mes convictions pour faire progresser la communauté",
+          "job_title": null,
+          "company": "Adeo",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/julien-roynette.png",
+          "socials": [
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/julienroynette/"
+            }
+          ],
+          "partners": [
+            {
+              "id": "5a92d7b9-9263-4a96-b645-ef76051e495a",
+              "name": "ADEO Services",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/380d62a9-75cd-438f-9bf0-8d97b99db896/original.svg"
+            }
+          ]
+        },
+        {
+          "id": "4afce329-0e4b-4e8d-aaec-9127a21b0062",
+          "display_name": "THOMAS RUMAS",
+          "pronouns": null,
+          "bio": "Developer since 10 years, specialist in Front-End development. I like to share my experience with Front-End and speak about Web Performance.  ",
+          "job_title": null,
+          "company": "ADEO/Leroy Merlin France",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/thomas-rumas.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "5a92d7b9-9263-4a96-b645-ef76051e495a",
+              "name": "ADEO Services",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/380d62a9-75cd-438f-9bf0-8d97b99db896/original.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "84092ac1-1be4-47dd-963a-e88ba4b7c9c6",
+      "name": "INFOGENE",
+      "description": "NFOGENE, experte des données critiques et de la transformation digitale. Accélérez votre carrière en travaillant avec nous sur des projets innovants pour des clients en pleine croissance dans différents secteurs stratégiques (santé, assurances / mutuelles, énergie, environnement, retail et luxe.) \n\nINFOGENE intervient à chaque étape des projets de ses clients en AMOA ou MOE sur les phases de conception, développement, intégration, maintenance.\n\nPlus de 900 collaborateurs sont répartis sur 7 sites en Île-de-France, à Lille, à Lyon, à Bordeaux, à Evreux, à Lausanne et à Bruxelles. Son chiffre d’affaires est de 90M€ en 2025.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/37344f02-7259-4750-bc7d-cf38531a08d1/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/37344f02-7259-4750-bc7d-cf38531a08d1/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/37344f02-7259-4750-bc7d-cf38531a08d1/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/37344f02-7259-4750-bc7d-cf38531a08d1/1000.png"
+        }
+      },
+      "siteUrl": "https://www.infogene.fr/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "153 bis Boulevard de la Liberté",
+          "Lille",
+          "59000",
+          "France"
+        ],
+        "address": "153 bis Boulevard de la Liberté",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lille",
+        "lat": 50.6314423,
+        "lng": 3.062908
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/infogene/posts/?feedView=all"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://www.hellowork.com/fr-fr/emplois/75657958.html",
+          "title": "Développeur .NET",
+          "company_name": "INFOGENE",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.hellowork.com/fr-fr/emplois/79552237.html",
+          "title": "Ingénieur Devops",
+          "company_name": "INFOGENE",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.hellowork.com/fr-fr/emplois/79551924.html",
+          "title": "Développeur python",
+          "company_name": "INFOGENE",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.hellowork.com/fr-fr/emplois/79555843.html",
+          "title": "Ingénieur IA",
+          "company_name": "INFOGENE",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        },
+        {
+          "url": "https://www.linkedin.com/jobs/view/4413032311/?trk=mcm",
+          "title": "Développeur NodeJS",
+          "company_name": "INFOGENE",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "e0003829-4e13-495d-98f6-04022734adcf",
+      "name": "Purse",
+      "description": "Purse est la 1ère plateforme française d’orchestration de paiement conçue pour les acteurs e-commerce qui veulent améliorer la performance de leurs transactions sans subir la complexité du paiement.\n\nDans un contexte de multiplication des solutions paiement et des contraintes réglementaires, Purse permet aux marques de structurer leurs architectures de paiement et d’en faire un levier de performance et de continuité business.\n\nLa plateforme donne accès à plus de 100 PSP et méthodes de paiement locales et internationales, activables rapidement selon les marchés, les usages clients et les objectifs opérationnels.  Purse centralise et orchestre l’ensemble des flux de paiement au sein d’une architecture unique, souveraine et évolutive.\n\nLes transactions sont pilotées en temps réel grâce à des règles métier intelligentes, permettant d’améliorer les taux d’acceptation et de conversion, de maîtriser les coûts et de renforcer la sécurité, sans dépendance à un acteur unique.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/b1e351ac-adbf-4c7c-887d-7ae241e0b459/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/b1e351ac-adbf-4c7c-887d-7ae241e0b459/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/b1e351ac-adbf-4c7c-887d-7ae241e0b459/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/b1e351ac-adbf-4c7c-887d-7ae241e0b459/1000.png"
+        }
+      },
+      "siteUrl": "https://purse.eu",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/purse-eu"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://jobs.purse.eu/jobs/7523548-ai-engineer-f-h",
+          "title": "AI Engineer - F/H",
+          "company_name": "Purse",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ],
+      "speakers": [
+        {
+          "id": "779b0443-59e9-4a78-8fc2-95c45c801a14",
+          "display_name": "Rémi VANGREVELYNGHE",
+          "pronouns": null,
+          "bio": "Développeur backend passionné depuis près de 10 ans.\nJe travaille actuellement chez Purse en tant que Lead Dev où j'ai la chance de travailler sur des systèmes de paiement où performance, fiabilité et architecture sont au cœur des enjeux.\nJ’aime comprendre comment les systèmes fonctionnent à grande échelle… et partager ces apprentissages avec la communauté.",
+          "job_title": null,
+          "company": null,
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/r-mi-vangrevelynghe.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "e0003829-4e13-495d-98f6-04022734adcf",
+              "name": "Purse",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/b1e351ac-adbf-4c7c-887d-7ae241e0b459/original.svg"
+            }
+          ]
+        },
+        {
+          "id": "f5f912d6-dd96-4c61-9645-fa2f1a324ca0",
+          "display_name": "Thomas Recloux",
+          "pronouns": null,
+          "bio": "Je kiffe mon métier de développeur depuis plus de 25 ans.\nActuellement \"Head of Architecture and Platform\" chez Purse, j'ai la chance de pouvoir être impactant sur des sujets qui me passionnent.\n\nJe suis co-leader du Ch'ti JUG, la communauté des développeurs java à Lille.",
+          "job_title": null,
+          "company": "Purse",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/thomas-recloux.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/trecloux"
+            },
+            {
+              "type": "x",
+              "url": "https://x.com/thomasrecloux"
+            }
+          ],
+          "partners": [
+            {
+              "id": "e0003829-4e13-495d-98f6-04022734adcf",
+              "name": "Purse",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/b1e351ac-adbf-4c7c-887d-7ae241e0b459/original.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "931f0cbe-dfe8-4522-9230-6645b46ede0c",
+      "name": "Octo Technology",
+      "description": "OCTO Technology est un cabinet de conseil spécialisé dans les nouvelles technologies et les enjeux de la transformation digitale.\nNous sommes reconnus pour nos expertises technologiques et méthodologiques (Architecture, Cloud, IA, Data, Product management, UX, etc) et pour nos méthodes d'organisation innovantes (Agilité, Sociocratie).\n\nNos collaborateurs sont situés à Paris et en région (Lille et Toulouse).\n\nNous organisons également plusieurs évènements, dont les conférences La Duck Conf, La Grosse Conf, USI Events et School of Product.\n\nCertifiée Great Place to Work et B Corp, OCTO est une entreprise engagée dans les pratiques du Numérique Responsable.\n\nNotre WHY :\n\n\"Dans un monde complexe aux ressources finies, nous recherchons ensemble de meilleures façons d’agir. Nous œuvrons à concevoir et à réaliser les produits numériques essentiels au progrès de nos clients et à l'émergence d’écosystèmes vertueux.\"",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/f031a3ca-b5ed-4c39-85f3-ec773612911c/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/f031a3ca-b5ed-4c39-85f3-ec773612911c/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/f031a3ca-b5ed-4c39-85f3-ec773612911c/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/f031a3ca-b5ed-4c39-85f3-ec773612911c/1000.png"
+        }
+      },
+      "siteUrl": "https://www.octo.com/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "34 Avenue de l'Opéra",
+          "Paris",
+          "75002",
+          "France"
+        ],
+        "address": "34 Avenue de l'Opéra",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Paris",
+        "lat": 48.8686709,
+        "lng": 2.3333967
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/octo-technology"
+        }
+      ]
+    },
+    {
+      "id": "223da456-051d-40c7-ba81-2974c7adf11b",
+      "name": "SII",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/1000.png"
+        }
+      },
+      "siteUrl": "https://sii-group.com/fr-FR",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://fr.linkedin.com/company/sii"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://sii-group.com/fr-FR/offers/lead-developpeur-full-stack-nodejs-react-fh",
+          "title": "Lead Tech Fullstack (NodeJS / NestJS / React)",
+          "company_name": "SII",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ]
+    },
+    {
+      "id": "e7695cc4-0a11-4c6f-83cb-952b8e2d5d8b",
+      "name": "Agi'Lille",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/conferencecenterr.appspot.com/events/PVw2lNpSZnM9P18zksJI/9247cddb-e5c3-4ce3-81ad-fe969f582438",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/ad5383e4-f6b4-4f7c-93f7-9b8eacb2d369/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/ad5383e4-f6b4-4f7c-93f7-9b8eacb2d369/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/ad5383e4-f6b4-4f7c-93f7-9b8eacb2d369/1000.png"
+        }
+      },
+      "siteUrl": "https://nord-agile.org/agilille/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "88299768-0da1-4b3b-969e-16bf0fc27772",
+      "name": "bpifrance",
+      "description": "Bpifrance est la Banque Publique d’Investissement française, créée en 2012 pour financer, accompagner et développer les entreprises de toutes tailles, de l’amorçage jusqu’à l’international. Elle propose un continuum de solutions allant du crédit aux fonds propres, en passant par l’innovation, l’assurance export et le conseil stratégique. Sa mission est de soutenir la croissance, l’innovation et la compétitivité de l’économie française, dans le cadre des politiques publiques de l’État et des Régions. Bpifrance.IO est la communauté Tech de Bpifrance. Elle regroupe les expertises liées aux plateformes, au cloud, à la cybersécurité, à la data, au développement logiciel, au SRE, au FinOps et à toutes les disciplines technologiques qui permettent à Bpifrance d’opérer comme une véritable fintech au service des entrepreneurs. Bpifrance.IO porte une culture d’innovation, de collaboration et d’exploration technique, animée par la volonté de simplifier, sécuriser et moderniser les services numériques du groupe.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/5a679c64-3ae9-47a0-97f7-8e57aa01fe57/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/5a679c64-3ae9-47a0-97f7-8e57aa01fe57/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/5a679c64-3ae9-47a0-97f7-8e57aa01fe57/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/5a679c64-3ae9-47a0-97f7-8e57aa01fe57/1000.png"
+        }
+      },
+      "siteUrl": "https://io.bpifrance.fr/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "27-31 Avenue du Général Leclerc",
+          "Maisons-Alfort",
+          "94700",
+          "France"
+        ],
+        "address": "27-31 Avenue du Général Leclerc",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Maisons-Alfort",
+        "lat": 48.8146652,
+        "lng": 2.4233817
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/bpifrance-io/?viewAsMember=true"
+        }
+      ],
+      "speakers": [
+        {
+          "id": "f61a2b0b-6194-4b63-b54c-1adc779ec03b",
+          "display_name": "victor gallet",
+          "pronouns": null,
+          "bio": "Aujourd'hui, Tech Lead chez BPI, anciennement Staff Software Engineer chez ManoMano, j'ai aussi été Directeur technique pour la société Zenika ainsi que Consultant Java\n\nConfluent Certified Trainer (Apache Kafka)\n\nOrganisateur de la conférence AlpesCraft",
+          "job_title": null,
+          "company": null,
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/victor-gallet.png",
+          "socials": [
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/victor-gallet-047285109/"
+            },
+            {
+              "type": "bluesky",
+              "url": "https://bsky.app/profile/vga.bsky.social"
+            }
+          ],
+          "partners": [
+            {
+              "id": "88299768-0da1-4b3b-969e-16bf0fc27772",
+              "name": "bpifrance",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/5a679c64-3ae9-47a0-97f7-8e57aa01fe57/original.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b40b5948-7721-4563-a2b8-0d9a7083edd9",
+      "name": "Yeeso",
+      "description": "",
+      "media": {
+        "svg": "https://yeeso.fr/wp-content/uploads/elementor/thumbs/Logo-yeeso-qk35t9leuxu7jf6by5pkkhotbck3951ii1l9isyoyw.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/89c0c6df-a27f-4b12-a858-daee07c3ecd9/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/89c0c6df-a27f-4b12-a858-daee07c3ecd9/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/89c0c6df-a27f-4b12-a858-daee07c3ecd9/1000.png"
+        }
+      },
+      "siteUrl": "https://yeeso.fr/",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    },
+    {
+      "id": "33872e26-64c6-44a3-ab85-326e3afefb45",
+      "name": "Benefiz",
+      "description": "Benefiz simplifie la gestion des avantages sociaux pour les TPE/PME.\n\nMutuelle, prévoyance, titres restaurant, épargne salariale, cagnotte : tous ces avantages sociaux sont sur notre plateforme 100 % digitale. \n\nNous accompagnons les entreprises pour maximiser leur valeur pour leurs collaborateurs, leur finance et leur croissance.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/24934d17-28ac-4a58-aac5-cb17a20feb61/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/24934d17-28ac-4a58-aac5-cb17a20feb61/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/24934d17-28ac-4a58-aac5-cb17a20feb61/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/24934d17-28ac-4a58-aac5-cb17a20feb61/1000.png"
+        }
+      },
+      "siteUrl": "https://benefiz.fr",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "19 Rue d'Amiens",
+          "Lille",
+          "59800",
+          "France"
+        ],
+        "address": "19 Rue d'Amiens",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lille",
+        "lat": 50.6338141,
+        "lng": 3.0642598
+      },
+      "types": [
+        "Pack Bronze"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/benefiz/"
+        }
+      ]
+    },
+    {
+      "id": "b528f5fc-10bf-4d3c-90c7-8a80de206bc2",
+      "name": "Les-Tilleuls.coop",
+      "description": "Développement web et mobile, conseil, expertise ou formations… Les-Tilleuls.coop est une société de services lilloise fondée en 2011, spécialisée dans la conception de projets web innovants basés sur des logiciels libres, et créatrice de solutions open source reconnues à l’international.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/e9fdeb21-a39b-4a0f-a021-233d0c2f6bb8/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/e9fdeb21-a39b-4a0f-a021-233d0c2f6bb8/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/e9fdeb21-a39b-4a0f-a021-233d0c2f6bb8/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/e9fdeb21-a39b-4a0f-a021-233d0c2f6bb8/1000.png"
+        }
+      },
+      "siteUrl": "https://les-tilleuls.coop/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "82 Rue Winston Churchill",
+          "Lille",
+          "59160",
+          "France"
+        ],
+        "address": "82 Rue Winston Churchill",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lille",
+        "lat": 50.6321116,
+        "lng": 3.0178497
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/les-tilleuls-coop"
+        },
+        {
+          "type": "x",
+          "url": "https://x.com/coopTilleuls"
+        },
+        {
+          "type": "bluesky",
+          "url": "https://bsky.app/profile/les-tilleuls.coop"
+        }
+      ]
+    },
+    {
+      "id": "dfb6879c-7466-46b3-b9dc-4254e2528dab",
+      "name": "Kiabi",
+      "description": "Kiabi, créée en 1978, est le leader français du prêt-à-porter et marque préférée des familles, s’appuie sur un réseau de 641 points de contact dans 33 pays. Elle réunit près de 10 000 Kiabers de 83 nationalités.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/a7f8786d-7542-4be4-a88f-ddf5680073b8/original.svg",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/a7f8786d-7542-4be4-a88f-ddf5680073b8/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/a7f8786d-7542-4be4-a88f-ddf5680073b8/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/a7f8786d-7542-4be4-a88f-ddf5680073b8/1000.png"
+        }
+      },
+      "siteUrl": "https://www.kiabi.com/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "4a Rue du Moulin de Lezennes",
+          "Lezennes",
+          "59800",
+          "France"
+        ],
+        "address": "4a Rue du Moulin de Lezennes",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Lezennes",
+        "lat": 50.6174108,
+        "lng": 3.1213479
+      },
+      "types": [
+        "Pack Silver"
+      ]
+    },
+    {
+      "id": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+      "name": "AXA FRANCE IARD",
+      "description": "Acteur mondial de référence, AXA se distingue par sa mission fondamentale : protéger ce qui compte pour construire un avenir plus serein. Au-delà de l’assurance, l’entreprise s'engage avec audace pour le climat et le progrès social, plaçant la responsabilité sociétale au cœur de son identité. Rejoindre ou faire confiance à AXA, c'est choisir un partenaire innovant qui valorise l'humain et agit concrètement pour la résilience de notre société. Une force collective tournée vers l'excellence, où chaque action contribue à donner à chacun les moyens de vivre une vie meilleure.",
+      "media": {
+        "svg": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/250.png",
+          "_500": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/500.png",
+          "_1000": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/1000.png"
+        }
+      },
+      "siteUrl": "https://recrutement.axa.fr/",
+      "videoUrl": null,
+      "address": {
+        "formatted": [
+          "6 Rue des Roulants",
+          "Cergy",
+          "95800",
+          "France"
+        ],
+        "address": "6 Rue des Roulants",
+        "country": "France",
+        "country_code": "FR",
+        "city": "Cergy",
+        "lat": 49.0444264,
+        "lng": 2.038584
+      },
+      "types": [
+        "Pack Silver"
+      ],
+      "socials": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/company/axa-france/"
+        },
+        {
+          "type": "x",
+          "url": "https://x.com/AXAJobs_fr"
+        },
+        {
+          "type": "instagram",
+          "url": "https://www.instagram.com/axafrance"
+        },
+        {
+          "type": "facebook",
+          "url": "https://www.facebook.com/discoverAXA/?brand_redir=228266870940065"
+        }
+      ],
+      "jobs": [
+        {
+          "url": "https://recrutement.axa.fr/nos-offres-emploi/AXAFR_2026030213",
+          "title": " Manager Architecte Solutions Data & IA F/H",
+          "company_name": "AXA FRANCE IARD",
+          "location": "",
+          "salary": null,
+          "requirements": 0,
+          "propulsed": "Partnersconnect",
+          "publish_date": 0
+        }
+      ],
+      "speakers": [
+        {
+          "id": "957afb52-110c-40bd-9afd-7ebd1f32eda6",
+          "display_name": "François Descamps",
+          "pronouns": null,
+          "bio": "Principal Engineer chez AXA France et Tech Ambassador pour le Groupe AXA, je pilote deux sujets qui me passionnent : le déploiement opérationnel de l'IA et le rayonnement de notre Culture Tech. Persuadé que l'excellence technique est avant tout une aventure humaine, j'anime au quotidien la filière d'expertise (Staff/Principal) ainsi que les communautés des Tech Leaders et des speakers en interne.",
+          "job_title": null,
+          "company": "AXA France",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/fran-ois-descamps.png",
+          "socials": [
+            {
+              "type": "x",
+              "url": "https://x.com/descamps"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/https://twitter.com/descampsf"
+            },
+            {
+              "type": "linkedin",
+              "url": "https://www.linkedin.com/in/fran%C3%A7ois-descamps-00512410/"
+            }
+          ],
+          "partners": [
+            {
+              "id": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+              "name": "AXA FRANCE IARD",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png"
+            }
+          ]
+        },
+        {
+          "id": "0889cb68-1ca3-49d0-8953-2d1250354466",
+          "display_name": "Johnathan Meunier",
+          "pronouns": null,
+          "bio": "Staff Engineer à AXA France spécialisé dans le front, je cherche à résoudre des problèmes avant même qu'ils arrivent !\nMon sujet du moment hors tech ? La philo, car je pense que ca peut nous aider fondamentalement à comprendre l'intelligence artificielle.\nPassionné de nouvelles technologies et de débat, je produits un podcast \"C'est Pas Le Sujet\" ! \nJe cherche constamment à partager mes connaissances et à les challenger en étant speaker régulier sur de nombreux événements (conférences, meetup, etc) et formateur dans plusieurs écoles d'ingénieurs.",
+          "job_title": "Staff Engineer",
+          "company": "AXA France",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/johnathan-meunier.png",
+          "socials": [
+            {
+              "type": "github",
+              "url": "https://github.com/johnmeunier"
+            },
+            {
+              "type": "x",
+              "url": "https://x.com/MonsieurNohj"
+            }
+          ],
+          "partners": [
+            {
+              "id": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+              "name": "AXA FRANCE IARD",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png"
+            }
+          ]
+        },
+        {
+          "id": "94bacd7b-4f28-4d5c-bc91-ed421ed11be3",
+          "display_name": "Julien Gaudet",
+          "pronouns": null,
+          "bio": "## Software Engineer Front & Scrum Master\n*Développeur full stack spécialisé en React Typescript actuellement en CDI chez AXA France.*\n[Profil linkedin](https://www.linkedin.com/in/juliengaudet/)",
+          "job_title": "Software Engineer Front",
+          "company": "Axa",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/julien-gaudet.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+              "name": "AXA FRANCE IARD",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png"
+            }
+          ]
+        },
+        {
+          "id": "055870f6-a0cb-4d28-86e9-6ef9d56f63a3",
+          "display_name": "Sebastien DEGODEZ",
+          "pronouns": null,
+          "bio": "Tech Lead chez AXA France | Développeur .NET et contributeur Open Source\n\n14 ans de code au compteur et toujours la même obsession : être meilleur qu’hier. Que ce soit sur le bitume d'une course à pieds ou sur l'écosystème .NET, je cherche la foulée parfaite, non pas pour battre les autres, mais pour améliorer ma propre pratique.\n\nMa passion ? Le code structuré et les outils qui rendent la liberté aux devs. C'est ce qui m'a poussé à devenir Code Owner chez Microcks (TestContainers & Aspire), mon but est de supprimer la friction technique pour que le développeur puisse enfin se concentrer sur l'essentiel : créer de la valeur.\n\nCurieux de nature et explorateur de prompts IA, je teste les nouveaux paradigmes pour voir jusqu'où ils peuvent nous emmener. Quand je ne suis pas en train de partager mes découvertes, je voyage avec ma femme pour découvrir de nouveaux horizons, toujours avec cette envie d'apprendre et de transmettre.",
+          "job_title": null,
+          "company": "AXA",
+          "photo_url": "https://storage.googleapis.com/confily-prod/devlille-2026/speakers/sebastien-degodez.png",
+          "socials": [],
+          "partners": [
+            {
+              "id": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+              "name": "AXA FRANCE IARD",
+              "logo_url": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "25463ac8-bf3f-485f-b563-bbec9b6cd1b7",
+      "name": "Indie Hackers Lille",
+      "description": "",
+      "media": {
+        "svg": "https://storage.googleapis.com/conferencecenterr.appspot.com/events/PVw2lNpSZnM9P18zksJI/af10b0c9-b119-4d92-a881-bfce6c2b6cf6",
+        "pngs": {
+          "_250": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/65891993-6a3c-46af-8d00-a5606d381d89/250.png",
+          "_500": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/65891993-6a3c-46af-8d00-a5606d381d89/500.png",
+          "_1000": "https://storage.googleapis.com/confily-prod/devlille-2026/partners/65891993-6a3c-46af-8d00-a5606d381d89/1000.png"
+        }
+      },
+      "siteUrl": "https://luma.com/indiehackerslille",
+      "videoUrl": null,
+      "address": null,
+      "types": [
+        "Community Partners"
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "788cb461-c5d5-49f9-930e-f0fc6f8f625a",
+      "name": "Flèchette",
+      "start_time": "2026-06-11T08:00",
+      "end_time": "2026-06-12T17:30",
+      "partner_id": "5dd7905c-eb65-4856-a593-1ca7aed39d09"
+    },
+    {
+      "id": "15867f73-b0b6-4904-8384-0e73e3934e78",
+      "name": "L'Enquête : un cherche & trouve XXL",
+      "start_time": "2026-06-11T08:00",
+      "end_time": "2026-06-12T17:00",
+      "partner_id": "c184a1e9-0e4a-4ad4-b2a7-2e95d72ffb9a"
+    },
+    {
+      "id": "56d5dcbe-7308-45ab-8ac5-94fdfdb591a7",
+      "name": "SFEIR CHRONO WIN",
+      "start_time": "2026-06-11T08:00",
+      "end_time": "2026-06-12T18:00",
+      "partner_id": "975cb0db-c274-46b8-955f-6d3538fe86aa"
+    },
+    {
+      "id": "17902557-0b80-4124-a60b-c04f169fe1dc",
+      "name": "Application SLAW",
+      "start_time": "2026-06-11T08:00",
+      "end_time": "2026-06-12T17:30",
+      "partner_id": "5dd7905c-eb65-4856-a593-1ca7aed39d09"
+    },
+    {
+      "id": "d243ec73-e8cd-48ec-b844-d42255db4900",
+      "name": "Souvenir Photo (Photobooth)",
+      "start_time": "2026-06-11T08:30",
+      "end_time": "2026-06-12T18:00",
+      "partner_id": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413"
+    },
+    {
+      "id": "439d587c-2a33-469b-a853-52c04cb67355",
+      "name": "Stand de VR",
+      "start_time": "2026-06-11T08:30",
+      "end_time": "2026-06-12T16:45",
+      "partner_id": "e477e888-2bc6-4fc4-80e3-ccd2ce5d3f24"
+    },
+    {
+      "id": "42be1275-50d0-4bb7-8426-2fb5e13b2bbc",
+      "name": "La quête de la MagiSIIenne",
+      "start_time": "2026-06-11T08:30",
+      "end_time": "2026-06-11T17:30",
+      "partner_id": "223da456-051d-40c7-ba81-2974c7adf11b"
+    },
+    {
+      "id": "74769416-9444-43a4-b2e9-5b2a3bc61f94",
+      "name": "Initiation à la langue des signes",
+      "start_time": "2026-06-11T08:30",
+      "end_time": "2026-06-12T18:00",
+      "partner_id": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413"
+    },
+    {
+      "id": "e4eef32b-e17b-4184-8eb5-7aa57b340cd2",
+      "name": "Démonstration PC Gamer SkillCorp",
+      "start_time": "2026-06-11T08:40",
+      "end_time": "2026-06-12T16:30",
+      "partner_id": "e477e888-2bc6-4fc4-80e3-ccd2ce5d3f24"
+    },
+    {
+      "id": "c48fc88b-64de-4003-a8ec-788eff27f24c",
+      "name": "Relève notre défi rétro gaming ",
+      "start_time": "2026-06-11T09:00",
+      "end_time": "2026-06-12T17:15",
+      "partner_id": "84092ac1-1be4-47dd-963a-e88ba4b7c9c6"
+    },
+    {
+      "id": "9c5591c0-dcb2-422a-ac5f-3f8839d2a556",
+      "name": "Viens tester ton mojo et gagne du cad.IO !",
+      "start_time": "2026-06-11T09:00",
+      "end_time": "2026-06-12T17:00",
+      "partner_id": "88299768-0da1-4b3b-969e-16bf0fc27772"
+    },
+    {
+      "id": "147faf08-0643-4902-ac46-218b5c6c9fa5",
+      "name": "MAchine Pop-corn",
+      "start_time": "2026-06-11T09:00",
+      "end_time": "2026-06-12T17:00",
+      "partner_id": "c2388cde-1d8e-4411-8723-449ed4160981"
+    },
+    {
+      "id": "2440154c-cbf0-44c9-a7c2-aac055f76069",
+      "name": "Scanne, Gratte et Gagne",
+      "start_time": "2026-06-11T09:00",
+      "end_time": "2026-06-12T17:30",
+      "partner_id": "84092ac1-1be4-47dd-963a-e88ba4b7c9c6"
+    },
+    {
+      "id": "bf910192-c93b-4b66-bd1f-50290567f9ce",
+      "name": "Fléchettes",
+      "start_time": "2026-06-11T09:00",
+      "end_time": "2026-06-12T17:00",
+      "partner_id": "c2388cde-1d8e-4411-8723-449ed4160981"
+    },
+    {
+      "id": "bb12a5f6-8865-4d3f-a75a-c3a307dfbdac",
+      "name": "Venez rencontrer Le Monstre",
+      "start_time": "2026-06-11T09:00",
+      "end_time": "2026-06-12T17:00",
+      "partner_id": "b528f5fc-10bf-4d3c-90c7-8a80de206bc2"
+    },
+    {
+      "id": "594b29ac-3a3e-4e20-833c-2331d444a041",
+      "name": "🎸 Hack the Beat ",
+      "start_time": "2026-06-11T09:00",
+      "end_time": "2026-06-12T18:00",
+      "partner_id": "52718a08-88e6-4d74-9339-9adaa44d8ef7"
+    },
+    {
+      "id": "ccbeba0e-fcca-493e-a585-872c8ef50749",
+      "name": "Course Mario Kart - Défi contre la montre",
+      "start_time": "2026-06-11T09:00",
+      "end_time": "2026-06-11T16:30",
+      "partner_id": "9f783acc-fc9d-4628-a030-56e1952dcff3"
+    },
+    {
+      "id": "e43e9e20-610c-42b7-a2f6-0f35d4551f1a",
+      "name": "Bornes photos",
+      "start_time": "2026-06-11T09:13",
+      "end_time": "2026-06-12T16:45",
+      "partner_id": "5dd7905c-eb65-4856-a593-1ca7aed39d09"
+    },
+    {
+      "id": "30a885d8-9f2d-4c95-af6a-508e0fefc6c2",
+      "name": "Complices au stand Shodo : jouez, communiquez, gagnez !",
+      "start_time": "2026-06-11T09:30",
+      "end_time": "2026-06-12T16:30",
+      "partner_id": "d2364373-a68c-452f-9a52-3650847fcace"
+    },
+    {
+      "id": "eee62d5c-dd96-49ad-897b-839b206f975a",
+      "name": "Podcast Technologies en Pratique",
+      "start_time": "2026-06-11T10:00",
+      "end_time": "2026-06-12T17:30",
+      "partner_id": "bdd51206-4351-48e6-8687-e5ea227fb53e"
+    },
+    {
+      "id": "ee9cbd1f-d04a-4202-bcb6-6eb0ff019113",
+      "name": "Hot Ones ",
+      "start_time": "2026-06-11T10:00",
+      "end_time": "2026-06-12T16:00",
+      "partner_id": "8239fc66-d32e-47c7-a2d7-abf116a558dd"
+    },
+    {
+      "id": "882b8d6e-19d1-4ccf-ae13-d4f125054565",
+      "name": "SII Bot",
+      "start_time": "2026-06-11T10:00",
+      "end_time": "2026-06-11T17:30",
+      "partner_id": "223da456-051d-40c7-ba81-2974c7adf11b"
+    },
+    {
+      "id": "65cce78d-d930-4513-bd27-d62e5d09e42d",
+      "name": "Space Shooter",
+      "start_time": "2026-06-11T10:00",
+      "end_time": "2026-06-12T17:00",
+      "partner_id": "bdd51206-4351-48e6-8687-e5ea227fb53e"
+    },
+    {
+      "id": "b76d031a-d9f5-42d8-ab21-d389c7603593",
+      "name": "🎙️ La Voix de l’Innovation",
+      "start_time": "2026-06-11T10:00",
+      "end_time": "2026-06-12T17:30",
+      "partner_id": "bdd51206-4351-48e6-8687-e5ea227fb53e"
+    },
+    {
+      "id": "f69f0d6d-64e1-40cb-bd23-ed55e56647b4",
+      "name": "🍻 Apéro innovation – 12h00",
+      "start_time": "2026-06-11T12:00",
+      "end_time": "2026-06-12T14:00",
+      "partner_id": "bdd51206-4351-48e6-8687-e5ea227fb53e"
+    },
+    {
+      "id": "afefba78-0b9e-43cd-b9cd-c9c34c0b952b",
+      "name": "Animation Gourmande - Crêpes Party",
+      "start_time": "2026-06-11T14:00",
+      "end_time": "2026-06-11T17:30",
+      "partner_id": "9f783acc-fc9d-4628-a030-56e1952dcff3"
+    },
+    {
+      "id": "ada40c52-899d-4d9a-8793-03561ad1539d",
+      "name": "Atelier Smoothies avec un Chef",
+      "start_time": "2026-06-11T15:00",
+      "end_time": "2026-06-11T17:00",
+      "partner_id": "09af396c-4336-44ad-9b56-e10d0f7b2de4"
+    },
+    {
+      "id": "6bc77018-6fc4-4bea-aae7-d5f38fb094f7",
+      "name": "Loterie – À gagner : une enceinte JBL",
+      "start_time": "2026-06-11T16:10",
+      "end_time": "2026-06-11T16:30",
+      "partner_id": "09af396c-4336-44ad-9b56-e10d0f7b2de4"
+    },
+    {
+      "id": "b351111e-f80f-4ac1-9492-02cb6cf8e86f",
+      "name": "Quizz kahoot",
+      "start_time": "2026-06-11T16:15",
+      "end_time": "2026-06-11T16:30",
+      "partner_id": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413"
+    },
+    {
+      "id": "a85e797d-71c6-402b-b79b-8c686274e0e3",
+      "name": "La quête de la MagiSIIenne",
+      "start_time": "2026-06-12T08:31",
+      "end_time": "2026-06-12T16:45",
+      "partner_id": "223da456-051d-40c7-ba81-2974c7adf11b"
+    },
+    {
+      "id": "d48e6000-0d05-41b4-a518-bfe311efdb22",
+      "name": "SII Bot",
+      "start_time": "2026-06-12T10:00",
+      "end_time": "2026-06-12T16:00",
+      "partner_id": "223da456-051d-40c7-ba81-2974c7adf11b"
+    },
+    {
+      "id": "c4608373-c972-444a-9e6c-57199a53da5f",
+      "name": "Animation Gourmande - Crêpes Party",
+      "start_time": "2026-06-12T14:00",
+      "end_time": "2026-06-12T17:30",
+      "partner_id": "9f783acc-fc9d-4628-a030-56e1952dcff3"
+    },
+    {
+      "id": "365dfff9-f9ac-4bac-be27-54f6d020087d",
+      "name": "Course Mario Kart - Défi contre la montre",
+      "start_time": "2026-06-12T14:00",
+      "end_time": "2026-06-12T16:30",
+      "partner_id": "9f783acc-fc9d-4628-a030-56e1952dcff3"
+    },
+    {
+      "id": "2de9be5f-e2a8-4fa4-ad67-335f7446a8df",
+      "name": "Atelier Sucettes Waffles avec un Chef",
+      "start_time": "2026-06-12T15:00",
+      "end_time": "2026-06-12T17:00",
+      "partner_id": "09af396c-4336-44ad-9b56-e10d0f7b2de4"
+    },
+    {
+      "id": "fa145963-ac3d-43cd-9b60-94b7855f4241",
+      "name": "Loterie – À gagner : un mini rétro-projecteur",
+      "start_time": "2026-06-12T16:00",
+      "end_time": "2026-06-12T16:10",
+      "partner_id": "09af396c-4336-44ad-9b56-e10d0f7b2de4"
+    },
+    {
+      "id": "754de048-6a31-497c-a6fb-ba12ce06ce47",
+      "name": "Quizz kahoot",
+      "start_time": "2026-06-12T16:15",
+      "end_time": "2026-06-12T16:30",
+      "partner_id": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413"
+    }
+  ]
+}

@@ -1,9 +1,27 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
-import isURL from "isurl";
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import config from "./config/config";
+import {
+  applySponsoringOverride,
+  buildPartnerActivities,
+  formatPartner,
+  normalizeSponsorUrl,
+  type ApiPartnerResponse,
+  type ApiSponsor,
+} from "./core/partners";
+import type { ApiAgendaSpeaker } from "./core/agenda";
+import {
+  SOCIAL_TYPES,
+  getSocialUrl,
+  normalizeSocials,
+  type SocialType,
+} from "./core/socials";
+
+export type { ApiSponsor } from "./core/partners";
+export type { Social, SocialType } from "./core/socials";
+export { SOCIAL_TYPES } from "./core/socials";
 
 const tempFolder = resolve(import.meta.dirname, "../public/img/sponsors");
 
@@ -39,80 +57,6 @@ export const fetchImage = ({
       });
     })
     .catch(console.error);
-};
-
-type ApiPartnerType = {
-  id: string;
-  name: string;
-  order: number;
-};
-
-type ApiPartnerMedia = {
-  svg: string;
-  png: {
-    "250": string;
-    "500": string;
-    "1000": string;
-  };
-};
-
-export const SOCIAL_TYPES = [
-  "linkedin",
-  "youtube",
-  "github",
-  "bluesky",
-  "instagram",
-  "x",
-  "mastodon",
-] as const;
-
-export type SocialType = (typeof SOCIAL_TYPES)[number];
-
-type ApiSocial = {
-  type: string;
-  url: string;
-};
-
-export type Social = {
-  type: SocialType;
-  url: string;
-};
-
-type ApiPartnerActivity = {
-  id: string;
-  name: string;
-  start_time: string;
-  end_time: string;
-  partner_id: string;
-};
-
-type ApiPartnerResponse = {
-  types: ApiPartnerType[];
-  partners: Array<{
-    id: string;
-    name: string;
-    description: string;
-    media: ApiPartnerMedia;
-    videoUrl: string | null;
-    address: any;
-    types: string[];
-    socials: ApiSocial[];
-    siteUrl?: string;
-  }>;
-  activities: ApiPartnerActivity[];
-};
-
-export type ApiSponsor = {
-  id: string;
-  socials: Social[];
-  sponsoring: string[];
-  name: string;
-  logoName: string;
-  siteUrl?: string;
-  logoUrl: string;
-  ext: string;
-  description?: string;
-  editedVideoUrl?: string;
 };
 
 const sponsors = defineCollection({
@@ -179,75 +123,6 @@ const sponsors = defineCollection({
   },
 });
 
-const isSocialType = (type: string): type is SocialType =>
-  (SOCIAL_TYPES as readonly string[]).includes(type.toLowerCase());
-
-const normalizeSocials = (
-  socials: ApiSocial[] | undefined,
-): Social[] => {
-  if (!Array.isArray(socials)) return [];
-  return socials
-    .map((s) => ({ ...s, type: s.type.toLowerCase() }))
-    .filter((s): s is Social => isSocialType(s.type));
-};
-
-// Overrides temporaires du niveau de sponsoring, en attendant la mise à jour
-// côté backend (CMS partenaires). Clé = id du partenaire, valeur = types forcés.
-const SPONSORING_OVERRIDES: Record<string, string[]> = {
-  // DECATHLON DIGITAL : Pack Bronze -> Pack Gold
-  "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0": ["Pack Gold"],
-};
-
-const applySponsoringOverride = (sponsor: ApiSponsor): ApiSponsor => {
-  const override = SPONSORING_OVERRIDES[sponsor.id];
-  return override ? { ...sponsor, sponsoring: override } : sponsor;
-};
-
-const formatPartner = (
-  partner: ApiPartnerResponse["partners"][number],
-): ApiSponsor => {
-  return {
-    id: partner.id,
-    name: partner.name,
-    description: partner.description,
-    socials: normalizeSocials(partner.socials),
-    siteUrl: partner.siteUrl,
-    logoUrl: partner.media.svg,
-    ext: "svg",
-    logoName: partner.name.toLowerCase().replaceAll(" ", "-"),
-    sponsoring: partner.types || [],
-    editedVideoUrl: partner.videoUrl ?? undefined,
-  };
-};
-
-const normalizeSponsorUrl = (sponsor: ApiSponsor): void => {
-  if (!sponsor.siteUrl) return;
-  try {
-    if (
-      !sponsor.siteUrl.includes("https://") &&
-      !sponsor.siteUrl.includes("http://")
-    ) {
-      sponsor.siteUrl = "https://" + sponsor.siteUrl;
-    }
-    isURL(new URL(sponsor.siteUrl));
-  } catch {
-    console.error(`Bad URL for ${sponsor.name}`);
-  }
-};
-
-const buildPartnerActivities = (
-  activities: unknown,
-): Record<string, boolean> => {
-  const result: Record<string, boolean> = {};
-  if (!Array.isArray(activities)) return result;
-  for (const activity of activities) {
-    if (activity?.partnerId) {
-      result[activity.partnerId] = true;
-    }
-  }
-  return result;
-};
-
 const logSponsorsAudit = (
   formattedSponsors: ApiSponsor[],
   partnerActivities: Record<string, boolean>,
@@ -268,25 +143,6 @@ const logSponsorsAudit = (
   }));
   console.log("\n=== Audit des sponsors ===");
   console.table(tableData);
-};
-
-type ApiSpeaker = {
-  id: string;
-  display_name: string;
-  bio?: string;
-  photo_url: string;
-  pronouns: string | null;
-  company: string | null;
-  socials: Array<{ type: string; url: string }>;
-  partners?: Array<{ id: string; name: string; logo_url: string }>;
-};
-
-const getSocialUrl = (
-  socials: Array<{ type: string; url: string }>,
-  type: string,
-): string | null => {
-  const social = socials.find((s) => s.type === type);
-  return social?.url ?? null;
 };
 
 const speakers = defineCollection({
@@ -318,7 +174,7 @@ const speakers = defineCollection({
       { headers: { Accept: "application/json; version=4" } },
     ).then((response) => response.json());
 
-    return agenda.speakers.map((speaker: ApiSpeaker) => ({
+    return agenda.speakers.map((speaker: ApiAgendaSpeaker) => ({
       id: speaker.id,
       display_name: speaker.display_name,
       bio: speaker.bio,

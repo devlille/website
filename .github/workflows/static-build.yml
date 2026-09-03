@@ -1,0 +1,45 @@
+name: Build sans backend
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+# Test de non-régression de l'extraction marque blanche : le site doit se
+# construire entièrement à partir du jeu de fichiers `examples/static-event/`,
+# sans le moindre appel réseau. Si ce job casse, c'est que le socle s'est
+# recouplé à l'API DevLille.
+jobs:
+  static-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site from static fixtures
+        env:
+          DATA_SOURCE: static
+          # Tout appel HTTP sortant échoue : le build ne doit dépendre que des
+          # fichiers du dépôt.
+          HTTP_PROXY: http://127.0.0.1:1
+          HTTPS_PROXY: http://127.0.0.1:1
+          NODE_USE_ENV_PROXY: "1"
+        run: npx astro build
+
+      - name: Check the site is complete and navigable
+        run: npm run test:build
+
+      - name: Run SEO checks
+        run: npm run test:seo

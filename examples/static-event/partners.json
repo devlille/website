@@ -1,0 +1,1542 @@
+[
+  {
+    "id": "a7322c29-5be0-475b-8d24-056073b7efda",
+    "name": "Clever Cloud",
+    "description": "",
+    "logoUrl": "https://www.clever.cloud/app/themes/Starter/assets/img/brand-assets/logo_on_white.svg",
+    "logoName": "clever-cloud",
+    "siteUrl": "https://www.clever.cloud/fr/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Partenaire Hébergement"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "6bf4ee1c-888c-427a-aea3-9cf3e6cb29a3",
+    "name": "Exotec",
+    "description": "",
+    "logoUrl": "https://www.exotec.com/app/uploads/2022/10/Exotec-Wordmark-Teal-Web.png",
+    "logoName": "exotec",
+    "siteUrl": "https://www.exotec.com/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Partenaires DevLille Graine de Dev"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "77a9a4d7-bf8d-40f6-9ef8-a2a534d2a7c1",
+    "name": "Ch'ti JUG",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/chtijug.png",
+    "logoName": "ch'ti-jug",
+    "siteUrl": "https://chtijug.org/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "7c29b2ec-ab4d-49d9-8ba1-195e6a79f79c",
+    "name": "chtitedev",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/community/chtitedev.png",
+    "logoName": "chtitedev",
+    "siteUrl": "https://mobilizon.fr/@chtitedev",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "fcd043ea-c27f-40f9-98df-888e0308374a",
+    "name": "Cloud Nord",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/community/cloudnord.png",
+    "logoName": "cloud-nord",
+    "siteUrl": "https://cloudnord.fr/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "9ae8b83b-434e-4efa-b127-3594bdeca1c3",
+    "name": "Crafts Records",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/community/craftsrecord.png",
+    "logoName": "crafts-records",
+    "siteUrl": "https://craftsrecords.org/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "280a7421-3ec9-4e17-84e3-1219f2aab5d0",
+    "name": "Estamitech",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/community/LogoEstamitech.jpg",
+    "logoName": "estamitech",
+    "siteUrl": "https://estamitech.fr/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "11971457-4467-4788-b8af-10ff1a44b7d3",
+    "name": "Frontendbeers",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/community/frontend.png",
+    "logoName": "frontendbeers",
+    "siteUrl": "https://www.meetup.com/fr-fr/frontendbeers/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "6d26c317-e2eb-4e6e-b373-281a3614cd19",
+    "name": "Holbertonschool",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/holberton-school.png",
+    "logoName": "holbertonschool",
+    "siteUrl": "https://www.holbertonschool.fr/campus/lille",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "f0ae3275-8cdf-4d52-ba99-ffa7f96a7d72",
+    "name": "Lille Android User Group",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/laug.avif",
+    "logoName": "lille-android-user-group",
+    "siteUrl": "https://www.meetup.com/fr-fr/lille-android-user-group/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "99cd5e1f-8083-4fab-8356-147b10f59b04",
+    "name": "MTG Lille",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/community/mtg.png",
+    "logoName": "mtg-lille",
+    "siteUrl": "https://www.meetup.com/fr-fr/mtg-lille/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "22bd4c45-eaaa-45e1-aa34-ab651eb34c89",
+    "name": "PostgreSQL Lille",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/postgre.jpeg",
+    "logoName": "postgresql-lille",
+    "siteUrl": "https://www.linkedin.com/company/meetup-postgresql-lille/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "ab3fd99a-65c4-4a6d-9cfb-d493943d1f4c",
+    "name": "Software Craft Lille",
+    "description": "",
+    "logoUrl": "https://devlille.fr/img/community/IMG_9952.png",
+    "logoName": "software-craft-lille",
+    "siteUrl": "https://www.meetup.com/fr-FR/software-craftsmanship-lille/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "343d8b05-7e0b-4b43-b898-14b169ea5006",
+    "name": "greenspector",
+    "description": "Editeur de logiciel de mesure de l'impact et de la performance des applications mobiles? Web , Android et IOS ",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/c1908dfe-e185-4b7c-9d92-7e5d486dd831/original.png",
+    "logoName": "greenspector",
+    "siteUrl": "https://greenspector.com",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": [
+      "9d94bbcc-5d65-47d0-824b-5d4e995c2b47"
+    ]
+  },
+  {
+    "id": "9e6dbc2a-8d43-478b-a097-c62344d73182",
+    "name": "TECHSYS",
+    "description": "TECHSYS est une PME des Hauts-de-France, une ESN en expertises OPS, une influenceuse écologique et sociale pour une économie éthique et durable.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/457acc1a-b8e9-470f-b1b5-15873bd3953e/original.png",
+    "logoName": "techsys",
+    "siteUrl": "https://techsys.fr",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/techsys"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "251502df-3668-4dfe-ba9f-2c71f3c2e296",
+    "name": "Human Coders",
+    "description": "",
+    "logoUrl": "https://2025.devlille.fr/img/hc.png",
+    "logoName": "human-coders",
+    "siteUrl": "https://www.humancoders.com/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Partenaires Média"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "d2364373-a68c-452f-9a52-3650847fcace",
+    "name": "Shodo Lille",
+    "description": "Shodo c'est l’ESN militante qui casse les codes. \nNous réunissons une communauté de développeur·euse·s tous.tes engagé·e·s dans les bonnes pratiques et la qualité du code tout en redonnant du sens au salariat à travers un modèle social plus juste.\n\nVoici les piliers de notre modèle :\n\nLa transparence ⇒ une grille de salaires publique et transparente indexée sur les années d’expérience\nBye, bye les avantages aux meilleurs négociateur·trice·s\n\nLa redistribution des richesses ⇒ grâce à nos marges fixes et transparentes, tout ce que le membre de Shodo facture au-dessus du TJM seuil lui est redistribué\nTestez notre Shomulator pour voir les avantages dont vous bénéficieriez chez Shodo !\n\nLe respect de l’équilibre vie pro/vie perso ⇒ des congés supra légaux et des journées dédiées à rencontrer et échanger auprès de ses collègues\nPlus besoin de sacrifier de son temps perso pour être dans les petits papiers\n\nLa confiance ⇒ Pas de période d’essai et chaque Shodoer possède une carte bancaire d’entreprise\n\nHello le CDI ! Out les notes de frais !\n\nL’inclusion ⇒ congé menstruel, congé arrêt naturel de grossesse et IVG, reprise adaptée après un congé maternité. Des mesures appliquées à l'initiative du groupe de réflexion 100% féminin, la Shororité\nNous sommes engagé·e·s dans la lutte pour l'égalité des genres\n\nVaste projet que de remettre l'humain au centre du fonctionnement d'une ESN ? Oui !\nMais est-ce que ça fonctionne ?\nBien sûr !\n\nNotre modèle est déjà déployé à Paris, Nantes, Lyon et Rennes.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png",
+    "logoName": "shodo-lille",
+    "siteUrl": "https://shodo.io/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/shodo-lille/"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": [
+      "038d37f7-6983-41ed-9c74-0d11de680a0c",
+      "3a9d48c3-4b36-4865-bb58-8ae4f30637e7",
+      "98a26a05-de82-40f0-a9ca-b83196ee4536",
+      "7731d720-7624-4532-814a-4d1f78ed5b48",
+      "17e59c6e-1b33-4605-a976-3d3a549a8279",
+      "7cd2e38b-759d-4985-aeea-58238fe7f850"
+    ]
+  },
+  {
+    "id": "bdd51206-4351-48e6-8687-e5ea227fb53e",
+    "name": "EKITE",
+    "description": "Passionné de développement logiciel !",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/original.svg",
+    "logoName": "ekite",
+    "siteUrl": "https://ekite.info/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/ekite/"
+      },
+      {
+        "type": "instagram",
+        "url": "https://www.instagram.com/ekite_dev/"
+      },
+      {
+        "type": "youtube",
+        "url": "https://www.youtube.com/@EKIT3"
+      }
+    ],
+    "tiers": [
+      "Pack Gold"
+    ],
+    "jobs": [
+      {
+        "url": "https://ivy-feeling-af5.notion.site/DEVOPS-exp-riment-H-F-cloud-souverain-fran-ais-37befdfbd24380348a86d9e3ff389064",
+        "title": "DEVOPS expérimenté H/F - cloud souverain français",
+        "companyName": "EKITE",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://ivy-feeling-af5.notion.site/DEV-Java-Exp-riment-H-F-cloud-souverain-fran-ais-37aefdfbd24380c2823dd60c4461c563",
+        "title": "DEV Java Expérimenté H/F - cloud souverain français",
+        "companyName": "EKITE",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": [
+      "0d7911a0-bdb0-425d-bb27-09c2dfc85329"
+    ]
+  },
+  {
+    "id": "6601dd21-bc44-404b-9d7e-d3f2f91299de",
+    "name": "Baptiste FAMCHON",
+    "description": "J'ai lancé mon entreprise pour accompagner les clients autour de mes spécialités : React / Node / Architecture, depuis plus de 9 ans.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/c0439101-c10f-4c94-85d9-5096ff1e03f5/original.png",
+    "logoName": "baptiste-famchon",
+    "siteUrl": "https://www.linkedin.com/in/baptiste-famchon/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/in/baptiste-famchon/"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "52718a08-88e6-4d74-9339-9adaa44d8ef7",
+    "name": "Collaboration Betters The World (CBTW)",
+    "description": "CBTW soutient les organisations dans leurs transformations grâce à des solutions technologiques sur-mesure, conçues pour stimuler l’innovation et assurer une croissance durable.\n \nNous sommes une Global Tech Company créée en 2015. CBTW est un acteur mondial avec 3 000 collaborateurs et 300 millions d’euros de chiffre d’affaires. En France, nous comptons 1 000 personnes réparties dans plusieurs villes (Paris, Lille, Lyon, Nantes, Toulouse, Bordeaux, Nice et Marseille), ce qui nous permet d’accompagner nos clients localement. À Lille, notre équipe se compose d’une cinquantaine de personnes, au service d’une vingtaine de clients issus de secteurs variés : retail, banque, assurance, immobilier et transports.\n \nNous intervenons sur 5 expertises majeures : Strategy Product & Transformation, Software Engineering, Data & AI Platforms, Cybersecurity et Cloud & Enterprise Apps. Nos accompagnements se déclinent en trois formats : assistance technique, forfaits via nos centres de services, et accompagnement technologique avec des partenaires de référence tels qu’Atlassian, SAS, IBM, Microsoft, Darktrace ou Contentsquare.\n \nNous sommes certifiés ISO 9001, ISO 27001 et Ecovadis, gage de qualité et de sécurité.\n \nEnfin, nous plaçons la responsabilité au cœur de notre stratégie : objectif zéro émission carbone d’ici 2050 et 3 % de notre chiffre d’affaires dédié à l’éducation. Nos quatre valeurs sont la Collaboration, Évolution, Engagement et Pensée positive qui guident chacune de nos actions. Plus qu’une entreprise technologique, nous sommes un partenaire de confiance, engagé pour l’innovation et la durabilité.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/ab04d342-b873-41a9-aac6-2ea312fd2e81/original.png",
+    "logoName": "collaboration-betters-the-world-(cbtw)",
+    "siteUrl": "https://cbtw.tech/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/collaboration-betters-the-world/"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://www.linkedin.com/jobs/view/4425458658/",
+        "title": "Automation QA Engineer",
+        "companyName": "Collaboration Betters The World (CBTW)",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.linkedin.com/jobs/view/4420446841/",
+        "title": "Ingénieur(e) DevOps",
+        "companyName": "Collaboration Betters The World (CBTW)",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.linkedin.com/jobs/view/4420458395/",
+        "title": "Développeur(se) Java fullstack",
+        "companyName": "Collaboration Betters The World (CBTW)",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.linkedin.com/jobs/view/4420411369/",
+        "title": "Développeur(se) C# .NET",
+        "companyName": "Collaboration Betters The World (CBTW)",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "975cb0db-c274-46b8-955f-6d3538fe86aa",
+    "name": "SFEIR",
+    "description": "SFEIR | Sharp Tech, Real Impact \nPlus qu'un « enabler », la technologie est un élément déclencheur. À l’instar de l’IA générative, elle crée des ruptures et renouvelle la donne à l'échelle de la société, des organisations et des individus. SFEIR accompagne les entreprises européennes dans ces bascules en conjuguant excellence technique, vision prospective et innovation responsable.\nAvec des bureaux en France, en Belgique et au Luxembourg et plus de 900 experts, SFEIR se positionne comme moteur de transformation digitale à travers quatre piliers complémentaires :\n4 piliers\nConsulting – Nous guidons vos choix stratégiques et vous aidons à (re)penser votre organisation, vos processus et votre culture tech pour anticiper les risques de disruption et gagner en autonomie.\nSoftware engineering – Nos équipes construisent des solutions élégantes et pérennes, en maîtrisant l'ensemble de la stack technologique, aux côtés des tech leaders du marché. \nProducts – Pour accélérer vos projets IA, Data et Cloud, nous construisons des plateformes ouvertes, scalables, prêtes à être intégrées dans vos environnements. Notre dernier-né, Raise, vous permet de mettre sur pied votre plateforme IA générative en restant maître de votre patrimoine informationnel.\nTraining – SFEIR Institute propose des formations technologiques conçues et animées par des praticiens pour développer les compétences et l'autonomie. Parcours certifiants, montées en compétence collectives : nous formons les talents qui façonneront demain. (sfeir.dev/training)\nNotre ADN : Learn and Share\nTravailler chez SFEIR, c'est rejoindre une communauté rassemblée par ses valeurs : le sens du partage, la puissance du collectif, l'esprit du pionnier et l'exigence de l'excellence. Bienveillants, exigeants, passionnés par les nouvelles technologies, nous avons la conviction que l'innovation doit être responsable et que les technologies doivent d’abord rendre autonomes.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/original.png",
+    "logoName": "sfeir",
+    "siteUrl": "https://www.sfeir.com",
+    "videoUrl": "https://storage.googleapis.com/partners-connect/events/fae8f913-26be-4b5b-b6ee-c3c2c2406555/partnerships/d13e56e5-d2d6-489a-a277-38f9f6bf5c3a/support-video.mp4",
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/sfeir/"
+      },
+      {
+        "type": "instagram",
+        "url": "https://www.instagram.com/sfeircode/"
+      }
+    ],
+    "tiers": [
+      "Pack Gold"
+    ],
+    "jobs": [
+      {
+        "url": "https://www.sfeir.com/carrieres/offres-emploi/lille-data-engineer-confirme-e/",
+        "title": "Data Engineer Confirmé(e)",
+        "companyName": "SFEIR",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": [
+      "9b65c5ed-5b97-4f25-a74f-f435310d6e61",
+      "cd4a6100-1c10-4d69-96dd-df83aa4802ae",
+      "2e758669-9fc2-4a18-91a9-f636369aef9f",
+      "81ea125c-8641-4136-bd82-a472e6a775ce"
+    ]
+  },
+  {
+    "id": "fab8bf86-47c8-4669-949f-b666066fd78e",
+    "name": "Clever Cloud",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/e0a42993-3b90-4182-bd4b-6af1f85a961f/original.svg",
+    "logoName": "clever-cloud",
+    "siteUrl": "https://clever.cloud",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "385b318d-f5e4-4edc-942d-0a5685d21c67",
+    "name": "ZENIKA",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/6a4ac187-5fbd-4cad-86bb-62d6701c7cd0/original.svg",
+    "logoName": "zenika",
+    "siteUrl": "https://www.zenika.com",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [
+      {
+        "url": "https://jobs.zenika.com/jobs/6849823-developpeur-backend-java-f-h",
+        "title": "Développeur Backend Java F/H",
+        "companyName": "ZENIKA",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": [
+      "d44d5f43-3229-4ba7-8f3f-7aa887016c96",
+      "9ee32e8a-825c-4280-b33d-69d2c9df688d",
+      "b9fba184-d4a0-4afc-8025-b5ef4efd713e",
+      "cef049a7-8460-4671-bb1a-d1dc8ed7a53a"
+    ]
+  },
+  {
+    "id": "e477e888-2bc6-4fc4-80e3-ccd2ce5d3f24",
+    "name": "Boulanger",
+    "description": "Depuis 70 ans, Boulanger accompagne et réinvente le quotidien des Français. Bien plus qu’un leader de l'électroménager grâce à nos 220 magasins et notre plateforme digitale, nous sommes un moteur technologique où l’expérience client et l’innovation prennent tout leur sens. \nRejoindre notre DSI, c’est intégrer un collectif de 300 experts au cœur de l’écosystème pour apporter son expertise sur des projets stratégiques avec une stack moderne et agile. \nEnsemble, nous relevons les défis d’un commerce connecté, responsable et profondément humain. \nBoulanger : Apprendre, grandir, réussir : Plaisir partagé !",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/c89e4d6e-1a25-494c-ae15-62000abbb737/original.png",
+    "logoName": "boulanger",
+    "siteUrl": "https://www.boulanger.com",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413",
+    "name": "Sopra Steria",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/original.png",
+    "logoName": "sopra-steria",
+    "siteUrl": "https://www.soprasteria.com/fr",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://fr.linkedin.com/company/soprasteria"
+      },
+      {
+        "type": "instagram",
+        "url": "https://www.instagram.com/soprasteria_fr/"
+      }
+    ],
+    "tiers": [
+      "Pack Gold"
+    ],
+    "jobs": [
+      {
+        "url": "https://careers.soprasteria.fr/job/developpeur-se-full-stack-senior-java-angular-transport-lille-in-villeneuve-d-ascq-france-jid-7053",
+        "title": "Développeur/se Full Stack Senior Java/Angular",
+        "companyName": "Sopra Steria",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://careers.soprasteria.fr/job/tech-lead-architecte-full-stack-defense-and-securite-lille-in-villeneuve-d-ascq-france-jid-7246",
+        "title": "Tech Lead/Architecte Full Stack - Défense & Sécurité",
+        "companyName": "Sopra Steria",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "90599db0-a641-414a-b89b-9a6da1d532cf",
+    "name": "Kestra",
+    "description": "Kestra est une plateforme d’orchestration open source qui permet d’automatiser et de coordonner des workflows complexes à travers toute votre stack: data, infrastructure, et applications. Grâce à une approche déclarative, API-first et language-agnostic, Kestra permet aux équipes data, platform et engineering de construire des automatisations fiables, observables et versionnées. Des pipelines de données aux opérations d’infrastructure, Kestra agit comme le control plane qui relie vos outils existants et transforme vos processus en workflows orchestrés.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/262c95b4-8429-4cf7-89dc-de264898ba7e/original.svg",
+    "logoName": "kestra",
+    "siteUrl": "https://kestra.io",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/kestra"
+      },
+      {
+        "type": "x",
+        "url": "https://x.com/kestra_io"
+      },
+      {
+        "type": "youtube",
+        "url": "https://www.youtube.com/@kestra-io"
+      },
+      {
+        "type": "bluesky",
+        "url": "https://bsky.app/profile/kestra.io"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": [
+      "2213fe62-d7e2-4ca8-8581-c009e49a24b5",
+      "0d2557a9-7e96-4a75-aa28-9c416bf71adb"
+    ]
+  },
+  {
+    "id": "1f609018-58a7-4829-9e51-c05e7fc4d0d6",
+    "name": "Wemanity Reply",
+    "description": "Wemanity Reply est un cabinet de conseil spécialisé dans la transformation IA, fondé en 2013.\nMembre du groupe Reply, acteur international des services technologiques de pointe, nous allions proximité, innovation et la puissance d’un réseau mondial d’experts.\n\nD’ici 2050, nous façonnerons une nouvelle ère du travail où l’IA, l’humanité et la durabilité convergeront pour créer un monde aux possibilités infinies, fondé sur des écosystèmes collaboratifs et une innovation porteuse de sens.\n\nNotre mission : aider les organisations à relever les défis de l’innovation et à devenir plus agiles, responsables et performantes.\nAujourd’hui, notre communauté compte plus de 450 coopérateurs à travers la France (Paris HQ et Lille), la Belgique, les Pays-Bas, le Luxembourg et le Maroc. Avec un fort esprit international, nous collaborons avec des partenaires dans 17 pays et sur 5 continents.\n\nNotre culture est ancrée dans trois valeurs fondamentales :\n\n🌍 Esprit d’Ubuntu : l’humanité en tant que collectif\n🎯 L’obsession de la réussite du client\n🌱 Un engagement envers l’excellence et la responsabilité\n\nRejoindre Wemanity, c’est faire partie d’une communauté d’experts diversifiée et passionnée, motivée par l’apprentissage, le partage et des moments de croissance significatifs.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/4be0e69d-3fb8-4921-89b0-050f3390c325/original.svg",
+    "logoName": "wemanity-reply",
+    "siteUrl": "https://wemanity.com/fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/81485024/admin/dashboard/"
+      }
+    ],
+    "tiers": [
+      "Pack Gold"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "0665de74-9828-4fce-880d-6737200a2e97",
+    "name": "ID6",
+    "description": "ID6 conçoit et met à disposition des solutions numériques et pédagogiques au service des transitions professionnelle.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/96a06b61-d3c7-490f-aeba-a5914718eaf4/original.png",
+    "logoName": "id6",
+    "siteUrl": "https://diagoriente.fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/id6/posts/?feedView=all"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "b6ccd088-e10d-417d-8f14-6bd72c52b0ac",
+    "name": "La French Tech Lille",
+    "description": "",
+    "logoUrl": "https://rdv.lafrenchtechlille.com/images/configuration/logos/66431c8ab265e810426059.png",
+    "logoName": "la-french-tech-lille",
+    "siteUrl": "https://www.lafrenchtechlille.com/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Partenaires Média"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "f9ba6b5f-1690-427b-a32c-94bffebf9b2d",
+    "name": "Cast AI",
+    "description": "CAST AI aide les entreprises à reprendre le contrôle de leurs coûts Kubernetes et à améliorer les performances applicatives grâce à une optimisation automatisée et intelligente des ressources cloud.\n\n---\n\nUne plateforme cloud et Kubernetes basée sur l’IA :  CAST AI accompagne les équipes DevOps, Cloud et SRE dans l’optimisation de leurs environnements Kubernetes.\n\n---\n\nCe que nous permettons\n\n* Réduction des coûts cloud (AWS, GCP, Azure)\n* Optimisation automatique des clusters Kubernetes\n* Ajustement des ressources CPU / RAM (requests et limits)\n* Prévention des problèmes de performance (OOMKills, sur/sous-dimensionnement)\n* Automatisation progressive de l’optimisation des infrastructures",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/b81dc27a-2921-4c73-a455-7d8c1953afba/original.png",
+    "logoName": "cast-ai",
+    "siteUrl": "https://cast.ai",
+    "videoUrl": "https://storage.googleapis.com/partners-connect/events/fae8f913-26be-4b5b-b6ee-c3c2c2406555/partnerships/c098fa13-310f-4eea-a104-2b19ba04b3fc/support-video.mp4",
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/cast-ai/"
+      },
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/zen-ops/"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "90513346-a349-4812-b197-54748d673684",
+    "name": "Simplon",
+    "description": "",
+    "logoUrl": "https://cdn.prod.website-files.com/6703a475ba8103794242a832/6703aae143d2a47a93037982_Calque_1.svg",
+    "logoName": "simplon",
+    "siteUrl": "https://www.simplon.co/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "b2dd94d5-56c3-4f92-954d-bbbbf8d13de5",
+    "name": "CodeKaio",
+    "description": "Derrière le nom \"CodeKaio\" se cache Julien Wittouck 🫣.\n\nPassez voir mon talk Let's play Factorio, jeudi à 11h15, ou passez me voir sur le stand Ekité",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/23f76cd4-0717-4cc8-9c04-acc4953b582f/original.png",
+    "logoName": "codekaio",
+    "siteUrl": "https://codeka.io",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "mastodon",
+        "url": "https://mas.to/@codekaio"
+      },
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/in/julien-wittouck/"
+      },
+      {
+        "type": "bluesky",
+        "url": "https://bsky.app/profile/codeka.io"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": [
+      "0d7911a0-bdb0-425d-bb27-09c2dfc85329"
+    ]
+  },
+  {
+    "id": "c550512d-c20d-4201-a7f8-1d9edb0f3dcc",
+    "name": "Ch'ti JUG",
+    "description": "Le Ch’ti JUG est un groupe de développeurs ayant pour but de faire vivre la communauté des développeurs autours de Lille. Notre mission est d’organiser chaque mois une rencontre ayant pour thème le développement logiciel au sens large. Ces évènements sont mensuels, gratuits et ouverts à tous. Chaque rencontre consiste en une présentation que se termine autour d’un verre et d’un buffet.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/c1fc8e67-bc7e-4a2a-89fa-c98fd641c97d/original.png",
+    "logoName": "ch'ti-jug",
+    "siteUrl": "https://chtijug.org",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/chtijug/"
+      },
+      {
+        "type": "youtube",
+        "url": "https://www.youtube.com/@chtijug"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "58ec3eba-d35c-4eea-94cf-e58a620bad6a",
+    "name": "Exotec SAS",
+    "description": "Chez Exotec, nous concevons, intégrons et déployons des solutions d’automatisation élégantes qui associent robotique, logiciel et expertise opérationnelle. En tant qu’OEM et intégrateur end-to-end, nous accompagnons des marques internationales pour relever leurs défis intralogistiques et améliorer à la fois la performance et les conditions de travail dans leurs entrepôts.\nNos solutions sont utilisées chaque jour par plus de 50 clients à travers le monde et s’appuient sur le savoir‑faire d’équipes passionnées qui partagent leurs expertises, challengent les idées et évoluent dans un environnement respectueux, enrichi par la diversité de nos 1 300 ExoPeople.\nChaque innovation passe du concept à l’intégration sur le terrain, entre les mains de clients qui comptent au quotidien sur la fiabilité et l’efficacité de nos systèmes. Collaboration, excellence et impact guident la manière dont nous concevons l’automatisation de demain.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/9df9f57e-bf4e-42fb-8323-fc5e28f2aaf7/original.png",
+    "logoName": "exotec-sas",
+    "siteUrl": "https://www.exotec.com/?EX00_control=true&pk_abe=Redirect_Calibration&pk_abv=Variation2",
+    "videoUrl": "https://storage.googleapis.com/partners-connect/events/fae8f913-26be-4b5b-b6ee-c3c2c2406555/partnerships/3ee71c74-3509-4c41-95e2-366550053df6/support-video.mp4",
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/exotec"
+      }
+    ],
+    "tiers": [
+      "Pack Gold"
+    ],
+    "jobs": [
+      {
+        "url": "https://careers.exotec.com/_/j/91417FBF56/",
+        "title": "Ingénieur.e R&D Logiciel Java",
+        "companyName": "Exotec SAS",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://careers.exotec.com/_/j/F1F34DE298/",
+        "title": "Product Owner : Koddex et Outils SaaS",
+        "companyName": "Exotec SAS",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://careers.exotec.com/_/j/F3D9519C48/",
+        "title": "Product Owner IA",
+        "companyName": "Exotec SAS",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://careers.exotec.com/_/j/03582B0237/",
+        "title": "Software Quality Management Engineer",
+        "companyName": "Exotec SAS",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://careers.exotec.com/_/j/64C5A35CA6/",
+        "title": "Senior Product Owner - Logistics Software",
+        "companyName": "Exotec SAS",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://careers.exotec.com/_/j/CA377A06E6/",
+        "title": "Software R&D Manager",
+        "companyName": "Exotec SAS",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://careers.exotec.com/_/j/A82425146D/",
+        "title": "Architect Robotics",
+        "companyName": "Exotec SAS",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "9f783acc-fc9d-4628-a030-56e1952dcff3",
+    "name": "Vaduo Consulting",
+    "description": "Vaduo, c’est une ESN lilloise conviviale et participative, née en 2016 avec une ambition forte : replacer l’humain au centre de la technologie.\n\nNotre offre se concentre sur 3 domaines d'expertise : le développement Web, l'Agilité, la gestion de Produits et de Projets. \n\nPassionnés par leur métier et en veille constante sur les dernières innovations, nos collaborateurs apportent bien plus qu’un simple renfort : un véritable savoir-faire technique et méthodologique. Leur mission ? Proposer des solutions performantes, durables et adaptées aux enjeux métiers, tout en construisant des partenariats solides et pérennes.\n\n💙 \"Replaçons l’humain au centre de la technologie\", c’est notre raison d’être et notre moteur au quotidien. Pour nous, l’excellence technique, opérationnelle et numérique repose avant tout sur l’épanouissement de celles et ceux qui la rendent possible.\n\nNos valeurs (A.C.T.E.S) guident notre vision et nos actions : Adaptabilité, Convivialité, Transparence, Épanouissement et Savoir-faire. Elles nous permettent d’offrir un cadre où chacun peut évoluer et s’investir pleinement, dans un environnement de travail sain et stimulant.\n\n📩Contactez-nous : hello@vaduoconsulting.com\n🖇️Découvrez notre univers : https://www.vaduoconsulting.com/\n💼 Rejoignez l'aventure : https://www.hellowork.com/fr-fr/entreprises/vaduo-consulting-132862.html\n✒️Explorez nos articles : https://www.vaduoconsulting.com/blog/",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/original.svg",
+    "logoName": "vaduo-consulting",
+    "siteUrl": "https://vaduoconsulting.com",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://www.hellowork.com/fr-fr/emplois/78665566.html",
+        "title": "Développeur Fullstack Java-Js H/F",
+        "companyName": "Vaduo Consulting",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.hellowork.com/fr-fr/emplois/78665559.html",
+        "title": "Product Owner Po H/F",
+        "companyName": "Vaduo Consulting",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.hellowork.com/fr-fr/emplois/78665558.html",
+        "title": "Leader Technique H/F",
+        "companyName": "Vaduo Consulting",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.hellowork.com/fr-fr/emplois/78665552.html",
+        "title": "Développeur Backend Java H/F",
+        "companyName": "Vaduo Consulting",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "7a9670f3-c0d6-4d96-8e57-8fa4cb6a9ab1",
+    "name": "HoppR",
+    "description": "HoppR est agence de conseil et d'expertise qui accompagne les DSI et leurs équipes dans leur transition technologique, leur démarche d'innovation et la prise en main des défis technologiques complexes.\n\nNotre Vision 🔭\nConcevoir l’excellence et réussir des projets tech audacieux, c'est d'abord une histoire de talents et cela passe par créer les conditions d’une relation durable avec ses partenaires, ses clients et ses équipes\n\nNotre mission 🎯\nProposer un cadre propice à la valorisation du talent de nos équipes, favorisant le partage, la veille, la formation, l'innovation pour répondre aux enjeux et défis technologiques de nos clients\n\nEt du coup ?\nChez HoppR, nous avons une organisation où la transparence est au cœur de notre modèle. Toutes les informations sont accessibles et partagées.\n\n👉 Grille de salaire basée sur le nombre d'années et redistribution des marges excédentaires au bénéfice de nos consultants\n👉 Des jours dédiés au destaffing communautaire : pour faire de la veille, partager des connaissances ou simplement profiter de congés supplémentaires.\nNous prônons un modèle flexible, et la liberté pour nos équipes de gérer leur temps et rythme\n\nSi tu nous rejoins, tu découvriras que nous ne sommes, ni une ESN classique, ni un simple collectif de freelances. Nous proposons un modèle hybride pour créer plus de valeur et de partage",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/99c7f111-0a82-4849-98b4-c1943e29584b/original.png",
+    "logoName": "hoppr",
+    "siteUrl": "https://www.hoppr.tech/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/hopprtech"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "8239fc66-d32e-47c7-a2d7-abf116a558dd",
+    "name": "Holberton",
+    "description": "L'approche de Holberton School Lille privilégie les fondements de l'ingénierie logicielle par une immersion « low-level » exigeante. En priorisant la maîtrise du C, de la gestion mémoire et de l'algorithmie, nous formons des profils capables de comprendre l'abstraction technique avant d'utiliser les frameworks. \n\nCette pédagogie par projets et en peer-learning forge une autonomie critique et une réelle capacité de résolution de problèmes en environnement de production. \nLe cursus intègre des spécialisations avancées en Fullstack, Machine Learning / IA et Cybersécurité.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/297875f9-fe0c-4106-8c92-00b3ff9a3ec5/original.png",
+    "logoName": "holberton",
+    "siteUrl": "https://www.holbertonschool.fr/campus/lille?utm_campaign=devLille26&utm_content=Partenaire&utm_sourceRS=&utm_source=&utm_medium=site&utm_webflowlpid=6908c856ee627565cf514c64&utm_source=bouton",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/school/holberton-school-france/posts/?feedView=all"
+      },
+      {
+        "type": "instagram",
+        "url": "https://www.instagram.com/holbertonfrance"
+      },
+      {
+        "type": "youtube",
+        "url": "https://www.youtube.com/@HolbertonFrance"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "f50984e3-ad15-42b4-9be5-cc2ba0a2a3a3",
+    "name": "Faceel-IT",
+    "description": "Faceel-IT est une ESN lilloise basée sur 4 Business Units : \n- Digital\n- Data & IA\n- Cybersécurité\n- Product\nLes Directeurs(rices) et RH de chaque BU sont spécialisés dans leur domaine afin de pouvoir répondre aux enjeux des clients de manière efficace et pertinente.\nLe but est également de pouvoir créer un réel sentiment d'appartenance et une vraie montée en compétence en interne de nos collaborateurs.\nLa croissance est une bonne chose mais elle doit surtout s'appuyer sur un socle fort caractérisé par les collaborateurs et donc s'appuyer sur un turnover très faible.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/8508158f-476c-4321-94eb-b2c73c570a2d/original.png",
+    "logoName": "faceel-it",
+    "siteUrl": "https://faceel-it.com/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/faceel-it/"
+      },
+      {
+        "type": "instagram",
+        "url": "https://instagram.com/faceelit"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "c2388cde-1d8e-4411-8723-449ed4160981",
+    "name": "IKIVIA",
+    "description": "Créée en 2022, Ikivia est une société de conseil en IT & Digital. Ikivia propose un modèle d’entreprise basé sur l’accompagnement et la recherche de sens dans le milieu professionnel.  \n\nL'accompagnement d'Ikivia se structure autour de quatre grandes expertises métiers que sont : la gestion de projet, le développement, la Big Data et l’infrastructure IT.  \n\nEn dehors de la seule expertise métier, chez Ikivia nous sommes convaincus que le milieu professionnel doit permettre à chacun de s’épanouir. Pour ce faire, nous nous appuyons sur le modèle Ikigai. Issu de la tradition japonaise, ce modèle propose une approche autour de 4 éléments clés pour accompagner chacun dans la découverte de sa “raison d’être”.  \n\nAppliquée au milieu professionnel, cette recherche se traduit par une activité qui a du sens, pour nous, comme pour le monde.   \n\nRejoignez une entreprise certifiée 3ème Best WorkPlaces 2025 où la bienveillance et l’épanouissement professionnel sont au cœur de nos priorités !   \n\nVous souhaitez nous rejoindre ? Ikivia recrute ! Envoyez votre candidature à job@ikivia.com",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/b407a8d4-5adb-47bb-8b13-71b9c36f0bcb/original.png",
+    "logoName": "ikivia",
+    "siteUrl": "https://www.ikivia.com",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/ikivia/"
+      },
+      {
+        "type": "youtube",
+        "url": "https://www.youtube.com/@ikivia-it"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://www.linkedin.com/jobs/view/4405273387",
+        "title": "Développeur.euse Java",
+        "companyName": "IKIVIA",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "a235dbab-e6d5-4762-a2b5-aca9c3f3bee3",
+    "name": "Gravitational, Inc. (Teleport)",
+    "description": "Teleport est une plateforme d’accès sécurisé unifié conçue pour les environnements cloud hybrides, avec un focus fort sur les infrastructures legacy, Kubernetes et workloads d’IA.\nElle permet aux équipes DevOps, SRE et Security de moderniser et sécuriser l’accès aux systèmes critiques sans dépendre de VPN ou de clés statiques, tout en s’adaptant à des environnements souvent hétérogènes et historiques.\nConcrètement, Teleport permet de :\nCentraliser les accès à SSH, Kubernetes, bases de données et applications, y compris sur des environnements legacy\nUnifier la gestion des accès dans des environnements Kubernetes et plateformes IA\nRemplacer les VPN et clés SSH statiques par une approche basée sur l’identité\nAppliquer un modèle Zero Trust Zero Trust pour tous les accès privilégiés\nTracer, enregistrer et auditer toutes les sessions utilisateurs de bout en bout\nRéduire fortement la surface d’attaque liée aux accès privilégiés dans des environnements complexes et hybrides\nEn résumé : Teleport modernise la gestion des accès en apportant une couche de sécurité unifiée et auditable, capable de couvrir aussi bien des infrastructures legacy critiques que des plateformes Kubernetes et IA à grande échelle, sans compromettre l’agilité des équipes.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/261fc1d3-bd18-4521-be66-1e9ec9355358/original.png",
+    "logoName": "gravitational,-inc.-(teleport)",
+    "siteUrl": "https://goteleport.fr/devlille26",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/go-teleport/"
+      },
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/zen-ops/"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
+    "name": "DECATHLON DIGITAL",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/0367150c-e455-4e36-a5de-faf56d2a914c/original.png",
+    "logoName": "decathlon-digital",
+    "siteUrl": "https://www.decathlon.fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/decathlondigital/posts/?feedView=all"
+      },
+      {
+        "type": "x",
+        "url": "https://x.com/decathlon"
+      },
+      {
+        "type": "instagram",
+        "url": "https://www.instagram.com/decathlon/"
+      },
+      {
+        "type": "youtube",
+        "url": "https://www.youtube.com/user/decathfrance"
+      }
+    ],
+    "tiers": [
+      "Pack Gold"
+    ],
+    "jobs": [],
+    "speakerIds": [
+      "43ed2c7f-96ab-40a4-98b1-3e879d32db1e",
+      "ff617503-9447-4d69-950d-26dd065ed2cf",
+      "5bc51434-8aea-40a3-96e9-03a639d44e1d",
+      "68f95aa2-aae4-4e4a-954a-9d58aa24c119",
+      "6be6bb73-1c1a-45bf-9d38-144529cde965"
+    ]
+  },
+  {
+    "id": "383bf55f-c3a3-415f-be0e-92bd3fd8aa8a",
+    "name": "skiils",
+    "description": "skiils est un cabinet de conseil spécialisé en IA, qui place l’Humain, la stratégie et l'innovation au cœur de la transformation des entreprises.\n\n🎯 Notre MISSION ?\nFédérer et connecter les meilleurs talents à vos enjeux métiers pour garantir l’impact durable de vos projets technologiques, Data et IA.\n\n🧬 Notre ADN ?\nUne communauté de talents engagés et fédérés par des Guild Master : une équipe Tech animée par des Techs !\nChez skiils, nous pensons que l’IA et l’innovation passent avant tout par le déploiement d’une équipe collaborative.\n\n🎈 Pourquoi skiils ?\n• Une forte expertise dans le pilotage de projets technologiques, Data et IA complexes.\n• L'accompagnement de projets ambitieux servant les enjeux IA et d'innovation d'une clientèle Grands Comptes.\n• Une relation directe, transparente et durable avec les équipes.\n• Des valeurs fortes, incarnées au quotidien : Excellence, Passion et Audace.\n\nskiils, c’est surtout une ambition claire : faire de chaque projet un levier de performance et d’épanouissement mutuel.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/82cf7cff-bfd0-4027-90ee-3bf3bbde71da/original.png",
+    "logoName": "skiils",
+    "siteUrl": "https://skiils-x-digidop.webflow.io/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/skiils-group/"
+      },
+      {
+        "type": "youtube",
+        "url": "https://www.youtube.com/@skiilsgroup6897"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "76ad35d3-ab23-49cb-82d5-f86fd1205b2a",
+    "name": "Promod",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/14b74cbc-ccd4-43b0-979a-8afb72c76f20/original.png",
+    "logoName": "promod",
+    "siteUrl": "https://www.promod.fr/fr-fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/promod/ "
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://promodjob.talentview.io/jobs/zslydi?source=site_entreprise&utm_source=site_entreprise",
+        "title": "Lead Developer Fullstack H/F",
+        "companyName": "Promod",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "8df653fc-69b9-4fca-a0ca-eb15cc228b16",
+    "name": "Oney",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/69cfe16d-2efd-44d0-9b6a-4a2491f54676/original.svg",
+    "logoName": "oney",
+    "siteUrl": "https://www.oney.com",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "c184a1e9-0e4a-4ad4-b2a7-2e95d72ffb9a",
+    "name": "Elosi",
+    "description": "Depuis 2005, nous concevons vos projets digitaux, de la conception à l’hébergement. Aujourd’hui, le groupe Elosi c'est 120 collaborateurs à votre service dans un environnement convivial et de proximité.\n\nDev, green IT, data, ERP, e-commerce, cloud, sécurité... nous concevons des solutions digitales à forte valeur ajoutée et respectant les principes d'écoconception.\n\nDeux offres pour répondre à vos besoins :\n- Elosi Solutions : Digitalisez votre entreprise avec des solutions adaptées à vos besoins peu importe vos secteurs, tailles et activités.\n- Elosi : Renforcez vos équipes avec nos experts en régie et accélérez la performance de votre entreprise.\n👉 Donnons vie à votre projet ensemble : https://www.elosi.com/business \n\nRejoindre Elosi, c’est rejoindre une ESN où chacun peut développer ses compétences, accéder à des formations certifiantes et évoluer. \n👉 De nombreuses opportunités s’offrent à vous : https://www.elosi.com/carriere",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/47786f6f-13b9-4db6-bda3-fc81db420795/original.svg",
+    "logoName": "elosi",
+    "siteUrl": "https://www.elosi.com/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/elosi/mycompany/"
+      }
+    ],
+    "tiers": [
+      "Pack Gold"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "c97398ee-845e-4981-9652-4b8b8dc2c49b",
+    "name": "ZATSIT",
+    "description": "👉 Zatsit est une 𝗘𝗦𝗡 𝗲𝗻𝗴𝗮𝗴𝗲́𝗲 💻\n\nActuellement déjà une quarantaine de personnes au service de l'impact !\n🌍 L'aventure répond à ces nombreux critères 👥 :\n\n# 𝗜𝗺𝗽𝗮𝗰𝘁\n# Transparence\n# 𝗘𝘅𝗽𝗲𝗿𝘁𝗶𝘀𝗲 𝘁𝗲𝗰𝗵𝗻𝗼\n# 𝗣𝗼𝘀𝗶𝘁𝗶𝗳 \n# 𝗣𝗮𝗿𝘁𝗲𝗻𝗮𝗿𝗶𝗮𝗹 \n# 𝗦𝗼𝗰𝗶𝗲́𝘁𝗮𝗹\n# 𝗘𝗻𝘃𝗶𝗿𝗼𝗻𝗻𝗲𝗺𝗲𝗻𝘁𝗮𝗹 \n# 𝗣𝗹𝗮𝗶𝘀𝗶𝗿 \n# 𝗛𝘂𝗺𝗮𝗶𝗻\n# 𝗘𝗻𝗴𝗮𝗴𝗲𝗺𝗲𝗻𝘁\n\n\n𝗖𝗼𝗻𝘀𝘂𝗹𝘁𝗮𝗻𝘁𝘀 : Vous voulez mettre votre expertise au service de l'impact ?! \n==> cette aventure, pleine de sens, est faite pour vous !\n𝗖𝗹𝗶𝗲𝗻𝘁𝘀 : Vous voulez un partenaire, à vos côtés, avec des profils de qualité et ayant une culture de l'impact \n==> nous sommes fait pour collaborer ensemble ! \n𝗙𝗼𝘂𝗿𝗻𝗶𝘀𝘀𝗲𝘂𝗿𝘀 : Vos produits/vos services sont pensés pour avoir un impact positif ?!\n==> Discutons en ensemble\n\n\n𝗘̲𝗡̲𝗦̲𝗘̲𝗠̲𝗕̲𝗟̲𝗘̲, 𝗶𝗺𝗽𝗮𝗰𝘁𝗼𝗻𝘀 𝗹𝗲 𝗺𝗼𝗻𝗱𝗲 𝗱'𝗮𝘂𝗷𝗼𝘂𝗿𝗱'𝗵𝘂𝗶 𝗲𝘁 𝗱𝗲 𝗱𝗲𝗺𝗮𝗶𝗻 𝗽𝗼𝘀𝗶𝘁𝗶𝘃𝗲𝗺𝗲𝗻𝘁 !\nL'économie partenariale (et non plus uniquement actionnariale) est possible 😊\n\nRencontrons nous, échangeons, collaborons, bref... passons à l'action ! 💥",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/22d6fa6a-7d1c-484c-970b-e5d6ccab4de2/original.png",
+    "logoName": "zatsit",
+    "siteUrl": "https://zatsit.fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/101125534/admin/dashboard/"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": [
+      "b15cfe26-d3d8-4984-a493-e7d58f48c9c4",
+      "cfb4d5b5-3ad1-46dc-8916-f0a8c7dcc5d2",
+      "06fdde47-abcb-4b1f-86af-c4313a83eba5"
+    ]
+  },
+  {
+    "id": "5dd7905c-eb65-4856-a593-1ca7aed39d09",
+    "name": "NEXTOO",
+    "description": "Eh non, \"Développeurs de progrès\", n’est pas qu'un joli slogan pour nos T-shirts ; c'est une véritable philosophie. Elle repose sur la conviction que notre capacité à développer des solutions numériques sur mesure a des impacts importants non seulement sur les organisations et les entreprises, mais aussi sur la société dans son ensemble. Ainsi, nous nous engageons pour un numérique responsable et plus vertueux.\n\nNous croyons fermement que le progrès technologique doit aller de pair avec le développement des individus qui y contribuent. Il est de notre responsabilité de créer un environnement propice à l’épanouissement et à l’engagement, de permettre à chacun d’être acteur du changement : c’est pourquoi, chez nous, nous parlons de CollaborActeurs et CollaborActrices.\n\nFondée en 2002, Nextoo est une Entreprise de Services du Numérique (ESN) qui compte aujourd'hui 120 collaborateurs. Pur produit de l'économie locale, nous sommes fiers de contribuer au dynamisme de notre région.\n\nNos métiers ? Le conseil & l’expertise technique et méthodologique. Nous intervenons sur la conception, le développement et la maintenance d’applicatifs web/e-commerce, mobile mais également sur les applicatifs métiers. Nous sommes également centre de formation méthodologique (référencé QUALIOPI), pour accompagner nos clients et collaborateurs vers plus de performance.\n\nChez Nextoo, nous plaçons le bien-être de nos collaborateurs au cœur de notre culture. Nous sommes plus qu’une entreprise : nous sommes une communauté soudée et engagée.\n\nNous sommes Nextoo, nous sommes Développeurs de Progrès.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/16b8b32c-06ca-439c-bee5-aa1d33e7bd5b/original.png",
+    "logoName": "nextoo",
+    "siteUrl": "https://nextoo.fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/nextoo/"
+      },
+      {
+        "type": "instagram",
+        "url": "https://www.instagram.com/nextooconseil/?hl=fr"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://nextoo.fr/nos-offres",
+        "title": "Développeur.se java back/fullstack expérimenté.e",
+        "companyName": "NEXTOO",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "03544387-0596-454a-80b9-30bd1b67188f",
+    "name": "Philibert Consulting",
+    "description": "Philibert Consulting est une société de développement web, d'audit et de formations.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/8ff5206f-706d-4866-80ea-3154ecfba1c4/original.png",
+    "logoName": "philibert-consulting",
+    "siteUrl": "https://emmanueldemey.fr",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/in/emmanueldemey/"
+      },
+      {
+        "type": "bluesky",
+        "url": "https://bsky.app/profile/emmanueldemey.dev"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "5a92d7b9-9263-4a96-b645-ef76051e495a",
+    "name": "ADEO Services",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/380d62a9-75cd-438f-9bf0-8d97b99db896/original.svg",
+    "logoName": "adeo-services",
+    "siteUrl": "https://www.adeo.com/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Pack Gold"
+    ],
+    "jobs": [],
+    "speakerIds": [
+      "4c1f2030-1f1e-4163-bbc0-91d26b7d0156",
+      "4afce329-0e4b-4e8d-aaec-9127a21b0062"
+    ]
+  },
+  {
+    "id": "84092ac1-1be4-47dd-963a-e88ba4b7c9c6",
+    "name": "INFOGENE",
+    "description": "NFOGENE, experte des données critiques et de la transformation digitale. Accélérez votre carrière en travaillant avec nous sur des projets innovants pour des clients en pleine croissance dans différents secteurs stratégiques (santé, assurances / mutuelles, énergie, environnement, retail et luxe.) \n\nINFOGENE intervient à chaque étape des projets de ses clients en AMOA ou MOE sur les phases de conception, développement, intégration, maintenance.\n\nPlus de 900 collaborateurs sont répartis sur 7 sites en Île-de-France, à Lille, à Lyon, à Bordeaux, à Evreux, à Lausanne et à Bruxelles. Son chiffre d’affaires est de 90M€ en 2025.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/37344f02-7259-4750-bc7d-cf38531a08d1/original.png",
+    "logoName": "infogene",
+    "siteUrl": "https://www.infogene.fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/infogene/posts/?feedView=all"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://www.hellowork.com/fr-fr/emplois/75657958.html",
+        "title": "Développeur .NET",
+        "companyName": "INFOGENE",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.hellowork.com/fr-fr/emplois/79552237.html",
+        "title": "Ingénieur Devops",
+        "companyName": "INFOGENE",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.hellowork.com/fr-fr/emplois/79551924.html",
+        "title": "Développeur python",
+        "companyName": "INFOGENE",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.hellowork.com/fr-fr/emplois/79555843.html",
+        "title": "Ingénieur IA",
+        "companyName": "INFOGENE",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      },
+      {
+        "url": "https://www.linkedin.com/jobs/view/4413032311/?trk=mcm",
+        "title": "Développeur NodeJS",
+        "companyName": "INFOGENE",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "e0003829-4e13-495d-98f6-04022734adcf",
+    "name": "Purse",
+    "description": "Purse est la 1ère plateforme française d’orchestration de paiement conçue pour les acteurs e-commerce qui veulent améliorer la performance de leurs transactions sans subir la complexité du paiement.\n\nDans un contexte de multiplication des solutions paiement et des contraintes réglementaires, Purse permet aux marques de structurer leurs architectures de paiement et d’en faire un levier de performance et de continuité business.\n\nLa plateforme donne accès à plus de 100 PSP et méthodes de paiement locales et internationales, activables rapidement selon les marchés, les usages clients et les objectifs opérationnels.  Purse centralise et orchestre l’ensemble des flux de paiement au sein d’une architecture unique, souveraine et évolutive.\n\nLes transactions sont pilotées en temps réel grâce à des règles métier intelligentes, permettant d’améliorer les taux d’acceptation et de conversion, de maîtriser les coûts et de renforcer la sécurité, sans dépendance à un acteur unique.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/b1e351ac-adbf-4c7c-887d-7ae241e0b459/original.svg",
+    "logoName": "purse",
+    "siteUrl": "https://purse.eu",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/purse-eu"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://jobs.purse.eu/jobs/7523548-ai-engineer-f-h",
+        "title": "AI Engineer - F/H",
+        "companyName": "Purse",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": [
+      "779b0443-59e9-4a78-8fc2-95c45c801a14",
+      "f5f912d6-dd96-4c61-9645-fa2f1a324ca0"
+    ]
+  },
+  {
+    "id": "931f0cbe-dfe8-4522-9230-6645b46ede0c",
+    "name": "Octo Technology",
+    "description": "OCTO Technology est un cabinet de conseil spécialisé dans les nouvelles technologies et les enjeux de la transformation digitale.\nNous sommes reconnus pour nos expertises technologiques et méthodologiques (Architecture, Cloud, IA, Data, Product management, UX, etc) et pour nos méthodes d'organisation innovantes (Agilité, Sociocratie).\n\nNos collaborateurs sont situés à Paris et en région (Lille et Toulouse).\n\nNous organisons également plusieurs évènements, dont les conférences La Duck Conf, La Grosse Conf, USI Events et School of Product.\n\nCertifiée Great Place to Work et B Corp, OCTO est une entreprise engagée dans les pratiques du Numérique Responsable.\n\nNotre WHY :\n\n\"Dans un monde complexe aux ressources finies, nous recherchons ensemble de meilleures façons d’agir. Nous œuvrons à concevoir et à réaliser les produits numériques essentiels au progrès de nos clients et à l'émergence d’écosystèmes vertueux.\"",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/f031a3ca-b5ed-4c39-85f3-ec773612911c/original.png",
+    "logoName": "octo-technology",
+    "siteUrl": "https://www.octo.com/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/octo-technology"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "223da456-051d-40c7-ba81-2974c7adf11b",
+    "name": "SII",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/original.png",
+    "logoName": "sii",
+    "siteUrl": "https://sii-group.com/fr-FR",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://fr.linkedin.com/company/sii"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://sii-group.com/fr-FR/offers/lead-developpeur-full-stack-nodejs-react-fh",
+        "title": "Lead Tech Fullstack (NodeJS / NestJS / React)",
+        "companyName": "SII",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": []
+  },
+  {
+    "id": "e7695cc4-0a11-4c6f-83cb-952b8e2d5d8b",
+    "name": "Agi'Lille",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/conferencecenterr.appspot.com/events/PVw2lNpSZnM9P18zksJI/9247cddb-e5c3-4ce3-81ad-fe969f582438",
+    "logoName": "agi'lille",
+    "siteUrl": "https://nord-agile.org/agilille/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "88299768-0da1-4b3b-969e-16bf0fc27772",
+    "name": "bpifrance",
+    "description": "Bpifrance est la Banque Publique d’Investissement française, créée en 2012 pour financer, accompagner et développer les entreprises de toutes tailles, de l’amorçage jusqu’à l’international. Elle propose un continuum de solutions allant du crédit aux fonds propres, en passant par l’innovation, l’assurance export et le conseil stratégique. Sa mission est de soutenir la croissance, l’innovation et la compétitivité de l’économie française, dans le cadre des politiques publiques de l’État et des Régions. Bpifrance.IO est la communauté Tech de Bpifrance. Elle regroupe les expertises liées aux plateformes, au cloud, à la cybersécurité, à la data, au développement logiciel, au SRE, au FinOps et à toutes les disciplines technologiques qui permettent à Bpifrance d’opérer comme une véritable fintech au service des entrepreneurs. Bpifrance.IO porte une culture d’innovation, de collaboration et d’exploration technique, animée par la volonté de simplifier, sécuriser et moderniser les services numériques du groupe.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/5a679c64-3ae9-47a0-97f7-8e57aa01fe57/original.png",
+    "logoName": "bpifrance",
+    "siteUrl": "https://io.bpifrance.fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/bpifrance-io/?viewAsMember=true"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": [
+      "f61a2b0b-6194-4b63-b54c-1adc779ec03b"
+    ]
+  },
+  {
+    "id": "b40b5948-7721-4563-a2b8-0d9a7083edd9",
+    "name": "Yeeso",
+    "description": "",
+    "logoUrl": "https://yeeso.fr/wp-content/uploads/elementor/thumbs/Logo-yeeso-qk35t9leuxu7jf6by5pkkhotbck3951ii1l9isyoyw.png",
+    "logoName": "yeeso",
+    "siteUrl": "https://yeeso.fr/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "33872e26-64c6-44a3-ab85-326e3afefb45",
+    "name": "Benefiz",
+    "description": "Benefiz simplifie la gestion des avantages sociaux pour les TPE/PME.\n\nMutuelle, prévoyance, titres restaurant, épargne salariale, cagnotte : tous ces avantages sociaux sont sur notre plateforme 100 % digitale. \n\nNous accompagnons les entreprises pour maximiser leur valeur pour leurs collaborateurs, leur finance et leur croissance.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/24934d17-28ac-4a58-aac5-cb17a20feb61/original.svg",
+    "logoName": "benefiz",
+    "siteUrl": "https://benefiz.fr",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/benefiz/"
+      }
+    ],
+    "tiers": [
+      "Pack Bronze"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "b528f5fc-10bf-4d3c-90c7-8a80de206bc2",
+    "name": "Les-Tilleuls.coop",
+    "description": "Développement web et mobile, conseil, expertise ou formations… Les-Tilleuls.coop est une société de services lilloise fondée en 2011, spécialisée dans la conception de projets web innovants basés sur des logiciels libres, et créatrice de solutions open source reconnues à l’international.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/e9fdeb21-a39b-4a0f-a021-233d0c2f6bb8/original.png",
+    "logoName": "les-tilleuls.coop",
+    "siteUrl": "https://les-tilleuls.coop/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/les-tilleuls-coop"
+      },
+      {
+        "type": "x",
+        "url": "https://x.com/coopTilleuls"
+      },
+      {
+        "type": "bluesky",
+        "url": "https://bsky.app/profile/les-tilleuls.coop"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "dfb6879c-7466-46b3-b9dc-4254e2528dab",
+    "name": "Kiabi",
+    "description": "Kiabi, créée en 1978, est le leader français du prêt-à-porter et marque préférée des familles, s’appuie sur un réseau de 641 points de contact dans 33 pays. Elle réunit près de 10 000 Kiabers de 83 nationalités.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/a7f8786d-7542-4be4-a88f-ddf5680073b8/original.svg",
+    "logoName": "kiabi",
+    "siteUrl": "https://www.kiabi.com/",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  },
+  {
+    "id": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+    "name": "AXA FRANCE IARD",
+    "description": "Acteur mondial de référence, AXA se distingue par sa mission fondamentale : protéger ce qui compte pour construire un avenir plus serein. Au-delà de l’assurance, l’entreprise s'engage avec audace pour le climat et le progrès social, plaçant la responsabilité sociétale au cœur de son identité. Rejoindre ou faire confiance à AXA, c'est choisir un partenaire innovant qui valorise l'humain et agit concrètement pour la résilience de notre société. Une force collective tournée vers l'excellence, où chaque action contribue à donner à chacun les moyens de vivre une vie meilleure.",
+    "logoUrl": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png",
+    "logoName": "axa-france-iard",
+    "siteUrl": "https://recrutement.axa.fr/",
+    "videoUrl": null,
+    "socials": [
+      {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/company/axa-france/"
+      },
+      {
+        "type": "x",
+        "url": "https://x.com/AXAJobs_fr"
+      },
+      {
+        "type": "instagram",
+        "url": "https://www.instagram.com/axafrance"
+      }
+    ],
+    "tiers": [
+      "Pack Silver"
+    ],
+    "jobs": [
+      {
+        "url": "https://recrutement.axa.fr/nos-offres-emploi/AXAFR_2026030213",
+        "title": " Manager Architecte Solutions Data & IA F/H",
+        "companyName": "AXA FRANCE IARD",
+        "location": "",
+        "salary": null,
+        "requirements": 0,
+        "publishDate": 0
+      }
+    ],
+    "speakerIds": [
+      "957afb52-110c-40bd-9afd-7ebd1f32eda6",
+      "0889cb68-1ca3-49d0-8953-2d1250354466",
+      "94bacd7b-4f28-4d5c-bc91-ed421ed11be3",
+      "055870f6-a0cb-4d28-86e9-6ef9d56f63a3"
+    ]
+  },
+  {
+    "id": "25463ac8-bf3f-485f-b563-bbec9b6cd1b7",
+    "name": "Indie Hackers Lille",
+    "description": "",
+    "logoUrl": "https://storage.googleapis.com/conferencecenterr.appspot.com/events/PVw2lNpSZnM9P18zksJI/af10b0c9-b119-4d92-a881-bfce6c2b6cf6",
+    "logoName": "indie-hackers-lille",
+    "siteUrl": "https://luma.com/indiehackerslille",
+    "videoUrl": null,
+    "socials": [],
+    "tiers": [
+      "Community Partners"
+    ],
+    "jobs": [],
+    "speakerIds": []
+  }
+]

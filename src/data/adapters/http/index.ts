@@ -16,6 +16,7 @@ import type {
   Video,
 } from "../../domain";
 import type { EventDataSource } from "../../ports/data-source";
+import { once } from "../once";
 import type {
   ApiAgenda,
   ApiEvent,
@@ -35,12 +36,6 @@ export type HttpDataSourceConfig = {
   baseUrl: string;
   eventId: string;
   youtubePlaylistId: string;
-};
-
-/** Mémoïse un appel réseau : la promesse est partagée par tous les appelants. */
-const once = <T>(load: () => Promise<T>): (() => Promise<T>) => {
-  let pending: Promise<T> | undefined;
-  return () => (pending ??= load());
 };
 
 const fetchJson = async <T>(url: string, init?: RequestInit): Promise<T> => {
@@ -70,7 +65,7 @@ export const createHttpDataSource = (
 
   const loadVideos = once(async () => {
     const url = `https://www.youtube.com/feeds/videos.xml?playlist_id=${config.youtubePlaylistId}`;
-      const response = await fetch(url);
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`${response.status} ${response.statusText} on ${url}`);
     }

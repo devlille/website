@@ -1,0 +1,326 @@
+[
+  {
+    "id": "788cb461-c5d5-49f9-930e-f0fc6f8f625a",
+    "name": "Flèchette",
+    "startTime": "2026-06-11T08:00",
+    "endTime": "2026-06-12T17:30",
+    "partnerId": "5dd7905c-eb65-4856-a593-1ca7aed39d09",
+    "partnerName": "NEXTOO",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/16b8b32c-06ca-439c-bee5-aa1d33e7bd5b/original.png"
+  },
+  {
+    "id": "15867f73-b0b6-4904-8384-0e73e3934e78",
+    "name": "L'Enquête : un cherche & trouve XXL",
+    "startTime": "2026-06-11T08:00",
+    "endTime": "2026-06-12T17:00",
+    "partnerId": "c184a1e9-0e4a-4ad4-b2a7-2e95d72ffb9a",
+    "partnerName": "Elosi",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/47786f6f-13b9-4db6-bda3-fc81db420795/original.svg"
+  },
+  {
+    "id": "56d5dcbe-7308-45ab-8ac5-94fdfdb591a7",
+    "name": "SFEIR CHRONO WIN",
+    "startTime": "2026-06-11T08:00",
+    "endTime": "2026-06-12T18:00",
+    "partnerId": "975cb0db-c274-46b8-955f-6d3538fe86aa",
+    "partnerName": "SFEIR",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/da0fe89b-1047-41df-8172-dbbedff52e75/original.png"
+  },
+  {
+    "id": "17902557-0b80-4124-a60b-c04f169fe1dc",
+    "name": "Application SLAW",
+    "startTime": "2026-06-11T08:00",
+    "endTime": "2026-06-12T17:30",
+    "partnerId": "5dd7905c-eb65-4856-a593-1ca7aed39d09",
+    "partnerName": "NEXTOO",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/16b8b32c-06ca-439c-bee5-aa1d33e7bd5b/original.png"
+  },
+  {
+    "id": "d243ec73-e8cd-48ec-b844-d42255db4900",
+    "name": "Souvenir Photo (Photobooth)",
+    "startTime": "2026-06-11T08:30",
+    "endTime": "2026-06-12T18:00",
+    "partnerId": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413",
+    "partnerName": "Sopra Steria",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/original.png"
+  },
+  {
+    "id": "439d587c-2a33-469b-a853-52c04cb67355",
+    "name": "Stand de VR",
+    "startTime": "2026-06-11T08:30",
+    "endTime": "2026-06-12T16:45",
+    "partnerId": "e477e888-2bc6-4fc4-80e3-ccd2ce5d3f24",
+    "partnerName": "Boulanger",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/c89e4d6e-1a25-494c-ae15-62000abbb737/original.png"
+  },
+  {
+    "id": "42be1275-50d0-4bb7-8426-2fb5e13b2bbc",
+    "name": "La quête de la MagiSIIenne",
+    "startTime": "2026-06-11T08:30",
+    "endTime": "2026-06-11T17:30",
+    "partnerId": "223da456-051d-40c7-ba81-2974c7adf11b",
+    "partnerName": "SII",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/original.png"
+  },
+  {
+    "id": "74769416-9444-43a4-b2e9-5b2a3bc61f94",
+    "name": "Initiation à la langue des signes",
+    "startTime": "2026-06-11T08:30",
+    "endTime": "2026-06-12T18:00",
+    "partnerId": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413",
+    "partnerName": "Sopra Steria",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/original.png"
+  },
+  {
+    "id": "e4eef32b-e17b-4184-8eb5-7aa57b340cd2",
+    "name": "Démonstration PC Gamer SkillCorp",
+    "startTime": "2026-06-11T08:40",
+    "endTime": "2026-06-12T16:30",
+    "partnerId": "e477e888-2bc6-4fc4-80e3-ccd2ce5d3f24",
+    "partnerName": "Boulanger",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/c89e4d6e-1a25-494c-ae15-62000abbb737/original.png"
+  },
+  {
+    "id": "c48fc88b-64de-4003-a8ec-788eff27f24c",
+    "name": "Relève notre défi rétro gaming ",
+    "startTime": "2026-06-11T09:00",
+    "endTime": "2026-06-12T17:15",
+    "partnerId": "84092ac1-1be4-47dd-963a-e88ba4b7c9c6",
+    "partnerName": "INFOGENE",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/37344f02-7259-4750-bc7d-cf38531a08d1/original.png"
+  },
+  {
+    "id": "9c5591c0-dcb2-422a-ac5f-3f8839d2a556",
+    "name": "Viens tester ton mojo et gagne du cad.IO !",
+    "startTime": "2026-06-11T09:00",
+    "endTime": "2026-06-12T17:00",
+    "partnerId": "88299768-0da1-4b3b-969e-16bf0fc27772",
+    "partnerName": "bpifrance",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/5a679c64-3ae9-47a0-97f7-8e57aa01fe57/original.png"
+  },
+  {
+    "id": "147faf08-0643-4902-ac46-218b5c6c9fa5",
+    "name": "MAchine Pop-corn",
+    "startTime": "2026-06-11T09:00",
+    "endTime": "2026-06-12T17:00",
+    "partnerId": "c2388cde-1d8e-4411-8723-449ed4160981",
+    "partnerName": "IKIVIA",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/b407a8d4-5adb-47bb-8b13-71b9c36f0bcb/original.png"
+  },
+  {
+    "id": "2440154c-cbf0-44c9-a7c2-aac055f76069",
+    "name": "Scanne, Gratte et Gagne",
+    "startTime": "2026-06-11T09:00",
+    "endTime": "2026-06-12T17:30",
+    "partnerId": "84092ac1-1be4-47dd-963a-e88ba4b7c9c6",
+    "partnerName": "INFOGENE",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/37344f02-7259-4750-bc7d-cf38531a08d1/original.png"
+  },
+  {
+    "id": "bf910192-c93b-4b66-bd1f-50290567f9ce",
+    "name": "Fléchettes",
+    "startTime": "2026-06-11T09:00",
+    "endTime": "2026-06-12T17:00",
+    "partnerId": "c2388cde-1d8e-4411-8723-449ed4160981",
+    "partnerName": "IKIVIA",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/b407a8d4-5adb-47bb-8b13-71b9c36f0bcb/original.png"
+  },
+  {
+    "id": "bb12a5f6-8865-4d3f-a75a-c3a307dfbdac",
+    "name": "Venez rencontrer Le Monstre",
+    "startTime": "2026-06-11T09:00",
+    "endTime": "2026-06-12T17:00",
+    "partnerId": "b528f5fc-10bf-4d3c-90c7-8a80de206bc2",
+    "partnerName": "Les-Tilleuls.coop",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/e9fdeb21-a39b-4a0f-a021-233d0c2f6bb8/original.png"
+  },
+  {
+    "id": "594b29ac-3a3e-4e20-833c-2331d444a041",
+    "name": "🎸 Hack the Beat ",
+    "startTime": "2026-06-11T09:00",
+    "endTime": "2026-06-12T18:00",
+    "partnerId": "52718a08-88e6-4d74-9339-9adaa44d8ef7",
+    "partnerName": "Collaboration Betters The World (CBTW)",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/ab04d342-b873-41a9-aac6-2ea312fd2e81/original.png"
+  },
+  {
+    "id": "ccbeba0e-fcca-493e-a585-872c8ef50749",
+    "name": "Course Mario Kart - Défi contre la montre",
+    "startTime": "2026-06-11T09:00",
+    "endTime": "2026-06-11T16:30",
+    "partnerId": "9f783acc-fc9d-4628-a030-56e1952dcff3",
+    "partnerName": "Vaduo Consulting",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/original.svg"
+  },
+  {
+    "id": "e43e9e20-610c-42b7-a2f6-0f35d4551f1a",
+    "name": "Bornes photos",
+    "startTime": "2026-06-11T09:13",
+    "endTime": "2026-06-12T16:45",
+    "partnerId": "5dd7905c-eb65-4856-a593-1ca7aed39d09",
+    "partnerName": "NEXTOO",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/16b8b32c-06ca-439c-bee5-aa1d33e7bd5b/original.png"
+  },
+  {
+    "id": "30a885d8-9f2d-4c95-af6a-508e0fefc6c2",
+    "name": "Complices au stand Shodo : jouez, communiquez, gagnez !",
+    "startTime": "2026-06-11T09:30",
+    "endTime": "2026-06-12T16:30",
+    "partnerId": "d2364373-a68c-452f-9a52-3650847fcace",
+    "partnerName": "Shodo Lille",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/aeb9a9e2-a5fc-4afb-a259-fc440c1c68ff/original.png"
+  },
+  {
+    "id": "eee62d5c-dd96-49ad-897b-839b206f975a",
+    "name": "Podcast Technologies en Pratique",
+    "startTime": "2026-06-11T10:00",
+    "endTime": "2026-06-12T17:30",
+    "partnerId": "bdd51206-4351-48e6-8687-e5ea227fb53e",
+    "partnerName": "EKITE",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/original.svg"
+  },
+  {
+    "id": "ee9cbd1f-d04a-4202-bcb6-6eb0ff019113",
+    "name": "Hot Ones ",
+    "startTime": "2026-06-11T10:00",
+    "endTime": "2026-06-12T16:00",
+    "partnerId": "8239fc66-d32e-47c7-a2d7-abf116a558dd",
+    "partnerName": "Holberton",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/297875f9-fe0c-4106-8c92-00b3ff9a3ec5/original.png"
+  },
+  {
+    "id": "882b8d6e-19d1-4ccf-ae13-d4f125054565",
+    "name": "SII Bot",
+    "startTime": "2026-06-11T10:00",
+    "endTime": "2026-06-11T17:30",
+    "partnerId": "223da456-051d-40c7-ba81-2974c7adf11b",
+    "partnerName": "SII",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/original.png"
+  },
+  {
+    "id": "65cce78d-d930-4513-bd27-d62e5d09e42d",
+    "name": "Space Shooter",
+    "startTime": "2026-06-11T10:00",
+    "endTime": "2026-06-12T17:00",
+    "partnerId": "bdd51206-4351-48e6-8687-e5ea227fb53e",
+    "partnerName": "EKITE",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/original.svg"
+  },
+  {
+    "id": "b76d031a-d9f5-42d8-ab21-d389c7603593",
+    "name": "🎙️ La Voix de l’Innovation",
+    "startTime": "2026-06-11T10:00",
+    "endTime": "2026-06-12T17:30",
+    "partnerId": "bdd51206-4351-48e6-8687-e5ea227fb53e",
+    "partnerName": "EKITE",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/original.svg"
+  },
+  {
+    "id": "f69f0d6d-64e1-40cb-bd23-ed55e56647b4",
+    "name": "🍻 Apéro innovation – 12h00",
+    "startTime": "2026-06-11T12:00",
+    "endTime": "2026-06-12T14:00",
+    "partnerId": "bdd51206-4351-48e6-8687-e5ea227fb53e",
+    "partnerName": "EKITE",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/bd2ed75e-6a8f-4de0-a497-eeef2df7dd31/original.svg"
+  },
+  {
+    "id": "afefba78-0b9e-43cd-b9cd-c9c34c0b952b",
+    "name": "Animation Gourmande - Crêpes Party",
+    "startTime": "2026-06-11T14:00",
+    "endTime": "2026-06-11T17:30",
+    "partnerId": "9f783acc-fc9d-4628-a030-56e1952dcff3",
+    "partnerName": "Vaduo Consulting",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/original.svg"
+  },
+  {
+    "id": "ada40c52-899d-4d9a-8793-03561ad1539d",
+    "name": "Atelier Smoothies avec un Chef",
+    "startTime": "2026-06-11T15:00",
+    "endTime": "2026-06-11T17:00",
+    "partnerId": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+    "partnerName": "AXA FRANCE IARD",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png"
+  },
+  {
+    "id": "6bc77018-6fc4-4bea-aae7-d5f38fb094f7",
+    "name": "Loterie – À gagner : une enceinte JBL",
+    "startTime": "2026-06-11T16:10",
+    "endTime": "2026-06-11T16:30",
+    "partnerId": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+    "partnerName": "AXA FRANCE IARD",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png"
+  },
+  {
+    "id": "b351111e-f80f-4ac1-9492-02cb6cf8e86f",
+    "name": "Quizz kahoot",
+    "startTime": "2026-06-11T16:15",
+    "endTime": "2026-06-11T16:30",
+    "partnerId": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413",
+    "partnerName": "Sopra Steria",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/original.png"
+  },
+  {
+    "id": "a85e797d-71c6-402b-b79b-8c686274e0e3",
+    "name": "La quête de la MagiSIIenne",
+    "startTime": "2026-06-12T08:31",
+    "endTime": "2026-06-12T16:45",
+    "partnerId": "223da456-051d-40c7-ba81-2974c7adf11b",
+    "partnerName": "SII",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/original.png"
+  },
+  {
+    "id": "d48e6000-0d05-41b4-a518-bfe311efdb22",
+    "name": "SII Bot",
+    "startTime": "2026-06-12T10:00",
+    "endTime": "2026-06-12T16:00",
+    "partnerId": "223da456-051d-40c7-ba81-2974c7adf11b",
+    "partnerName": "SII",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/06c313bd-d6bb-4af7-97cd-a4451cb3fc2f/original.png"
+  },
+  {
+    "id": "c4608373-c972-444a-9e6c-57199a53da5f",
+    "name": "Animation Gourmande - Crêpes Party",
+    "startTime": "2026-06-12T14:00",
+    "endTime": "2026-06-12T17:30",
+    "partnerId": "9f783acc-fc9d-4628-a030-56e1952dcff3",
+    "partnerName": "Vaduo Consulting",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/original.svg"
+  },
+  {
+    "id": "365dfff9-f9ac-4bac-be27-54f6d020087d",
+    "name": "Course Mario Kart - Défi contre la montre",
+    "startTime": "2026-06-12T14:00",
+    "endTime": "2026-06-12T16:30",
+    "partnerId": "9f783acc-fc9d-4628-a030-56e1952dcff3",
+    "partnerName": "Vaduo Consulting",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/c1cd30b1-a315-44a5-ad33-0d182b8020cb/original.svg"
+  },
+  {
+    "id": "2de9be5f-e2a8-4fa4-ad67-335f7446a8df",
+    "name": "Atelier Sucettes Waffles avec un Chef",
+    "startTime": "2026-06-12T15:00",
+    "endTime": "2026-06-12T17:00",
+    "partnerId": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+    "partnerName": "AXA FRANCE IARD",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png"
+  },
+  {
+    "id": "fa145963-ac3d-43cd-9b60-94b7855f4241",
+    "name": "Loterie – À gagner : un mini rétro-projecteur",
+    "startTime": "2026-06-12T16:00",
+    "endTime": "2026-06-12T16:10",
+    "partnerId": "09af396c-4336-44ad-9b56-e10d0f7b2de4",
+    "partnerName": "AXA FRANCE IARD",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/0c25e5dd-d236-4dd0-a175-9543ef60be80/original.png"
+  },
+  {
+    "id": "754de048-6a31-497c-a6fb-ba12ce06ce47",
+    "name": "Quizz kahoot",
+    "startTime": "2026-06-12T16:15",
+    "endTime": "2026-06-12T16:30",
+    "partnerId": "f2a1f6d5-224d-47b7-bbaf-00452e5f9413",
+    "partnerName": "Sopra Steria",
+    "partnerLogoUrl": "https://storage.googleapis.com/partners-connect/companies/bbf0b368-d75d-44a1-bdcf-1310dcde8f25/original.png"
+  }
+]

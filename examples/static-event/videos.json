@@ -1,0 +1,122 @@
+[
+  {
+    "id": "qj22GkzRbOk",
+    "videoId": "qj22GkzRbOk",
+    "title": "[DevLille 2025] Keynote d'ouverture - Jour 1",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:49+00:00",
+    "thumbnailUrl": "https://i2.ytimg.com/vi/qj22GkzRbOk/hqdefault.jpg"
+  },
+  {
+    "id": "9VmH4xp7Qls",
+    "videoId": "9VmH4xp7Qls",
+    "title": "[DevLille 2025] La GenAI au service du Retail",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:42+00:00",
+    "thumbnailUrl": "https://i2.ytimg.com/vi/9VmH4xp7Qls/hqdefault.jpg"
+  },
+  {
+    "id": "WfOKLiDtkNI",
+    "videoId": "WfOKLiDtkNI",
+    "title": "[DevLille 2025] Commons : Good or Evil ?",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:47+00:00",
+    "thumbnailUrl": "https://i4.ytimg.com/vi/WfOKLiDtkNI/hqdefault.jpg"
+  },
+  {
+    "id": "v8_bs6NNHC8",
+    "videoId": "v8_bs6NNHC8",
+    "title": "[DevLille 2025] Rendre ses tests concis et évolutifs grâce à JUnit 5 & cie",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:52+00:00",
+    "thumbnailUrl": "https://i3.ytimg.com/vi/v8_bs6NNHC8/hqdefault.jpg"
+  },
+  {
+    "id": "vYd7k73oOAE",
+    "videoId": "vYd7k73oOAE",
+    "title": "[DevLille 2025] 45 min pour mettre son application à genoux : le guide complet du test de charge",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:52+00:00",
+    "thumbnailUrl": "https://i3.ytimg.com/vi/vYd7k73oOAE/hqdefault.jpg"
+  },
+  {
+    "id": "kvtsjCPPnEg",
+    "videoId": "kvtsjCPPnEg",
+    "title": "[DevLille 2025] La santé a-t-elle peur du cloud ?",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:49+00:00",
+    "thumbnailUrl": "https://i4.ytimg.com/vi/kvtsjCPPnEg/hqdefault.jpg"
+  },
+  {
+    "id": "J6U0yi1TnQ8",
+    "videoId": "J6U0yi1TnQ8",
+    "title": "[DevLille 2025] Jouons de la musique avec Compose Multiplatform 🤘",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:45+00:00",
+    "thumbnailUrl": "https://i3.ytimg.com/vi/J6U0yi1TnQ8/hqdefault.jpg"
+  },
+  {
+    "id": "VkqMcSDEm-s",
+    "videoId": "VkqMcSDEm-s",
+    "title": "[DevLille 2025] Réconciliez-vous avec la sécurité et surmontez ses défis avec Dependency-Track !",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:44+00:00",
+    "thumbnailUrl": "https://i3.ytimg.com/vi/VkqMcSDEm-s/hqdefault.jpg"
+  },
+  {
+    "id": "ZHspxZYadLI",
+    "videoId": "ZHspxZYadLI",
+    "title": "[DevLille 2025] Développer une application mobile avec React Native, pourquoi Expo change la donne ?",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:47+00:00",
+    "thumbnailUrl": "https://i3.ytimg.com/vi/ZHspxZYadLI/hqdefault.jpg"
+  },
+  {
+    "id": "NB7L3FNXcLs",
+    "videoId": "NB7L3FNXcLs",
+    "title": "[DevLille 2025] Docker Bake, élégance et standardisation pour le build de vos images Docker",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:44+00:00",
+    "thumbnailUrl": "https://i3.ytimg.com/vi/NB7L3FNXcLs/hqdefault.jpg"
+  },
+  {
+    "id": "QkEmDuN7T9g",
+    "videoId": "QkEmDuN7T9g",
+    "title": "[DevLille 2025] La programmation fonctionnelle en Java sans grimacer",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:44+00:00",
+    "thumbnailUrl": "https://i2.ytimg.com/vi/QkEmDuN7T9g/hqdefault.jpg"
+  },
+  {
+    "id": "MtNIK-dK5U8",
+    "videoId": "MtNIK-dK5U8",
+    "title": "[DevLille 2025] Rock SOLID: using the SOLID principles to write code that stands the test of time",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:44+00:00",
+    "thumbnailUrl": "https://i2.ytimg.com/vi/MtNIK-dK5U8/hqdefault.jpg"
+  },
+  {
+    "id": "CNuza-kQAf4",
+    "videoId": "CNuza-kQAf4",
+    "title": "[DevLille 2025] API Green Score en action",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:42+00:00",
+    "thumbnailUrl": "https://i4.ytimg.com/vi/CNuza-kQAf4/hqdefault.jpg"
+  },
+  {
+    "id": "t9hJd_ltoYc",
+    "videoId": "t9hJd_ltoYc",
+    "title": "[DevLille 2025] Comment coder dans un vieux langage que personne ne connaît ?",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:49+00:00",
+    "thumbnailUrl": "https://i1.ytimg.com/vi/t9hJd_ltoYc/hqdefault.jpg"
+  },
+  {
+    "id": "eSh7tARttek",
+    "videoId": "eSh7tARttek",
+    "title": "[DevLille 2025] Accords toltèques pour développeurs modernes : bouclier anti-stress et anti-bug ?",
+    "description": "",
+    "publishedAt": "2025-06-18T10:01:49+00:00",
+    "thumbnailUrl": "https://i2.ytimg.com/vi/eSh7tARttek/hqdefault.jpg"
+  }
+]

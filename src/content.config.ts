@@ -2,61 +2,16 @@ import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 import { buildTalkSheets } from "./core/agenda";
 import { dataSource } from "./data";
-import { SOCIAL_TYPES, type Activity, type Partner } from "./data/domain";
-
-const socialsSchema = z
-  .array(z.object({ type: z.enum(SOCIAL_TYPES), url: z.string() }))
-  .default([]);
-
-const partnerRefSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  logoUrl: z.string(),
-});
-
-const jobSchema = z.object({
-  url: z.string(),
-  title: z.string(),
-  companyName: z.string(),
-  location: z.string(),
-  salary: z
-    .object({
-      min: z.number(),
-      max: z.number(),
-      recurrence: z.string(),
-    })
-    .nullable(),
-  requirements: z.number().nullable(),
-  publishDate: z.number(),
-});
-
-const speakerSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  bio: z.string(),
-  photoUrl: z.string(),
-  pronouns: z.string().nullable(),
-  company: z.string().nullable(),
-  jobTitle: z.string().nullable(),
-  socials: socialsSchema,
-  websiteUrl: z.string().nullable(),
-  partners: z.array(partnerRefSchema).default([]),
-});
+import type { Activity, Partner } from "./data/domain";
+import {
+  activitySchema,
+  partnerSchema,
+  speakerSchema,
+  videoSchema,
+} from "./data/schemas";
 
 const sponsors = defineCollection({
-  schema: z.object({
-    id: z.string(),
-    name: z.string(),
-    description: z.string(),
-    logoUrl: z.string(),
-    logoName: z.string(),
-    siteUrl: z.string().nullable(),
-    videoUrl: z.string().nullable(),
-    socials: socialsSchema,
-    tiers: z.array(z.string()),
-    jobs: z.array(jobSchema).default([]),
-    speakerIds: z.array(z.string()).default([]),
-  }),
+  schema: partnerSchema,
 
   loader: async () => {
     try {
@@ -109,6 +64,10 @@ const speakers = defineCollection({
   loader: () => dataSource.getSpeakers(),
 });
 
+/**
+ * Fiche de talk : une session de l'agenda dont les speakers sont résolus.
+ * Seule collection qui n'est pas un type du domaine tel quel.
+ */
 const talks = defineCollection({
   schema: z.object({
     sessionId: z.string(),
@@ -133,14 +92,7 @@ const verbatims = defineCollection({
 });
 
 const youtubeVideos = defineCollection({
-  schema: z.object({
-    id: z.string(),
-    videoId: z.string(),
-    title: z.string(),
-    description: z.string(),
-    publishedAt: z.string(),
-    thumbnailUrl: z.string(),
-  }),
+  schema: videoSchema,
 
   loader: async () => {
     try {
@@ -156,15 +108,7 @@ const youtubeVideos = defineCollection({
 });
 
 const partnerActivities = defineCollection({
-  schema: z.object({
-    id: z.string(),
-    name: z.string(),
-    startTime: z.string(),
-    endTime: z.string(),
-    partnerId: z.string(),
-    partnerName: z.string(),
-    partnerLogoUrl: z.string().nullable(),
-  }),
+  schema: activitySchema,
 
   loader: async () => {
     try {

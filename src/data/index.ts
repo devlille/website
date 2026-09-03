@@ -3,12 +3,19 @@
  *
  * Rien d'autre dans le site ne doit importer un adapter : on importe
  * `dataSource` et on parle au domaine. La source est choisie par la variable
- * d'environnement `DATA_SOURCE` (`http` par défaut) ; l'adapter statique
- * arrivera en phase 3.
+ * d'environnement `DATA_SOURCE` :
+ *
+ * - `http` (défaut) — l'API DevLille ;
+ * - `static` — un dossier de fichiers JSON, sans aucun appel réseau. Le dossier
+ *   se choisit avec `STATIC_DATA_DIR` (`examples/static-event` par défaut).
  */
 import config from "../config/config";
 import { createHttpDataSource } from "./adapters/http";
+import { createStaticDataSource } from "./adapters/static";
 import type { EventDataSource } from "./ports/data-source";
+
+/** Jeu de démonstration livré avec le dépôt. */
+const DEFAULT_STATIC_DIR = "examples/static-event";
 
 const createDataSource = (): EventDataSource => {
   const name = process.env.DATA_SOURCE ?? "http";
@@ -20,9 +27,13 @@ const createDataSource = (): EventDataSource => {
         eventId: config.eventId,
         youtubePlaylistId: config.youtubePlaylistId,
       });
+    case "static":
+      return createStaticDataSource({
+        dir: process.env.STATIC_DATA_DIR ?? DEFAULT_STATIC_DIR,
+      });
     default:
       throw new Error(
-        `DATA_SOURCE="${name}" inconnue. Sources disponibles : "http".`,
+        `DATA_SOURCE="${name}" inconnue. Sources disponibles : "http", "static".`,
       );
   }
 };

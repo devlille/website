@@ -1,0 +1,91 @@
+{
+  "id": "7193c477-1579-4216-a6cb-c8854e848395",
+  "name": "DevLille 2026",
+  "startDate": "2026-06-11",
+  "endDate": "2026-06-12",
+  "faq": [
+    {
+      "id": "3837ec2e-3915-4682-82f5-049379e45393",
+      "order": 0,
+      "question": "Qu'est-ce que le DevLille ?",
+      "response": "Le DevLille, anciennement Devfest Lille, est un événement tech communautaire dédié à la communauté lilloise. Historiquement, l'événement était organisé dans un programme Google de grande envergure et présent un partout à travers le monde. Aujourd'hui, le groupe organisationnel a voulu s'émanciper de ce programme pour organiser un événement local avec des valeurs fortes environnementales, d'accessibilité et d'échange.\n\nLe DevLille est une occasion unique de partager et d'échanger autour des technologies web, cloud, sécurité et bien d'autres thématiques pendant 2 jours.",
+      "acronyms": [],
+      "actions": []
+    },
+    {
+      "id": "c3206190-02fa-433e-bc21-d966cebc88bc",
+      "order": 1,
+      "question": "Qui organise cet évènement ?",
+      "response": "L'équipe du DevLille est organisé par une équipe de bénévoles, passionnés de nouvelles technologies et insufliant les valeurs à l'événement. Historiquement, ce groupe faisait parti du programme Google Developers Group mais est aujourd'hui indépendant.",
+      "acronyms": [],
+      "actions": []
+    },
+    {
+      "id": "501c7861-c0a7-4eb0-9320-1dce32748f38",
+      "order": 2,
+      "question": "Comment me rendre au DevLille ?",
+      "response": "Le DevLille aura lieu au Lille Grand Palais et bénéficie donc de ses nombreux moyens d'accès.\n\n* Si vous venez en vélo, la station Zénith devant Lille Grand Palais dispose de 2 stations V'lille (4 minutes à pied) : Cité administrative et Hôtel de région.\n* Si vous venez en bus, prenez la Citadine 1 et sortez à l'arrêt Zénith.\n* Si vous venez en métro, 4 stations déservent Lille Grand Palais : Lille Grand Palais à 7 minutes à pied, Mairie de Lille à 6 minutes à pied et Gare Lille Flandres et Lille Europe à 9 minutes à pied.\n* Si vous venez en train, la gare TGV de Lille Europe et de Lille Flandres sont à 9 minutes à pied.\n* Si vous venez en voiture, Lille Grand Palais se trouve aux portes de l'autoroute A1 et A25.",
+      "acronyms": [],
+      "actions": []
+    },
+    {
+      "id": "99a6ec5d-86b0-4bdb-8d34-773e32802e00",
+      "order": 3,
+      "question": "Comment va se dérouler le DevLille ?",
+      "response": "La journée comprendra trois types de sessions : les codelabs (120mn), les conférences (50mn) et les quickies (20mn). Cependant, il n'est pas encore possible de proposer des sujets pour l'édition 2026 de l'événement.",
+      "acronyms": [
+        {
+          "key": "mn",
+          "value": "minutes"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "id": "3ad3a51f-0386-4cbc-bb16-72e5993123f4",
+      "order": 4,
+      "question": "Faut-il prévoir son repas ?",
+      "response": "Rien à prévoir pour le déjeuner, il vous sera servi sur le temps de midi dans l’espace des partenaires.",
+      "acronyms": [],
+      "actions": []
+    },
+    {
+      "id": "69caf6cc-7db9-4e8e-8b24-69093b3485fc",
+      "order": 5,
+      "question": "Où puis-je consulter l'agenda et les informations de l'évènement ?",
+      "response": "Le site web est notre support de communication principal pour toutes les informations en lien avec l'évènement mais nous mettons aussi à disponible une application mobile pour accéder plus facilement et rapidement à votre agenda, nos partenaires et des informations complémentaires sur l'évènement comme des cartes intéractives, le menu, l'adresse de Lille Grand Palais, etc. L'application est disponible sur Android et iOS :\n\n- Android: https://play.google.com/store/apps/details?id=org.gdglille.devfest.android\n- iOS : https://apps.apple.com/us/app/devlille/id6765912011",
+      "acronyms": [],
+      "actions": []
+    },
+    {
+      "id": "449ad3ba-644e-49ca-9805-49fe88647a70",
+      "order": 6,
+      "question": "Puis-je venir avec un bébé ?",
+      "response": "Oui, nous allons mettre à disposition une salle de repos/allaitement pour les jeunes parents qui souhaitent venir accompagnés d'un bébé les jours de la conférence.",
+      "acronyms": [],
+      "actions": []
+    },
+    {
+      "id": "fe6fd7a3-d38a-4508-af70-c5d83750847b",
+      "order": 7,
+      "question": "Comment pouvons-nous nous procurer des places ?",
+      "response": "La billeterie est ouverte et disponible via le lien suivant, Billeterie.",
+      "acronyms": [],
+      "actions": [
+        {
+          "order": 0,
+          "label": "Billeterie",
+          "url": "https://www.billetweb.fr/devlille-2026"
+        }
+      ]
+    },
+    {
+      "id": "9bc0dd63-578b-4feb-821b-2da0a297b6e8",
+      "order": 8,
+      "question": "Quelles sont les différences entre le billet 1 et 2 jours ?",
+      "response": "L'événement est une conférence sur 2 jours mais nous mettons à disposition des places pour le premier jour, pour le second ou pour les 2 jours. Les places 1 jour sont à 45€, peu importe le jour choisi, et les places 2 jours sont à 90€.",
+      "acronyms": [],
+      "actions": []
+    }
+  ]
+}

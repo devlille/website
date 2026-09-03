@@ -14,7 +14,7 @@
 - [Architecture cible](#architecture-cible)
 - [Phase 0 — Filet de sécurité (tests)](#phase-0--filet-de-sécurité-tests-) ✅
 - [Phase 1 — Couche données : domaine + port + adapter HTTP](#phase-1--couche-données--domaine--port--adapter-http) ✅
-- [Phase 2 — Nettoyage et corrections](#phase-2--nettoyage-et-corrections)
+- [Phase 2 — Nettoyage et corrections](#phase-2--nettoyage-et-corrections) ✅
 - [Phase 3 — Adapter statique (le « sans backend »)](#phase-3--adapter-statique-le--sans-backend-)
 - [Phase 4 — Config et contenu](#phase-4--config-et-contenu)
 - [Phase 5 — Thème et assets](#phase-5--thème-et-assets)
@@ -229,68 +229,122 @@ affichera un espace normal là où il affichait un insécable si l'API en réint
 
 ---
 
-## Phase 2 — Nettoyage et corrections
+## Phase 2 — Nettoyage et corrections ✅
 
-> Indépendante des autres phases, faisable en parallèle. Corrige des bugs réels
-> sur le site en production.
+> Indépendante des autres phases. Corrige des bugs réels sur le site en
+> production, rend le build reproductible et supprime les `set:html` non filtrés.
 
 ### Bugs
 
-- [ ] `src/layouts/Layout.astro:23` et `:45` — template Eleventy jamais remplacé,
+- [x] `src/layouts/Layout.astro:23` et `:45` — template Eleventy jamais remplacé,
       publié tel quel dans le JSON-LD :
       `url: "https://www.billetweb.fr/devlille-{{ collections.config.edition }}"`
-      (2 offres sur 3 concernées).
+      (2 offres sur 3 concernées). Les trois offres dérivent désormais de
+      `config.billetwebUrl` + `config.edition`.
 - [x] `src/content.config.ts:222` — `buildPartnerActivities` lit `activity.partnerId`
       alors que l'API renvoie `partner_id`. La colonne « Activités » de l'audit est
       donc toujours `✗`. **Résolu en phase 1** : le domaine expose `partnerId`,
       l'audit lit des `Activity` et non plus la réponse brute.
-- [ ] `src/pages/agenda.astro:8` et `src/pages/animations.astro:8` — `const og = {…}`
-      déclaré mais jamais passé à `<Layout>` : ces deux pages n'ont **aucune balise
-      Open Graph**.
-- [ ] `src/layouts/Layout.astro` — `og.ogTitle` n'est jamais lu, alors que 3 pages
-      le renseignent.
-- [ ] `src/pages/index.astro` — `<picture>` imbriqué en double (bloc « scratch »).
-- [ ] `src/core/partners.ts` — `normalizeSponsorUrl` teste `siteUrl.includes("https://")`
-      au lieu de `startsWith` : une URL sans schéma qui contient `https://` dans un
-      paramètre n'est pas préfixée. Comportement figé par un test en phase 0.
+- [x] `src/pages/agenda.astro:8` et `src/pages/animations.astro:8` — `const og = {…}`
+      déclaré mais jamais passé à `<Layout>` : ces deux pages n'avaient **aucune
+      balise Open Graph**. `og` est passé, et un `ogUrl` ajouté aux deux pages qui
+      n'en portaient pas — elles ont maintenant `og:title`, `og:url`,
+      `og:description`, `og:image` et `<meta name="description">`.
+- [x] `src/layouts/Layout.astro` — `og.ogTitle` n'était jamais lu, alors que 3 pages
+      le renseignent. `og:title` vaut désormais `ogTitle ?? title`.
+- [x] `src/pages/index.astro` — `<picture>` imbriqué en double (bloc « scratch »).
+- [x] `src/data/adapters/http/mappers.ts` — `normalizeSiteUrl` testait
+      `siteUrl.includes("https://")` au lieu de `startsWith` : une URL sans schéma
+      contenant `https://` dans un paramètre n'était pas préfixée. Le test qui
+      figeait ce comportement en phase 0 a été retourné avant la correction.
 
 ### Déterminisme du build
 
-- [ ] `speakers.astro:26` et `talk-page-[id].astro:79` — `?v=${Math.random()}` sur les
-      photos de speakers : casse le cache navigateur **et** rend le build non
-      reproductible. À supprimer (ou remplacer par un hash stable côté API).
-- [ ] `Layout.astro:16` (verbatim aléatoire) et `youtube-videos.astro:7` (3 vidéos
-      aléatoires) — à seeder sur l'édition, ou à assumer explicitement.
-- [ ] `astro.config.mjs` — `sitemap.lastmod: new Date()` fait churner tout le sitemap
-      à chaque build nocturne. Utiliser une date de contenu.
+- [x] `?v=${Math.random()}` sur les photos de speakers, supprimé aux **trois**
+      endroits — `speakers.astro`, `talk-page-[id].astro` et
+      `speaker-page-[id].astro`, ce dernier ne figurant pas à l'inventaire.
+      Cassait le cache navigateur *et* le déterminisme du build.
+- [x] `Layout.astro` (verbatim aléatoire) et `youtube-videos.astro` (3 vidéos
+      aléatoires) — désormais tirés par `src/core/pick.ts` (FNV-1a + mulberry32 +
+      Fisher-Yates), graine `verbatim-${edition}` / `videos-${edition}` : la
+      sélection change d'une édition à l'autre, plus d'un build à l'autre.
+- [x] `astro.config.mjs` — `sitemap.lastmod: new Date()` faisait churner tout le
+      sitemap à chaque build nocturne. Remplacé par `config.contentUpdatedAt`,
+      date de contenu bumpée à la main.
 
 ### Code mort et bruit
 
-- [ ] `src/layouts/Layout.astro:3` — `import editions` inutilisé.
-- [ ] `src/content.config.ts` — `fetchImage`, `getExtensionFromLogoUrl`, `tempFolder`,
-      `ApiPartnerType` : chemin de téléchargement des logos jamais emprunté.
-- [ ] `src/content.config.ts` — champ `jobs` du schéma sponsors, jamais rempli par le
-      loader (l'audit le teste pourtant → toujours `✗`).
-- [ ] **18 `console.log`** à retirer ou passer derrière un flag `DEBUG`, dont :
-  - `sponsors.astro:9` — dump JSON complet du premier sponsor
-  - `partner-[id].astro:135` — `<script>` client qui logge dans le navigateur
-  - `content.config.ts` — l'URL loggée 2× de suite, `console.table` d'audit
-- [ ] Dédupliquer `eachDayBetween` / `toDateOnly` / `formatLocalDate`, aujourd'hui
-      copiés à l'identique entre `getActivitiesByDate.ts` et `SponsorActivities.astro`.
+- [x] `src/layouts/Layout.astro:3` — `import editions` inutilisé.
+- [x] `src/content.config.ts` — `fetchImage`, `getExtensionFromLogoUrl`,
+      `tempFolder`, `ApiPartnerType` : **supprimés en phase 1** avec le chemin de
+      téléchargement des logos.
+- [x] `src/content.config.ts` — champ `jobs` du schéma sponsors. **Rempli depuis la
+      phase 1** (`toPartner` mappe `partner.jobs`) : 14 fiches partenaires
+      publient des offres, la colonne d'audit n'est plus systématiquement `✗`.
+- [x] **18 `console.log`** ramenés à **0 en production** : les traces de debug de
+      `partner-[id].astro` (build et client) sont supprimées, celle de
+      `getTalksByDate.ts` devient un `console.error` explicite, et l'audit
+      `console.table` des sponsors passe derrière `AUDIT_SPONSORS=1`.
+- [x] Deux blocs de markup mort, expédiés sur **toutes** les pages, supprimés :
+      la boucle Eleventy commentée de `Footer.astro` et le `<div>` de dates
+      commenté de `Layout.astro`.
+- [x] Dédupliquer `eachDayBetween` / `toDateOnly` / `formatLocalDate` :
+      **fait en phase 0**, ils vivent dans `src/core/date.ts`.
 
 ### Sécurité
 
-- [ ] `marked` + `set:html` sans sanitisation sur des données backend (abstracts, bios,
-      FAQ). Avec des sources tierces en marque blanche, c'est un vrai risque.
-      → **reporté de la phase 1** : le domaine transporte le Markdown brut (dont
-      `stripMarkdown` a besoin pour les meta-descriptions). Introduire un
-      `renderMarkdown()` unique — sanitisation comprise — et remplacer les quatre
-      appels `marked` divergents des templates.
-- [ ] Remplacer les manipulations de HTML par chaînes (`shiftHeadings` dans
-      `talk-page-[id].astro`, `.replaceAll("h2", "p")` dans `getTalksByDate.ts`) par
-      un renderer `marked` configuré.
+- [x] `marked` + `set:html` sans sanitisation sur des données backend (abstracts,
+      bios, FAQ). Les **quatre** appels `marked` divergents des templates et le
+      cinquième de `src/core/agenda.ts` sont remplacés par un
+      `renderMarkdown()` unique — `src/core/markdown.ts` — qui rend *puis* assainit
+      (`sanitize-html`, liste blanche calquée sur la sortie de `marked`, schémas
+      `http`/`https`/`mailto`).
+- [x] Remplacer les manipulations de HTML par chaînes par un renderer configuré :
+  - `shiftHeadings` (`talk-page-[id].astro`) → `renderMarkdown(…, { headingOffset: 1 })`
+  - `.replaceAll("h2", "p")` (`core/agenda.ts`) → `renderMarkdown(…, { flattenHeadings: true })`,
+    qui n'aplatit plus le mot « h2 » présent dans le texte
+  - la décoration de la FAQ (acronymes `<abbr>`, libellés d'actions en liens) sort
+    du template vers `src/core/faq.ts`, avec échappement des attributs et
+    échappement des métacaractères du libellé avant `new RegExp`
 
----
+### Critère de sortie
+
+- [x] `npm test` vert : **156 tests sur 10 fichiers** (+38, +3 fichiers).
+- [x] `npx knip` sans signalement (aucun export ni dépendance orphelin).
+- [ ] **Pas de vérification de types possible** : ni `typescript` ni
+      `@astrojs/check` n'est installé, et `astro build` ne fait que retirer les
+      annotations. Un `npm run check` (`astro check`) manque au filet de sécurité
+      — à câbler avec la CI en phase 6, ou plus tôt si l'occasion se présente.
+- [x] `npm run test:seo` vert (204 URLs, 77 titres et descriptions uniques).
+- [x] **Build reproductible** : deux `npm run build` consécutifs produisent des
+      `dist/` identiques au octet près. C'était l'objectif principal — il rend
+      enfin la comparaison de `dist/` fiable pour les phases suivantes.
+
+### Écarts assumés sur le HTML produit
+
+Comparaison avec le `dist/` d'avant la phase (326 fichiers de part et d'autre,
+aucun manquant ni ajouté). Tous les écarts sont voulus :
+
+1. **JSON-LD** — les 3 offres portent la vraie URL de billetterie (2 portaient le
+   template Eleventy non substitué). Change toutes les pages.
+2. **Open Graph** — `/agenda` et `/animations` gagnent leurs balises ; les 3 pages
+   qui renseignaient `ogTitle` voient enfin cette valeur dans `og:title` plutôt que
+   le titre de page.
+3. **Photos de speakers** — plus de `?v=NNN` aléatoire.
+4. **Listes Markdown** — la normalisation des puces collées ne s'applique plus
+   qu'aux puces **en milieu de ligne**. Conséquence : une liste déjà correctement
+   formatée reste « serrée » (`<li>texte</li>`) au lieu d'être rendue « loose »
+   (`<li><p>texte</p></li>`) — moins de marges parasites dans la FAQ et les
+   résumés de talks. La contrainte « précédé d'un blanc » protège au passage
+   `**gras** suivi` et `*italique* suivi`, que la normalisation unifiée coupait.
+5. **Entités HTML** — `sanitize-html` normalise `&#39;` en `'`. Texte affiché
+   identique.
+6. **Markup mort** — les deux blocs commentés disparaissent de toutes les pages.
+
+### Dépendance ajoutée
+
+`sanitize-html` (+ `@types/sanitize-html`). Elle ne tourne qu'au build, jamais
+dans le navigateur.
 
 ## Phase 3 — Adapter statique (le « sans backend »)
 
@@ -330,12 +384,14 @@ et feature flags. À éclater :
 
 ### Sortir le métier DevLille du code générique
 
-- [ ] `sponsors.astro` — 7 filtres copiés-collés sur des libellés en dur
-      (`"Pack Gold"`, `"Partenaires DevLille Graine de Dev"`, `"Partenaire Hébergement"`…)
-      → un tableau `sponsorTiers: [{ id, label, match }]` en config + **une seule boucle**.
-- [ ] `content.config.ts:180` `SPONSORING_OVERRIDES` — un UUID Decathlon en dur dans ce
+- [ ] `src/core/sponsor-tiers.ts` — la table `SPONSOR_TIERS` remplace déjà les
+      7 filtres copiés-collés de `sponsors.astro` (phase 0), mais ses libellés
+      restent du DevLille en dur (`"Pack Gold"`,
+      `"Partenaires DevLille Graine de Dev"`, `"Partenaire Hébergement"`…)
+      → la table descend en configuration d'instance.
+- [ ] `data/adapters/http/mappers.ts` `TIER_OVERRIDES` — un UUID Decathlon en dur dans ce
       qui deviendra du code partagé → config d'instance.
-- [ ] `getTalksByDate.ts:14` `guessEventTitle()` — heuristiques 100 % DevLille : salle
+- [ ] `src/core/agenda.ts` `guessEventTitle()` — heuristiques 100 % DevLille : salle
       `"Grand Théâtre"`, plages horaires, libellés `"Keynote d'ouverture"` / `"Lunch"` /
       `"Pause"` → stratégie injectable, ou suppression en fiabilisant les données source.
 - [ ] `FavoriteButton.astro` — `STORAGE_KEY = "devlille_favorites"` → dérivé du
@@ -357,9 +413,9 @@ et feature flags. À éclater :
 ### i18n
 
 - [ ] `locale` en config, `lang` du `<html>` dérivé.
-- [ ] Helper `formatDate` centralisé : `Intl.DateTimeFormat("fr")` est aujourd'hui
-      dupliqué dans `getTalksByDate.ts:165`, `getActivitiesByDate.ts:85` et
-      `SponsorActivities.astro:57`, et `toLocaleString("fr-FR")` dans `JobCard.astro`.
+- [ ] Helper `formatDate` centralisé : `formatLongDate` vit déjà dans
+      `src/core/date.ts` (phase 0) mais la locale `"fr"` y est en dur, tout comme
+      le `toLocaleString("fr-FR")` de `JobCard.astro`.
 - [ ] Dictionnaire `t()` + extraction de toutes les chaînes des composants.
       Même sans jamais faire d'anglais, c'est ce qui permet de rebrander.
 
@@ -444,8 +500,9 @@ des pages).
 | `src/pages/index.astro` | 4 sections de contenu entièrement en dur |
 | `src/pages/a-propos.astro` | équipe en dur dans le HTML |
 | `src/components/Footer.astro` | Mailchimp, liens sociaux, e-mail, stores |
-| `src/components/sponsors.astro` | libellés de packs en dur |
-| `src/utils/getTalksByDate.ts` | heuristiques de salles et d'horaires |
+| `src/core/agenda.ts` | heuristiques de salles et d'horaires (`guessEventTitle`) |
+| `src/core/sponsor-tiers.ts` | libellés des packs de sponsoring |
+| `src/data/adapters/http/mappers.ts` | `TIER_OVERRIDES` (un UUID en dur) |
 | `src/config/config.ts` | 4 responsabilités mélangées |
 
 ### Métriques de suivi
@@ -454,8 +511,11 @@ des pages).
 |---|---|---|---|
 | Appels HTTP par build | 10 | **4** | 3 |
 | `fetch` hors couche données | 8 | **0** | 0 |
-| Fichiers de test | 0 | **7** | ≥ 8 |
-| `console.log` en production | 18 | **4** | 0 |
+| Fichiers de test | 0 | **10** | ≥ 8 |
+| Tests | 0 | **156** | — |
+| `console.log` en production | 18 | **0** | 0 |
+| Appels `marked` divergents | 5 | **0** | 0 |
+| Build reproductible | non | **oui** | oui |
 | Couleurs en dur (CSS) | 5 | 5 | 0 |
 | Occurrences de `any` dans `src/` | 23 | **0** | 0 |
-| Pages sans Open Graph | 2 | 2 | 0 |
+| Pages déclarant un `og` non publié | 2 | **0** | 0 |

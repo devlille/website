@@ -5,14 +5,14 @@ forme de cinq fichiers JSON. Aucun serveur, aucune API, aucune connexion
 Internet : le site se génère à partir de ces fichiers seuls.
 
 ```bash
-npm install
-npm run build:static     # -> dist/, prêt à publier
+pnpm install
+pnpm build:static        # -> dist/, prêt à publier
 ```
 
 Pour travailler sur un autre dossier que celui-ci :
 
 ```bash
-DATA_SOURCE=static STATIC_DATA_DIR=./mon-evenement npm run build
+DATA_SOURCE=static STATIC_DATA_DIR=./mon-evenement pnpm build
 ```
 
 ---
@@ -269,8 +269,8 @@ la deuxième offre du quatrième partenaire.
 Ce dossier est un instantané de l'API de production. Pour le rafraîchir :
 
 ```bash
-npm run dump:static                    # -> examples/static-event/
-npm run dump:static -- ./autre-dossier
+pnpm dump:static                       # -> examples/static-event/
+pnpm dump:static ./autre-dossier
 ```
 
 Le script écrit exactement ce que l'adapter HTTP donne au site : les fichiers

@@ -18,6 +18,7 @@
 - [Phase 3 — Adapter statique (le « sans backend »)](#phase-3--adapter-statique-le--sans-backend-) ✅
 - [Phase 4 — Config et contenu](#phase-4--config-et-contenu) ✅
 - [Phase 5 — Thème et assets](#phase-5--thème-et-assets) ✅
+- [Vérification des types](#vérification-des-types-) ✅
 - [Phase 6 — Extraction du paquet](#phase-6--extraction-du-paquet)
 - [Décisions à arbitrer](#décisions-à-arbitrer)
 - [Annexe — Inventaire des points durs](#annexe--inventaire-des-points-durs)
@@ -102,7 +103,7 @@ Sélection de l'implémentation par variable d'environnement :
 
 ### Tâches
 
-- [x] Ajouter Vitest (`vitest`, `@vitest/coverage-v8`) + script `npm test`
+- [x] Ajouter Vitest (`vitest`, `@vitest/coverage-v8`) + script `pnpm test`
       (+ `test:watch`, `test:coverage`, et l'étape dans la CI CleverCloud).
 - [x] Extraire les fonctions pures actuellement enfouies dans les `.astro` / loaders
       vers des modules testables (sans changer leur comportement) :
@@ -126,7 +127,7 @@ Sélection de l'implémentation par variable d'environnement :
 
 ### Critère de sortie
 
-`npm test` vert, les fixtures capturent le comportement actuel (bugs compris — on les
+`pnpm test` vert, les fixtures capturent le comportement actuel (bugs compris — on les
 corrige en phase 2, test à l'appui).
 
 **Atteint.** 91 tests répartis sur 6 fichiers, 100 % des lignes de `src/core`
@@ -309,14 +310,14 @@ affichera un espace normal là où il affichait un insécable si l'API en réint
 
 ### Critère de sortie
 
-- [x] `npm test` vert : **156 tests sur 10 fichiers** (+38, +3 fichiers).
-- [x] `npx knip` sans signalement (aucun export ni dépendance orphelin).
-- [ ] **Pas de vérification de types possible** : ni `typescript` ni
-      `@astrojs/check` n'est installé, et `astro build` ne fait que retirer les
-      annotations. Un `npm run check` (`astro check`) manque au filet de sécurité
-      — à câbler avec la CI en phase 6, ou plus tôt si l'occasion se présente.
-- [x] `npm run test:seo` vert (204 URLs, 77 titres et descriptions uniques).
-- [x] **Build reproductible** : deux `npm run build` consécutifs produisent des
+- [x] `pnpm test` vert : **156 tests sur 10 fichiers** (+38, +3 fichiers).
+- [x] `pnpm knip` sans signalement (aucun export ni dépendance orphelin).
+- [x] **Vérification de types** : impossible à l'époque — ni `typescript` ni
+      `@astrojs/check` n'était installé, et `astro build` ne fait que retirer
+      les annotations. **Câblée depuis** : `pnpm run check`, voir la section
+      « Vérification des types » avant la phase 6.
+- [x] `pnpm run test:seo` vert (204 URLs, 77 titres et descriptions uniques).
+- [x] **Build reproductible** : deux `pnpm build` consécutifs produisent des
       `dist/` identiques au octet près. C'était l'objectif principal — il rend
       enfin la comparaison de `dist/` fiable pour les phases suivantes.
 
@@ -369,7 +370,7 @@ dans le navigateur.
 - [x] Fournir un jeu d'exemple complet et documenté (`examples/static-event/`) :
       instantané de l'API de production — 71 créneaux, 352 sessions,
       77 speakers, 61 partenaires, 32 offres, 36 animations, 15 vidéos, 9 FAQ —
-      régénérable par `npm run dump:static`.
+      régénérable par `pnpm dump:static`.
 - [x] CI : `.github/workflows/static-build.yml` build le site avec
       `DATA_SOURCE=static` sur les fixtures, **tout trafic HTTP sortant coupé**
       (proxy mort + `NODE_USE_ENV_PROXY`), puis vérifie le résultat.
@@ -380,7 +381,7 @@ dans le navigateur.
 
 ### Critère de sortie
 
-`DATA_SOURCE=static npm run build` produit un site complet et navigable, sans réseau.
+`DATA_SOURCE=static pnpm build` produit un site complet et navigable, sans réseau.
 
 **Atteint, et plus que cela : le `dist/` produit est identique au octet près à
 celui du build HTTP** (326 fichiers de part et d'autre, `diff -r` muet).
@@ -392,12 +393,12 @@ dans les deux sens — le même environnement fait **échouer** le build HTTP
 (`fetch failed / ECONNREFUSED`, 0 page produite) et laisse le build statique
 intact (206 pages).
 
-- [x] `npm test` vert : **173 tests sur 12 fichiers** (+17, +2 fichiers).
+- [x] `pnpm test` vert : **173 tests sur 12 fichiers** (+17, +2 fichiers).
       `src/data/adapters/static` couvert à 100 % des lignes.
-- [x] `npx knip` sans signalement.
-- [x] `npm run test:seo` vert sur le build statique (77 titres et descriptions
+- [x] `pnpm knip` sans signalement.
+- [x] `pnpm run test:seo` vert sur le build statique (77 titres et descriptions
       uniques).
-- [x] `npm run test:build` — nouveau : 206 pages, **4 985 liens internes tous
+- [x] `pnpm run test:build` — nouveau : 206 pages, **4 985 liens internes tous
       résolus**, et chaque famille de pages alimentée par une source présente.
 
 ### Architecture livrée
@@ -450,11 +451,13 @@ Trois garde-fous le maintiennent :
   part (`JobCard.astro` ne rend que `min`, `max` et `requirements`). Aucune
   offre du dump n'a d'ailleurs de salaire renseigné. Candidat à la suppression
   du domaine.
-- Toujours **pas de vérification de types** : ni `typescript` ni
+- Toujours **pas de vérification de types** à ce stade : ni `typescript` ni
   `@astrojs/check` n'est installé. L'adapter statique s'en passe en faisant
   inférer ses types de retour par les schémas (`z.infer`) plutôt qu'en les
   affirmant par un cast : une dérive schéma/domaine deviendra une erreur de
   compilation le jour où `astro check` sera câblé, au lieu d'être silencieuse.
+  **Pari tenu** : le typage est câblé depuis, et une dérive de `domain.ts` fait
+  bien échouer `pnpm run check` sur `adapters/static/index.ts`.
 
 ### Dépendance ajoutée
 
@@ -567,11 +570,11 @@ Cinq collections de contenu nouvelles, toutes typées :
 
 ### Critère de sortie
 
-- [x] `npm test` vert : **202 tests sur 18 fichiers** (+29, +6 fichiers).
+- [x] `pnpm test` vert : **202 tests sur 18 fichiers** (+29, +6 fichiers).
       99,7 % des lignes de `src/config`, `src/core`, `src/data` et `src/i18n`.
-- [x] `npx knip` sans signalement.
-- [x] `npm run test:seo` vert (204 URLs, 77 titres et descriptions uniques).
-- [x] `npm run test:build` vert (206 pages, 4 985 liens internes résolus).
+- [x] `pnpm knip` sans signalement.
+- [x] `pnpm run test:seo` vert (204 URLs, 77 titres et descriptions uniques).
+- [x] `pnpm run test:build` vert (206 pages, 4 985 liens internes résolus).
 - [x] **Build HTTP et build statique toujours identiques au octet près.**
 - [x] **Build toujours reproductible** et toujours possible sans réseau
       (proxy mort + `NODE_USE_ENV_PROXY`, 206 pages).
@@ -628,9 +631,11 @@ ne relève aucun écart hors de cette liste :
   est dans le même cas mais reste, faute d'arbitrage.
 - **`FavoritesSwitch.astro` portait une seconde copie** de la clé de stockage
   des favoris, absente de l'inventaire de départ.
-- Toujours **pas de vérification de types** : ni `typescript` ni
+- Toujours **pas de vérification de types** à ce stade : ni `typescript` ni
   `@astrojs/check` n'est installé. Le typage de `t()` (clés littérales) et des
   configs (`z.input`) ne sera vraiment exploité qu'une fois `astro check` câblé.
+  **Câblé depuis** : une clé absente du dictionnaire est désormais une erreur de
+  compilation, qui énumère les 62 clés valides.
 
 ### Architecture livrée
 
@@ -694,11 +699,11 @@ src/content/
 
 ### Critère de sortie
 
-- [x] `npm test` vert : **201 tests sur 18 fichiers** (un test de moins :
+- [x] `pnpm test` vert : **201 tests sur 18 fichiers** (un test de moins :
       celui qui couvrait `logoName`, supprimé du domaine — voir plus bas).
-- [x] `npx knip` sans signalement.
-- [x] `npm run test:seo` vert.
-- [x] `npm run test:build` vert, et **élargi** : il ne suivait que les `href`,
+- [x] `pnpm knip` sans signalement.
+- [x] `pnpm run test:seo` vert.
+- [x] `pnpm run test:build` vert, et **élargi** : il ne suivait que les `href`,
       il suit maintenant aussi les `src` et les `og:image` absolus.
       **5 116 références internes** contrôlées au lieu de 4 985 liens.
 - [x] **Build HTTP et build statique toujours identiques au octet près.**
@@ -731,7 +736,7 @@ src/content/
 - **Les `logoUrl` du jeu d'exemple ont expiré** : 42 des 61 renvoient 404, le
   CMS ayant fait tourner ses chemins de stockage depuis l'instantané de la
   phase 3. Sans effet sur la production (qui lit l'API), mais le jeu statique
-  affiche des logos cassés — `npm run dump:static` le rafraîchit.
+  affiche des logos cassés — `pnpm dump:static` le rafraîchit.
 - `markdown.smartypants` est **déprécié en Astro 7** : l'option descend sur le
   processeur (`satteri({ features: { smartPunctuation: false } })`).
 
@@ -777,10 +782,69 @@ dépendance transitive de Vite.
 
 ---
 
+## Vérification des types ✅
+
+> Dette ouverte depuis la phase 2, rappelée à chaque phase suivante : soldée
+> avant d'attaquer l'extraction, parce que c'est elle qui rendra sûr le
+> découpage en paquet.
+
+`astro build` ne fait que retirer les annotations de type : rien ne vérifiait
+qu'elles étaient justes. `pnpm run check` (`astro check`) le fait désormais, sur
+les 92 fichiers du site — `.astro` compris.
+
+### Ce qu'il a fallu pour l'allumer
+
+- `typescript` **épinglé en 6.x** : TypeScript 7 (le compilateur natif)
+  n'expose plus l'API programmatique dont `astro check` dépend, et le
+  `astro check` d'aujourd'hui échoue net avec un message explicite.
+- `coverage/` et `.vitest/` exclus du `tsconfig.json` : `allowJs` étant actif,
+  le rapport de couverture de Vitest se faisait typer lui aussi.
+
+### Les deux erreurs réelles qu'il a trouvées
+
+- `src/core/markdown.ts` — `Tokens.Token` n'existe pas dans `marked` 17 ; le
+  type d'union est `Token`, exporté à la racine. L'annotation du renderer de
+  titres était donc fausse depuis la phase 2.
+- `src/pages/speakers.astro` — `{ id: d.id, ...d.data }` écrasait l'`id` de
+  l'entrée par celui du domaine. Ils valent la même chose, mais la ligne
+  mentait sur son intention : c'est `d.data` tout court.
+
+### Les dépréciations qu'il a signalées
+
+- `z` importé depuis `astro:content` (53 occurrences dans `content.config.ts`)
+  → importé depuis `astro/zod`, comme le faisait déjà `src/data/schemas.ts`.
+- `z.string().url()` sur les URLs des collections `editions` et `press` — le
+  piège documenté en phase 4, qui *réécrit* la valeur validée. Les deux
+  validateurs non transformants remontent dans `src/core/zod-url.ts`, partagé
+  par `src/config/schema.ts` et `src/content.config.ts`.
+
+### Ce qu'il protège, vérifié en cassant volontairement le code
+
+Les deux paris ouverts par les phases 3 et 4 sont tenus :
+
+| Dérive introduite | Ce que `pnpm run check` répond |
+|---|---|
+| `logoUrl: string` -> `number` dans `domain.ts` | 6 erreurs, dont `adapters/static/index.ts` et `mappers.ts` : le schéma Zod et le domaine ne s'accordent plus |
+| `t("nav.inexistante")` dans un composant | `Argument of type '"nav.inexistante"' is not assignable…`, suivi des 62 clés valides |
+
+### CI
+
+- `.github/workflows/check.yml` — sur chaque poussée et chaque PR : tests
+  unitaires puis `pnpm run check`. Le job tourne avec `DATA_SOURCE=static` pour
+  ne pas dépendre de l'API : `astro check` synchronise les collections avant de
+  typer.
+- `deploy-clevercloud.yml` — `pnpm run check` s'intercale entre les tests et le
+  build : un typage rouge ne se déploie pas.
+
+Sortie inchangée : le `dist/` produit avant et après ces corrections est
+identique au octet près (325 fichiers de part et d'autre).
+
+---
+
 ## Phase 6 — Extraction du paquet
 
 > À ne faire qu'une fois les phases 0 à 5 terminées : à ce stade c'est un simple
-> déplacement de fichiers, protégé par les tests.
+> déplacement de fichiers, protégé par les tests **et par le typage**.
 
 ### Tâches
 
@@ -790,7 +854,9 @@ dépendance transitive de Vite.
       restent côté instance.
 - [ ] Définir les exports publics du paquet (le contrat versionné).
 - [ ] `apps/devlille` ne contient plus que : config, contenu, thème, pages spécifiques.
-- [ ] Adapter la CI (`deploy-clevercloud.yml`, `knip.yml`, `nightly-build.yml`).
+- [ ] Adapter la CI — six workflows aujourd'hui : `deploy-clevercloud.yml`,
+      `deploy-on-push.yml`, `check.yml`, `knip.yml`, `nightly-build.yml` et
+      `static-build.yml`.
 - [ ] Rédiger le README du paquet : démarrer une instance en marque blanche.
 - [ ] Créer une seconde instance de démonstration pour valider l'absence de fuite
       DevLille dans le paquet.
@@ -804,7 +870,7 @@ dépendance transitive de Vite.
 | ~~**Format de l'adapter statique**~~ | **Arbitré en phase 3 : JSON calqué sur le domaine.** Le relationnel de l'agenda imposait un fichier de planning à part quoi qu'il arrive ; le JSON permet en prime que les fichiers *soient* le domaine, donc aucun mapping et un aller-retour testable. | — |
 | **Structure des URLs** | Garder `/talk-page-{id}` *vs* passer à `/talks/{id}` | Le second est conventionnel pour un produit réutilisable, mais impose des redirections pour préserver le référencement existant. |
 | **Périmètre du paquet** | Composants inclus *vs* données seules | Extraire aussi les composants donne un vrai produit, mais impose la discipline « ni texte ni couleur en dur ». Extraire seulement la couche données est plus rapide mais moins réutilisable. |
-| **Monorepo** | npm workspaces *vs* pnpm *vs* garder un seul dépôt | Choix à faire avant la phase 6 seulement. |
+| ~~**Gestionnaire de paquets**~~ | **Arbitré : pnpm.** `package-lock.json` supprimé, `pnpm-lock.yaml` et `pnpm-workspace.yaml` suivis, version épinglée par `packageManager`. Les quatre workflows qui installent passent à `pnpm/action-setup` + `pnpm install --frozen-lockfile`. | La forme workspace du monorepo de la phase 6 se déclarera dans le `pnpm-workspace.yaml` qui existe déjà. **À vérifier avant de merger** : que l'application CleverCloud sache construire en pnpm — elle rebuild de son côté, et sa configuration vit dans la console, pas dans le dépôt. |
 
 ---
 
@@ -869,3 +935,4 @@ Tous découplés : le métier en phase 4, le thème et les assets en phase 5.
 | Fichiers CSS servis | 3, non hashés | **1**, hashé | 1 |
 | Chemins d'assets de marque dans le code | 8 | **0** | 0 |
 | Références internes mortes | 59 | **0** | 0 |
+| Vérification des types | aucune | **`pnpm run check`, 0 erreur** | en CI |

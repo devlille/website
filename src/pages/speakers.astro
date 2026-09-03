@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-const speakersFromApi = (await getCollection("speakers")).map((d) => ({ id: d.id, ...d.data }));
+// L'`id` de l'entrée est celui du domaine : `data` le porte déjà.
+const speakersFromApi = (await getCollection("speakers")).map((d) => d.data);
 import { renderMarkdown } from "../core/markdown";
 import { t } from "../i18n";
 ---

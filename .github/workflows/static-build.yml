@@ -19,14 +19,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: npm
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build site from static fixtures
         env:
@@ -36,10 +39,10 @@ jobs:
           HTTP_PROXY: http://127.0.0.1:1
           HTTPS_PROXY: http://127.0.0.1:1
           NODE_USE_ENV_PROXY: "1"
-        run: npx astro build
+        run: pnpm exec astro build
 
       - name: Check the site is complete and navigable
-        run: npm run test:build
+        run: pnpm run test:build
 
       - name: Run SEO checks
-        run: npm run test:seo
+        run: pnpm run test:seo

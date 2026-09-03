@@ -6,15 +6,8 @@
  * de liste Mailchimp — se déclare ici et nulle part dans les composants.
  */
 import { z } from "astro/zod";
+import { assetUrl, httpUrl as url } from "../core/zod-url";
 
-/**
- * Validations d'URL par expression régulière, et non par `z.string().url()` :
- * ce dernier *normalise* la valeur (il encode `{` en `%7B`), ce qui casserait
- * les gabarits d'URL et changerait les liens publiés.
- */
-const url = z.string().regex(/^https?:\/\/\S+$/, "URL http(s) attendue");
-/** URL absolue ou protocol-relative (`//cdn…`), comme en produisent les CDN. */
-const assetUrl = z.string().regex(/^(https?:)?\/\/\S+$/, "URL absolue attendue");
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date `YYYY-MM-DD`");
 
 // ---------------------------------------------------------------- site

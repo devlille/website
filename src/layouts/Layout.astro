@@ -67,7 +67,11 @@ const titleSuffix = t("layout.titleSuffix", {
         }
         <title>{`${title} - ${titleSuffix}`}</title>
 
-        <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(jsonld)}
+        />
 
         <link rel="manifest" href="/manifest.json" />
     </head>

@@ -2,11 +2,13 @@
 
 Site de la conférence [DevLille](https://devlille.fr), en Astro.
 
+Le dépôt est en **pnpm** (version épinglée par `packageManager`).
+
 ```bash
-npm install
-npm run dev            # http://localhost:4321
-npm run build          # -> dist/
-npm test               # tests unitaires
+pnpm install
+pnpm dev               # http://localhost:4321
+pnpm build             # -> dist/
+pnpm test              # tests unitaires
 ```
 
 ## Sources de données
@@ -20,8 +22,8 @@ Le site ne fait aucun `fetch` en dehors de `src/data/` : tout passe par le port
 | `static` | un dossier de fichiers JSON, sans réseau |
 
 ```bash
-npm run build:static   # build depuis examples/static-event/
-npm run dump:static    # rafraîchit examples/static-event/ depuis l’API
+pnpm build:static      # build depuis examples/static-event/
+pnpm dump:static       # rafraîchit examples/static-event/ depuis l’API
 ```
 
 Le format des fichiers statiques est documenté dans
@@ -30,10 +32,11 @@ Le format des fichiers statiques est documenté dans
 ## Vérifications
 
 ```bash
-npm test               # tests unitaires
-npm run test:build     # dist/ complet et navigable (liens internes)
-npm run test:seo       # titres, descriptions, sitemap
-npm run knip           # code et dépendances orphelins
+pnpm test              # tests unitaires
+pnpm check             # types (`astro check`)
+pnpm test:build        # dist/ complet et navigable (références internes)
+pnpm test:seo          # titres, descriptions, sitemap
+pnpm knip              # code et dépendances orphelins
 ```
 
 La progression de l’extraction vers un socle réutilisable est suivie dans

@@ -1,6 +1,8 @@
 import { file, glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { buildTalkSheets } from "./core/agenda";
+import { httpUrl } from "./core/zod-url";
 import { dataSource } from "./data";
 import type { Activity, Partner } from "./data/domain";
 import {
@@ -144,7 +146,7 @@ const editions = defineCollection({
         ...edition,
       })),
   }),
-  schema: z.object({ year: z.number().int(), url: z.string().url() }),
+  schema: z.object({ year: z.number().int(), url: httpUrl }),
 });
 
 /** Les documents que la presse peut télécharger. */
@@ -158,7 +160,7 @@ const pressKit = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
-    url: z.string().url(),
+    url: httpUrl,
     publishedAt: z.string(),
   }),
 });
@@ -176,7 +178,7 @@ const pressArticles = defineCollection({
     /** Rang dans l'année : fige l'ordre d'affichage. */
     rank: z.number().int(),
     title: z.string(),
-    url: z.string().url(),
+    url: httpUrl,
     publishedAt: z.string(),
     publishedBy: z.string(),
     /** Sert aussi de classe CSS sur l'entrée. */

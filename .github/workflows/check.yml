@@ -1,0 +1,41 @@
+name: Vérification des types
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+# `astro build` se contente de retirer les annotations de type : sans ce job,
+# une dérive entre un schéma et le domaine, ou une clé de dictionnaire
+# inexistante, passerait inaperçue jusqu'à l'exécution.
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run unit tests
+        run: pnpm test
+
+      # `astro check` synchronise les collections avant de typer : on le fait
+      # sur les fixtures, pour que le job ne dépende pas de l'API.
+      - name: Check types
+        env:
+          DATA_SOURCE: static
+        run: pnpm run check

@@ -6,7 +6,7 @@
  * Avec des sources tierces en marque blanche, un `set:html` sur du contenu
  * backend non filtré est un vecteur d'injection.
  */
-import { Marked, type Tokens } from "marked";
+import { Marked, type Token, type Tokens } from "marked";
 import sanitize from "sanitize-html";
 
 export type MarkdownOptions = {
@@ -63,7 +63,7 @@ const normalizeLooseLists = (raw: string): string =>
 
 const headingRenderer = (level: (depth: number) => string) => ({
   renderer: {
-    heading(this: { parser: { parseInline: (t: Tokens.Token[]) => string } }, token: Tokens.Heading) {
+    heading(this: { parser: { parseInline: (t: Token[]) => string } }, token: Tokens.Heading) {
       const tag = level(token.depth);
       return `<${tag}>${this.parser.parseInline(token.tokens)}</${tag}>\n`;
     },

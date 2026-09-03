@@ -2,6 +2,7 @@
   "name": "migration-astro",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@12.3.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -11,6 +12,7 @@
     "test:build": "node scripts/check-static-build.mjs",
     "preview": "astro preview",
     "astro": "astro",
+    "check": "astro check",
     "knip": "knip",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -22,6 +24,7 @@
     "sanitize-html": "^2.17.7"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@astrojs/markdown-satteri": "^0.3.2",
     "@astrojs/sitemap": "^3.7.3",
     "@types/isurl": "^4.0.0",
@@ -34,6 +37,7 @@
     "knip": "^6.4.1",
     "lightningcss": "^1.31.1",
     "terser": "^5.46.0",
+    "typescript": "^6.0.3",
     "vite": "^8.2.2",
     "vitest": "^5.0.0"
   }

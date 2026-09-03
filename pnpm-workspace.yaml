@@ -1,0 +1,7 @@
+allowBuilds:
+  esbuild: false
+minimumReleaseAgeExclude:
+  - '@vitest/coverage-v8@5.0.0'
+  - '@vitest/mocker@5.0.0'
+  - '@vitest/spy@5.0.0'
+  - vitest@5.0.0

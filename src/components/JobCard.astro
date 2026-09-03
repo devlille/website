@@ -1,19 +1,5 @@
 ---
-export type Salary = {
-    min: number;
-    max: number;
-    recurrence: string;
-};
-
-export type Job = {
-    url: string;
-    title: string;
-    company_name: string;
-    location: string;
-    salary: Salary | null;
-    requirements: number | null;
-    publish_date: number;
-};
+import type { Job } from "../data/domain";
 
 interface Props {
     job: Job;

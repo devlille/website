@@ -2,71 +2,41 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import JobCard, { type Job } from "../components/JobCard.astro";
+import JobCard from "../components/JobCard.astro";
 import SponsorActivities from "../components/SponsorActivities.astro";
 import SocialList from "../components/SocialList.astro";
-import config from "../config/config";
 
 interface Props {
     sponsor: CollectionEntry<"sponsors">;
-    jobs: Job[];
-    speakerIds: string[];
 }
 
 export const getStaticPaths = (async () => {
     const sponsors = await getCollection("sponsors");
 
-    type ApiPartner = { id: string; jobs?: Job[] };
-    type ApiResponse = { partners: ApiPartner[] };
-
-    const [activitiesResponse, partnersResponse] = await Promise.all([
-        fetch(
-            `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
-        ).then((res) => res.json() as Promise<ApiResponse>),
-        fetch(
-            `${config.partnersActivitiesApi}/events/${config.eventId}/partners`,
-        ).then((res) => res.json()),
-    ]);
-
-    const jobsByPartnerId = new Map<string, Job[]>(
-        activitiesResponse.partners.map((p) => [p.id, p.jobs ?? []]),
-    );
-
-    const allPartners: any[] = Object.values(partnersResponse).flat();
-    const speakersByPartnerId = new Map<string, string[]>(
-        allPartners.map((p: any) => [
-            p.id,
-            (p.speakers ?? []).map((s: any) => s.id),
-        ]),
-    );
-
     return sponsors.map((sponsor) => ({
         params: { id: sponsor.data.id },
-        props: {
-            sponsor,
-            jobs: jobsByPartnerId.get(sponsor.data.id) ?? [],
-            speakerIds: speakersByPartnerId.get(sponsor.data.id) ?? [],
-        },
+        props: { sponsor },
     }));
 }) satisfies GetStaticPaths;
 
-const { sponsor, jobs, speakerIds } = Astro.props;
+const { sponsor } = Astro.props;
+const { jobs, speakerIds } = sponsor.data;
 
 const allTalks = await getCollection("talks");
 const partnerTalks =
     speakerIds.length > 0
         ? allTalks.filter((t) =>
-              t.data.speakers?.some((s) => speakerIds.includes(s.id ?? "")),
+              t.data.speakers.some((s) => speakerIds.includes(s.id)),
           )
         : [];
 
 const og = {
     ogDescription: sponsor.data.description?.replaceAll('"', "")?.trim(),
     ogUrl: "https://devlille.fr/partner-" + sponsor.data.id,
-    ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.${sponsor.data.ext}`,
+    ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.svg`,
 };
 
-const video = sponsor.data.editedVideoUrl;
+const video = sponsor.data.videoUrl;
 console.log(`[partner-${sponsor.data.id}] editedVideoUrl =`, video);
 ---
 
@@ -155,7 +125,7 @@ console.log(`[partner-${sponsor.data.id}] editedVideoUrl =`, video);
                                         </a>
                                     </strong>
                                     {talk.data.speakers
-                                        ?.map((s) => s.display_name)
+                                        .map((s) => s.name)
                                         .join(" & ")}
                                 </li>
                             ))}

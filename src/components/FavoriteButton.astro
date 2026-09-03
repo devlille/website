@@ -1,10 +1,14 @@
 ---
+import config from "../config/config";
+
 interface Props {
     talkId: string;
     sessionId: string;
 }
 
 const { talkId, sessionId } = Astro.props;
+
+const voteApi = `${config.apiBaseUrl}/events/${config.eventId}/sessions`;
 ---
 
 <button
@@ -14,11 +18,14 @@ const { talkId, sessionId } = Astro.props;
     data-session-id={sessionId}>
     Ajouter aux favoris
 </button>
-<script is:inline data-talk-id={talkId} data-session-id={sessionId}>
+<script
+    is:inline
+    data-talk-id={talkId}
+    data-session-id={sessionId}
+    data-vote-api={voteApi}>
     (function () {
         const STORAGE_KEY = "devlille_favorites";
-        const VOTE_API =
-            "https://app-e675e675-2e47-445c-a7a7-359a37188469.cleverapps.io/events/7193c477-1579-4216-a6cb-c8854e848395/sessions";
+        const VOTE_API = document.currentScript.dataset.voteApi;
 
         const talkId = document.currentScript.dataset.talkId;
         const sessionId = document.currentScript.dataset.sessionId;

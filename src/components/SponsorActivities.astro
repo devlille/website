@@ -11,7 +11,7 @@ const { partnerId } = Astro.props;
 
 const allActivities = await getCollection("partnerActivities");
 const partnerActivities = allActivities.filter(
-    (a) => a.data.partner_id === partnerId,
+    (a) => a.data.partnerId === partnerId,
 );
 
 const activitiesByDay = groupActivitiesByDay(
@@ -31,8 +31,8 @@ const activitiesByDay = groupActivitiesByDay(
                             <li>
                                 <strong>{activity.name}</strong>
                                 <span>
-                                    {toHour(activity.start_time).slice(0, 5)} -{" "}
-                                    {toHour(activity.end_time).slice(0, 5)}
+                                    {toHour(activity.startTime).slice(0, 5)} -{" "}
+                                    {toHour(activity.endTime).slice(0, 5)}
                                 </span>
                             </li>
                         ))}

@@ -1,17 +1,19 @@
 ---
+import type { ActivitySlotEntry } from "../core/activities";
+
 interface Props {
-    item: any;
+    item: ActivitySlotEntry;
 }
 
 const { item: activity } = Astro.props;
 ---
 
 <dl data-activity-id={activity.id}>
-    <dt>{activity.display_range}</dt>
+    <dt>{activity.displayRange}</dt>
     <dd class="event-session animation">
-        <a href={`/partner-${activity.partner_id}`}>{activity.name}</a>
+        <a href={`/partner-${activity.partnerId}`}>{activity.name}</a>
     </dd>
     <dd>
-        {activity.partner_name}
+        {activity.partnerName}
     </dd>
 </dl>

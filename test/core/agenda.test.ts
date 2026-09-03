@@ -1,43 +1,63 @@
 import { describe, expect, it } from "vitest";
 import {
   buildTalkDays,
+  buildTalkSheets,
   formatDurationLabel,
   guessEventTitle,
-  type Agenda,
-  type ApiSchedule,
-  type ApiSession,
 } from "../../src/core/agenda";
+import type {
+  Agenda,
+  ScheduleSlot,
+  Session,
+  Speaker,
+} from "../../src/data/domain";
+import { toAgenda } from "../../src/data/adapters/http/mappers";
+import type { ApiAgenda } from "../../src/data/adapters/http/mappers";
 import agendaFixture from "../fixtures/agenda.json" with { type: "json" };
 
-const schedule = (over: Partial<ApiSchedule> = {}): ApiSchedule => ({
+const schedule = (over: Partial<ScheduleSlot> = {}): ScheduleSlot => ({
   id: "sch-1",
   date: "2026-06-11",
-  start_time: "2026-06-11T09:00",
-  end_time: "2026-06-11T09:45",
+  startTime: "2026-06-11T09:00",
+  endTime: "2026-06-11T09:45",
   room: "Marie Curie",
-  session_id: "sess-1",
+  sessionId: "sess-1",
   ...over,
 });
 
-const talkSession = (over: Partial<ApiSession> = {}): ApiSession => ({
+const talkSession = (over: Partial<Session> = {}): Session => ({
   id: "sess-1",
   type: "talk-session",
   title: "Astro par la pratique",
   abstract: "Un **super** talk",
   language: "fr",
   level: "beginner",
-  speakers: ["spk-1"],
+  speakerIds: ["spk-1"],
+  slidesUrl: null,
+  replayUrl: null,
+  openFeedbackUrl: null,
   ...over,
 });
 
-const speaker = (over = {}) => ({
+const eventSession = (id: string, title: string): Session => ({
+  ...talkSession(),
+  id,
+  type: "event-session",
+  title,
+  speakerIds: [],
+});
+
+const speaker = (over: Partial<Speaker> = {}): Speaker => ({
   id: "spk-1",
-  display_name: "Alice",
+  name: "Alice",
   bio: "",
-  photo_url: "https://example.com/a.jpg",
+  photoUrl: "https://example.com/a.jpg",
   pronouns: null,
   company: null,
+  jobTitle: null,
   socials: [],
+  websiteUrl: null,
+  partners: [],
   ...over,
 });
 
@@ -63,11 +83,11 @@ describe("formatDurationLabel", () => {
 });
 
 describe("guessEventTitle", () => {
-  const eventSessions: ApiSession[] = [
-    { id: "e1", type: "event-session", title: "Keynote d'ouverture 2026" },
-    { id: "e2", type: "event-session", title: "Enregistrement des badges" },
-    { id: "e3", type: "event-session", title: "Lunch 🍽️" },
-    { id: "e4", type: "event-session", title: "Pause" },
+  const eventSessions: Session[] = [
+    eventSession("e1", "Keynote d'ouverture 2026"),
+    eventSession("e2", "Enregistrement des badges"),
+    eventSession("e3", "Lunch 🍽️"),
+    eventSession("e4", "Pause"),
   ];
 
   it("devine une keynote au Grand Théâtre", () => {
@@ -79,7 +99,7 @@ describe("guessEventTitle", () => {
   it("devine un enregistrement avant 9 h", () => {
     expect(
       guessEventTitle(
-        schedule({ start_time: "2026-06-11T08:30" }),
+        schedule({ startTime: "2026-06-11T08:30" }),
         eventSessions,
       ),
     ).toBe("Enregistrement des badges");
@@ -88,7 +108,7 @@ describe("guessEventTitle", () => {
   it("devine un lunch entre midi et 14 h", () => {
     expect(
       guessEventTitle(
-        schedule({ start_time: "2026-06-11T12:00" }),
+        schedule({ startTime: "2026-06-11T12:00" }),
         eventSessions,
       ),
     ).toBe("Lunch 🍽️");
@@ -97,7 +117,7 @@ describe("guessEventTitle", () => {
   it("devine une pause en dehors de ces plages", () => {
     expect(
       guessEventTitle(
-        schedule({ start_time: "2026-06-11T15:30" }),
+        schedule({ startTime: "2026-06-11T15:30" }),
         eventSessions,
       ),
     ).toBe("Pause");
@@ -108,20 +128,20 @@ describe("guessEventTitle", () => {
       "Keynote d'ouverture",
     );
     expect(
-      guessEventTitle(schedule({ start_time: "2026-06-11T08:00" }), []),
+      guessEventTitle(schedule({ startTime: "2026-06-11T08:00" }), []),
     ).toBe("Enregistrement");
     expect(
-      guessEventTitle(schedule({ start_time: "2026-06-11T13:00" }), []),
+      guessEventTitle(schedule({ startTime: "2026-06-11T13:00" }), []),
     ).toBe("Lunch");
     expect(
-      guessEventTitle(schedule({ start_time: "2026-06-11T16:00" }), []),
+      guessEventTitle(schedule({ startTime: "2026-06-11T16:00" }), []),
     ).toBe("Pause");
   });
 
   it("donne la priorité au Grand Théâtre sur l'heure", () => {
     expect(
       guessEventTitle(
-        schedule({ room: "Grand Théâtre", start_time: "2026-06-11T12:30" }),
+        schedule({ room: "Grand Théâtre", startTime: "2026-06-11T12:30" }),
         eventSessions,
       ),
     ).toBe("Keynote d'ouverture 2026");
@@ -158,8 +178,8 @@ describe("buildTalkDays", () => {
   it("joint les noms des intervenants", () => {
     const [day] = buildTalkDays(
       agenda({
-        sessions: [talkSession({ speakers: ["spk-1", "spk-2"] })],
-        speakers: [speaker(), speaker({ id: "spk-2", display_name: "Bob" })],
+        sessions: [talkSession({ speakerIds: ["spk-1", "spk-2"] })],
+        speakers: [speaker(), speaker({ id: "spk-2", name: "Bob" })],
       }),
     );
 
@@ -169,7 +189,7 @@ describe("buildTalkDays", () => {
 
   it("laisse les intervenants indéfinis pour une session sans speaker", () => {
     const [day] = buildTalkDays(
-      agenda({ sessions: [talkSession({ speakers: [] })], speakers: [] }),
+      agenda({ sessions: [talkSession({ speakerIds: [] })], speakers: [] }),
     );
 
     expect(day.slots[0][1][0].speakers).toBeUndefined();
@@ -179,7 +199,7 @@ describe("buildTalkDays", () => {
   it("ignore un intervenant référencé mais absent de l'agenda", () => {
     const [day] = buildTalkDays(
       agenda({
-        sessions: [talkSession({ speakers: ["spk-1", "fantome"] })],
+        sessions: [talkSession({ speakerIds: ["spk-1", "fantome"] })],
         speakers: [speaker()],
       }),
     );
@@ -193,15 +213,15 @@ describe("buildTalkDays", () => {
     expect(day.slots[0][1][0].talk.abstract).toContain("<strong>super</strong>");
   });
 
-  it("construit un créneau générique quand session_id vaut la chaîne null", () => {
+  it("construit un créneau générique quand le créneau n'a pas de session", () => {
     const [day] = buildTalkDays(
       agenda({
         schedules: [
           schedule({
-            session_id: "null",
+            sessionId: null,
             room: "Hall exposant",
-            start_time: "2026-06-11T08:30",
-            end_time: "2026-06-11T09:00",
+            startTime: "2026-06-11T08:30",
+            endTime: "2026-06-11T09:00",
           }),
         ],
         sessions: [],
@@ -222,17 +242,6 @@ describe("buildTalkDays", () => {
     expect(entry.speakersIds).toEqual([]);
   });
 
-  it("construit aussi un créneau générique quand session_id est absent", () => {
-    const [day] = buildTalkDays(
-      agenda({
-        schedules: [schedule({ session_id: undefined })],
-        sessions: [],
-      }),
-    );
-
-    expect(day.slots[0][1][0].talk.type).toBe("event-session");
-  });
-
   it("écarte un créneau dont la session est introuvable", () => {
     expect(
       buildTalkDays(agenda({ schedules: [schedule()], sessions: [] })),
@@ -244,11 +253,9 @@ describe("buildTalkDays", () => {
       agenda({
         sessions: [
           {
-            id: "sess-1",
-            type: "event-session",
-            title: "Lunch",
-            description: "Buffet",
-            speakers: ["spk-1"],
+            ...eventSession("sess-1", "Lunch"),
+            abstract: "Buffet",
+            speakerIds: ["spk-1"],
           },
         ],
       }),
@@ -263,18 +270,10 @@ describe("buildTalkDays", () => {
 
   it("retombe sur « Pause » quand la session n'a pas de titre", () => {
     const [day] = buildTalkDays(
-      agenda({ sessions: [talkSession({ title: undefined })] }),
+      agenda({ sessions: [talkSession({ title: null })] }),
     );
 
     expect(day.slots[0][1][0].talk.title).toBe("Pause");
-  });
-
-  it("retombe sur le français quand la langue n'est pas renseignée", () => {
-    const [day] = buildTalkDays(
-      agenda({ sessions: [talkSession({ language: undefined })] }),
-    );
-
-    expect(day.slots[0][1][0].talk.language).toBe("fr");
   });
 
   it("regroupe deux talks parallèles dans le même créneau", () => {
@@ -295,8 +294,8 @@ describe("buildTalkDays", () => {
     const [day] = buildTalkDays(
       agenda({
         schedules: [
-          schedule({ id: "b", start_time: "2026-06-11T14:00" }),
-          schedule({ id: "a", start_time: "2026-06-11T09:00" }),
+          schedule({ id: "b", startTime: "2026-06-11T14:00" }),
+          schedule({ id: "a", startTime: "2026-06-11T09:00" }),
         ],
       }),
     );
@@ -312,8 +311,8 @@ describe("buildTalkDays", () => {
           schedule({
             id: "b",
             date: "2026-06-12",
-            start_time: "2026-06-12T09:00",
-            end_time: "2026-06-12T09:45",
+            startTime: "2026-06-12T09:00",
+            endTime: "2026-06-12T09:45",
           }),
         ],
       }),
@@ -329,7 +328,7 @@ describe("buildTalkDays", () => {
   });
 
   describe("sur le dump réel", () => {
-    const days = buildTalkDays(agendaFixture as Agenda);
+    const days = buildTalkDays(toAgenda(agendaFixture as ApiAgenda));
 
     it("produit les deux jours de la conférence", () => {
       expect(days.map((d) => d.date)).toEqual(["2026-06-11", "2026-06-12"]);
@@ -370,5 +369,60 @@ describe("buildTalkDays", () => {
       expect(talks.length).toBeGreaterThan(0);
       expect(talks.every((t) => t.speakersIds.length > 0)).toBe(true);
     });
+  });
+});
+
+describe("buildTalkSheets", () => {
+  it("produit une fiche par créneau de talk, résolue avec ses intervenants", () => {
+    expect(buildTalkSheets(agenda())).toEqual([
+      {
+        id: "sch-1",
+        sessionId: "sess-1",
+        title: "Astro par la pratique",
+        abstract: "Un **super** talk",
+        level: "beginner",
+        language: "fr",
+        speakers: [speaker()],
+        slidesUrl: null,
+        replayUrl: null,
+        openFeedbackUrl: null,
+      },
+    ]);
+  });
+
+  it("écarte les créneaux sans session", () => {
+    expect(
+      buildTalkSheets(
+        agenda({ schedules: [schedule({ sessionId: null })], sessions: [] }),
+      ),
+    ).toEqual([]);
+  });
+
+  it("écarte les sessions qui ne sont pas des talks", () => {
+    expect(
+      buildTalkSheets(agenda({ sessions: [eventSession("sess-1", "Lunch")] })),
+    ).toEqual([]);
+  });
+
+  it("écarte un créneau dont la session est introuvable", () => {
+    expect(buildTalkSheets(agenda({ sessions: [] }))).toEqual([]);
+  });
+
+  it("ignore un intervenant référencé mais absent de l'agenda", () => {
+    const [sheet] = buildTalkSheets(
+      agenda({
+        sessions: [talkSession({ speakerIds: ["fantome", "spk-1"] })],
+      }),
+    );
+
+    expect(sheet.speakers.map((s) => s.id)).toEqual(["spk-1"]);
+  });
+
+  it("produit une fiche par talk du dump réel", () => {
+    const sheets = buildTalkSheets(toAgenda(agendaFixture as ApiAgenda));
+
+    expect(sheets.length).toBeGreaterThan(0);
+    expect(new Set(sheets.map((s) => s.id)).size).toBe(sheets.length);
+    expect(sheets.every((s) => s.speakers.length > 0)).toBe(true);
   });
 });

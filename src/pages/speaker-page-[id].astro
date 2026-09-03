@@ -26,7 +26,7 @@ export const getStaticPaths = (async () => {
 
 const { speaker } = Astro.props;
 
-const speakerName = speaker.data.display_name ?? "Speaker";
+const speakerName = speaker.data.name || "Speaker";
 
 const stripMarkdown = (text: string): string =>
     text
@@ -50,13 +50,13 @@ const metaDescription = speaker.data.bio
 const og = {
     ogDescription: metaDescription,
     ogUrl: "https://devlille.fr/speaker-page-" + speaker.id,
-    ogImage: speaker.data.photo_url,
+    ogImage: speaker.data.photoUrl,
 };
 
 const talks = await getCollection("talks");
 
 const selectedTalks = talks.filter((t) =>
-    t.data.speakers?.find((s) => s.id === speaker.id),
+    t.data.speakers.find((s) => s.id === speaker.id),
 );
 ---
 
@@ -64,18 +64,18 @@ const selectedTalks = talks.filter((t) =>
     <div class="page-body list speaker-sheet">
         <div class="h-group">
             {
-                speaker.data.photo_url && (
+                speaker.data.photoUrl && (
                     <p class="s-photo">
                         <img
                             loading="lazy"
-                            src={`${speaker.data.photo_url}?v=${Math.floor(Math.random() * 1000) + 1}`}
-                            alt={`Photo de ${speaker.data.display_name}`}
+                            src={`${speaker.data.photoUrl}?v=${Math.floor(Math.random() * 1000) + 1}`}
+                            alt={`Photo de ${speaker.data.name}`}
                         />
                     </p>
                 )
             }
             <h2>
-                {speaker.data.display_name}{
+                {speaker.data.name}{
                     speaker.data.pronouns ? ` (${speaker.data.pronouns})` : ""
                 }
             </h2>
@@ -85,7 +85,7 @@ const selectedTalks = talks.filter((t) =>
             </p>
             <SocialList
                 socials={speaker.data.socials}
-                siteUrl={speaker.data.website}
+                siteUrl={speaker.data.websiteUrl}
                 class="social"
             />
         </div>
@@ -102,7 +102,7 @@ const selectedTalks = talks.filter((t) =>
             <div class="talks card">
                 <h3>
                     <span lang="en">Talks</span> présentés par
-                    {speaker.data.display_name}
+                    {speaker.data.name}
                 </h3>
                 {
                     selectedTalks.map((selectedTalk) => {
@@ -110,25 +110,25 @@ const selectedTalks = talks.filter((t) =>
                             <ul class="talk">
                                 <li>
                                     <a href={`/talk-page-${selectedTalk.id}`}>
-                                        {selectedTalk.data?.title}
+                                        {selectedTalk.data.title}
                                     </a>
                                 </li>
 
-                                {(!!selectedTalk.data?.link_slides ||
-                                    !!selectedTalk.data?.link_replay) && (
+                                {(!!selectedTalk.data.slidesUrl ||
+                                    !!selectedTalk.data.replayUrl) && (
                                     <div class="talk-links">
                                         <h4>Regardez ou re-regardez</h4>
                                         <ul>
-                                            {selectedTalk.data?.link_replay && (
+                                            {selectedTalk.data.replayUrl && (
                                                 <li>
-                                                    <a href={selectedTalk.data.link_replay}>
+                                                    <a href={selectedTalk.data.replayUrl}>
                                                         La vidéo du talk
                                                     </a>
                                                 </li>
                                             )}
-                                            {selectedTalk.data?.link_slides && (
+                                            {selectedTalk.data.slidesUrl && (
                                                 <li>
-                                                    <a href={selectedTalk.data.link_slides}>
+                                                    <a href={selectedTalk.data.slidesUrl}>
                                                         Les slides du talk
                                                     </a>
                                                 </li>
@@ -148,7 +148,7 @@ const selectedTalks = talks.filter((t) =>
                 }
             </div>
 
-            <PartnerBlock partners={speaker.data.partners ?? []} className="speaker-partners" />
+            <PartnerBlock partners={speaker.data.partners} className="speaker-partners" />
         </div>
     </div>
 </Layout>

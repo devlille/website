@@ -1,25 +1,17 @@
+import type { Activity } from "../data/domain";
 import { eachDayBetween, formatLongDate, toHour } from "./date";
 
-export type Activity = {
+/** Une activité placée dans un créneau, avec sa plage horaire formatée. */
+export type ActivitySlotEntry = {
   id: string;
   name: string;
-  start_time: string;
-  end_time: string;
-  partner_id: string;
-  partner_name: string;
-  partner_logo_url?: string;
-};
-
-type ActivitySlotEntry = {
-  id: string;
-  name: string;
-  partner_id: string;
-  partner_name: string;
-  partner_logo_url?: string;
+  partnerId: string;
+  partnerName: string;
+  partnerLogoUrl: string | null;
   hour: string;
-  start_time: string;
-  end_time: string;
-  display_range: string;
+  startTime: string;
+  endTime: string;
+  displayRange: string;
 };
 
 export type ActivityDay = {
@@ -44,23 +36,23 @@ export const groupActivitiesByDate = (
   const byDay: Record<string, Record<string, ActivitySlotEntry[]>> = {};
 
   for (const activity of activities) {
-    const startHour = toHour(activity.start_time);
-    const displayRange = `${startHour} - ${toHour(activity.end_time)}`;
+    const startHour = toHour(activity.startTime);
+    const displayRange = `${startHour} - ${toHour(activity.endTime)}`;
 
-    for (const day of eachDayBetween(activity.start_time, activity.end_time)) {
+    for (const day of eachDayBetween(activity.startTime, activity.endTime)) {
       byDay[day] ??= {};
       byDay[day][startHour] ??= [];
 
       byDay[day][startHour].push({
         id: activity.id,
         name: activity.name,
-        partner_id: activity.partner_id,
-        partner_name: activity.partner_name,
-        partner_logo_url: activity.partner_logo_url,
+        partnerId: activity.partnerId,
+        partnerName: activity.partnerName,
+        partnerLogoUrl: activity.partnerLogoUrl,
         hour: startHour,
-        start_time: activity.start_time,
-        end_time: activity.end_time,
-        display_range: displayRange,
+        startTime: activity.startTime,
+        endTime: activity.endTime,
+        displayRange,
       });
     }
   }
@@ -74,7 +66,7 @@ export const groupActivitiesByDate = (
     }));
 };
 
-type Scheduled = { start_time: string; end_time: string };
+type Scheduled = { startTime: string; endTime: string };
 
 /**
  * Groupe les activités par jour uniquement, triées par heure de début.
@@ -86,7 +78,7 @@ export const groupActivitiesByDay = <T extends Scheduled>(
   const byDay: Record<string, T[]> = {};
 
   for (const activity of activities) {
-    for (const day of eachDayBetween(activity.start_time, activity.end_time)) {
+    for (const day of eachDayBetween(activity.startTime, activity.endTime)) {
       byDay[day] ??= [];
       byDay[day].push(activity);
     }
@@ -97,8 +89,6 @@ export const groupActivitiesByDay = <T extends Scheduled>(
     .map(([day, items]) => ({
       date: day,
       label: dayLabel(day),
-      activities: items.sort((a, b) =>
-        a.start_time.localeCompare(b.start_time),
-      ),
+      activities: items.sort((a, b) => a.startTime.localeCompare(b.startTime)),
     }));
 };

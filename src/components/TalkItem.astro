@@ -1,8 +1,9 @@
 ---
 import FavoriteButton from "./FavoriteButton.astro";
+import type { TalkEntry } from "../core/agenda";
 
 interface Props {
-    item: any;
+    item: TalkEntry;
 }
 
 const { item: t } = Astro.props;
@@ -33,7 +34,7 @@ const lang = t.talk.language == "en" ? "en" : "fr";
                 </dd>
                 <dd lang={lang}>{t.speakers}</dd>
                 <dd>
-                    <FavoriteButton talkId={t.id} sessionId={t.sessionId} />
+                    <FavoriteButton talkId={t.id} sessionId={t.sessionId ?? ""} />
                 </dd>
             </Fragment>
         )

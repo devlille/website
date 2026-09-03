@@ -1,13 +1,21 @@
 ---
-interface DayEntry {
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+import type { ActivitySlotEntry } from "../core/activities";
+import type { TalkEntry } from "../core/agenda";
+
+/** Ce que la Timeline sait afficher : des talks ou des animations. */
+type TimelineItem = TalkEntry | ActivitySlotEntry;
+
+/** Un onglet : un jour, ses créneaux triés par heure de début. */
+type TimelineDay<Item> = {
     date: string;
     label: string;
-    slots: any[];
-}
+    slots: Array<[string, Item[]]>;
+};
 
 interface Props {
-    data: DayEntry[];
-    ItemComponent: any;
+    data: Array<TimelineDay<TimelineItem>>;
+    ItemComponent: AstroComponentFactory;
     autoScrollToHour?: boolean;
 }
 
@@ -35,7 +43,7 @@ const { data, ItemComponent, autoScrollToHour = true } = Astro.props;
                 data-date={entry.date}
             >
                 <div class="agenda">
-                    {entry.slots.map((slot: any) => (
+                    {entry.slots.map((slot) => (
                         <section class="hour" data-hour={slot[0]}>
                             <h3 id={`d-${i}-h${slot[0]}`}>
                                 {slot[0]}
@@ -44,7 +52,7 @@ const { data, ItemComponent, autoScrollToHour = true } = Astro.props;
                                 </a>
                             </h3>
                             <div class="content">
-                                {slot[1].map((item: any) => (
+                                {slot[1].map((item) => (
                                     <ItemComponent item={item} />
                                 ))}
                             </div>

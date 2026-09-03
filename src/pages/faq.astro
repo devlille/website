@@ -1,40 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import config from "../config/config";
 import { marked } from "marked";
+import { dataSource } from "../data";
 
-type FAQ = {
-    question: string;
-    order: number;
-    response: string;
-    acronyms: { key: string; value: string }[];
-    actions: { label: string; url: string }[];
-};
-const data = await fetch(
-    `${config.partnersActivitiesApi}/events/${config.eventId}`,
-).then((res) => res.json());
-const qanda: FAQ[] = data.qanda
-    .sort((f1: FAQ, f2: FAQ) => f1.order - f2.order)
-    .map((q: FAQ) => {
-        return {
-            ...q,
-            response: marked(q.response.replaceAll("* ", "\r\n\r\n* ")),
-        };
-    })
-    .map((q: FAQ) => {
-        return {
-            ...q,
-            response: q.acronyms.reduce(
-                (acc, { key, value }) =>
-                    acc.replace(key, `<abbr title="${value}">${key}</abbr>`),
+const qanda = (await dataSource.getFaq()).map((entry) => ({
+    ...entry,
+    response: entry.acronyms.reduce(
+        (acc, { key, value }) =>
+            acc.replace(key, `<abbr title="${value}">${key}</abbr>`),
 
-                q.actions.reduce((acc, { label, url }) => {
-                    const regEx = new RegExp(label, "ig");
-                    return acc.replace(regEx, `<a href="${url}">${label}</a>`);
-                }, q.response),
-            ),
-        };
-    });
+        entry.actions.reduce(
+            (acc, { label, url }) =>
+                acc.replace(
+                    new RegExp(label, "ig"),
+                    `<a href="${url}">${label}</a>`,
+                ),
+            marked(entry.response.replaceAll("* ", "\r\n\r\n* ")) as string,
+        ),
+    ),
+}));
 ---
 
 <Layout title="Foire aux questions /" currSection="faq">

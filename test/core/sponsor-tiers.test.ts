@@ -1,20 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { formatPartner, type ApiPartner } from "../../src/core/partners";
+import { toPartners } from "../../src/data/adapters/http/mappers";
+import type { ApiPartnersResponse } from "../../src/data/adapters/http/mappers";
 import {
   SPONSOR_TIERS,
   groupSponsorsByTier,
 } from "../../src/core/sponsor-tiers";
 import partnersFixture from "../fixtures/partners.json" with { type: "json" };
 
-const sponsor = (name: string, sponsoring: string[]) =>
-  formatPartner({
-    id: name,
-    name,
-    description: "",
-    media: { svg: "logo.svg" },
-    videoUrl: null,
-    types: sponsoring,
-  } as ApiPartner);
+const sponsor = (name: string, tiers: string[]) => ({ id: name, name, tiers });
 
 describe("groupSponsorsByTier", () => {
   it("range chaque partenaire sous son pack", () => {
@@ -85,9 +78,7 @@ describe("groupSponsorsByTier", () => {
   });
 
   it("classe tous les partenaires du dump réel", () => {
-    const sponsors = partnersFixture.partners.map((p) =>
-      formatPartner(p as ApiPartner),
-    );
+    const sponsors = toPartners(partnersFixture as ApiPartnersResponse);
 
     const tiers = groupSponsorsByTier(sponsors);
     const classified = new Set(

@@ -1,25 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import config from "../config/config";
-import JobCard, { type Job } from "../components/JobCard.astro";
+import JobCard from "../components/JobCard.astro";
+import { dataSource } from "../data";
 
-type Partner = {
-  id: string;
-  name: string;
-  jobs?: Job[];
-};
-
-type ApiResponse = {
-  partners: Partner[];
-};
-
-const response: ApiResponse = await fetch(
-  `${config.partnersActivitiesApi}/events/${config.eventId}/partners/activities`,
-).then((res) => res.json());
-
-const jobsWithPartner = response.partners.flatMap((partner) =>
-  (partner.jobs ?? []).map((job) => ({ ...job, partnerName: partner.name })),
-);
+const jobs = await dataSource.getJobs();
 ---
 
 <Layout title="Les offres d'emploi de nos partenaires" currSection="offres">
@@ -32,10 +16,10 @@ const jobsWithPartner = response.partners.flatMap((partner) =>
       </div>
 
       <div class="job-offers">
-        {jobsWithPartner.map((job) => (
+        {jobs.map((job) => (
           <JobCard job={job} partnerName={job.partnerName} />
         ))}
-        {jobsWithPartner.length === 0 && (
+        {jobs.length === 0 && (
           <p>Aucune offre d'emploi disponible pour le moment.</p>
         )}
       </div>

@@ -1,12 +1,8 @@
 ---
-interface Partner {
-    id: string;
-    name: string;
-    logo_url: string;
-}
+import type { PartnerRef } from "../data/domain";
 
 interface Props {
-    partners: Partner[];
+    partners: PartnerRef[];
     className?: string;
 }
 
@@ -20,7 +16,7 @@ const { partners, className } = Astro.props;
             {partners.map((p) => (
                 <li class="sponsor">
                     <a href={`/partner-${p.id}`} aria-label={`Visiter le site de ${p.name}`}>
-                        <img loading="lazy" src={p.logo_url} alt={p.name} />
+                        <img loading="lazy" src={p.logoUrl} alt={p.name} />
                     </a>
                 </li>
             ))}

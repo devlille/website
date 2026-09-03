@@ -50,7 +50,7 @@ export type SponsorGroup<T> = {
 };
 
 /** Tout ce dont la répartition a besoin : la liste des packs du partenaire. */
-type Sponsored = { sponsoring: string[] };
+type Sponsored = { tiers: string[] };
 
 /**
  * Répartit les partenaires par pack, dans l'ordre de `tiers`, en écartant les
@@ -64,6 +64,6 @@ export const groupSponsorsByTier = <T extends Sponsored>(
     .map((tier) => ({
       id: tier.id,
       title: tier.title,
-      partners: sponsors.filter((s) => s.sponsoring.some(tier.match)),
+      partners: sponsors.filter((s) => s.tiers.some(tier.match)),
     }))
     .filter((group) => group.partners.length > 0);

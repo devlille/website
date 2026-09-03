@@ -1,67 +1,27 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration.js";
 import { marked } from "marked";
+import type { Agenda, ScheduleSlot, Session, Speaker } from "../data/domain";
 import { formatLongDate } from "./date";
 
 dayjs.extend(duration);
 
-export type ApiSchedule = {
-  id: string;
-  order?: number;
-  date: string;
-  start_time: string;
-  end_time: string;
-  room: string;
-  session_id?: string;
-};
-
-export type ApiAgendaSpeaker = {
-  id: string;
-  display_name: string;
-  bio?: string;
-  photo_url: string;
-  pronouns: string | null;
-  company: string | null;
-  job_title?: string | null;
-  socials: Array<{ type: string; url: string }>;
-  partners?: Array<{ id: string; name: string; logo_url: string }>;
-};
-
-export type ApiSession = {
-  id: string;
-  type: string;
-  title?: string;
-  abstract?: string;
-  description?: string;
-  language?: string;
-  level?: string;
-  speakers?: string[];
-  link_slides?: string | null;
-  link_replay?: string | null;
-  open_feedback?: string | null;
-};
-
-export type Agenda = {
-  schedules: ApiSchedule[];
-  sessions: ApiSession[];
-  speakers: ApiAgendaSpeaker[];
-};
-
+/** Un créneau prêt à afficher : la session, résolue, avec sa salle et sa durée. */
 type Talk = {
   id: string;
   type: string;
   title: string;
   abstract: string;
   language: string;
-  level?: string;
+  level: string | null;
   room: string;
   startTime: string;
   endTime: string;
   duration: string;
-  speakers: ApiAgendaSpeaker[];
-  link_slides?: string | null;
-  link_replay?: string | null;
-  open_feedback?: string | null;
+  speakers: Speaker[];
+  slidesUrl: string | null;
+  replayUrl: string | null;
+  openFeedbackUrl: string | null;
 };
 
 export type TalkEntry = {
@@ -97,10 +57,10 @@ export const formatDurationLabel = (
  * phase 4, ou à supprimer en fiabilisant les données source.
  */
 export const guessEventTitle = (
-  schedule: ApiSchedule,
-  eventSessions: ApiSession[],
+  schedule: ScheduleSlot,
+  eventSessions: Session[],
 ): string => {
-  const timeStr = schedule.start_time.split("T")[1] || "";
+  const timeStr = schedule.startTime.split("T")[1] || "";
   const hour = parseInt(timeStr.split(":")[0], 10);
 
   if (schedule.room === "Grand Théâtre") {
@@ -121,6 +81,53 @@ export const guessEventTitle = (
     );
   }
   return eventSessions.find((s) => s.title === "Pause")?.title ?? "Pause";
+};
+
+/**
+ * Fiche d'un talk : un créneau de type `talk-session`, avec ses intervenants
+ * résolus. C'est ce que consomment les pages `/talk-page-*`.
+ */
+export type TalkSheet = {
+  /** Id du créneau : c'est lui qui donne l'URL de la fiche. */
+  id: string;
+  sessionId: string;
+  title: string | null;
+  abstract: string;
+  level: string | null;
+  language: string;
+  speakers: Speaker[];
+  slidesUrl: string | null;
+  replayUrl: string | null;
+  openFeedbackUrl: string | null;
+};
+
+/** Une fiche par créneau de talk, dans l'ordre de l'agenda. */
+export const buildTalkSheets = (agenda: Agenda): TalkSheet[] => {
+  const sessionsMap = new Map(agenda.sessions.map((s) => [s.id, s]));
+  const speakersMap = new Map(agenda.speakers.map((s) => [s.id, s]));
+
+  return agenda.schedules.flatMap((schedule) => {
+    if (schedule.sessionId === null) return [];
+    const session = sessionsMap.get(schedule.sessionId);
+    if (session?.type !== "talk-session") return [];
+
+    return [
+      {
+        id: schedule.id,
+        sessionId: session.id,
+        title: session.title,
+        abstract: session.abstract,
+        level: session.level,
+        language: session.language,
+        speakers: session.speakerIds
+          .map((id) => speakersMap.get(id))
+          .filter((s): s is Speaker => Boolean(s)),
+        slidesUrl: session.slidesUrl,
+        replayUrl: session.replayUrl,
+        openFeedbackUrl: session.openFeedbackUrl,
+      },
+    ];
+  });
 };
 
 const renderAbstract = (raw: string): string =>
@@ -147,9 +154,9 @@ const buildTalksByDay = (
 
   for (const schedule of agenda.schedules) {
     const day = schedule.date;
-    const timeSlot = schedule.start_time.split("T")[1];
+    const timeSlot = schedule.startTime.split("T")[1];
 
-    if (!schedule.session_id || schedule.session_id === "null") {
+    if (schedule.sessionId === null) {
       slotFor(day, timeSlot).push({
         talk: {
           id: schedule.id,
@@ -157,15 +164,15 @@ const buildTalksByDay = (
           title: guessEventTitle(schedule, eventSessions),
           abstract: "",
           language: "fr",
-          level: undefined,
+          level: null,
           room: schedule.room,
-          startTime: schedule.start_time,
-          endTime: schedule.end_time,
-          duration: formatDurationLabel(schedule.start_time, schedule.end_time),
+          startTime: schedule.startTime,
+          endTime: schedule.endTime,
+          duration: formatDurationLabel(schedule.startTime, schedule.endTime),
           speakers: [],
-          link_slides: undefined,
-          link_replay: undefined,
-          open_feedback: undefined,
+          slidesUrl: null,
+          replayUrl: null,
+          openFeedbackUrl: null,
         },
         id: undefined,
         speakers: undefined,
@@ -174,14 +181,14 @@ const buildTalksByDay = (
       continue;
     }
 
-    const session = sessionsMap.get(schedule.session_id);
+    const session = sessionsMap.get(schedule.sessionId);
     if (!session) continue;
 
     const isTalk = session.type === "talk-session";
     const speakerObjects = isTalk
-      ? (session.speakers ?? [])
+      ? session.speakerIds
           .map((id) => speakersMap.get(id))
-          .filter((s): s is ApiAgendaSpeaker => Boolean(s))
+          .filter((s): s is Speaker => Boolean(s))
       : [];
 
     slotFor(day, timeSlot).push({
@@ -189,25 +196,23 @@ const buildTalksByDay = (
         id: schedule.id,
         type: session.type,
         title: session.title ?? "Pause",
-        abstract: renderAbstract(
-          (isTalk ? session.abstract : session.description) ?? "",
-        ),
-        language: session.language ?? "fr",
+        abstract: renderAbstract(session.abstract),
+        language: session.language,
         level: session.level,
         room: schedule.room,
-        startTime: schedule.start_time,
-        endTime: schedule.end_time,
-        duration: formatDurationLabel(schedule.start_time, schedule.end_time),
+        startTime: schedule.startTime,
+        endTime: schedule.endTime,
+        duration: formatDurationLabel(schedule.startTime, schedule.endTime),
         speakers: speakerObjects,
-        link_slides: session.link_slides,
-        link_replay: session.link_replay,
-        open_feedback: session.open_feedback,
+        slidesUrl: session.slidesUrl,
+        replayUrl: session.replayUrl,
+        openFeedbackUrl: session.openFeedbackUrl,
       },
       id: isTalk ? schedule.id : undefined,
-      sessionId: isTalk ? schedule.session_id : undefined,
+      sessionId: isTalk ? schedule.sessionId : undefined,
       speakers:
         speakerObjects.length > 0
-          ? speakerObjects.map((s) => s.display_name).join(" & ")
+          ? speakerObjects.map((s) => s.name).join(" & ")
           : undefined,
       speakersIds: speakerObjects.map((s) => s.id),
     });

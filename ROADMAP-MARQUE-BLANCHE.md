@@ -17,7 +17,7 @@
 - [Phase 2 — Nettoyage et corrections](#phase-2--nettoyage-et-corrections) ✅
 - [Phase 3 — Adapter statique (le « sans backend »)](#phase-3--adapter-statique-le--sans-backend-) ✅
 - [Phase 4 — Config et contenu](#phase-4--config-et-contenu) ✅
-- [Phase 5 — Thème et assets](#phase-5--thème-et-assets)
+- [Phase 5 — Thème et assets](#phase-5--thème-et-assets) ✅
 - [Phase 6 — Extraction du paquet](#phase-6--extraction-du-paquet)
 - [Décisions à arbitrer](#décisions-à-arbitrer)
 - [Annexe — Inventaire des points durs](#annexe--inventaire-des-points-durs)
@@ -657,22 +657,123 @@ src/content/
   team/  sections/  blocks/  editions/  press/
 ```
 
-## Phase 5 — Thème et assets
+## Phase 5 — Thème et assets ✅
 
-État des lieux encourageant : **5 couleurs en dur** dans `main.css` contre
-**122 `var(--…)`**. Le socle de tokens existe déjà.
+> Dernière phase avant l'extraction : elle sépare les feuilles du socle de
+> l'identité visuelle de l'instance, et fait entrer le CSS dans le pipeline
+> Astro.
 
 ### Tâches
 
-- [ ] Déplacer `public/css/` vers `src/styles/` → Astro minifie et hashe,
-      ce qui rend caduc le hack `postcss dist/css/*.css --replace` du script `build`.
-- [ ] Corriger les 5 couleurs en dur restantes (`#000` ×3, `#ff0054`, `#003646`).
-- [ ] Isoler `vars.css` comme **le seul fichier qu'une instance surcharge**.
-- [ ] Sortir la police Outfit (`.ttf` aujourd'hui dans `public/css/`) vers les assets
-      de thème.
-- [ ] Conventionner les assets de marque : `/img/logodl.svg`, `/img/home-2026.svg`,
-      `/img/sprite.svg`, favicons → un dossier `theme/` par instance, avec un manifeste.
-- [ ] Vérifier que le sprite SVG (`SocialList.astro`) reste surchargeable.
+- [x] Déplacer `public/css/` — mais en deux dossiers, pas un :
+      `src/styles/` pour les feuilles du **socle**, `src/theme/` pour ce qui
+      appartient à l'**instance**. `Layout.astro` les importe dans l'ordre
+      thème puis socle ; Astro minifie (lightningcss), hashe et sert **un seul
+      fichier** au lieu de trois. Le hack `postcss dist/css/*.css --replace`
+      disparaît, avec les dépendances `postcss`, `postcss-cli` et `cssnano`.
+- [x] Corriger les couleurs en dur : **34 occurrences, 20 valeurs distinctes**
+      — et non 5. L'inventaire de départ ne comptait que les couleurs opaques
+      (`#000` ×3, `#ff0054`, `#003646`) et oubliait les 29 `rgba()` de voile et
+      d'ombre, qui sont pourtant ce qui casse un rebranding sur fond clair.
+      Les feuilles du socle n'en contiennent plus **aucune**.
+- [x] Isoler les jetons comme **le seul fichier qu'une instance surcharge** :
+      `src/theme/tokens.css`. Il gagne les voiles (`--veil-05` … `--veil-80`),
+      les assombrissements (`--shade-15` … `--shade-80`), les jetons du pied de
+      page — qui étaient déclarés au milieu de `main.css` — et les visuels de
+      fond (`--hero-image`, `--hero-bg-image`, `--favicon-image`).
+- [x] Sortir la police Outfit vers `src/theme/fonts/`, son `@font-face` dans
+      `src/theme/fonts.css`. Vite la résout et la hashe.
+- [x] Conventionner les assets de marque : `public/theme/` et son manifeste
+      `src/theme/theme.config.ts`, validé par le même `defineConfig` que les
+      autres configs. Plus un seul chemin de fichier de marque dans un
+      composant. `logodl.svg` devient `logo.svg`, `home-2026.svg` devient
+      `hero.svg` : plus d'édition dans un nom de fichier.
+- [x] Vérifier que le sprite SVG reste surchargeable : `SocialList.astro` et
+      `Footer.astro` lisent `theme.sprite`. `src/theme/README.md` liste les dix
+      symboles qu'un sprite d'instance doit exposer.
+
+### Critère de sortie
+
+- [x] `npm test` vert : **201 tests sur 18 fichiers** (un test de moins :
+      celui qui couvrait `logoName`, supprimé du domaine — voir plus bas).
+- [x] `npx knip` sans signalement.
+- [x] `npm run test:seo` vert.
+- [x] `npm run test:build` vert, et **élargi** : il ne suivait que les `href`,
+      il suit maintenant aussi les `src` et les `og:image` absolus.
+      **5 116 références internes** contrôlées au lieu de 4 985 liens.
+- [x] **Build HTTP et build statique toujours identiques au octet près.**
+- [x] **Build toujours reproductible** et toujours possible sans réseau.
+- [x] Contrôle visuel dans le navigateur : accueil, agenda, fiche partenaire et
+      page 404 rendent correctement.
+
+### Ce que la phase 5 a mis au jour
+
+- **Les 58 fiches partenaires avaient une `og:image` morte.** Elle pointait sur
+  `/img/{logoName}.svg`, vestige du téléchargement des logos supprimé en
+  phase 1 : le fichier n'a jamais existé dans `public/`. Elle vaut désormais le
+  `logoUrl` du partenaire, avec l'image de l'instance en repli. Du coup
+  `logoName` n'a plus aucun consommateur : **retiré du domaine**, des schémas,
+  du jeu d'exemple et de sa documentation.
+- **`/img/logo-full.svg`, l'`og:image` de tout le site, n'existait pas non
+  plus.** Le fichier réel est `/img/promo/logo-full.png`, désormais copié en
+  `public/theme/og.png` — un PNG, que les réseaux sociaux savent rendre,
+  contrairement au SVG qui était déclaré.
+- **La page `/404` chargeait `css/main.css` en relatif**, donc `/404/css/…` :
+  elle serait restée sans style après le déplacement. Elle importe maintenant
+  le thème et le socle comme `Layout.astro`, et lit ses favicons dans le
+  manifeste.
+- **Entrer dans le pipeline inverse l'ordre des feuilles** : les styles scopés
+  des composants sont inlinés *avant* le lien vers le bundle, alors qu'ils
+  venaient après. À spécificité égale, le socle l'emporte donc désormais. Une
+  seule règle était concernée (`p.sponsor` de la fiche partenaire, en conflit
+  avec `.h-group.sponsor p`) ; elle nomme maintenant son ancêtre. À surveiller
+  à chaque nouveau `<style>` de composant.
+- **Les `logoUrl` du jeu d'exemple ont expiré** : 42 des 61 renvoient 404, le
+  CMS ayant fait tourner ses chemins de stockage depuis l'instantané de la
+  phase 3. Sans effet sur la production (qui lit l'API), mais le jeu statique
+  affiche des logos cassés — `npm run dump:static` le rafraîchit.
+- `markdown.smartypants` est **déprécié en Astro 7** : l'option descend sur le
+  processeur (`satteri({ features: { smartPunctuation: false } })`).
+
+### Ce que cela coûte, ce que cela rapporte
+
+| | Avant | Après |
+|---|---|---|
+| Requêtes CSS | 3 fichiers non hashés | **1 bundle hashé** |
+| Police | servie non hashée depuis `public/` | **hashée**, résolue par Vite |
+| CSS total | 40,5 ko | 41,9 ko |
+| HTML total | 2 892 ko | 2 914 ko |
+
+Les 22 ko de HTML en plus (≈ 107 octets par page) et les 1,4 ko de CSS sont le
+prix des `var(--…)` non résolus : le socle ne cite plus de couleur, il cite un
+jeton. En échange, le CSS et la police deviennent cachables indéfiniment.
+
+### Architecture livrée
+
+```
+src/styles/                    # le socle : ni couleur, ni chemin de marque
+  main.css  queries.css
+
+src/theme/                     # l'instance
+  tokens.css                   # LE fichier à surcharger pour rebrander
+  fonts.css  fonts/            # @font-face et fichiers de police
+  theme.config.ts              # manifeste des assets, validé par Zod
+  README.md
+
+public/theme/                  # les fichiers de marque, servis tels quels
+  logo.svg  hero.svg  og.png  favicon.svg  favicon.png  sprite.svg
+  hero-bg.svg  hero-bg2.svg  icon48/128/192/512.png
+```
+
+### Dépendance ajoutée, dépendances retirées
+
+`@astrojs/markdown-satteri` passe en dépendance directe (elle était déjà
+installée : c'est le processeur Markdown par défaut d'Astro 7) pour configurer
+la ponctuation typographique sans passer par l'option dépréciée.
+
+`postcss`, `postcss-cli` et `cssnano` sont retirées : la minification CSS est
+faite par lightningcss, dans le build. `postcss` reste dans l'arbre comme
+dépendance transitive de Vite.
 
 ---
 
@@ -684,7 +785,9 @@ src/content/
 ### Tâches
 
 - [ ] Mettre en place le monorepo (`packages/conference-kit` + `apps/devlille`).
-- [ ] Déplacer `domain/`, `ports/`, `adapters/`, `core/`, `components/`, `styles/`, `i18n/`.
+- [ ] Déplacer `src/data/`, `src/core/`, `src/components/`, `src/styles/`, `src/i18n/`
+      vers le paquet ; `src/config/`, `src/theme/`, `src/content/`, `public/theme/`
+      restent côté instance.
 - [ ] Définir les exports publics du paquet (le contrat versionné).
 - [ ] `apps/devlille` ne contient plus que : config, contenu, thème, pages spécifiques.
 - [ ] Adapter la CI (`deploy-clevercloud.yml`, `knip.yml`, `nightly-build.yml`).
@@ -730,8 +833,7 @@ des pages).
 
 ### Fichiers les plus couplés à DevLille
 
-Tous **découplés en phase 4** : le couplage subsistant est celui du thème et
-des assets, traité en phase 5.
+Tous découplés : le métier en phase 4, le thème et les assets en phase 5.
 
 | Fichier | Nature du couplage | Statut |
 |---|---|---|
@@ -743,7 +845,7 @@ des assets, traité en phase 5.
 | `src/core/sponsor-tiers.ts` | libellés des packs de sponsoring | ✅ `event.sponsorTiers` |
 | `src/data/adapters/http/mappers.ts` | `TIER_OVERRIDES` (un UUID en dur) | ✅ `event.sponsorTierOverrides` |
 | `src/config/config.ts` | 4 responsabilités mélangées | ✅ éclaté en 4 fichiers validés |
-| `public/css/`, `public/img/` | couleurs, polices, logos, sprite | ⏳ phase 5 |
+| `public/css/`, `public/img/` | couleurs, polices, logos, sprite | ✅ `src/theme/` + `public/theme/` |
 
 ### Métriques de suivi
 
@@ -752,15 +854,18 @@ des assets, traité en phase 5.
 | Appels HTTP par build | 10 | **4** | 3 |
 | `fetch` hors couche données | 8 | **0** | 0 |
 | Fichiers de test | 0 | **18** | ≥ 8 |
-| Tests | 0 | **202** | — |
+| Tests | 0 | **201** | — |
 | `console.log` en production | 18 | **0** | 0 |
 | Appels `marked` divergents | 5 | **0** | 0 |
 | Build reproductible | non | **oui** | oui |
 | Sources de données | 1 | **2** (`http`, `static`) | ≥ 2 |
 | Build possible sans réseau | non | **oui** | oui |
-| Couleurs en dur (CSS) | 5 | 5 | 0 |
+| Couleurs en dur (CSS) | 34 (20 distinctes) | **0** | 0 |
 | Occurrences de `any` dans `src/` | 23 | **0** | 0 |
 | Pages déclarant un `og` non publié | 2 | **0** | 0 |
-| Fichiers de configuration | 3 | **4 + 1 index** | validés par Zod |
+| Fichiers de configuration | 3 | **5 + 1 index** | validés par Zod |
 | Chaînes visibles en dur dans les composants | 62 | **0** | 0 |
 | Collections de contenu local | 1 | **6** | — |
+| Fichiers CSS servis | 3, non hashés | **1**, hashé | 1 |
+| Chemins d'assets de marque dans le code | 8 | **0** | 0 |
+| Références internes mortes | 59 | **0** | 0 |

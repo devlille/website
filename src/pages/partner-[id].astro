@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 import JobCard from "../components/JobCard.astro";
 import SponsorActivities from "../components/SponsorActivities.astro";
 import SocialList from "../components/SocialList.astro";
-import { site } from "../config";
+import { ogImageUrl, site } from "../config";
 import { t } from "../i18n";
 
 interface Props {
@@ -35,7 +35,7 @@ const partnerTalks =
 const og = {
     ogDescription: sponsor.data.description?.replaceAll('"', "")?.trim(),
     ogUrl: `${site.url}/partner-${sponsor.data.id}`,
-    ogImage: `${site.url}/img/${sponsor.data.logoName}.svg`,
+    ogImage: sponsor.data.logoUrl || ogImageUrl,
 };
 
 const video = sponsor.data.videoUrl;
@@ -149,8 +149,12 @@ const video = sponsor.data.videoUrl;
 </Layout>
 
 <style>
-
-    p.sponsor {
+    /*
+     * Le socle stylise déjà `.h-group.sponsor p` avec la même spécificité ;
+     * on nomme donc l'ancêtre pour l'emporter quel que soit l'ordre
+     * d'émission des feuilles.
+     */
+    .h-group.sponsor p.sponsor {
         box-sizing: border-box;
         min-width: 80px;
         background-color: var(--text-high);

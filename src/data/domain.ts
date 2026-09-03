@@ -109,8 +109,6 @@ export type Partner = {
   name: string;
   description: string;
   logoUrl: string;
-  /** Nom de fichier dérivé du nom, utilisé pour l'image Open Graph. */
-  logoName: string;
   siteUrl: string | null;
   videoUrl: string | null;
   socials: SocialLink[];

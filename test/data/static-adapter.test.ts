@@ -67,7 +67,6 @@ const DATASET: Record<string, unknown> = {
       name: "Acme",
       description: "Une description",
       logoUrl: "https://cdn.example.com/acme.png",
-      logoName: "acme",
       siteUrl: "https://acme.example.com",
       videoUrl: null,
       tiers: ["Pack Gold"],

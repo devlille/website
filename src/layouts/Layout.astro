@@ -1,5 +1,13 @@
 ---
-import { event, features, integrations, lang, site, ticketsUrl } from "../config";
+import {
+    event,
+    features,
+    integrations,
+    lang,
+    site,
+    theme,
+    ticketsUrl,
+} from "../config";
 import { buildEventJsonLd } from "../core/event-jsonld";
 import { pickOneWithSeed } from "../core/pick";
 import { t } from "../i18n";
@@ -9,6 +17,12 @@ import Footer from "../components/Footer.astro";
 import MainNav from "../components/MainNav.astro";
 import { getCollection } from "astro:content";
 import { render } from "astro:content";
+
+// Le thème d'abord : les feuilles du socle ne font que consommer ses jetons.
+import "../theme/fonts.css";
+import "../theme/tokens.css";
+import "../styles/main.css";
+import "../styles/queries.css";
 
 const { title, currSection, og = {} } = Astro.props;
 const { ogTitle, ogDescription, ogUrl, ogImage } = og;
@@ -46,13 +60,12 @@ const titleSuffix = t("layout.titleSuffix", {
         <meta property="og:description" content={ogDescription} />
         <meta property="og:image" content={ogImage} />
 
-        <link href="/img/favicon.svg" type="image/svg+xml" rel="icon" />
-        <link href="/img/favicon.png" type="image/png" rel="icon" />
+        {
+            theme.favicons.map((icon) => (
+                <link href={icon.href} type={icon.type} rel="icon" />
+            ))
+        }
         <title>{`${title} - ${titleSuffix}`}</title>
-
-        <!-- ✅ Correct CSS Path -->
-        <link rel="stylesheet" href="/css/main.css" />
-        <link rel="stylesheet" href="/css/queries.css" />
 
         <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
 
@@ -66,7 +79,7 @@ const titleSuffix = t("layout.titleSuffix", {
                 <h1>
                     {
                         currSection === "index" ? (
-                            <img src="/img/logodl.svg" alt={logoAlt} />
+                            <img src={theme.logo} alt={logoAlt} />
                         ) : (
                             <a
                                 href="/index.html"
@@ -74,7 +87,7 @@ const titleSuffix = t("layout.titleSuffix", {
                                     site: site.name,
                                 })}
                             >
-                                <img src="/img/logodl.svg" alt={logoAlt} />
+                                <img src={theme.logo} alt={logoAlt} />
                             </a>
                         )
                     }

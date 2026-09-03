@@ -101,7 +101,6 @@ const toPartner = (
   name: partner.name,
   description: partner.description ?? "",
   logoUrl: partner.media?.svg ?? "",
-  logoName: partner.name.toLowerCase().replaceAll(" ", "-"),
   siteUrl: normalizeSiteUrl(partner.siteUrl, partner.name),
   videoUrl: partner.videoUrl ?? null,
   socials: normalizeSocials(partner.socials),

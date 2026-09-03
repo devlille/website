@@ -92,7 +92,6 @@ export const partnerSchema = z.object({
   name: z.string(),
   description: z.string(),
   logoUrl: z.string(),
-  logoName: z.string(),
   siteUrl: z.string().nullable(),
   videoUrl: z.string().nullable(),
   socials: socialsSchema,

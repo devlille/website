@@ -1,0 +1,58 @@
+/*
+ * Jetons de thème de l'instance.
+ *
+ * C'est **le seul fichier qu'une instance a besoin de surcharger** pour
+ * rebrander le site : les feuilles du socle (`src/styles/`) ne connaissent que
+ * ces variables, jamais une couleur littérale.
+ */
+:root {
+  --body-text: #FFF;
+  --body-bg: #005772;
+  --body-bg-dark: #00465b;
+  --text-high: #FFF;
+  --text-inv: #00465b;
+
+  --link-color: var(--hot-color);
+
+  --main-color: #00A6E8;
+  --main-light: #C2E1F9;
+  --hot-color: #FFBB3D;
+  --hot-light: #FFF2BD;
+  --light-cold: #C2F9D2;
+  --light-hot: #F9C3E6;
+  --n-dark: #000;
+  --n-light: #EDECCC;
+  --n-medium: #666;
+  /* Assombrit --light-hot pour le guillemet ouvrant des citations. */
+  --hot-deep: #ff0054;
+
+  /* Voiles : surfaces translucides claires posées sur le fond. */
+  --veil-05: rgba(255, 255, 255, 0.05);
+  --veil-10: rgba(255, 255, 255, 0.1);
+  --veil-20: rgba(255, 255, 255, 0.2);
+  --veil-25: rgba(255, 255, 255, 0.25);
+  --veil-50: rgba(255, 255, 255, 0.5);
+  --veil-70: rgba(255, 255, 255, 0.7);
+  --veil-80: rgba(255, 255, 255, 0.8);
+  --body-veil: rgba(0, 70, 91, 0.8);
+  --warm-veil: rgba(239, 121, 24, 0.1);
+
+  /* Assombrissements : ombres portées et dégradés. */
+  --shade-15: rgba(0, 0, 0, 0.15);
+  --shade-23: rgba(0, 0, 0, 0.23);
+  --shade-30: rgba(0, 0, 0, 0.3);
+  --shade-50: rgba(0, 0, 0, 0.5);
+  --shade-80: rgba(0, 0, 0, 0.8);
+
+  /* Visuels de marque appelés depuis les feuilles du socle. */
+  --favicon-image: url("/theme/favicon.svg");
+  --hero-image: url("/theme/hero.svg");
+  --hero-bg-image: url("/theme/hero-bg.svg");
+  --hero-bg-image-2: url("/theme/hero-bg2.svg");
+
+  /* Pied de page. */
+  --footer-bg: #003646;
+  --footer-border: var(--veil-50);
+
+  --stack: "Outfit", Calibri, Roboto, "Droid Sans", Helvetica, Arial, sans-serif;
+}

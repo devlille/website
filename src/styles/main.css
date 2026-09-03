@@ -3,7 +3,6 @@
                		Main style-sheet
           				Ge Ricci, 2022/25
 -------------------------------------------------------------------- */
-@import "vars.css";
 
 /* ------------------------------ RESET ---------------------------- */
 
@@ -181,7 +180,7 @@ a[target]::after {
     white-space: nowrap;
     width: 16px;
     height: 16px;
-    background: url("../img/external-link.svg") no-repeat bottom right;
+    background: url("/img/external-link.svg") no-repeat bottom right;
     padding-left: 0.25rem;
 }
 
@@ -238,7 +237,7 @@ blockquote::before {
     left: 0;
     content: "\201C";
     font-size: 4em;
-    color: color-mix(in srgb, var(--light-hot), #ff0054 36%);
+    color: color-mix(in srgb, var(--light-hot), var(--hot-deep) 36%);
 }
 
 picture img {
@@ -278,11 +277,11 @@ p.register {
     right: 0;
     font-size: calc(0.9em + 0.5vw);
     font-variation-settings: "wght" 800;
-    background-color: rgb(255, 255, 255, 0.8);
+    background-color: var(--veil-80);
     z-index: 1;
 
     & a[target]::after {
-        background-image: url("../img/external-link-black.svg");
+        background-image: url("/img/external-link-black.svg");
     }
 }
 
@@ -309,7 +308,7 @@ p.register a {
     align-content: center;
     white-space: nowrap;
     color: var(--text-inv);
-    background-color: rgb(255, 255, 255, 0);
+    background-color: transparent;
     text-decoration: none;
     padding: 0.5em 0.25em 0.65em 1em;
     transition: all 0.3s;
@@ -332,8 +331,6 @@ aside {
 }
 
 footer {
-    --footer-bg: #003646;
-    --footer-border: rgba(255, 255, 255, 0.5);
     position: relative;
     background-color: var(--footer-bg);
     padding: 2rem 5% 5rem calc(5% + 2.5rem);
@@ -363,7 +360,7 @@ footer .p-name::before {
     top: 1.5rem;
     left: 5%;
     content: "";
-    background-image: url(../img/favicon.svg);
+    background-image: var(--favicon-image);
     background-repeat: no-repeat;
     background-size: contain;
     margin-right: 0.5rem;
@@ -424,7 +421,7 @@ ul.editions li {
         background-color: var(--light-hot);
     }
     a:visited {
-        background-color: rgba(255, 255, 255, 0.25);
+        background-color: var(--veil-25);
     }
 }
 
@@ -509,8 +506,8 @@ nav {
     bottom: 0;
     left: 0;
     color: var(--hot-color);
-    background-color: color-mix(in srgb, var(--body-bg-dark), #000 30%);
-    box-shadow: -3px 0 5px rgba(0, 0, 0, 0.5);
+    background-color: color-mix(in srgb, var(--body-bg-dark), var(--n-dark) 30%);
+    box-shadow: -3px 0 5px var(--shade-50);
     z-index: 1000;
 }
 
@@ -549,7 +546,7 @@ nav a:visited {
 nav a:hover,
 nav a:focus,
 nav a[aria-current="page"] {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--veil-20);
 }
 
 /* ----------------------------------------------------------------- */
@@ -560,7 +557,7 @@ div.hero {
     position: relative;
     background-image: linear-gradient(
         var(--body-bg),
-        rgba(0, 0, 0, 0.3) 30%,
+        var(--shade-30) 30%,
         var(--body-bg)
     );
     background-position: center;
@@ -606,7 +603,7 @@ div.hero {
     background-color: var(--body-bg-dark);
     padding: 1rem 5%;
     margin: 0;
-    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px 5px var(--shade-50);
     transition: all 0.3s;
     z-index: 10;
 }
@@ -631,7 +628,7 @@ div.hero {
 }
 
 section.news {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--veil-05);
     padding: 1.5rem 2rem;
     margin-bottom: 3rem;
     box-shadow: 0 5px 5px var(--n-dark);
@@ -696,8 +693,8 @@ aside {
 
 aside div.be-partner {
     color: var(--n-dark);
-    background-color: rgba(255, 255, 255, 0.7);
-    background-image: url(/img/home-2026.svg);
+    background-color: var(--veil-70);
+    background-image: var(--hero-image);
     background-repeat: no-repeat;
     background-size: cover;
     backdrop-filter: brightness(2);
@@ -707,7 +704,7 @@ aside div.be-partner {
     margin: 0 0 4rem;
 
     & a[target]::after {
-        background-image: url("../img/external-link-black.svg");
+        background-image: url("/img/external-link-black.svg");
     }
 }
 
@@ -881,7 +878,7 @@ div.presentation {
     box-sizing: border-box;
     max-width: 54em;
     line-height: 1.5;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--veil-10);
     backdrop-filter: blur(10px);
     padding: 5vw 5.5vw;
     margin: 7vw 0 5vw;
@@ -935,7 +932,7 @@ div.stats li {
     text-align: center;
     color: var(--body-bg);
     margin: auto;
-    box-shadow: 0 0 8px 2px rgba(0,0,0, 0.5);
+    box-shadow: 0 0 8px 2px var(--shade-50);
 }
 
 div.stats li:nth-child(1) {
@@ -1026,7 +1023,7 @@ p.read-more {
 }
 
 div.extra {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--veil-10);
     padding: 8vw;
     margin: 10vh 5vw;
     border-radius: 0.5rem;
@@ -1063,7 +1060,7 @@ div.extra {
 div.faq + div.faq {
     padding-top: calc(2rem + 1vw);
     margin-top: calc(2rem + 1vw);
-    border-top: 2px solid rgba(255, 255, 255, 0.25);
+    border-top: 2px solid var(--veil-25);
 }
 
 div.faq h3 {
@@ -1391,7 +1388,7 @@ div.talk-data-block {
     container-name: talkData;
     container-type: inline-size;
     color: var(--text-high);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--veil-10);
     padding: calc(1rem + 1vw) calc(1.5rem + 1vw);
     margin-bottom: 1.5rem;
 
@@ -1458,7 +1455,7 @@ div.talks {
 div.talk,
 div.online {
     color: var(--text-high);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--veil-10);
     padding: calc(1.5rem + 1vw) calc(1.5rem + 1vw) calc(1rem + 1vw);
     margin-bottom: 1.5rem;
 }
@@ -1576,7 +1573,7 @@ div.talk-links ul {
 div.talk-links li {
     position: relative;
     text-align: center;
-    background-color: rgba(239, 121, 24, 0.1);
+    background-color: var(--warm-veil);
     background-repeat: no-repeat;
     background-position: top center;
     padding: 150px 1rem 1rem;
@@ -1601,7 +1598,7 @@ div.talk-links a::after {
     left: 0;
 }
 div.talk-links li:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--veil-10);
 }
 
 p.openfb {
@@ -1633,7 +1630,7 @@ p.openfb {
     }
 
     & div.content {
-        background-color: color-mix(in srgb, var(--hot-light), #000 75%);
+        background-color: color-mix(in srgb, var(--hot-light), var(--n-dark) 75%);
     }
 
     & header {margin-bottom: 0.5rem;}
@@ -1696,7 +1693,7 @@ section.h-listing + section.h-listing {
 }
 
 section.h-listing:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: var(--shade-15);
 }
 
 details.job-offers[open] summary {    
@@ -1733,7 +1730,7 @@ ul.tabs {
 button[role="tab"] {
     font-variation-settings: "wght" 800;
     color: var(--body-text);
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     padding: 0.5em 1em;
 }
 
@@ -1859,7 +1856,7 @@ p.openfeedback {
 
 .card {
     color: var(--text-high);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--veil-10);
     padding: calc(1rem + 1vw) calc(1.5rem + 1vw);
 }
 
@@ -1909,13 +1906,13 @@ div.cfp a {
 /* -------------------------- PRESS ---------------------------- */
 
 dl.press div {
-    background-image: url(../img/ic-press.svg);
+    background-image: url(/img/ic-press.svg);
     background-size: 55px;
     background-repeat: no-repeat;
     padding-left: 75px;
 }
 dl.press div.video {
-    background-image: url(../img/ic-video.svg);
+    background-image: url(/img/ic-video.svg);
 }
 
 dl.press + h3 {
@@ -2014,7 +2011,7 @@ p.mce-logo {
 }
 
 .video-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--veil-05);
     backdrop-filter: blur(25px);
     padding: 1rem;
     transition:
@@ -2023,7 +2020,7 @@ p.mce-logo {
 }
 
 .video-card:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--veil-10);
     outline: 2px solid var(--link-color);
 }
 
@@ -2033,7 +2030,7 @@ p.mce-logo {
     padding-bottom: 56.25%; /* Ratio 16:9 */
     margin-bottom: 1rem;
     overflow: hidden;
-    background-color: #000;
+    background-color: var(--n-dark);
     cursor: pointer;
 }
 

@@ -1,13 +1,13 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { site } from "../config";
+import { ogImageUrl, site } from "../config";
 import { t } from "../i18n";
 
 const og = {
     ogTitle: `${site.name} - A propos`,
     ogDescription: t("og.about", { site: site.name }),
-    ogImage: `${site.url}/img/logo-full.svg`,
+    ogImage: ogImageUrl,
 };
 
 const team = await Promise.all(

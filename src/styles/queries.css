@@ -140,7 +140,7 @@
   }
 
   div.decor {
-    background-color: rgb(255,255,255,0.05);
+    background-color: var(--veil-05);
     padding: 2em;
     margin: 0;
   }
@@ -163,13 +163,13 @@
 
     & div.content {
       text-align: left;
-      background-color: rgb(0, 70,91, 0.8);
+      background-color: var(--body-veil);
       padding: 10vw 15vw 10vw 35vw;
       margin: 0 5vw;
     }
 
     & p.illustration img {
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 5px 12px var(--shade-80);
     }
 
     & p.illustration:not(.secondary) {
@@ -332,7 +332,7 @@
       left: 4rem;
       grid-column-start: 2;
       margin-top: 2rem;
-      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 5px var(--shade-50);
     }
 
   div.talk-data-block {
@@ -360,7 +360,7 @@
   }
 
   div.hero {
-    background-image: url(../img/hero-bg.svg), url(../img/hero-bg2.svg), linear-gradient(var(--body-bg), rgba(0, 0, 0, 0.3) 30%, var(--body-bg));
+    background-image: var(--hero-bg-image), var(--hero-bg-image-2), linear-gradient(var(--body-bg), var(--shade-30) 30%, var(--body-bg));
     background-repeat: no-repeat;
     background-position-x: right 77vw, left 77vw, center;
   }
@@ -421,7 +421,7 @@
 
 @media screen and (min-width: 1300px) {
   main {
-    background-image: url(../img/hero-bg2.svg);
+    background-image: var(--hero-bg-image-2);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top right;
@@ -435,7 +435,7 @@
   .page-body {
     margin-right: auto;
     margin-left: auto;
-    background-color: rgba(0, 0, 0, 0.23);
+    background-color: var(--shade-23);
     backdrop-filter: blur(40px);
   }
 

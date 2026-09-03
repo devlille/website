@@ -190,6 +190,27 @@ export const integrationsSchema = z.object({
 
 export type IntegrationsConfig = z.infer<typeof integrationsSchema>;
 
+// --------------------------------------------------------------- thème
+
+/** Chemin servi tel quel depuis `public/`. */
+const publicPath = z.string().regex(/^\/\S+$/, "chemin absolu depuis public/");
+
+export const themeSchema = z.object({
+  /** Logo de l'en-tête. */
+  logo: publicPath,
+  /** Visuel de la une. */
+  hero: publicPath,
+  /** Image des cartes de partage, publiée en absolu dans `og:image`. */
+  ogImage: publicPath,
+  favicons: z
+    .array(z.object({ href: publicPath, type: z.string().min(1) }))
+    .nonempty(),
+  /** Sprite SVG des icônes : une instance le remplace par le sien. */
+  sprite: publicPath,
+  /** Icônes d'interface du socle. */
+  icons: z.object({ anchor: publicPath }),
+});
+
 // ------------------------------------------------------------ features
 
 export const featuresSchema = z.object({

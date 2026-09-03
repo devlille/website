@@ -9,11 +9,15 @@ import event from "./event.config";
 import features from "./features";
 import integrations from "./integrations.config";
 import site from "./site.config";
+import theme from "../theme/theme.config";
 
-export { event, features, integrations, site };
+export { event, features, integrations, site, theme };
 
 /** `fr-FR` -> `fr` : ce que porte l'attribut `lang` du `<html>`. */
 export const lang: string = site.locale.split("-")[0];
+
+/** URL absolue de l'image de partage, telle que l'exigent les métadonnées Open Graph. */
+export const ogImageUrl: string = `${site.url}${theme.ogImage}`;
 
 /** Clé de stockage navigateur des favoris, préfixée par l'instance. */
 export const favoritesStorageKey = `${site.id}_favorites`;

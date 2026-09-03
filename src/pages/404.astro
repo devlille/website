@@ -1,12 +1,24 @@
+---
+import { lang, theme } from "../config";
+
+// La page 404 ne passe pas par `Layout.astro` : elle charge donc le thème et
+// les feuilles du socle elle-même.
+import "../theme/fonts.css";
+import "../theme/tokens.css";
+import "../styles/main.css";
+import "../styles/queries.css";
+---
+
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="/img/favicon.png" type="image/png" rel="icon" />
-
-        <link href="css/main.css" rel="stylesheet" media="all" />
-        <link href="css/queries.css" rel="stylesheet" media="all" />
+        {
+            theme.favicons.map((icon) => (
+                <link href={icon.href} type={icon.type} rel="icon" />
+            ))
+        }
         <title>Perdu? 404 : DevLille 2026</title>
 
         <style media="screen">

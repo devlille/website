@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
+import { satteri } from "@astrojs/markdown-satteri";
 import event from "./src/config/event.config.ts";
 import site from "./src/config/site.config.ts";
 
@@ -27,7 +28,7 @@ export default defineConfig({
   markdown: {
     // Le contenu local doit sortir tel qu'il est écrit : pas de substitution
     // typographique silencieuse des apostrophes et des tirets.
-    smartypants: false,
+    processor: satteri({ features: { smartPunctuation: false } }),
   },
   vite: {
     build: {

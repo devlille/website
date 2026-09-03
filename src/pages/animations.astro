@@ -3,14 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import Timeline from "../components/Timeline.astro";
 import AnimationItem from "../components/AnimationItem.astro";
 import { createActivitiesCollectionsByDate } from "../utils/getActivitiesByDate";
-import { site } from "../config";
+import { ogImageUrl, site } from "../config";
 import { t } from "../i18n";
 
 const og = {
     ogTitle: `${site.name} - ${t("page.animations")}`,
     ogUrl: `${site.url}/animations`,
     ogDescription: t("og.animations", { site: site.name }),
-    ogImage: `${site.url}/img/logo-full.svg`,
+    ogImage: ogImageUrl,
 };
 
 const activitiesByDate = await createActivitiesCollectionsByDate();

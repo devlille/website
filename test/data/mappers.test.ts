@@ -120,7 +120,6 @@ describe("toPartners", () => {
       name: "Clever Cloud",
       description: "Un hébergeur",
       logoUrl: "https://example.com/logo.svg",
-      logoName: "clever-cloud",
       siteUrl: "https://www.clever.cloud/fr/",
       videoUrl: null,
       socials: [
@@ -130,12 +129,6 @@ describe("toPartners", () => {
       jobs: [],
       speakerIds: [],
     });
-  });
-
-  it("dérive le nom de logo en minuscules et sans espace", () => {
-    expect(onePartner({ name: "AXA FRANCE IARD" }).logoName).toBe(
-      "axa-france-iard",
-    );
   });
 
   it("remplace une description absente par une chaîne vide", () => {

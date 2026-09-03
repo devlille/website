@@ -4,8 +4,9 @@
  * l'adapter statique.
  *
  * Complet : chaque famille de pages alimentée par la source de données est
- * présente et non vide. Navigable : tous les liens internes résolvent vers un
- * fichier réellement produit.
+ * présente et non vide. Navigable : toutes les références internes — liens,
+ * images, scripts, feuilles de style, sprite, image Open Graph — résolvent vers
+ * un fichier réellement produit.
  *
  * Volontairement indépendant de la source de données : il s'applique aussi à un
  * build HTTP, ce qui garantit que les deux sont tenus au même standard.
@@ -16,6 +17,13 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const distDir = resolve(root, "dist");
+
+/**
+ * Racine publique du site, telle que la portent les URL absolues des
+ * métadonnées Open Graph. Lue dans le HTML produit plutôt qu'importée : le
+ * script reste utilisable sans charger le TypeScript du site.
+ */
+const siteUrl = "https://devlille.fr";
 
 const errors = [];
 const fail = (message) => errors.push(message);
@@ -66,7 +74,13 @@ for (const { label, match, source, min = 1 } of REQUIRED) {
 
 // --- Navigable ---------------------------------------------------------------
 
-const HREF_RE = /\shref="([^"]+)"/g;
+/**
+ * Tout ce qui désigne une ressource du site : liens, mais aussi images, scripts
+ * et `<use>` du sprite. Les `content="…"` des métadonnées Open Graph sont
+ * ramassés à part, parce qu'ils portent une URL absolue.
+ */
+const REF_RE = /\s(?:href|src)="([^"]+)"/g;
+const OG_IMAGE_RE = /<meta property="og:image" content="([^"]+)"/g;
 
 /** Une URL interne résout si `dist/` porte le fichier, ou son `index.html`. */
 const resolves = (pathname) => {
@@ -82,11 +96,19 @@ const resolves = (pathname) => {
 const broken = new Map();
 let internalLinks = 0;
 
+/** `https://devlille.fr/theme/og.png` -> `/theme/og.png`, sinon `null`. */
+const toInternal = (url) => {
+  if (url.startsWith("/") && !url.startsWith("//")) return url;
+  return url.startsWith(`${siteUrl}/`) ? url.slice(siteUrl.length) : null;
+};
+
 for (const page of htmlPages) {
   const html = readFileSync(page, "utf8");
-  for (const [, href] of html.matchAll(HREF_RE)) {
-    if (!href.startsWith("/") || href.startsWith("//")) continue;
-    const pathname = href.split(/[?#]/)[0];
+  const refs = [...html.matchAll(REF_RE), ...html.matchAll(OG_IMAGE_RE)];
+  for (const [, ref] of refs) {
+    const internal = toInternal(ref);
+    if (internal === null) continue;
+    const pathname = internal.split(/[?#]/)[0];
     if (pathname === "") continue;
     internalLinks += 1;
     if (resolves(pathname)) continue;
@@ -98,11 +120,11 @@ for (const page of htmlPages) {
 if (broken.size > 0) {
   for (const [href, pages] of broken) {
     fail(
-      `lien interne mort : ${href} (depuis ${pages.slice(0, 3).join(", ")}${pages.length > 3 ? `, +${pages.length - 3}` : ""})`,
+      `référence interne morte : ${href} (depuis ${pages.slice(0, 3).join(", ")}${pages.length > 3 ? `, +${pages.length - 3}` : ""})`,
     );
   }
 } else {
-  console.log(`✓ ${internalLinks} liens internes, tous résolus`);
+  console.log(`✓ ${internalLinks} références internes, toutes résolues`);
 }
 
 // -----------------------------------------------------------------------------

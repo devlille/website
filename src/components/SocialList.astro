@@ -1,5 +1,6 @@
 ---
 import type { SocialLink } from "../data/domain";
+import { theme } from "../config";
 import { t } from "../i18n";
 
 interface Props {
@@ -31,7 +32,7 @@ const SOCIAL_ICONS: Record<string, { icon: string; title: string }> = {
                     <a href={social.url}>
                         <svg role="img" width="24" height="24">
                             <title>{meta.title}</title>
-                            <use href={`/img/sprite.svg#${meta.icon}`} />
+                            <use href={`${theme.sprite}#${meta.icon}`} />
                         </svg>
                     </a>
                 </li>
@@ -44,7 +45,7 @@ const SOCIAL_ICONS: Record<string, { icon: string; title: string }> = {
                 <a href={siteUrl}>
                     <svg role="img" width="24" height="24">
                         <title>{t("socials.website")}</title>
-                        <use href="/img/sprite.svg#ic-website" />
+                        <use href={`${theme.sprite}#ic-website`} />
                     </svg>
                 </a>
             </li>

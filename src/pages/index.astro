@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { event, site } from "../config";
+import { event, ogImageUrl, site, theme } from "../config";
 import { t } from "../i18n";
 import YoutubeVideos from "../components/youtube-videos.astro";
 import Illustration from "../components/Illustration.astro";
@@ -9,7 +9,7 @@ import Illustration from "../components/Illustration.astro";
 const og = {
     ogTitle: site.name,
     ogDescription: t("og.home", { site: site.name }),
-    ogImage: `${site.url}/img/logo-full.svg`,
+    ogImage: ogImageUrl,
 };
 
 /** Les sections éditoriales, dans l'ordre déclaré par leur frontmatter. */
@@ -37,7 +37,7 @@ const stats = [
     <div class="hero">
         <p>
             <img
-                src="/img/home-2026.svg"
+                src={theme.hero}
                 width="512"
                 alt={`${site.name} Année ${event.edition}`}
                 fetchpriority="high"

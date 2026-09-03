@@ -2,7 +2,7 @@
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import type { ActivitySlotEntry } from "../core/activities";
 import type { TalkEntry } from "../core/agenda";
-import { event } from "../config";
+import { event, theme } from "../config";
 import { t } from "../i18n";
 
 /** Ce que la Timeline sait afficher : des talks ou des animations. */
@@ -50,7 +50,7 @@ const { data, ItemComponent, autoScrollToHour = true } = Astro.props;
                             <h3 id={`d-${i}-h${slot[0]}`}>
                                 {slot[0]}
                                 <a href={`#d-${i}-h${slot[0]}`}>
-                                    <img src="/img/link.svg" alt={t("agenda.anchorAlt")} />
+                                    <img src={theme.icons.anchor} alt={t("agenda.anchorAlt")} />
                                 </a>
                             </h3>
                             <div class="content">

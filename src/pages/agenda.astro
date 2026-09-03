@@ -4,14 +4,14 @@ import Timeline from "../components/Timeline.astro";
 import TalkItem from "../components/TalkItem.astro";
 import FavoritesSwitch from "../components/FavoritesSwitch.astro";
 import { createTalksCollectionsBydate } from "../utils/getTalksByDate";
-import { event, site } from "../config";
+import { event, ogImageUrl, site } from "../config";
 import { t } from "../i18n";
 
 const og = {
     ogTitle: `${site.name} - ${t("page.agenda")}`,
     ogUrl: `${site.url}/agenda`,
     ogDescription: t("og.agenda", { tagline: event.tagline }),
-    ogImage: `${site.url}/img/logo-full.svg`,
+    ogImage: ogImageUrl,
 };
 
 const talksByDate = await createTalksCollectionsBydate();

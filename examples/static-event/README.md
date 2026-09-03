@@ -155,7 +155,6 @@ Une liste :
     "name": "Acme",
     "description": "Acme fabrique des **enclumes** depuis 1949.",
     "logoUrl": "https://exemple.fr/acme.png",
-    "logoName": "acme",
     "siteUrl": "https://acme.example",
     "videoUrl": null,
     "socials": [],
@@ -178,15 +177,16 @@ Une liste :
 
 - **`tiers`** — les packs souscrits. Ce sont ces libellés qui décident dans
   quelle section de la page d'accueil le partenaire apparaît : ils doivent
-  correspondre à ceux de `src/core/sponsor-tiers.ts` — aujourd'hui
+  correspondre à ceux déclarés dans `src/config/event.config.ts` — aujourd'hui
   `Pack Gold` (ou `gold`), `Pack Silver` (`silver`), `Pack Bronze` (`bronze`),
   `Partenaires DevLille Graine de Dev`, `Partenaire Hébergement`,
   `Community Partners` et `Partenaires Média`. Un pack inconnu ne fait pas
   échouer le build, mais le partenaire n'apparaît alors dans aucune section de
   la liste — seule sa fiche `/partner-…` est produite. Un partenaire qui cumule
   deux packs apparaît dans les deux.
-- **`logoName`** — nom de fichier utilisé pour l'image de partage sur les
-  réseaux sociaux.
+- **`logoUrl`** — le logo affiché sur la fiche du partenaire. Il sert aussi
+  d'image de partage sur les réseaux sociaux, qui préfèrent un PNG ou un JPEG à
+  un SVG.
 - **`salary`** — vaut `null`, ou bien les trois champs. Seuls `min` et `max`
   sont affichés (« 45 000 € à 60 000 € ») ; `recurrence` est exigé par le
   format mais n'apparaît nulle part pour l'instant.
@@ -256,7 +256,7 @@ event.json, agenda.json, partners.json, activities.json, videos.json.
 
 ```
 …/partners.json ne respecte pas le format attendu :
-  - [0].logoName : Invalid input: expected string, received undefined
+  - [0].logoUrl : Invalid input: expected string, received undefined
   - [3].jobs[1].publishDate : Invalid input: expected number, received string
 ```
 → le chemin entre crochets est la position dans la liste : `[3].jobs[1]` désigne

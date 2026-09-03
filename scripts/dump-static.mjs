@@ -31,14 +31,15 @@ try {
   const { createHttpDataSource } = await server.ssrLoadModule(
     "/src/data/adapters/http/index.ts",
   );
-  const { default: config } = await server.ssrLoadModule(
-    "/src/config/config.ts",
+  const { event, integrations } = await server.ssrLoadModule(
+    "/src/config/index.ts",
   );
 
   const source = createHttpDataSource({
-    baseUrl: config.apiBaseUrl,
-    eventId: config.eventId,
-    youtubePlaylistId: config.youtubePlaylistId,
+    baseUrl: integrations.api.baseUrl,
+    eventId: integrations.api.eventId,
+    youtubePlaylistId: integrations.youtube.playlistId,
+    tierOverrides: event.sponsorTierOverrides,
   });
 
   // `jobs` n'a pas de fichier : l'adapter statique les dérive de `partners`,

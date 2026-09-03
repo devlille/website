@@ -20,8 +20,8 @@ export type ActivityDay = {
   slots: Array<[string, ActivitySlotEntry[]]>;
 };
 
-const dayLabel = (day: string): string =>
-  formatLongDate(new Date(`${day}T12:00:00`));
+const dayLabel = (day: string, locale: string): string =>
+  formatLongDate(new Date(`${day}T12:00:00`), locale);
 
 const byKeyAsc = <T>([a]: [string, T], [b]: [string, T]) => a.localeCompare(b);
 
@@ -32,6 +32,7 @@ const byKeyAsc = <T>([a]: [string, T], [b]: [string, T]) => a.localeCompare(b);
  */
 export const groupActivitiesByDate = (
   activities: Activity[],
+  locale: string,
 ): ActivityDay[] => {
   const byDay: Record<string, Record<string, ActivitySlotEntry[]>> = {};
 
@@ -61,7 +62,7 @@ export const groupActivitiesByDate = (
     .sort(byKeyAsc)
     .map(([day, slots]) => ({
       date: day,
-      label: dayLabel(day),
+      label: dayLabel(day, locale),
       slots: Object.entries(slots).sort(byKeyAsc),
     }));
 };
@@ -74,6 +75,7 @@ type Scheduled = { startTime: string; endTime: string };
  */
 export const groupActivitiesByDay = <T extends Scheduled>(
   activities: T[],
+  locale: string,
 ): Array<{ date: string; label: string; activities: T[] }> => {
   const byDay: Record<string, T[]> = {};
 
@@ -88,7 +90,7 @@ export const groupActivitiesByDay = <T extends Scheduled>(
     .sort(byKeyAsc)
     .map(([day, items]) => ({
       date: day,
-      label: dayLabel(day),
+      label: dayLabel(day, locale),
       activities: items.sort((a, b) => a.startTime.localeCompare(b.startTime)),
     }));
 };

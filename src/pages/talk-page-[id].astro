@@ -5,6 +5,8 @@ import Layout from "../layouts/Layout.astro";
 import { renderMarkdown } from "../core/markdown";
 import PartnerBlock from "../components/PartnerBlock.astro";
 import FavoriteButton from "../components/FavoriteButton.astro";
+import { site } from "../config";
+import { t } from "../i18n";
 
 interface Props {
     talk: CollectionEntry<"talks">;
@@ -27,7 +29,7 @@ const { talk } = Astro.props;
 
 const og = {
     ogDescription: talk.data.title?.replaceAll('"', ""),
-    ogUrl: "https://devlille.fr/talk-page-" + talk.id,
+    ogUrl: `${site.url}/talk-page-${talk.id}`,
     ogImage: talk.data.speakers[0]?.photoUrl,
 };
 
@@ -56,7 +58,7 @@ const abstract = renderMarkdown(talk.data.abstract, { headingOffset: 1 });
                     <Fragment set:html={abstract} />
                 </div>
                 <div class="talk-data-block card">
-                    <h3>Présenté par :</h3>
+                    <h3>{t("talk.presentedBy")}</h3>
                     {
                         speakers?.map((s) => {
                             return (
@@ -66,7 +68,7 @@ const abstract = renderMarkdown(talk.data.abstract, { headingOffset: 1 });
                                         width="100"
                                         height="100"
                                         src={s.photoUrl}
-                                        alt={`Photo de ${s.name}`}
+                                        alt={t("speaker.photoAlt", { name: s.name })}
                                     />
                                     <a href={`/speaker-page-${s.id}`}>
                                         {s.name}
@@ -86,12 +88,12 @@ const abstract = renderMarkdown(talk.data.abstract, { headingOffset: 1 });
                         <div class="content">
                             {talk.data.slidesUrl && (
                                 <div class="talk-links">
-                                    <h4>Regardez ou re-regardez</h4>
+                                    <h4>{t("talk.watchAgain")}</h4>
                                     <ul>
                                         {talk.data.replayUrl && (
                                             <li>
                                                 <a href={talk.data.replayUrl}>
-                                                    La vidéo du talk
+                                                    {t("talk.replay")}
                                                 </a>
                                             </li>
                                         )}
@@ -99,7 +101,7 @@ const abstract = renderMarkdown(talk.data.abstract, { headingOffset: 1 });
                                         {talk.data.slidesUrl && (
                                             <li>
                                                 <a href={talk.data.slidesUrl}>
-                                                    Les slides du talk
+                                                    {t("talk.slides")}
                                                 </a>
                                             </li>
                                         )}
@@ -108,14 +110,12 @@ const abstract = renderMarkdown(talk.data.abstract, { headingOffset: 1 });
                             )}
                             {talk.data.openFeedbackUrl && (
                                 <p class="openfb">
-                                    Suite à la conférence, vous pouvez faire
-                                    un retour aux conférenciers et
-                                    conférencières sur
+                                    {t("talk.feedbackIntro")}
                                     <a
                                         href={talk.data.openFeedbackUrl}
                                         target="_blank"
                                     >
-                                        OpenFeedback
+                                        {t("talk.feedbackLink")}
                                     </a>
                                 </p>
                             )}

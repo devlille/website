@@ -3,8 +3,9 @@ import {
   buildTalkDays,
   buildTalkSheets,
   formatDurationLabel,
-  guessEventTitle,
+  resolveSlotTitle,
 } from "../../src/core/agenda";
+import { event, site } from "../../src/config";
 import type {
   Agenda,
   ScheduleSlot,
@@ -14,6 +15,12 @@ import type {
 import { toAgenda } from "../../src/data/adapters/http/mappers";
 import type { ApiAgenda } from "../../src/data/adapters/http/mappers";
 import agendaFixture from "../fixtures/agenda.json" with { type: "json" };
+
+const SLOT_TITLES = event.slotTitles;
+
+/** Les jours de l'agenda, avec les règles de libellé de l'instance. */
+const buildDays = (agenda: Agenda) =>
+  buildTalkDays(agenda, { slotTitles: SLOT_TITLES, locale: site.locale });
 
 const schedule = (over: Partial<ScheduleSlot> = {}): ScheduleSlot => ({
   id: "sch-1",
@@ -82,7 +89,7 @@ describe("formatDurationLabel", () => {
   });
 });
 
-describe("guessEventTitle", () => {
+describe("resolveSlotTitle", () => {
   const eventSessions: Session[] = [
     eventSession("e1", "Keynote d'ouverture 2026"),
     eventSession("e2", "Enregistrement des badges"),
@@ -90,67 +97,91 @@ describe("guessEventTitle", () => {
     eventSession("e4", "Pause"),
   ];
 
-  it("devine une keynote au Grand Théâtre", () => {
-    expect(
-      guessEventTitle(schedule({ room: "Grand Théâtre" }), eventSessions),
-    ).toBe("Keynote d'ouverture 2026");
+  const resolve = (over: Partial<ScheduleSlot>, sessions = eventSessions) =>
+    resolveSlotTitle(schedule(over), sessions, SLOT_TITLES);
+
+  it("applique la règle de salle", () => {
+    expect(resolve({ room: "Grand Théâtre" })).toBe("Keynote d'ouverture 2026");
   });
 
-  it("devine un enregistrement avant 9 h", () => {
-    expect(
-      guessEventTitle(
-        schedule({ startTime: "2026-06-11T08:30" }),
-        eventSessions,
-      ),
-    ).toBe("Enregistrement des badges");
-  });
-
-  it("devine un lunch entre midi et 14 h", () => {
-    expect(
-      guessEventTitle(
-        schedule({ startTime: "2026-06-11T12:00" }),
-        eventSessions,
-      ),
-    ).toBe("Lunch 🍽️");
-  });
-
-  it("devine une pause en dehors de ces plages", () => {
-    expect(
-      guessEventTitle(
-        schedule({ startTime: "2026-06-11T15:30" }),
-        eventSessions,
-      ),
-    ).toBe("Pause");
-  });
-
-  it("retombe sur un libellé par défaut quand aucune session ne correspond", () => {
-    expect(guessEventTitle(schedule({ room: "Grand Théâtre" }), [])).toBe(
-      "Keynote d'ouverture",
+  it("applique une règle bornée par une heure de fin", () => {
+    expect(resolve({ startTime: "2026-06-11T08:30" })).toBe(
+      "Enregistrement des badges",
     );
-    expect(
-      guessEventTitle(schedule({ startTime: "2026-06-11T08:00" }), []),
-    ).toBe("Enregistrement");
-    expect(
-      guessEventTitle(schedule({ startTime: "2026-06-11T13:00" }), []),
-    ).toBe("Lunch");
-    expect(
-      guessEventTitle(schedule({ startTime: "2026-06-11T16:00" }), []),
-    ).toBe("Pause");
   });
 
-  it("donne la priorité au Grand Théâtre sur l'heure", () => {
+  it("applique une règle bornée des deux côtés", () => {
+    expect(resolve({ startTime: "2026-06-11T12:00" })).toBe("Lunch 🍽️");
+  });
+
+  it("retombe sur la règle par défaut hors de toute plage", () => {
+    expect(resolve({ startTime: "2026-06-11T15:30" })).toBe("Pause");
+  });
+
+  it("prend le libellé de la règle quand aucune session ne correspond", () => {
+    expect(resolve({ room: "Grand Théâtre" }, [])).toBe("Keynote d'ouverture");
+    expect(resolve({ startTime: "2026-06-11T08:00" }, [])).toBe(
+      "Enregistrement",
+    );
+    expect(resolve({ startTime: "2026-06-11T13:00" }, [])).toBe("Lunch");
+    expect(resolve({ startTime: "2026-06-11T16:00" }, [])).toBe("Pause");
+  });
+
+  it("retient la première règle satisfaite", () => {
     expect(
-      guessEventTitle(
-        schedule({ room: "Grand Théâtre", startTime: "2026-06-11T12:30" }),
-        eventSessions,
+      resolveSlotTitle(schedule({ room: "Atelier" }), [], {
+        rules: [
+          { room: "Atelier", titleContains: "x", title: "Atelier" },
+          { fromHour: 0, titleContains: "y", title: "Jamais" },
+        ],
+        fallback: { titleEquals: "z", title: "Défaut" },
+      }),
+    ).toBe("Atelier");
+  });
+
+  it("exige que toutes les conditions d'une règle soient vraies", () => {
+    const rules = {
+      rules: [
+        {
+          room: "Atelier",
+          fromHour: 14,
+          titleContains: "x",
+          title: "Atelier de l'après-midi",
+        },
+      ],
+      fallback: { titleEquals: "z", title: "Défaut" },
+    };
+
+    expect(
+      resolveSlotTitle(
+        schedule({ room: "Atelier", startTime: "2026-06-11T09:00" }),
+        [],
+        rules,
       ),
-    ).toBe("Keynote d'ouverture 2026");
+    ).toBe("Défaut");
+  });
+
+  it("distingue `titleEquals` de `titleContains`", () => {
+    const sessions = [eventSession("e5", "Grande Pause")];
+
+    expect(
+      resolveSlotTitle(schedule(), sessions, {
+        rules: [],
+        fallback: { titleEquals: "Pause", title: "Pause" },
+      }),
+    ).toBe("Pause");
+    expect(
+      resolveSlotTitle(schedule(), sessions, {
+        rules: [],
+        fallback: { titleContains: "Pause", title: "Pause" },
+      }),
+    ).toBe("Grande Pause");
   });
 });
 
 describe("buildTalkDays", () => {
   it("range un talk sous son jour et son créneau", () => {
-    const [day] = buildTalkDays(agenda());
+    const [day] = buildDays(agenda());
 
     expect(day.date).toBe("2026-06-11");
     expect(day.label).toBe("11 juin 2026");
@@ -168,7 +199,7 @@ describe("buildTalkDays", () => {
   });
 
   it("expose l'id du créneau et l'id de session pour un talk", () => {
-    const [day] = buildTalkDays(agenda());
+    const [day] = buildDays(agenda());
     const entry = day.slots[0][1][0];
 
     expect(entry.id).toBe("sch-1");
@@ -176,7 +207,7 @@ describe("buildTalkDays", () => {
   });
 
   it("joint les noms des intervenants", () => {
-    const [day] = buildTalkDays(
+    const [day] = buildDays(
       agenda({
         sessions: [talkSession({ speakerIds: ["spk-1", "spk-2"] })],
         speakers: [speaker(), speaker({ id: "spk-2", name: "Bob" })],
@@ -188,7 +219,7 @@ describe("buildTalkDays", () => {
   });
 
   it("laisse les intervenants indéfinis pour une session sans speaker", () => {
-    const [day] = buildTalkDays(
+    const [day] = buildDays(
       agenda({ sessions: [talkSession({ speakerIds: [] })], speakers: [] }),
     );
 
@@ -197,7 +228,7 @@ describe("buildTalkDays", () => {
   });
 
   it("ignore un intervenant référencé mais absent de l'agenda", () => {
-    const [day] = buildTalkDays(
+    const [day] = buildDays(
       agenda({
         sessions: [talkSession({ speakerIds: ["spk-1", "fantome"] })],
         speakers: [speaker()],
@@ -208,13 +239,13 @@ describe("buildTalkDays", () => {
   });
 
   it("rend l'abstract en HTML", () => {
-    const [day] = buildTalkDays(agenda());
+    const [day] = buildDays(agenda());
 
     expect(day.slots[0][1][0].talk.abstract).toContain("<strong>super</strong>");
   });
 
   it("construit un créneau générique quand le créneau n'a pas de session", () => {
-    const [day] = buildTalkDays(
+    const [day] = buildDays(
       agenda({
         schedules: [
           schedule({
@@ -244,12 +275,12 @@ describe("buildTalkDays", () => {
 
   it("écarte un créneau dont la session est introuvable", () => {
     expect(
-      buildTalkDays(agenda({ schedules: [schedule()], sessions: [] })),
+      buildDays(agenda({ schedules: [schedule()], sessions: [] })),
     ).toEqual([]);
   });
 
   it("n'attache ni intervenant ni lien à une session hors talk", () => {
-    const [day] = buildTalkDays(
+    const [day] = buildDays(
       agenda({
         sessions: [
           {
@@ -269,7 +300,7 @@ describe("buildTalkDays", () => {
   });
 
   it("retombe sur « Pause » quand la session n'a pas de titre", () => {
-    const [day] = buildTalkDays(
+    const [day] = buildDays(
       agenda({ sessions: [talkSession({ title: null })] }),
     );
 
@@ -277,7 +308,7 @@ describe("buildTalkDays", () => {
   });
 
   it("regroupe deux talks parallèles dans le même créneau", () => {
-    const [day] = buildTalkDays(
+    const [day] = buildDays(
       agenda({
         schedules: [
           schedule({ id: "a" }),
@@ -291,7 +322,7 @@ describe("buildTalkDays", () => {
   });
 
   it("trie les créneaux par heure croissante", () => {
-    const [day] = buildTalkDays(
+    const [day] = buildDays(
       agenda({
         schedules: [
           schedule({ id: "b", startTime: "2026-06-11T14:00" }),
@@ -304,7 +335,7 @@ describe("buildTalkDays", () => {
   });
 
   it("sépare les jours de l'événement", () => {
-    const days = buildTalkDays(
+    const days = buildDays(
       agenda({
         schedules: [
           schedule(),
@@ -323,12 +354,12 @@ describe("buildTalkDays", () => {
 
   it("ne renvoie aucun jour pour un agenda vide", () => {
     expect(
-      buildTalkDays({ schedules: [], sessions: [], speakers: [] }),
+      buildDays({ schedules: [], sessions: [], speakers: [] }),
     ).toEqual([]);
   });
 
   describe("sur le dump réel", () => {
-    const days = buildTalkDays(toAgenda(agendaFixture as ApiAgenda));
+    const days = buildDays(toAgenda(agendaFixture as ApiAgenda));
 
     it("produit les deux jours de la conférence", () => {
       expect(days.map((d) => d.date)).toEqual(["2026-06-11", "2026-06-12"]);

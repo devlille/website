@@ -9,7 +9,7 @@
  * - `static` — un dossier de fichiers JSON, sans aucun appel réseau. Le dossier
  *   se choisit avec `STATIC_DATA_DIR` (`examples/static-event` par défaut).
  */
-import config from "../config/config";
+import { event, integrations } from "../config";
 import { createHttpDataSource } from "./adapters/http";
 import { createStaticDataSource } from "./adapters/static";
 import type { EventDataSource } from "./ports/data-source";
@@ -23,9 +23,10 @@ const createDataSource = (): EventDataSource => {
   switch (name) {
     case "http":
       return createHttpDataSource({
-        baseUrl: config.apiBaseUrl,
-        eventId: config.eventId,
-        youtubePlaylistId: config.youtubePlaylistId,
+        baseUrl: integrations.api.baseUrl,
+        eventId: integrations.api.eventId,
+        youtubePlaylistId: integrations.youtube.playlistId,
+        tierOverrides: event.sponsorTierOverrides,
       });
     case "static":
       return createStaticDataSource({

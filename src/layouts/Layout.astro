@@ -1,11 +1,12 @@
 ---
-import config from "../config/config.ts";
+import { event, features, integrations, lang, site, ticketsUrl } from "../config";
+import { buildEventJsonLd } from "../core/event-jsonld";
 import { pickOneWithSeed } from "../core/pick";
+import { t } from "../i18n";
 import Sponsors from "../components/sponsors.astro";
 import PartnershipLink from "../components/partnership-link.astro";
 import Footer from "../components/Footer.astro";
 import MainNav from "../components/MainNav.astro";
-import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import { render } from "astro:content";
 
@@ -15,90 +16,31 @@ const { ogTitle, ogDescription, ogUrl, ogImage } = og;
 // Tirage stable sur l'édition : le verbatim change d'une année à l'autre, pas
 // d'un build à l'autre.
 const verbatim = await getCollection("verbatims");
-const editionVerbatim = pickOneWithSeed(verbatim, `verbatim-${config.edition}`)!;
+const editionVerbatim = pickOneWithSeed(verbatim, `verbatim-${event.edition}`)!;
 const { Content } = await render(editionVerbatim);
 
-const offers = [
-    {
-        "@type": "Offer",
-        name: "Billet 2 jours / Jeudi et Vendredi",
-        url: `${config.billetwebUrl}${config.edition}`,
-        price: "80",
-        priceCurrency: "EUR",
-        availability: "https://schema.org/Reserved",
-        availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
-        availabilityEnds: `${config.formattedEndDate}T08:00+2:00`,
-        validFrom: `${config.formattedStartDate}T08:00+2:00`,
-        validThrough: `${config.formattedEndDate}T19:00+2:00`,
-    },
-    {
-        "@type": "Offer",
-        name: "Billet 1 jour / Jeudi",
-        url: `${config.billetwebUrl}${config.edition}`,
-        price: "40",
-        priceCurrency: "EUR",
-        availability: "https://schema.org/Reserved",
-        availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
-        availabilityEnds: `${config.formattedEndDate}T08:00+2:00`,
-        validFrom: `${config.formattedStartDate}T08:00+2:00`,
-        validThrough: `${config.formattedEndDate}T19:00+2:00`,
-    },
-    {
-        "@type": "Offer",
-        name: "Billet 1 jour / Vendredi",
-        url: `${config.billetwebUrl}${config.edition}`,
-        price: "40",
-        priceCurrency: "EUR",
-        availability: "https://schema.org/Reserved",
-        availabilityStarts: `${config.edition}-01-15T08:00+2:00`,
-        availabilityEnds: `${config.formattedEndDate}T08:00+2:00`,
-        validFrom: `${config.formattedStartDate}T08:00+2:00`,
-        validThrough: `${config.formattedEndDate}T19:00+2:00`,
-    },
-];
+const jsonld = buildEventJsonLd(site, event, ticketsUrl);
 
-const jsonld = {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    name: `DevLille ${config.edition}`,
-    startDate: `${config.formattedStartDate}T08:00+02:00`,
-    endDate: `${config.formattedEndDate}T19:00+02:00`,
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    eventStatus: "https://schema.org/EventScheduled",
-    location: {
-        "@type": "Place",
-        name: "Grand Palais",
-        address: {
-            "@type": "PostalAddress",
-            streetAddress: "1 Bd des Cités Unies",
-            addressLocality: "Lille",
-            postalCode: "59777",
-            addressCountry: "FR",
-        },
-    },
-    description:
-        "2 jours de conférences et d'échanges accessibles à tous et toutes au coeur de Lille.",
-    offers: offers,
-    organizer: {
-        "@type": "Organization",
-        name: "DevLille",
-        url: "https://devlille.fr/",
-    },
-};
+const logoAlt = t("layout.logoAlt", {
+    site: site.name,
+    edition: event.edition,
+});
+
+const titleSuffix = t("layout.titleSuffix", {
+    site: site.name.toUpperCase(),
+    edition: event.edition,
+});
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="keywords"
-            content="DevLille, Conférence, Web, Mobile, Cloud, Quickies"
-        />
+        <meta name="keywords" content={site.keywords.join(", ")} />
         <meta name="description" content={ogDescription} />
-        <meta name="theme-color" content="#006D6D" />
+        <meta name="theme-color" content={site.themeColor} />
         <meta property="og:url" content={ogUrl} />
         <meta property="og:title" content={ogTitle ?? title} />
         <meta property="og:description" content={ogDescription} />
@@ -106,7 +48,7 @@ const jsonld = {
 
         <link href="/img/favicon.svg" type="image/svg+xml" rel="icon" />
         <link href="/img/favicon.png" type="image/png" rel="icon" />
-        <title>{title} - DEVLILLE {config.edition}</title>
+        <title>{`${title} - ${titleSuffix}`}</title>
 
         <!-- ✅ Correct CSS Path -->
         <link rel="stylesheet" href="/css/main.css" />
@@ -124,19 +66,15 @@ const jsonld = {
                 <h1>
                     {
                         currSection === "index" ? (
-                            <img
-                                src="/img/logodl.svg"
-                                alt={`DevLille ${config.edition}`}
-                            />
+                            <img src="/img/logodl.svg" alt={logoAlt} />
                         ) : (
                             <a
                                 href="/index.html"
-                                aria-label="DevLille: Retour à l'accueil"
+                                aria-label={t("layout.home", {
+                                    site: site.name,
+                                })}
                             >
-                                <img
-                                    src="/img/logodl.svg"
-                                    alt={`DevLille ${config.edition}`}
-                                />
+                                <img src="/img/logodl.svg" alt={logoAlt} />
                             </a>
                         )
                     }
@@ -145,14 +83,14 @@ const jsonld = {
                 <MainNav currSection={currSection} />
 
                 {
-                    config.enabled.tickets && (
+                    features.tickets && (
                         <p class="register">
                             <a
                                 rel="noreferrer noopener"
                                 target="_blank"
-                                href={`${config.billetwebUrl}${config.edition}`}
+                                href={ticketsUrl}
                             >
-                                Prenez votre place!
+                                {t("layout.tickets")}
                             </a>
                         </p>
                     )
@@ -169,7 +107,7 @@ const jsonld = {
                     currSection == "index" && (
                         <aside>
                             <div class="be-partner">
-                                <h2>Devenez partenaire</h2>
+                                <h2>{t("layout.becomePartner")}</h2>
 
                                 <div>
                                     <blockquote>
@@ -180,21 +118,19 @@ const jsonld = {
                                     </blockquote>
                                 </div>
 
-                                <PartnershipLink
-                                    url={config.partershipUrl}
-                                    text="Dossier de partenariat"
-                                />
-                                <PartnershipLink
-                                    url={config.partershipUrlEn}
-                                    text="Partnership deck"
-                                />
+                                {integrations.partnershipDeck.map((deck) => (
+                                    <PartnershipLink
+                                        url={deck.url}
+                                        text={deck.label}
+                                    />
+                                ))}
                             </div>
-                            {config.enabled.sponsoring && (
+                            {features.sponsoring && (
                                 <div class="content filled" id="partners">
                                     <h2>
-                                        Un grand merci à nos partenaires qui
-                                        nous soutiennent déjà pour l'édition
-                                        {config.edition}!
+                                        {t("layout.partnersThanks", {
+                                            edition: event.edition,
+                                        })}
                                     </h2>
 
                                     <Sponsors />

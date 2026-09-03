@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration.js";
+import type { SlotTitleRule, SlotTitles } from "../config/schema";
 import type { Agenda, ScheduleSlot, Session, Speaker } from "../data/domain";
 import { formatLongDate } from "./date";
 import { renderMarkdown } from "./markdown";
@@ -49,38 +50,51 @@ export const formatDurationLabel = (
     .duration(dayjs(new Date(endTime)).diff(dayjs(new Date(startTime))))
     .asMinutes()} mn`;
 
+/** Heure de début d'un créneau, en heures pleines. */
+const startHour = (schedule: ScheduleSlot): number =>
+  parseInt((schedule.startTime.split("T")[1] || "").split(":")[0], 10);
+
+const matchesConditions = (
+  rule: SlotTitleRule,
+  schedule: ScheduleSlot,
+): boolean => {
+  const hour = startHour(schedule);
+  if (rule.room !== undefined && rule.room !== schedule.room) return false;
+  if (rule.fromHour !== undefined && !(hour >= rule.fromHour)) return false;
+  if (rule.beforeHour !== undefined && !(hour < rule.beforeHour)) return false;
+  return true;
+};
+
+/** La session hors-talk que la règle désigne, si l'agenda en porte une. */
+const findSession = (
+  rule: SlotTitleRule,
+  eventSessions: Session[],
+): Session | undefined =>
+  eventSessions.find((session) =>
+    rule.titleEquals !== undefined
+      ? session.title === rule.titleEquals
+      : session.title?.includes(rule.titleContains ?? ""),
+  );
+
 /**
- * Reconstitue le libellé d'un créneau sans session rattachée, à partir de la
- * salle et de l'heure.
+ * Reconstitue le libellé d'un créneau sans session rattachée.
  *
- * Heuristiques 100 % DevLille : à remplacer par une stratégie injectable en
- * phase 4, ou à supprimer en fiabilisant les données source.
+ * Les règles viennent de la configuration d'instance (`event.slotTitles`) :
+ * la première dont toutes les conditions sont vraies l'emporte, sinon c'est la
+ * règle de repli. Une règle cherche d'abord une session hors-talk dont le
+ * titre lui correspond, et n'utilise son propre libellé qu'à défaut.
  */
-export const guessEventTitle = (
+export const resolveSlotTitle = (
   schedule: ScheduleSlot,
   eventSessions: Session[],
+  slotTitles: SlotTitles,
 ): string => {
-  const timeStr = schedule.startTime.split("T")[1] || "";
-  const hour = parseInt(timeStr.split(":")[0], 10);
+  const rule =
+    slotTitles.rules.find((candidate) =>
+      matchesConditions(candidate, schedule),
+    ) ?? slotTitles.fallback;
 
-  if (schedule.room === "Grand Théâtre") {
-    return (
-      eventSessions.find((s) => s.title?.includes("Keynote"))?.title ??
-      "Keynote d'ouverture"
-    );
-  }
-  if (hour < 9) {
-    return (
-      eventSessions.find((s) => s.title?.includes("Enregistrement"))?.title ??
-      "Enregistrement"
-    );
-  }
-  if (hour >= 12 && hour < 14) {
-    return (
-      eventSessions.find((s) => s.title?.includes("Lunch"))?.title ?? "Lunch"
-    );
-  }
-  return eventSessions.find((s) => s.title === "Pause")?.title ?? "Pause";
+  return findSession(rule, eventSessions)?.title ?? rule.title;
 };
 
 /**
@@ -140,6 +154,7 @@ const renderAbstract = (raw: string): string =>
  */
 const buildTalksByDay = (
   agenda: Agenda,
+  slotTitles: SlotTitles,
 ): Record<string, Array<[string, TalkEntry[]]>> => {
   const sessionsMap = new Map(agenda.sessions.map((s) => [s.id, s]));
   const speakersMap = new Map(agenda.speakers.map((s) => [s.id, s]));
@@ -162,7 +177,7 @@ const buildTalksByDay = (
         talk: {
           id: schedule.id,
           type: "event-session",
-          title: guessEventTitle(schedule, eventSessions),
+          title: resolveSlotTitle(schedule, eventSessions, slotTitles),
           abstract: "",
           language: "fr",
           level: null,
@@ -196,7 +211,7 @@ const buildTalksByDay = (
       talk: {
         id: schedule.id,
         type: session.type,
-        title: session.title ?? "Pause",
+        title: session.title ?? slotTitles.fallback.title,
         abstract: renderAbstract(session.abstract),
         language: session.language,
         level: session.level,
@@ -227,10 +242,21 @@ const buildTalksByDay = (
   );
 };
 
+/** Ce que l'agenda emprunte à l'instance : ses règles de libellé et sa locale. */
+export type AgendaOptions = {
+  slotTitles: SlotTitles;
+  locale: string;
+};
+
 /** Agenda prêt pour la Timeline : un onglet par jour, ses créneaux triés. */
-export const buildTalkDays = (agenda: Agenda): TalkDay[] =>
-  Object.entries(buildTalksByDay(agenda)).map(([date, slots]) => ({
-    date,
-    label: formatLongDate(new Date(date)),
-    slots,
-  }));
+export const buildTalkDays = (
+  agenda: Agenda,
+  options: AgendaOptions,
+): TalkDay[] =>
+  Object.entries(buildTalksByDay(agenda, options.slotTitles)).map(
+    ([date, slots]) => ({
+      date,
+      label: formatLongDate(new Date(date), options.locale),
+      slots,
+    }),
+  );

@@ -29,6 +29,7 @@ import {
   toEventInfo,
   toJobOffers,
   toPartners,
+  type TierOverrides,
 } from "./mappers";
 
 export type HttpDataSourceConfig = {
@@ -36,6 +37,8 @@ export type HttpDataSourceConfig = {
   baseUrl: string;
   eventId: string;
   youtubePlaylistId: string;
+  /** Packs de sponsoring forcés pour certains partenaires. */
+  tierOverrides?: TierOverrides;
 };
 
 const fetchJson = async <T>(url: string, init?: RequestInit): Promise<T> => {
@@ -86,7 +89,7 @@ export const createHttpDataSource = (
       return toAgenda(await loadAgenda()).speakers;
     },
     async getPartners(): Promise<Partner[]> {
-      return toPartners(await loadPartners());
+      return toPartners(await loadPartners(), config.tierOverrides ?? {});
     },
     async getActivities(): Promise<Activity[]> {
       return toActivities(await loadPartners());

@@ -60,15 +60,10 @@ export const getSocialUrl = (
   (socials ?? []).find((s) => s.type === type)?.url ?? null;
 
 /**
- * Overrides temporaires du niveau de sponsoring, en attendant la mise à jour
- * côté backend (CMS partenaires). Clé = id du partenaire, valeur = packs forcés.
- *
- * Métier DevLille : remonte en configuration d'instance en phase 4.
+ * Packs forcés pour un partenaire, en attendant la mise à jour côté source.
+ * Clé = identifiant du partenaire. Vient de `event.sponsorTierOverrides`.
  */
-const TIER_OVERRIDES: Record<string, string[]> = {
-  // DECATHLON DIGITAL : Pack Bronze -> Pack Gold
-  "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0": ["Pack Gold"],
-};
+export type TierOverrides = Record<string, string[]>;
 
 /** Complète en `https://` une URL de site sans schéma. */
 const normalizeSiteUrl = (
@@ -98,7 +93,10 @@ const toJob = (job: ApiJob): Job => ({
   publishDate: job.publish_date,
 });
 
-const toPartner = (partner: ApiPartner): Partner => ({
+const toPartner = (
+  partner: ApiPartner,
+  tierOverrides: TierOverrides,
+): Partner => ({
   id: partner.id,
   name: partner.name,
   description: partner.description ?? "",
@@ -107,13 +105,16 @@ const toPartner = (partner: ApiPartner): Partner => ({
   siteUrl: normalizeSiteUrl(partner.siteUrl, partner.name),
   videoUrl: partner.videoUrl ?? null,
   socials: normalizeSocials(partner.socials),
-  tiers: TIER_OVERRIDES[partner.id] ?? partner.types ?? [],
+  tiers: tierOverrides[partner.id] ?? partner.types ?? [],
   jobs: (partner.jobs ?? []).map(toJob),
   speakerIds: (partner.speakers ?? []).map((s) => s.id),
 });
 
-export const toPartners = (response: ApiPartnersResponse): Partner[] =>
-  (response.partners ?? []).map(toPartner);
+export const toPartners = (
+  response: ApiPartnersResponse,
+  tierOverrides: TierOverrides = {},
+): Partner[] =>
+  (response.partners ?? []).map((partner) => toPartner(partner, tierOverrides));
 
 const toActivity = (
   activity: ApiActivity,

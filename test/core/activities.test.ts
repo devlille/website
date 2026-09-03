@@ -7,6 +7,14 @@ import type { Activity } from "../../src/data/domain";
 import { toActivities } from "../../src/data/adapters/http/mappers";
 import type { ApiPartnersResponse } from "../../src/data/adapters/http/mappers";
 import partnersFixture from "../fixtures/partners.json" with { type: "json" };
+import { site } from "../../src/config";
+
+/** Les regroupements datent leurs jours dans la locale de l'instance. */
+const byDate = (activities: Activity[]) =>
+  groupActivitiesByDate(activities, site.locale);
+const byDay = <T extends { startTime: string; endTime: string }>(
+  activities: T[],
+) => groupActivitiesByDay(activities, site.locale);
 
 const activity = (over: Partial<Activity> = {}): Activity => ({
   id: "a1",
@@ -21,7 +29,7 @@ const activity = (over: Partial<Activity> = {}): Activity => ({
 
 describe("groupActivitiesByDate", () => {
   it("range une activité sous son jour et son créneau de début", () => {
-    const [day] = groupActivitiesByDate([
+    const [day] = byDate([
       activity({ startTime: "2026-06-11T09:00", endTime: "2026-06-11T10:00" }),
     ]);
 
@@ -42,7 +50,7 @@ describe("groupActivitiesByDate", () => {
   });
 
   it("répète une activité à cheval sur chacun des jours couverts", () => {
-    const days = groupActivitiesByDate([
+    const days = byDate([
       activity({ startTime: "2026-06-11T08:00", endTime: "2026-06-12T17:30" }),
     ]);
 
@@ -52,7 +60,7 @@ describe("groupActivitiesByDate", () => {
   });
 
   it("conserve la plage horaire d'origine sur chaque jour couvert", () => {
-    const days = groupActivitiesByDate([
+    const days = byDate([
       activity({ startTime: "2026-06-11T08:00", endTime: "2026-06-12T17:30" }),
     ]);
 
@@ -62,7 +70,7 @@ describe("groupActivitiesByDate", () => {
   });
 
   it("trie les jours puis les créneaux par ordre chronologique", () => {
-    const days = groupActivitiesByDate([
+    const days = byDate([
       activity({ id: "b", startTime: "2026-06-12T14:00", endTime: "2026-06-12T15:00" }),
       activity({ id: "a", startTime: "2026-06-11T16:00", endTime: "2026-06-11T17:00" }),
       activity({ id: "c", startTime: "2026-06-11T09:00", endTime: "2026-06-11T10:00" }),
@@ -73,7 +81,7 @@ describe("groupActivitiesByDate", () => {
   });
 
   it("regroupe dans le même créneau deux activités qui commencent ensemble", () => {
-    const [day] = groupActivitiesByDate([
+    const [day] = byDate([
       activity({ id: "a" }),
       activity({ id: "b" }),
     ]);
@@ -83,13 +91,13 @@ describe("groupActivitiesByDate", () => {
   });
 
   it("accepte un partenaire sans logo", () => {
-    const [day] = groupActivitiesByDate([activity({ partnerLogoUrl: null })]);
+    const [day] = byDate([activity({ partnerLogoUrl: null })]);
 
     expect(day.slots[0][1][0].partnerLogoUrl).toBeNull();
   });
 
   it("ne renvoie aucun jour pour une liste vide", () => {
-    expect(groupActivitiesByDate([])).toEqual([]);
+    expect(byDate([])).toEqual([]);
   });
 
   it("couvre les deux jours de l'événement sur le dump réel", () => {
@@ -97,7 +105,7 @@ describe("groupActivitiesByDate", () => {
       partnersFixture as ApiPartnersResponse,
     );
 
-    const days = groupActivitiesByDate(activities);
+    const days = byDate(activities);
 
     expect(days.map((d) => d.date)).toEqual(["2026-06-11", "2026-06-12"]);
     expect(days.every((d) => d.slots.length > 0)).toBe(true);
@@ -106,7 +114,7 @@ describe("groupActivitiesByDate", () => {
 
 describe("groupActivitiesByDay", () => {
   it("groupe par jour et trie les activités par heure de début", () => {
-    const days = groupActivitiesByDay([
+    const days = byDay([
       { startTime: "2026-06-11T14:00", endTime: "2026-06-11T15:00", name: "après" },
       { startTime: "2026-06-11T09:00", endTime: "2026-06-11T10:00", name: "avant" },
     ]);
@@ -117,7 +125,7 @@ describe("groupActivitiesByDay", () => {
   });
 
   it("fait apparaître une activité à cheval sur les deux jours", () => {
-    const days = groupActivitiesByDay([
+    const days = byDay([
       { startTime: "2026-06-11T08:00", endTime: "2026-06-12T17:30", name: "stand" },
     ]);
 
@@ -126,6 +134,6 @@ describe("groupActivitiesByDay", () => {
   });
 
   it("ne renvoie aucun jour pour une liste vide", () => {
-    expect(groupActivitiesByDay([])).toEqual([]);
+    expect(byDay([])).toEqual([]);
   });
 });

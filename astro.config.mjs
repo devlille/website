@@ -2,11 +2,12 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
-import config from "./src/config/config.ts";
+import event from "./src/config/event.config.ts";
+import site from "./src/config/site.config.ts";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://devlille.fr",
+  site: site.url,
   integrations: [
     sitemap({
       // Exclure uniquement les pages qu'on ne veut pas indexer
@@ -15,7 +16,7 @@ export default defineConfig({
       // Fréquence de changement pour toutes les pages
       changefreq: "weekly",
       priority: 0.7,
-      lastmod: new Date(config.contentUpdatedAt),
+      lastmod: new Date(event.contentUpdatedAt),
     }),
     robotsTxt({
       policy: [
@@ -23,6 +24,11 @@ export default defineConfig({
       ],
     }),
   ],
+  markdown: {
+    // Le contenu local doit sortir tel qu'il est écrit : pas de substitution
+    // typographique silencieuse des apostrophes et des tirets.
+    smartypants: false,
+  },
   vite: {
     build: {
       cssMinify: "lightningcss",

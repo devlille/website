@@ -5,7 +5,8 @@ import Layout from "../layouts/Layout.astro";
 import { renderMarkdown } from "../core/markdown";
 import PartnerBlock from "../components/PartnerBlock.astro";
 import SocialList from "../components/SocialList.astro";
-import config from "../config/config.ts";
+import { event, site } from "../config";
+import { t } from "../i18n";
 
 interface Props {
     speaker: CollectionEntry<"speakers">;
@@ -26,7 +27,7 @@ export const getStaticPaths = (async () => {
 
 const { speaker } = Astro.props;
 
-const speakerName = speaker.data.name || "Speaker";
+const speakerName = speaker.data.name || t("speaker.fallbackName");
 
 const stripMarkdown = (text: string): string =>
     text
@@ -39,9 +40,12 @@ const stripMarkdown = (text: string): string =>
 const truncate = (text: string, max = 160): string =>
     text.length > max ? text.slice(0, max - 1).trimEnd() + "…" : text;
 
-const fallbackDescription = `Découvrez ${speakerName}${
-    speaker.data.company ? ` (${speaker.data.company})` : ""
-}, speaker à DevLille ${config.edition}.`;
+const fallbackDescription = t("speaker.metaDescription", {
+    name: speakerName,
+    company: speaker.data.company ? ` (${speaker.data.company})` : "",
+    site: site.name,
+    edition: event.edition,
+});
 
 const metaDescription = speaker.data.bio
     ? truncate(stripMarkdown(speaker.data.bio))
@@ -49,7 +53,7 @@ const metaDescription = speaker.data.bio
 
 const og = {
     ogDescription: metaDescription,
-    ogUrl: "https://devlille.fr/speaker-page-" + speaker.id,
+    ogUrl: `${site.url}/speaker-page-${speaker.id}`,
     ogImage: speaker.data.photoUrl,
 };
 
@@ -60,7 +64,7 @@ const selectedTalks = talks.filter((t) =>
 );
 ---
 
-<Layout title={`${speakerName}, speaker`} currSection="speakers" og={og}>
+<Layout title={t("speaker.pageTitle", { name: speakerName })} currSection="speakers" og={og}>
     <div class="page-body list speaker-sheet">
         <div class="h-group">
             {
@@ -69,7 +73,7 @@ const selectedTalks = talks.filter((t) =>
                         <img
                             loading="lazy"
                             src={speaker.data.photoUrl}
-                            alt={`Photo de ${speaker.data.name}`}
+                            alt={t("speaker.photoAlt", { name: speaker.data.name })}
                         />
                     </p>
                 )
@@ -80,7 +84,7 @@ const selectedTalks = talks.filter((t) =>
                 }
             </h2>
             <p>
-                <span class="no-display">Entreprise: </span>
+                <span class="no-display">{t("speaker.company")}</span>
                 {speaker.data.company ? speaker.data.company : ""}
             </p>
             <SocialList
@@ -99,8 +103,9 @@ const selectedTalks = talks.filter((t) =>
         <div class="content">
             <div class="talks card">
                 <h3>
-                    <span lang="en">Talks</span> présentés par
-                    {speaker.data.name}
+                    <span lang="en">Talks</span> {
+                        t("speaker.talksHeading", { name: speaker.data.name })
+                    }
                 </h3>
                 {
                     selectedTalks.map((selectedTalk) => {
@@ -115,19 +120,19 @@ const selectedTalks = talks.filter((t) =>
                                 {(!!selectedTalk.data.slidesUrl ||
                                     !!selectedTalk.data.replayUrl) && (
                                     <div class="talk-links">
-                                        <h4>Regardez ou re-regardez</h4>
+                                        <h4>{t("talk.watchAgain")}</h4>
                                         <ul>
                                             {selectedTalk.data.replayUrl && (
                                                 <li>
                                                     <a href={selectedTalk.data.replayUrl}>
-                                                        La vidéo du talk
+                                                        {t("talk.replay")}
                                                     </a>
                                                 </li>
                                             )}
                                             {selectedTalk.data.slidesUrl && (
                                                 <li>
                                                     <a href={selectedTalk.data.slidesUrl}>
-                                                        Les slides du talk
+                                                        {t("talk.slides")}
                                                     </a>
                                                 </li>
                                             )}

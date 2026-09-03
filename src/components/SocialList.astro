@@ -1,5 +1,6 @@
 ---
 import type { SocialLink } from "../data/domain";
+import { t } from "../i18n";
 
 interface Props {
     socials: SocialLink[];
@@ -42,7 +43,7 @@ const SOCIAL_ICONS: Record<string, { icon: string; title: string }> = {
             <li>
                 <a href={siteUrl}>
                     <svg role="img" width="24" height="24">
-                        <title>Site Web</title>
+                        <title>{t("socials.website")}</title>
                         <use href="/img/sprite.svg#ic-website" />
                     </svg>
                 </a>

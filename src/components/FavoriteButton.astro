@@ -1,5 +1,6 @@
 ---
-import config from "../config/config";
+import { favoritesStorageKey, integrations } from "../config";
+import { t } from "../i18n";
 
 interface Props {
     talkId: string;
@@ -8,7 +9,9 @@ interface Props {
 
 const { talkId, sessionId } = Astro.props;
 
-const voteApi = `${config.apiBaseUrl}/events/${config.eventId}/sessions`;
+const { baseUrl, eventId } = integrations.api;
+const voteApi = `${baseUrl}/events/${eventId}/sessions`;
+const labels = { add: t("favorites.add"), added: t("favorites.added") };
 ---
 
 <button
@@ -16,16 +19,21 @@ const voteApi = `${config.apiBaseUrl}/events/${config.eventId}/sessions`;
     class="btn-favorite"
     data-talk-id={talkId}
     data-session-id={sessionId}>
-    Ajouter aux favoris
+    {labels.add}
 </button>
 <script
     is:inline
     data-talk-id={talkId}
     data-session-id={sessionId}
-    data-vote-api={voteApi}>
+    data-vote-api={voteApi}
+    data-storage-key={favoritesStorageKey}
+    data-label-add={labels.add}
+    data-label-added={labels.added}>
     (function () {
-        const STORAGE_KEY = "devlille_favorites";
+        const STORAGE_KEY = document.currentScript.dataset.storageKey;
         const VOTE_API = document.currentScript.dataset.voteApi;
+        const LABEL_ADD = document.currentScript.dataset.labelAdd;
+        const LABEL_ADDED = document.currentScript.dataset.labelAdded;
 
         const talkId = document.currentScript.dataset.talkId;
         const sessionId = document.currentScript.dataset.sessionId;
@@ -44,11 +52,7 @@ const voteApi = `${config.apiBaseUrl}/events/${config.eventId}/sessions`;
             btn.classList.toggle("is-favorite", isFavorite);
             btn.setAttribute("aria-pressed", String(isFavorite));
 
-if(isFavorite){
-   btn.textContent = "Favori";
-} else {
-btn.textContent = "Ajouter aux favoris";
-}
+            btn.textContent = isFavorite ? LABEL_ADDED : LABEL_ADD;
         }
 
         updateButton();

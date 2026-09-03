@@ -1,0 +1,130 @@
+---
+/**
+ * Formulaire d'inscription à la newsletter.
+ *
+ * Tout ce qui est propre au prestataire — action du formulaire, champs
+ * cachés, feuille de style et script de validation — vient de
+ * `integrations.config.ts`.
+ */
+import type { IntegrationsConfig } from "../config/schema";
+
+interface Props {
+    newsletter: IntegrationsConfig["newsletter"];
+    title: string;
+    emailLabel: string;
+    submitLabel: string;
+}
+
+const { newsletter, title, emailLabel, submitLabel } = Astro.props;
+---
+
+<div id="mc_embed_shell">
+    <link href={newsletter.stylesheet} rel="stylesheet" type="text/css" />
+    <div id="newsletter">
+        <div id="mc_embed_signup">
+            <form
+                action={newsletter.formAction}
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+            >
+                <div id="mc_embed_signup_scroll">
+                    <h2>{title}</h2>
+                    <p class="email">
+                        <label for="mce-EMAIL">
+                            {emailLabel}
+                            <span class="asterisk" aria-hidden="true">
+                                *
+                            </span>
+                        </label>
+                        <input
+                            type="email"
+                            name="EMAIL"
+                            class="email"
+                            id="mce-EMAIL"
+                            required="required"
+                            autocomplete="email"
+                            value=""
+                        />
+                        <input
+                            type="submit"
+                            name="subscribe"
+                            id="mc-embedded-subscribe"
+                            value={submitLabel}
+                        />
+                    </p>
+                    <div hidden="">
+                        {
+                            newsletter.hiddenFields.map((field) => (
+                                <input
+                                    type="hidden"
+                                    name={field.name}
+                                    value={field.value}
+                                />
+                            ))
+                        }
+                    </div>
+                    <div id="mce-responses" class="clear foot">
+                        <div
+                            class="response"
+                            id="mce-error-response"
+                            style="display: none;"
+                        >
+                        </div>
+                        <div
+                            class="response"
+                            id="mce-success-response"
+                            style="display: none;"
+                        >
+                        </div>
+                    </div>
+                    <div
+                        aria-hidden="true"
+                        style="position: absolute; left: -5000px;"
+                    >
+                        <!-- Pot-de-miel : rempli, c'est un robot. -->
+                        <input
+                            type="text"
+                            name={newsletter.botFieldName}
+                            tabindex="-1"
+                            value=""
+                        />
+                    </div>
+                    <div class="optionalParent">
+                        <div class="clear foot">
+                            <p class="mce-logo">
+                                <a href={newsletter.badge.href}>
+                                    <img
+                                        class="refferal_badge"
+                                        src={newsletter.badge.src}
+                                        alt={newsletter.badge.alt}
+                                    />
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src={newsletter.script} is:inline
+    ></script><script
+        type="text/javascript"
+        is:inline
+        set:html={`
+                (function ($) {
+                    window.fnames = new Array();
+                    window.ftypes = new Array();
+${newsletter.fields
+    .map(
+        (field, index) =>
+            `                    fnames[${index}] = "${field.name}";\n                    ftypes[${index}] = "${field.type}";`,
+    )
+    .join("\n")}
+                })(jQuery);
+                var $mcj = jQuery.noConflict(true);
+            `}
+    />
+</div>

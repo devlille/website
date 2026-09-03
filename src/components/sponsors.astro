@@ -1,10 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import { groupSponsorsByTier } from "../core/sponsor-tiers";
+import { event } from "../config";
 import Pack from "../components/pack.astro";
 
 const sponsors = (await getCollection("sponsors")).map((c) => c.data);
-const tiers = groupSponsorsByTier(sponsors);
+const tiers = groupSponsorsByTier(event.sponsorTiers, sponsors);
 ---
 
 {tiers.map((tier) => <Pack title={tier.title} partners={tier.partners} />)}

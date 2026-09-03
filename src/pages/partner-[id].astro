@@ -5,6 +5,8 @@ import Layout from "../layouts/Layout.astro";
 import JobCard from "../components/JobCard.astro";
 import SponsorActivities from "../components/SponsorActivities.astro";
 import SocialList from "../components/SocialList.astro";
+import { site } from "../config";
+import { t } from "../i18n";
 
 interface Props {
     sponsor: CollectionEntry<"sponsors">;
@@ -32,8 +34,8 @@ const partnerTalks =
 
 const og = {
     ogDescription: sponsor.data.description?.replaceAll('"', "")?.trim(),
-    ogUrl: "https://devlille.fr/partner-" + sponsor.data.id,
-    ogImage: `https://devlille.fr/img/${sponsor.data.logoName}.svg`,
+    ogUrl: `${site.url}/partner-${sponsor.data.id}`,
+    ogImage: `${site.url}/img/${sponsor.data.logoName}.svg`,
 };
 
 const video = sponsor.data.videoUrl;
@@ -53,14 +55,14 @@ const video = sponsor.data.videoUrl;
                             <img
                                 loading="lazy"
                                 src={sponsor.data.logoUrl}
-                                alt={`Logo de ${sponsor.data.name}`}
+                                alt={t("sponsors.logoAlt", { name: sponsor.data.name })}
                             />
                         </a>
                     ) : (
                         <img
                             loading="lazy"
                             src={sponsor.data.logoUrl}
-                            alt={`Logo de ${sponsor.data.name}`}
+                            alt={t("sponsors.logoAlt", { name: sponsor.data.name })}
                         />
                     )
                 }
@@ -104,7 +106,7 @@ const video = sponsor.data.videoUrl;
             {
                 partnerTalks.length > 0 && (
                     <div class="the-talks">
-                        <h3>Les talks de nos collaborateurs</h3>
+                        <h3>{t("sponsors.talksHeading")}</h3>
                         <ul>
                             {partnerTalks.map((talk) => (
                                 <li>
@@ -129,7 +131,7 @@ const video = sponsor.data.videoUrl;
                 jobs.length > 0 && (
                     <details class="job-offers">
                         <summary>
-                            <h2>Offres d'emploi chez {sponsor.data.name}</h2>
+                            <h2>{t("sponsors.jobsHeading", { name: sponsor.data.name })}</h2>
                         </summary>
                         <div class="content">
                             {jobs.map((job) => (

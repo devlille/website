@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import { groupActivitiesByDay } from "../core/activities";
 import { toHour } from "../core/date";
+import { site } from "../config";
+import { t, locale } from "../i18n";
 
 interface Props {
     partnerId: string;
@@ -16,13 +18,14 @@ const partnerActivities = allActivities.filter(
 
 const activitiesByDay = groupActivitiesByDay(
     partnerActivities.map((a) => a.data),
+    locale,
 );
 ---
 
 {
     activitiesByDay.length > 0 && (
         <div class="the-talks partner-activities">
-            <h3>Nos activités pendant le DevLille</h3>
+            <h3>{t("sponsors.activitiesHeading", { site: site.name })}</h3>
             {activitiesByDay.map((day) => (
                 <div class="activity-day">
                     <h4>{day.label}</h4>

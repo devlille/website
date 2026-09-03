@@ -37,7 +37,17 @@ export const eachDayBetween = (startIso: string, endIso: string): string[] => {
   return days;
 };
 
-const LONG_DATE = new Intl.DateTimeFormat("fr", { dateStyle: "long" });
+/** Un formateur par locale : les instancier est coûteux, le build en abuse. */
+const longDateFormatters = new Map<string, Intl.DateTimeFormat>();
 
-/** `11 juin 2026`. */
-export const formatLongDate = (date: Date): string => LONG_DATE.format(date);
+const longDateFormatter = (locale: string): Intl.DateTimeFormat => {
+  const cached = longDateFormatters.get(locale);
+  if (cached) return cached;
+  const formatter = new Intl.DateTimeFormat(locale, { dateStyle: "long" });
+  longDateFormatters.set(locale, formatter);
+  return formatter;
+};
+
+/** `11 juin 2026` en `fr-FR`. */
+export const formatLongDate = (date: Date, locale: string): string =>
+  longDateFormatter(locale).format(date);

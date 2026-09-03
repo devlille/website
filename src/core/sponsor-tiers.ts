@@ -1,47 +1,10 @@
-export type SponsorTier = {
-  id: string;
-  /** Titre affiché au-dessus du pack. */
-  title: string;
-  /** Reconnaît un des libellés de sponsoring renvoyés par l'API. */
-  match: (sponsoring: string) => boolean;
-};
-
-const exactly =
-  (...labels: string[]) =>
-  (sponsoring: string) =>
-    labels.includes(sponsoring);
-
 /**
- * Packs de sponsoring, dans leur ordre d'affichage.
+ * Répartition des partenaires par pack de sponsoring.
  *
- * Les libellés sont ceux du DevLille : ils remonteront en configuration
- * d'instance en phase 4, cette table n'a pas vocation à rester générique.
+ * La table des packs — leurs libellés, leur ordre — est une donnée d'instance :
+ * elle arrive par paramètre depuis `event.config.ts`, jamais en dur ici.
  */
-export const SPONSOR_TIERS: SponsorTier[] = [
-  { id: "gold", title: "Gold", match: exactly("gold", "Pack Gold") },
-  { id: "silver", title: "Silver", match: exactly("silver", "Pack Silver") },
-  { id: "bronze", title: "Bronze", match: exactly("bronze", "Pack Bronze") },
-  {
-    id: "graine-de-dev",
-    title: "Partenaires DevLille Graine de Dev",
-    match: exactly("Partenaires DevLille Graine de Dev"),
-  },
-  {
-    id: "hebergement",
-    title: "Partenaire Hébergement",
-    match: exactly("Partenaire Hébergement"),
-  },
-  {
-    id: "community",
-    title: "Community Partners",
-    match: exactly("Community Partners"),
-  },
-  {
-    id: "media",
-    title: "Partenaires Média",
-    match: exactly("Partenaires Média"),
-  },
-];
+import type { SponsorTier } from "../config/schema";
 
 export type SponsorGroup<T> = {
   id: string;
@@ -57,13 +20,15 @@ type Sponsored = { tiers: string[] };
  * packs vides. Un partenaire qui cumule deux packs apparaît dans les deux.
  */
 export const groupSponsorsByTier = <T extends Sponsored>(
+  tiers: readonly SponsorTier[],
   sponsors: T[],
-  tiers: SponsorTier[] = SPONSOR_TIERS,
 ): SponsorGroup<T>[] =>
   tiers
     .map((tier) => ({
       id: tier.id,
       title: tier.title,
-      partners: sponsors.filter((s) => s.tiers.some(tier.match)),
+      partners: sponsors.filter((s) =>
+        s.tiers.some((label) => tier.labels.includes(label)),
+      ),
     }))
     .filter((group) => group.partners.length > 0);

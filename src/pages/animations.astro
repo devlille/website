@@ -3,13 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import Timeline from "../components/Timeline.astro";
 import AnimationItem from "../components/AnimationItem.astro";
 import { createActivitiesCollectionsByDate } from "../utils/getActivitiesByDate";
+import { site } from "../config";
+import { t } from "../i18n";
 
 const og = {
-    ogTitle: "DevLille - Animations",
-    ogUrl: "https://devlille.fr/animations",
-    ogDescription:
-        "Les animations proposées par nos sponsors pendant les 2 jours de DevLille",
-    ogImage: "https://devlille.fr/img/logo-full.svg",
+    ogTitle: `${site.name} - ${t("page.animations")}`,
+    ogUrl: `${site.url}/animations`,
+    ogDescription: t("og.animations", { site: site.name }),
+    ogImage: `${site.url}/img/logo-full.svg`,
 };
 
 const activitiesByDate = await createActivitiesCollectionsByDate();
@@ -17,7 +18,7 @@ const activitiesByDate = await createActivitiesCollectionsByDate();
 
 <Layout title="Animations /" currSection="animations" og={og}>
     <div class="page-body">
-        <h2>Animations</h2>
+        <h2>{t("page.animations")}</h2>
 
         <Timeline
             data={activitiesByDate}

@@ -1,4 +1,6 @@
 ---
+import { t } from "../i18n";
+
 interface Props {
     url: string;
     text: string;
@@ -11,5 +13,5 @@ const { url, text } = Astro.props;
     <a target="_blank" href={url}>
         {text}
     </a>{" "}
-    [PDF, 5Mo]
+    {t("partnership.fileHint")}
 </p>

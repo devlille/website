@@ -1,5 +1,6 @@
 ---
 import type { Partner } from "../data/domain";
+import { t } from "../i18n";
 
 interface Props {
     title: string;
@@ -21,7 +22,7 @@ const partners = (unsorted ?? []).sort((p1, p2) => {
                 return (
                     <li class="sponsor">
                         <a
-                            aria-label={`Visiter le site de ${p.name}`}
+                            aria-label={t("sponsors.visitSite", { name: p.name })}
                             href={`partner-${p.id}`}
                         >
                             <img src={p.logoUrl} alt={p.name} loading="lazy" />

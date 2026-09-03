@@ -1,17 +1,17 @@
 import { describe, expect, it } from "vitest";
 import { toPartners } from "../../src/data/adapters/http/mappers";
 import type { ApiPartnersResponse } from "../../src/data/adapters/http/mappers";
-import {
-  SPONSOR_TIERS,
-  groupSponsorsByTier,
-} from "../../src/core/sponsor-tiers";
+import { groupSponsorsByTier } from "../../src/core/sponsor-tiers";
+import { event } from "../../src/config";
+
+const TIERS = event.sponsorTiers;
 import partnersFixture from "../fixtures/partners.json" with { type: "json" };
 
 const sponsor = (name: string, tiers: string[]) => ({ id: name, name, tiers });
 
 describe("groupSponsorsByTier", () => {
   it("range chaque partenaire sous son pack", () => {
-    const tiers = groupSponsorsByTier([
+    const tiers = groupSponsorsByTier(TIERS, [
       sponsor("Alpha", ["Pack Gold"]),
       sponsor("Beta", ["Pack Silver"]),
     ]);
@@ -23,7 +23,7 @@ describe("groupSponsorsByTier", () => {
   });
 
   it("accepte aussi les libellés courts de l'ancienne API", () => {
-    const tiers = groupSponsorsByTier([
+    const tiers = groupSponsorsByTier(TIERS, [
       sponsor("Alpha", ["gold"]),
       sponsor("Beta", ["silver"]),
       sponsor("Gamma", ["bronze"]),
@@ -33,13 +33,13 @@ describe("groupSponsorsByTier", () => {
   });
 
   it("omet les packs sans aucun partenaire", () => {
-    const tiers = groupSponsorsByTier([sponsor("Alpha", ["Pack Gold"])]);
+    const tiers = groupSponsorsByTier(TIERS, [sponsor("Alpha", ["Pack Gold"])]);
 
     expect(tiers).toHaveLength(1);
   });
 
   it("respecte l'ordre d'affichage des packs quelle que soit l'entrée", () => {
-    const tiers = groupSponsorsByTier([
+    const tiers = groupSponsorsByTier(TIERS, [
       sponsor("Media", ["Partenaires Média"]),
       sponsor("Bronze", ["Pack Bronze"]),
       sponsor("Gold", ["Pack Gold"]),
@@ -55,7 +55,7 @@ describe("groupSponsorsByTier", () => {
   });
 
   it("fait apparaître dans les deux packs un partenaire qui en cumule deux", () => {
-    const tiers = groupSponsorsByTier([
+    const tiers = groupSponsorsByTier(TIERS, [
       sponsor("Alpha", ["Pack Gold", "Partenaires Média"]),
     ]);
 
@@ -64,23 +64,23 @@ describe("groupSponsorsByTier", () => {
   });
 
   it("ignore un partenaire dont le pack n'est reconnu par aucun tier", () => {
-    expect(groupSponsorsByTier([sponsor("Alpha", ["Pack Platine"])])).toEqual(
+    expect(groupSponsorsByTier(TIERS, [sponsor("Alpha", ["Pack Platine"])])).toEqual(
       [],
     );
   });
 
   it("ignore un partenaire sans aucun pack", () => {
-    expect(groupSponsorsByTier([sponsor("Alpha", [])])).toEqual([]);
+    expect(groupSponsorsByTier(TIERS, [sponsor("Alpha", [])])).toEqual([]);
   });
 
   it("ne renvoie aucun pack pour une liste vide", () => {
-    expect(groupSponsorsByTier([])).toEqual([]);
+    expect(groupSponsorsByTier(TIERS, [])).toEqual([]);
   });
 
   it("classe tous les partenaires du dump réel", () => {
     const sponsors = toPartners(partnersFixture as ApiPartnersResponse);
 
-    const tiers = groupSponsorsByTier(sponsors);
+    const tiers = groupSponsorsByTier(TIERS, sponsors);
     const classified = new Set(
       tiers.flatMap((t) => t.partners.map((p) => p.id)),
     );
@@ -90,7 +90,7 @@ describe("groupSponsorsByTier", () => {
 
   it("couvre chaque type annoncé par l'API", () => {
     const matched = partnersFixture.types.filter((type) =>
-      SPONSOR_TIERS.some((tier) => tier.match(type)),
+      TIERS.some((tier) => tier.labels.includes(type)),
     );
 
     expect(matched).toHaveLength(partnersFixture.types.length);

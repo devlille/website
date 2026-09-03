@@ -2,6 +2,8 @@
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import type { ActivitySlotEntry } from "../core/activities";
 import type { TalkEntry } from "../core/agenda";
+import { event } from "../config";
+import { t } from "../i18n";
 
 /** Ce que la Timeline sait afficher : des talks ou des animations. */
 type TimelineItem = TalkEntry | ActivitySlotEntry;
@@ -48,7 +50,7 @@ const { data, ItemComponent, autoScrollToHour = true } = Astro.props;
                             <h3 id={`d-${i}-h${slot[0]}`}>
                                 {slot[0]}
                                 <a href={`#d-${i}-h${slot[0]}`}>
-                                    <img src="/img/link.svg" alt="Ancre" />
+                                    <img src="/img/link.svg" alt={t("agenda.anchorAlt")} />
                                 </a>
                             </h3>
                             <div class="content">
@@ -67,15 +69,16 @@ const { data, ItemComponent, autoScrollToHour = true } = Astro.props;
 <script is:inline src="/js/tabs.js"></script>
 
 {autoScrollToHour && (
-<script is:inline>
+<script is:inline data-timezone={event.timezone}>
     (function () {
         try {
+            const TIMEZONE = document.currentScript.dataset.timezone;
             if (window.location.hash) return;
             const tabsBlock = document.querySelector(".tabs-block");
             if (!tabsBlock) return;
             const buttons = tabsBlock.querySelectorAll(".tabs button");
-            const todayParis = new Intl.DateTimeFormat("en-CA", {
-                timeZone: "Europe/Paris",
+            const todayLocal = new Intl.DateTimeFormat("en-CA", {
+                timeZone: TIMEZONE,
                 year: "numeric",
                 month: "2-digit",
                 day: "2-digit",
@@ -86,14 +89,14 @@ const { data, ItemComponent, autoScrollToHour = true } = Astro.props;
                 if (b.getAttribute("aria-selected") === "true") activeIdx = i;
             });
             if (activeIdx < 0) return;
-            if (buttons[activeIdx].dataset.date !== todayParis) return;
+            if (buttons[activeIdx].dataset.date !== todayLocal) return;
 
             const panels = tabsBlock.querySelectorAll(".tab-content");
             const panel = panels[activeIdx];
             if (!panel) return;
 
             const parts = new Intl.DateTimeFormat("en-CA", {
-                timeZone: "Europe/Paris",
+                timeZone: TIMEZONE,
                 hourCycle: "h23",
                 hour: "2-digit",
                 minute: "2-digit",

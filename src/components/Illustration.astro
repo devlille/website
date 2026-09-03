@@ -1,0 +1,27 @@
+---
+/** Une illustration de section, avec sa source haute résolution optionnelle. */
+interface Props {
+    image: {
+        src: string;
+        alt: string;
+        srcset?: string;
+        type?: string;
+        media?: string;
+    };
+}
+
+const { image } = Astro.props;
+---
+
+<picture>
+    {
+        image.srcset && (
+            <source
+                srcset={image.srcset}
+                type={image.type}
+                media={image.media}
+            />
+        )
+    }
+    <img loading="lazy" src={image.src} alt={image.alt} />
+</picture>

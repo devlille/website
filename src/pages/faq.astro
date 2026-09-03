@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { renderFaqResponse } from "../core/faq";
 import { dataSource } from "../data";
+import { t } from "../i18n";
 
 const qanda = (await dataSource.getFaq()).map((entry) => ({
     ...entry,
@@ -11,7 +12,7 @@ const qanda = (await dataSource.getFaq()).map((entry) => ({
 
 <Layout title="Foire aux questions /" currSection="faq">
     <article class="page-body">
-        <h2>Foire aux questions</h2>
+        <h2>{t("page.faq")}</h2>
         {
             qanda.map((faq) => {
                 return (
@@ -19,7 +20,7 @@ const qanda = (await dataSource.getFaq()).map((entry) => ({
                         <h3>
                             {faq.question}
                             <a href={`/faq/index.html#faq${faq.order}`}>
-                                <img src="/img/link.svg" alt="Ancre" />
+                                <img src="/img/link.svg" alt={t("agenda.anchorAlt")} />
                             </a>
                         </h3>
                         <div class="content">

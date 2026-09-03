@@ -13,6 +13,7 @@
 import { readFile } from "node:fs/promises";
 import { isAbsolute, join, resolve } from "node:path";
 import { z } from "astro/zod";
+import { formatZodIssues } from "../../../core/zod-errors";
 import type {
   Activity,
   Agenda,
@@ -50,23 +51,6 @@ const FILES = {
 const isMissingFile = (error: unknown): boolean =>
   (error as NodeJS.ErrnoException | null)?.code === "ENOENT";
 
-/** `["schedules", 0, "room"]` -> `schedules[0].room`. */
-const formatPath = (path: ReadonlyArray<PropertyKey>): string =>
-  path.reduce<string>(
-    (acc, key) =>
-      typeof key === "number"
-        ? `${acc}[${key}]`
-        : acc
-          ? `${acc}.${String(key)}`
-          : String(key),
-    "",
-  ) || "(racine)";
-
-const formatIssues = (error: z.ZodError): string =>
-  error.issues
-    .map((issue) => `  - ${formatPath(issue.path)} : ${issue.message}`)
-    .join("\n");
-
 /**
  * Lit un fichier et le valide. Les trois modes d'échec — absent, JSON invalide,
  * hors schéma — remontent en `Error` nommant le chemin complet du fichier.
@@ -99,7 +83,7 @@ const readJson = async <S extends z.ZodType>(
   const result = schema.safeParse(parsed);
   if (!result.success) {
     throw new Error(
-      `${path} ne respecte pas le format attendu :\n${formatIssues(result.error)}`,
+      `${path} ne respecte pas le format attendu :\n${formatZodIssues(result.error)}`,
     );
   }
   return result.data;

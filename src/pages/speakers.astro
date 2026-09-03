@@ -3,11 +3,12 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 const speakersFromApi = (await getCollection("speakers")).map((d) => ({ id: d.id, ...d.data }));
 import { renderMarkdown } from "../core/markdown";
+import { t } from "../i18n";
 ---
 
 <Layout title="Speakers /" currSection="speakers">
     <div class="page-body list">
-        <h2>Speakers</h2>
+        <h2>{t("page.speakers")}</h2>
 
         <div class="all-speakers">
             <ul>
@@ -21,7 +22,7 @@ import { renderMarkdown } from "../core/markdown";
                                         width="100"
                                         height="100"
                                         src={speaker.photoUrl}
-                                        alt={`Photo de ${speaker.name}`}
+                                        alt={t("speaker.photoAlt", { name: speaker.name })}
                                     />
                                 </p>
                                 <h3>

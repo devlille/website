@@ -1,115 +1,57 @@
 ---
+import { getCollection, getEntry, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import { site } from "../config";
+import { t } from "../i18n";
 
 const og = {
-    ogTitle: "DevLille - A propos",
-    ogDescription:
-        "Le DevLille est une journée de conférences et d'échanges sur le Web, Mobile, Cloud,	et de leur utilisation par les acteurs locaux",
-    ogImage: "https://devlille.fr/img/logo-full.svg",
+    ogTitle: `${site.name} - A propos`,
+    ogDescription: t("og.about", { site: site.name }),
+    ogImage: `${site.url}/img/logo-full.svg`,
 };
+
+const team = await Promise.all(
+    (await getCollection("team"))
+        .sort((a, b) => a.data.order - b.data.order)
+        .map(async (entry) => ({
+            ...entry.data,
+            Bio: (await render(entry)).Content,
+        })),
+);
+
+const highlight = await getEntry("blocks", "team-highlight");
+const { Content: Highlight } = await render(highlight!);
+
+const title = t("page.team", { site: site.name });
 ---
 
-<Layout title="L'équipe DevLille" currSection="apropos" og={og}>
+<Layout title={title} currSection="apropos" og={og}>
     <div class="page-body">
-        <h2>L'équipe DevLille</h2>
+        <h2>{title}</h2>
 
         <div class="team">
-            <section class="member">
-                <div class="hgroup">
-                    <h3>Charlotte</h3>
-                    <p class="illustration">
-                        <img
-                            loading="lazy"
-                            src="/img/team/charlotte.jpg"
-                            alt=""
-                        />
-                    </p>
-                </div>
-                <div class="content">
-                    <p>
-                        Développeuse Android chez Decathlon les jours ouvrés, le
-                        reste du temps elle joue à des jeux vidéos et créé des
-                        choses avec des ami.es dans l'asso Calebasse Studio.
-                    </p>
-                </div>
-            </section>
-
-            <section class="member">
-                <div class="hgroup">
-                    <h3>Gérard</h3>
-                    <p class="illustration">
-                        <img loading="lazy" src="/img/team/gerard.jpg" alt="" />
-                    </p>
-                </div>
-                <div class="content">
-                    <p>
-                        Père de famille de 2 enfants, mari d'une femme
-                        incroyable et fan de l'univers Disney, Gérard est aussi
-                        Google Developer Expert pour Android depuis 2022 et
-                        Mobile Staff Engineer chez Decathlon sur toutes les
-                        applications du (e-)Commerce.
-                    </p>
-                </div>
-            </section>
-
-            <section class="member">
-                <div class="hgroup">
-                    <h3>Maxime</h3>
-                    <p class="illustration">
-                        <img loading="lazy" src="/img/team/maxime.jpg" alt="" />
-                    </p>
-                </div>
-                <div class="content">
-                    <p>
-                        Chef de projet et passionné d'IT depuis l'enfance,
-                        Maxime a rejoint le GDG et l'organisation du DevFest
-                        Lille en 2021 pour aider à promouvoir les bonnes
-                        pratiques, la veille et l'innovation dans les Hauts de
-                        France. Même si, aujourd'hui, Maxime ne fait plus de
-                        dév, il continue à POC des choses de son côté, notamment
-                        en domotique. Il reste aussi beaucoup près de ses
-                        équipes et de ce qui se fait de nouveau, car il aime
-                        apprendre et comprendre.
-                    </p>
-                </div>
-            </section>
-
-            <section class="member">
-                <div class="hgroup">
-                    <h3>Manu</h3>
-                    <p class="illustration">
-                        <img loading="lazy" src="/img/team/manu.jpg" alt="" />
-                    </p>
-                </div>
-                <div class="content">
-                    <p>
-                        Freelance spécialisé dans le développement, les audits,
-                        le conseil et la formation, Manu travaille autour des
-                        technologies Web, de l'écoconception, de l'accessibilité
-                        numérique et d'Elasticsearch. Google Developer Expert,
-                        il est également co-organisateur du DevLille. Auteur du
-                        livre Progressive Web App pour les éditions ENI, il
-                        donne de nombreuses conférences et partage sa passion
-                        pour la technologie. Manu vit entre Lille et Édimbourg.
-                    </p>
-                </div>
-            </section>
+            {
+                team.map((member) => (
+                    <section class="member">
+                        <div class="hgroup">
+                            <h3>{member.name}</h3>
+                            <p class="illustration">
+                                <img
+                                    loading="lazy"
+                                    src={member.photo}
+                                    alt=""
+                                />
+                            </p>
+                        </div>
+                        <div class="content">
+                            <member.Bio />
+                        </div>
+                    </section>
+                ))
+            }
 
             <div class="highlight">
-                <p>
-                    Le DevLille est organisé exclusivement par des bénévoles
-                    issus du monde de l'<abbr
-                        title="Technologie de l'information">IT</abbr
-                    >. Ces personnes dédient une partie de leur temps libre pour
-                    faire de cet événement un succès. Un grand merci à elles !
-                </p>
-                <p class="volunteers">
-                    <img
-                        loading="lazy"
-                        src="/img/devfest-partner-team.jpg"
-                        alt=""
-                    />
-                </p>
+                <Highlight />
             </div>
         </div>
     </div>

@@ -2,17 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import JobCard from "../components/JobCard.astro";
 import { dataSource } from "../data";
+import { t } from "../i18n";
 
 const jobs = await dataSource.getJobs();
 ---
 
-<Layout title="Les offres d'emploi de nos partenaires" currSection="offres">
+<Layout title={t("jobs.title")} currSection="offres">
   <div class="page-body">
     <article class="h-entry">
-      <h2 class="p-name">Les offres d'emploi de nos partenaires</h2>
+      <h2 class="p-name">{t("jobs.title")}</h2>
 
       <div class="intro">
-        <p>Nos partenaires nous partagent leurs offres d'emploi actuelles.</p>
+        <p>{t("jobs.intro")}</p>
       </div>
 
       <div class="job-offers">
@@ -20,7 +21,7 @@ const jobs = await dataSource.getJobs();
           <JobCard job={job} partnerName={job.partnerName} />
         ))}
         {jobs.length === 0 && (
-          <p>Aucune offre d'emploi disponible pour le moment.</p>
+          <p>{t("jobs.empty")}</p>
         )}
       </div>
     </article>

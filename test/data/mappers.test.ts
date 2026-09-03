@@ -14,6 +14,7 @@ import {
   type ApiPartnersResponse,
 } from "../../src/data/adapters/http/mappers";
 import partnersFixture from "../fixtures/partners.json" with { type: "json" };
+import { event } from "../../src/config";
 import agendaFixture from "../fixtures/agenda.json" with { type: "json" };
 
 const apiPartner = (over: Partial<ApiPartner> = {}): ApiPartner => ({
@@ -229,12 +230,37 @@ describe("toPartners", () => {
   });
 
   it("force le pack d'un partenaire listé dans les overrides", () => {
-    expect(
-      onePartner({
-        id: "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
-        types: ["Pack Bronze"],
-      }).tiers,
-    ).toEqual(["Pack Gold"]);
+    const [partner] = toPartners(
+      partnersResponse({ partners: [apiPartner({ id: "p9", types: ["Pack Bronze"] })] }),
+      { p9: ["Pack Gold"] },
+    );
+
+    expect(partner.tiers).toEqual(["Pack Gold"]);
+  });
+
+  it("laisse ses packs à un partenaire absent des overrides", () => {
+    const [partner] = toPartners(
+      partnersResponse({ partners: [apiPartner({ id: "p1", types: ["Pack Bronze"] })] }),
+      { p9: ["Pack Gold"] },
+    );
+
+    expect(partner.tiers).toEqual(["Pack Bronze"]);
+  });
+
+  it("applique les overrides déclarés par l'instance DevLille", () => {
+    const [partner] = toPartners(
+      partnersResponse({
+        partners: [
+          apiPartner({
+            id: "b9ae1a05-2f42-4d0f-b414-c455b3fe20b0",
+            types: ["Pack Bronze"],
+          }),
+        ],
+      }),
+      event.sponsorTierOverrides,
+    );
+
+    expect(partner.tiers).toEqual(["Pack Gold"]);
   });
 
   it("projette tous les partenaires du dump réel sans lever d'erreur", () => {

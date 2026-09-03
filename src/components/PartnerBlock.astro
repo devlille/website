@@ -1,5 +1,6 @@
 ---
 import type { PartnerRef } from "../data/domain";
+import { t } from "../i18n";
 
 interface Props {
     partners: PartnerRef[];
@@ -11,11 +12,11 @@ const { partners, className } = Astro.props;
 
 {partners.length > 0 && (
     <div class={`sponsors gold ${className ?? ""}`}>
-        <h3>Partenaire{partners.length > 1 ? "s" : ""}</h3>
+        <h3>{t(partners.length > 1 ? "sponsors.partnersHeading" : "sponsors.partnerHeading")}</h3>
         <ul>
             {partners.map((p) => (
                 <li class="sponsor">
-                    <a href={`/partner-${p.id}`} aria-label={`Visiter le site de ${p.name}`}>
+                    <a href={`/partner-${p.id}`} aria-label={t("sponsors.visitSite", { name: p.name })}>
                         <img loading="lazy" src={p.logoUrl} alt={p.name} />
                     </a>
                 </li>

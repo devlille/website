@@ -74,6 +74,8 @@ describe("eachDayBetween", () => {
 
 describe("formatLongDate", () => {
   it("formate une date en français, style long", () => {
-    expect(formatLongDate(new Date(2026, 5, 11, 12))).toBe("11 juin 2026");
+    expect(formatLongDate(new Date(2026, 5, 11, 12), "fr-FR")).toBe(
+      "11 juin 2026",
+    );
   });
 });

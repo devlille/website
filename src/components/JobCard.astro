@@ -1,5 +1,6 @@
 ---
 import type { Job } from "../data/domain";
+import { t, locale } from "../i18n";
 
 interface Props {
     job: Job;
@@ -26,16 +27,18 @@ const { job, partnerName } = Astro.props;
             <dl>
                 {job.requirements !== null && job.requirements > 0 && (
                     <div>
-                        <dt>Expérience</dt>
-                        <dd>Minimum {job.requirements} ans</dd>
+                        <dt>{t("job.experience")}</dt>
+                        <dd>{t("job.minYears", { years: job.requirements })}</dd>
                     </div>
                 )}
                 {job.salary && (
                     <div>
-                        <dt>Salaire</dt>
+                        <dt>{t("job.salary")}</dt>
                         <dd>
-                            {job.salary.min.toLocaleString("fr-FR")}€ à{" "}
-                            {job.salary.max.toLocaleString("fr-FR")}€
+                            {t("job.salaryRange", {
+                                min: job.salary.min.toLocaleString(locale),
+                                max: job.salary.max.toLocaleString(locale),
+                            })}
                         </dd>
                     </div>
                 )}

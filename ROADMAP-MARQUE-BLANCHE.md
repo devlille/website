@@ -13,7 +13,7 @@
 - [Constat de départ](#constat-de-départ)
 - [Architecture cible](#architecture-cible)
 - [Phase 0 — Filet de sécurité (tests)](#phase-0--filet-de-sécurité-tests-) ✅
-- [Phase 1 — Couche données : domaine + port + adapter HTTP](#phase-1--couche-données--domaine--port--adapter-http)
+- [Phase 1 — Couche données : domaine + port + adapter HTTP](#phase-1--couche-données--domaine--port--adapter-http) ✅
 - [Phase 2 — Nettoyage et corrections](#phase-2--nettoyage-et-corrections)
 - [Phase 3 — Adapter statique (le « sans backend »)](#phase-3--adapter-statique-le--sans-backend-)
 - [Phase 4 — Config et contenu](#phase-4--config-et-contenu)
@@ -148,37 +148,84 @@ phase 2 : verbatim aléatoire, 3 vidéos YouTube tirées au sort,
   `buildPartnerActivities` qui ne reconnaît aucune activité, et
   `normalizeSponsorUrl` qui teste `includes("https://")` au lieu de `startsWith`.
 
-## Phase 1 — Couche données : domaine + port + adapter HTTP
+## Phase 1 — Couche données : domaine + port + adapter HTTP ✅
 
 > **Le cœur de l'extraction.** À la fin de cette phase, plus aucune page ne fetch.
 
 ### Tâches
 
-- [ ] Définir les types du domaine dans `src/data/domain.ts`.
+- [x] Définir les types du domaine dans `src/data/domain.ts`.
       Ils décrivent **ce dont l'UI a besoin**, pas la forme de la réponse API
       (donc : `camelCase`, pas de `partner_id`, pas de champ optionnel « au cas où »).
-- [ ] Définir `EventDataSource` dans `src/data/ports/data-source.ts`.
-- [ ] Implémenter `src/data/adapters/http.ts` :
-  - [ ] un seul point de configuration pour la base URL et l'`eventId` (fin des UUID en dur)
-  - [ ] **mémoïsation par endpoint** : l'agenda ne doit être récupéré qu'une fois par build
-  - [ ] le mapping API→domaine y descend intégralement
-        (`formatPartner`, mapping schedules/sessions/speakers, parsing du flux RSS YouTube)
-  - [ ] sanitisation du Markdown/HTML issu du backend **ici**, pas dans les templates
-- [ ] Réécrire `src/content.config.ts` : les loaders appellent la source de données,
+- [x] Définir `EventDataSource` dans `src/data/ports/data-source.ts`.
+- [x] Implémenter `src/data/adapters/http/` :
+  - [x] un seul point de configuration pour la base URL et l'`eventId` (fin des UUID en dur)
+  - [x] **mémoïsation par endpoint** : l'agenda n'est récupéré qu'une fois par build
+  - [x] le mapping API→domaine y descend intégralement
+        (`toPartners`, `toAgenda`, `toActivities`, `toJobOffers`, `toEventInfo`,
+        `parseYoutubeFeed`) — `src/data/adapters/http/mappers.ts`
+  - [ ] sanitisation du Markdown/HTML issu du backend — **reportée en phase 2**
+        (voir « Sécurité ») : le domaine transporte le Markdown brut, le rendu
+        `marked` reste dans les templates. La sanitiser ici imposait de choisir
+        entre Markdown brut (nécessaire à `stripMarkdown` des meta-descriptions)
+        et HTML rendu ; l'arbitrage est fait en même temps que le renderer commun.
+- [x] Réécrire `src/content.config.ts` : les loaders appellent la source de données,
       les schémas Zod valident le **domaine**.
-- [ ] Migrer les appels directs, un par un :
-  - [ ] `src/utils/getTalksByDate.ts` (constante `AGENDA_URL` en dur → supprimée)
-  - [ ] `src/pages/faq.astro`
-  - [ ] `src/pages/offres-emploi.astro`
-  - [ ] `src/pages/partner-[id].astro` (2 fetch dans `getStaticPaths`)
-- [ ] Typer `Timeline`, `TalkItem`, `AnimationItem` avec le domaine (fin des `any`).
+- [x] Migrer les appels directs, un par un :
+  - [x] `src/utils/getTalksByDate.ts` (constante `AGENDA_URL` en dur → supprimée)
+  - [x] `src/pages/faq.astro`
+  - [x] `src/pages/offres-emploi.astro`
+  - [x] `src/pages/partner-[id].astro` (2 fetch dans `getStaticPaths` → 0 :
+        `partners/activities` porte déjà `jobs` et `speakers`, l'endpoint
+        `partners` était redondant et n'est plus appelé du tout)
+- [x] Typer `Timeline`, `TalkItem`, `AnimationItem` avec le domaine (fin des `any`).
 
 ### Critère de sortie
 
-- `grep -rn "fetch(" src/pages src/components src/utils` → aucun résultat.
-- `grep -rn "cleverapps.io\|7193c477" src/` → uniquement dans la config.
-- Le build produit un HTML identique à avant (à comparer avec `diff -r dist/`).
-- Nombre d'appels HTTP au build : **de 7 à 3**.
+- [x] `grep -rn "fetch(" src/pages src/components src/utils` → un seul résultat,
+      le `fetch` **client** du bouton favori (vote OpenFeedback), pas un appel de build.
+- [x] `grep -rn "cleverapps.io\|7193c477" src/` → uniquement dans `src/config/config.ts`.
+- [x] HTML de sortie vérifié par diff (326 fichiers de part et d'autre, aucun
+      manquant ni ajouté). Voir « Écarts assumés » ci-dessous.
+- [x] Nombre d'appels HTTP au build : **de 10 à 4** (mesuré), soit **1 par endpoint** :
+      `agenda`, `partners/activities`, `events/{id}`, flux RSS YouTube.
+
+**Atteint.** 118 tests sur 7 fichiers, 99,5 % des lignes de `src/core` + `src/data`
+couvertes. Aucune occurrence de `any` dans `src/`.
+
+### Architecture livrée
+
+```
+src/data/
+  domain.ts                    # Event, Agenda, Session, Speaker, Partner,
+                               # Activity, Job, FaqEntry, Video — camelCase
+  ports/data-source.ts         # interface EventDataSource
+  adapters/http/
+    api-types.ts               # formes brutes de l'API, ne sortent pas d'ici
+    mappers.ts                 # API -> domaine, fonctions pures et testées
+    index.ts                   # fetch + mémoïsation par endpoint
+  index.ts                     # sélection par DATA_SOURCE (http par défaut)
+```
+
+### Écarts assumés sur le HTML produit
+
+Après neutralisation des non-déterminismes déjà inventoriés (`?v=${Math.random()}`,
+3 vidéos YouTube tirées au sort, `sitemap.lastmod`), il ne reste que deux écarts,
+tous deux volontaires :
+
+1. **Bouton favori** — l'URL de vote (qui contenait l'UUID de l'événement en dur)
+   est désormais injectée via `data-vote-api`, dérivée de la config. Ajoute un
+   attribut sur `/agenda` et les fiches de talk. Effet de bord : l'import de la
+   config dans `FavoriteButton.astro` change l'**ordre** de deux règles CSS
+   scopées indépendantes sur `/agenda` (même contenu, aucun effet visuel).
+2. **Fiches partenaires** — `const video = undefined` devient `const video = null`
+   dans le `<script>` de debug, le domaine exprimant l'absence par `null`. Ce
+   script disparaît en phase 2.
+
+À surveiller : les mappers normalisent désormais les espaces insécables des titres
+et résumés de session pour l'agenda comme pour les fiches de talk (avant, seules
+les fiches le faisaient). Aucun impact sur le dump courant de l'API, mais l'agenda
+affichera un espace normal là où il affichait un insécable si l'API en réintroduit.
 
 ---
 
@@ -193,9 +240,10 @@ phase 2 : verbatim aléatoire, 3 vidéos YouTube tirées au sort,
       publié tel quel dans le JSON-LD :
       `url: "https://www.billetweb.fr/devlille-{{ collections.config.edition }}"`
       (2 offres sur 3 concernées).
-- [ ] `src/content.config.ts:222` — `buildPartnerActivities` lit `activity.partnerId`
+- [x] `src/content.config.ts:222` — `buildPartnerActivities` lit `activity.partnerId`
       alors que l'API renvoie `partner_id`. La colonne « Activités » de l'audit est
-      donc toujours `✗`.
+      donc toujours `✗`. **Résolu en phase 1** : le domaine expose `partnerId`,
+      l'audit lit des `Activity` et non plus la réponse brute.
 - [ ] `src/pages/agenda.astro:8` et `src/pages/animations.astro:8` — `const og = {…}`
       déclaré mais jamais passé à `<Layout>` : ces deux pages n'ont **aucune balise
       Open Graph**.
@@ -234,7 +282,10 @@ phase 2 : verbatim aléatoire, 3 vidéos YouTube tirées au sort,
 
 - [ ] `marked` + `set:html` sans sanitisation sur des données backend (abstracts, bios,
       FAQ). Avec des sources tierces en marque blanche, c'est un vrai risque.
-      → sanitiser dans l'adapter (phase 1), pas dans les templates.
+      → **reporté de la phase 1** : le domaine transporte le Markdown brut (dont
+      `stripMarkdown` a besoin pour les meta-descriptions). Introduire un
+      `renderMarkdown()` unique — sanitisation comprise — et remplacer les quatre
+      appels `marked` divergents des templates.
 - [ ] Remplacer les manipulations de HTML par chaînes (`shiftHeadings` dans
       `talk-page-[id].astro`, `.replaceAll("h2", "p")` dans `getTalksByDate.ts`) par
       un renderer `marked` configuré.
@@ -287,8 +338,8 @@ et feature flags. À éclater :
 - [ ] `getTalksByDate.ts:14` `guessEventTitle()` — heuristiques 100 % DevLille : salle
       `"Grand Théâtre"`, plages horaires, libellés `"Keynote d'ouverture"` / `"Lunch"` /
       `"Pause"` → stratégie injectable, ou suppression en fiabilisant les données source.
-- [ ] `FavoriteButton.astro:19` — `STORAGE_KEY = "devlille_favorites"` → dérivé du
-      `site.config`.
+- [ ] `FavoriteButton.astro` — `STORAGE_KEY = "devlille_favorites"` → dérivé du
+      `site.config`. (L'URL de vote, elle, vient déjà de la config depuis la phase 1.)
 
 ### Sortir le contenu des templates
 
@@ -364,7 +415,7 @@ et feature flags. À éclater :
 
 ## Annexe — Inventaire des points durs
 
-### Les 7 appels `fetch` à supprimer (phase 1)
+### Les appels `fetch` supprimés en phase 1 ✅
 
 | Fichier | Endpoint | Remarque |
 |---|---|---|
@@ -378,6 +429,12 @@ et feature flags. À éclater :
 | `src/pages/partner-[id].astro:23-26` | `partners/activities` + `partners` | 2 appels dans `getStaticPaths` |
 
 Soit **3 appels à `agenda`** et **4 à `partners/activities`** par build, sans cache.
+
+Tous passent désormais par `EventDataSource`. L'endpoint `partners` a disparu
+(`partners/activities` porte déjà `jobs` et `speakers`), et chaque endpoint restant
+n'est appelé qu'une fois : la source est ancrée sur `globalThis`, Astro évaluant
+`src/data` dans deux graphes de modules distincts (loaders de contenu et bundle
+des pages).
 
 ### Fichiers les plus couplés à DevLille
 
@@ -393,12 +450,12 @@ Soit **3 appels à `agenda`** et **4 à `partners/activities`** par build, sans 
 
 ### Métriques de suivi
 
-| Indicateur | Aujourd'hui | Cible |
-|---|---|---|
-| Appels HTTP par build | 7 | 3 |
-| `fetch` hors couche données | 7 | 0 |
-| Fichiers de test | 6 *(0 avant phase 0)* | ≥ 8 |
-| `console.log` en production | 18 | 0 |
-| Couleurs en dur (CSS) | 5 | 0 |
-| Occurrences de `any` dans `src/` | 23 | 0 |
-| Pages sans Open Graph | 2 | 0 |
+| Indicateur | Avant phase 0 | Aujourd'hui | Cible |
+|---|---|---|---|
+| Appels HTTP par build | 10 | **4** | 3 |
+| `fetch` hors couche données | 8 | **0** | 0 |
+| Fichiers de test | 0 | **7** | ≥ 8 |
+| `console.log` en production | 18 | **4** | 0 |
+| Couleurs en dur (CSS) | 5 | 5 | 0 |
+| Occurrences de `any` dans `src/` | 23 | **0** | 0 |
+| Pages sans Open Graph | 2 | 2 | 0 |

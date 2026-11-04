@@ -33,10 +33,11 @@ export default defineConfig({
   vite: {
     build: {
       cssMinify: "lightningcss",
-      // esbuild plutôt que terser : ~200 ms de moins sur le build client, pour
-      // une sortie identique à l'octet près — le site ne sert que 4 Ko de JS,
-      // les passes supplémentaires de terser n'ont rien à y gagner.
-      minify: "esbuild",
+      // Oxc, minifieur natif de Vite 8 : esbuild n'est plus qu'une peer
+      // dependency optionnelle de Vite et n'est pas installé sur Clever Cloud
+      // (« Failed to load `transformWithEsbuild` »). Terser reste inutile :
+      // le site ne sert que 4 Ko de JS.
+      minify: "oxc",
     },
     ssr: {
       noExternal: ["markdown"],
